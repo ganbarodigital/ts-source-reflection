@@ -93,14 +93,8 @@ function getBaseInterfaceTypes(
     // our return value
     const retval: IntermediateTypeParameter[] = [];
 
-    // does this class implement any interfaces?
+    // find the implement clauses (if any)
     const heritageClauses = findImplementsHeritageClauses(input);
-    if (heritageClauses.length === 0) {
-        // no, it does not
-        return retval;
-    }
-
-    // if we get here, then yes - it does!
     for (const clause of heritageClauses) {
         retval.push(processExpressionWithTypeArguments(sourceFile, clause.types[0]));
     }
