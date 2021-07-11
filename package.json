@@ -18,8 +18,7 @@
   "contributors": [
     "Stuart Herbert <stuherbert@ganbarodigital.com> (https://ganbarodigital.com)"
   ],
-  "keywords": [
-  ],
+  "keywords": [],
   "files": [
     "lib/**/*",
     "CHANGELOG.md",
@@ -27,7 +26,8 @@
   ],
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@safelytyped/core-types": "^0.3.0"
+    "@safelytyped/core-types": "^0.3.0",
+    "@safelytyped/filepath": "^0.1.1"
   },
   "devDependencies": {
     "@types/chai": "^4.2.8",
