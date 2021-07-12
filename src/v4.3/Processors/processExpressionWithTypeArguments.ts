@@ -48,7 +48,7 @@ export function processExpressionWithTypeArguments(
     if (!clause.typeArguments) {
         return {
             name: clause.getText(),
-            kind: IntermediateKind.IntermediateFixedTypeParameter
+            kind: IntermediateKind.IntermediateFixedTypeArgument
         }
     }
 
@@ -73,7 +73,7 @@ function processTypeReferences(input: NodeArray<TypeNode>): IntermediateTypeArgu
         if (!member.typeArguments) {
             retval.push({
                 name: member.typeName.getText(),
-                kind: IntermediateKind.IntermediateFixedTypeParameter
+                kind: IntermediateKind.IntermediateFixedTypeArgument
             });
         } else {
             retval.push({

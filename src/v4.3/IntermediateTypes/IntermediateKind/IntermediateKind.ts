@@ -35,13 +35,13 @@
 export enum IntermediateKind {
     IntermediateClass,
     IntermediateDocBlock,
-    IntermediateFixedTypeParameter,
+    IntermediateFixedTypeArgument,
     IntermediateGenericType,
-    IntermediateGenericTypeParameter,
+    IntermediateGenericTypeArgument,
     IntermediateImportItem,
     IntermediateInterface,
     IntermediateModule,
     IntermediateReference,
     IntermediateSourceFile,
-    IntermediateTypeReference,
+    IntermediateTypeArgument,
 }
