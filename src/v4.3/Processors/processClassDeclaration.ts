@@ -34,10 +34,10 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { ClassDeclaration, Statement } from "typescript";
-import { findExtendsHeritageClauses } from "../Ast/findExtendsHeritageClauses";
-import { findImplementsHeritageClauses } from "../Ast/findImplementsHeritageClauses";
-import { isNodeExported } from "../Ast/isNodeExported";
-import { mustBeClassDeclaration } from "../Ast/mustBeClassDeclaration";
+import { findExtendsHeritageClauses } from "../AST/findExtendsHeritageClauses";
+import { findImplementsHeritageClauses } from "../AST/findImplementsHeritageClauses";
+import { isNodeExported } from "../AST/isNodeExported";
+import { mustBeClassDeclaration } from "../AST/mustBeClassDeclaration";
 import { IntermediateClass } from "../IntermediateTypes/IntermediateClass/IntermediateClass";
 import { IntermediateKind } from "../IntermediateTypes/IntermediateKind/IntermediateKind";
 import { IntermediateSourceFile } from "../IntermediateTypes/IntermediateSourceFile/IntermediateSourceFile";
