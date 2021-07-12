@@ -32,8 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem } from "../IntermediateItem/IntermediateItem";
-import { IntermediateTypeParameter } from "../IntermediateTypeParameter/IntermediateTypeParameter";
+import { IntermediateItem, IntermediateTypeParameter } from "..";
 
 export interface IntermediateTypeReference extends IntermediateItem
 {

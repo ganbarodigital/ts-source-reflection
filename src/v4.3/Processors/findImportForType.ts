@@ -33,8 +33,7 @@
 //
 
 import { ExpressionWithTypeArguments } from "typescript";
-import { IntermediateImportItem } from "../IntermediateTypes/IntermediateImportItem/IntermediateImportItem";
-import { IntermediateSourceFile } from "../IntermediateTypes/IntermediateSourceFile/IntermediateSourceFile";
+import { IntermediateImportItem, IntermediateSourceFile } from "../IntermediateTypes";
 
 export function findImportsForType(
     sourceFile: IntermediateSourceFile,

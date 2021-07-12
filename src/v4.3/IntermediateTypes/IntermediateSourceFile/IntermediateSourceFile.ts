@@ -34,7 +34,7 @@
 
 import { HashMap } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
-import { IntermediateItem } from "../IntermediateItem/IntermediateItem";
+import { IntermediateItem } from "..";
 
 export interface IntermediateSourceFile extends IntermediateItem
 {

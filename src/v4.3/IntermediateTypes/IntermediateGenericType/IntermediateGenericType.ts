@@ -33,7 +33,7 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { IntermediateItem } from "../IntermediateItem/IntermediateItem";
+import { IntermediateItem } from "..";
 
 export interface IntermediateGenericType extends IntermediateItem
 {

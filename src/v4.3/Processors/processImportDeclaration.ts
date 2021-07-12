@@ -35,9 +35,11 @@
 import { AnyHashMap } from "@safelytyped/core-types";
 import { isNamedImports, Node, Statement } from "typescript";
 import * as AST from "../AST";
-import { IntermediateImportItem } from "../IntermediateTypes/IntermediateImportItem/IntermediateImportItem";
-import { IntermediateKind } from "../IntermediateTypes/IntermediateKind/IntermediateKind";
-import { IntermediateSourceFile } from "../IntermediateTypes/IntermediateSourceFile/IntermediateSourceFile";
+import {
+    IntermediateImportItem,
+    IntermediateKind,
+    IntermediateSourceFile
+} from "../IntermediateTypes";
 
 // const childProcessors: FunctionPointerTable<string, NodeProcessor> = {
 //     ImportClause: processImportClause,

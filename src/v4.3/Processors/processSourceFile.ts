@@ -35,8 +35,7 @@
 import { FunctionPointerTable, HashMap, searchFunctionPointerTable } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import { NodeArray, SourceFile, Statement, SyntaxKind } from "typescript";
-import { IntermediateKind } from "../IntermediateTypes/IntermediateKind/IntermediateKind";
-import { IntermediateSourceFile } from "../IntermediateTypes/IntermediateSourceFile/IntermediateSourceFile";
+import { IntermediateKind, IntermediateSourceFile } from "../IntermediateTypes";
 import { processClassDeclaration } from "./processClassDeclaration";
 import { processImportDeclaration } from "./processImportDeclaration";
 import { StatementProcessor } from "./StatementProcessor";

@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateKind } from "../IntermediateKind/IntermediateKind";
+import { IntermediateKind } from "..";
 
 export interface IntermediateItem {
     kind: IntermediateKind;

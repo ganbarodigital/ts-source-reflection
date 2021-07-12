@@ -33,7 +33,7 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { IntermediateDocBlock } from "../IntermediateDocBlock/IntermediateDocBlock";
+import { IntermediateDocBlock } from "..";
 
 export interface IntermediateDocumentedItem
 {

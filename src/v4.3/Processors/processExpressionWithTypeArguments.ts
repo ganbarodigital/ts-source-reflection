@@ -33,10 +33,12 @@
 //
 
 import { ExpressionWithTypeArguments, isTypeReferenceNode, NodeArray, TypeNode } from "typescript";
-import { IntermediateGenericTypeParameter } from "../IntermediateTypes/IntermediateGenericTypeParameter/IntermediateGenericTypeParameter";
-import { IntermediateKind } from "../IntermediateTypes/IntermediateKind/IntermediateKind";
-import { IntermediateSourceFile } from "../IntermediateTypes/IntermediateSourceFile/IntermediateSourceFile";
-import { IntermediateTypeParameter } from "../IntermediateTypes/IntermediateTypeParameter/IntermediateTypeParameter";
+import {
+    IntermediateGenericTypeParameter,
+    IntermediateKind,
+    IntermediateSourceFile,
+    IntermediateTypeParameter
+} from "../IntermediateTypes";
 
 export function processExpressionWithTypeArguments(
     sourceFile: IntermediateSourceFile,

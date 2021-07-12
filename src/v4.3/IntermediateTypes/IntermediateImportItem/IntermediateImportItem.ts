@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem } from "../IntermediateItem/IntermediateItem";
+import { IntermediateItem } from "..";
 
 export interface IntermediateImportItem extends IntermediateItem{
     name: string;

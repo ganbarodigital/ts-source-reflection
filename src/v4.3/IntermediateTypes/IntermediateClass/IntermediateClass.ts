@@ -33,10 +33,12 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem/IntermediateDocumentedItem";
-import { IntermediateExportableItem } from "../IntermediateExportableItem/IntermediateExportableItem";
-import { IntermediateItem } from "../IntermediateItem/IntermediateItem";
-import { IntermediateTypeParameter } from "../IntermediateTypeParameter/IntermediateTypeParameter";
+import {
+    IntermediateDocumentedItem,
+    IntermediateExportableItem,
+    IntermediateItem,
+    IntermediateTypeParameter
+} from "..";
 
 export interface IntermediateClass
     extends IntermediateItem,

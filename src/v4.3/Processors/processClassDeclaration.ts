@@ -35,10 +35,12 @@
 import { Maybe } from "@safelytyped/core-types";
 import { ClassDeclaration, Statement } from "typescript";
 import * as AST from "../AST";
-import { IntermediateClass } from "../IntermediateTypes/IntermediateClass/IntermediateClass";
-import { IntermediateKind } from "../IntermediateTypes/IntermediateKind/IntermediateKind";
-import { IntermediateSourceFile } from "../IntermediateTypes/IntermediateSourceFile/IntermediateSourceFile";
-import { IntermediateTypeParameter } from "../IntermediateTypes/IntermediateTypeParameter/IntermediateTypeParameter";
+import {
+    IntermediateClass,
+    IntermediateKind,
+    IntermediateSourceFile,
+    IntermediateTypeParameter
+} from "../IntermediateTypes";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { StatementProcessor } from "./StatementProcessor";
 

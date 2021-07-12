@@ -32,9 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem/IntermediateDocumentedItem";
-import { IntermediateItem } from "../IntermediateItem/IntermediateItem";
-import { IntermediateReferenceOr } from "../IntermediateReference/IntermediateReferenceOr";
+import {
+    IntermediateDocumentedItem,
+    IntermediateItem,
+    IntermediateReferenceOr
+} from "..";
 
 export interface IntermediateInterface extends IntermediateItem, IntermediateDocumentedItem
 {

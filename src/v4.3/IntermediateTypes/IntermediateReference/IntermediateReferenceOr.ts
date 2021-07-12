@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateImportItem } from "../IntermediateImportItem/IntermediateImportItem";
+import { IntermediateImportItem } from "..";
 
 /**
  * `IntermediateReferenceOr` is an option type. Use it to describe any

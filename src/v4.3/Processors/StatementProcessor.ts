@@ -34,7 +34,7 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { Statement } from "typescript";
-import { IntermediateSourceFile } from "../IntermediateTypes/IntermediateSourceFile/IntermediateSourceFile";
+import { IntermediateSourceFile } from "../IntermediateTypes";
 
 export type StatementProcessor = <T extends Statement>(
     sourceFile: IntermediateSourceFile,
