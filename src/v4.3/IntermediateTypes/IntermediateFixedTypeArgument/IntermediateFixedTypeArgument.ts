@@ -32,6 +32,9 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateFixedTypeParameter, IntermediateGenericTypeParameter } from "..";
+import { IntermediateItem } from "..";
 
-export type IntermediateTypeParameter = IntermediateFixedTypeParameter | IntermediateGenericTypeParameter;
+export interface IntermediateFixedTypeArgument extends IntermediateItem
+{
+    name: string;
+}

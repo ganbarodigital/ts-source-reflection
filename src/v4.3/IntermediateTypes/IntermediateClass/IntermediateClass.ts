@@ -37,7 +37,7 @@ import {
     IntermediateDocumentedItem,
     IntermediateExportableItem,
     IntermediateItem,
-    IntermediateTypeParameter
+    IntermediateTypeArgument
 } from "..";
 
 export interface IntermediateClass
@@ -46,6 +46,6 @@ export interface IntermediateClass
         IntermediateExportableItem
 {
     name: string;
-    extendsTypeParameter: Maybe<IntermediateTypeParameter>;
-    implementsTypeParameters: IntermediateTypeParameter[];
+    extendsTypeParameter: Maybe<IntermediateTypeArgument>;
+    implementsTypeParameters: IntermediateTypeArgument[];
 }

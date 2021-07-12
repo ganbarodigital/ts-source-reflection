@@ -39,7 +39,7 @@ import {
     IntermediateClass,
     IntermediateKind,
     IntermediateSourceFile,
-    IntermediateTypeParameter
+    IntermediateTypeArgument
 } from "../IntermediateTypes";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { StatementProcessor } from "./StatementProcessor";
@@ -67,7 +67,7 @@ export const processClassDeclaration: StatementProcessor = (
 function getBaseClassType(
     sourceFile: IntermediateSourceFile,
     input: ClassDeclaration
-): Maybe<IntermediateTypeParameter>
+): Maybe<IntermediateTypeArgument>
 {
     // does this class extend anything?
     const heritageClauses = AST.findExtendsHeritageClauses(input);
@@ -87,9 +87,9 @@ function getBaseClassType(
 function getBaseInterfaceTypes(
     sourceFile: IntermediateSourceFile,
     input: ClassDeclaration
-): IntermediateTypeParameter[] {
+): IntermediateTypeArgument[] {
     // our return value
-    const retval: IntermediateTypeParameter[] = [];
+    const retval: IntermediateTypeArgument[] = [];
 
     // find the implement clauses (if any)
     const heritageClauses = AST.findImplementsHeritageClauses(input);

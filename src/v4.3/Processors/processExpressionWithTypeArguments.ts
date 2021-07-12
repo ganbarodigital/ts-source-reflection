@@ -34,16 +34,16 @@
 
 import { ExpressionWithTypeArguments, isTypeReferenceNode, NodeArray, TypeNode } from "typescript";
 import {
-    IntermediateGenericTypeParameter,
+    IntermediateGenericTypeArgument,
     IntermediateKind,
     IntermediateSourceFile,
-    IntermediateTypeParameter
+    IntermediateTypeArgument
 } from "../IntermediateTypes";
 
 export function processExpressionWithTypeArguments(
     sourceFile: IntermediateSourceFile,
     clause: ExpressionWithTypeArguments
-): IntermediateTypeParameter {
+): IntermediateTypeArgument {
     // do we have something simple?
     if (!clause.typeArguments) {
         return {
@@ -54,15 +54,15 @@ export function processExpressionWithTypeArguments(
 
     // if we get here, we're looking at a generic type
     // tslint:disable-next-line: no-angle-bracket-type-assertion
-    return <IntermediateGenericTypeParameter>{
+    return <IntermediateGenericTypeArgument>{
         kind: IntermediateKind.IntermediateGenericType,
         name: clause.expression.getText(),
-        typeParameters: processTypeParameters(clause.typeArguments)
+        typeParameters: processTypeReferences(clause.typeArguments)
     }
 }
 
-function processTypeParameters(input: NodeArray<TypeNode>): IntermediateTypeParameter[] {
-    const retval: IntermediateTypeParameter[] = [];
+function processTypeReferences(input: NodeArray<TypeNode>): IntermediateTypeArgument[] {
+    const retval: IntermediateTypeArgument[] = [];
 
     for (const member of input) {
         // theoretically possible
@@ -79,7 +79,7 @@ function processTypeParameters(input: NodeArray<TypeNode>): IntermediateTypePara
             retval.push({
                 kind: IntermediateKind.IntermediateGenericType,
                 name: member.typeName.getText(),
-                typeParameters: processTypeParameters(member.typeArguments)
+                typeParameters: processTypeReferences(member.typeArguments)
             });
         }
     }

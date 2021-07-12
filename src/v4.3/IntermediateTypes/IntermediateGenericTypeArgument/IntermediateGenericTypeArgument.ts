@@ -32,4 +32,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateGenericTypeParameter";
+import { IntermediateItem, IntermediateTypeArgument } from "..";
+
+export interface IntermediateGenericTypeArgument extends IntermediateItem
+{
+    name: string;
+    typeParameters: IntermediateTypeArgument[];
+}

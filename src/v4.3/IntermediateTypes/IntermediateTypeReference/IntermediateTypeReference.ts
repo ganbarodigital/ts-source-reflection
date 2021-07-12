@@ -32,10 +32,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem, IntermediateTypeParameter } from "..";
+import { IntermediateItem, IntermediateTypeArgument } from "..";
 
 export interface IntermediateTypeReference extends IntermediateItem
 {
     name: string;
-    typeParameters: IntermediateTypeParameter[];
+    typeParameters: IntermediateTypeArgument[];
 }
