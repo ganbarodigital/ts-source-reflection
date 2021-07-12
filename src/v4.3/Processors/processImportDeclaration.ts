@@ -34,8 +34,7 @@
 
 import { AnyHashMap } from "@safelytyped/core-types";
 import { isNamedImports, Node, Statement } from "typescript";
-import { mustBeImportClause } from "../Ast/mustBeImportClause";
-import { mustBeImportDeclaration } from "../Ast/mustBeImportDeclaration";
+import * as AST from "../AST";
 import { IntermediateImportItem } from "../IntermediateTypes/IntermediateImportItem/IntermediateImportItem";
 import { IntermediateKind } from "../IntermediateTypes/IntermediateKind/IntermediateKind";
 import { IntermediateSourceFile } from "../IntermediateTypes/IntermediateSourceFile/IntermediateSourceFile";
@@ -50,7 +49,7 @@ export function processImportDeclaration(
 ): object
 {
     // make sure we have what we expect
-    const importDec = mustBeImportDeclaration(input);
+    const importDec = AST.mustBeImportDeclaration(input);
 
     let retval: object[] = [];
 
@@ -63,7 +62,7 @@ export function processImportDeclaration(
 
 function processImportClause(input: Node, origin: string): object[]
 {
-    const importClause = mustBeImportClause(input);
+    const importClause = AST.mustBeImportClause(input);
 
     const data = input as AnyHashMap;
     data.parent = null;
