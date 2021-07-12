@@ -34,10 +34,7 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { ClassDeclaration, Statement } from "typescript";
-import { findExtendsHeritageClauses } from "../AST/findExtendsHeritageClauses";
-import { findImplementsHeritageClauses } from "../AST/findImplementsHeritageClauses";
-import { isNodeExported } from "../AST/isNodeExported";
-import { mustBeClassDeclaration } from "../AST/mustBeClassDeclaration";
+import * as AST from "../AST";
 import { IntermediateClass } from "../IntermediateTypes/IntermediateClass/IntermediateClass";
 import { IntermediateKind } from "../IntermediateTypes/IntermediateKind/IntermediateKind";
 import { IntermediateSourceFile } from "../IntermediateTypes/IntermediateSourceFile/IntermediateSourceFile";
@@ -51,7 +48,7 @@ export const processClassDeclaration: StatementProcessor = (
     input: Statement
 ): IntermediateClass => {
     // make sure we have the right kind of statement
-    const classDec = mustBeClassDeclaration(input);
+    const classDec = AST.mustBeClassDeclaration(input);
 
     return {
         name: classDec.name?.text || '',
@@ -60,7 +57,7 @@ export const processClassDeclaration: StatementProcessor = (
             kind: IntermediateKind.IntermediateDocBlock,
             text: findDocBlockText(classDec),
         },
-        exported: isNodeExported(classDec),
+        exported: AST.isNodeExported(classDec),
         extendsTypeParameter: getBaseClassType(sourceFile, classDec),
         implementsTypeParameters: getBaseInterfaceTypes(sourceFile, classDec),
     };
@@ -72,7 +69,7 @@ function getBaseClassType(
 ): Maybe<IntermediateTypeParameter>
 {
     // does this class extend anything?
-    const heritageClauses = findExtendsHeritageClauses(input);
+    const heritageClauses = AST.findExtendsHeritageClauses(input);
     if (heritageClauses.length === 0) {
         // no, it does not
         return undefined;
@@ -94,7 +91,7 @@ function getBaseInterfaceTypes(
     const retval: IntermediateTypeParameter[] = [];
 
     // find the implement clauses (if any)
-    const heritageClauses = findImplementsHeritageClauses(input);
+    const heritageClauses = AST.findImplementsHeritageClauses(input);
     for (const clause of heritageClauses) {
         retval.push(processExpressionWithTypeArguments(sourceFile, clause.types[0]));
     }
