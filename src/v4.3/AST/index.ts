@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+export * from "./findDocBlockText";
 export * from "./findExtendsHeritageClauses";
 export * from "./findImplementsHeritageClauses";
 export * from "./isExportKeyword";

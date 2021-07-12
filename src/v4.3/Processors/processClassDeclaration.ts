@@ -39,7 +39,6 @@ import { IntermediateClass } from "../IntermediateTypes/IntermediateClass/Interm
 import { IntermediateKind } from "../IntermediateTypes/IntermediateKind/IntermediateKind";
 import { IntermediateSourceFile } from "../IntermediateTypes/IntermediateSourceFile/IntermediateSourceFile";
 import { IntermediateTypeParameter } from "../IntermediateTypes/IntermediateTypeParameter/IntermediateTypeParameter";
-import { findDocBlockText } from "./findDocBlockText";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { StatementProcessor } from "./StatementProcessor";
 
@@ -55,7 +54,7 @@ export const processClassDeclaration: StatementProcessor = (
         kind: IntermediateKind.IntermediateClass,
         docBlock: {
             kind: IntermediateKind.IntermediateDocBlock,
-            text: findDocBlockText(classDec),
+            text: AST.findDocBlockText(classDec),
         },
         exported: AST.isNodeExported(classDec),
         extendsTypeParameter: getBaseClassType(sourceFile, classDec),
