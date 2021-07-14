@@ -41,6 +41,7 @@ import {
     IntermediateSourceFile,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
+import { findGenericTypes } from "./findGenericTypes";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { StatementProcessor } from "./StatementProcessor";
 
@@ -54,6 +55,7 @@ export const processClassDeclaration: StatementProcessor = (
     return {
         name: classDec.name?.text || '',
         kind: IntermediateKind.IntermediateClass,
+        genericTypeParameters: findGenericTypes(sourceFile, classDec),
         docBlock: {
             kind: IntermediateKind.IntermediateDocBlock,
             text: AST.findDocBlockText(classDec),
@@ -99,3 +101,4 @@ function getBaseInterfaceTypes(
 
     return retval;
 }
+
