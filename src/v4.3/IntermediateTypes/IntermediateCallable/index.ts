@@ -33,21 +33,3 @@
 //
 
 export * from "./IntermediateCallable";
-export * from "./IntermediateClass";
-export * from "./IntermediateDocBlock";
-export * from "./IntermediateDocumentedItem";
-export * from "./IntermediateExportableItem";
-export * from "./IntermediateFixedTypeArgument";
-export * from "./IntermediateGenericType";
-export * from "./IntermediateGenericTypeArgument";
-export * from "./IntermediateImportItem";
-export * from "./IntermediateInterface";
-export * from "./IntermediateItem";
-export * from "./IntermediateKind";
-// export * from "./IntermediateModule";
-export * from "./IntermediateReference";
-export * from "./IntermediateRestrictableScope";
-export * from "./IntermediateRestrictableScopeItem";
-export * from "./IntermediateSourceFile";
-export * from "./IntermediateTypeArgument";
-export * from "./IntermediateTypeReference";
