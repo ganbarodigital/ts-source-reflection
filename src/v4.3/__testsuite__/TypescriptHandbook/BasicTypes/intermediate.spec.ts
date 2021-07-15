@@ -59,7 +59,7 @@ function injectPathIntoExpectedResult(inputPath: string, expectedResult: any)
 
 const TEST_FILES: TestFile[] = [
     {
-        sourceFile: "BasicFunction.ts",
+        sourceFile: "BasicFunction-001.ts",
         expectedResult: {
             children: {
                 FunctionDeclaration: [
@@ -72,6 +72,33 @@ const TEST_FILES: TestFile[] = [
                                 name: "x"
                             }
                         ],
+                        returnType: undefined,
+                    }
+                ],
+            },
+            kind: IntermediateKind.IntermediateSourceFile,
+        },
+        preprocessor: injectPathIntoExpectedResult,
+    },
+    {
+        sourceFile: "BasicFunction-002.ts",
+        expectedResult: {
+            children: {
+                FunctionDeclaration: [
+                    {
+                        kind: IntermediateKind.IntermediateFunction,
+                        name: "greet",
+                        parameters: [
+                            {
+                                kind: IntermediateKind.IntermediateUntypedParameter,
+                                name: "person"
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateUntypedParameter,
+                                name: "date"
+                            }
+                        ],
+                        returnType: undefined,
                     }
                 ],
             },
