@@ -49,7 +49,8 @@ export const processFunctionDeclaration: StatementProcessor = (
     return {
         kind: IntermediateKind.IntermediateFunction,
         name: funcDec.name?.text,
-        parameters: processFunctionParameters(funcDec.parameters)
+        parameters: processFunctionParameters(funcDec.parameters),
+        returnType: undefined,
     }
 }
 
