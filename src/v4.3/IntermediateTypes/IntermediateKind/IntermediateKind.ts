@@ -41,6 +41,7 @@ export enum IntermediateKind {
     IntermediateGenericTypeArgument,
     IntermediateImportItem,
     IntermediateInterface,
+    IntermediateMethod,
     IntermediateModule,
     IntermediateReference,
     IntermediateSourceFile,
