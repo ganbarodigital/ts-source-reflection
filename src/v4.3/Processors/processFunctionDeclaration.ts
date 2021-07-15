@@ -61,10 +61,22 @@ function processFunctionParameters(
     const retval: IntermediateCallableParameter[] = [];
 
     input.forEach((paramDec) => {
+        // special case - untyped parameter
+        if (!paramDec.type) {
+            retval.push({
+                kind: IntermediateKind.IntermediateUntypedParameter,
+                name: paramDec.name.getText(),
+            });
+
+            return;
+        }
+
+        // general case - typed parameter
         retval.push({
-            kind: IntermediateKind.IntermediateUntypedParameter,
+            kind: IntermediateKind.IntermediateFixedTypeParameter,
             name: paramDec.name.getText(),
-        });
+            type: paramDec.type.getText(),
+        })
     });
 
     // all done

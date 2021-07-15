@@ -68,6 +68,11 @@ const TEST_FILES: TestFile[] = [
         expectedResult: require("./BasicFunction-002-intermediate").default,
         preprocessor: injectPathIntoExpectedResult,
     },
+    {
+        sourceFile: "BasicFunction-003-input.ts",
+        expectedResult: require("./BasicFunction-003-intermediate").default,
+        preprocessor: injectPathIntoExpectedResult,
+    },
 ];
 
 describe("basic types intermediate processing", () => {
