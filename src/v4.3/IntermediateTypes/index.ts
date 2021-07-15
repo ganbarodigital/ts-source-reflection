@@ -39,6 +39,7 @@ export * from "./IntermediateDocBlock";
 export * from "./IntermediateDocumentedItem";
 export * from "./IntermediateExportableItem";
 export * from "./IntermediateFixedTypeArgument";
+export * from "./IntermediateFixedTypeParameter";
 export * from "./IntermediateFunction";
 export * from "./IntermediateGenericType";
 export * from "./IntermediateGenericTypeArgument";

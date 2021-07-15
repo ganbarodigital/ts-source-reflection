@@ -31,22 +31,12 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { IntermediateItem, IntermediateKind } from "..";
 
-export enum IntermediateKind {
-    IntermediateClass,
-    IntermediateDocBlock,
-    IntermediateFixedTypeArgument,
-    IntermediateFixedTypeParameter,
-    IntermediateFunction,
-    IntermediateGenericType,
-    IntermediateGenericTypeArgument,
-    IntermediateImportItem,
-    IntermediateInterface,
-    IntermediateMethod,
-    IntermediateModule,
-    IntermediateReference,
-    IntermediateSourceFile,
-    IntermediateTypeArgument,
-    IntermediateTypeReference,
-    IntermediateUntypedParameter,
+
+export interface IntermediateFixedTypeParameter
+    extends IntermediateItem<IntermediateKind.IntermediateFixedTypeParameter>
+{
+    name: string,
+    type: string,
 }

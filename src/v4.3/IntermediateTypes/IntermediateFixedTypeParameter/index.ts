@@ -32,21 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export enum IntermediateKind {
-    IntermediateClass,
-    IntermediateDocBlock,
-    IntermediateFixedTypeArgument,
-    IntermediateFixedTypeParameter,
-    IntermediateFunction,
-    IntermediateGenericType,
-    IntermediateGenericTypeArgument,
-    IntermediateImportItem,
-    IntermediateInterface,
-    IntermediateMethod,
-    IntermediateModule,
-    IntermediateReference,
-    IntermediateSourceFile,
-    IntermediateTypeArgument,
-    IntermediateTypeReference,
-    IntermediateUntypedParameter,
-}
+export * from "./IntermediateFixedTypeParameter";
