@@ -70,9 +70,9 @@ const TEST_FILES: TestFile[] = [
     },
 ];
 
-describe("basic functions intermediate processing", () => {
+describe("basic types intermediate processing", () => {
     for (const testdata of TEST_FILES) {
-        it("parses as a function", () => {
+        it("parses " + testdata.sourceFile + " correctly", () => {
             // ----------------------------------------------------------------
             // setup your test
 
