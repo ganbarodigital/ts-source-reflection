@@ -33,6 +33,8 @@
 //
 
 import { IntermediateUntypedParameter } from "..";
+import { IntermediateFixedTypeParameter } from "../IntermediateFixedTypeParameter";
 
 export type IntermediateCallableParameter
     = IntermediateUntypedParameter
+    | IntermediateFixedTypeParameter
