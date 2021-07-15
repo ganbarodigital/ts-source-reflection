@@ -32,12 +32,22 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./findDocBlockText";
-export * from "./findExtendsHeritageClauses";
-export * from "./findImplementsHeritageClauses";
-export * from "./isExportKeyword";
-export * from "./isNodeExported";
-export * from "./mustBeClassDeclaration";
-export * from "./mustBeFunctionDeclaration";
-export * from "./mustBeImportClause";
-export * from "./mustBeImportDeclaration";
+import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
+import { FunctionDeclaration, isFunctionDeclaration, Statement } from "typescript";
+
+export function mustBeFunctionDeclaration(input: Statement): FunctionDeclaration
+{
+    // what do we have?
+    if (isFunctionDeclaration(input)) {
+        return input;
+    }
+
+    // if we get here, we're not happy
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: 'FunctionDeclaration',
+            actual: getClassNames(input)[0],
+        }
+    });
+}
