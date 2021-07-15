@@ -66,6 +66,7 @@ const TEST_FILES: TestFile[] = [
                     {
                         kind: IntermediateKind.IntermediateFunction,
                         name: "fn",
+                        parameters: [],
                     }
                 ],
             },

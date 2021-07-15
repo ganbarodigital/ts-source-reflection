@@ -54,3 +54,4 @@ export * from "./IntermediateSourceFile";
 export * from "./IntermediateStaticable";
 export * from "./IntermediateTypeArgument";
 export * from "./IntermediateTypeReference";
+export * from "./IntermediateUntypedParameter";

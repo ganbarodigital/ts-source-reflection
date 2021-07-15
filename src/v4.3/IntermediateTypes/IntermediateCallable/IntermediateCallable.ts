@@ -33,9 +33,11 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
+import { IntermediateCallableParameter } from "../IntermediateCallableParameter/IntermediateCallableParameter";
 
 // tslint:disable-next-line: no-empty-interface
 export interface IntermediateCallable
 {
     name: Maybe<string>;
+    parameters: IntermediateCallableParameter[];
 }
