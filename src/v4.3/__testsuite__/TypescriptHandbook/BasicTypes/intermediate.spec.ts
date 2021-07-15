@@ -31,14 +31,14 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-
 import { HashMap, isObject } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import { expect } from "chai";
-import * as fs from 'fs';
-import * as ts from 'typescript';
-import { IntermediateKind } from "../../../IntermediateTypes";
+import * as fs from "fs";
+import * as ts from "typescript";
+
 import { processSourceFile } from "../../../Processors/processSourceFile";
+
 
 type PreprocessorFn = (inputPath: string, expectedResult: any) => void;
 
@@ -59,51 +59,13 @@ function injectPathIntoExpectedResult(inputPath: string, expectedResult: any)
 
 const TEST_FILES: TestFile[] = [
     {
-        sourceFile: "BasicFunction-001.ts",
-        expectedResult: {
-            children: {
-                FunctionDeclaration: [
-                    {
-                        kind: IntermediateKind.IntermediateFunction,
-                        name: "fn",
-                        parameters: [
-                            {
-                                kind: IntermediateKind.IntermediateUntypedParameter,
-                                name: "x"
-                            }
-                        ],
-                        returnType: undefined,
-                    }
-                ],
-            },
-            kind: IntermediateKind.IntermediateSourceFile,
-        },
+        sourceFile: "BasicFunction-001-input.ts",
+        expectedResult: require("./BasicFunction-001-intermediate").default,
         preprocessor: injectPathIntoExpectedResult,
     },
     {
-        sourceFile: "BasicFunction-002.ts",
-        expectedResult: {
-            children: {
-                FunctionDeclaration: [
-                    {
-                        kind: IntermediateKind.IntermediateFunction,
-                        name: "greet",
-                        parameters: [
-                            {
-                                kind: IntermediateKind.IntermediateUntypedParameter,
-                                name: "person"
-                            },
-                            {
-                                kind: IntermediateKind.IntermediateUntypedParameter,
-                                name: "date"
-                            }
-                        ],
-                        returnType: undefined,
-                    }
-                ],
-            },
-            kind: IntermediateKind.IntermediateSourceFile,
-        },
+        sourceFile: "BasicFunction-002-input.ts",
+        expectedResult: require("./BasicFunction-002-intermediate").default,
         preprocessor: injectPathIntoExpectedResult,
     },
 ];
