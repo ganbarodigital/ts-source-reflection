@@ -32,9 +32,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Statement } from "typescript";
+import { NodeArray, ParameterDeclaration, Statement } from "typescript";
 import { mustBeFunctionDeclaration } from "../AST";
 import { IntermediateFunction, IntermediateKind, IntermediateSourceFile } from "../IntermediateTypes";
+import { IntermediateCallableParameter } from "../IntermediateTypes/IntermediateCallableParameter/IntermediateCallableParameter";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processFunctionDeclaration: StatementProcessor = (
@@ -48,6 +49,23 @@ export const processFunctionDeclaration: StatementProcessor = (
     return {
         kind: IntermediateKind.IntermediateFunction,
         name: funcDec.name?.text,
-        parameters: [],
+        parameters: processFunctionParameters(funcDec.parameters)
     }
+}
+
+function processFunctionParameters(
+    input: NodeArray<ParameterDeclaration>
+): IntermediateCallableParameter[] {
+    // our return value
+    const retval: IntermediateCallableParameter[] = [];
+
+    input.forEach((paramDec) => {
+        retval.push({
+            kind: IntermediateKind.IntermediateUntypedParameter,
+            name: paramDec.name.getText(),
+        });
+    });
+
+    // all done
+    return retval;
 }
