@@ -32,15 +32,19 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateCallable } from "../IntermediateCallable";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateRestrictableScopeItem } from "../IntermediateRestrictableScopeItem";
+import {
+    IntermediateCallable,
+    IntermediateItem,
+    IntermediateKind,
+    IntermediateRestrictableScopeItem,
+    IntermediateStaticable
+} from "..";
 
 export interface IntermediateMethod
     extends IntermediateItem<IntermediateKind.IntermediateMethod>,
         IntermediateCallable,
-        IntermediateRestrictableScopeItem
+        IntermediateRestrictableScopeItem,
+        IntermediateStaticable
 {
 
 }
