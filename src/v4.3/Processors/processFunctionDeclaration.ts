@@ -32,10 +32,21 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
+import { Statement } from "typescript";
+import { mustBeFunctionDeclaration } from "../AST";
+import { IntermediateFunction, IntermediateKind, IntermediateSourceFile } from "../IntermediateTypes";
+import { StatementProcessor } from "./StatementProcessor";
 
-// tslint:disable-next-line: no-empty-interface
-export interface IntermediateCallable
-{
-    name: Maybe<string>;
+export const processFunctionDeclaration: StatementProcessor = (
+    sourceFile: IntermediateSourceFile,
+    input: Statement
+): IntermediateFunction => {
+    // make sure we have what we need
+    const funcDec = mustBeFunctionDeclaration(input);
+
+    // at this point, we *know* that we're looking at a function :)
+    return {
+        kind: IntermediateKind.IntermediateFunction,
+        name: funcDec.name?.text,
+    }
 }

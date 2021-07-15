@@ -37,12 +37,14 @@ import { Filepath } from "@safelytyped/filepath";
 import { NodeArray, SourceFile, Statement, SyntaxKind } from "typescript";
 import { IntermediateKind, IntermediateSourceFile } from "../IntermediateTypes";
 import { processClassDeclaration } from "./processClassDeclaration";
+import { processFunctionDeclaration } from "./processFunctionDeclaration";
 import { processImportDeclaration } from "./processImportDeclaration";
 import { StatementProcessor } from "./StatementProcessor";
 
 const statementProcessors: FunctionPointerTable<string, StatementProcessor> = {
     'ImportDeclaration': processImportDeclaration,
     'ClassDeclaration': processClassDeclaration,
+    'FunctionDeclaration': processFunctionDeclaration,
 }
 
 export function processSourceFile(

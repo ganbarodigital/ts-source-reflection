@@ -61,7 +61,14 @@ const TEST_FILES: TestFile[] = [
     {
         sourceFile: "BasicFunction.ts",
         expectedResult: {
-            children: [],
+            children: {
+                FunctionDeclaration: [
+                    {
+                        kind: IntermediateKind.IntermediateFunction,
+                        name: "fn",
+                    }
+                ],
+            },
             kind: IntermediateKind.IntermediateSourceFile,
         },
         preprocessor: injectPathIntoExpectedResult,
