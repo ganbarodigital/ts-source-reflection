@@ -44,4 +44,5 @@ export enum IntermediateKind {
     IntermediateReference,
     IntermediateSourceFile,
     IntermediateTypeArgument,
+    IntermediateTypeReference,
 }

@@ -33,8 +33,10 @@
 //
 
 import { IntermediateItem, IntermediateTypeArgument } from "..";
+import { IntermediateKind } from "../IntermediateKind";
 
-export interface IntermediateGenericTypeArgument extends IntermediateItem
+export interface IntermediateGenericTypeArgument
+    extends IntermediateItem<IntermediateKind.IntermediateGenericTypeArgument>
 {
     name: string;
     typeParameters: IntermediateTypeArgument[];

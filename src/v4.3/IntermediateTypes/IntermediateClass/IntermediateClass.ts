@@ -40,9 +40,10 @@ import {
     IntermediateTypeArgument
 } from "..";
 import { IntermediateGenericType } from "../IntermediateGenericType";
+import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateClass
-    extends IntermediateItem,
+    extends IntermediateItem<IntermediateKind.IntermediateClass>,
         IntermediateDocumentedItem,
         IntermediateExportableItem
 {

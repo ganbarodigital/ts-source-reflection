@@ -33,8 +33,11 @@
 //
 
 import { IntermediateItem } from "..";
+import { IntermediateKind } from "../IntermediateKind";
 
-export interface IntermediateImportItem extends IntermediateItem{
+export interface IntermediateImportItem
+    extends IntermediateItem<IntermediateKind.IntermediateImportItem>
+{
     name: string;
     from: string;
 }

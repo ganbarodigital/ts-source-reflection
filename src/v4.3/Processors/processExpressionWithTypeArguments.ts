@@ -55,7 +55,7 @@ export function processExpressionWithTypeArguments(
     // if we get here, we're looking at a generic type
     // tslint:disable-next-line: no-angle-bracket-type-assertion
     return <IntermediateGenericTypeArgument>{
-        kind: IntermediateKind.IntermediateGenericType,
+        kind: IntermediateKind.IntermediateGenericTypeArgument,
         name: clause.expression.getText(),
         typeParameters: processTypeReferences(clause.typeArguments)
     }
@@ -77,7 +77,7 @@ function processTypeReferences(input: NodeArray<TypeNode>): IntermediateTypeArgu
             });
         } else {
             retval.push({
-                kind: IntermediateKind.IntermediateGenericType,
+                kind: IntermediateKind.IntermediateGenericTypeArgument,
                 name: member.typeName.getText(),
                 typeParameters: processTypeReferences(member.typeArguments)
             });

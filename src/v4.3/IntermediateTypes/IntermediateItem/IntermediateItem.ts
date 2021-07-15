@@ -34,6 +34,6 @@
 
 import { IntermediateKind } from "..";
 
-export interface IntermediateItem {
-    kind: IntermediateKind;
+export interface IntermediateItem<T extends IntermediateKind> {
+    kind: T;
 }

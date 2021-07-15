@@ -37,8 +37,11 @@ import {
     IntermediateItem,
     IntermediateReferenceOr
 } from "..";
+import { IntermediateKind } from "../IntermediateKind";
 
-export interface IntermediateInterface extends IntermediateItem, IntermediateDocumentedItem
+export interface IntermediateInterface
+    extends IntermediateItem<IntermediateKind.IntermediateInterface>,
+        IntermediateDocumentedItem
 {
     name: string;
     extends?: IntermediateReferenceOr<IntermediateInterface>[]

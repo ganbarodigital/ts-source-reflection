@@ -35,8 +35,10 @@
 import { HashMap } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import { IntermediateItem } from "..";
+import { IntermediateKind } from "../IntermediateKind";
 
-export interface IntermediateSourceFile extends IntermediateItem
+export interface IntermediateSourceFile
+    extends IntermediateItem<IntermediateKind.IntermediateSourceFile>
 {
     path: Filepath;
     children: HashMap<object>;
