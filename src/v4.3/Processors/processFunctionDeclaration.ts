@@ -33,9 +33,10 @@
 //
 
 import { NodeArray, ParameterDeclaration, Statement } from "typescript";
-import { mustBeFunctionDeclaration } from "../AST";
+import { isAnonymousClassType, mustBeFunctionDeclaration } from "../AST";
 import { IntermediateFunction, IntermediateKind, IntermediateSourceFile } from "../IntermediateTypes";
 import { IntermediateCallableParameter } from "../IntermediateTypes/IntermediateCallableParameter/IntermediateCallableParameter";
+import { processAnonymousClassType } from "./processAnonymousClassType";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processFunctionDeclaration: StatementProcessor = (
@@ -61,11 +62,31 @@ function processFunctionParameters(
     const retval: IntermediateCallableParameter[] = [];
 
     input.forEach((paramDec) => {
+        // this is a placeholder for now
+        //
+        // we will be expanding this as we add more test cases, and
+        // eventually we will have to refactor it to handle edge cases
+        // better & without introducing complexity
+
         // special case - untyped parameter
         if (!paramDec.type) {
             retval.push({
                 kind: IntermediateKind.IntermediateUntypedCallableParameter,
                 paramName: paramDec.name.getText(),
+            });
+
+            return;
+        }
+
+        // special case - anonymous class
+        if (isAnonymousClassType(paramDec.type)) {
+            // what's in the class?
+            const classDec = processAnonymousClassType(paramDec.type);
+
+            retval.push({
+                kind: IntermediateKind.IntermediateTypedCallableParameter,
+                paramName: paramDec.name.getText(),
+                typeRef: classDec,
             });
 
             return;
