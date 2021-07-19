@@ -32,11 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { isTypeLiteralNode, Node } from "typescript";
+import { isTypeLiteralNode, Node, TypeLiteralNode } from "typescript";
 
 export function isAnonymousClassType(
     input: Node
-): boolean {
+): input is TypeLiteralNode {
     // this test is probably naive
     return (isTypeLiteralNode(input));
 }
