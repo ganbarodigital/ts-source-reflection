@@ -32,10 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem, IntermediateKind } from "..";
-
-export interface IntermediateUntypedParameter
-    extends IntermediateItem<IntermediateKind.IntermediateUntypedParameter>
-{
-    name: string;
-}
+export * from "./IntermediateAnonymousCallableParameter";

@@ -32,9 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateUntypedParameter } from "..";
-import { IntermediateFixedTypeParameter } from "../IntermediateFixedTypeParameter";
+import {
+    IntermediateAnonymousCallableParameter,
+    IntermediateTypedCallableParameter,
+    IntermediateUntypedCallableParameter
+} from "..";
 
-export type IntermediateCallableParameter
-    = IntermediateUntypedParameter
-    | IntermediateFixedTypeParameter
+export type IntermediateCallableParameter =
+    IntermediateAnonymousCallableParameter
+    | IntermediateUntypedCallableParameter
+    | IntermediateTypedCallableParameter;
