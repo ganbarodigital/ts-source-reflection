@@ -32,9 +32,9 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateAnonymousObjectType } from "../IntermediateAnonymousObjectType";
+import { IntermediateAnonymousClassType } from "../IntermediateAnonymousClassType";
 import { IntermediateFixedTypeReference } from "../IntermediateFixedTypeReference";
 
 export type IntermediateTypeReference
-    = IntermediateAnonymousObjectType
+    = IntermediateAnonymousClassType
       | IntermediateFixedTypeReference;
