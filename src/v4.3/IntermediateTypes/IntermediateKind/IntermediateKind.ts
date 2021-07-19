@@ -35,7 +35,6 @@
 export enum IntermediateKind {
     IntermediateAnonymousCallableParameter,
     IntermediateClass,
-    IntermediateCallableParameter,
     IntermediateDocBlock,
     IntermediateFixedTypeArgument,
     IntermediateFixedTypeReference,
