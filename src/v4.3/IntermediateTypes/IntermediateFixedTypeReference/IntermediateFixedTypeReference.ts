@@ -31,5 +31,11 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { IntermediateItem, IntermediateKind } from "..";
 
-export * from "./IntermediateFixedTypeParameter";
+
+export interface IntermediateFixedTypeReference
+    extends IntermediateItem<IntermediateKind.IntermediateFixedTypeReference>
+{
+    type: string,
+}

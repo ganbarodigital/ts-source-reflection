@@ -34,7 +34,7 @@
 
 import { IntermediateItem } from "..";
 import { IntermediateAnonymousObjectType } from "../IntermediateAnonymousObjectType";
-import { IntermediateFixedTypeParameter } from "../IntermediateFixedTypeParameter";
+import { IntermediateFixedTypeReference } from "../IntermediateFixedTypeReference";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateUntypedParameter } from "../IntermediateUntypedParameter";
 
@@ -42,6 +42,6 @@ export interface IntermediateTypeReference
     extends IntermediateItem<IntermediateKind.IntermediateTypeReference>
 {
     type: IntermediateAnonymousObjectType
-          | IntermediateFixedTypeParameter
+          | IntermediateFixedTypeReference
           | IntermediateUntypedParameter
 }
