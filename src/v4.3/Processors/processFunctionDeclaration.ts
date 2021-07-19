@@ -77,7 +77,7 @@ function processFunctionParameters(
             paramName: paramDec.name.getText(),
             typeRef: {
                 kind: IntermediateKind.IntermediateFixedTypeReference,
-                type: paramDec.type.getText(),
+                typeName: paramDec.type.getText(),
             }
         });
     });

@@ -46,7 +46,7 @@ export default {
                         paramName: "person",
                         typeRef: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
-                            type: "string",
+                            typeName: "string",
                         }
                     },
                     {
@@ -54,7 +54,7 @@ export default {
                         paramName: "date",
                         typeRef: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
-                            type: "Date",
+                            typeName: "Date",
                         }
                     }
                 ],
