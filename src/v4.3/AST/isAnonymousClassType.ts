@@ -32,13 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./findDocBlockText";
-export * from "./findExtendsHeritageClauses";
-export * from "./findImplementsHeritageClauses";
-export * from "./isAnonymousClassType";
-export * from "./isExportKeyword";
-export * from "./isNodeExported";
-export * from "./mustBeClassDeclaration";
-export * from "./mustBeFunctionDeclaration";
-export * from "./mustBeImportClause";
-export * from "./mustBeImportDeclaration";
+import { isTypeLiteralNode, Node } from "typescript";
+
+export function isAnonymousClassType(
+    input: Node
+): boolean {
+    // this test is probably naive
+    return (isTypeLiteralNode(input));
+}
