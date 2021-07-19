@@ -40,5 +40,6 @@ export interface IntermediateTypedPropertyDefinition
     extends IntermediateItem<IntermediateKind.IntermediateTypedPropertyDefinition>
 {
     propName: string;
+    propIsOptional: boolean;
     typeRef: IntermediateTypeReference;
 }

@@ -53,6 +53,7 @@ export function processPropertySignature
     return {
         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
         propName: input.name.getText(),
+        propIsOptional: false,
         typeRef: processTypeNode(input.type),
     };
 }

@@ -50,6 +50,7 @@ export default {
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                                     propName: "x",
+                                    propIsOptional: false,
                                     typeRef: {
                                         kind: IntermediateKind.IntermediateFixedTypeReference,
                                         typeName: "number",
@@ -58,6 +59,7 @@ export default {
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                                     propName: "y",
+                                    propIsOptional: false,
                                     typeRef: {
                                         kind: IntermediateKind.IntermediateFixedTypeReference,
                                         typeName: "number",
