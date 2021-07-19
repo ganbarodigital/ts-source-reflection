@@ -32,12 +32,16 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem, IntermediateTypeArgument } from "..";
+import { IntermediateItem } from "..";
+import { IntermediateAnonymousObjectType } from "../IntermediateAnonymousObjectType";
+import { IntermediateFixedTypeParameter } from "../IntermediateFixedTypeParameter";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateUntypedParameter } from "../IntermediateUntypedParameter";
 
 export interface IntermediateTypeReference
     extends IntermediateItem<IntermediateKind.IntermediateTypeReference>
 {
-    name: string;
-    typeParameters: IntermediateTypeArgument[];
+    type: IntermediateAnonymousObjectType
+          | IntermediateFixedTypeParameter
+          | IntermediateUntypedParameter
 }
