@@ -37,5 +37,5 @@ import { IntermediateItem, IntermediateKind } from "..";
 export interface IntermediateFixedTypeReference
     extends IntermediateItem<IntermediateKind.IntermediateFixedTypeReference>
 {
-    type: string,
+    type: string;
 }
