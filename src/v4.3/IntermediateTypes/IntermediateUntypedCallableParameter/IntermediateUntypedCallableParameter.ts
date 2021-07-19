@@ -37,5 +37,5 @@ import { IntermediateItem, IntermediateKind } from "..";
 export interface IntermediateUntypedCallableParameter
     extends IntermediateItem<IntermediateKind.IntermediateUntypedCallableParameter>
 {
-    name: string;
+    paramName: string;
 }

@@ -43,11 +43,11 @@ export default {
                 parameters: [
                     {
                         kind: IntermediateKind.IntermediateUntypedCallableParameter,
-                        name: "person"
+                        paramName: "person"
                     },
                     {
                         kind: IntermediateKind.IntermediateUntypedCallableParameter,
-                        name: "date"
+                        paramName: "date"
                     }
                 ],
                 returnType: undefined,

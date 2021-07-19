@@ -65,7 +65,7 @@ function processFunctionParameters(
         if (!paramDec.type) {
             retval.push({
                 kind: IntermediateKind.IntermediateUntypedCallableParameter,
-                name: paramDec.name.getText(),
+                paramName: paramDec.name.getText(),
             });
 
             return;
@@ -74,7 +74,7 @@ function processFunctionParameters(
         // general case - typed parameter
         retval.push({
             kind: IntermediateKind.IntermediateTypedCallableParameter,
-            name: paramDec.name.getText(),
+            paramName: paramDec.name.getText(),
             typeRef: {
                 kind: IntermediateKind.IntermediateFixedTypeReference,
                 type: paramDec.type.getText(),

@@ -43,7 +43,7 @@ export default {
                 parameters: [
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        name: "person",
+                        paramName: "person",
                         typeRef: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             type: "string",
@@ -51,7 +51,7 @@ export default {
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        name: "date",
+                        paramName: "date",
                         typeRef: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             type: "Date",
