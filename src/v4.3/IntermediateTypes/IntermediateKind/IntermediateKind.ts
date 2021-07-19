@@ -46,9 +46,11 @@ export enum IntermediateKind {
     IntermediateInterface,
     IntermediateMethod,
     IntermediateModule,
+    IntermediateTypedPropertyDefinition,
     IntermediateReference,
     IntermediateSourceFile,
     IntermediateTypeArgument,
     IntermediateTypedCallableParameter,
     IntermediateUntypedCallableParameter,
+    IntermediateUntypedPropertyDefinition,
 }

@@ -32,34 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateAnonymousCallableParameter";
-export * from "./IntermediateAnonymousClassType";
-export * from "./IntermediateCallable";
-export * from "./IntermediateCallableParameter";
-export * from "./IntermediateClass";
-export * from "./IntermediateDocBlock";
-export * from "./IntermediateDocumentedItem";
-export * from "./IntermediateExportableItem";
-export * from "./IntermediateFixedTypeArgument";
-export * from "./IntermediateFixedTypeReference";
-export * from "./IntermediateFunction";
-export * from "./IntermediateGenericType";
-export * from "./IntermediateGenericTypeArgument";
-export * from "./IntermediateImportItem";
-export * from "./IntermediateInterface";
-export * from "./IntermediateItem";
-export * from "./IntermediateKind";
-export * from "./IntermediateMethod";
-// export * from "./IntermediateModule";
-export * from "./IntermediatePropertyDefinition";
-export * from "./IntermediateReference";
-export * from "./IntermediateRestrictableScope";
-export * from "./IntermediateRestrictableScopeItem";
-export * from "./IntermediateSourceFile";
-export * from "./IntermediateStaticable";
-export * from "./IntermediateTypeArgument";
-export * from "./IntermediateTypeReference";
-export * from "./IntermediateTypedCallableParameter";
-export * from "./IntermediateTypedPropertyDefinition";
-export * from "./IntermediateUntypedCallableParameter";
 export * from "./IntermediateUntypedPropertyDefinition";
