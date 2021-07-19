@@ -42,14 +42,20 @@ export default {
                 name: "greet",
                 parameters: [
                     {
-                        kind: IntermediateKind.IntermediateFixedTypeParameter,
+                        kind: IntermediateKind.IntermediateTypedCallableParameter,
                         name: "person",
-                        type: "string",
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            type: "string",
+                        }
                     },
                     {
-                        kind: IntermediateKind.IntermediateFixedTypeParameter,
+                        kind: IntermediateKind.IntermediateTypedCallableParameter,
                         name: "date",
-                        type: "Date",
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            type: "Date",
+                        }
                     }
                 ],
                 returnType: undefined,

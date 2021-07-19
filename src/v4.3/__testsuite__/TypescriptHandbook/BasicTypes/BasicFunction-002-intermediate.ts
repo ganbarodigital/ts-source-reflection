@@ -42,11 +42,11 @@ export default {
                 name: "greet",
                 parameters: [
                     {
-                        kind: IntermediateKind.IntermediateUntypedParameter,
+                        kind: IntermediateKind.IntermediateUntypedCallableParameter,
                         name: "person"
                     },
                     {
-                        kind: IntermediateKind.IntermediateUntypedParameter,
+                        kind: IntermediateKind.IntermediateUntypedCallableParameter,
                         name: "date"
                     }
                 ],

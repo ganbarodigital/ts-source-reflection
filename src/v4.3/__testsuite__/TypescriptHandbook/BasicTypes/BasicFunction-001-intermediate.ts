@@ -42,7 +42,7 @@ export default {
                 name: "fn",
                 parameters: [
                     {
-                        kind: IntermediateKind.IntermediateUntypedParameter,
+                        kind: IntermediateKind.IntermediateUntypedCallableParameter,
                         name: "x"
                     }
                 ],

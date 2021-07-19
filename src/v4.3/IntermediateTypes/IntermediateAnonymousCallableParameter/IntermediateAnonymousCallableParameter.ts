@@ -39,5 +39,5 @@ import { IntermediateTypeReference } from "../IntermediateTypeReference";
 export interface IntermediateAnonymousCallableParameter
     extends IntermediateItem<IntermediateKind.IntermediateAnonymousCallableParameter>
 {
-    type: IntermediateTypeReference;
+    typeRef: IntermediateTypeReference;
 }

@@ -64,7 +64,7 @@ function processFunctionParameters(
         // special case - untyped parameter
         if (!paramDec.type) {
             retval.push({
-                kind: IntermediateKind.IntermediateUntypedParameter,
+                kind: IntermediateKind.IntermediateUntypedCallableParameter,
                 name: paramDec.name.getText(),
             });
 
@@ -73,10 +73,13 @@ function processFunctionParameters(
 
         // general case - typed parameter
         retval.push({
-            kind: IntermediateKind.IntermediateFixedTypeParameter,
+            kind: IntermediateKind.IntermediateTypedCallableParameter,
             name: paramDec.name.getText(),
-            type: paramDec.type.getText(),
-        })
+            typeRef: {
+                kind: IntermediateKind.IntermediateFixedTypeReference,
+                type: paramDec.type.getText(),
+            }
+        });
     });
 
     // all done
