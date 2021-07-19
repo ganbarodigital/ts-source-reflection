@@ -32,12 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateCallableParameter } from "../IntermediateCallableParameter";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediatePropertyDefinition } from "../IntermediatePropertyDefinition";
 
 export interface IntermediateAnonymousClassType
     extends IntermediateItem<IntermediateKind.IntermediateAnonymousClassType>
 {
-    properties: IntermediateCallableParameter[]
+    properties: IntermediatePropertyDefinition[]
 }
