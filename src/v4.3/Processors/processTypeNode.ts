@@ -37,36 +37,29 @@ import { mustBeTypeReference } from "../AST/mustBeTypeReference";
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
 import { processTypeReferenceNode } from "./processTypeReferenceNode";
 
+
+const BUILT_IN_TYPES: string[] = [];
+BUILT_IN_TYPES[SyntaxKind.NumberKeyword] = "number";
+BUILT_IN_TYPES[SyntaxKind.ObjectKeyword] = "object";
+BUILT_IN_TYPES[SyntaxKind.StringKeyword] = "string";
+
 export function processTypeNode
 (
     input: TypeNode
 ): IntermediateTypeReference
 {
-    // we will refactor this later
+    // special case - we have an array
     if (isArrayTypeNode(input)) {
         const retval = processTypeNode(input.elementType);
         retval.kind = IntermediateKind.IntermediateFixedTypeArrayReference;
         return retval;
     }
 
-    if (input.kind === SyntaxKind.ObjectKeyword) {
+    // special case - we may have a built-in type
+    if (BUILT_IN_TYPES[input.kind] !== undefined) {
         return {
             kind: IntermediateKind.IntermediateFixedTypeReference,
-            typeName: "object"
-        }
-    }
-
-    if (input.kind === SyntaxKind.NumberKeyword) {
-        return {
-            kind: IntermediateKind.IntermediateFixedTypeReference,
-            typeName: "number"
-        }
-    }
-
-    if (input.kind === SyntaxKind.StringKeyword) {
-        return {
-            kind: IntermediateKind.IntermediateFixedTypeReference,
-            typeName: "string"
+            typeName: BUILT_IN_TYPES[input.kind],
         }
     }
 
