@@ -109,6 +109,11 @@ const TEST_FILES: TestFile[] = [
         expectedResult: require("./BasicTypeAlias-002-intermediate").default,
         preprocessor: injectPathIntoExpectedResult,
     },
+    {
+        sourceFile: "BasicTypeAlias-003-input.ts",
+        expectedResult: require("./BasicTypeAlias-003-intermediate").default,
+        preprocessor: injectPathIntoExpectedResult,
+    },
 ];
 
 describe("basic types intermediate processing", () => {
