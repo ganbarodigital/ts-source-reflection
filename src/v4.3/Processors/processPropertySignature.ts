@@ -34,6 +34,7 @@
 
 import { PropertySignature } from "typescript";
 import { IntermediateKind, IntermediatePropertyDefinition } from "../IntermediateTypes";
+import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
 
 export function processPropertySignature
@@ -46,6 +47,7 @@ export function processPropertySignature
         return {
             kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
             propName: input.name.getText(),
+            propIsOptional: processQuestionToken(input.questionToken),
         }
     }
 
@@ -53,7 +55,7 @@ export function processPropertySignature
     return {
         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
         propName: input.name.getText(),
-        propIsOptional: false,
+        propIsOptional: processQuestionToken(input.questionToken),
         typeRef: processTypeNode(input.type),
     };
 }

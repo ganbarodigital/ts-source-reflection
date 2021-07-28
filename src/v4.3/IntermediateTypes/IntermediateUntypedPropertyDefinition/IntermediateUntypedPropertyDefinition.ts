@@ -38,4 +38,5 @@ export interface IntermediateUntypedPropertyDefinition
     extends IntermediateItem<IntermediateKind.IntermediateUntypedPropertyDefinition>
 {
     propName: string;
+    propIsOptional: boolean;
 }
