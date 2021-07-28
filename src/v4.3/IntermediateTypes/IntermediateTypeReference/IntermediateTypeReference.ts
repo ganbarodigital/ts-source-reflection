@@ -31,10 +31,12 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-
 import { IntermediateAnonymousClassType } from "../IntermediateAnonymousClassType";
 import { IntermediateFixedTypeReference } from "../IntermediateFixedTypeReference";
+import { IntermediateUnionType } from "../IntermediateUnionType";
+
 
 export type IntermediateTypeReference
     = IntermediateAnonymousClassType
-      | IntermediateFixedTypeReference;
+      | IntermediateFixedTypeReference
+      | IntermediateUnionType;
