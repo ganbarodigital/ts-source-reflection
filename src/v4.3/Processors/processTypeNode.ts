@@ -32,12 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { isArrayTypeNode, SyntaxKind, TypeNode } from "typescript";
+import { isArrayTypeNode, isUnionTypeNode, SyntaxKind, TypeNode } from "typescript";
 import { isAnonymousClassType } from "../AST";
 import { mustBeTypeReference } from "../AST/mustBeTypeReference";
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
 import { processAnonymousClassType } from "./processAnonymousClassType";
 import { processTypeReferenceNode } from "./processTypeReferenceNode";
+import { processUnionType } from "./processUnionType";
 
 
 const BUILT_IN_TYPES: string[] = [];
@@ -61,6 +62,11 @@ export function processTypeNode
     if (isAnonymousClassType(input)) {
         // what's in the class?
         return processAnonymousClassType(input);
+    }
+
+    // special case - union parameter
+    if (isUnionTypeNode(input)) {
+        return processUnionType(input);
     }
 
     // special case - we may have a built-in type

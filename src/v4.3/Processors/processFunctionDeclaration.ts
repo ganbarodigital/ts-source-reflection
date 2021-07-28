@@ -31,14 +31,20 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { NodeArray, ParameterDeclaration, Statement } from "typescript";
 
-import { isUnionTypeNode, NodeArray, ParameterDeclaration, Statement } from "typescript";
-import { isAnonymousClassType, mustBeFunctionDeclaration } from "../AST";
-import { IntermediateFunction, IntermediateKind, IntermediateSourceFile } from "../IntermediateTypes";
-import { IntermediateCallableParameter } from "../IntermediateTypes/IntermediateCallableParameter/IntermediateCallableParameter";
-import { processAnonymousClassType } from "./processAnonymousClassType";
-import { processUnionType } from "./processUnionType";
+import { mustBeFunctionDeclaration } from "../AST";
+import {
+    IntermediateFunction,
+    IntermediateKind,
+    IntermediateSourceFile,
+} from "../IntermediateTypes";
+import {
+    IntermediateCallableParameter,
+} from "../IntermediateTypes/IntermediateCallableParameter/IntermediateCallableParameter";
+import { processTypeNode } from "./processTypeNode";
 import { StatementProcessor } from "./StatementProcessor";
+
 
 export const processFunctionDeclaration: StatementProcessor = (
     sourceFile: IntermediateSourceFile,
@@ -79,39 +85,11 @@ function processFunctionParameters(
             return;
         }
 
-        // special case - anonymous class
-        if (isAnonymousClassType(paramDec.type)) {
-            // what's in the class?
-            const classDec = processAnonymousClassType(paramDec.type);
-
-            retval.push({
-                kind: IntermediateKind.IntermediateTypedCallableParameter,
-                paramName: paramDec.name.getText(),
-                typeRef: classDec,
-            });
-
-            return;
-        }
-
-        // special case - union parameter
-        if (isUnionTypeNode(paramDec.type)) {
-            retval.push({
-                kind: IntermediateKind.IntermediateTypedCallableParameter,
-                paramName: paramDec.name.getText(),
-                typeRef: processUnionType(paramDec.type),
-            });
-
-            return;
-        }
-
         // general case - typed parameter
         retval.push({
             kind: IntermediateKind.IntermediateTypedCallableParameter,
             paramName: paramDec.name.getText(),
-            typeRef: {
-                kind: IntermediateKind.IntermediateFixedTypeReference,
-                typeName: paramDec.type.getText(),
-            }
+            typeRef: processTypeNode(paramDec.type),
         });
     });
 
