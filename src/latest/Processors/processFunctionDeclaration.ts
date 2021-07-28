@@ -31,6 +31,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { Maybe } from "@safelytyped/core-types";
 import { NodeArray, ParameterDeclaration, Statement } from "typescript";
 
 import { mustBeFunctionDeclaration } from "../AST";
@@ -38,6 +39,7 @@ import {
     IntermediateFunction,
     IntermediateKind,
     IntermediateSourceFile,
+    IntermediateTypeReference,
 } from "../IntermediateTypes";
 import {
     IntermediateCallableParameter,
@@ -54,11 +56,18 @@ export const processFunctionDeclaration: StatementProcessor = (
     const funcDec = mustBeFunctionDeclaration(input);
 
     // at this point, we *know* that we're looking at a function :)
+
+    // do we have a return type?
+    let retType: Maybe<IntermediateTypeReference>;
+    if (funcDec.type) {
+        retType = processTypeNode(funcDec.type);
+    }
+
     return {
         kind: IntermediateKind.IntermediateFunction,
         name: funcDec.name?.text,
         parameters: processFunctionParameters(funcDec.parameters),
-        returnType: undefined,
+        returnType: retType,
     }
 }
 
