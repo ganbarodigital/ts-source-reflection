@@ -57,6 +57,13 @@ export function processTypeNode
         }
     }
 
+    if (input.kind === SyntaxKind.StringKeyword) {
+        return {
+            kind: IntermediateKind.IntermediateFixedTypeReference,
+            typeName: "string"
+        }
+    }
+
     // generic case
     //
     // use a type guarantee to keep the compiler happy!
