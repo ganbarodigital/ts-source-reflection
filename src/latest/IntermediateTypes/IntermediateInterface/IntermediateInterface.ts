@@ -34,15 +34,19 @@
 
 import {
     IntermediateDocumentedItem,
+    IntermediateExportableItem,
     IntermediateItem,
     IntermediateReferenceOr
 } from "..";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediatePropertyDefinition } from "../IntermediatePropertyDefinition";
 
 export interface IntermediateInterface
     extends IntermediateItem<IntermediateKind.IntermediateInterface>,
-        IntermediateDocumentedItem
+        IntermediateDocumentedItem,
+        IntermediateExportableItem
 {
     name: string;
-    extends?: IntermediateReferenceOr<IntermediateInterface>[]
+    extends?: IntermediateReferenceOr<IntermediateInterface>[];
+    properties: IntermediatePropertyDefinition[];
 }
