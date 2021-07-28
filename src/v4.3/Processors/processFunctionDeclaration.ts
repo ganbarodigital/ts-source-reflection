@@ -32,11 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { NodeArray, ParameterDeclaration, Statement } from "typescript";
+import { isUnionTypeNode, NodeArray, ParameterDeclaration, Statement } from "typescript";
 import { isAnonymousClassType, mustBeFunctionDeclaration } from "../AST";
 import { IntermediateFunction, IntermediateKind, IntermediateSourceFile } from "../IntermediateTypes";
 import { IntermediateCallableParameter } from "../IntermediateTypes/IntermediateCallableParameter/IntermediateCallableParameter";
 import { processAnonymousClassType } from "./processAnonymousClassType";
+import { processUnionType } from "./processUnionType";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processFunctionDeclaration: StatementProcessor = (
@@ -87,6 +88,17 @@ function processFunctionParameters(
                 kind: IntermediateKind.IntermediateTypedCallableParameter,
                 paramName: paramDec.name.getText(),
                 typeRef: classDec,
+            });
+
+            return;
+        }
+
+        // special case - union parameter
+        if (isUnionTypeNode(paramDec.type)) {
+            retval.push({
+                kind: IntermediateKind.IntermediateTypedCallableParameter,
+                paramName: paramDec.name.getText(),
+                typeRef: processUnionType(paramDec.type),
             });
 
             return;
