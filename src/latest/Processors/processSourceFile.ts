@@ -39,11 +39,13 @@ import { IntermediateKind, IntermediateSourceFile } from "../IntermediateTypes";
 import { processClassDeclaration } from "./processClassDeclaration";
 import { processFunctionDeclaration } from "./processFunctionDeclaration";
 import { processImportDeclaration } from "./processImportDeclaration";
+import { processInterfaceDeclaration } from "./processInterfaceDeclaration";
 import { processTypeAliasDeclaration } from "./processTypeAliasDeclaration";
 import { StatementProcessor } from "./StatementProcessor";
 
 const statementProcessors: FunctionPointerTable<string, StatementProcessor> = {
     'ImportDeclaration': processImportDeclaration,
+    'InterfaceDeclaration': processInterfaceDeclaration,
     'ClassDeclaration': processClassDeclaration,
     'FunctionDeclaration': processFunctionDeclaration,
     'TypeAliasDeclaration': processTypeAliasDeclaration,
