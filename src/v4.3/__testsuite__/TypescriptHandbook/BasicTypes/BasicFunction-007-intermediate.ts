@@ -32,47 +32,36 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { isArrayTypeNode, SyntaxKind, TypeNode } from "typescript";
-import { mustBeTypeReference } from "../AST/mustBeTypeReference";
-import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
-import { processTypeReferenceNode } from "./processTypeReferenceNode";
+import { IntermediateKind } from "../../../IntermediateTypes";
 
-export function processTypeNode
-(
-    input: TypeNode
-): IntermediateTypeReference
-{
-    // we will refactor this later
-    if (isArrayTypeNode(input)) {
-        const retval = processTypeNode(input.elementType);
-        retval.kind = IntermediateKind.IntermediateFixedTypeArrayReference;
-        return retval;
-    }
-
-    if (input.kind === SyntaxKind.ObjectKeyword) {
-        return {
-            kind: IntermediateKind.IntermediateFixedTypeReference,
-            typeName: "object"
-        }
-    }
-
-    if (input.kind === SyntaxKind.NumberKeyword) {
-        return {
-            kind: IntermediateKind.IntermediateFixedTypeReference,
-            typeName: "number"
-        }
-    }
-
-    if (input.kind === SyntaxKind.StringKeyword) {
-        return {
-            kind: IntermediateKind.IntermediateFixedTypeReference,
-            typeName: "string"
-        }
-    }
-
-    // generic case
-    //
-    // use a type guarantee to keep the compiler happy!
-    const typeRef = mustBeTypeReference(input);
-    return processTypeReferenceNode(typeRef);
+export default {
+    children: {
+        FunctionDeclaration: [
+            {
+                kind: IntermediateKind.IntermediateFunction,
+                name: "welcomePeople",
+                parameters: [
+                    {
+                        kind: IntermediateKind.IntermediateTypedCallableParameter,
+                        paramName: "x",
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateUnionType,
+                            typeRefs: [
+                                {
+                                    kind: IntermediateKind.IntermediateFixedTypeArrayReference,
+                                    typeName: "string",
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                    typeName: "string",
+                                }
+                            ]
+                        }
+                    }
+                ],
+                returnType: undefined,
+            }
+        ],
+    },
+    kind: IntermediateKind.IntermediateSourceFile,
 }
