@@ -39,12 +39,14 @@ import { IntermediateKind, IntermediateSourceFile } from "../IntermediateTypes";
 import { processClassDeclaration } from "./processClassDeclaration";
 import { processFunctionDeclaration } from "./processFunctionDeclaration";
 import { processImportDeclaration } from "./processImportDeclaration";
+import { processTypeAliasDeclaration } from "./processTypeAliasDeclaration";
 import { StatementProcessor } from "./StatementProcessor";
 
 const statementProcessors: FunctionPointerTable<string, StatementProcessor> = {
     'ImportDeclaration': processImportDeclaration,
     'ClassDeclaration': processClassDeclaration,
     'FunctionDeclaration': processFunctionDeclaration,
+    'TypeAliasDeclaration': processTypeAliasDeclaration,
 }
 
 export function processSourceFile(

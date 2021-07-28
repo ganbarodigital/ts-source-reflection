@@ -32,48 +32,22 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { isArrayTypeNode, SyntaxKind, TypeNode } from "typescript";
-import { isAnonymousClassType } from "../AST";
-import { mustBeTypeReference } from "../AST/mustBeTypeReference";
-import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
-import { processAnonymousClassType } from "./processAnonymousClassType";
-import { processTypeReferenceNode } from "./processTypeReferenceNode";
+import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
+import { TypeAliasDeclaration, isTypeAliasDeclaration, Statement } from "typescript";
 
-
-const BUILT_IN_TYPES: string[] = [];
-BUILT_IN_TYPES[SyntaxKind.NumberKeyword] = "number";
-BUILT_IN_TYPES[SyntaxKind.ObjectKeyword] = "object";
-BUILT_IN_TYPES[SyntaxKind.StringKeyword] = "string";
-
-export function processTypeNode
-(
-    input: TypeNode
-): IntermediateTypeReference
+export function mustBeTypeAliasDeclaration(input: Statement): TypeAliasDeclaration
 {
-    // special case - we have an array
-    if (isArrayTypeNode(input)) {
-        const retval = processTypeNode(input.elementType);
-        retval.kind = IntermediateKind.IntermediateFixedTypeArrayReference;
-        return retval;
+    // what do we have?
+    if (isTypeAliasDeclaration(input)) {
+        return input;
     }
 
-    // special case - anonymous class
-    if (isAnonymousClassType(input)) {
-        // what's in the class?
-        return processAnonymousClassType(input);
-    }
-
-    // special case - we may have a built-in type
-    if (BUILT_IN_TYPES[input.kind] !== undefined) {
-        return {
-            kind: IntermediateKind.IntermediateFixedTypeReference,
-            typeName: BUILT_IN_TYPES[input.kind],
+    // if we get here, we're not happy
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: 'TypeAliasDeclaration',
+            actual: getClassNames(input)[0],
         }
-    }
-
-    // generic case
-    //
-    // use a type guarantee to keep the compiler happy!
-    const typeRef = mustBeTypeReference(input);
-    return processTypeReferenceNode(typeRef);
+    });
 }
