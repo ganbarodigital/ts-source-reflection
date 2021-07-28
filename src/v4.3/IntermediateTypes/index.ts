@@ -61,5 +61,6 @@ export * from "./IntermediateTypeArgument";
 export * from "./IntermediateTypeReference";
 export * from "./IntermediateTypedCallableParameter";
 export * from "./IntermediateTypedPropertyDefinition";
+export * from "./IntermediateUnionType";
 export * from "./IntermediateUntypedCallableParameter";
 export * from "./IntermediateUntypedPropertyDefinition";
