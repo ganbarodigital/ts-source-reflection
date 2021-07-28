@@ -117,7 +117,7 @@ describe("basic types intermediate processing", () => {
             // ----------------------------------------------------------------
             // setup your test
 
-            const inputFile = process.cwd() + "/src/v4.3/__testsuite__/TypescriptHandbook/BasicTypes/" + testdata.sourceFile;
+            const inputFile = process.cwd() + "/src/latest/__testsuite__/TypescriptHandbook/BasicTypes/" + testdata.sourceFile;
             const sourceCode = fs.readFileSync(inputFile, 'utf-8');
             const sourceFile = ts.createSourceFile(inputFile, sourceCode, ts.ScriptTarget.Latest, true);
 
