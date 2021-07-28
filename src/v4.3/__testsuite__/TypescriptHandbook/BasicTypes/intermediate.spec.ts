@@ -94,8 +94,14 @@ const TEST_FILES: TestFile[] = [
         preprocessor: injectPathIntoExpectedResult,
     },
     {
+        // if this fails, BasicFunction-008 will also fail!
         sourceFile: "BasicTypeAlias-001-input.ts",
         expectedResult: require("./BasicTypeAlias-001-intermediate").default,
+        preprocessor: injectPathIntoExpectedResult,
+    },
+    {
+        sourceFile: "BasicFunction-008-input.ts",
+        expectedResult: require("./BasicFunction-008-intermediate").default,
         preprocessor: injectPathIntoExpectedResult,
     },
 ];
