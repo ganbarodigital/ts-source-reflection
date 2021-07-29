@@ -42,6 +42,7 @@ import { processUnionType } from "./processUnionType";
 
 
 const BUILT_IN_TYPES: string[] = [];
+BUILT_IN_TYPES[SyntaxKind.BooleanKeyword] = "boolean";
 BUILT_IN_TYPES[SyntaxKind.NumberKeyword] = "number";
 BUILT_IN_TYPES[SyntaxKind.ObjectKeyword] = "object";
 BUILT_IN_TYPES[SyntaxKind.StringKeyword] = "string";
