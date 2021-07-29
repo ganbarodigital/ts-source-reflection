@@ -32,10 +32,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { ClassLikeDeclarationBase, HeritageClause, SyntaxKind } from "typescript";
+import { ClassLikeDeclarationBase, HeritageClause, InterfaceDeclaration, SyntaxKind } from "typescript";
 
 export function findExtendsHeritageClauses(
-    input: ClassLikeDeclarationBase
+    input: ClassLikeDeclarationBase | InterfaceDeclaration
 ): HeritageClause[] {
     // our return value
     const retval: HeritageClause[] = [];

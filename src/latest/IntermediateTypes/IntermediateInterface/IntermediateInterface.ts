@@ -36,7 +36,7 @@ import {
     IntermediateDocumentedItem,
     IntermediateExportableItem,
     IntermediateItem,
-    IntermediateReferenceOr
+    IntermediateTypeArgument
 } from "..";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediatePropertyDefinition } from "../IntermediatePropertyDefinition";
@@ -47,6 +47,6 @@ export interface IntermediateInterface
         IntermediateExportableItem
 {
     name: string;
-    extends?: IntermediateReferenceOr<IntermediateInterface>[];
+    extends: IntermediateTypeArgument[];
     properties: IntermediatePropertyDefinition[];
 }

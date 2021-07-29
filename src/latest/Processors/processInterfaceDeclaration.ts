@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Statement } from "typescript";
+import { InterfaceDeclaration, Statement } from "typescript";
 import * as AST from "../AST";
 import { mustBeInterfaceDeclaration } from "../AST/mustBeInterfaceDeclaration";
 import { mustBePropertySignature } from "../AST/mustBePropertySignature";
@@ -40,9 +40,11 @@ import {
     IntermediateInterface,
     IntermediateKind,
     IntermediatePropertyDefinition,
-    IntermediateSourceFile
+    IntermediateSourceFile,
+    IntermediateTypeArgument
 } from "../IntermediateTypes";
 import { processPropertySignature } from "./processPropertySignature";
+import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processInterfaceDeclaration: StatementProcessor = (
@@ -74,6 +76,24 @@ export const processInterfaceDeclaration: StatementProcessor = (
             text: AST.findDocBlockText(interfaceDec),
         },
         exported: AST.isNodeExported(interfaceDec),
+        extends: getBaseInterfaceTypes(sourceFile, interfaceDec),
         properties: members,
     }
 }
+
+function getBaseInterfaceTypes(
+    sourceFile: IntermediateSourceFile,
+    input: InterfaceDeclaration
+): IntermediateTypeArgument[] {
+    // our return value
+    const retval: IntermediateTypeArgument[] = [];
+
+    // find the implement clauses (if any)
+    const heritageClauses = AST.findExtendsHeritageClauses(input);
+    for (const clause of heritageClauses) {
+        retval.push(processExpressionWithTypeArguments(sourceFile, clause.types[0]));
+    }
+
+    return retval;
+}
+

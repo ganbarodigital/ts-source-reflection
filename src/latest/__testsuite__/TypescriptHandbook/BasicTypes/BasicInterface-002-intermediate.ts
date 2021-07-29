@@ -39,7 +39,7 @@ export default {
         InterfaceDeclaration: [
             {
                 kind: IntermediateKind.IntermediateInterface,
-                name: "Point",
+                name: "Animal",
                 exported: false,
                 docBlock: {
                     kind: IntermediateKind.IntermediateDocBlock,
@@ -49,22 +49,39 @@ export default {
                 properties: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "x",
+                        propName: "name",
                         propIsOptional: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "number",
+                            typeName: "string",
                         }
+                    }
+                ]
+            },
+            {
+                kind: IntermediateKind.IntermediateInterface,
+                name: "Bear",
+                exported: false,
+                docBlock: {
+                    kind: IntermediateKind.IntermediateDocBlock,
+                    text: undefined,
+                },
+                extends: [
+                    {
+                        kind: IntermediateKind.IntermediateFixedTypeArgument,
+                        name: "Animal",
                     },
+                ],
+                properties: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "y",
+                        propName: "honey",
                         propIsOptional: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "number",
+                            typeName: "boolean",
                         }
-                    },
+                    }
                 ]
             }
         ],
