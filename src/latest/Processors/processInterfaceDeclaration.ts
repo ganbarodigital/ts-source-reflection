@@ -54,19 +54,6 @@ export const processInterfaceDeclaration: StatementProcessor = (
     // make sure we're dealing with an actual interface
     const interfaceDec = mustBeInterfaceDeclaration(input);
 
-    // we need to understand the members
-    const members: IntermediatePropertyDefinition[] = [];
-
-    for(const member of interfaceDec.members) {
-        // keep the compiler happy ...
-        // and also spot any unsupported edge cases!
-        const propSig = mustBePropertySignature(member);
-
-        // when we get into parsing classes properly, we will return
-        // and refactor this
-        members.push(processPropertySignature(propSig));
-    }
-
     // all done
     return {
         kind: IntermediateKind.IntermediateInterface,
@@ -77,7 +64,7 @@ export const processInterfaceDeclaration: StatementProcessor = (
         },
         exported: AST.isNodeExported(interfaceDec),
         extends: getBaseInterfaceTypes(sourceFile, interfaceDec),
-        properties: members,
+        properties: getInterfaceMembers(interfaceDec),
     }
 }
 
@@ -97,3 +84,23 @@ function getBaseInterfaceTypes(
     return retval;
 }
 
+function getInterfaceMembers(
+    input: InterfaceDeclaration
+): IntermediatePropertyDefinition[]
+{
+    // this will be our return value
+    const retval: IntermediatePropertyDefinition[] = [];
+
+    for(const member of input.members) {
+        // keep the compiler happy ...
+        // and also spot any unsupported edge cases!
+        const propSig = mustBePropertySignature(member);
+
+        // when we get into parsing classes properly, we will return
+        // and refactor this
+        retval.push(processPropertySignature(propSig));
+    }
+
+    // all done
+    return retval;
+}
