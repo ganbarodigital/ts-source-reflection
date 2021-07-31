@@ -48,7 +48,7 @@ export default {
                             propName: "name",
                             propIsOptional: false,
                             typeRef: {
-                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "string",
                             }
                         },
@@ -73,7 +73,7 @@ export default {
                                     propName: "honey",
                                     propIsOptional: false,
                                     typeRef: {
-                                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                         typeName: "boolean"
                                     }
                                 },

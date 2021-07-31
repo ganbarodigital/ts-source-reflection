@@ -48,11 +48,11 @@ export default {
                             kind: IntermediateKind.IntermediateUnionType,
                             typeRefs: [
                                 {
-                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "number",
                                 },
                                 {
-                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "string",
                                 }
                             ]

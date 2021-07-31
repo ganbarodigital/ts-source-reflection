@@ -48,7 +48,7 @@ export default {
                             propName: "x",
                             propIsOptional: false,
                             typeRef: {
-                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "number",
                             }
                         },
@@ -57,7 +57,7 @@ export default {
                             propName: "y",
                             propIsOptional: false,
                             typeRef: {
-                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "number",
                             }
                         },

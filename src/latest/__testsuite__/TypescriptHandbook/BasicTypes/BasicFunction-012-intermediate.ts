@@ -78,7 +78,7 @@ export default {
                         propName: "width",
                         propIsOptional: false,
                         typeRef: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "number",
                         }
                     },

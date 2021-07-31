@@ -86,7 +86,7 @@ export function processTypeNode
     // special case - we may have a built-in type
     if (BUILT_IN_TYPES[input.kind] !== undefined) {
         return {
-            kind: IntermediateKind.IntermediateFixedTypeReference,
+            kind: IntermediateKind.IntermediateBuiltInTypeReference,
             typeName: BUILT_IN_TYPES[input.kind],
         }
     }

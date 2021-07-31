@@ -45,7 +45,7 @@ export default {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,
                         paramName: "person",
                         typeRef: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "string",
                         }
                     },

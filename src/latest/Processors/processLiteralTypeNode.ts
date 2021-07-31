@@ -33,18 +33,22 @@
 //
 
 import { LiteralTypeNode, SyntaxKind } from "typescript";
-import { IntermediateFixedTypeReference, IntermediateKind, IntermediateLiteralType } from "../IntermediateTypes";
+import {
+    IntermediateBuiltInTypeReference,
+    IntermediateKind,
+    IntermediateLiteralType
+} from "../IntermediateTypes";
 
 export function processLiteralTypeNode(
     input: LiteralTypeNode
-): IntermediateLiteralType | IntermediateFixedTypeReference
+): IntermediateLiteralType | IntermediateBuiltInTypeReference
 {
     // special case
     //
     // no idea why the TS compiler thinks `null` is a literal type
     if (input.literal.kind === SyntaxKind.NullKeyword) {
         return {
-            kind: IntermediateKind.IntermediateFixedTypeReference,
+            kind: IntermediateKind.IntermediateBuiltInTypeReference,
             typeName: input.literal.getText(),
         }
     }

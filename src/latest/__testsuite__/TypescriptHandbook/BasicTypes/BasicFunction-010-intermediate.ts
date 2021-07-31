@@ -45,7 +45,7 @@ export default {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,
                         paramName: "s",
                         typeRef: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "string",
                         },
                     },

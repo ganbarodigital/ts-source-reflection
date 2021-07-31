@@ -52,7 +52,7 @@ export default {
                                     typeName: "string",
                                 },
                                 {
-                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "string",
                                 }
                             ]

@@ -52,7 +52,7 @@ export default {
                                     propName: "first",
                                     propIsOptional: false,
                                     typeRef: {
-                                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                         typeName: "string",
                                     }
                                 },
@@ -61,7 +61,7 @@ export default {
                                     propName: "last",
                                     propIsOptional: true,
                                     typeRef: {
-                                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                         typeName: "string",
                                     }
                                 },

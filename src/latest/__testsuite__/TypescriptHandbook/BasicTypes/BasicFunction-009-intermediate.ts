@@ -41,7 +41,7 @@ export default {
                 kind: IntermediateKind.IntermediateTypeAliasDefinition,
                 typeName: "UserInputSanitizedString",
                 typeRef: {
-                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
                     typeName: "string",
                 }
             }
@@ -55,7 +55,7 @@ export default {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,
                         paramName: "str",
                         typeRef: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "string",
                         }
                     },
