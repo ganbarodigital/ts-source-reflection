@@ -32,31 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export enum IntermediateKind {
-    IntermediateCallableExpression,
-    IntermediateAnonymousCallableParameter,
-    IntermediateAnonymousClassType,
-    IntermediateClass,
-    IntermediateDocBlock,
-    IntermediateFixedTypeArgument,
-    IntermediateFixedTypeArrayReference,
-    IntermediateFixedTypeReference,
-    IntermediateFunction,
-    IntermediateGenericType,
-    IntermediateGenericTypeArgument,
-    IntermediateImportItem,
-    IntermediateInterface,
-    IntermediateMethod,
-    IntermediateModule,
-    IntermediateTypedPropertyDefinition,
-    IntermediateReference,
-    IntermediateSourceFile,
-    IntermediateTypeAliasDefinition,
-    IntermediateTypeArgument,
-    IntermediateTypeIntersection,
-    IntermediateTypedCallableParameter,
-    IntermediateUnionType,
-    IntermediateUntypedCallableParameter,
-    IntermediateUntypedPropertyDefinition,
-    IntermediateVariableDeclaration,
+import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateKind } from "../IntermediateKind";
+
+// this is a placeholder for now
+export interface IntermediateCallableExpression
+    extends IntermediateItem<IntermediateKind.IntermediateCallableExpression>
+{
+
 }
