@@ -37,6 +37,7 @@ export * from "./IntermediateAnonymousClassType";
 export * from "./IntermediateCallable";
 export * from "./IntermediateCallableParameter";
 export * from "./IntermediateClass";
+export * from "./IntermediateConstantItem";
 export * from "./IntermediateDocBlock";
 export * from "./IntermediateDocumentedItem";
 export * from "./IntermediateExportableItem";
