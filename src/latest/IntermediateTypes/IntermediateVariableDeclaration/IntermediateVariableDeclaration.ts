@@ -34,12 +34,14 @@
 
 import { IntermediateConstantItem } from "../IntermediateConstantItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
+import { IntermediateExportableItem } from "../IntermediateExportableItem";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateVariableDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateVariableDeclaration>,
         IntermediateDocumentedItem,
+        IntermediateExportableItem,
         IntermediateConstantItem
 {
     variableName: string;

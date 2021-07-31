@@ -76,6 +76,7 @@ function processVariableDeclaration(
             text: '',
         },
         constant: false,
+        exported: false,
         variableName: input.name.getText()
     }
 
