@@ -135,7 +135,7 @@ function processInitialiser(
     if (isStringLiteral(input)) {
         return {
             kind: IntermediateKind.IntermediateStringLiteral,
-            text: input.text,
+            value: input.text,
         }
     }
 

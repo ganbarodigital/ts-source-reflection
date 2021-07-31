@@ -38,5 +38,5 @@ import { IntermediateKind } from "../IntermediateKind";
 export interface IntermediateStringLiteral
     extends IntermediateItem<IntermediateKind.IntermediateStringLiteral>
 {
-    text: string;
+    value: string;
 }

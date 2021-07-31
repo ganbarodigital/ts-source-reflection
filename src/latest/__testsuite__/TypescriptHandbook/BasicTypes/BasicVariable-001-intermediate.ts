@@ -51,7 +51,7 @@ export default {
                         },
                         initialiser: {
                             kind: IntermediateKind.IntermediateStringLiteral,
-                            text: 'Hello World',
+                            value: 'Hello World',
                         },
                         typeRef: undefined,
                     }
