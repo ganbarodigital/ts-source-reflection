@@ -129,6 +129,11 @@ const TEST_FILES: TestFile[] = [
         expectedResult: require("./BasicInterface-002-intermediate").default,
         preprocessor: injectPathIntoExpectedResult,
     },
+    {
+        sourceFile: "BasicIntersection-001-input.ts",
+        expectedResult: require("./BasicIntersection-001-intermediate").default,
+        preprocessor: injectPathIntoExpectedResult,
+    },
 ];
 
 describe("basic types intermediate processing", () => {

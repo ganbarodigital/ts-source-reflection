@@ -32,11 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { isArrayTypeNode, isUnionTypeNode, SyntaxKind, TypeNode } from "typescript";
+import { isArrayTypeNode, isIntersectionTypeNode, isUnionTypeNode, SyntaxKind, TypeNode } from "typescript";
 import { isAnonymousClassType } from "../AST";
 import { mustBeTypeReference } from "../AST/mustBeTypeReference";
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
 import { processAnonymousClassType } from "./processAnonymousClassType";
+import { processIntersectionNode } from "./processIntersectionNode";
 import { processTypeReferenceNode } from "./processTypeReferenceNode";
 import { processUnionType } from "./processUnionType";
 
@@ -68,6 +69,11 @@ export function processTypeNode
     // special case - union parameter
     if (isUnionTypeNode(input)) {
         return processUnionType(input);
+    }
+
+    // special case - type intersection
+    if (isIntersectionTypeNode(input)) {
+        return processIntersectionNode(input);
     }
 
     // special case - we may have a built-in type
