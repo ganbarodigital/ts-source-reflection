@@ -34,6 +34,7 @@
 
 import { NodeFlags, Statement, VariableDeclaration } from "typescript";
 import * as AST from "../AST";
+import { isNodeExported } from "../AST";
 import {
     IntermediateKind,
     IntermediateSourceFile,
@@ -58,7 +59,7 @@ export const processVariableStatement: StatementProcessor = (
     // some information about the variables are actually stored
     // at the list level (doh!)
     const contextFlags = {
-        exported: false,
+        exported: isNodeExported(input),
         constant: false,
     }
     // tslint:disable-next-line: no-bitwise
