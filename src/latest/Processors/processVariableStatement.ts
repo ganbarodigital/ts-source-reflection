@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Statement, VariableDeclaration } from "typescript";
+import { NodeFlags, Statement, VariableDeclaration } from "typescript";
 import * as AST from "../AST";
 import {
     IntermediateKind,
@@ -55,9 +55,22 @@ export const processVariableStatement: StatementProcessor = (
         variables: []
     }
 
+    // some information about the variables are actually stored
+    // at the list level (doh!)
+    const contextFlags = {
+        exported: false,
+        constant: false,
+    }
+    // tslint:disable-next-line: no-bitwise
+    if (variableStmt.declarationList.flags & NodeFlags.Const) {
+        contextFlags.constant = true;
+    }
+
     // what do we have?
     for (const member of variableStmt.declarationList.declarations) {
-        retval.variables.push(processVariableDeclaration(member));
+        retval.variables.push(
+            processVariableDeclaration(member, contextFlags)
+        );
     }
 
     // all done
@@ -65,7 +78,11 @@ export const processVariableStatement: StatementProcessor = (
 }
 
 function processVariableDeclaration(
-    input: VariableDeclaration
+    input: VariableDeclaration,
+    contextFlags: {
+        exported: boolean;
+        constant: boolean;
+    }
 ): IntermediateVariableDeclaration
 {
     // this will be our return value
@@ -75,8 +92,8 @@ function processVariableDeclaration(
             kind: IntermediateKind.IntermediateDocBlock,
             text: '',
         },
-        constant: false,
-        exported: false,
+        constant: contextFlags.constant,
+        exported: contextFlags.exported,
         variableName: input.name.getText()
     }
 

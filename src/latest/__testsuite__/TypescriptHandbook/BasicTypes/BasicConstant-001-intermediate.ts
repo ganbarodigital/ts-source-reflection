@@ -43,7 +43,7 @@ export default {
                     {
                         kind: IntermediateKind.IntermediateVariableDeclaration,
                         variableName: "myCanvas",
-                        constant: false,
+                        constant: true,
                         exported: false,
                         docBlock: {
                             kind: IntermediateKind.IntermediateDocBlock,
