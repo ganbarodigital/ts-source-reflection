@@ -52,6 +52,8 @@ export default {
                         initialiser: {
                             kind: IntermediateKind.IntermediateStringLiteral,
                             value: 'Hello World',
+                            asType: undefined,
+                            typeAssertion: undefined,
                         },
                         typeRef: undefined,
                     }

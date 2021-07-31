@@ -58,9 +58,11 @@ export default {
                                     initialiser: {
                                         kind: IntermediateKind.IntermediateNumericLiteral,
                                         value: "0"
-                                    }
+                                    },
                                 }
-                            ]
+                            ],
+                            asType: undefined,
+                            typeAssertion: undefined,
                         },
                         typeRef: undefined,
                     },

@@ -38,12 +38,12 @@ import * as AST from "../AST";
 import { isNodeExported } from "../AST";
 import { mustBePropertyAssignment } from "../AST/mustBePropertyAssignment";
 import {
-    IntermediateCallableExpression,
     IntermediateExpression,
     IntermediateKind,
     IntermediateObjectLiteral,
     IntermediatePropertyAssignment,
     IntermediateSourceFile,
+    IntermediateTypeAssertable,
     IntermediateVariableDeclaration,
     IntermediateVariableDeclarations
 } from "../IntermediateTypes";
@@ -136,6 +136,8 @@ function processInitialiser(
         return {
             kind: IntermediateKind.IntermediateStringLiteral,
             value: input.text,
+            asType: undefined,
+            typeAssertion: undefined,
         }
     }
 
@@ -152,6 +154,8 @@ function processInitialiser(
         const retval: IntermediateObjectLiteral = {
             kind: IntermediateKind.IntermediateObjectLiteral,
             properties: [],
+            asType: undefined,
+            typeAssertion: undefined,
         }
 
         for (const member of input.properties) {
@@ -163,14 +167,14 @@ function processInitialiser(
     }
 
     if (isTypeAssertionExpression(input)) {
-        const retval = processInitialiser(input.expression) as IntermediateCallableExpression;
-        retval.typeAssertion = processTypeNode(input.type);
+        const retval = processInitialiser(input.expression);
+        (retval as IntermediateTypeAssertable).typeAssertion = processTypeNode(input.type);
         return retval;
     }
 
     if (isAsExpression(input)) {
-        const retval = processInitialiser(input.expression) as IntermediateCallableExpression;
-        retval.asType = processTypeNode(input.type);
+        const retval = processInitialiser(input.expression);
+        (retval as IntermediateTypeAssertable).asType = processTypeNode(input.type);
         return retval;
     }
 

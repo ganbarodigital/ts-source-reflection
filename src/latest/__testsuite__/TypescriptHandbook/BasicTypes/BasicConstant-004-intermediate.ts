@@ -57,18 +57,24 @@ export default {
                                     propertyName: "url",
                                     initialiser: {
                                         kind: IntermediateKind.IntermediateStringLiteral,
-                                        value: "https://example.com"
-                                    }
+                                        value: "https://example.com",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
                                 },
                                 {
                                     kind: IntermediateKind.IntermediatePropertyAssignment,
                                     propertyName: "method",
                                     initialiser: {
                                         kind: IntermediateKind.IntermediateStringLiteral,
-                                        value: "GET"
-                                    }
+                                        value: "GET",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
                                 },
-                            ]
+                            ],
+                            asType: undefined,
+                            typeAssertion: undefined,
                         },
                         typeRef: undefined,
                     },

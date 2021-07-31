@@ -35,9 +35,11 @@
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediatePropertyAssignment } from "../IntermediatePropertyAssignment";
+import { IntermediateTypeAssertable } from "../IntermediateTypeAssertable";
 
 export interface IntermediateObjectLiteral
-    extends IntermediateItem<IntermediateKind.IntermediateObjectLiteral>
+    extends IntermediateItem<IntermediateKind.IntermediateObjectLiteral>,
+        IntermediateTypeAssertable
 {
     properties: IntermediatePropertyAssignment[];
 }
