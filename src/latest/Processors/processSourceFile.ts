@@ -31,10 +31,11 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-
 import { FunctionPointerTable, HashMap, searchFunctionPointerTable } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
-import { NodeArray, SourceFile, Statement, SyntaxKind } from "typescript";
+import { NodeArray, SourceFile, Statement } from "typescript";
+
+import { getStatementKind } from "../AST";
 import { IntermediateKind, IntermediateSourceFile } from "../IntermediateTypes";
 import { processClassDeclaration } from "./processClassDeclaration";
 import { processFunctionDeclaration } from "./processFunctionDeclaration";
@@ -42,6 +43,7 @@ import { processImportDeclaration } from "./processImportDeclaration";
 import { processInterfaceDeclaration } from "./processInterfaceDeclaration";
 import { processTypeAliasDeclaration } from "./processTypeAliasDeclaration";
 import { StatementProcessor } from "./StatementProcessor";
+
 
 const statementProcessors: FunctionPointerTable<string, StatementProcessor> = {
     'ImportDeclaration': processImportDeclaration,
@@ -78,7 +80,8 @@ function processStatements(
 
     for(const statement of statements) {
         // shorthand
-        const kind = SyntaxKind[statement.kind];
+        const kind = getStatementKind(statement);
+
         // tslint:disable-next-line: no-console
         console.log("Processing node: " + kind);
 

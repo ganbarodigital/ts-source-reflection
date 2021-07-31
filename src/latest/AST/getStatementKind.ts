@@ -32,19 +32,34 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./findDocBlockText";
-export * from "./findExtendsHeritageClauses";
-export * from "./findImplementsHeritageClauses";
-export * from "./getStatementKind";
-export * from "./isAnonymousClassType";
-export * from "./isExportKeyword";
-export * from "./isNodeExported";
-export * from "./mustBeClassDeclaration";
-export * from "./mustBeFunctionDeclaration";
-export * from "./mustBeImportClause";
-export * from "./mustBeImportDeclaration";
-export * from "./mustBeInterfaceDeclaration";
-export * from "./mustBePropertySignature";
-export * from "./mustBeTypeAliasDeclaration";
-export * from "./mustBeTypeReference";
-export * from "./mustBeVariableStatement";
+import { HashMap } from "@safelytyped/core-types";
+import { isVariableStatement, Statement, SyntaxKind } from "typescript";
+
+type KindTransform = {
+    typeguard: (x: Statement) => boolean;
+    retval: string;
+}
+
+export function getStatementKind(
+    input: Statement
+): string
+{
+    const transforms: HashMap<KindTransform> = {
+        // this is a workaround for an alias in SyntaxKind
+        "FirstStatement": {
+            typeguard: isVariableStatement,
+            retval: "VariableStatement"
+        },
+    }
+
+    // what kind do we think we have?
+    const retval = SyntaxKind[input.kind];
+
+    // do we actually have a slightly different kind?
+    if (transforms[retval] && transforms[retval].typeguard(input)) {
+        return transforms[retval].retval;
+    }
+
+    // if we get here, the original SyntaxKind is just fine for us
+    return retval;
+}
