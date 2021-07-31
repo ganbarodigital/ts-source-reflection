@@ -44,12 +44,19 @@ export interface IntermediateCallableExpression
     text: string;
 
     /**
-     * typeAssertion is a type cast that happens before the expression
+     * typeAssertion is a type cast that happens before the expression.
+     *
+     * It is LEGAL to have both a typeAssertion and asType.
      */
     typeAssertion: Maybe<IntermediateTypeReference>;
 
     /**
-     * asType is a type cast that happens afer the expresion
+     * asType is a type cast that happens afer the expresion.
+     *
+     * According to my testing, this takes precedence over the typeAssertion
+     * value.
+     *
+     * It is LEGAL to have both a typeAssertion and asType.
      */
     asType: Maybe<IntermediateTypeReference>;
 }
