@@ -61,6 +61,7 @@ export * from "./IntermediateRestrictableScope";
 export * from "./IntermediateRestrictableScopeItem";
 export * from "./IntermediateSourceFile";
 export * from "./IntermediateStaticable";
+export * from "./IntermediateStringLiteral";
 export * from "./IntermediateTypeAliasDefinition";
 export * from "./IntermediateTypeArgument";
 export * from "./IntermediateTypeReference";
