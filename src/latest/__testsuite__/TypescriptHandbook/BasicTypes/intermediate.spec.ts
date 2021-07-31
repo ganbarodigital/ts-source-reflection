@@ -190,6 +190,11 @@ const TEST_FILES: TestFile[] = [
         preprocessor: injectPathIntoExpectedResult,
     },
     {
+        sourceFile: "BasicConstant-006-input.ts",
+        expectedResult: require("./BasicConstant-006-intermediate").default,
+        preprocessor: injectPathIntoExpectedResult,
+    },
+    {
         sourceFile: "BasicTypeAssertion-001-input.ts",
         expectedResult: require("./BasicTypeAssertion-001-intermediate").default,
         preprocessor: injectPathIntoExpectedResult,

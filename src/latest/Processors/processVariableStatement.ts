@@ -33,7 +33,7 @@
 //
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
-import { Expression, isAsExpression, isCallExpression, isNumericLiteral, isObjectLiteralExpression, isStringLiteral, isTypeAssertionExpression, NodeFlags, PropertyAssignment, Statement, VariableDeclaration } from "typescript";
+import { Expression, isAsExpression, isBigIntLiteral, isCallExpression, isNumericLiteral, isObjectLiteralExpression, isStringLiteral, isTypeAssertionExpression, NodeFlags, PropertyAssignment, Statement, VariableDeclaration } from "typescript";
 import * as AST from "../AST";
 import { isNodeExported } from "../AST";
 import { mustBePropertyAssignment } from "../AST/mustBePropertyAssignment";
@@ -176,6 +176,13 @@ function processInitialiser(
         const retval = processInitialiser(input.expression);
         (retval as IntermediateTypeAssertable).asType = processTypeNode(input.type);
         return retval;
+    }
+
+    if (isBigIntLiteral(input)) {
+        return {
+            kind: IntermediateKind.IntermediateBigintLiteral,
+            value: input.text,
+        }
     }
 
     // if we get here, we do not know how to process this variable
