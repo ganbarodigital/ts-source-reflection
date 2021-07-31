@@ -32,29 +32,22 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { LiteralTypeNode } from "typescript";
 import {
-    IntermediateBuiltInTypeReference,
-    IntermediateKind,
-    IntermediateLiteralType
-} from "../IntermediateTypes";
-import { isBuiltInType } from "./isBuiltinType";
-import { processBuiltInType } from "./processBuiltInType";
+    isLiteralTypeNode,
+    LiteralTypeNode,
+    TypeNode
+} from "typescript";
+import { BUILT_IN_TYPES } from "./BUILT_IN_TYPES";
 
-export function processLiteralTypeNode(
-    input: LiteralTypeNode
-): IntermediateLiteralType | IntermediateBuiltInTypeReference
+export function isBuiltInType
+(
+    input: TypeNode | LiteralTypeNode
+): boolean
 {
     // special case
-    //
-    // no idea why the TS compiler thinks `null` is a literal type
-    if (isBuiltInType(input)) {
-        return processBuiltInType(input);
+    if (isLiteralTypeNode(input)) {
+        return (BUILT_IN_TYPES[input.literal.kind] !== undefined);
     }
 
-    // general case
-    return {
-        kind: IntermediateKind.IntermediateLiteralType,
-        typeName: input.literal.getText()
-    }
+    return (BUILT_IN_TYPES[input.kind] !== undefined);
 }

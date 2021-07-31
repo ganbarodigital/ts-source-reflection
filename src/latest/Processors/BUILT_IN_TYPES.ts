@@ -32,29 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { LiteralTypeNode } from "typescript";
-import {
-    IntermediateBuiltInTypeReference,
-    IntermediateKind,
-    IntermediateLiteralType
-} from "../IntermediateTypes";
-import { isBuiltInType } from "./isBuiltinType";
-import { processBuiltInType } from "./processBuiltInType";
+import { SyntaxKind } from "typescript";
 
-export function processLiteralTypeNode(
-    input: LiteralTypeNode
-): IntermediateLiteralType | IntermediateBuiltInTypeReference
-{
-    // special case
-    //
-    // no idea why the TS compiler thinks `null` is a literal type
-    if (isBuiltInType(input)) {
-        return processBuiltInType(input);
-    }
-
-    // general case
-    return {
-        kind: IntermediateKind.IntermediateLiteralType,
-        typeName: input.literal.getText()
-    }
-}
+export const BUILT_IN_TYPES: string[] = [];
+BUILT_IN_TYPES[SyntaxKind.BooleanKeyword] = "boolean";
+BUILT_IN_TYPES[SyntaxKind.NullKeyword] = "null";
+BUILT_IN_TYPES[SyntaxKind.NumberKeyword] = "number";
+BUILT_IN_TYPES[SyntaxKind.ObjectKeyword] = "object";
+BUILT_IN_TYPES[SyntaxKind.StringKeyword] = "string";

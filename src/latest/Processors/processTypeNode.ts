@@ -32,23 +32,17 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { isArrayTypeNode, isIntersectionTypeNode, isLiteralTypeNode, isUnionTypeNode, SyntaxKind, TypeNode } from "typescript";
+import { isArrayTypeNode, isIntersectionTypeNode, isLiteralTypeNode, isUnionTypeNode, TypeNode } from "typescript";
 import { isAnonymousClassType } from "../AST";
 import { mustBeTypeReference } from "../AST/mustBeTypeReference";
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
+import { isBuiltInType } from "./isBuiltinType";
 import { processAnonymousClassType } from "./processAnonymousClassType";
+import { processBuiltInType } from "./processBuiltInType";
 import { processIntersectionNode } from "./processIntersectionNode";
 import { processLiteralTypeNode } from "./processLiteralTypeNode";
 import { processTypeReferenceNode } from "./processTypeReferenceNode";
 import { processUnionType } from "./processUnionType";
-
-
-const BUILT_IN_TYPES: string[] = [];
-BUILT_IN_TYPES[SyntaxKind.BooleanKeyword] = "boolean";
-BUILT_IN_TYPES[SyntaxKind.NullKeyword] = "null";
-BUILT_IN_TYPES[SyntaxKind.NumberKeyword] = "number";
-BUILT_IN_TYPES[SyntaxKind.ObjectKeyword] = "object";
-BUILT_IN_TYPES[SyntaxKind.StringKeyword] = "string";
 
 export function processTypeNode
 (
@@ -84,11 +78,8 @@ export function processTypeNode
     }
 
     // special case - we may have a built-in type
-    if (BUILT_IN_TYPES[input.kind] !== undefined) {
-        return {
-            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-            typeName: BUILT_IN_TYPES[input.kind],
-        }
+    if (isBuiltInType(input)) {
+        return processBuiltInType(input);
     }
 
     // generic case

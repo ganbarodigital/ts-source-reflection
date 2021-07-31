@@ -32,29 +32,37 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { LiteralTypeNode } from "typescript";
-import {
-    IntermediateBuiltInTypeReference,
-    IntermediateKind,
-    IntermediateLiteralType
-} from "../IntermediateTypes";
-import { isBuiltInType } from "./isBuiltinType";
-import { processBuiltInType } from "./processBuiltInType";
+import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
+import { isLiteralTypeNode, LiteralTypeNode, SyntaxKind, TypeNode } from "typescript";
+import { IntermediateBuiltInTypeReference, IntermediateKind } from "../IntermediateTypes";
+import { BUILT_IN_TYPES } from "./BUILT_IN_TYPES";
 
-export function processLiteralTypeNode(
-    input: LiteralTypeNode
-): IntermediateLiteralType | IntermediateBuiltInTypeReference
+export function processBuiltInType
+(
+    input: TypeNode | LiteralTypeNode
+): IntermediateBuiltInTypeReference
 {
-    // special case
-    //
-    // no idea why the TS compiler thinks `null` is a literal type
-    if (isBuiltInType(input)) {
-        return processBuiltInType(input);
+    let kind: SyntaxKind;
+
+    if (isLiteralTypeNode(input)) {
+        kind = input.literal.kind;
+    } else {
+        kind = input.kind;
     }
 
-    // general case
+    // robustness!
+    if(BUILT_IN_TYPES[kind] === undefined) {
+        throw new UnsupportedTypeError({
+            public: {
+                dataPath: DEFAULT_DATA_PATH,
+                expected: "a built-in type",
+                actual: getClassNames(input)[0]
+            }
+        });
+    }
+
     return {
-        kind: IntermediateKind.IntermediateLiteralType,
-        typeName: input.literal.getText()
+        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+        typeName: BUILT_IN_TYPES[kind],
     }
 }
