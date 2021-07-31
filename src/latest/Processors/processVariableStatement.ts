@@ -33,7 +33,7 @@
 //
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
-import { Expression, isAsExpression, isCallExpression, NodeFlags, Statement, VariableDeclaration } from "typescript";
+import { Expression, isAsExpression, isCallExpression, isTypeAssertionExpression, NodeFlags, Statement, VariableDeclaration } from "typescript";
 import * as AST from "../AST";
 import { isNodeExported } from "../AST";
 import {
@@ -120,8 +120,15 @@ function processInitialiser(
         return {
             kind: IntermediateKind.IntermediateCallableExpression,
             text: input.getText(),
+            typeAssertion: undefined,
             asType: undefined,
         }
+    }
+
+    if (isTypeAssertionExpression(input)) {
+        const retval = processInitialiser(input.expression);
+        retval.typeAssertion = processTypeNode(input.type);
+        return retval;
     }
 
     if (isAsExpression(input)) {

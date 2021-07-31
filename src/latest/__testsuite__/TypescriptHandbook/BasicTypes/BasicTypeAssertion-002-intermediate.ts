@@ -52,8 +52,10 @@ export default {
                         initialiser: {
                             kind: IntermediateKind.IntermediateCallableExpression,
                             text: 'document.getElementById("main_canvas")',
-                            typeAssertion: undefined,
-                            asType: undefined,
+                            typeAssertion: {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "HTMLCanvasElement",
+                            },
                         },
                     }
                 ],

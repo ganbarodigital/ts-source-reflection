@@ -42,5 +42,14 @@ export interface IntermediateCallableExpression
     extends IntermediateItem<IntermediateKind.IntermediateCallableExpression>
 {
     text: string;
+
+    /**
+     * typeAssertion is a type cast that happens before the expression
+     */
+    typeAssertion: Maybe<IntermediateTypeReference>;
+
+    /**
+     * asType is a type cast that happens afer the expresion
+     */
     asType: Maybe<IntermediateTypeReference>;
 }
