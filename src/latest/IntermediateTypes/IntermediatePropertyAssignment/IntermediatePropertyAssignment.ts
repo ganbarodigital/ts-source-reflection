@@ -32,36 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export enum IntermediateKind {
-    IntermediateCallableExpression,
-    IntermediateAnonymousCallableParameter,
-    IntermediateAnonymousClassType,
-    IntermediateClass,
-    IntermediateDocBlock,
-    IntermediateFixedTypeArgument,
-    IntermediateFixedTypeArrayReference,
-    IntermediateFixedTypeReference,
-    IntermediateFunction,
-    IntermediateGenericType,
-    IntermediateGenericTypeArgument,
-    IntermediateImportItem,
-    IntermediateInterface,
-    IntermediateLiteralType,
-    IntermediateMethod,
-    IntermediateModule,
-    IntermediateObjectLiteral,
-    IntermediatePropertyAssignment,
-    IntermediateTypedPropertyDefinition,
-    IntermediateReference,
-    IntermediateSourceFile,
-    IntermediateStringLiteral,
-    IntermediateTypeAliasDefinition,
-    IntermediateTypeArgument,
-    IntermediateTypeIntersection,
-    IntermediateTypedCallableParameter,
-    IntermediateUnionType,
-    IntermediateUntypedCallableParameter,
-    IntermediateUntypedPropertyDefinition,
-    IntermediateVariableDeclaration,
-    IntermediateVariableDeclarations,
+import { IntermediateExpression } from "../IntermediateExpression";
+import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateKind } from "../IntermediateKind";
+
+export interface IntermediatePropertyAssignment
+    extends IntermediateItem<IntermediateKind.IntermediatePropertyAssignment>
+{
+    propertyName: string;
+    initialiser: IntermediateExpression;
 }

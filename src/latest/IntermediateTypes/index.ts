@@ -56,6 +56,8 @@ export * from "./IntermediateKind";
 export * from "./IntermediateLiteralType";
 export * from "./IntermediateMethod";
 // export * from "./IntermediateModule";
+export * from "./IntermediateObjectLiteral";
+export * from "./IntermediatePropertyAssignment";
 export * from "./IntermediatePropertyDefinition";
 export * from "./IntermediateReference";
 export * from "./IntermediateRestrictableScope";
