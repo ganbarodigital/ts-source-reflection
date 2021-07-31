@@ -33,6 +33,9 @@
 //
 
 import { IntermediateCallableExpression } from "../IntermediateCallableExpression";
+import { IntermediateStringLiteral } from "../IntermediateStringLiteral";
 
 export type IntermediateExpression
-    = IntermediateCallableExpression;
+    = IntermediateCallableExpression
+    | IntermediateStringLiteral
+    ;
