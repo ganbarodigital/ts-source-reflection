@@ -32,26 +32,36 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { LiteralTypeNode, SyntaxKind } from "typescript";
-import { IntermediateFixedTypeReference, IntermediateKind, IntermediateLiteralType } from "../IntermediateTypes";
+import { IntermediateKind } from "../../../IntermediateTypes";
 
-export function processLiteralTypeNode(
-    input: LiteralTypeNode
-): IntermediateLiteralType | IntermediateFixedTypeReference
-{
-    // special case
-    //
-    // no idea why the TS compiler thinks `null` is a literal type
-    if (input.literal.kind === SyntaxKind.NullKeyword) {
-        return {
-            kind: IntermediateKind.IntermediateFixedTypeReference,
-            typeName: input.literal.getText(),
-        }
-    }
-
-    // general case
-    return {
-        kind: IntermediateKind.IntermediateLiteralType,
-        typeName: input.literal.getText()
-    }
+export default {
+    children: {
+        FunctionDeclaration: [
+            {
+                kind: IntermediateKind.IntermediateFunction,
+                name: "doSomething",
+                parameters: [
+                    {
+                        kind: IntermediateKind.IntermediateTypedCallableParameter,
+                        paramName: "x",
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateUnionType,
+                            typeRefs: [
+                                {
+                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                    typeName: 'string',
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                    typeName: 'null',
+                                },
+                            ],
+                        },
+                    },
+                ],
+                returnType: undefined,
+            }
+        ],
+    },
+    kind: IntermediateKind.IntermediateSourceFile,
 }
