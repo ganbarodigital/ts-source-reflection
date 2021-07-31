@@ -42,4 +42,8 @@ export * from "./mustBeClassDeclaration";
 export * from "./mustBeFunctionDeclaration";
 export * from "./mustBeImportClause";
 export * from "./mustBeImportDeclaration";
+export * from "./mustBeInterfaceDeclaration";
+export * from "./mustBePropertySignature";
+export * from "./mustBeTypeAliasDeclaration";
+export * from "./mustBeTypeReference";
 export * from "./mustBeVariableStatement";
