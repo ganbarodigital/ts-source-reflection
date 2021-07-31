@@ -48,6 +48,7 @@ export default {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "string",
                         },
+                        optional: false,
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,
@@ -69,6 +70,7 @@ export default {
                                 },
                             ],
                         },
+                        optional: false,
                     },
                 ],
                 returnType: undefined,

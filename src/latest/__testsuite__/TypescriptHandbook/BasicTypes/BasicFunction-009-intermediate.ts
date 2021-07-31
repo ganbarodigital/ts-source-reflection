@@ -57,7 +57,8 @@ export default {
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "string",
-                        }
+                        },
+                        optional: false,
                     },
                 ],
                 returnType: {

@@ -41,4 +41,5 @@ export interface IntermediateTypedCallableParameter
 {
     paramName: string;
     typeRef: IntermediateTypeReference;
+    optional: boolean;
 }

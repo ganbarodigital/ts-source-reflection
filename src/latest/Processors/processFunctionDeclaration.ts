@@ -44,6 +44,7 @@ import {
 import {
     IntermediateCallableParameter,
 } from "../IntermediateTypes/IntermediateCallableParameter/IntermediateCallableParameter";
+import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
 import { StatementProcessor } from "./StatementProcessor";
 
@@ -99,6 +100,7 @@ function processFunctionParameters(
             kind: IntermediateKind.IntermediateTypedCallableParameter,
             paramName: paramDec.name.getText(),
             typeRef: processTypeNode(paramDec.type),
+            optional: processQuestionToken(paramDec.questionToken),
         });
     });
 

@@ -47,7 +47,8 @@ export default {
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "string",
-                        }
+                        },
+                        optional: false,
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,
@@ -55,7 +56,8 @@ export default {
                         typeRef: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             typeName: "Date",
-                        }
+                        },
+                        optional: false,
                     }
                 ],
                 returnType: undefined,

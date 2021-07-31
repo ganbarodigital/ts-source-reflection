@@ -56,7 +56,8 @@ export default {
                                     typeName: "string",
                                 }
                             ]
-                        }
+                        },
+                        optional: false,
                     }
                 ],
                 returnType: undefined,

@@ -39,26 +39,26 @@ export default {
         FunctionDeclaration: [
             {
                 kind: IntermediateKind.IntermediateFunction,
-                name: "printId",
+                name: "liveDangerously",
                 parameters: [
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "id",
+                        paramName: "x",
                         typeRef: {
                             kind: IntermediateKind.IntermediateUnionType,
                             typeRefs: [
                                 {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: "number",
+                                    typeName: 'number',
                                 },
                                 {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: "string",
-                                }
-                            ]
+                                    typeName: 'null',
+                                },
+                            ],
                         },
-                        optional: false,
-                    }
+                        optional: true,
+                    },
                 ],
                 returnType: undefined,
             }

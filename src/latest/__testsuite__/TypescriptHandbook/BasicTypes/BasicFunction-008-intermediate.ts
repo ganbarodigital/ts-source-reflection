@@ -76,7 +76,8 @@ export default {
                         typeRef: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             typeName: "Point",
-                        }
+                        },
+                        optional: false,
                     },
                 ],
                 returnType: undefined,
