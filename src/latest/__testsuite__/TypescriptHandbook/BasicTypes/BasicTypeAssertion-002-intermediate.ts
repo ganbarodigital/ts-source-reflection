@@ -58,6 +58,7 @@ export default {
                             },
                             asType: undefined,
                         },
+                        typeRef: undefined,
                     }
                 ],
             }

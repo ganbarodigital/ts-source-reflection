@@ -61,6 +61,7 @@ export default {
                                 typeName: "HTMLElement",
                             },
                         },
+                        typeRef: undefined,
                     }
                 ],
             }

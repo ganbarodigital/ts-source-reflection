@@ -39,6 +39,7 @@ import { IntermediateExportableItem } from "../IntermediateExportableItem";
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateVariableDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateVariableDeclaration>,
@@ -47,5 +48,6 @@ export interface IntermediateVariableDeclaration
         IntermediateConstantItem
 {
     variableName: string;
-    initialiser: Maybe<IntermediateExpression>,
+    typeRef: Maybe<IntermediateTypeReference>;
+    initialiser: Maybe<IntermediateExpression>;
 }

@@ -55,6 +55,7 @@ export default {
                             typeAssertion: undefined,
                             asType: undefined,
                         },
+                        typeRef: undefined,
                     },
                 ],
             }

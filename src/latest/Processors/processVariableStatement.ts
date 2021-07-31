@@ -101,6 +101,7 @@ function processVariableDeclaration(
         exported: contextFlags.exported,
         variableName: input.name.getText(),
         initialiser: undefined,
+        typeRef: undefined,
     }
 
     // does this variable have an initial value?

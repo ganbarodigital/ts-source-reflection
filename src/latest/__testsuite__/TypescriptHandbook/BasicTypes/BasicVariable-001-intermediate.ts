@@ -53,6 +53,7 @@ export default {
                             kind: IntermediateKind.IntermediateStringLiteral,
                             text: 'Hello World',
                         },
+                        typeRef: undefined,
                     }
                 ],
             }

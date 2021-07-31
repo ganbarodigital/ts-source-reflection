@@ -58,6 +58,7 @@ export default {
                                 typeName: "HTMLCanvasElement",
                             },
                         },
+                        typeRef: undefined,
                     }
                 ],
             }
