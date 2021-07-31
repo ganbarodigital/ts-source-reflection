@@ -34,6 +34,7 @@
 import { IntermediateAnonymousClassType } from "../IntermediateAnonymousClassType";
 import { IntermediateFixedTypeArrayReference } from "../IntermediateFixedTypeArrayReference";
 import { IntermediateFixedTypeReference } from "../IntermediateFixedTypeReference";
+import { IntermediateTypeIntersection } from "../IntermediateTypeIntersection";
 import { IntermediateUnionType } from "../IntermediateUnionType";
 
 
@@ -41,4 +42,5 @@ export type IntermediateTypeReference
     = IntermediateAnonymousClassType
       | IntermediateFixedTypeReference
       | IntermediateFixedTypeArrayReference
+      | IntermediateTypeIntersection
       | IntermediateUnionType;
