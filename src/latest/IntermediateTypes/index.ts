@@ -61,6 +61,7 @@ export * from "./IntermediateStaticable";
 export * from "./IntermediateTypeAliasDefinition";
 export * from "./IntermediateTypeArgument";
 export * from "./IntermediateTypeReference";
+export * from "./IntermediateTypeIntersection";
 export * from "./IntermediateTypedCallableParameter";
 export * from "./IntermediateTypedPropertyDefinition";
 export * from "./IntermediateUnionType";
