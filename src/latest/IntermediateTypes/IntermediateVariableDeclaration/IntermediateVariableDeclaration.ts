@@ -32,9 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { Maybe } from "@safelytyped/core-types";
 import { IntermediateConstantItem } from "../IntermediateConstantItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateExportableItem } from "../IntermediateExportableItem";
+import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 
@@ -45,4 +47,5 @@ export interface IntermediateVariableDeclaration
         IntermediateConstantItem
 {
     variableName: string;
+    initialiser: Maybe<IntermediateExpression>,
 }

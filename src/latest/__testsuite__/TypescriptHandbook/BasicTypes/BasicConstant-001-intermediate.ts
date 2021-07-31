@@ -48,7 +48,11 @@ export default {
                         docBlock: {
                             kind: IntermediateKind.IntermediateDocBlock,
                             text: '',
-                        }
+                        },
+                        initialiser: {
+                            kind: IntermediateKind.IntermediateCallableExpression,
+                            text: 'document.getElementById("main_canvas")'
+                        },
                     }
                 ],
             }

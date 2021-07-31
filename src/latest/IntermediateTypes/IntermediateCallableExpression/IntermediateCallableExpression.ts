@@ -39,5 +39,5 @@ import { IntermediateKind } from "../IntermediateKind";
 export interface IntermediateCallableExpression
     extends IntermediateItem<IntermediateKind.IntermediateCallableExpression>
 {
-
+    text: string;
 }

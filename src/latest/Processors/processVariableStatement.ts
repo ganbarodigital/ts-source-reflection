@@ -32,10 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { NodeFlags, Statement, VariableDeclaration } from "typescript";
+import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
+import { Expression, isCallExpression, NodeFlags, Statement, VariableDeclaration } from "typescript";
 import * as AST from "../AST";
 import { isNodeExported } from "../AST";
 import {
+    IntermediateExpression,
     IntermediateKind,
     IntermediateSourceFile,
     IntermediateVariableDeclaration,
@@ -95,9 +97,37 @@ function processVariableDeclaration(
         },
         constant: contextFlags.constant,
         exported: contextFlags.exported,
-        variableName: input.name.getText()
+        variableName: input.name.getText(),
+        initialiser: undefined,
+    }
+
+    // does this variable have an initial value?
+    if (input.initializer) {
+        retval.initialiser = processInitialiser(input.initializer);
     }
 
     // all done
     return retval;
+}
+
+function processInitialiser(
+    input: Expression
+): IntermediateExpression
+{
+    // we will refactor this later on
+    if (isCallExpression(input)) {
+        return {
+            kind: IntermediateKind.IntermediateCallableExpression,
+            text: input.getText(),
+        }
+    }
+
+    // if we get here, we do not know how to process this variable
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: "CallExpression",
+            actual: getClassNames(input)[0]
+        }
+    });
 }
