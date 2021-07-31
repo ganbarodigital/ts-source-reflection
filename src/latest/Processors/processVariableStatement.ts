@@ -33,7 +33,7 @@
 //
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
-import { Expression, isCallExpression, NodeFlags, Statement, VariableDeclaration } from "typescript";
+import { Expression, isAsExpression, isCallExpression, NodeFlags, Statement, VariableDeclaration } from "typescript";
 import * as AST from "../AST";
 import { isNodeExported } from "../AST";
 import {
@@ -43,6 +43,7 @@ import {
     IntermediateVariableDeclaration,
     IntermediateVariableDeclarations
 } from "../IntermediateTypes";
+import { processTypeNode } from "./processTypeNode";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processVariableStatement: StatementProcessor = (
@@ -119,7 +120,14 @@ function processInitialiser(
         return {
             kind: IntermediateKind.IntermediateCallableExpression,
             text: input.getText(),
+            asType: undefined,
         }
+    }
+
+    if (isAsExpression(input)) {
+        const retval = processInitialiser(input.expression);
+        retval.asType = processTypeNode(input.type);
+        return retval;
     }
 
     // if we get here, we do not know how to process this variable

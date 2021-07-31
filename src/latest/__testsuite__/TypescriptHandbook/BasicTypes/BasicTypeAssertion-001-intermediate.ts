@@ -44,7 +44,7 @@ export default {
                         kind: IntermediateKind.IntermediateVariableDeclaration,
                         variableName: "myCanvas",
                         constant: true,
-                        exported: true,
+                        exported: false,
                         docBlock: {
                             kind: IntermediateKind.IntermediateDocBlock,
                             text: '',
@@ -52,9 +52,12 @@ export default {
                         initialiser: {
                             kind: IntermediateKind.IntermediateCallableExpression,
                             text: 'document.getElementById("main_canvas")',
-                            asType: undefined,
+                            asType: {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "HTMLCanvasElement",
+                            },
                         },
-                    },
+                    }
                 ],
             }
         ],

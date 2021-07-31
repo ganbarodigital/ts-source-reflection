@@ -51,7 +51,8 @@ export default {
                         },
                         initialiser: {
                             kind: IntermediateKind.IntermediateCallableExpression,
-                            text: 'document.getElementById("main_canvas")'
+                            text: 'document.getElementById("main_canvas")',
+                            asType: undefined,
                         },
                     }
                 ],

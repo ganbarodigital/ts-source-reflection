@@ -32,12 +32,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { Maybe } from "@safelytyped/core-types";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 // this is a placeholder for now
 export interface IntermediateCallableExpression
     extends IntermediateItem<IntermediateKind.IntermediateCallableExpression>
 {
     text: string;
+    asType: Maybe<IntermediateTypeReference>;
 }
