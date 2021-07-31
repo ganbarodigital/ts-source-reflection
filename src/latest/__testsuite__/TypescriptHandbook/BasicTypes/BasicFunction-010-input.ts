@@ -1,0 +1,3 @@
+function printText(s: string, alignment: "left" | "right" | "center") {
+    // ...
+}
