@@ -68,3 +68,4 @@ export * from "./IntermediateTypedPropertyDefinition";
 export * from "./IntermediateUnionType";
 export * from "./IntermediateUntypedCallableParameter";
 export * from "./IntermediateUntypedPropertyDefinition";
+export * from "./IntermediateVariableDeclaration";
