@@ -32,14 +32,25 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeAssertable } from "../IntermediateTypeAssertable";
+import { Maybe } from "@safelytyped/core-types";
+import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
-// this is a placeholder for now
-export interface IntermediateCallableExpression
-    extends IntermediateItem<IntermediateKind.IntermediateCallableExpression>,
-        IntermediateTypeAssertable
+export interface IntermediateTypeAssertable
 {
-    text: string;
+    /**
+     * typeAssertion is a type cast that happens before the expression.
+     *
+     * It is LEGAL to have both a typeAssertion and asType.
+     */
+    typeAssertion: Maybe<IntermediateTypeReference>;
+
+    /**
+     * asType is a type cast that happens afer the expresion.
+     *
+     * According to my testing, this takes precedence over the typeAssertion
+     * value.
+     *
+     * It is LEGAL to have both a typeAssertion and asType.
+     */
+    asType: Maybe<IntermediateTypeReference>;
 }

@@ -32,14 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeAssertable } from "../IntermediateTypeAssertable";
-
-// this is a placeholder for now
-export interface IntermediateCallableExpression
-    extends IntermediateItem<IntermediateKind.IntermediateCallableExpression>,
-        IntermediateTypeAssertable
-{
-    text: string;
-}
+export * from "./IntermediateTypeAssertable";
