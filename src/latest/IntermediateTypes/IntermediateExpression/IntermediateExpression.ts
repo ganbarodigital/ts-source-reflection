@@ -32,14 +32,16 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateBigintLiteral } from "../IntermediateBigintLiteral";
 import { IntermediateCallableExpression } from "../IntermediateCallableExpression";
 import { IntermediateNumericLiteral } from "../IntermediateNumericLiteral";
 import { IntermediateObjectLiteral } from "../IntermediateObjectLiteral";
 import { IntermediateStringLiteral } from "../IntermediateStringLiteral";
 
 export type IntermediateExpression
-    = IntermediateCallableExpression
-    | IntermediateNumericLiteral
-    | IntermediateObjectLiteral
-    | IntermediateStringLiteral
-    ;
+    = IntermediateBigintLiteral
+      | IntermediateCallableExpression
+      | IntermediateNumericLiteral
+      | IntermediateObjectLiteral
+      | IntermediateStringLiteral
+      ;
