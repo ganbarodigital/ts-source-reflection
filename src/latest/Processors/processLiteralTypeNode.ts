@@ -32,11 +32,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
+import { LiteralTypeNode } from "typescript";
+import { IntermediateKind, IntermediateLiteralType } from "../IntermediateTypes";
 
-export interface IntermediateLiteralType
-    extends IntermediateItem<IntermediateKind.IntermediateLiteralType>
+export function processLiteralTypeNode(
+    input: LiteralTypeNode
+): IntermediateLiteralType
 {
-    typeName: string | number | BigInt;
+    return {
+        kind: IntermediateKind.IntermediateLiteralType,
+        typeName: input.literal.getText()
+    }
 }

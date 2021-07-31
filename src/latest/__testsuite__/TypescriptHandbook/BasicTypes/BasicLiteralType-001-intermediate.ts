@@ -32,11 +32,35 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateKind } from "../../../IntermediateTypes";
 
-export interface IntermediateLiteralType
-    extends IntermediateItem<IntermediateKind.IntermediateLiteralType>
-{
-    typeName: string | number | BigInt;
+export default {
+    children: {
+        VariableStatement: [
+            {
+                kind: IntermediateKind.IntermediateVariableDeclarations,
+                variables: [
+                    {
+                        kind: IntermediateKind.IntermediateVariableDeclaration,
+                        variableName: "x",
+                        constant: false,
+                        exported: false,
+                        docBlock: {
+                            kind: IntermediateKind.IntermediateDocBlock,
+                            text: '',
+                        },
+                        initialiser: {
+                            kind: IntermediateKind.IntermediateStringLiteral,
+                            text: 'hello',
+                        },
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateLiteralType,
+                            typeName: '"hello"',
+                        },
+                    }
+                ],
+            }
+        ],
+    },
+    kind: IntermediateKind.IntermediateSourceFile,
 }

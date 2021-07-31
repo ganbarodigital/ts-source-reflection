@@ -104,6 +104,11 @@ function processVariableDeclaration(
         typeRef: undefined,
     }
 
+    // does this variable have an explicit type?
+    if (input.type) {
+        retval.typeRef = processTypeNode(input.type);
+    }
+
     // does this variable have an initial value?
     if (input.initializer) {
         retval.initialiser = processInitialiser(input.initializer);
