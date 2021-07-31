@@ -32,20 +32,30 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./findDocBlockText";
-export * from "./findExtendsHeritageClauses";
-export * from "./findImplementsHeritageClauses";
-export * from "./getStatementKind";
-export * from "./isAnonymousClassType";
-export * from "./isExportKeyword";
-export * from "./isNodeExported";
-export * from "./mustBeClassDeclaration";
-export * from "./mustBeFunctionDeclaration";
-export * from "./mustBeImportClause";
-export * from "./mustBeImportDeclaration";
-export * from "./mustBeInterfaceDeclaration";
-export * from "./mustBePropertyAssignment";
-export * from "./mustBePropertySignature";
-export * from "./mustBeTypeAliasDeclaration";
-export * from "./mustBeTypeReference";
-export * from "./mustBeVariableStatement";
+import {
+    DEFAULT_DATA_PATH,
+    getClassNames,
+    UnsupportedTypeError
+} from "@safelytyped/core-types";
+import {
+    isPropertyAssignment,
+    ObjectLiteralElementLike,
+    PropertyAssignment
+} from "typescript";
+
+export function mustBePropertyAssignment(input: ObjectLiteralElementLike): PropertyAssignment
+{
+    // what do we have?
+    if (isPropertyAssignment(input)) {
+        return input;
+    }
+
+    // if we get here, we're not happy
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: 'PropertyAssignment',
+            actual: getClassNames(input)[0],
+        }
+    });
+}
