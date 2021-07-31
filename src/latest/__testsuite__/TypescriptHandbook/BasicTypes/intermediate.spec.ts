@@ -154,6 +154,16 @@ const TEST_FILES: TestFile[] = [
         expectedResult: require("./BasicTypeAssertion-001-intermediate").default,
         preprocessor: injectPathIntoExpectedResult,
     },
+    {
+        sourceFile: "BasicTypeAssertion-002-input.ts",
+        expectedResult: require("./BasicTypeAssertion-002-intermediate").default,
+        preprocessor: injectPathIntoExpectedResult,
+    },
+    {
+        sourceFile: "BasicTypeAssertion-003-input.ts",
+        expectedResult: require("./BasicTypeAssertion-003-intermediate").default,
+        preprocessor: injectPathIntoExpectedResult,
+    },
 ];
 
 describe("basic types intermediate processing", () => {

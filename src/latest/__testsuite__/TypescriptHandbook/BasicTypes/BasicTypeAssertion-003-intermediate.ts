@@ -42,7 +42,7 @@ export default {
                 variables: [
                     {
                         kind: IntermediateKind.IntermediateVariableDeclaration,
-                        variableName: "myCanvas",
+                        variableName: "myCanvas3",
                         constant: true,
                         exported: false,
                         docBlock: {
@@ -56,7 +56,10 @@ export default {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
                                 typeName: "HTMLCanvasElement",
                             },
-                            asType: undefined,
+                            asType: {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "HTMLElement",
+                            },
                         },
                     }
                 ],
