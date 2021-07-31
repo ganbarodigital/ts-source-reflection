@@ -33,10 +33,11 @@
 //
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
-import { Expression, isAsExpression, isCallExpression, isTypeAssertionExpression, NodeFlags, Statement, VariableDeclaration } from "typescript";
+import { Expression, isAsExpression, isCallExpression, isStringLiteral, isTypeAssertionExpression, NodeFlags, Statement, VariableDeclaration } from "typescript";
 import * as AST from "../AST";
 import { isNodeExported } from "../AST";
 import {
+    IntermediateCallableExpression,
     IntermediateExpression,
     IntermediateKind,
     IntermediateSourceFile,
@@ -116,6 +117,13 @@ function processInitialiser(
 ): IntermediateExpression
 {
     // we will refactor this later on
+    if (isStringLiteral(input)) {
+        return {
+            kind: IntermediateKind.IntermediateStringLiteral,
+            text: input.text,
+        }
+    }
+
     if (isCallExpression(input)) {
         return {
             kind: IntermediateKind.IntermediateCallableExpression,
@@ -126,13 +134,13 @@ function processInitialiser(
     }
 
     if (isTypeAssertionExpression(input)) {
-        const retval = processInitialiser(input.expression);
+        const retval = processInitialiser(input.expression) as IntermediateCallableExpression;
         retval.typeAssertion = processTypeNode(input.type);
         return retval;
     }
 
     if (isAsExpression(input)) {
-        const retval = processInitialiser(input.expression);
+        const retval = processInitialiser(input.expression) as IntermediateCallableExpression;
         retval.asType = processTypeNode(input.type);
         return retval;
     }
