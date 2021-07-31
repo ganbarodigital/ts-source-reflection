@@ -32,14 +32,22 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./findDocBlockText";
-export * from "./findExtendsHeritageClauses";
-export * from "./findImplementsHeritageClauses";
-export * from "./isAnonymousClassType";
-export * from "./isExportKeyword";
-export * from "./isNodeExported";
-export * from "./mustBeClassDeclaration";
-export * from "./mustBeFunctionDeclaration";
-export * from "./mustBeImportClause";
-export * from "./mustBeImportDeclaration";
-export * from "./mustBeVariableStatement";
+import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
+import { isVariableStatement, Statement, VariableStatement } from "typescript";
+
+export function mustBeVariableStatement(input: Statement): VariableStatement
+{
+    // what do we have?
+    if (isVariableStatement(input)) {
+        return input;
+    }
+
+    // if we get here, we're not happy
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: 'VariableStatement',
+            actual: getClassNames(input)[0],
+        }
+    });
+}
