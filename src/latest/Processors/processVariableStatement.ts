@@ -33,13 +33,16 @@
 //
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
-import { Expression, isAsExpression, isCallExpression, isStringLiteral, isTypeAssertionExpression, NodeFlags, Statement, VariableDeclaration } from "typescript";
+import { Expression, isAsExpression, isCallExpression, isNumericLiteral, isObjectLiteralExpression, isStringLiteral, isTypeAssertionExpression, NodeFlags, PropertyAssignment, Statement, VariableDeclaration } from "typescript";
 import * as AST from "../AST";
 import { isNodeExported } from "../AST";
+import { mustBePropertyAssignment } from "../AST/mustBePropertyAssignment";
 import {
     IntermediateCallableExpression,
     IntermediateExpression,
     IntermediateKind,
+    IntermediateObjectLiteral,
+    IntermediatePropertyAssignment,
     IntermediateSourceFile,
     IntermediateVariableDeclaration,
     IntermediateVariableDeclarations
@@ -123,6 +126,12 @@ function processInitialiser(
 ): IntermediateExpression
 {
     // we will refactor this later on
+    if (isNumericLiteral(input)) {
+        return {
+            kind: IntermediateKind.IntermediateNumericLiteral,
+            value: input.text,
+        }
+    }
     if (isStringLiteral(input)) {
         return {
             kind: IntermediateKind.IntermediateStringLiteral,
@@ -137,6 +146,20 @@ function processInitialiser(
             typeAssertion: undefined,
             asType: undefined,
         }
+    }
+
+    if (isObjectLiteralExpression(input)) {
+        const retval: IntermediateObjectLiteral = {
+            kind: IntermediateKind.IntermediateObjectLiteral,
+            properties: [],
+        }
+
+        for (const member of input.properties) {
+            const propAssignment = mustBePropertyAssignment(member);
+            retval.properties.push(processPropertyAssignment(propAssignment));
+        }
+
+        return retval;
     }
 
     if (isTypeAssertionExpression(input)) {
@@ -159,4 +182,15 @@ function processInitialiser(
             actual: getClassNames(input)[0]
         }
     });
+}
+
+function processPropertyAssignment(
+    input: PropertyAssignment
+): IntermediatePropertyAssignment
+{
+    return {
+        kind: IntermediateKind.IntermediatePropertyAssignment,
+        propertyName: input.name.getText(),
+        initialiser: processInitialiser(input.initializer),
+    }
 }

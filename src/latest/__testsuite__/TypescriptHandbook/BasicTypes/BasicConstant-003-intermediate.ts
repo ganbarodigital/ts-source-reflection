@@ -32,11 +32,41 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateKind } from "../../../IntermediateTypes";
 
-export interface IntermediateNumericLiteral
-    extends IntermediateItem<IntermediateKind.IntermediateNumericLiteral>
-{
-    value: string;
+export default {
+    children: {
+        VariableStatement: [
+            {
+                kind: IntermediateKind.IntermediateVariableDeclarations,
+                variables: [
+                    {
+                        kind: IntermediateKind.IntermediateVariableDeclaration,
+                        variableName: "obj",
+                        constant: true,
+                        exported: false,
+                        docBlock: {
+                            kind: IntermediateKind.IntermediateDocBlock,
+                            text: '',
+                        },
+                        initialiser: {
+                            kind: IntermediateKind.IntermediateObjectLiteral,
+                            properties: [
+                                {
+                                    kind: IntermediateKind.IntermediatePropertyAssignment,
+                                    propertyName: "counter",
+                                    initialiser: {
+                                        kind: IntermediateKind.IntermediateNumericLiteral,
+                                        value: "0"
+                                    }
+                                }
+                            ]
+                        },
+                        typeRef: undefined,
+                    },
+                ],
+            }
+        ],
+    },
+    kind: IntermediateKind.IntermediateSourceFile,
 }

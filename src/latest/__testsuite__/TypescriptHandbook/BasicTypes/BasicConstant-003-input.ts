@@ -1,0 +1,1 @@
+const obj = { counter: 0 };
