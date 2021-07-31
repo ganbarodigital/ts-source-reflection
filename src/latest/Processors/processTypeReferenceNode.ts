@@ -40,6 +40,18 @@ export function processTypeReferenceNode
     input: TypeReferenceNode
 ): IntermediateTypeReference
 {
+    // what type name are we looking at?
+    const typeName = input.typeName.getText();
+
+    // special case - found in the "as const" suffix
+    // this tells the compiler to convert all the values to also be
+    // type literals!
+    if (typeName === "const") {
+        return {
+            kind: IntermediateKind.IntermediateConstTypeCast,
+        }
+    }
+
     // we will return to this and add support for other cases
     // as our test suite grows!
     return {
