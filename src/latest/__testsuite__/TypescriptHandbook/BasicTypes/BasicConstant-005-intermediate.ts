@@ -32,12 +32,37 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { SyntaxKind } from "typescript";
+import { IntermediateKind } from "../../../IntermediateTypes";
 
-export const BUILT_IN_TYPES: string[] = [];
-BUILT_IN_TYPES[SyntaxKind.BigIntKeyword] = "bigint";
-BUILT_IN_TYPES[SyntaxKind.BooleanKeyword] = "boolean";
-BUILT_IN_TYPES[SyntaxKind.NullKeyword] = "null";
-BUILT_IN_TYPES[SyntaxKind.NumberKeyword] = "number";
-BUILT_IN_TYPES[SyntaxKind.ObjectKeyword] = "object";
-BUILT_IN_TYPES[SyntaxKind.StringKeyword] = "string";
+export default {
+    children: {
+        VariableStatement: [
+            {
+                kind: IntermediateKind.IntermediateVariableDeclarations,
+                variables: [
+                    {
+                        kind: IntermediateKind.IntermediateVariableDeclaration,
+                        variableName: "oneHundred",
+                        constant: true,
+                        exported: false,
+                        docBlock: {
+                            kind: IntermediateKind.IntermediateDocBlock,
+                            text: '',
+                        },
+                        initialiser: {
+                            kind: IntermediateKind.IntermediateCallableExpression,
+                            text: 'BigInt(100)',
+                            typeAssertion: undefined,
+                            asType: undefined,
+                        },
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "bigint",
+                        },
+                    }
+                ],
+            }
+        ],
+    },
+    kind: IntermediateKind.IntermediateSourceFile,
+}
