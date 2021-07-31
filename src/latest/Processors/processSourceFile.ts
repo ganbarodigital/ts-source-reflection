@@ -42,6 +42,7 @@ import { processFunctionDeclaration } from "./processFunctionDeclaration";
 import { processImportDeclaration } from "./processImportDeclaration";
 import { processInterfaceDeclaration } from "./processInterfaceDeclaration";
 import { processTypeAliasDeclaration } from "./processTypeAliasDeclaration";
+import { processVariableStatement } from "./processVariableStatement";
 import { StatementProcessor } from "./StatementProcessor";
 
 
@@ -51,6 +52,7 @@ const statementProcessors: FunctionPointerTable<string, StatementProcessor> = {
     'ClassDeclaration': processClassDeclaration,
     'FunctionDeclaration': processFunctionDeclaration,
     'TypeAliasDeclaration': processTypeAliasDeclaration,
+    'VariableStatement': processVariableStatement,
 }
 
 export function processSourceFile(
