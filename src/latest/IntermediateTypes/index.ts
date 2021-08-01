@@ -63,6 +63,7 @@ export * from "./IntermediateMethod";
 // export * from "./IntermediateModule";
 export * from "./IntermediateNumericLiteral";
 export * from "./IntermediateObjectLiteral";
+export * from "./IntermediateParenthesizedType";
 export * from "./IntermediatePropertyAssignment";
 export * from "./IntermediatePropertyDefinition";
 export * from "./IntermediateReference";
