@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateArrayLiteralExpression } from "../IntermediateArrayLiteralExpression";
 import { IntermediateBigintLiteral } from "../IntermediateBigintLiteral";
 import { IntermediateCallableExpression } from "../IntermediateCallableExpression";
 import { IntermediateNumericLiteral } from "../IntermediateNumericLiteral";
@@ -39,7 +40,8 @@ import { IntermediateObjectLiteral } from "../IntermediateObjectLiteral";
 import { IntermediateStringLiteral } from "../IntermediateStringLiteral";
 
 export type IntermediateExpression
-    = IntermediateBigintLiteral
+    = IntermediateArrayLiteralExpression
+      | IntermediateBigintLiteral
       | IntermediateCallableExpression
       | IntermediateNumericLiteral
       | IntermediateObjectLiteral
