@@ -34,6 +34,7 @@
 import { IntermediateAnonymousClassType } from "../IntermediateAnonymousClassType";
 import { IntermediateBuiltInTypeArrayReference } from "../IntermediateBuiltInTypeArrayReference";
 import { IntermediateBuiltInTypeReference } from "../IntermediateBuiltInTypeReference";
+import { IntermediateComplexTypeArrayReference } from "../IntermediateComplexTypeArrayReference";
 import { IntermediateConstTypeCast } from "../IntermediateConstTypeCast";
 import { IntermediateFixedTypeArrayReference } from "../IntermediateFixedTypeArrayReference";
 import { IntermediateFixedTypeReference } from "../IntermediateFixedTypeReference";
@@ -49,6 +50,7 @@ export type IntermediateTypeReference
     = IntermediateAnonymousClassType
       | IntermediateBuiltInTypeArrayReference
       | IntermediateBuiltInTypeReference
+      | IntermediateComplexTypeArrayReference
       | IntermediateConstTypeCast
       | IntermediateFixedTypeReference
       | IntermediateFixedTypeArrayReference
