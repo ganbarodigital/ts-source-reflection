@@ -33,11 +33,8 @@
 //
 import { IntermediateAnonymousClassType } from "../IntermediateAnonymousClassType";
 import { IntermediateArrayTypeReference } from "../IntermediateArrayTypeReference";
-import { IntermediateBuiltInTypeArrayReference } from "../IntermediateBuiltInTypeArrayReference";
 import { IntermediateBuiltInTypeReference } from "../IntermediateBuiltInTypeReference";
-import { IntermediateComplexTypeArrayReference } from "../IntermediateComplexTypeArrayReference";
 import { IntermediateConstTypeCast } from "../IntermediateConstTypeCast";
-import { IntermediateFixedTypeArrayReference } from "../IntermediateFixedTypeArrayReference";
 import { IntermediateFixedTypeReference } from "../IntermediateFixedTypeReference";
 import { IntermediateFunctionTypeSignature } from "../IntermediateFunctionTypeSignature";
 import { IntermediateLiteralType } from "../IntermediateLiteralType";
@@ -50,12 +47,9 @@ import { IntermediateUnionType } from "../IntermediateUnionType";
 export type IntermediateTypeReference
     = IntermediateAnonymousClassType
       | IntermediateArrayTypeReference
-      | IntermediateBuiltInTypeArrayReference
       | IntermediateBuiltInTypeReference
-      | IntermediateComplexTypeArrayReference
       | IntermediateConstTypeCast
       | IntermediateFixedTypeReference
-      | IntermediateFixedTypeArrayReference
       | IntermediateFunctionTypeSignature
       | IntermediateLiteralType
       | IntermediateParenthesizedType

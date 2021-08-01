@@ -52,8 +52,11 @@ export default {
                                     typeName: 'string',
                                 },
                                 {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeArrayReference,
-                                    typeName: 'string',
+                                    kind: IntermediateKind.IntermediateArrayTypeReference,
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: 'string',
+                                    },
                                 },
                                 {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,

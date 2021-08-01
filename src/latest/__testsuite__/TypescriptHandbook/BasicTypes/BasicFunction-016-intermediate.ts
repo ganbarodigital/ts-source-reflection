@@ -48,8 +48,11 @@ export default {
                             kind: IntermediateKind.IntermediateUnionType,
                             typeRefs: [
                                 {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeArrayReference,
-                                    typeName: 'number',
+                                    kind: IntermediateKind.IntermediateArrayTypeReference,
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: 'number',
+                                    },
                                 },
                                 {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -73,8 +76,11 @@ export default {
                     kind: IntermediateKind.IntermediateUnionType,
                     typeRefs: [
                         {
-                            kind: IntermediateKind.IntermediateBuiltInTypeArrayReference,
-                            typeName: 'number',
+                            kind: IntermediateKind.IntermediateArrayTypeReference,
+                            typeRef: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: 'number',
+                            },
                         },
                         {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,

@@ -54,7 +54,7 @@ export default {
                             value: '[getSmallPet(), getSmallPet(), getSmallPet()]',
                         },
                         typeRef: {
-                            kind: IntermediateKind.IntermediateComplexTypeArrayReference,
+                            kind: IntermediateKind.IntermediateArrayTypeReference,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateParenthesizedType,
                                 typeRef: {

@@ -48,8 +48,11 @@ export default {
                             kind: IntermediateKind.IntermediateUnionType,
                             typeRefs: [
                                 {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeArrayReference,
-                                    typeName: "string",
+                                    kind: IntermediateKind.IntermediateArrayTypeReference,
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "string",
+                                    },
                                 },
                                 {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,

@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { ArrayTypeNode, isArrayTypeNode, isFunctionTypeNode, isIntersectionTypeNode, isLiteralTypeNode, isParenthesizedTypeNode, isTypePredicateNode, isUnionTypeNode, TypeNode } from "typescript";
+import { isArrayTypeNode, isFunctionTypeNode, isIntersectionTypeNode, isLiteralTypeNode, isParenthesizedTypeNode, isTypePredicateNode, isUnionTypeNode, TypeNode } from "typescript";
 import { isAnonymousClassType } from "../AST";
 import { mustBeTypeReference } from "../AST/mustBeTypeReference";
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
@@ -54,7 +54,10 @@ export function processTypeNode
 {
     // special case - we have an array
     if (isArrayTypeNode(input)) {
-        return processArrayNode(input);
+        return {
+            kind: IntermediateKind.IntermediateArrayTypeReference,
+            typeRef: processTypeNode(input.elementType),
+        }
     }
 
     // special case - anonymous class
@@ -103,37 +106,4 @@ export function processTypeNode
     // use a type guarantee to keep the compiler happy!
     const typeRef = mustBeTypeReference(input);
     return processTypeReferenceNode(typeRef);
-}
-
-function processArrayNode(
-    input: ArrayTypeNode
-): IntermediateTypeReference
-{
-    // we need to process the array type before we can figure out what
-    // to do with it
-    const elementType = processTypeNode(input.elementType);
-
-    // so what is this an array of?
-    switch (elementType.kind) {
-        // this is 'string', or 'number' et al
-        case IntermediateKind.IntermediateBuiltInTypeReference:
-            return {
-                kind: IntermediateKind.IntermediateBuiltInTypeArrayReference,
-                typeName: elementType.typeName,
-            }
-
-        // this refers to a single class, interface, type alias, etc
-        case IntermediateKind.IntermediateFixedTypeReference:
-            return {
-                kind: IntermediateKind.IntermediateFixedTypeArrayReference,
-                typeName: elementType.typeName,
-            }
-
-        // this is things like union types
-        default:
-            return {
-                kind: IntermediateKind.IntermediateComplexTypeArrayReference,
-                typeRef: elementType,
-            }
-    }
 }

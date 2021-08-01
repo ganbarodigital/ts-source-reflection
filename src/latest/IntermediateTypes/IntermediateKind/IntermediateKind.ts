@@ -42,15 +42,11 @@ export enum IntermediateKind {
 
     // I'm not 100% sure we should treat built-in types separately
     // so this may disappear in the future!
-    IntermediateBuiltInTypeArrayReference,
     IntermediateBuiltInTypeReference,
     IntermediateClass,
-    IntermediateComplexTypeArrayReference,
-    IntermediateComplexTypeReference,
     IntermediateConstTypeCast,
     IntermediateDocBlock,
     IntermediateFixedTypeArgument,
-    IntermediateFixedTypeArrayReference,
     IntermediateFixedTypeReference,
     IntermediateFunction,
     IntermediateFunctionTypeSignature,
