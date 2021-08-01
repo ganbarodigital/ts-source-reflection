@@ -1,0 +1,1 @@
+const zoo: (Fish | Bird);
