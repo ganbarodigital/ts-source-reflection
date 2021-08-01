@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { isArrayTypeNode, isFunctionTypeNode, isIntersectionTypeNode, isLiteralTypeNode, isUnionTypeNode, TypeNode } from "typescript";
+import { isArrayTypeNode, isFunctionTypeNode, isIntersectionTypeNode, isLiteralTypeNode, isTypePredicateNode, isUnionTypeNode, TypeNode } from "typescript";
 import { isAnonymousClassType } from "../AST";
 import { mustBeTypeReference } from "../AST/mustBeTypeReference";
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
@@ -42,6 +42,7 @@ import { processBuiltInType } from "./processBuiltInType";
 import { processFunctionType } from "./processFunctionType";
 import { processIntersectionNode } from "./processIntersectionNode";
 import { processLiteralTypeNode } from "./processLiteralTypeNode";
+import { processTypePredicate } from "./processTypePredicate";
 import { processTypeReferenceNode } from "./processTypeReferenceNode";
 import { processUnionType } from "./processUnionType";
 
@@ -90,6 +91,11 @@ export function processTypeNode
     // special case - function type signature
     if (isFunctionTypeNode(input)) {
         return processFunctionType(input);
+    }
+
+    // special case - type predicate
+    if (isTypePredicateNode(input)) {
+        return processTypePredicate(input);
     }
 
     // generic case
