@@ -32,51 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export enum IntermediateKind {
-    IntermediateCallableExpression,
-    IntermediateAnonymousCallableParameter,
-    IntermediateAnonymousClassType,
-    IntermediateArrayLiteralExpression,
-    IntermediateArrayTypeReference,
-    IntermediateBigintLiteral,
+import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
-    // I'm not 100% sure we should treat built-in types separately
-    // so this may disappear in the future!
-    IntermediateBuiltInTypeArrayReference,
-    IntermediateBuiltInTypeReference,
-    IntermediateClass,
-    IntermediateComplexTypeArrayReference,
-    IntermediateComplexTypeReference,
-    IntermediateConstTypeCast,
-    IntermediateDocBlock,
-    IntermediateFixedTypeArgument,
-    IntermediateFixedTypeArrayReference,
-    IntermediateFixedTypeReference,
-    IntermediateFunction,
-    IntermediateFunctionTypeSignature,
-    IntermediateGenericType,
-    IntermediateGenericTypeArgument,
-    IntermediateImportItem,
-    IntermediateInterface,
-    IntermediateLiteralType,
-    IntermediateMethod,
-    IntermediateModule,
-    IntermediateNumericLiteral,
-    IntermediateObjectLiteral,
-    IntermediateParenthesizedType,
-    IntermediatePropertyAssignment,
-    IntermediateTypedPropertyDefinition,
-    IntermediateReference,
-    IntermediateSourceFile,
-    IntermediateStringLiteral,
-    IntermediateTypeAliasDefinition,
-    IntermediateTypeArgument,
-    IntermediateTypeIntersection,
-    IntermediateTypePredicate,
-    IntermediateTypedCallableParameter,
-    IntermediateUnionType,
-    IntermediateUntypedCallableParameter,
-    IntermediateUntypedPropertyDefinition,
-    IntermediateVariableDeclaration,
-    IntermediateVariableDeclarations,
+export interface IntermediateArrayTypeReference
+    extends IntermediateItem<IntermediateKind.IntermediateArrayTypeReference>
+{
+    typeRef: IntermediateTypeReference;
 }
