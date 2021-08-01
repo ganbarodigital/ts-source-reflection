@@ -48,7 +48,7 @@ export default {
                             kind: IntermediateKind.IntermediateUnionType,
                             typeRefs: [
                                 {
-                                    kind: IntermediateKind.IntermediateFixedTypeArrayReference,
+                                    kind: IntermediateKind.IntermediateBuiltInTypeArrayReference,
                                     typeName: "string",
                                 },
                                 {

@@ -52,7 +52,11 @@ export function processTypeNode
     // special case - we have an array
     if (isArrayTypeNode(input)) {
         const retval = processTypeNode(input.elementType);
-        retval.kind = IntermediateKind.IntermediateFixedTypeArrayReference;
+        if (isBuiltInType(input.elementType)) {
+            retval.kind = IntermediateKind.IntermediateBuiltInTypeArrayReference;
+        } else {
+            retval.kind = IntermediateKind.IntermediateFixedTypeArrayReference;
+        }
         return retval;
     }
 
