@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import { IntermediateAnonymousClassType } from "../IntermediateAnonymousClassType";
+import { IntermediateArrayTypeReference } from "../IntermediateArrayTypeReference";
 import { IntermediateBuiltInTypeArrayReference } from "../IntermediateBuiltInTypeArrayReference";
 import { IntermediateBuiltInTypeReference } from "../IntermediateBuiltInTypeReference";
 import { IntermediateComplexTypeArrayReference } from "../IntermediateComplexTypeArrayReference";
@@ -48,6 +49,7 @@ import { IntermediateUnionType } from "../IntermediateUnionType";
 
 export type IntermediateTypeReference
     = IntermediateAnonymousClassType
+      | IntermediateArrayTypeReference
       | IntermediateBuiltInTypeArrayReference
       | IntermediateBuiltInTypeReference
       | IntermediateComplexTypeArrayReference
