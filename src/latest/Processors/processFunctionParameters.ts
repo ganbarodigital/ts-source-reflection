@@ -31,40 +31,45 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { Maybe } from "@safelytyped/core-types";
-import { Statement } from "typescript";
-import { mustBeFunctionDeclaration } from "../AST";
-import {
-    IntermediateFunction,
-    IntermediateKind,
-    IntermediateSourceFile,
-    IntermediateTypeReference
-} from "../IntermediateTypes";
-import { processFunctionParameters } from "./processFunctionParameters";
+
+import { NodeArray, ParameterDeclaration } from "typescript";
+import { IntermediateCallableParameter, IntermediateKind } from "../IntermediateTypes";
+import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
-import { StatementProcessor } from "./StatementProcessor";
 
 
+export function processFunctionParameters(
+    input: NodeArray<ParameterDeclaration>
+): IntermediateCallableParameter[] {
+    // our return value
+    const retval: IntermediateCallableParameter[] = [];
 
-export const processFunctionDeclaration: StatementProcessor = (
-    sourceFile: IntermediateSourceFile,
-    input: Statement
-): IntermediateFunction => {
-    // make sure we have what we need
-    const funcDec = mustBeFunctionDeclaration(input);
+    input.forEach((paramDec) => {
+        // this is a placeholder for now
+        //
+        // we will be expanding this as we add more test cases, and
+        // eventually we will have to refactor it to handle edge cases
+        // better & without introducing complexity
 
-    // at this point, we *know* that we're looking at a function :)
+        // special case - untyped parameter
+        if (!paramDec.type) {
+            retval.push({
+                kind: IntermediateKind.IntermediateUntypedCallableParameter,
+                paramName: paramDec.name.getText(),
+            });
 
-    // do we have a return type?
-    let retType: Maybe<IntermediateTypeReference>;
-    if (funcDec.type) {
-        retType = processTypeNode(funcDec.type);
-    }
+            return;
+        }
 
-    return {
-        kind: IntermediateKind.IntermediateFunction,
-        name: funcDec.name?.text,
-        parameters: processFunctionParameters(funcDec.parameters),
-        returnType: retType,
-    }
+        // general case - typed parameter
+        retval.push({
+            kind: IntermediateKind.IntermediateTypedCallableParameter,
+            paramName: paramDec.name.getText(),
+            typeRef: processTypeNode(paramDec.type),
+            optional: processQuestionToken(paramDec.questionToken),
+        });
+    });
+
+    // all done
+    return retval;
 }
