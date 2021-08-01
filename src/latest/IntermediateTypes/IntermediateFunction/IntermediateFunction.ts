@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { Maybe } from "@safelytyped/core-types";
 import {
     IntermediateCallable,
     IntermediateItem,
@@ -42,5 +43,7 @@ export interface IntermediateFunction
     extends IntermediateItem<IntermediateKind.IntermediateFunction>,
         IntermediateCallable
 {
-    kind: IntermediateKind.IntermediateFunction
+    kind: IntermediateKind.IntermediateFunction;
+    name: Maybe<string>;
+
 }

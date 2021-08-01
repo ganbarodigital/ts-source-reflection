@@ -39,7 +39,6 @@ import { IntermediateTypeReference } from "../IntermediateTypeReference";
 // tslint:disable-next-line: no-empty-interface
 export interface IntermediateCallable
 {
-    name: Maybe<string>;
     parameters: IntermediateCallableParameter[];
     returnType: Maybe<IntermediateTypeReference>;
 }
