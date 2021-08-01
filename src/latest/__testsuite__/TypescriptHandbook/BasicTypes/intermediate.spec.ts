@@ -36,6 +36,7 @@ import { Filepath } from "@safelytyped/filepath";
 import { expect } from "chai";
 import * as fs from "fs";
 import * as ts from "typescript";
+import * as fileExists from "file-exists";
 
 import { processSourceFile } from "../../../Processors/processSourceFile";
 
@@ -57,194 +58,42 @@ function injectPathIntoExpectedResult(inputPath: string, expectedResult: any)
     (expectedResult as HashMap<any>).path = new Filepath(inputPath);
 }
 
-const TEST_FILES: TestFile[] = [
-    {
-        sourceFile: "BasicFunction-001-input.ts",
-        expectedResult: require("./BasicFunction-001-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicFunction-002-input.ts",
-        expectedResult: require("./BasicFunction-002-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicFunction-003-input.ts",
-        expectedResult: require("./BasicFunction-003-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicFunction-004-input.ts",
-        expectedResult: require("./BasicFunction-004-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicFunction-005-input.ts",
-        expectedResult: require("./BasicFunction-005-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicFunction-006-input.ts",
-        expectedResult: require("./BasicFunction-006-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicFunction-007-input.ts",
-        expectedResult: require("./BasicFunction-007-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        // if this fails, BasicFunction-008 will also fail!
-        sourceFile: "BasicTypeAlias-001-input.ts",
-        expectedResult: require("./BasicTypeAlias-001-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicFunction-008-input.ts",
-        expectedResult: require("./BasicFunction-008-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicTypeAlias-002-input.ts",
-        expectedResult: require("./BasicTypeAlias-002-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicTypeAlias-003-input.ts",
-        expectedResult: require("./BasicTypeAlias-003-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicFunction-009-input.ts",
-        expectedResult: require("./BasicFunction-009-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicFunction-010-input.ts",
-        expectedResult: require("./BasicFunction-010-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicFunction-011-input.ts",
-        expectedResult: require("./BasicFunction-011-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicFunction-012-input.ts",
-        expectedResult: require("./BasicFunction-012-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicFunction-013-input.ts",
-        expectedResult: require("./BasicFunction-013-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicFunction-014-input.ts",
-        expectedResult: require("./BasicFunction-014-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicFunction-015-input.ts",
-        expectedResult: require("./BasicFunction-015-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicInterface-001-input.ts",
-        expectedResult: require("./BasicInterface-001-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicInterface-002-input.ts",
-        expectedResult: require("./BasicInterface-002-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicIntersection-001-input.ts",
-        expectedResult: require("./BasicIntersection-001-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicInterface-003-input.ts",
-        expectedResult: require("./BasicInterface-003-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicConstant-001-input.ts",
-        expectedResult: require("./BasicConstant-001-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicConstant-002-input.ts",
-        expectedResult: require("./BasicConstant-002-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicConstant-003-input.ts",
-        expectedResult: require("./BasicConstant-003-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicConstant-004-input.ts",
-        expectedResult: require("./BasicConstant-004-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicConstant-005-input.ts",
-        expectedResult: require("./BasicConstant-005-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicConstant-006-input.ts",
-        expectedResult: require("./BasicConstant-006-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicConstant-007-input.ts",
-        expectedResult: require("./BasicConstant-007-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicTypeAssertion-001-input.ts",
-        expectedResult: require("./BasicTypeAssertion-001-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicTypeAssertion-002-input.ts",
-        expectedResult: require("./BasicTypeAssertion-002-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicTypeAssertion-003-input.ts",
-        expectedResult: require("./BasicTypeAssertion-003-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicTypeAssertion-004-input.ts",
-        expectedResult: require("./BasicTypeAssertion-004-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicTypeAssertion-005-input.ts",
-        expectedResult: require("./BasicTypeAssertion-005-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicVariable-001-input.ts",
-        expectedResult: require("./BasicVariable-001-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicVariable-002-input.ts",
-        expectedResult: require("./BasicVariable-002-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-    {
-        sourceFile: "BasicLiteralType-001-input.ts",
-        expectedResult: require("./BasicLiteralType-001-intermediate").default,
-        preprocessor: injectPathIntoExpectedResult,
-    },
-];
+//
+// Our individual test cases are automatically loaded from files
+// in the same folder as this file.
+//
+// * XXX-input.ts - the Typescript that we will send to the compiler
+//   and then process using our code
+// * XXX-intermediate.ts - what we expect our code to generate from
+//   the given input Typescript code
+//
+// To add a new test, just drop the `XXX-input.ts` and corresponding
+// `XXX-intermediate.ts` files into this folder.
+//
+// If you forget to add the corresponding `XXX-intermediate.ts` file,
+// we'll automatically turn that into a failing test for you :)
+//
+
+const TEST_FILES: TestFile[] = [];
+const localFiles = fs.readdirSync(__dirname);
+localFiles.forEach((filename) => {
+    const expectedResultsFile = filename.replace("-input.", "-intermediate.");
+    if (filename.match(/-input\.ts/)) {
+        // if there is no corresponding intermediate results file,
+        // we want that to appear as a test failure
+        let expectedResult = {};
+        if (fileExists.sync(expectedResultsFile, {root: __dirname})) {
+            expectedResult = require("./" + expectedResultsFile).default;
+        }
+
+        // add this to our list
+        TEST_FILES.push({
+            sourceFile: filename,
+            expectedResult,
+            preprocessor: injectPathIntoExpectedResult
+        });
+    }
+});
 
 describe("basic types intermediate processing", () => {
     for (const testdata of TEST_FILES) {
