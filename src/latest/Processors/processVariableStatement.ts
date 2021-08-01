@@ -33,7 +33,7 @@
 //
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
-import { Expression, isAsExpression, isBigIntLiteral, isCallExpression, isNumericLiteral, isObjectLiteralExpression, isStringLiteral, isTypeAssertionExpression, NodeFlags, PropertyAssignment, Statement, VariableDeclaration } from "typescript";
+import { Expression, isArrayLiteralExpression, isAsExpression, isBigIntLiteral, isCallExpression, isNumericLiteral, isObjectLiteralExpression, isStringLiteral, isTypeAssertionExpression, NodeFlags, PropertyAssignment, Statement, VariableDeclaration } from "typescript";
 import * as AST from "../AST";
 import { isNodeExported } from "../AST";
 import { mustBePropertyAssignment } from "../AST/mustBePropertyAssignment";
@@ -182,6 +182,13 @@ function processInitialiser(
         return {
             kind: IntermediateKind.IntermediateBigintLiteral,
             value: input.text,
+        }
+    }
+
+    if (isArrayLiteralExpression(input)) {
+        return {
+            kind: IntermediateKind.IntermediateArrayLiteralExpression,
+            value: input.getText(),
         }
     }
 

@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { isArrayTypeNode, isFunctionTypeNode, isIntersectionTypeNode, isLiteralTypeNode, isTypePredicateNode, isUnionTypeNode, TypeNode } from "typescript";
+import { ArrayTypeNode, isArrayTypeNode, isFunctionTypeNode, isIntersectionTypeNode, isLiteralTypeNode, isParenthesizedTypeNode, isTypePredicateNode, isUnionTypeNode, TypeNode } from "typescript";
 import { isAnonymousClassType } from "../AST";
 import { mustBeTypeReference } from "../AST/mustBeTypeReference";
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
@@ -42,6 +42,7 @@ import { processBuiltInType } from "./processBuiltInType";
 import { processFunctionType } from "./processFunctionType";
 import { processIntersectionNode } from "./processIntersectionNode";
 import { processLiteralTypeNode } from "./processLiteralTypeNode";
+import { processParenthesizedType } from "./processParenthesisedType";
 import { processTypePredicate } from "./processTypePredicate";
 import { processTypeReferenceNode } from "./processTypeReferenceNode";
 import { processUnionType } from "./processUnionType";
@@ -53,13 +54,7 @@ export function processTypeNode
 {
     // special case - we have an array
     if (isArrayTypeNode(input)) {
-        const retval = processTypeNode(input.elementType);
-        if (isBuiltInType(input.elementType)) {
-            retval.kind = IntermediateKind.IntermediateBuiltInTypeArrayReference;
-        } else {
-            retval.kind = IntermediateKind.IntermediateFixedTypeArrayReference;
-        }
-        return retval;
+        return processArrayNode(input);
     }
 
     // special case - anonymous class
@@ -98,9 +93,47 @@ export function processTypeNode
         return processTypePredicate(input);
     }
 
-    // generic case
+    // special case - types in parenthesis
+    if (isParenthesizedTypeNode(input)) {
+        return processParenthesizedType(input);
+    }
+
+   // generic case
     //
     // use a type guarantee to keep the compiler happy!
     const typeRef = mustBeTypeReference(input);
     return processTypeReferenceNode(typeRef);
+}
+
+function processArrayNode(
+    input: ArrayTypeNode
+): IntermediateTypeReference
+{
+    // we need to process the array type before we can figure out what
+    // to do with it
+    const elementType = processTypeNode(input.elementType);
+
+    // so what is this an array of?
+    switch (elementType.kind) {
+        // this is 'string', or 'number' et al
+        case IntermediateKind.IntermediateBuiltInTypeReference:
+            return {
+                kind: IntermediateKind.IntermediateBuiltInTypeArrayReference,
+                typeName: elementType.typeName,
+            }
+
+        // this refers to a single class, interface, type alias, etc
+        case IntermediateKind.IntermediateFixedTypeReference:
+            return {
+                kind: IntermediateKind.IntermediateFixedTypeArrayReference,
+                typeName: elementType.typeName,
+            }
+
+        // this is things like union types
+        default:
+            return {
+                kind: IntermediateKind.IntermediateComplexTypeArrayReference,
+                typeRef: elementType,
+            }
+    }
 }
