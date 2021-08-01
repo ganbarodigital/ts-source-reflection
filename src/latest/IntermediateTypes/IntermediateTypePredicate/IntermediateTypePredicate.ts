@@ -32,46 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export enum IntermediateKind {
-    IntermediateCallableExpression,
-    IntermediateAnonymousCallableParameter,
-    IntermediateAnonymousClassType,
-    IntermediateBigintLiteral,
+import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
-    // I'm not 100% sure we should treat built-in types separately
-    // so this may disappear in the future!
-    IntermediateBuiltInTypeArrayReference,
-    IntermediateBuiltInTypeReference,
-    IntermediateClass,
-    IntermediateConstTypeCast,
-    IntermediateDocBlock,
-    IntermediateFixedTypeArgument,
-    IntermediateFixedTypeArrayReference,
-    IntermediateFixedTypeReference,
-    IntermediateFunction,
-    IntermediateFunctionTypeSignature,
-    IntermediateGenericType,
-    IntermediateGenericTypeArgument,
-    IntermediateImportItem,
-    IntermediateInterface,
-    IntermediateLiteralType,
-    IntermediateMethod,
-    IntermediateModule,
-    IntermediateNumericLiteral,
-    IntermediateObjectLiteral,
-    IntermediatePropertyAssignment,
-    IntermediateTypedPropertyDefinition,
-    IntermediateReference,
-    IntermediateSourceFile,
-    IntermediateStringLiteral,
-    IntermediateTypeAliasDefinition,
-    IntermediateTypeArgument,
-    IntermediateTypeIntersection,
-    IntermediateTypePredicate,
-    IntermediateTypedCallableParameter,
-    IntermediateUnionType,
-    IntermediateUntypedCallableParameter,
-    IntermediateUntypedPropertyDefinition,
-    IntermediateVariableDeclaration,
-    IntermediateVariableDeclarations,
+export interface IntermediateTypePredicate
+    extends IntermediateItem<IntermediateKind.IntermediateTypePredicate>
+{
+    parameterName: string;
+    typeRef: IntermediateTypeReference;
 }

@@ -75,6 +75,7 @@ export * from "./IntermediateTypeAliasDefinition";
 export * from "./IntermediateTypeArgument";
 export * from "./IntermediateTypeAssertable";
 export * from "./IntermediateTypeIntersection";
+export * from "./IntermediateTypePredicate";
 export * from "./IntermediateTypeReference";
 export * from "./IntermediateTypedCallableParameter";
 export * from "./IntermediateTypedPropertyDefinition";
