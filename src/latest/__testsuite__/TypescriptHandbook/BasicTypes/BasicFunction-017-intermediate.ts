@@ -32,15 +32,21 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { SyntaxKind } from "typescript";
+import { IntermediateKind } from "../../../IntermediateTypes";
 
-export const BUILT_IN_TYPES: string[] = [];
-BUILT_IN_TYPES[SyntaxKind.BigIntKeyword] = "bigint";
-BUILT_IN_TYPES[SyntaxKind.BooleanKeyword] = "boolean";
-BUILT_IN_TYPES[SyntaxKind.NeverKeyword] = "never";
-BUILT_IN_TYPES[SyntaxKind.NullKeyword] = "null";
-BUILT_IN_TYPES[SyntaxKind.NumberKeyword] = "number";
-BUILT_IN_TYPES[SyntaxKind.ObjectKeyword] = "object";
-BUILT_IN_TYPES[SyntaxKind.StringKeyword] = "string";
-BUILT_IN_TYPES[SyntaxKind.UndefinedKeyword] = "undefined";
-BUILT_IN_TYPES[SyntaxKind.VoidKeyword] = "void";
+export default {
+    children: {
+        FunctionDeclaration: [
+            {
+                kind: IntermediateKind.IntermediateFunction,
+                name: "explode",
+                parameters: [],
+                returnType: {
+                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                    typeName: "never",
+                },
+            }
+        ],
+    },
+    kind: IntermediateKind.IntermediateSourceFile,
+}
