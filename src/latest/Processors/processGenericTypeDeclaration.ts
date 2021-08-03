@@ -32,33 +32,21 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import { CallSignatureDeclaration } from "typescript";
-import { IntermediateFunctionTypeSignature, IntermediateGenericType, IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
-import { processFunctionParameters } from "./processFunctionParameters";
-import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
+import { TypeParameterDeclaration } from "typescript";
+import { IntermediateGenericType, IntermediateKind } from "../IntermediateTypes";
 
-export function processCallSignatureDeclaration(
-    input: CallSignatureDeclaration
-): IntermediateFunctionTypeSignature
+export function processGenericTypeDeclaration(
+    input: TypeParameterDeclaration
+): IntermediateGenericType
 {
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (input.typeParameters) {
-        typeParameters = processTypeParameters(input.typeParameters);
-    }
+    // shorthand
+    const children = input.getChildren();
 
-    // do we have a return type?
-    let retType: Maybe<IntermediateTypeReference>;
-    if (input.type) {
-        retType = processTypeNode(input.type);
-    }
-
-    return {
-        kind: IntermediateKind.IntermediateFunctionTypeSignature,
-        typeParameters,
-        parameters: processFunctionParameters(input.parameters),
-        returnType: retType,
+    // tslint:disable-next-line: no-angle-bracket-type-assertion
+    return <IntermediateGenericType>{
+        kind: IntermediateKind.IntermediateGenericType,
+        name: input.name.text,
+        constraint: children[2]?.getText(),
+        defaultType: children[4]?.getText(),
     }
 }

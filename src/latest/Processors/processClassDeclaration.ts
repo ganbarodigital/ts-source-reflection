@@ -37,12 +37,13 @@ import { ClassDeclaration, Statement } from "typescript";
 import * as AST from "../AST";
 import {
     IntermediateClass,
+    IntermediateGenericType,
     IntermediateKind,
     IntermediateSourceFile,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
-import { findGenericTypes } from "./findGenericTypes";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
+import { processTypeParameters } from "./processTypeParameters";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processClassDeclaration: StatementProcessor = (
@@ -52,10 +53,15 @@ export const processClassDeclaration: StatementProcessor = (
     // make sure we have the right kind of statement
     const classDec = AST.mustBeClassDeclaration(input);
 
+    let typeParameters: IntermediateGenericType[] = [];
+    if (classDec.typeParameters) {
+        typeParameters = processTypeParameters(classDec.typeParameters);
+    }
+
     return {
         name: classDec.name?.text || '',
         kind: IntermediateKind.IntermediateClass,
-        genericTypeParameters: findGenericTypes(sourceFile, classDec),
+        typeParameters,
         docBlock: {
             kind: IntermediateKind.IntermediateDocBlock,
             text: AST.findDocBlockText(classDec),

@@ -32,33 +32,42 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import { CallSignatureDeclaration } from "typescript";
-import { IntermediateFunctionTypeSignature, IntermediateGenericType, IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
-import { processFunctionParameters } from "./processFunctionParameters";
-import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
+import { IntermediateKind } from "../../../IntermediateTypes";
 
-export function processCallSignatureDeclaration(
-    input: CallSignatureDeclaration
-): IntermediateFunctionTypeSignature
-{
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (input.typeParameters) {
-        typeParameters = processTypeParameters(input.typeParameters);
-    }
-
-    // do we have a return type?
-    let retType: Maybe<IntermediateTypeReference>;
-    if (input.type) {
-        retType = processTypeNode(input.type);
-    }
-
-    return {
-        kind: IntermediateKind.IntermediateFunctionTypeSignature,
-        typeParameters,
-        parameters: processFunctionParameters(input.parameters),
-        returnType: retType,
-    }
+export default {
+    children: {
+        FunctionDeclaration: [
+            {
+                kind: IntermediateKind.IntermediateFunction,
+                name: "firstElement",
+                typeParameters: [
+                    {
+                        kind: IntermediateKind.IntermediateGenericType,
+                        name: "Type",
+                        constraint: undefined,
+                        defaultType: undefined,
+                    }
+                ],
+                parameters: [
+                    {
+                        kind: IntermediateKind.IntermediateTypedCallableParameter,
+                        paramName: "arr",
+                        optional: false,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateArrayTypeReference,
+                            typeRef: {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "Type",
+                            },
+                        },
+                    },
+                ],
+                returnType: {
+                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                    typeName: "Type",
+                },
+            },
+        ],
+    },
+    kind: IntermediateKind.IntermediateSourceFile,
 }

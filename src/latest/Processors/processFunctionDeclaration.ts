@@ -36,12 +36,14 @@ import { Statement } from "typescript";
 import { mustBeFunctionDeclaration } from "../AST";
 import {
     IntermediateFunction,
+    IntermediateGenericType,
     IntermediateKind,
     IntermediateSourceFile,
     IntermediateTypeReference
 } from "../IntermediateTypes";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processTypeNode } from "./processTypeNode";
+import { processTypeParameters } from "./processTypeParameters";
 import { StatementProcessor } from "./StatementProcessor";
 
 
@@ -55,6 +57,12 @@ export const processFunctionDeclaration: StatementProcessor = (
 
     // at this point, we *know* that we're looking at a function :)
 
+    // do we have any type parameters?
+    let typeParameters: IntermediateGenericType[] = [];
+    if (funcDec.typeParameters) {
+        typeParameters = processTypeParameters(funcDec.typeParameters);
+    }
+
     // do we have a return type?
     let retType: Maybe<IntermediateTypeReference>;
     if (funcDec.type) {
@@ -63,7 +71,7 @@ export const processFunctionDeclaration: StatementProcessor = (
 
     return {
         kind: IntermediateKind.IntermediateFunction,
-        typeParameters: [],
+        typeParameters: typeParameters,
         name: funcDec.name?.text,
         parameters: processFunctionParameters(funcDec.parameters),
         returnType: retType,

@@ -32,33 +32,21 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import { CallSignatureDeclaration } from "typescript";
-import { IntermediateFunctionTypeSignature, IntermediateGenericType, IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
-import { processFunctionParameters } from "./processFunctionParameters";
-import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
+import { NodeArray, TypeParameterDeclaration } from "typescript";
+import { IntermediateGenericType } from "../IntermediateTypes";
+import { processGenericTypeDeclaration } from "./processGenericTypeDeclaration";
 
-export function processCallSignatureDeclaration(
-    input: CallSignatureDeclaration
-): IntermediateFunctionTypeSignature
+export function processTypeParameters(
+    input: NodeArray<TypeParameterDeclaration>
+): IntermediateGenericType[]
 {
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (input.typeParameters) {
-        typeParameters = processTypeParameters(input.typeParameters);
+    // this will be our return value
+    const retval: IntermediateGenericType[] = [];
+
+    for (const member of input) {
+        retval.push(processGenericTypeDeclaration(member));
     }
 
-    // do we have a return type?
-    let retType: Maybe<IntermediateTypeReference>;
-    if (input.type) {
-        retType = processTypeNode(input.type);
-    }
-
-    return {
-        kind: IntermediateKind.IntermediateFunctionTypeSignature,
-        typeParameters,
-        parameters: processFunctionParameters(input.parameters),
-        returnType: retType,
-    }
+    // all done
+    return retval;
 }

@@ -48,7 +48,7 @@ export interface IntermediateClass
         IntermediateExportableItem
 {
     name: string;
-    genericTypeParameters: IntermediateGenericType[];
+    typeParameters: IntermediateGenericType[];
     extendsTypeParameter: Maybe<IntermediateTypeArgument>;
     implementsTypeParameters: IntermediateTypeArgument[];
 }
