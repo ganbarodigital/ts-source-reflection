@@ -54,6 +54,7 @@ export default {
                         },
                     ],
                     callSignatures: [],
+                    constructors: [],
                 }
             },
             {
@@ -80,6 +81,7 @@ export default {
                                 },
                             ],
                             callSignatures: [],
+                            constructors: [],
                         },
                     ],
                 }

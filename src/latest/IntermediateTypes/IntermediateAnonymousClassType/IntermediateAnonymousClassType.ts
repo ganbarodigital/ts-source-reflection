@@ -51,4 +51,6 @@ export interface IntermediateAnonymousClassType
      * This is Typescript's equivalent of PHP's `__invoke()` magic method.
      */
     callSignatures: IntermediateFunctionTypeSignature[];
+
+    constructors: IntermediateFunctionTypeSignature[];
 }

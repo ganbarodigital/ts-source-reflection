@@ -67,6 +67,7 @@ export default {
                                 },
                             ],
                             callSignatures: [],
+                            constructors: [],
                         },
                         optional: false,
                     }

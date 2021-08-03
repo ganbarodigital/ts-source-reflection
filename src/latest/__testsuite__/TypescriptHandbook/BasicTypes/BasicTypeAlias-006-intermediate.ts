@@ -39,52 +39,34 @@ export default {
         TypeAliasDeclaration: [
             {
                 kind: IntermediateKind.IntermediateTypeAliasDefinition,
-                typeName: "Point",
+                typeName: "SomeConstructor",
                 typeRef: {
                     kind: IntermediateKind.IntermediateAnonymousClassType,
-                    properties: [
+                    properties: [],
+                    callSignatures: [],
+                    constructors: [
                         {
-                            kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                            propName: "x",
-                            propIsOptional: false,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "number",
-                            }
-                        },
-                        {
-                            kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                            propName: "y",
-                            propIsOptional: false,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "number",
-                            }
+                            kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                            parameters: [
+                                {
+                                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                                    paramName: "s",
+                                    optional: false,
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "string",
+                                    },
+                                },
+                            ],
+                            returnType: {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "SomeObject",
+                            },
                         },
                     ],
-                    callSignatures: [],
-                    constructors: [],
-                }
-            }
+                },
+            },
         ],
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                name: "printCoord",
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "pt",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "Point",
-                        },
-                        optional: false,
-                    },
-                ],
-                returnType: undefined,
-            }
-        ]
     },
     kind: IntermediateKind.IntermediateSourceFile,
 }

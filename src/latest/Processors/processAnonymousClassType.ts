@@ -31,12 +31,24 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import {
+    isCallSignatureDeclaration,
+    isConstructSignatureDeclaration,
+    isPropertySignature,
+    TypeLiteralNode,
+} from "typescript";
 
-import { isCallSignatureDeclaration, isPropertySignature, TypeLiteralNode } from "typescript";
 import * as AST from "../AST";
-import { IntermediateAnonymousClassType, IntermediateFunctionTypeSignature, IntermediateKind, IntermediatePropertyDefinition } from "../IntermediateTypes";
+import {
+    IntermediateAnonymousClassType,
+    IntermediateFunctionTypeSignature,
+    IntermediateKind,
+    IntermediatePropertyDefinition,
+} from "../IntermediateTypes";
 import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
+import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
 import { processPropertySignature } from "./processPropertySignature";
+
 
 
 export function processAnonymousClassType(
@@ -46,6 +58,7 @@ export function processAnonymousClassType(
         kind: IntermediateKind.IntermediateAnonymousClassType,
         properties: processProperties(input),
         callSignatures: processCallSignatures(input),
+        constructors: processConstructorDeclarations(input),
     }
 }
 
@@ -65,6 +78,28 @@ function processCallSignatures(
         const callSig = AST.mustBeCallSignatureDeclaration(member);
 
         retval.push(processCallSignatureDeclaration(callSig));
+    }
+
+    // all done
+    return retval;
+}
+
+function processConstructorDeclarations(
+    input: TypeLiteralNode
+): IntermediateFunctionTypeSignature[]
+{
+    // this will be our return value
+    const retval: IntermediateFunctionTypeSignature[] = [];
+
+    // find and process all the call signatures in this anonymous
+    // class
+    for (const member of input.members.filter(
+        (candidate) => { return isConstructSignatureDeclaration(candidate)}
+    )) {
+        // keep the compiler happy
+        const callSig = AST.mustBeConstructSignatureDeclaration(member);
+
+        retval.push(processConstructSignatureDeclaration(callSig));
     }
 
     // all done
