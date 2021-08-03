@@ -32,13 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { TypeLiteralNode, isCallSignatureDeclaration } from "typescript";
+import { isCallSignatureDeclaration, NodeArray, TypeElement } from "typescript";
+import * as AST from "../AST";
 import { IntermediateFunctionTypeSignature } from "../IntermediateTypes";
 import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
-import * as AST from "../AST";
 
 export function processCallSignatures(
-    input: TypeLiteralNode
+    input: NodeArray<TypeElement>
 ): IntermediateFunctionTypeSignature[]
 {
     // this will be our return value
@@ -46,7 +46,7 @@ export function processCallSignatures(
 
     // find and process all the call signatures in this anonymous
     // class
-    for (const member of input.members.filter(
+    for (const member of input.filter(
         (candidate) => { return isCallSignatureDeclaration(candidate)}
     )) {
         // keep the compiler happy

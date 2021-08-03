@@ -46,9 +46,9 @@ export function processAnonymousClassType(
 ): IntermediateAnonymousClassType {
     return {
         kind: IntermediateKind.IntermediateAnonymousClassType,
-        properties: processProperties(input),
-        callSignatures: processCallSignatures(input),
-        constructors: processConstructorDeclarations(input),
+        properties: processProperties(input.members),
+        callSignatures: processCallSignatures(input.members),
+        constructors: processConstructorDeclarations(input.members),
     }
 }
 

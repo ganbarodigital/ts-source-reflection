@@ -32,13 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { TypeLiteralNode, isPropertySignature } from "typescript";
+import { isPropertySignature, NodeArray, TypeElement } from "typescript";
+import * as AST from "../AST";
 import { IntermediatePropertyDefinition } from "../IntermediateTypes";
 import { processPropertySignature } from "./processPropertySignature";
-import * as AST from "../AST";
 
 export function processProperties(
-    input: TypeLiteralNode
+    input: NodeArray<TypeElement>
 ): IntermediatePropertyDefinition[]
 {
     // this will be our return value
@@ -46,7 +46,7 @@ export function processProperties(
 
     // find and process all the property definitions in this
     // anonymous class
-    for(const member of input.members.filter(
+    for(const member of input.filter(
         (candidate) => { return isPropertySignature(candidate); }
     )) {
         // keep the compiler happy ... even though we know
