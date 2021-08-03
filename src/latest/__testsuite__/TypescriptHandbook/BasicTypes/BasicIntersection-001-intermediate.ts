@@ -52,7 +52,8 @@ export default {
                                 typeName: "string",
                             }
                         },
-                    ]
+                    ],
+                    callSignatures: [],
                 }
             },
             {
@@ -78,6 +79,7 @@ export default {
                                     }
                                 },
                             ],
+                            callSignatures: [],
                         },
                     ],
                 }

@@ -39,25 +39,40 @@ export default {
         TypeAliasDeclaration: [
             {
                 kind: IntermediateKind.IntermediateTypeAliasDefinition,
-                typeName: "Fish",
+                typeName: "DescribableFunction",
                 typeRef: {
                     kind: IntermediateKind.IntermediateAnonymousClassType,
                     properties: [
                         {
                             kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                            propName: "swim",
+                            propName: "description",
                             propIsOptional: false,
                             typeRef: {
-                                kind: IntermediateKind.IntermediateFunctionTypeSignature,
-                                parameters: [],
-                                returnType: {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: "void"
-                                },
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "string",
                             },
                         },
                     ],
-                    callSignatures: [],
+                    callSignatures: [
+                        {
+                            kind: IntermediateKind.IntermediateCallSignature,
+                            parameters: [
+                                {
+                                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                                    paramName: "someArg",
+                                    optional: false,
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "number",
+                                    },
+                                },
+                            ],
+                            returnType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "boolean",
+                            },
+                        },
+                    ],
                 },
             },
         ],

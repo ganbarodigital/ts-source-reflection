@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateCallSignature } from "../IntermediateCallSignature";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediatePropertyDefinition } from "../IntermediatePropertyDefinition";
@@ -39,5 +40,15 @@ import { IntermediatePropertyDefinition } from "../IntermediatePropertyDefinitio
 export interface IntermediateAnonymousClassType
     extends IntermediateItem<IntermediateKind.IntermediateAnonymousClassType>
 {
-    properties: IntermediatePropertyDefinition[]
+    properties: IntermediatePropertyDefinition[];
+
+    /**
+     * If we have any callSignatures, instances of this type can be
+     * called as-if they were regular functions.
+     *
+     * Effectively, they become functions that have properties.
+     *
+     * This is Typescript's equivalent of PHP's `__invoke()` magic method.
+     */
+    callSignatures: IntermediateCallSignature[];
 }

@@ -32,46 +32,25 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { TypeLiteralNode, isPropertySignature, isCallSignatureDeclaration } from "typescript";
-import { IntermediateAnonymousClassType, IntermediateCallSignature, IntermediateKind, IntermediatePropertyDefinition } from "../IntermediateTypes";
-import { processPropertySignature } from "./processPropertySignature";
-import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
+import { Maybe } from "@safelytyped/core-types";
+import { CallSignatureDeclaration } from "typescript";
+import { IntermediateCallSignature, IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
+import { processFunctionParameters } from "./processFunctionParameters";
+import { processTypeNode } from "./processTypeNode";
 
-import * as AST from "../AST";
-
-export function processAnonymousClassType(
-    input: TypeLiteralNode
-): IntermediateAnonymousClassType {
-    // we need to understand the members
-    const members: IntermediatePropertyDefinition[] = [];
-
-    for(const member of input.members.filter(
-        (candidate) => { return isPropertySignature(candidate); }
-    )) {
-        // keep the compiler happy ...
-        // and also spot any unsupported edge cases!
-        const propSig = AST.mustBePropertySignature(member);
-
-        // when we get into parsing classes properly, we will return
-        // and refactor this
-        members.push(processPropertySignature(propSig));
+export function processCallSignatureDeclaration(
+    input: CallSignatureDeclaration
+): IntermediateCallSignature
+{
+    // do we have a return type?
+    let retType: Maybe<IntermediateTypeReference>;
+    if (input.type) {
+        retType = processTypeNode(input.type);
     }
 
-    // now do the same for any call signatures
-    const callSignatures: IntermediateCallSignature[] = [];
-    for (const member of input.members.filter(
-        (candidate) => { return isCallSignatureDeclaration(candidate)}
-    )) {
-        // keep the compiler happy
-        const callSig = AST.mustBeCallSignatureDeclaration(member);
-
-        callSignatures.push(processCallSignatureDeclaration(callSig));
-    }
-
-    // all done
     return {
-        kind: IntermediateKind.IntermediateAnonymousClassType,
-        properties: members,
-        callSignatures,
+        kind: IntermediateKind.IntermediateCallSignature,
+        parameters: processFunctionParameters(input.parameters),
+        returnType: retType,
     }
 }
