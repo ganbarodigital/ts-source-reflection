@@ -38,6 +38,7 @@ export * from "./IntermediateArrayLiteralExpression";
 export * from "./IntermediateArrayTypeReference";
 export * from "./IntermediateBigintLiteral";
 export * from "./IntermediateBuiltInTypeReference";
+export * from "./IntermediateCallSignature";
 export * from "./IntermediateCallable";
 export * from "./IntermediateCallableExpression";
 export * from "./IntermediateCallableParameter";
