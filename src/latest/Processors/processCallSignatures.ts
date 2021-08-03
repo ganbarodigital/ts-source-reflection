@@ -31,34 +31,13 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import {
-    isConstructSignatureDeclaration,
-    isPropertySignature,
-    TypeLiteralNode
-} from "typescript";
+
+import { TypeLiteralNode, isCallSignatureDeclaration } from "typescript";
+import { IntermediateFunctionTypeSignature } from "../IntermediateTypes";
+import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
 import * as AST from "../AST";
-import {
-    IntermediateAnonymousClassType,
-    IntermediateFunctionTypeSignature,
-    IntermediateKind,
-    IntermediatePropertyDefinition
-} from "../IntermediateTypes";
-import { processCallSignatures } from "./processCallSignatures";
-import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
-import { processPropertySignature } from "./processPropertySignature";
 
-export function processAnonymousClassType(
-    input: TypeLiteralNode
-): IntermediateAnonymousClassType {
-    return {
-        kind: IntermediateKind.IntermediateAnonymousClassType,
-        properties: processProperties(input),
-        callSignatures: processCallSignatures(input),
-        constructors: processConstructorDeclarations(input),
-    }
-}
-
-function processConstructorDeclarations(
+export function processCallSignatures(
     input: TypeLiteralNode
 ): IntermediateFunctionTypeSignature[]
 {
@@ -68,39 +47,12 @@ function processConstructorDeclarations(
     // find and process all the call signatures in this anonymous
     // class
     for (const member of input.members.filter(
-        (candidate) => { return isConstructSignatureDeclaration(candidate)}
+        (candidate) => { return isCallSignatureDeclaration(candidate)}
     )) {
         // keep the compiler happy
-        const callSig = AST.mustBeConstructSignatureDeclaration(member);
+        const callSig = AST.mustBeCallSignatureDeclaration(member);
 
-        retval.push(processConstructSignatureDeclaration(callSig));
-    }
-
-    // all done
-    return retval;
-}
-
-function processProperties(
-    input: TypeLiteralNode
-): IntermediatePropertyDefinition[]
-{
-    // this will be our return value
-    const retval: IntermediatePropertyDefinition[] = [];
-
-    // find and process all the property definitions in this
-    // anonymous class
-    for(const member of input.members.filter(
-        (candidate) => { return isPropertySignature(candidate); }
-    )) {
-        // keep the compiler happy ... even though we know
-        // that each member already is a PropertySignature
-        //
-        // it is safer than doing a type assertion here!
-        const propSig = AST.mustBePropertySignature(member);
-
-        // when we get into parsing classes properly, we will return
-        // and refactor this
-        retval.push(processPropertySignature(propSig));
+        retval.push(processCallSignatureDeclaration(callSig));
     }
 
     // all done
