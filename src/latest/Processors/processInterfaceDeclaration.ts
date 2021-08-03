@@ -35,16 +35,15 @@
 import { InterfaceDeclaration, Statement } from "typescript";
 import * as AST from "../AST";
 import { mustBeInterfaceDeclaration } from "../AST/mustBeInterfaceDeclaration";
-import { mustBePropertySignature } from "../AST/mustBePropertySignature";
 import {
     IntermediateInterface,
-    IntermediateKind,
-    IntermediatePropertyDefinition,
-    IntermediateSourceFile,
+    IntermediateKind, IntermediateSourceFile,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
-import { processPropertySignature } from "./processPropertySignature";
+import { processCallSignatures } from "./processCallSignatures";
+import { processConstructorDeclarations } from "./processConstructorDeclarations";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
+import { processProperties } from "./processProperties";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processInterfaceDeclaration: StatementProcessor = (
@@ -64,7 +63,9 @@ export const processInterfaceDeclaration: StatementProcessor = (
         },
         exported: AST.isNodeExported(interfaceDec),
         extends: getBaseInterfaceTypes(sourceFile, interfaceDec),
-        properties: getInterfaceMembers(interfaceDec),
+        properties: processProperties(interfaceDec.members),
+        callSignatures: processCallSignatures(interfaceDec.members),
+        constructors: processConstructorDeclarations(interfaceDec.members),
     }
 }
 
@@ -81,26 +82,5 @@ function getBaseInterfaceTypes(
         retval.push(processExpressionWithTypeArguments(sourceFile, clause.types[0]));
     }
 
-    return retval;
-}
-
-function getInterfaceMembers(
-    input: InterfaceDeclaration
-): IntermediatePropertyDefinition[]
-{
-    // this will be our return value
-    const retval: IntermediatePropertyDefinition[] = [];
-
-    for(const member of input.members) {
-        // keep the compiler happy ...
-        // and also spot any unsupported edge cases!
-        const propSig = mustBePropertySignature(member);
-
-        // when we get into parsing classes properly, we will return
-        // and refactor this
-        retval.push(processPropertySignature(propSig));
-    }
-
-    // all done
     return retval;
 }

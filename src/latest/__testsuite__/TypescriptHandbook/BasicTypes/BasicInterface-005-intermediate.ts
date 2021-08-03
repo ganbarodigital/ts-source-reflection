@@ -84,6 +84,8 @@ export default {
                         },
                     },
                 ],
+                callSignatures: [],
+                constructors: [],
             },
         ],
     },

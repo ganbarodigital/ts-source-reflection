@@ -39,55 +39,55 @@ export default {
         InterfaceDeclaration: [
             {
                 kind: IntermediateKind.IntermediateInterface,
-                name: "Animal",
-                exported: false,
+                name: "CallOrConstruct",
                 docBlock: {
                     kind: IntermediateKind.IntermediateDocBlock,
                     text: undefined,
                 },
+                exported: false,
                 extends: [],
-                properties: [
+                properties: [],
+                callSignatures: [
                     {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "name",
-                        propIsOptional: false,
-                        typeRef: {
+                        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        parameters: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedCallableParameter,
+                                paramName: "n",
+                                optional: true,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                },
+                            },
+                        ],
+                        returnType: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "string",
-                        }
-                    }
-                ],
-                callSignatures: [],
-                constructors: [],
-            },
-            {
-                kind: IntermediateKind.IntermediateInterface,
-                name: "Bear",
-                exported: false,
-                docBlock: {
-                    kind: IntermediateKind.IntermediateDocBlock,
-                    text: undefined,
-                },
-                extends: [
-                    {
-                        kind: IntermediateKind.IntermediateFixedTypeArgument,
-                        name: "Animal",
+                            typeName: "number",
+                        },
                     },
                 ],
-                properties: [
+                constructors: [
                     {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "honey",
-                        propIsOptional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "boolean",
-                        }
-                    }
+                        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        parameters: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedCallableParameter,
+                                paramName: "s",
+                                optional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "string",
+                                },
+                            },
+                        ],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "Date",
+                        },
+                    },
                 ],
-                callSignatures: [],
-                constructors: [],
-            }
+            },
         ],
     },
     kind: IntermediateKind.IntermediateSourceFile,

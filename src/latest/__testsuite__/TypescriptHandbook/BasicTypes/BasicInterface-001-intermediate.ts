@@ -65,7 +65,9 @@ export default {
                             typeName: "number",
                         }
                     },
-                ]
+                ],
+                callSignatures: [],
+                constructors: [],
             }
         ],
     },

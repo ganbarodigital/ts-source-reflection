@@ -56,7 +56,9 @@ export default {
                             typeName: "string",
                         }
                     },
-                ]
+                ],
+                callSignatures: [],
+                constructors: [],
             },
             {
                 kind: IntermediateKind.IntermediateInterface,
@@ -77,7 +79,9 @@ export default {
                             typeName: "TypeScriptAPI",
                         }
                     },
-                ]
+                ],
+                callSignatures: [],
+                constructors: [],
             },
         ],
     },
