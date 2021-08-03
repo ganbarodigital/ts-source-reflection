@@ -32,21 +32,14 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
-import { Expression, isArrayLiteralExpression, isAsExpression, isBigIntLiteral, isCallExpression, isNumericLiteral, isObjectLiteralExpression, isStringLiteral, isTypeAssertionExpression, NodeFlags, PropertyAssignment, Statement, VariableDeclaration } from "typescript";
+import { NodeFlags, Statement, VariableDeclaration } from "typescript";
 import * as AST from "../AST";
 import { isNodeExported } from "../AST";
-import { mustBePropertyAssignment } from "../AST/mustBePropertyAssignment";
 import {
-    IntermediateExpression,
-    IntermediateKind,
-    IntermediateObjectLiteral,
-    IntermediatePropertyAssignment,
-    IntermediateSourceFile,
-    IntermediateTypeAssertable,
-    IntermediateVariableDeclaration,
+    IntermediateKind, IntermediateSourceFile, IntermediateVariableDeclaration,
     IntermediateVariableDeclarations
 } from "../IntermediateTypes";
+import { processInitializer } from "./processInitializer";
 import { processTypeNode } from "./processTypeNode";
 import { StatementProcessor } from "./StatementProcessor";
 
@@ -114,101 +107,10 @@ function processVariableDeclaration(
 
     // does this variable have an initial value?
     if (input.initializer) {
-        retval.initialiser = processInitialiser(input.initializer);
+        retval.initialiser = processInitializer(input.initializer);
     }
 
     // all done
     return retval;
 }
 
-function processInitialiser(
-    input: Expression
-): IntermediateExpression
-{
-    // we will refactor this later on
-    if (isNumericLiteral(input)) {
-        return {
-            kind: IntermediateKind.IntermediateNumericLiteral,
-            value: input.text,
-        }
-    }
-    if (isStringLiteral(input)) {
-        return {
-            kind: IntermediateKind.IntermediateStringLiteral,
-            value: input.text,
-            asType: undefined,
-            typeAssertion: undefined,
-        }
-    }
-
-    if (isCallExpression(input)) {
-        return {
-            kind: IntermediateKind.IntermediateCallableExpression,
-            text: input.getText(),
-            typeAssertion: undefined,
-            asType: undefined,
-        }
-    }
-
-    if (isObjectLiteralExpression(input)) {
-        const retval: IntermediateObjectLiteral = {
-            kind: IntermediateKind.IntermediateObjectLiteral,
-            properties: [],
-            asType: undefined,
-            typeAssertion: undefined,
-        }
-
-        for (const member of input.properties) {
-            const propAssignment = mustBePropertyAssignment(member);
-            retval.properties.push(processPropertyAssignment(propAssignment));
-        }
-
-        return retval;
-    }
-
-    if (isTypeAssertionExpression(input)) {
-        const retval = processInitialiser(input.expression);
-        (retval as IntermediateTypeAssertable).typeAssertion = processTypeNode(input.type);
-        return retval;
-    }
-
-    if (isAsExpression(input)) {
-        const retval = processInitialiser(input.expression);
-        (retval as IntermediateTypeAssertable).asType = processTypeNode(input.type);
-        return retval;
-    }
-
-    if (isBigIntLiteral(input)) {
-        return {
-            kind: IntermediateKind.IntermediateBigintLiteral,
-            value: input.text,
-        }
-    }
-
-    if (isArrayLiteralExpression(input)) {
-        return {
-            kind: IntermediateKind.IntermediateArrayLiteralExpression,
-            value: input.getText(),
-        }
-    }
-
-    // if we get here, we do not know how to process this variable
-    throw new UnsupportedTypeError({
-        public: {
-            dataPath: DEFAULT_DATA_PATH,
-            expected: "CallExpression",
-            actual: getClassNames(input)[0]
-        }
-    });
-}
-
-function processPropertyAssignment(
-    input: PropertyAssignment
-): IntermediatePropertyAssignment
-{
-    return {
-        kind: IntermediateKind.IntermediatePropertyAssignment,
-        propertyName: input.name.getText(),
-        initialiser: processInitialiser(input.initializer),
-    }
-}
