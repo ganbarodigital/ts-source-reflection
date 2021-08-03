@@ -31,51 +31,28 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import {
-    isPropertySignature,
-    TypeLiteralNode
-} from "typescript";
+
+import { TypeLiteralNode, isConstructSignatureDeclaration } from "typescript";
+import { IntermediateFunctionTypeSignature } from "../IntermediateTypes";
+import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
 import * as AST from "../AST";
-import {
-    IntermediateAnonymousClassType, IntermediateKind,
-    IntermediatePropertyDefinition
-} from "../IntermediateTypes";
-import { processCallSignatures } from "./processCallSignatures";
-import { processConstructorDeclarations } from "./processConstructorDeclarations";
-import { processPropertySignature } from "./processPropertySignature";
 
-export function processAnonymousClassType(
+export function processConstructorDeclarations(
     input: TypeLiteralNode
-): IntermediateAnonymousClassType {
-    return {
-        kind: IntermediateKind.IntermediateAnonymousClassType,
-        properties: processProperties(input),
-        callSignatures: processCallSignatures(input),
-        constructors: processConstructorDeclarations(input),
-    }
-}
-
-function processProperties(
-    input: TypeLiteralNode
-): IntermediatePropertyDefinition[]
+): IntermediateFunctionTypeSignature[]
 {
     // this will be our return value
-    const retval: IntermediatePropertyDefinition[] = [];
+    const retval: IntermediateFunctionTypeSignature[] = [];
 
-    // find and process all the property definitions in this
-    // anonymous class
-    for(const member of input.members.filter(
-        (candidate) => { return isPropertySignature(candidate); }
+    // find and process all the call signatures in this anonymous
+    // class
+    for (const member of input.members.filter(
+        (candidate) => { return isConstructSignatureDeclaration(candidate)}
     )) {
-        // keep the compiler happy ... even though we know
-        // that each member already is a PropertySignature
-        //
-        // it is safer than doing a type assertion here!
-        const propSig = AST.mustBePropertySignature(member);
+        // keep the compiler happy
+        const callSig = AST.mustBeConstructSignatureDeclaration(member);
 
-        // when we get into parsing classes properly, we will return
-        // and refactor this
-        retval.push(processPropertySignature(propSig));
+        retval.push(processConstructSignatureDeclaration(callSig));
     }
 
     // all done
