@@ -39,31 +39,17 @@ export default {
         FunctionDeclaration: [
             {
                 kind: IntermediateKind.IntermediateFunction,
-                name: "firstElement2",
-                typeParameters: [
-                    {
-                        kind: IntermediateKind.IntermediateGenericType,
-                        name: "Type",
-                        constraint: {
-                            kind: IntermediateKind.IntermediateArrayTypeReference,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "any",
-                            },
-                        },
-                        defaultType: undefined,
-                    },
-                ],
+                name: "f",
+                typeParameters: [],
                 parameters: [
                     {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "arr",
-                        optional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "Type",
-                        },
-                        initializer: undefined,
+                        kind: IntermediateKind.IntermediateUntypedCallableParameter,
+                        paramName: "x",
+                        // optional: false,
+                        initializer: {
+                            kind: IntermediateKind.IntermediateNumericLiteral,
+                            value: "10",
+                        }
                     },
                 ],
                 returnType: undefined,

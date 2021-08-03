@@ -62,6 +62,7 @@ export default {
                             ]
                         },
                         optional: false,
+                        initializer: undefined,
                     }
                 ],
                 returnType: undefined,

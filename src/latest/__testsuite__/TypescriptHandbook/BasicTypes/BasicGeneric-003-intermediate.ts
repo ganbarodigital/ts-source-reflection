@@ -72,6 +72,7 @@ export default {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             typeName: "Type",
                         },
+                        initializer: undefined,
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,
@@ -81,6 +82,7 @@ export default {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             typeName: "Type",
                         },
+                        initializer: undefined,
                     },
                 ],
                 returnType: undefined,

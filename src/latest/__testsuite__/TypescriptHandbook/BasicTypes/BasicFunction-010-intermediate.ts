@@ -50,6 +50,7 @@ export default {
                             typeName: "string",
                         },
                         optional: false,
+                        initializer: undefined,
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,
@@ -72,6 +73,7 @@ export default {
                             ],
                         },
                         optional: false,
+                        initializer: undefined,
                     },
                 ],
                 returnType: undefined,

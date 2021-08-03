@@ -71,7 +71,8 @@ export default {
                             constructors: [],
                         },
                         optional: false,
-                    }
+                        initializer: undefined,
+                    },
                 ],
                 returnType: undefined,
             }

@@ -66,6 +66,7 @@ export default {
                                 typeName: "Input",
                             },
                         },
+                        initializer: undefined,
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,
@@ -82,7 +83,8 @@ export default {
                                     typeRef: {
                                         kind: IntermediateKind.IntermediateFixedTypeReference,
                                         typeName: "Input",
-                                    }
+                                    },
+                                    initializer: undefined,
                                 },
                             ],
                             returnType: {
@@ -90,6 +92,7 @@ export default {
                                 typeName: "Output",
                             },
                         },
+                        initializer: undefined,
                     },
                 ],
                 returnType: {

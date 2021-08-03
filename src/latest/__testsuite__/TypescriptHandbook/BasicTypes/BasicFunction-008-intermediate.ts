@@ -81,6 +81,7 @@ export default {
                             typeName: "Point",
                         },
                         optional: false,
+                        initializer: undefined,
                     },
                 ],
                 returnType: undefined,

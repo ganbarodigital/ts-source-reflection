@@ -66,6 +66,7 @@ export default {
                                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                         typeName: "number",
                                     },
+                                    initializer: undefined,
                                 },
                             ],
                             returnType: {

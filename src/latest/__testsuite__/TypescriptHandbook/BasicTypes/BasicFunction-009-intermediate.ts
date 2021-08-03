@@ -60,6 +60,7 @@ export default {
                             typeName: "string",
                         },
                         optional: false,
+                        initializer: undefined,
                     },
                 ],
                 returnType: {

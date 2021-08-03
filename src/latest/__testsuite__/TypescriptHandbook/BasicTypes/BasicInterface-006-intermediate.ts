@@ -60,6 +60,7 @@ export default {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "number",
                                 },
+                                initializer: undefined,
                             },
                         ],
                         returnType: {
@@ -81,6 +82,7 @@ export default {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "string",
                                 },
+                                initializer: undefined,
                             },
                         ],
                         returnType: {

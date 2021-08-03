@@ -59,6 +59,7 @@ export default {
                             ],
                         },
                         optional: true,
+                        initializer: undefined,
                     },
                 ],
                 returnType: undefined,

@@ -32,8 +32,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { Maybe } from "@safelytyped/core-types";
 import { NodeArray, ParameterDeclaration } from "typescript";
-import { IntermediateCallableParameter, IntermediateKind } from "../IntermediateTypes";
+import { IntermediateCallableParameter, IntermediateExpression, IntermediateKind } from "../IntermediateTypes";
+import { processInitializer } from "./processInitializer";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
 
@@ -51,11 +53,18 @@ export function processFunctionParameters(
         // eventually we will have to refactor it to handle edge cases
         // better & without introducing complexity
 
+        // do we have a default value for the parameter?
+        let initializer: Maybe<IntermediateExpression>;
+        if (paramDec.initializer) {
+            initializer = processInitializer(paramDec.initializer);
+        }
+
         // special case - untyped parameter
         if (!paramDec.type) {
             retval.push({
                 kind: IntermediateKind.IntermediateUntypedCallableParameter,
                 paramName: paramDec.name.getText(),
+                initializer,
             });
 
             return;
@@ -67,6 +76,7 @@ export function processFunctionParameters(
             paramName: paramDec.name.getText(),
             typeRef: processTypeNode(paramDec.type),
             optional: processQuestionToken(paramDec.questionToken),
+            initializer,
         });
     });
 

@@ -58,6 +58,7 @@ export default {
                                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                         typeName: "string",
                                     },
+                                    initializer: undefined,
                                 },
                             ],
                             returnType: {
@@ -65,6 +66,7 @@ export default {
                                 typeName: "void",
                             },
                         },
+                        initializer: undefined,
                     },
                 ],
                 returnType: undefined,

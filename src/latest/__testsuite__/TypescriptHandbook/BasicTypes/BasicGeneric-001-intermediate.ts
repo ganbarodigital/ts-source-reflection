@@ -60,6 +60,7 @@ export default {
                                 typeName: "Type",
                             },
                         },
+                        initializer: undefined,
                     },
                 ],
                 returnType: {

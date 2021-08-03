@@ -57,6 +57,7 @@ export default {
                                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                         typeName: "string",
                                     },
+                                    initializer: undefined,
                                 },
                             ],
                             returnType: {
