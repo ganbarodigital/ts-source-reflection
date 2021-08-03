@@ -40,6 +40,7 @@ export default {
             {
                 kind: IntermediateKind.IntermediateFunction,
                 name: "explode",
+                typeParameters: [],
                 parameters: [],
                 returnType: {
                     kind: IntermediateKind.IntermediateBuiltInTypeReference,

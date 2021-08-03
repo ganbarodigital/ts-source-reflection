@@ -40,6 +40,7 @@ export default {
             {
                 kind: IntermediateKind.IntermediateFunction,
                 name: "multiplyAll",
+                typeParameters: [],
                 parameters: [
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,

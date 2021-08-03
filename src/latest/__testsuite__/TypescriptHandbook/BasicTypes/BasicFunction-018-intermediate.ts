@@ -40,6 +40,7 @@ export default {
             {
                 kind: IntermediateKind.IntermediateFunction,
                 name: "greeter",
+                typeParameters: [],
                 parameters: [
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,
@@ -47,6 +48,7 @@ export default {
                         optional: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                            typeParameters: [],
                             parameters: [
                                 {
                                     kind: IntermediateKind.IntermediateTypedCallableParameter,

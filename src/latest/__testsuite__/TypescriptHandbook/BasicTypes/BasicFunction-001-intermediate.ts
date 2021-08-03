@@ -40,6 +40,7 @@ export default {
             {
                 kind: IntermediateKind.IntermediateFunction,
                 name: "fn",
+                typeParameters: [],
                 parameters: [
                     {
                         kind: IntermediateKind.IntermediateUntypedCallableParameter,

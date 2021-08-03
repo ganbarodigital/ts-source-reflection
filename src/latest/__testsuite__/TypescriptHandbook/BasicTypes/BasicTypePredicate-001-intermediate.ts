@@ -40,6 +40,7 @@ export default {
             {
                 kind: IntermediateKind.IntermediateFunction,
                 name: "isFish",
+                typeParameters: [],
                 parameters: [
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,

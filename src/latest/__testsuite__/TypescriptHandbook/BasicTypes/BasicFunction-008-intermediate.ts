@@ -71,6 +71,7 @@ export default {
             {
                 kind: IntermediateKind.IntermediateFunction,
                 name: "printCoord",
+                typeParameters: [],
                 parameters: [
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,

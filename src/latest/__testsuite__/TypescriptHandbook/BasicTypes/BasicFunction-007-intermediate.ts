@@ -40,6 +40,7 @@ export default {
             {
                 kind: IntermediateKind.IntermediateFunction,
                 name: "welcomePeople",
+                typeParameters: [],
                 parameters: [
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,

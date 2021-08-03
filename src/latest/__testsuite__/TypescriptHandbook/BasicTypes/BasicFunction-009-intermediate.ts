@@ -50,6 +50,7 @@ export default {
             {
                 kind: IntermediateKind.IntermediateFunction,
                 name: "sanitizeInput",
+                typeParameters: [],
                 parameters: [
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,

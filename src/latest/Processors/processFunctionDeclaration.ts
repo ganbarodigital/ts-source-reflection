@@ -63,6 +63,7 @@ export const processFunctionDeclaration: StatementProcessor = (
 
     return {
         kind: IntermediateKind.IntermediateFunction,
+        typeParameters: [],
         name: funcDec.name?.text,
         parameters: processFunctionParameters(funcDec.parameters),
         returnType: retType,

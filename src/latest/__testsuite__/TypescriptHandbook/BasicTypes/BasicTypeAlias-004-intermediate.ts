@@ -49,6 +49,7 @@ export default {
                             propIsOptional: false,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                                typeParameters: [],
                                 parameters: [],
                                 returnType: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,

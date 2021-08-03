@@ -50,6 +50,7 @@ export default {
                 callSignatures: [
                     {
                         kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        typeParameters: [],
                         parameters: [
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameter,
@@ -70,6 +71,7 @@ export default {
                 constructors: [
                     {
                         kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        typeParameters: [],
                         parameters: [
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameter,

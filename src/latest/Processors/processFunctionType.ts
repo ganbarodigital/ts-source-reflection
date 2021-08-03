@@ -54,6 +54,7 @@ export function processFunctionType(
 
     return {
         kind: IntermediateKind.IntermediateFunctionTypeSignature,
+        typeParameters: [],
         parameters: processFunctionParameters(input.parameters),
         returnType: retType,
     }

@@ -50,6 +50,7 @@ export function processCallSignatureDeclaration(
 
     return {
         kind: IntermediateKind.IntermediateFunctionTypeSignature,
+        typeParameters: [],
         parameters: processFunctionParameters(input.parameters),
         returnType: retType,
     }
