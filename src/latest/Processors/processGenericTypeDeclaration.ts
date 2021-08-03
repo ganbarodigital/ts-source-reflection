@@ -32,8 +32,14 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { Maybe } from "@safelytyped/core-types";
 import { TypeParameterDeclaration } from "typescript";
-import { IntermediateGenericType, IntermediateKind } from "../IntermediateTypes";
+import {
+    IntermediateGenericType,
+    IntermediateKind,
+    IntermediateTypeReference
+} from "../IntermediateTypes";
+import { processTypeNode } from "./processTypeNode";
 
 export function processGenericTypeDeclaration(
     input: TypeParameterDeclaration
@@ -42,11 +48,17 @@ export function processGenericTypeDeclaration(
     // shorthand
     const children = input.getChildren();
 
+    // do we have a constraint?
+    let constraint: Maybe<IntermediateTypeReference>;
+    if (input.constraint) {
+        constraint = processTypeNode(input.constraint);
+    }
+
     // tslint:disable-next-line: no-angle-bracket-type-assertion
     return <IntermediateGenericType>{
         kind: IntermediateKind.IntermediateGenericType,
         name: input.name.text,
-        constraint: children[2]?.getText(),
+        constraint,
         defaultType: children[4]?.getText(),
     }
 }
