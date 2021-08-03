@@ -40,5 +40,6 @@ export interface IntermediateUntypedCallableParameter
     extends IntermediateItem<IntermediateKind.IntermediateUntypedCallableParameter>
 {
     paramName: string;
+    optional: boolean;
     initializer: Maybe<IntermediateExpression>;
 }

@@ -45,7 +45,7 @@ export default {
                     {
                         kind: IntermediateKind.IntermediateUntypedCallableParameter,
                         paramName: "x",
-                        // optional: false,
+                        optional: false,
                         initializer: {
                             kind: IntermediateKind.IntermediateNumericLiteral,
                             value: "10",

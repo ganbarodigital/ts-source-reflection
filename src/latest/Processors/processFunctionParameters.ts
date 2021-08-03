@@ -34,7 +34,7 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { NodeArray, ParameterDeclaration } from "typescript";
-import { IntermediateCallableParameter, IntermediateExpression, IntermediateKind } from "../IntermediateTypes";
+import { IntermediateCallableParameter, IntermediateExpression, IntermediateKind, IntermediateTypedCallableParameter, IntermediateUntypedCallableParameter } from "../IntermediateTypes";
 import { processInitializer } from "./processInitializer";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
@@ -61,17 +61,20 @@ export function processFunctionParameters(
 
         // special case - untyped parameter
         if (!paramDec.type) {
-            retval.push({
+            // tslint:disable-next-line: no-angle-bracket-type-assertion
+            retval.push(<IntermediateUntypedCallableParameter>{
                 kind: IntermediateKind.IntermediateUntypedCallableParameter,
                 paramName: paramDec.name.getText(),
                 initializer,
+                optional: processQuestionToken(paramDec.questionToken),
             });
 
             return;
         }
 
         // general case - typed parameter
-        retval.push({
+        // tslint:disable-next-line: no-angle-bracket-type-assertion
+        retval.push(<IntermediateTypedCallableParameter>{
             kind: IntermediateKind.IntermediateTypedCallableParameter,
             paramName: paramDec.name.getText(),
             typeRef: processTypeNode(paramDec.type),

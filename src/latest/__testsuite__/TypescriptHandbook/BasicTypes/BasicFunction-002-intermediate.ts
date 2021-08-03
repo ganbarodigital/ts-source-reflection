@@ -46,11 +46,13 @@ export default {
                         kind: IntermediateKind.IntermediateUntypedCallableParameter,
                         paramName: "person",
                         initializer: undefined,
+                        optional: false,
                     },
                     {
                         kind: IntermediateKind.IntermediateUntypedCallableParameter,
                         paramName: "date",
                         initializer: undefined,
+                        optional: false,
                     }
                 ],
                 returnType: undefined,

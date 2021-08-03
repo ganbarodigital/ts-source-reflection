@@ -46,6 +46,7 @@ export default {
                         kind: IntermediateKind.IntermediateUntypedCallableParameter,
                         paramName: "x",
                         initializer: undefined,
+                        optional: false,
                     }
                 ],
                 returnType: undefined,
