@@ -42,36 +42,58 @@ import * as AST from "../AST";
 export function processAnonymousClassType(
     input: TypeLiteralNode
 ): IntermediateAnonymousClassType {
-    // we need to understand the members
-    const members: IntermediatePropertyDefinition[] = [];
-
-    for(const member of input.members.filter(
-        (candidate) => { return isPropertySignature(candidate); }
-    )) {
-        // keep the compiler happy ...
-        // and also spot any unsupported edge cases!
-        const propSig = AST.mustBePropertySignature(member);
-
-        // when we get into parsing classes properly, we will return
-        // and refactor this
-        members.push(processPropertySignature(propSig));
+    return {
+        kind: IntermediateKind.IntermediateAnonymousClassType,
+        properties: processProperties(input),
+        callSignatures: processCallSignatures(input),
     }
+}
 
-    // now do the same for any call signatures
-    const callSignatures: IntermediateCallSignature[] = [];
+function processCallSignatures(
+    input: TypeLiteralNode
+): IntermediateCallSignature[]
+{
+    // this will be our return value
+    const retval: IntermediateCallSignature[] = [];
+
+    // find and process all the call signatures in this anonymous
+    // class
     for (const member of input.members.filter(
         (candidate) => { return isCallSignatureDeclaration(candidate)}
     )) {
         // keep the compiler happy
         const callSig = AST.mustBeCallSignatureDeclaration(member);
 
-        callSignatures.push(processCallSignatureDeclaration(callSig));
+        retval.push(processCallSignatureDeclaration(callSig));
     }
 
     // all done
-    return {
-        kind: IntermediateKind.IntermediateAnonymousClassType,
-        properties: members,
-        callSignatures,
+    return retval;
+}
+
+function processProperties(
+    input: TypeLiteralNode
+): IntermediatePropertyDefinition[]
+{
+    // this will be our return value
+    const retval: IntermediatePropertyDefinition[] = [];
+
+    // find and process all the property definitions in this
+    // anonymous class
+    for(const member of input.members.filter(
+        (candidate) => { return isPropertySignature(candidate); }
+    )) {
+        // keep the compiler happy ... even though we know
+        // that each member already is a PropertySignature
+        //
+        // it is safer than doing a type assertion here!
+        const propSig = AST.mustBePropertySignature(member);
+
+        // when we get into parsing classes properly, we will return
+        // and refactor this
+        retval.push(processPropertySignature(propSig));
     }
+
+    // all done
+    return retval;
 }
