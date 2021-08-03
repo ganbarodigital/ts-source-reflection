@@ -34,13 +34,13 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { CallSignatureDeclaration } from "typescript";
-import { IntermediateCallSignature, IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
+import { IntermediateFunctionTypeSignature, IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processTypeNode } from "./processTypeNode";
 
 export function processCallSignatureDeclaration(
     input: CallSignatureDeclaration
-): IntermediateCallSignature
+): IntermediateFunctionTypeSignature
 {
     // do we have a return type?
     let retType: Maybe<IntermediateTypeReference>;
@@ -49,7 +49,7 @@ export function processCallSignatureDeclaration(
     }
 
     return {
-        kind: IntermediateKind.IntermediateCallSignature,
+        kind: IntermediateKind.IntermediateFunctionTypeSignature,
         parameters: processFunctionParameters(input.parameters),
         returnType: retType,
     }

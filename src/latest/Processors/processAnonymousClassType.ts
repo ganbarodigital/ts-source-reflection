@@ -32,12 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { TypeLiteralNode, isPropertySignature, isCallSignatureDeclaration } from "typescript";
-import { IntermediateAnonymousClassType, IntermediateCallSignature, IntermediateKind, IntermediatePropertyDefinition } from "../IntermediateTypes";
-import { processPropertySignature } from "./processPropertySignature";
-import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
-
+import { isCallSignatureDeclaration, isPropertySignature, TypeLiteralNode } from "typescript";
 import * as AST from "../AST";
+import { IntermediateAnonymousClassType, IntermediateFunctionTypeSignature, IntermediateKind, IntermediatePropertyDefinition } from "../IntermediateTypes";
+import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
+import { processPropertySignature } from "./processPropertySignature";
+
 
 export function processAnonymousClassType(
     input: TypeLiteralNode
@@ -51,10 +51,10 @@ export function processAnonymousClassType(
 
 function processCallSignatures(
     input: TypeLiteralNode
-): IntermediateCallSignature[]
+): IntermediateFunctionTypeSignature[]
 {
     // this will be our return value
-    const retval: IntermediateCallSignature[] = [];
+    const retval: IntermediateFunctionTypeSignature[] = [];
 
     // find and process all the call signatures in this anonymous
     // class

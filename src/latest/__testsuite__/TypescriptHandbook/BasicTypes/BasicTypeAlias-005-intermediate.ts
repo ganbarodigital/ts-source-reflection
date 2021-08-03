@@ -55,7 +55,7 @@ export default {
                     ],
                     callSignatures: [
                         {
-                            kind: IntermediateKind.IntermediateCallSignature,
+                            kind: IntermediateKind.IntermediateFunctionTypeSignature,
                             parameters: [
                                 {
                                     kind: IntermediateKind.IntermediateTypedCallableParameter,

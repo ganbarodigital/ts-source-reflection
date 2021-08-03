@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateCallSignature } from "../IntermediateCallSignature";
+import { IntermediateFunctionTypeSignature } from "../IntermediateFunctionTypeSignature";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediatePropertyDefinition } from "../IntermediatePropertyDefinition";
@@ -50,5 +50,5 @@ export interface IntermediateAnonymousClassType
      *
      * This is Typescript's equivalent of PHP's `__invoke()` magic method.
      */
-    callSignatures: IntermediateCallSignature[];
+    callSignatures: IntermediateFunctionTypeSignature[];
 }
