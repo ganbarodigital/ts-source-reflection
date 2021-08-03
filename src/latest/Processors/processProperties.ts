@@ -31,24 +31,35 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import {
-    TypeLiteralNode
-} from "typescript";
-import {
-    IntermediateAnonymousClassType, IntermediateKind
-} from "../IntermediateTypes";
-import { processCallSignatures } from "./processCallSignatures";
-import { processConstructorDeclarations } from "./processConstructorDeclarations";
-import { processProperties } from "./processProperties";
 
-export function processAnonymousClassType(
+import { TypeLiteralNode, isPropertySignature } from "typescript";
+import { IntermediatePropertyDefinition } from "../IntermediateTypes";
+import { processPropertySignature } from "./processPropertySignature";
+import * as AST from "../AST";
+
+export function processProperties(
     input: TypeLiteralNode
-): IntermediateAnonymousClassType {
-    return {
-        kind: IntermediateKind.IntermediateAnonymousClassType,
-        properties: processProperties(input),
-        callSignatures: processCallSignatures(input),
-        constructors: processConstructorDeclarations(input),
-    }
-}
+): IntermediatePropertyDefinition[]
+{
+    // this will be our return value
+    const retval: IntermediatePropertyDefinition[] = [];
 
+    // find and process all the property definitions in this
+    // anonymous class
+    for(const member of input.members.filter(
+        (candidate) => { return isPropertySignature(candidate); }
+    )) {
+        // keep the compiler happy ... even though we know
+        // that each member already is a PropertySignature
+        //
+        // it is safer than doing a type assertion here!
+        const propSig = AST.mustBePropertySignature(member);
+
+        // when we get into parsing classes properly, we will return
+        // and refactor this
+        retval.push(processPropertySignature(propSig));
+    }
+
+    // all done
+    return retval;
+}
