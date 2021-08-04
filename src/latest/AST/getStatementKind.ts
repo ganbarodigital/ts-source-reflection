@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { DEFAULT_DATA_PATH, HashMap, UnsupportedTypeError } from "@safelytyped/core-types";
+import { HashMap } from "@safelytyped/core-types";
 import { isVariableStatement, Statement, SyntaxKind } from "typescript";
 import { IntermediateSourceFileChildren, isKeyOfIntermediateSourceFileChildren } from "../IntermediateTypes";
 
@@ -43,7 +43,7 @@ type KindTransform = {
 
 export function getStatementKind(
     input: Statement
-): keyof IntermediateSourceFileChildren
+): keyof IntermediateSourceFileChildren | undefined
 {
     const transforms: HashMap<KindTransform> = {
         // this is a workaround for an alias in SyntaxKind
@@ -67,12 +67,7 @@ export function getStatementKind(
         return retval;
     }
 
-    // raise hell otherwise!
-    throw new UnsupportedTypeError({
-        public: {
-            dataPath: DEFAULT_DATA_PATH,
-            expected: "keyof IntermediateSourceFileChildren",
-            actual: retval,
-        }
-    });
+    // if we get here, then the statement isn't one we currently
+    // support
+    return undefined;
 }

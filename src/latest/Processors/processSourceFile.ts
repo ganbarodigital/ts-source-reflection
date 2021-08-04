@@ -82,6 +82,11 @@ function processStatements(
         // shorthand
         const kind = getStatementKind(statement);
 
+        // did we get a statement that we support?
+        if (!kind) {
+            continue;
+        }
+
         // tslint:disable-next-line: no-console
         console.log("Processing node: " + kind);
 
