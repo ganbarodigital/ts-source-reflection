@@ -32,49 +32,9 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export enum IntermediateKind {
-    IntermediateCallableExpression,
-    IntermediateAnonymousCallableParameter,
-    IntermediateAnonymousClassType,
-    IntermediateArrayLiteralExpression,
-    IntermediateArrayTypeReference,
-    IntermediateBigintLiteral,
+import { IntermediateItem, IntermediateKind } from "..";
 
-    // I'm not 100% sure we should treat built-in types separately
-    // so this may disappear in the future!
-    IntermediateBuiltInTypeReference,
-    IntermediateCallSignature,
-    IntermediateClass,
-    IntermediateConstTypeCast,
-    IntermediateDocBlock,
-    IntermediateFixedTypeArgument,
-    IntermediateFixedTypeReference,
-    IntermediateFunction,
-    IntermediateFunctionTypeSignature,
-    IntermediateGenericType,
-    IntermediateGenericTypeArgument,
-    IntermediateImportItem,
-    IntermediateInterface,
-    IntermediateLiteralType,
-    IntermediateMethod,
-    IntermediateModule,
-    IntermediateNumericLiteral,
-    IntermediateObjectLiteral,
-    IntermediateParenthesizedType,
-    IntermediatePropertyAssignment,
-    IntermediateTypedPropertyDefinition,
-    IntermediateReference,
-    IntermediateSourceFile,
-    IntermediateStringLiteral,
-    IntermediateTypeAliasDefinition,
-    IntermediateTypeArgument,
-    IntermediateTypeDefinition,
-    IntermediateTypeIntersection,
-    IntermediateTypePredicate,
-    IntermediateTypedCallableParameter,
-    IntermediateUnionType,
-    IntermediateUntypedCallableParameter,
-    IntermediateUntypedPropertyDefinition,
-    IntermediateVariableDeclaration,
-    IntermediateVariableDeclarations,
+export interface IntermediateTypeDefinition<T extends IntermediateKind>
+    extends IntermediateItem<T>{
+    declared: boolean;
 }
