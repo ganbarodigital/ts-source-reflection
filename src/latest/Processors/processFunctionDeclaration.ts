@@ -45,8 +45,7 @@ import { processFunctionParameters } from "./processFunctionParameters";
 import { processTypeNode } from "./processTypeNode";
 import { processTypeParameters } from "./processTypeParameters";
 import { StatementProcessor } from "./StatementProcessor";
-
-
+import * as AST from "../AST";
 
 export const processFunctionDeclaration: StatementProcessor = (
     sourceFile: IntermediateSourceFile,
@@ -71,6 +70,7 @@ export const processFunctionDeclaration: StatementProcessor = (
 
     return {
         kind: IntermediateKind.IntermediateFunction,
+        declared: AST.hasDeclaredModifier(input.modifiers),
         typeParameters: typeParameters,
         name: funcDec.name?.text,
         parameters: processFunctionParameters(funcDec.parameters),

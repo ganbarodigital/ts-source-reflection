@@ -73,6 +73,7 @@ const expectedResult: IntermediateSourceFile = {
         FunctionDeclaration: [
             {
                 kind: IntermediateKind.IntermediateFunction,
+                declared: false,
                 name: "printCoord",
                 typeParameters: [],
                 parameters: [
