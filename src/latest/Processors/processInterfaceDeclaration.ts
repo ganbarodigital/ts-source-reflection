@@ -34,6 +34,7 @@
 
 import { InterfaceDeclaration, Statement } from "typescript";
 import * as AST from "../AST";
+import { hasDeclaredModifier } from "../AST";
 import { mustBeInterfaceDeclaration } from "../AST/mustBeInterfaceDeclaration";
 import {
     IntermediateInterface,
@@ -56,6 +57,7 @@ export const processInterfaceDeclaration: StatementProcessor = (
     // all done
     return {
         kind: IntermediateKind.IntermediateInterface,
+        declared: hasDeclaredModifier(input.modifiers),
         name: interfaceDec.name.text,
         docBlock: {
             kind: IntermediateKind.IntermediateDocBlock,

@@ -39,6 +39,7 @@ const expectedResult: IntermediateSourceFile = {
         InterfaceDeclaration: [
             {
                 kind: IntermediateKind.IntermediateInterface,
+                declared: false,
                 name: "Window",
                 exported: false,
                 docBlock: {
@@ -62,6 +63,7 @@ const expectedResult: IntermediateSourceFile = {
             },
             {
                 kind: IntermediateKind.IntermediateInterface,
+                declared: false,
                 name: "Window",
                 exported: false,
                 docBlock: {

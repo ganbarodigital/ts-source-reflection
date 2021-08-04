@@ -42,6 +42,7 @@ const expectedResult: IntermediateSourceFile = {
         InterfaceDeclaration: [
             {
                 kind: IntermediateKind.IntermediateInterface,
+                declared: false,
                 name: "Point",
                 exported: false,
                 docBlock: {

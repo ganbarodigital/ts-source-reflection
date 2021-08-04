@@ -38,12 +38,14 @@ import {
     IntermediateItem,
     IntermediateTypeArgument
 } from "..";
+import { IntermediateDeclarable } from "../IntermediateDeclarable";
 import { IntermediateFunctionTypeSignature } from "../IntermediateFunctionTypeSignature";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediatePropertyDefinition } from "../IntermediatePropertyDefinition";
 
 export interface IntermediateInterface
     extends IntermediateItem<IntermediateKind.IntermediateInterface>,
+        IntermediateDeclarable,
         IntermediateDocumentedItem,
         IntermediateExportableItem
 {

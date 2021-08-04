@@ -72,6 +72,7 @@ const expectedResult: IntermediateSourceFile = {
         InterfaceDeclaration: [
             {
                 kind: IntermediateKind.IntermediateInterface,
+                declared: false,
                 name: "Options",
                 exported: false,
                 docBlock: {

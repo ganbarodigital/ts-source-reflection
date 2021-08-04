@@ -42,58 +42,32 @@ const expectedResult: IntermediateSourceFile = {
         InterfaceDeclaration: [
             {
                 kind: IntermediateKind.IntermediateInterface,
-                declared: false,
-                name: "Animal",
-                exported: false,
-                docBlock: {
-                    kind: IntermediateKind.IntermediateDocBlock,
-                    text: undefined,
-                },
+                declared: true,
+                name: "I",
+                properties: [
+                    {
+                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                        propName: "x",
+                        propIsOptional: false,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateArrayTypeReference,
+                            typeRef: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "number",
+                            }
+                        },
+                    }
+                ],
+                callSignatures: [],
+                constructors: [],
                 extends: [],
-                properties: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "name",
-                        propIsOptional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "string",
-                        }
-                    }
-                ],
-                callSignatures: [],
-                constructors: [],
-            },
-            {
-                kind: IntermediateKind.IntermediateInterface,
-                declared: false,
-                name: "Bear",
-                exported: false,
                 docBlock: {
                     kind: IntermediateKind.IntermediateDocBlock,
                     text: undefined,
                 },
-                extends: [
-                    {
-                        kind: IntermediateKind.IntermediateFixedTypeArgument,
-                        name: "Animal",
-                    },
-                ],
-                properties: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "honey",
-                        propIsOptional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "boolean",
-                        }
-                    }
-                ],
-                callSignatures: [],
-                constructors: [],
+                exported: false,
             }
-        ],
+        ]
     },
     kind: IntermediateKind.IntermediateSourceFile,
 }
