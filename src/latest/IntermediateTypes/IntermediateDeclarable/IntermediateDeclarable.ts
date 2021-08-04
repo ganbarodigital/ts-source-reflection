@@ -32,9 +32,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem, IntermediateKind } from "..";
-
-export interface IntermediateTypeDefinition<T extends IntermediateKind>
-    extends IntermediateItem<T>{
+/**
+ * `IntermediateDeclarable` is an interface. Extend it when you have
+ * any intermediate construct that supports the `declare` keyword.
+ */
+export interface IntermediateDeclarable {
     declared: boolean;
 }
