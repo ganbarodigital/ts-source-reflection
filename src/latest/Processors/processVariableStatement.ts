@@ -93,6 +93,7 @@ function processVariableDeclaration(
             kind: IntermediateKind.IntermediateDocBlock,
             text: '',
         },
+        declared: AST.hasDeclaredModifier(input.modifiers),
         constant: contextFlags.constant,
         exported: contextFlags.exported,
         variableName: input.name.getText(),

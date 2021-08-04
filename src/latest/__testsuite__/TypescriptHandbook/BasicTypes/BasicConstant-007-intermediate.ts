@@ -48,6 +48,7 @@ const expectedResult: IntermediateSourceFile = {
                         variableName: "firstName",
                         constant: true,
                         exported: false,
+                        declared: false,
                         docBlock: {
                             kind: IntermediateKind.IntermediateDocBlock,
                             text: '',
@@ -70,6 +71,7 @@ const expectedResult: IntermediateSourceFile = {
                         variableName: "secondName",
                         constant: true,
                         exported: false,
+                        declared: false,
                         docBlock: {
                             kind: IntermediateKind.IntermediateDocBlock,
                             text: '',

@@ -34,6 +34,7 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { IntermediateConstantItem } from "../IntermediateConstantItem";
+import { IntermediateDeclarable } from "../IntermediateDeclarable";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateExportableItem } from "../IntermediateExportableItem";
 import { IntermediateExpression } from "../IntermediateExpression";
@@ -45,7 +46,8 @@ export interface IntermediateVariableDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateVariableDeclaration>,
         IntermediateDocumentedItem,
         IntermediateExportableItem,
-        IntermediateConstantItem
+        IntermediateConstantItem,
+        IntermediateDeclarable
 {
     variableName: string;
     typeRef: Maybe<IntermediateTypeReference>;

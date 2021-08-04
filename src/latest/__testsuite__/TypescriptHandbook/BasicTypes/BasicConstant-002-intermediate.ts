@@ -48,6 +48,7 @@ const expectedResult: IntermediateSourceFile = {
                         variableName: "myCanvas",
                         constant: true,
                         exported: true,
+                        declared: false,
                         docBlock: {
                             kind: IntermediateKind.IntermediateDocBlock,
                             text: '',
