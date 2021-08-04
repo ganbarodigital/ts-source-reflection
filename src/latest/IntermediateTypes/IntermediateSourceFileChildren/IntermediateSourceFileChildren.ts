@@ -32,46 +32,18 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateKind,
-    IntermediateSourceFile
-} from "../../../IntermediateTypes";
+import { IntermediateClass } from "../IntermediateClass";
+import { IntermediateFunction } from "../IntermediateFunction";
+import { IntermediateImportItem } from "../IntermediateImportItem";
+import { IntermediateInterface } from "../IntermediateInterface";
+import { IntermediateTypeAliasDefinition } from "../IntermediateTypeAliasDefinition";
+import { IntermediateVariableDeclarations } from "../IntermediateVariableDeclarations";
 
-const expectedResult: IntermediateSourceFile = {
-    children: {
-        TypeAliasDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateTypeAliasDefinition,
-                typeName: "Point",
-                typeRef: {
-                    kind: IntermediateKind.IntermediateAnonymousClassType,
-                    properties: [
-                        {
-                            kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                            propName: "x",
-                            propIsOptional: false,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "number",
-                            }
-                        },
-                        {
-                            kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                            propName: "y",
-                            propIsOptional: false,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "number",
-                            }
-                        },
-                    ],
-                    callSignatures: [],
-                    constructors: [],
-                }
-            }
-        ],
-    },
-    kind: IntermediateKind.IntermediateSourceFile,
+export interface IntermediateSourceFileChildren {
+    ClassDeclaration?: IntermediateClass[];
+    FunctionDeclaration?: IntermediateFunction[];
+    ImportDeclaration?: IntermediateImportItem[];
+    InterfaceDeclaration?: IntermediateInterface[];
+    TypeAliasDeclaration?: IntermediateTypeAliasDefinition[];
+    VariableStatement?: IntermediateVariableDeclarations[];
 }
-
-export default expectedResult;

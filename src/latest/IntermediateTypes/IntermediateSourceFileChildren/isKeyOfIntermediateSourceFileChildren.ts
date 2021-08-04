@@ -32,46 +32,23 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateKind,
-    IntermediateSourceFile
-} from "../../../IntermediateTypes";
+import { HashMap } from "@safelytyped/core-types";
+import { IntermediateSourceFileChildren } from "./IntermediateSourceFileChildren";
 
-const expectedResult: IntermediateSourceFile = {
-    children: {
-        TypeAliasDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateTypeAliasDefinition,
-                typeName: "Point",
-                typeRef: {
-                    kind: IntermediateKind.IntermediateAnonymousClassType,
-                    properties: [
-                        {
-                            kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                            propName: "x",
-                            propIsOptional: false,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "number",
-                            }
-                        },
-                        {
-                            kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                            propName: "y",
-                            propIsOptional: false,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "number",
-                            }
-                        },
-                    ],
-                    callSignatures: [],
-                    constructors: [],
-                }
-            }
-        ],
-    },
-    kind: IntermediateKind.IntermediateSourceFile,
+export function isKeyOfIntermediateSourceFileChildren(
+    input: string
+): input is keyof IntermediateSourceFileChildren
+{
+    // I'm sure there's a way to get the Typescript compiler
+    // to calculate this type for us ...
+    const validChildren: HashMap<boolean> = {
+        ClassDeclaration: true,
+        FunctionDeclaration: true,
+        ImportDeclaration: true,
+        InterfaceDeclaration: true,
+        TypeAliasDeclaration: true,
+        VariableStatement: true,
+    }
+
+    return validChildren[input];
 }
-
-export default expectedResult;

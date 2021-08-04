@@ -48,12 +48,12 @@ import {
 export function processImportDeclaration(
     sourceFile: IntermediateSourceFile,
     input: Statement
-): object
+): IntermediateImportItem[]
 {
     // make sure we have what we expect
     const importDec = AST.mustBeImportDeclaration(input);
 
-    let retval: object[] = [];
+    let retval: IntermediateImportItem[] = [];
 
     if (importDec.importClause) {
         retval = [ ...retval, ...processImportClause(importDec.importClause, importDec.moduleSpecifier.getText()) ];
@@ -62,7 +62,7 @@ export function processImportDeclaration(
     return retval;
 }
 
-function processImportClause(input: Node, origin: string): object[]
+function processImportClause(input: Node, origin: string): IntermediateImportItem[]
 {
     const importClause = AST.mustBeImportClause(input);
 

@@ -32,9 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateKind } from "../../../IntermediateTypes";
+import {
+    IntermediateKind,
+    IntermediateSourceFile
+} from "../../../IntermediateTypes";
 
-export default {
+const expectedResult: IntermediateSourceFile = {
     children: {
         FunctionDeclaration: [
             {
@@ -82,3 +85,5 @@ export default {
     },
     kind: IntermediateKind.IntermediateSourceFile,
 }
+
+export default expectedResult;

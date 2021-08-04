@@ -31,23 +31,21 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { FunctionPointerTable, HashMap, searchFunctionPointerTable } from "@safelytyped/core-types";
+import { FunctionPointerTable, searchFunctionPointerTable } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import { NodeArray, SourceFile, Statement } from "typescript";
-
 import { getStatementKind } from "../AST";
-import { IntermediateKind, IntermediateSourceFile } from "../IntermediateTypes";
+import { IntermediateKind, IntermediateSourceFile, IntermediateSourceFileChildren } from "../IntermediateTypes";
 import { processClassDeclaration } from "./processClassDeclaration";
 import { processFunctionDeclaration } from "./processFunctionDeclaration";
-import { processImportDeclaration } from "./processImportDeclaration";
 import { processInterfaceDeclaration } from "./processInterfaceDeclaration";
 import { processTypeAliasDeclaration } from "./processTypeAliasDeclaration";
 import { processVariableStatement } from "./processVariableStatement";
 import { StatementProcessor } from "./StatementProcessor";
 
 
+
 const statementProcessors: FunctionPointerTable<string, StatementProcessor> = {
-    'ImportDeclaration': processImportDeclaration,
     'InterfaceDeclaration': processInterfaceDeclaration,
     'ClassDeclaration': processClassDeclaration,
     'FunctionDeclaration': processFunctionDeclaration,
@@ -76,9 +74,9 @@ export function processSourceFile(
 function processStatements(
     sourceFile: IntermediateSourceFile,
     statements: NodeArray<Statement>
-)
+): IntermediateSourceFileChildren
 {
-    const result: HashMap<object[]> = {};
+    const result: IntermediateSourceFileChildren = {};
 
     for(const statement of statements) {
         // shorthand
@@ -90,7 +88,7 @@ function processStatements(
         const statementProcessor = searchFunctionPointerTable(
             statementProcessors,
             [kind],
-            () => { return {} }
+            () => { return undefined }
         );
 
         const processedItem = statementProcessor(
@@ -102,7 +100,8 @@ function processStatements(
             if (!result[kind]) {
                 result[kind] = [];
             }
-            result[kind].push(processedItem);
+            // we have to override the compiler here :(
+            result[kind]!.push(processedItem as any);
         }
     };
 
