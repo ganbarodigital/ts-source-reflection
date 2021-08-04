@@ -32,24 +32,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./findDocBlockText";
-export * from "./findExtendsHeritageClauses";
-export * from "./findImplementsHeritageClauses";
-export * from "./getStatementKind";
-export * from "./isAnonymousClassType";
-export * from "./isDeclareKeyword";
-export * from "./isExportKeyword";
-export * from "./isNodeExported";
-export * from "./mustBeCallSignatureDeclaration";
-export * from "./mustBeClassDeclaration";
-export * from "./mustBeConstructSignatureDeclaration";
-export * from "./mustBeConstructorDeclaration";
-export * from "./mustBeFunctionDeclaration";
-export * from "./mustBeImportClause";
-export * from "./mustBeImportDeclaration";
-export * from "./mustBeInterfaceDeclaration";
-export * from "./mustBePropertyAssignment";
-export * from "./mustBePropertySignature";
-export * from "./mustBeTypeAliasDeclaration";
-export * from "./mustBeTypeReference";
-export * from "./mustBeVariableStatement";
+import { DeclareKeyword, Modifier, SyntaxKind } from "typescript";
+
+export function isDeclareKeyword(
+    input: Modifier
+): input is DeclareKeyword
+{
+    if (input.kind === SyntaxKind.DeclareKeyword) {
+        return true;
+    }
+
+    return false;
+}
