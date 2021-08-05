@@ -75,7 +75,7 @@ const expectedResult: IntermediateSourceFile = {
                 ],
                 constructors: [
                     {
-                        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        kind: IntermediateKind.IntermediateConstructorDefinition,
                         typeParameters: [],
                         parameters: [
                             {

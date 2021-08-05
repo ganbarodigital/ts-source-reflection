@@ -33,7 +33,7 @@
 //
 
 import { IntermediateCallSignature } from "../IntermediateCallSignature";
-import { IntermediateFunctionTypeSignature } from "../IntermediateFunctionTypeSignature";
+import { IntermediateConstructorDefinition } from "../IntermediateConstructorDefinition/IntermediateConstructorDefinition";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediatePropertyDefinition } from "../IntermediatePropertyDefinition";
@@ -53,5 +53,5 @@ export interface IntermediateAnonymousClassType
      */
     callSignatures: IntermediateCallSignature[];
 
-    constructors: IntermediateFunctionTypeSignature[];
+    constructors: IntermediateConstructorDefinition[];
 }

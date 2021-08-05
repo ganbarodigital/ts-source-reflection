@@ -39,8 +39,8 @@ import {
     IntermediateTypeArgument
 } from "..";
 import { IntermediateCallSignature } from "../IntermediateCallSignature";
+import { IntermediateConstructorDefinition } from "../IntermediateConstructorDefinition/IntermediateConstructorDefinition";
 import { IntermediateDeclarable } from "../IntermediateDeclarable";
-import { IntermediateFunctionTypeSignature } from "../IntermediateFunctionTypeSignature";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediatePropertyDefinition } from "../IntermediatePropertyDefinition";
 
@@ -54,5 +54,5 @@ export interface IntermediateInterface
     extends: IntermediateTypeArgument[];
     properties: IntermediatePropertyDefinition[];
     callSignatures: IntermediateCallSignature[];
-    constructors: IntermediateFunctionTypeSignature[];
+    constructors: IntermediateConstructorDefinition[];
 }

@@ -49,7 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                     callSignatures: [],
                     constructors: [
                         {
-                            kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                            kind: IntermediateKind.IntermediateConstructorDefinition,
                             typeParameters: [],
                             parameters: [
                                 {
