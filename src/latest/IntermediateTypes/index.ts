@@ -44,6 +44,7 @@ export * from "./IntermediateCallableExpression";
 export * from "./IntermediateCallableParameter";
 export * from "./IntermediateClass";
 export * from "./IntermediateConstantItem";
+export * from "./IntermediateConstructorDefinition";
 export * from "./IntermediateConstTypeCast";
 export * from "./IntermediateDocBlock";
 export * from "./IntermediateDocumentedItem";

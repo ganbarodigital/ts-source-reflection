@@ -32,50 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export enum IntermediateKind {
-    IntermediateCallableExpression,
-    IntermediateAnonymousCallableParameter,
-    IntermediateAnonymousClassType,
-    IntermediateArrayLiteralExpression,
-    IntermediateArrayTypeReference,
-    IntermediateBigintLiteral,
+import { IntermediateCallable } from "../IntermediateCallable";
+import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateKind } from "../IntermediateKind";
 
-    // I'm not 100% sure we should treat built-in types separately
-    // so this may disappear in the future!
-    IntermediateBuiltInTypeReference,
-    IntermediateCallSignature,
-    IntermediateClass,
-    IntermediateConstTypeCast,
-    IntermediateConstructorDefinition,
-    IntermediateDocBlock,
-    IntermediateFixedTypeArgument,
-    IntermediateFixedTypeReference,
-    IntermediateFunction,
-    IntermediateFunctionTypeSignature,
-    IntermediateGenericType,
-    IntermediateGenericTypeArgument,
-    IntermediateImportItem,
-    IntermediateInterface,
-    IntermediateLiteralType,
-    IntermediateMethod,
-    IntermediateModule,
-    IntermediateNumericLiteral,
-    IntermediateObjectLiteral,
-    IntermediateParenthesizedType,
-    IntermediatePropertyAssignment,
-    IntermediateTypedPropertyDefinition,
-    IntermediateReference,
-    IntermediateSourceFile,
-    IntermediateStringLiteral,
-    IntermediateTypeAliasDefinition,
-    IntermediateTypeArgument,
-    IntermediateTypeDefinition,
-    IntermediateTypeIntersection,
-    IntermediateTypePredicate,
-    IntermediateTypedCallableParameter,
-    IntermediateUnionType,
-    IntermediateUntypedCallableParameter,
-    IntermediateUntypedPropertyDefinition,
-    IntermediateVariableDeclaration,
-    IntermediateVariableDeclarations,
+export interface IntermediateConstructorDefinition
+    extends IntermediateItem<IntermediateKind.IntermediateConstructorDefinition>,
+        IntermediateCallable
+{
+
 }
