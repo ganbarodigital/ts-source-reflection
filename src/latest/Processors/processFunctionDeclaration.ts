@@ -75,6 +75,6 @@ export const processFunctionDeclaration: StatementProcessor = (
         name: funcDec.name?.text,
         parameters: processFunctionParameters(funcDec.parameters),
         returnType: retType,
-        hasBody: false,
+        hasBody: AST.hasBody(funcDec.body),
     }
 }

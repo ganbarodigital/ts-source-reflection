@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                     typeName: "never",
                 },
-                hasBody: false,
+                hasBody: true,
             }
         ],
     },

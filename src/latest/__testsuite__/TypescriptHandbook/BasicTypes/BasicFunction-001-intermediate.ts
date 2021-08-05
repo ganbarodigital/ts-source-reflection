@@ -54,7 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     }
                 ],
                 returnType: undefined,
-                hasBody: false,
+                hasBody: true,
             }
         ],
     },
