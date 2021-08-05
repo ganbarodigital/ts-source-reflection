@@ -39,12 +39,15 @@ import {
     IntermediateRestrictableScopeItem,
     IntermediateStaticable
 } from "..";
+import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 
 export interface IntermediateMethodDefinition
-    extends IntermediateItem<IntermediateKind.IntermediateMethod>,
+    extends IntermediateItem<IntermediateKind.IntermediateMethodDefinition>,
         IntermediateCallable,
+        IntermediateDocumentedItem,
         IntermediateRestrictableScopeItem,
         IntermediateStaticable
 {
-
+    name: string;
+    hasBody: boolean;
 }
