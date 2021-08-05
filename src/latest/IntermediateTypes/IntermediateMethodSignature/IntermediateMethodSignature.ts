@@ -32,51 +32,21 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export enum IntermediateKind {
-    IntermediateCallableExpression,
-    IntermediateAnonymousCallableParameter,
-    IntermediateAnonymousClassType,
-    IntermediateArrayLiteralExpression,
-    IntermediateArrayTypeReference,
-    IntermediateBigintLiteral,
+import {
+    IntermediateCallable,
+    IntermediateItem,
+    IntermediateKind,
+    IntermediateRestrictableScopeItem,
+    IntermediateStaticable
+} from "..";
+import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 
-    // I'm not 100% sure we should treat built-in types separately
-    // so this may disappear in the future!
-    IntermediateBuiltInTypeReference,
-    IntermediateCallSignature,
-    IntermediateClass,
-    IntermediateConstTypeCast,
-    IntermediateConstructorDefinition,
-    IntermediateDocBlock,
-    IntermediateFixedTypeArgument,
-    IntermediateFixedTypeReference,
-    IntermediateFunction,
-    IntermediateFunctionTypeSignature,
-    IntermediateGenericType,
-    IntermediateGenericTypeArgument,
-    IntermediateImportItem,
-    IntermediateInterface,
-    IntermediateLiteralType,
-    IntermediateMethodDefinition,
-    IntermediateMethodSignature,
-    IntermediateModule,
-    IntermediateNumericLiteral,
-    IntermediateObjectLiteral,
-    IntermediateParenthesizedType,
-    IntermediatePropertyAssignment,
-    IntermediateTypedPropertyDefinition,
-    IntermediateReference,
-    IntermediateSourceFile,
-    IntermediateStringLiteral,
-    IntermediateTypeAliasDefinition,
-    IntermediateTypeArgument,
-    IntermediateTypeDefinition,
-    IntermediateTypeIntersection,
-    IntermediateTypePredicate,
-    IntermediateTypedCallableParameter,
-    IntermediateUnionType,
-    IntermediateUntypedCallableParameter,
-    IntermediateUntypedPropertyDefinition,
-    IntermediateVariableDeclaration,
-    IntermediateVariableDeclarations,
+export interface IntermediateMethodSignature
+    extends IntermediateItem<IntermediateKind.IntermediateMethodSignature>,
+        IntermediateCallable,
+        IntermediateDocumentedItem,
+        IntermediateRestrictableScopeItem,
+        IntermediateStaticable
+{
+    name: string;
 }
