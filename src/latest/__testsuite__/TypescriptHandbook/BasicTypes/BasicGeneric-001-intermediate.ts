@@ -71,6 +71,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateFixedTypeReference,
                     typeName: "Type",
                 },
+                hasBody: false,
             },
         ],
     },

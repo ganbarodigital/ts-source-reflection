@@ -106,6 +106,7 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "Output",
                     },
                 },
+                hasBody: false,
             },
         ],
     },

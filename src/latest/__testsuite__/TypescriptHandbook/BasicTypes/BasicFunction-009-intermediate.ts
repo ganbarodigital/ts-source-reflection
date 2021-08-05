@@ -70,7 +70,8 @@ const expectedResult: IntermediateSourceFile = {
                 returnType: {
                     kind: IntermediateKind.IntermediateFixedTypeReference,
                     typeName: "UserInputSanitizedString",
-                }
+                },
+                hasBody: false,
             }
         ]
     },

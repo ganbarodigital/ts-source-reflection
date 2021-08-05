@@ -95,6 +95,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     ],
                 },
+                hasBody: false,
             }
         ],
     },

@@ -74,6 +74,7 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: 'Fish',
                     },
                 },
+                hasBody: false,
             }
         ],
     },

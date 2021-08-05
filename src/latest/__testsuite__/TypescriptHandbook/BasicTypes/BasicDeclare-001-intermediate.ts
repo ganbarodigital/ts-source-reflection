@@ -61,6 +61,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                     typeName: "void",
                 },
+                hasBody: false,
             },
         ],
     },

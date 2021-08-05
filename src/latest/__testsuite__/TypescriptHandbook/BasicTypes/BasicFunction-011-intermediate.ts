@@ -83,7 +83,8 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: '1',
                         },
                     ],
-                }
+                },
+                hasBody: false,
             }
         ]
     },

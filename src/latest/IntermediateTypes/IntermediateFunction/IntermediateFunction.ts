@@ -47,5 +47,6 @@ export interface IntermediateFunction
 {
     kind: IntermediateKind.IntermediateFunction;
     name: Maybe<string>;
+    hasBody: boolean;
 
 }
