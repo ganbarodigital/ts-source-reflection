@@ -34,12 +34,14 @@
 
 import { Statement } from "typescript";
 import { mustBeTypeAliasDeclaration } from "../AST/mustBeTypeAliasDeclaration";
-import { IntermediateKind, IntermediateSourceFile, IntermediateTypeAliasDefinition } from "../IntermediateTypes";
+import {
+    IntermediateKind,
+    IntermediateTypeAliasDefinition
+} from "../IntermediateTypes";
 import { StatementProcessor } from "./StatementProcessor";
 import { processTypeNode } from "./processTypeNode";
 
 export const processTypeAliasDeclaration: StatementProcessor = (
-    sourceFile: IntermediateSourceFile,
     input: Statement
 ): IntermediateTypeAliasDefinition => {
     // make sure we have what we need

@@ -97,7 +97,6 @@ function processStatements(
         );
 
         const processedItem = statementProcessor(
-            { ...sourceFile, children: result },
             statement
         );
 

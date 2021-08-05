@@ -36,12 +36,10 @@ import { ExpressionWithTypeArguments, isTypeReferenceNode, NodeArray, TypeNode }
 import {
     IntermediateGenericTypeArgument,
     IntermediateKind,
-    IntermediateSourceFile,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
 
 export function processExpressionWithTypeArguments(
-    sourceFile: IntermediateSourceFile,
     clause: ExpressionWithTypeArguments
 ): IntermediateTypeArgument {
     // do we have something simple?

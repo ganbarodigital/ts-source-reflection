@@ -38,7 +38,6 @@ import {
     IntermediateFunction,
     IntermediateGenericType,
     IntermediateKind,
-    IntermediateSourceFile,
     IntermediateTypeReference
 } from "../IntermediateTypes";
 import { processFunctionParameters } from "./processFunctionParameters";
@@ -48,7 +47,6 @@ import { StatementProcessor } from "./StatementProcessor";
 import * as AST from "../AST";
 
 export const processFunctionDeclaration: StatementProcessor = (
-    sourceFile: IntermediateSourceFile,
     input: Statement
 ): IntermediateFunction => {
     // make sure we have what we need

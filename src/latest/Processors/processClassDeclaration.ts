@@ -39,7 +39,6 @@ import {
     IntermediateClass,
     IntermediateGenericType,
     IntermediateKind,
-    IntermediateSourceFile,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
@@ -47,7 +46,6 @@ import { processTypeParameters } from "./processTypeParameters";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processClassDeclaration: StatementProcessor = (
-    sourceFile: IntermediateSourceFile,
     input: Statement
 ): IntermediateClass => {
     // make sure we have the right kind of statement
@@ -67,13 +65,12 @@ export const processClassDeclaration: StatementProcessor = (
             text: AST.findDocBlockText(classDec),
         },
         exported: AST.isNodeExported(classDec),
-        extendsTypeParameter: getBaseClassType(sourceFile, classDec),
-        implementsTypeParameters: getBaseInterfaceTypes(sourceFile, classDec),
+        extendsTypeParameter: getBaseClassType(classDec),
+        implementsTypeParameters: getBaseInterfaceTypes(classDec),
     };
 }
 
 function getBaseClassType(
-    sourceFile: IntermediateSourceFile,
     input: ClassDeclaration
 ): Maybe<IntermediateTypeArgument>
 {
@@ -86,14 +83,13 @@ function getBaseClassType(
 
     // if we get here, then yes it does (yay!)
     for (const clause of heritageClauses) {
-        return processExpressionWithTypeArguments(sourceFile, clause.types[0]);
+        return processExpressionWithTypeArguments(clause.types[0]);
     }
 
     return undefined;
 }
 
 function getBaseInterfaceTypes(
-    sourceFile: IntermediateSourceFile,
     input: ClassDeclaration
 ): IntermediateTypeArgument[] {
     // our return value
@@ -102,7 +98,7 @@ function getBaseInterfaceTypes(
     // find the implement clauses (if any)
     const heritageClauses = AST.findImplementsHeritageClauses(input);
     for (const clause of heritageClauses) {
-        retval.push(processExpressionWithTypeArguments(sourceFile, clause.types[0]));
+        retval.push(processExpressionWithTypeArguments(clause.types[0]));
     }
 
     return retval;

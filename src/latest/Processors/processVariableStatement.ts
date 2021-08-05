@@ -36,7 +36,7 @@ import { NodeFlags, Statement, VariableDeclaration } from "typescript";
 import * as AST from "../AST";
 import { isNodeExported } from "../AST";
 import {
-    IntermediateKind, IntermediateSourceFile, IntermediateVariableDeclaration,
+    IntermediateKind, IntermediateVariableDeclaration,
     IntermediateVariableDeclarations
 } from "../IntermediateTypes";
 import { processInitializer } from "./processInitializer";
@@ -44,7 +44,6 @@ import { processTypeNode } from "./processTypeNode";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processVariableStatement: StatementProcessor = (
-    sourceFile: IntermediateSourceFile,
     input: Statement
 ): IntermediateVariableDeclarations => {
     // make sure we have the right kind of statement

@@ -38,7 +38,7 @@ import { hasDeclaredModifier } from "../AST";
 import { mustBeInterfaceDeclaration } from "../AST/mustBeInterfaceDeclaration";
 import {
     IntermediateInterface,
-    IntermediateKind, IntermediateSourceFile,
+    IntermediateKind,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
@@ -46,7 +46,6 @@ import { processMembers } from "./processMembers";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processInterfaceDeclaration: StatementProcessor = (
-    sourceFile: IntermediateSourceFile,
     input: Statement
 ): IntermediateInterface => {
     // make sure we're dealing with an actual interface
@@ -62,13 +61,12 @@ export const processInterfaceDeclaration: StatementProcessor = (
             text: AST.findDocBlockText(interfaceDec),
         },
         exported: AST.isNodeExported(interfaceDec),
-        extends: getBaseInterfaceTypes(sourceFile, interfaceDec),
+        extends: getBaseInterfaceTypes(interfaceDec),
         members: processMembers(interfaceDec.members),
     }
 }
 
 function getBaseInterfaceTypes(
-    sourceFile: IntermediateSourceFile,
     input: InterfaceDeclaration
 ): IntermediateTypeArgument[] {
     // our return value
@@ -77,7 +75,7 @@ function getBaseInterfaceTypes(
     // find the implement clauses (if any)
     const heritageClauses = AST.findExtendsHeritageClauses(input);
     for (const clause of heritageClauses) {
-        retval.push(processExpressionWithTypeArguments(sourceFile, clause.types[0]));
+        retval.push(processExpressionWithTypeArguments(clause.types[0]));
     }
 
     return retval;
