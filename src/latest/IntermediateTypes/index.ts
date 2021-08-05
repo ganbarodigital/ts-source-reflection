@@ -61,6 +61,7 @@ export * from "./IntermediateInterface";
 export * from "./IntermediateItem";
 export * from "./IntermediateKind";
 export * from "./IntermediateLiteralType";
+export * from "./IntermediateMemberDefinition";
 export * from "./IntermediateMethod";
 // export * from "./IntermediateModule";
 export * from "./IntermediateNumericLiteral";
