@@ -34,15 +34,15 @@
 
 import { isCallSignatureDeclaration, NodeArray, TypeElement } from "typescript";
 import * as AST from "../AST";
-import { IntermediateFunctionTypeSignature } from "../IntermediateTypes";
+import { IntermediateCallSignature } from "../IntermediateTypes";
 import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
 
 export function processCallSignatures(
     input: NodeArray<TypeElement>
-): IntermediateFunctionTypeSignature[]
+): IntermediateCallSignature[]
 {
     // this will be our return value
-    const retval: IntermediateFunctionTypeSignature[] = [];
+    const retval: IntermediateCallSignature[] = [];
 
     // find and process all the call signatures in this anonymous
     // class
