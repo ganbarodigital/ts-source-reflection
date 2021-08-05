@@ -33,11 +33,13 @@
 //
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
-import { isCallSignatureDeclaration, isConstructorDeclaration, isConstructSignatureDeclaration, isPropertySignature, NodeArray, TypeElement } from "typescript";
+import { isCallSignatureDeclaration, isConstructorDeclaration, isConstructSignatureDeclaration, isMethodDeclaration, isMethodSignature, isPropertySignature, NodeArray, SyntaxKind, TypeElement } from "typescript";
 import { IntermediateMemberDefinition } from "../IntermediateTypes";
 import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
 import { processConstructorDeclaration } from "./processConstructorDeclaration";
 import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
+import { processMethodDeclaration } from "./processMethodDeclaration";
+import { processMethodSignature } from "./processMethodSignature";
 import { processPropertySignature } from "./processPropertySignature";
 
 export function processMembers(
@@ -67,7 +69,19 @@ export function processMembers(
             continue;
         }
 
+        if (isMethodSignature(member)) {
+            retval.push(processMethodSignature(member));
+            continue;
+        }
+
+        if (isMethodDeclaration(member)) {
+            retval.push(processMethodDeclaration(member));
+        }
+
         // if we get here, we have an unsupported type
+        // tslint:disable-next-line: no-console
+        console.log(getClassNames(member), SyntaxKind[member.kind]);
+
         throw new UnsupportedTypeError({
             public: {
                 dataPath: DEFAULT_DATA_PATH,
