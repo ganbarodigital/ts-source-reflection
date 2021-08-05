@@ -45,7 +45,7 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "Animal",
                 typeRef: {
                     kind: IntermediateKind.IntermediateAnonymousClassType,
-                    properties: [
+                    members: [
                         {
                             kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                             propName: "name",
@@ -56,8 +56,6 @@ const expectedResult: IntermediateSourceFile = {
                             }
                         },
                     ],
-                    callSignatures: [],
-                    constructors: [],
                 }
             },
             {
@@ -72,7 +70,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         {
                             kind: IntermediateKind.IntermediateAnonymousClassType,
-                            properties: [
+                            members: [
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                                     propName: "honey",
@@ -83,8 +81,6 @@ const expectedResult: IntermediateSourceFile = {
                                     }
                                 },
                             ],
-                            callSignatures: [],
-                            constructors: [],
                         },
                     ],
                 }

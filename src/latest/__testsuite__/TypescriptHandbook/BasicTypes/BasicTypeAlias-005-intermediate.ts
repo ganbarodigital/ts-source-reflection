@@ -45,7 +45,7 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "DescribableFunction",
                 typeRef: {
                     kind: IntermediateKind.IntermediateAnonymousClassType,
-                    properties: [
+                    members: [
                         {
                             kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                             propName: "description",
@@ -55,8 +55,6 @@ const expectedResult: IntermediateSourceFile = {
                                 typeName: "string",
                             },
                         },
-                    ],
-                    callSignatures: [
                         {
                             kind: IntermediateKind.IntermediateCallSignature,
                             typeParameters: [],
@@ -78,7 +76,6 @@ const expectedResult: IntermediateSourceFile = {
                             },
                         },
                     ],
-                    constructors: [],
                 },
             },
         ],

@@ -45,9 +45,7 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "SomeConstructor",
                 typeRef: {
                     kind: IntermediateKind.IntermediateAnonymousClassType,
-                    properties: [],
-                    callSignatures: [],
-                    constructors: [
+                    members: [
                         {
                             kind: IntermediateKind.IntermediateConstructorDefinition,
                             typeParameters: [],

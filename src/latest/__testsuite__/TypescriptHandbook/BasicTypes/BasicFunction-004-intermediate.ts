@@ -51,7 +51,7 @@ const expectedResult: IntermediateSourceFile = {
                         paramName: "pt",
                         typeRef: {
                             kind: IntermediateKind.IntermediateAnonymousClassType,
-                            properties: [
+                            members: [
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                                     propName: "x",
@@ -71,8 +71,6 @@ const expectedResult: IntermediateSourceFile = {
                                     }
                                 },
                             ],
-                            callSignatures: [],
-                            constructors: [],
                         },
                         optional: false,
                         initializer: undefined,

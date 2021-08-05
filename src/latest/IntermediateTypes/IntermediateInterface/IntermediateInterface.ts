@@ -38,11 +38,9 @@ import {
     IntermediateItem,
     IntermediateTypeArgument
 } from "..";
-import { IntermediateCallSignature } from "../IntermediateCallSignature";
-import { IntermediateConstructorDefinition } from "../IntermediateConstructorDefinition/IntermediateConstructorDefinition";
 import { IntermediateDeclarable } from "../IntermediateDeclarable";
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediatePropertyDefinition } from "../IntermediatePropertyDefinition";
+import { IntermediateMemberDefinition } from "../IntermediateMemberDefinition";
 
 export interface IntermediateInterface
     extends IntermediateItem<IntermediateKind.IntermediateInterface>,
@@ -52,7 +50,5 @@ export interface IntermediateInterface
 {
     name: string;
     extends: IntermediateTypeArgument[];
-    properties: IntermediatePropertyDefinition[];
-    callSignatures: IntermediateCallSignature[];
-    constructors: IntermediateConstructorDefinition[];
+    members: IntermediateMemberDefinition[];
 }

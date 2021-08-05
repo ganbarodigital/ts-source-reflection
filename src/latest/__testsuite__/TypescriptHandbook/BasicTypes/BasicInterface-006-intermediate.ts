@@ -50,30 +50,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 exported: false,
                 extends: [],
-                properties: [],
-                callSignatures: [
-                    {
-                        kind: IntermediateKind.IntermediateCallSignature,
-                        typeParameters: [],
-                        parameters: [
-                            {
-                                kind: IntermediateKind.IntermediateTypedCallableParameter,
-                                paramName: "n",
-                                optional: true,
-                                typeRef: {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: "number",
-                                },
-                                initializer: undefined,
-                            },
-                        ],
-                        returnType: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        },
-                    },
-                ],
-                constructors: [
+                members: [
                     {
                         kind: IntermediateKind.IntermediateConstructorDefinition,
                         typeParameters: [],
@@ -92,6 +69,26 @@ const expectedResult: IntermediateSourceFile = {
                         returnType: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             typeName: "Date",
+                        },
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateCallSignature,
+                        typeParameters: [],
+                        parameters: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedCallableParameter,
+                                paramName: "n",
+                                optional: true,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                },
+                                initializer: undefined,
+                            },
+                        ],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
                         },
                     },
                 ],

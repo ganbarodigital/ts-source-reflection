@@ -44,7 +44,7 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateInterface,
                 declared: true,
                 name: "I",
-                properties: [
+                members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                         propName: "x",
@@ -58,8 +58,6 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     }
                 ],
-                callSignatures: [],
-                constructors: [],
                 extends: [],
                 docBlock: {
                     kind: IntermediateKind.IntermediateDocBlock,

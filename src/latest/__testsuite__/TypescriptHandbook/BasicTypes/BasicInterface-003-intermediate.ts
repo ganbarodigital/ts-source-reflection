@@ -47,7 +47,7 @@ const expectedResult: IntermediateSourceFile = {
                     text: undefined,
                 },
                 extends: [],
-                properties: [
+                members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                         propName: "title",
@@ -58,8 +58,6 @@ const expectedResult: IntermediateSourceFile = {
                         }
                     },
                 ],
-                callSignatures: [],
-                constructors: [],
             },
             {
                 kind: IntermediateKind.IntermediateInterface,
@@ -71,7 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                     text: undefined,
                 },
                 extends: [],
-                properties: [
+                members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                         propName: "ts",
@@ -82,8 +80,6 @@ const expectedResult: IntermediateSourceFile = {
                         }
                     },
                 ],
-                callSignatures: [],
-                constructors: [],
             },
         ],
     },

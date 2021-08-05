@@ -45,7 +45,7 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "Point",
                 typeRef: {
                     kind: IntermediateKind.IntermediateAnonymousClassType,
-                    properties: [
+                    members: [
                         {
                             kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                             propName: "x",
@@ -65,8 +65,6 @@ const expectedResult: IntermediateSourceFile = {
                             }
                         },
                     ],
-                    callSignatures: [],
-                    constructors: [],
                 }
             }
         ],

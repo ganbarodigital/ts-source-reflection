@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile =  {
                         name: "Type",
                         constraint: {
                             kind: IntermediateKind.IntermediateAnonymousClassType,
-                            properties: [
+                            members: [
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                                     propName: "length",
@@ -61,8 +61,6 @@ const expectedResult: IntermediateSourceFile =  {
                                     },
                                 },
                             ],
-                            callSignatures: [],
-                            constructors: [],
                         },
                         defaultType: undefined,
                     },

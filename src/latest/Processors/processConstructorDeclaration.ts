@@ -34,14 +34,14 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { ConstructorDeclaration } from "typescript";
-import { IntermediateFunctionTypeSignature, IntermediateGenericType, IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
+import { IntermediateConstructorDefinition, IntermediateGenericType, IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processTypeNode } from "./processTypeNode";
 import { processTypeParameters } from "./processTypeParameters";
 
 export function processConstructorDeclaration(
     input: ConstructorDeclaration
-): IntermediateFunctionTypeSignature
+): IntermediateConstructorDefinition
 {
     // do we have any type parameters?
     let typeParameters: IntermediateGenericType[] = [];
@@ -56,7 +56,7 @@ export function processConstructorDeclaration(
     }
 
     return {
-        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+        kind: IntermediateKind.IntermediateConstructorDefinition,
         typeParameters,
         parameters: processFunctionParameters(input.parameters),
         returnType: retType,

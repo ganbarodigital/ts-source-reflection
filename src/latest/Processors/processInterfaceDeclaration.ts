@@ -41,10 +41,8 @@ import {
     IntermediateKind, IntermediateSourceFile,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
-import { processCallSignatures } from "./processCallSignatures";
-import { processConstructorDeclarations } from "./processConstructorDeclarations";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
-import { processProperties } from "./processProperties";
+import { processMembers } from "./processMembers";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processInterfaceDeclaration: StatementProcessor = (
@@ -65,9 +63,7 @@ export const processInterfaceDeclaration: StatementProcessor = (
         },
         exported: AST.isNodeExported(interfaceDec),
         extends: getBaseInterfaceTypes(sourceFile, interfaceDec),
-        properties: processProperties(interfaceDec.members),
-        callSignatures: processCallSignatures(interfaceDec.members),
-        constructors: processConstructorDeclarations(interfaceDec.members),
+        members: processMembers(interfaceDec.members),
     }
 }
 

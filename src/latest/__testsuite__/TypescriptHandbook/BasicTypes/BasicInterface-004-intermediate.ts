@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile = {
                     text: undefined,
                 },
                 extends: [],
-                properties: [
+                members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                         propName: "value",
@@ -74,8 +74,6 @@ const expectedResult: IntermediateSourceFile = {
                         }
                     },
                 ],
-                callSignatures: [],
-                constructors: [],
             },
         ],
     },

@@ -45,7 +45,7 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "Fish",
                 typeRef: {
                     kind: IntermediateKind.IntermediateAnonymousClassType,
-                    properties: [
+                    members: [
                         {
                             kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                             propName: "swim",
@@ -61,8 +61,6 @@ const expectedResult: IntermediateSourceFile = {
                             },
                         },
                     ],
-                    callSignatures: [],
-                    constructors: [],
                 },
             },
         ],
