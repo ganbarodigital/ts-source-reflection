@@ -40,7 +40,7 @@ import {
     IntermediateStaticable
 } from "..";
 
-export interface IntermediateMethod
+export interface IntermediateMethodDefinition
     extends IntermediateItem<IntermediateKind.IntermediateMethod>,
         IntermediateCallable,
         IntermediateRestrictableScopeItem,
