@@ -38,43 +38,41 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "firstElement",
-                typeParameters: [
-                    {
-                        kind: IntermediateKind.IntermediateGenericType,
-                        name: "Type",
-                        constraint: undefined,
-                        defaultType: undefined,
-                    }
-                ],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "arr",
-                        optional: false,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "firstElement",
+            typeParameters: [
+                {
+                    kind: IntermediateKind.IntermediateGenericType,
+                    name: "Type",
+                    constraint: undefined,
+                    defaultType: undefined,
+                }
+            ],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "arr",
+                    optional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
-                            kind: IntermediateKind.IntermediateArrayTypeReference,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: "Type",
-                            },
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "Type",
                         },
-                        initializer: undefined,
                     },
-                ],
-                returnType: {
-                    kind: IntermediateKind.IntermediateFixedTypeReference,
-                    typeName: "Type",
+                    initializer: undefined,
                 },
-                hasBody: true,
+            ],
+            returnType: {
+                kind: IntermediateKind.IntermediateFixedTypeReference,
+                typeName: "Type",
             },
-        ],
-    },
+            hasBody: true,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

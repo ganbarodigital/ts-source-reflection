@@ -38,55 +38,53 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        TypeAliasDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateTypeAliasDefinition,
-                typeName: "Animal",
-                typeRef: {
-                    kind: IntermediateKind.IntermediateAnonymousClassType,
-                    members: [
-                        {
-                            kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                            propName: "name",
-                            propIsOptional: false,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "string",
-                            }
+    children: [
+        {
+            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            typeName: "Animal",
+            typeRef: {
+                kind: IntermediateKind.IntermediateAnonymousClassType,
+                members: [
+                    {
+                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                        propName: "name",
+                        propIsOptional: false,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "string",
                         },
-                    ],
-                }
+                    },
+                ],
             },
-            {
-                kind: IntermediateKind.IntermediateTypeAliasDefinition,
-                typeName: "Bear",
-                typeRef: {
-                    kind: IntermediateKind.IntermediateTypeIntersection,
-                    typeRefs: [
-                        {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "Animal",
-                        },
-                        {
-                            kind: IntermediateKind.IntermediateAnonymousClassType,
-                            members: [
-                                {
-                                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                                    propName: "honey",
-                                    propIsOptional: false,
-                                    typeRef: {
-                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                        typeName: "boolean"
-                                    }
+        },
+        {
+            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            typeName: "Bear",
+            typeRef: {
+                kind: IntermediateKind.IntermediateTypeIntersection,
+                typeRefs: [
+                    {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Animal",
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateAnonymousClassType,
+                        members: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                                propName: "honey",
+                                propIsOptional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "boolean"
                                 },
-                            ],
-                        },
-                    ],
-                }
-            }
-        ],
-    },
+                            },
+                        ],
+                    },
+                ],
+            },
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

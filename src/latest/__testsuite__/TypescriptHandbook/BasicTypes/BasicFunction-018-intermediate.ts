@@ -38,46 +38,44 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "greeter",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "fn",
-                        optional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateFunctionTypeSignature,
-                            typeParameters: [],
-                            parameters: [
-                                {
-                                    kind: IntermediateKind.IntermediateTypedCallableParameter,
-                                    paramName: "a",
-                                    optional: false,
-                                    typeRef: {
-                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                        typeName: "string",
-                                    },
-                                    initializer: undefined,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "greeter",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "fn",
+                    optional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        typeParameters: [],
+                        parameters: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedCallableParameter,
+                                paramName: "a",
+                                optional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "string",
                                 },
-                            ],
-                            returnType: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "void",
+                                initializer: undefined,
                             },
+                        ],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "void",
                         },
-                        initializer: undefined,
                     },
-                ],
-                returnType: undefined,
-                hasBody: true,
-            },
-        ],
-    },
+                    initializer: undefined,
+                },
+            ],
+            returnType: undefined,
+            hasBody: true,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

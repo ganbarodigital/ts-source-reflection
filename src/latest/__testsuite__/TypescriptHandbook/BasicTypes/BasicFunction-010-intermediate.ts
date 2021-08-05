@@ -38,53 +38,51 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "printText",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "s",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "string",
-                        },
-                        optional: false,
-                        initializer: undefined,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "printText",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "s",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
                     },
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "alignment",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateUnionType,
-                            typeRefs: [
-                                {
-                                    kind: IntermediateKind.IntermediateLiteralType,
-                                    typeName: '"left"',
-                                },
-                                {
-                                    kind: IntermediateKind.IntermediateLiteralType,
-                                    typeName: '"right"',
-                                },
-                                {
-                                    kind: IntermediateKind.IntermediateLiteralType,
-                                    typeName: '"center"',
-                                },
-                            ],
-                        },
-                        optional: false,
-                        initializer: undefined,
+                    optional: false,
+                    initializer: undefined,
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "alignment",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateUnionType,
+                        typeRefs: [
+                            {
+                                kind: IntermediateKind.IntermediateLiteralType,
+                                typeName: '"left"',
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateLiteralType,
+                                typeName: '"right"',
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateLiteralType,
+                                typeName: '"center"',
+                            },
+                        ],
                     },
-                ],
-                returnType: undefined,
-                hasBody: true,
-            }
-        ]
-    },
+                    optional: false,
+                    initializer: undefined,
+                },
+            ],
+            returnType: undefined,
+            hasBody: true,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

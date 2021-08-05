@@ -38,119 +38,117 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "makeDate",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "timestamp",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        },
-                        initializer: undefined,
-                        optional: false,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "makeDate",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "timestamp",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
                     },
-                ],
-                returnType: {
-                    kind: IntermediateKind.IntermediateFixedTypeReference,
-                    typeName: "Date",
+                    initializer: undefined,
+                    optional: false,
                 },
-                hasBody: false,
+            ],
+            returnType: {
+                kind: IntermediateKind.IntermediateFixedTypeReference,
+                typeName: "Date",
             },
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "makeDate",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "m",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        },
-                        initializer: undefined,
-                        optional: false,
+            hasBody: false,
+        },
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "makeDate",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "m",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
                     },
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "d",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        },
-                        initializer: undefined,
-                        optional: false,
-                    },
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "y",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        },
-                        initializer: undefined,
-                        optional: false,
-                    },
-                ],
-                returnType: {
-                    kind: IntermediateKind.IntermediateFixedTypeReference,
-                    typeName: "Date",
+                    initializer: undefined,
+                    optional: false,
                 },
-                hasBody: false,
-            },
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "makeDate",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "mOrTimestamp",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        },
-                        initializer: undefined,
-                        optional: false,
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "d",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
                     },
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "d",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        },
-                        initializer: undefined,
-                        optional: true,
-                    },
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "y",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        },
-                        initializer: undefined,
-                        optional: true,
-                    },
-                ],
-                returnType: {
-                    kind: IntermediateKind.IntermediateFixedTypeReference,
-                    typeName: "Date",
+                    initializer: undefined,
+                    optional: false,
                 },
-                hasBody: true,
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "y",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
+                    },
+                    initializer: undefined,
+                    optional: false,
+                },
+            ],
+            returnType: {
+                kind: IntermediateKind.IntermediateFixedTypeReference,
+                typeName: "Date",
             },
-        ],
-    },
+            hasBody: false,
+        },
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "makeDate",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "mOrTimestamp",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
+                    },
+                    initializer: undefined,
+                    optional: false,
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "d",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
+                    },
+                    initializer: undefined,
+                    optional: true,
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "y",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
+                    },
+                    initializer: undefined,
+                    optional: true,
+                },
+            ],
+            returnType: {
+                kind: IntermediateKind.IntermediateFixedTypeReference,
+                typeName: "Date",
+            },
+            hasBody: true,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

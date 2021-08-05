@@ -38,59 +38,55 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        TypeAliasDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateTypeAliasDefinition,
-                typeName: "Point",
-                typeRef: {
-                    kind: IntermediateKind.IntermediateAnonymousClassType,
-                    members: [
-                        {
-                            kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                            propName: "x",
-                            propIsOptional: false,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "number",
-                            }
-                        },
-                        {
-                            kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                            propName: "y",
-                            propIsOptional: false,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "number",
-                            }
-                        },
-                    ],
-                }
-            }
-        ],
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "printCoord",
-                typeParameters: [],
-                parameters: [
+    children: [
+        {
+            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            typeName: "Point",
+            typeRef: {
+                kind: IntermediateKind.IntermediateAnonymousClassType,
+                members: [
                     {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "pt",
+                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                        propName: "x",
+                        propIsOptional: false,
                         typeRef: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "Point",
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
                         },
-                        optional: false,
-                        initializer: undefined,
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                        propName: "y",
+                        propIsOptional: false,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
+                        },
                     },
                 ],
-                returnType: undefined,
-                hasBody: true,
-            }
-        ]
-    },
+            },
+        },
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "printCoord",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "pt",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Point",
+                    },
+                    optional: false,
+                    initializer: undefined,
+                },
+            ],
+            returnType: undefined,
+            hasBody: true,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

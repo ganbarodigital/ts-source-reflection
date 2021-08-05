@@ -38,63 +38,59 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "configure",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "x",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateUnionType,
-                            typeRefs: [
-                                {
-                                    kind: IntermediateKind.IntermediateFixedTypeReference,
-                                    typeName: 'Options',
-                                },
-                                {
-                                    kind: IntermediateKind.IntermediateLiteralType,
-                                    typeName: '"auto"',
-                                },
-                            ],
-                        },
-                        optional: false,
-                        initializer: undefined,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateInterface,
+            declared: false,
+            name: "Options",
+            exported: false,
+            docBlock: {
+                kind: IntermediateKind.IntermediateDocBlock,
+                text: undefined,
+            },
+            extends: [],
+            members: [
+                {
+                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    propName: "width",
+                    propIsOptional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
                     },
-                ],
-                returnType: undefined,
-                hasBody: true,
-            }
-        ],
-        InterfaceDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateInterface,
-                declared: false,
-                name: "Options",
-                exported: false,
-                docBlock: {
-                    kind: IntermediateKind.IntermediateDocBlock,
-                    text: undefined,
                 },
-                extends: [],
-                members: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "width",
-                        propIsOptional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        }
+            ],
+        },
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "configure",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "x",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateUnionType,
+                        typeRefs: [
+                            {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: 'Options',
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateLiteralType,
+                                typeName: '"auto"',
+                            },
+                        ],
                     },
-                ],
-            }
-        ]
-    },
+                    optional: false,
+                    initializer: undefined,
+                },
+            ],
+            returnType: undefined,
+            hasBody: true,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

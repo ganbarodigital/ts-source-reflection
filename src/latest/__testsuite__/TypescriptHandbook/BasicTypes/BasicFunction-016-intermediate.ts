@@ -38,67 +38,65 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "multiplyAll",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "values",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateUnionType,
-                            typeRefs: [
-                                {
-                                    kind: IntermediateKind.IntermediateArrayTypeReference,
-                                    typeRef: {
-                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                        typeName: 'number',
-                                    },
-                                },
-                                {
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "multiplyAll",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "values",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateUnionType,
+                        typeRefs: [
+                            {
+                                kind: IntermediateKind.IntermediateArrayTypeReference,
+                                typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: 'undefined',
+                                    typeName: 'number',
                                 },
-                            ],
-                        },
-                        optional: false,
-                        initializer: undefined,
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: 'undefined',
+                            },
+                        ],
                     },
+                    optional: false,
+                    initializer: undefined,
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "factor",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: 'number',
+                    },
+                    optional: false,
+                    initializer: undefined,
+                },
+            ],
+            returnType: {
+                kind: IntermediateKind.IntermediateUnionType,
+                typeRefs: [
                     {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "factor",
+                        kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: 'number',
                         },
-                        optional: false,
-                        initializer: undefined,
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: 'undefined',
                     },
                 ],
-                returnType: {
-                    kind: IntermediateKind.IntermediateUnionType,
-                    typeRefs: [
-                        {
-                            kind: IntermediateKind.IntermediateArrayTypeReference,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: 'number',
-                            },
-                        },
-                        {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: 'undefined',
-                        },
-                    ],
-                },
-                hasBody: true,
-            }
-        ],
-    },
+            },
+            hasBody: true,
+        }
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

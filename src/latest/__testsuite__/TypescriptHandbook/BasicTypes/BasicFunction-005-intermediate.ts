@@ -38,49 +38,47 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "printName",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "obj",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateAnonymousClassType,
-                            members: [
-                                {
-                                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                                    propName: "first",
-                                    propIsOptional: false,
-                                    typeRef: {
-                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                        typeName: "string",
-                                    }
-                                },
-                                {
-                                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                                    propName: "last",
-                                    propIsOptional: true,
-                                    typeRef: {
-                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                        typeName: "string",
-                                    }
-                                },
-                            ],
-                        },
-                        optional: false,
-                        initializer: undefined,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "printName",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "obj",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateAnonymousClassType,
+                        members: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                                propName: "first",
+                                propIsOptional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "string",
+                                }
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                                propName: "last",
+                                propIsOptional: true,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "string",
+                                }
+                            },
+                        ],
                     },
-                ],
-                returnType: undefined,
-                hasBody: true,
-            }
-        ],
-    },
+                    optional: false,
+                    initializer: undefined,
+                },
+            ],
+            returnType: undefined,
+            hasBody: true,
+        }
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

@@ -38,33 +38,31 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: true,
-                name: "f",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "x",
-                        optional: true,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        },
-                        initializer: undefined,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: true,
+            name: "f",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "x",
+                    optional: true,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
                     },
-                ],
-                returnType: {
-                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                    typeName: "void",
+                    initializer: undefined,
                 },
-                hasBody: false,
+            ],
+            returnType: {
+                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                typeName: "void",
             },
-        ],
-    },
+            hasBody: false,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

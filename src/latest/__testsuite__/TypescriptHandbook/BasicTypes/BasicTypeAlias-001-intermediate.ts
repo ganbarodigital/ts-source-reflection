@@ -38,37 +38,35 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        TypeAliasDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateTypeAliasDefinition,
-                typeName: "Point",
-                typeRef: {
-                    kind: IntermediateKind.IntermediateAnonymousClassType,
-                    members: [
-                        {
-                            kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                            propName: "x",
-                            propIsOptional: false,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "number",
-                            }
+    children: [
+        {
+            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            typeName: "Point",
+            typeRef: {
+                kind: IntermediateKind.IntermediateAnonymousClassType,
+                members: [
+                    {
+                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                        propName: "x",
+                        propIsOptional: false,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
                         },
-                        {
-                            kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                            propName: "y",
-                            propIsOptional: false,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "number",
-                            }
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                        propName: "y",
+                        propIsOptional: false,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
                         },
-                    ],
-                }
-            }
-        ],
-    },
+                    },
+                ],
+            },
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

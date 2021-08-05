@@ -38,26 +38,24 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "fn",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateUntypedCallableParameter,
-                        paramName: "x",
-                        initializer: undefined,
-                        optional: false,
-                    }
-                ],
-                returnType: undefined,
-                hasBody: true,
-            }
-        ],
-    },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "fn",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateUntypedCallableParameter,
+                    paramName: "x",
+                    initializer: undefined,
+                    optional: false,
+                }
+            ],
+            returnType: undefined,
+            hasBody: true,
+        }
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

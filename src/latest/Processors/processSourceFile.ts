@@ -35,7 +35,11 @@ import { FunctionPointerTable, searchFunctionPointerTable } from "@safelytyped/c
 import { Filepath } from "@safelytyped/filepath";
 import { NodeArray, SourceFile, Statement } from "typescript";
 import { getStatementKind } from "../AST";
-import { IntermediateKind, IntermediateSourceFile, IntermediateSourceFileChildren } from "../IntermediateTypes";
+import {
+    IntermediateKind,
+    IntermediateSourceFile,
+    IntermediateSourceFileChild
+} from "../IntermediateTypes";
 import { processClassDeclaration } from "./processClassDeclaration";
 import { processFunctionDeclaration } from "./processFunctionDeclaration";
 import { processInterfaceDeclaration } from "./processInterfaceDeclaration";
@@ -61,22 +65,18 @@ export function processSourceFile(
     const retval: IntermediateSourceFile = {
         path: new Filepath(parsedSource.fileName),
         kind: IntermediateKind.IntermediateSourceFile,
-        children: {},
-    };
-
-    // what's in the file?
-    retval.children = processStatements(retval, parsedSource.statements);
+        children: processStatements(parsedSource.statements),
+    }
 
     // all done
     return retval;
 }
 
 function processStatements(
-    sourceFile: IntermediateSourceFile,
     statements: NodeArray<Statement>
-): IntermediateSourceFileChildren
+): IntermediateSourceFileChild[]
 {
-    const result: IntermediateSourceFileChildren = {};
+    const result: IntermediateSourceFileChild[] = [];
 
     for(const statement of statements) {
         // shorthand
@@ -88,7 +88,7 @@ function processStatements(
         }
 
         // tslint:disable-next-line: no-console
-        console.log("Processing node: " + kind);
+        // console.log("Processing node: " + kind);
 
         const statementProcessor = searchFunctionPointerTable(
             statementProcessors,
@@ -101,11 +101,7 @@ function processStatements(
         );
 
         if (processedItem) {
-            if (!result[kind]) {
-                result[kind] = [];
-            }
-            // we have to override the compiler here :(
-            result[kind]!.push(processedItem as any);
+            result.push(processedItem);
         }
     };
 

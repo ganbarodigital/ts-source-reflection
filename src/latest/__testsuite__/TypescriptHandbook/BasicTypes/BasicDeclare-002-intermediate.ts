@@ -38,35 +38,33 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        InterfaceDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateInterface,
-                declared: true,
-                name: "I",
-                members: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "x",
-                        propIsOptional: false,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateInterface,
+            declared: true,
+            name: "I",
+            members: [
+                {
+                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    propName: "x",
+                    propIsOptional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
-                            kind: IntermediateKind.IntermediateArrayTypeReference,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "number",
-                            }
-                        },
-                    }
-                ],
-                extends: [],
-                docBlock: {
-                    kind: IntermediateKind.IntermediateDocBlock,
-                    text: undefined,
-                },
-                exported: false,
-            }
-        ]
-    },
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
+                        }
+                    },
+                }
+            ],
+            extends: [],
+            docBlock: {
+                kind: IntermediateKind.IntermediateDocBlock,
+                text: undefined,
+            },
+            exported: false,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

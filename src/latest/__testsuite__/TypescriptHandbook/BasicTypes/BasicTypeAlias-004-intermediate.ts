@@ -38,33 +38,31 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        TypeAliasDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateTypeAliasDefinition,
-                typeName: "Fish",
-                typeRef: {
-                    kind: IntermediateKind.IntermediateAnonymousClassType,
-                    members: [
-                        {
-                            kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                            propName: "swim",
-                            propIsOptional: false,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateFunctionTypeSignature,
-                                typeParameters: [],
-                                parameters: [],
-                                returnType: {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: "void"
-                                },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            typeName: "Fish",
+            typeRef: {
+                kind: IntermediateKind.IntermediateAnonymousClassType,
+                members: [
+                    {
+                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                        propName: "swim",
+                        propIsOptional: false,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                            typeParameters: [],
+                            parameters: [],
+                            returnType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "void"
                             },
                         },
-                    ],
-                },
+                    },
+                ],
             },
-        ],
-    },
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

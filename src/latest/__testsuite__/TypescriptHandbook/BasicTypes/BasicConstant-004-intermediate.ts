@@ -38,54 +38,52 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        VariableStatement: [
-            {
-                kind: IntermediateKind.IntermediateVariableDeclarations,
-                variables: [
-                    {
-                        kind: IntermediateKind.IntermediateVariableDeclaration,
-                        variableName: "req",
-                        constant: true,
-                        exported: false,
-                        declared: false,
-                        docBlock: {
-                            kind: IntermediateKind.IntermediateDocBlock,
-                            text: '',
-                        },
-                        initialiser: {
-                            kind: IntermediateKind.IntermediateObjectLiteral,
-                            properties: [
-                                {
-                                    kind: IntermediateKind.IntermediatePropertyAssignment,
-                                    propertyName: "url",
-                                    initialiser: {
-                                        kind: IntermediateKind.IntermediateStringLiteral,
-                                        value: "https://example.com",
-                                        typeAssertion: undefined,
-                                        asType: undefined,
-                                    },
-                                },
-                                {
-                                    kind: IntermediateKind.IntermediatePropertyAssignment,
-                                    propertyName: "method",
-                                    initialiser: {
-                                        kind: IntermediateKind.IntermediateStringLiteral,
-                                        value: "GET",
-                                        typeAssertion: undefined,
-                                        asType: undefined,
-                                    },
-                                },
-                            ],
-                            asType: undefined,
-                            typeAssertion: undefined,
-                        },
-                        typeRef: undefined,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateVariableDeclarations,
+            variables: [
+                {
+                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    variableName: "req",
+                    constant: true,
+                    exported: false,
+                    declared: false,
+                    docBlock: {
+                        kind: IntermediateKind.IntermediateDocBlock,
+                        text: '',
                     },
-                ],
-            }
-        ],
-    },
+                    initialiser: {
+                        kind: IntermediateKind.IntermediateObjectLiteral,
+                        properties: [
+                            {
+                                kind: IntermediateKind.IntermediatePropertyAssignment,
+                                propertyName: "url",
+                                initialiser: {
+                                    kind: IntermediateKind.IntermediateStringLiteral,
+                                    value: "https://example.com",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediatePropertyAssignment,
+                                propertyName: "method",
+                                initialiser: {
+                                    kind: IntermediateKind.IntermediateStringLiteral,
+                                    value: "GET",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
+                        ],
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                    typeRef: undefined,
+                },
+            ],
+        }
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

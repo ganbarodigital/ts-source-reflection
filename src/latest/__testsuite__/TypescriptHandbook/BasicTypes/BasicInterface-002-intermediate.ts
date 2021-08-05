@@ -38,59 +38,57 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        InterfaceDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateInterface,
-                declared: false,
-                name: "Animal",
-                exported: false,
-                docBlock: {
-                    kind: IntermediateKind.IntermediateDocBlock,
-                    text: undefined,
-                },
-                extends: [],
-                members: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "name",
-                        propIsOptional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "string",
-                        }
-                    }
-                ],
+    children: [
+        {
+            kind: IntermediateKind.IntermediateInterface,
+            declared: false,
+            name: "Animal",
+            exported: false,
+            docBlock: {
+                kind: IntermediateKind.IntermediateDocBlock,
+                text: undefined,
             },
-            {
-                kind: IntermediateKind.IntermediateInterface,
-                declared: false,
-                name: "Bear",
-                exported: false,
-                docBlock: {
-                    kind: IntermediateKind.IntermediateDocBlock,
-                    text: undefined,
-                },
-                extends: [
-                    {
-                        kind: IntermediateKind.IntermediateFixedTypeArgument,
-                        name: "Animal",
+            extends: [],
+            members: [
+                {
+                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    propName: "name",
+                    propIsOptional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
                     },
-                ],
-                members: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "honey",
-                        propIsOptional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "boolean",
-                        }
-                    }
-                ],
-            }
-        ],
-    },
+                },
+            ],
+        },
+        {
+            kind: IntermediateKind.IntermediateInterface,
+            declared: false,
+            name: "Bear",
+            exported: false,
+            docBlock: {
+                kind: IntermediateKind.IntermediateDocBlock,
+                text: undefined,
+            },
+            extends: [
+                {
+                    kind: IntermediateKind.IntermediateFixedTypeArgument,
+                    name: "Animal",
+                },
+            ],
+            members: [
+                {
+                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    propName: "honey",
+                    propIsOptional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "boolean",
+                    },
+                },
+            ],
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

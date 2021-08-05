@@ -38,18 +38,16 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        TypeAliasDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateTypeAliasDefinition,
-                typeName: "UserInputSanitizedString",
-                typeRef: {
-                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                    typeName: "string",
-                }
-            }
-        ],
-    },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            typeName: "UserInputSanitizedString",
+            typeRef: {
+                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                typeName: "string",
+            },
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

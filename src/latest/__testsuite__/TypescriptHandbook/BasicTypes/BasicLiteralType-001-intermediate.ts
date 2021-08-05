@@ -38,36 +38,34 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        VariableStatement: [
-            {
-                kind: IntermediateKind.IntermediateVariableDeclarations,
-                variables: [
-                    {
-                        kind: IntermediateKind.IntermediateVariableDeclaration,
-                        variableName: "x",
-                        constant: false,
-                        exported: false,
-                        declared: false,
-                        docBlock: {
-                            kind: IntermediateKind.IntermediateDocBlock,
-                            text: '',
-                        },
-                        initialiser: {
-                            kind: IntermediateKind.IntermediateStringLiteral,
-                            value: 'hello',
-                            asType: undefined,
-                            typeAssertion: undefined,
-                        },
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateLiteralType,
-                            typeName: '"hello"',
-                        },
-                    }
-                ],
-            }
-        ],
-    },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateVariableDeclarations,
+            variables: [
+                {
+                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    variableName: "x",
+                    constant: false,
+                    exported: false,
+                    declared: false,
+                    docBlock: {
+                        kind: IntermediateKind.IntermediateDocBlock,
+                        text: '',
+                    },
+                    initialiser: {
+                        kind: IntermediateKind.IntermediateStringLiteral,
+                        value: 'hello',
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateLiteralType,
+                        typeName: '"hello"',
+                    },
+                },
+            ],
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

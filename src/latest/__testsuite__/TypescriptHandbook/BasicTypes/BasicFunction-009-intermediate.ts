@@ -38,43 +38,39 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        TypeAliasDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateTypeAliasDefinition,
-                typeName: "UserInputSanitizedString",
-                typeRef: {
-                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                    typeName: "string",
-                }
-            }
-        ],
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "sanitizeInput",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "str",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "string",
-                        },
-                        optional: false,
-                        initializer: undefined,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            typeName: "UserInputSanitizedString",
+            typeRef: {
+                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                typeName: "string",
+            },
+        },
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "sanitizeInput",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "str",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
                     },
-                ],
-                returnType: {
-                    kind: IntermediateKind.IntermediateFixedTypeReference,
-                    typeName: "UserInputSanitizedString",
+                    optional: false,
+                    initializer: undefined,
                 },
-                hasBody: true,
-            }
-        ]
-    },
+            ],
+            returnType: {
+                kind: IntermediateKind.IntermediateFixedTypeReference,
+                typeName: "UserInputSanitizedString",
+            },
+            hasBody: true,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

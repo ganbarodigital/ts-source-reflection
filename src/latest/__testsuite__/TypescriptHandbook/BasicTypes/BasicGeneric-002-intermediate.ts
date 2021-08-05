@@ -38,78 +38,76 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "map",
-                typeParameters: [
-                    {
-                        kind: IntermediateKind.IntermediateGenericType,
-                        name: "Input",
-                        constraint: undefined,
-                        defaultType: undefined,
-                    },
-                    {
-                        kind: IntermediateKind.IntermediateGenericType,
-                        name: "Output",
-                        constraint: undefined,
-                        defaultType: undefined,
-                    },
-                ],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "arr",
-                        optional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateArrayTypeReference,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: "Input",
-                            },
-                        },
-                        initializer: undefined,
-                    },
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "func",
-                        optional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateFunctionTypeSignature,
-                            typeParameters: [],
-                            parameters: [
-                                {
-                                    kind: IntermediateKind.IntermediateTypedCallableParameter,
-                                    paramName: "arg",
-                                    optional: false,
-                                    typeRef: {
-                                        kind: IntermediateKind.IntermediateFixedTypeReference,
-                                        typeName: "Input",
-                                    },
-                                    initializer: undefined,
-                                },
-                            ],
-                            returnType: {
-                                kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: "Output",
-                            },
-                        },
-                        initializer: undefined,
-                    },
-                ],
-                returnType: {
-                    kind: IntermediateKind.IntermediateArrayTypeReference,
-                    typeRef: {
-                        kind: IntermediateKind.IntermediateFixedTypeReference,
-                        typeName: "Output",
-                    },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "map",
+            typeParameters: [
+                {
+                    kind: IntermediateKind.IntermediateGenericType,
+                    name: "Input",
+                    constraint: undefined,
+                    defaultType: undefined,
                 },
-                hasBody: true,
+                {
+                    kind: IntermediateKind.IntermediateGenericType,
+                    name: "Output",
+                    constraint: undefined,
+                    defaultType: undefined,
+                },
+            ],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "arr",
+                    optional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateArrayTypeReference,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "Input",
+                        },
+                    },
+                    initializer: undefined,
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "func",
+                    optional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        typeParameters: [],
+                        parameters: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedCallableParameter,
+                                paramName: "arg",
+                                optional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                    typeName: "Input",
+                                },
+                                initializer: undefined,
+                            },
+                        ],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "Output",
+                        },
+                    },
+                    initializer: undefined,
+                },
+            ],
+            returnType: {
+                kind: IntermediateKind.IntermediateArrayTypeReference,
+                typeRef: {
+                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                    typeName: "Output",
+                },
             },
-        ],
-    },
+            hasBody: true,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

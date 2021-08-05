@@ -38,33 +38,31 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        VariableStatement: [
-            {
-                kind: IntermediateKind.IntermediateVariableDeclarations,
-                variables: [
-                    {
-                        kind: IntermediateKind.IntermediateVariableDeclaration,
-                        variableName: "changingString",
-                        constant: false,
-                        exported: false,
-                        declared: false,
-                        docBlock: {
-                            kind: IntermediateKind.IntermediateDocBlock,
-                            text: '',
-                        },
-                        initialiser: {
-                            kind: IntermediateKind.IntermediateStringLiteral,
-                            value: 'Hello World',
-                            asType: undefined,
-                            typeAssertion: undefined,
-                        },
-                        typeRef: undefined,
-                    }
-                ],
-            }
-        ],
-    },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateVariableDeclarations,
+            variables: [
+                {
+                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    variableName: "changingString",
+                    constant: false,
+                    exported: false,
+                    declared: false,
+                    docBlock: {
+                        kind: IntermediateKind.IntermediateDocBlock,
+                        text: '',
+                    },
+                    initialiser: {
+                        kind: IntermediateKind.IntermediateStringLiteral,
+                        value: 'Hello World',
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                    typeRef: undefined,
+                },
+            ],
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

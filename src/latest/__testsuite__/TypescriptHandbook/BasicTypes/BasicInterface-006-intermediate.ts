@@ -38,63 +38,61 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        InterfaceDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateInterface,
-                declared: false,
-                name: "CallOrConstruct",
-                docBlock: {
-                    kind: IntermediateKind.IntermediateDocBlock,
-                    text: undefined,
-                },
-                exported: false,
-                extends: [],
-                members: [
-                    {
-                        kind: IntermediateKind.IntermediateConstructorDefinition,
-                        typeParameters: [],
-                        parameters: [
-                            {
-                                kind: IntermediateKind.IntermediateTypedCallableParameter,
-                                paramName: "s",
-                                optional: false,
-                                typeRef: {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: "string",
-                                },
-                                initializer: undefined,
-                            },
-                        ],
-                        returnType: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "Date",
-                        },
-                    },
-                    {
-                        kind: IntermediateKind.IntermediateCallSignature,
-                        typeParameters: [],
-                        parameters: [
-                            {
-                                kind: IntermediateKind.IntermediateTypedCallableParameter,
-                                paramName: "n",
-                                optional: true,
-                                typeRef: {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: "number",
-                                },
-                                initializer: undefined,
-                            },
-                        ],
-                        returnType: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        },
-                    },
-                ],
+    children: [
+        {
+            kind: IntermediateKind.IntermediateInterface,
+            declared: false,
+            name: "CallOrConstruct",
+            docBlock: {
+                kind: IntermediateKind.IntermediateDocBlock,
+                text: undefined,
             },
-        ],
-    },
+            exported: false,
+            extends: [],
+            members: [
+                {
+                    kind: IntermediateKind.IntermediateConstructorDefinition,
+                    typeParameters: [],
+                    parameters: [
+                        {
+                            kind: IntermediateKind.IntermediateTypedCallableParameter,
+                            paramName: "s",
+                            optional: false,
+                            typeRef: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "string",
+                            },
+                            initializer: undefined,
+                        },
+                    ],
+                    returnType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Date",
+                    },
+                },
+                {
+                    kind: IntermediateKind.IntermediateCallSignature,
+                    typeParameters: [],
+                    parameters: [
+                        {
+                            kind: IntermediateKind.IntermediateTypedCallableParameter,
+                            paramName: "n",
+                            optional: true,
+                            typeRef: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "number",
+                            },
+                            initializer: undefined,
+                        },
+                    ],
+                    returnType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
+                    },
+                },
+            ],
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

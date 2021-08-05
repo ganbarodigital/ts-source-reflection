@@ -38,34 +38,32 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        VariableStatement: [
-            {
-                kind: IntermediateKind.IntermediateVariableDeclarations,
-                variables: [
-                    {
-                        kind: IntermediateKind.IntermediateVariableDeclaration,
-                        variableName: "anotherHundred",
-                        constant: true,
-                        exported: false,
-                        declared: false,
-                        docBlock: {
-                            kind: IntermediateKind.IntermediateDocBlock,
-                            text: '',
-                        },
-                        initialiser: {
-                            kind: IntermediateKind.IntermediateBigintLiteral,
-                            value: '100n',
-                        },
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "bigint",
-                        },
-                    }
-                ],
-            }
-        ],
-    },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateVariableDeclarations,
+            variables: [
+                {
+                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    variableName: "anotherHundred",
+                    constant: true,
+                    exported: false,
+                    declared: false,
+                    docBlock: {
+                        kind: IntermediateKind.IntermediateDocBlock,
+                        text: '',
+                    },
+                    initialiser: {
+                        kind: IntermediateKind.IntermediateBigintLiteral,
+                        value: '100n',
+                    },
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "bigint",
+                    },
+                }
+            ],
+        }
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

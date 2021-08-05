@@ -38,49 +38,47 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        VariableStatement: [
-            {
-                kind: IntermediateKind.IntermediateVariableDeclarations,
-                variables: [
-                    {
-                        kind: IntermediateKind.IntermediateVariableDeclaration,
-                        variableName: "zoo",
-                        constant: true,
-                        exported: false,
-                        declared: false,
-                        docBlock: {
-                            kind: IntermediateKind.IntermediateDocBlock,
-                            text: '',
-                        },
-                        initialiser: {
-                            kind: IntermediateKind.IntermediateArrayLiteralExpression,
-                            value: '[getSmallPet(), getSmallPet(), getSmallPet()]',
-                        },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateVariableDeclarations,
+            variables: [
+                {
+                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    variableName: "zoo",
+                    constant: true,
+                    exported: false,
+                    declared: false,
+                    docBlock: {
+                        kind: IntermediateKind.IntermediateDocBlock,
+                        text: '',
+                    },
+                    initialiser: {
+                        kind: IntermediateKind.IntermediateArrayLiteralExpression,
+                        value: '[getSmallPet(), getSmallPet(), getSmallPet()]',
+                    },
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
-                            kind: IntermediateKind.IntermediateArrayTypeReference,
+                            kind: IntermediateKind.IntermediateParenthesizedType,
                             typeRef: {
-                                kind: IntermediateKind.IntermediateParenthesizedType,
-                                typeRef: {
-                                    kind: IntermediateKind.IntermediateUnionType,
-                                    typeRefs: [
-                                        {
-                                            kind: IntermediateKind.IntermediateFixedTypeReference,
-                                            typeName: "Fish",
-                                        },
-                                        {
-                                            kind: IntermediateKind.IntermediateFixedTypeReference,
-                                            typeName: "Bird",
-                                        },
-                                    ],
-                                },
+                                kind: IntermediateKind.IntermediateUnionType,
+                                typeRefs: [
+                                    {
+                                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                                        typeName: "Fish",
+                                    },
+                                    {
+                                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                                        typeName: "Bird",
+                                    },
+                                ],
                             },
                         },
-                    }
-                ],
-            },
-        ],
-    },
+                    },
+                }
+            ],
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

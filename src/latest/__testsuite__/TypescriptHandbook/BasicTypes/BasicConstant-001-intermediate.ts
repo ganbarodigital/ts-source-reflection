@@ -38,33 +38,31 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        VariableStatement: [
-            {
-                kind: IntermediateKind.IntermediateVariableDeclarations,
-                variables: [
-                    {
-                        kind: IntermediateKind.IntermediateVariableDeclaration,
-                        variableName: "myCanvas",
-                        constant: true,
-                        exported: false,
-                        declared: false,
-                        docBlock: {
-                            kind: IntermediateKind.IntermediateDocBlock,
-                            text: '',
-                        },
-                        initialiser: {
-                            kind: IntermediateKind.IntermediateCallableExpression,
-                            text: 'document.getElementById("main_canvas")',
-                            typeAssertion: undefined,
-                            asType: undefined,
-                        },
-                        typeRef: undefined,
-                    }
-                ],
-            }
-        ],
-    },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateVariableDeclarations,
+            variables: [
+                {
+                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    variableName: "myCanvas",
+                    constant: true,
+                    exported: false,
+                    declared: false,
+                    docBlock: {
+                        kind: IntermediateKind.IntermediateDocBlock,
+                        text: '',
+                    },
+                    initialiser: {
+                        kind: IntermediateKind.IntermediateCallableExpression,
+                        text: 'document.getElementById("main_canvas")',
+                        typeAssertion: undefined,
+                        asType: undefined,
+                    },
+                    typeRef: undefined,
+                }
+            ],
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

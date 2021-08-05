@@ -38,27 +38,25 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        TypeAliasDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateTypeAliasDefinition,
-                typeName: "ID",
-                typeRef: {
-                    kind: IntermediateKind.IntermediateUnionType,
-                    typeRefs: [
-                        {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        },
-                        {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "string",
-                        }
-                    ]
-                }
-            }
-        ],
-    },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            typeName: "ID",
+            typeRef: {
+                kind: IntermediateKind.IntermediateUnionType,
+                typeRefs: [
+                    {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
+                    },
+                ],
+            },
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

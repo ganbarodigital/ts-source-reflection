@@ -38,59 +38,57 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        InterfaceDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateInterface,
-                declared: false,
-                name: "Shape",
-                exported: false,
-                docBlock: {
-                    kind: IntermediateKind.IntermediateDocBlock,
-                    text: undefined,
-                },
-                extends: [],
-                members: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "kind",
-                        propIsOptional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateUnionType,
-                            typeRefs: [
-                                {
-                                    kind: IntermediateKind.IntermediateLiteralType,
-                                    typeName: '"circle"',
-                                },
-                                {
-                                    kind: IntermediateKind.IntermediateLiteralType,
-                                    typeName: '"square"',
-                                },
-                            ],
-                        }
-                    },
-                    {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "radius",
-                        propIsOptional: true,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: 'number',
-                        },
-                    },
-                    {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "sideLength",
-                        propIsOptional: true,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: 'number',
-                        },
-                    },
-                ],
+    children: [
+        {
+            kind: IntermediateKind.IntermediateInterface,
+            declared: false,
+            name: "Shape",
+            exported: false,
+            docBlock: {
+                kind: IntermediateKind.IntermediateDocBlock,
+                text: undefined,
             },
-        ],
-    },
+            extends: [],
+            members: [
+                {
+                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    propName: "kind",
+                    propIsOptional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateUnionType,
+                        typeRefs: [
+                            {
+                                kind: IntermediateKind.IntermediateLiteralType,
+                                typeName: '"circle"',
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateLiteralType,
+                                typeName: '"square"',
+                            },
+                        ],
+                    },
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    propName: "radius",
+                    propIsOptional: true,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: 'number',
+                    },
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    propName: "sideLength",
+                    propIsOptional: true,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: 'number',
+                    },
+                },
+            ],
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

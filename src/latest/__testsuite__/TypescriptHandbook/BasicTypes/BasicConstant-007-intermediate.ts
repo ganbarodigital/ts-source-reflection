@@ -38,56 +38,54 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        VariableStatement: [
-            {
-                kind: IntermediateKind.IntermediateVariableDeclarations,
-                variables: [
-                    {
-                        kind: IntermediateKind.IntermediateVariableDeclaration,
-                        variableName: "firstName",
-                        constant: true,
-                        exported: false,
-                        declared: false,
-                        docBlock: {
-                            kind: IntermediateKind.IntermediateDocBlock,
-                            text: '',
-                        },
-                        initialiser: {
-                            kind: IntermediateKind.IntermediateCallableExpression,
-                            text: 'Symbol("name")',
-                            asType: undefined,
-                            typeAssertion: undefined,
-                        },
-                        typeRef: undefined,
-                    }
-                ],
-            },
-            {
-                kind: IntermediateKind.IntermediateVariableDeclarations,
-                variables: [
-                    {
-                        kind: IntermediateKind.IntermediateVariableDeclaration,
-                        variableName: "secondName",
-                        constant: true,
-                        exported: false,
-                        declared: false,
-                        docBlock: {
-                            kind: IntermediateKind.IntermediateDocBlock,
-                            text: '',
-                        },
-                        initialiser: {
-                            kind: IntermediateKind.IntermediateCallableExpression,
-                            text: 'Symbol("name")',
-                            asType: undefined,
-                            typeAssertion: undefined,
-                        },
-                        typeRef: undefined,
-                    }
-                ],
-            },
-        ],
-    },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateVariableDeclarations,
+            variables: [
+                {
+                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    variableName: "firstName",
+                    constant: true,
+                    exported: false,
+                    declared: false,
+                    docBlock: {
+                        kind: IntermediateKind.IntermediateDocBlock,
+                        text: '',
+                    },
+                    initialiser: {
+                        kind: IntermediateKind.IntermediateCallableExpression,
+                        text: 'Symbol("name")',
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                    typeRef: undefined,
+                }
+            ],
+        },
+        {
+            kind: IntermediateKind.IntermediateVariableDeclarations,
+            variables: [
+                {
+                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    variableName: "secondName",
+                    constant: true,
+                    exported: false,
+                    declared: false,
+                    docBlock: {
+                        kind: IntermediateKind.IntermediateDocBlock,
+                        text: '',
+                    },
+                    initialiser: {
+                        kind: IntermediateKind.IntermediateCallableExpression,
+                        text: 'Symbol("name")',
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                    typeRef: undefined,
+                }
+            ],
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

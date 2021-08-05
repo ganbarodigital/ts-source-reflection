@@ -38,41 +38,39 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        InterfaceDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateInterface,
-                declared: false,
-                name: "Point",
-                exported: false,
-                docBlock: {
-                    kind: IntermediateKind.IntermediateDocBlock,
-                    text: undefined,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateInterface,
+            declared: false,
+            name: "Point",
+            exported: false,
+            docBlock: {
+                kind: IntermediateKind.IntermediateDocBlock,
+                text: undefined,
+            },
+            extends: [],
+            members: [
+                {
+                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    propName: "x",
+                    propIsOptional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
+                    },
                 },
-                extends: [],
-                members: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "x",
-                        propIsOptional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        }
+                {
+                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    propName: "y",
+                    propIsOptional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
                     },
-                    {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "y",
-                        propIsOptional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        }
-                    },
-                ],
-            }
-        ],
-    },
+                },
+            ],
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

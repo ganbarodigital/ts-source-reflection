@@ -38,40 +38,38 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "greet",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "person",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "string",
-                        },
-                        optional: false,
-                        initializer: undefined,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "greet",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "person",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
                     },
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "date",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "Date",
-                        },
-                        optional: false,
-                        initializer: undefined,
-                    }
-                ],
-                returnType: undefined,
-                hasBody: true,
-            }
-        ],
-    },
+                    optional: false,
+                    initializer: undefined,
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "date",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Date",
+                    },
+                    optional: false,
+                    initializer: undefined,
+                },
+            ],
+            returnType: undefined,
+            hasBody: true,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

@@ -38,39 +38,37 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        VariableStatement: [
-            {
-                kind: IntermediateKind.IntermediateVariableDeclarations,
-                variables: [
-                    {
-                        kind: IntermediateKind.IntermediateVariableDeclaration,
-                        variableName: "myCanvas3",
-                        constant: true,
-                        exported: false,
-                        declared: false,
-                        docBlock: {
-                            kind: IntermediateKind.IntermediateDocBlock,
-                            text: '',
+    children: [
+        {
+            kind: IntermediateKind.IntermediateVariableDeclarations,
+            variables: [
+                {
+                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    variableName: "myCanvas3",
+                    constant: true,
+                    exported: false,
+                    declared: false,
+                    docBlock: {
+                        kind: IntermediateKind.IntermediateDocBlock,
+                        text: '',
+                    },
+                    initialiser: {
+                        kind: IntermediateKind.IntermediateCallableExpression,
+                        text: 'document.getElementById("main_canvas")',
+                        typeAssertion: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "HTMLCanvasElement",
                         },
-                        initialiser: {
-                            kind: IntermediateKind.IntermediateCallableExpression,
-                            text: 'document.getElementById("main_canvas")',
-                            typeAssertion: {
-                                kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: "HTMLCanvasElement",
-                            },
-                            asType: {
-                                kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: "HTMLElement",
-                            },
+                        asType: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "HTMLElement",
                         },
-                        typeRef: undefined,
-                    }
-                ],
-            }
-        ],
-    },
+                    },
+                    typeRef: undefined,
+                },
+            ],
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

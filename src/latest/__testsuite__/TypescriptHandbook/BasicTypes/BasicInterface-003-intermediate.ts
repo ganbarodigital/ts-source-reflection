@@ -35,54 +35,52 @@
 import { IntermediateKind, IntermediateSourceFile } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        InterfaceDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateInterface,
-                declared: false,
-                name: "Window",
-                exported: false,
-                docBlock: {
-                    kind: IntermediateKind.IntermediateDocBlock,
-                    text: undefined,
-                },
-                extends: [],
-                members: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "title",
-                        propIsOptional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "string",
-                        }
-                    },
-                ],
+    children: [
+        {
+            kind: IntermediateKind.IntermediateInterface,
+            declared: false,
+            name: "Window",
+            exported: false,
+            docBlock: {
+                kind: IntermediateKind.IntermediateDocBlock,
+                text: undefined,
             },
-            {
-                kind: IntermediateKind.IntermediateInterface,
-                declared: false,
-                name: "Window",
-                exported: false,
-                docBlock: {
-                    kind: IntermediateKind.IntermediateDocBlock,
-                    text: undefined,
-                },
-                extends: [],
-                members: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                        propName: "ts",
-                        propIsOptional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "TypeScriptAPI",
-                        }
+            extends: [],
+            members: [
+                {
+                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    propName: "title",
+                    propIsOptional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
                     },
-                ],
+                },
+            ],
+        },
+        {
+            kind: IntermediateKind.IntermediateInterface,
+            declared: false,
+            name: "Window",
+            exported: false,
+            docBlock: {
+                kind: IntermediateKind.IntermediateDocBlock,
+                text: undefined,
             },
-        ],
-    },
+            extends: [],
+            members: [
+                {
+                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    propName: "ts",
+                    propIsOptional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "TypeScriptAPI",
+                    },
+                },
+            ],
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

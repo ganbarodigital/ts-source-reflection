@@ -38,49 +38,47 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "printCoord",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "pt",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateAnonymousClassType,
-                            members: [
-                                {
-                                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                                    propName: "x",
-                                    propIsOptional: false,
-                                    typeRef: {
-                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                        typeName: "number",
-                                    }
-                                },
-                                {
-                                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                                    propName: "y",
-                                    propIsOptional: false,
-                                    typeRef: {
-                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                        typeName: "number",
-                                    }
-                                },
-                            ],
-                        },
-                        optional: false,
-                        initializer: undefined,
-                    }
-                ],
-                returnType: undefined,
-                hasBody: true,
-            }
-        ],
-    },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "printCoord",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "pt",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateAnonymousClassType,
+                        members: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                                propName: "x",
+                                propIsOptional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                }
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                                propName: "y",
+                                propIsOptional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                }
+                            },
+                        ],
+                    },
+                    optional: false,
+                    initializer: undefined,
+                }
+            ],
+            returnType: undefined,
+            hasBody: true,
+        }
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

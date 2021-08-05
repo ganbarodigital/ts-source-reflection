@@ -38,48 +38,46 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        TypeAliasDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateTypeAliasDefinition,
-                typeName: "DescribableFunction",
-                typeRef: {
-                    kind: IntermediateKind.IntermediateAnonymousClassType,
-                    members: [
-                        {
-                            kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                            propName: "description",
-                            propIsOptional: false,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "string",
-                            },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            typeName: "DescribableFunction",
+            typeRef: {
+                kind: IntermediateKind.IntermediateAnonymousClassType,
+                members: [
+                    {
+                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                        propName: "description",
+                        propIsOptional: false,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "string",
                         },
-                        {
-                            kind: IntermediateKind.IntermediateCallSignature,
-                            typeParameters: [],
-                            parameters: [
-                                {
-                                    kind: IntermediateKind.IntermediateTypedCallableParameter,
-                                    paramName: "someArg",
-                                    optional: false,
-                                    typeRef: {
-                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                        typeName: "number",
-                                    },
-                                    initializer: undefined,
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateCallSignature,
+                        typeParameters: [],
+                        parameters: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedCallableParameter,
+                                paramName: "someArg",
+                                optional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
                                 },
-                            ],
-                            returnType: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "boolean",
+                                initializer: undefined,
                             },
+                        ],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "boolean",
                         },
-                    ],
-                },
+                    },
+                ],
             },
-        ],
-    },
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

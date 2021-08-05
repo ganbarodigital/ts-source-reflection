@@ -38,46 +38,44 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "isFish",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "pet",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateUnionType,
-                            typeRefs: [
-                                {
-                                    kind: IntermediateKind.IntermediateFixedTypeReference,
-                                    typeName: 'Fish',
-                                },
-                                {
-                                    kind: IntermediateKind.IntermediateFixedTypeReference,
-                                    typeName: 'Bird',
-                                },
-                            ],
-                        },
-                        optional: false,
-                        initializer: undefined,
-                    },
-                ],
-                returnType: {
-                    kind: IntermediateKind.IntermediateTypePredicate,
-                    parameterName: "pet",
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "isFish",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "pet",
                     typeRef: {
-                        kind: IntermediateKind.IntermediateFixedTypeReference,
-                        typeName: 'Fish',
+                        kind: IntermediateKind.IntermediateUnionType,
+                        typeRefs: [
+                            {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: 'Fish',
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: 'Bird',
+                            },
+                        ],
                     },
+                    optional: false,
+                    initializer: undefined,
                 },
-                hasBody: true,
-            }
-        ],
-    },
+            ],
+            returnType: {
+                kind: IntermediateKind.IntermediateTypePredicate,
+                parameterName: "pet",
+                typeRef: {
+                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                    typeName: 'Fish',
+                },
+            },
+            hasBody: true,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

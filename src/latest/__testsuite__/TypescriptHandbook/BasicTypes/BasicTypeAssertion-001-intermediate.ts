@@ -38,36 +38,34 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        VariableStatement: [
-            {
-                kind: IntermediateKind.IntermediateVariableDeclarations,
-                variables: [
-                    {
-                        kind: IntermediateKind.IntermediateVariableDeclaration,
-                        variableName: "myCanvas",
-                        constant: true,
-                        exported: false,
-                        declared: false,
-                        docBlock: {
-                            kind: IntermediateKind.IntermediateDocBlock,
-                            text: '',
+    children: [
+        {
+            kind: IntermediateKind.IntermediateVariableDeclarations,
+            variables: [
+                {
+                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    variableName: "myCanvas",
+                    constant: true,
+                    exported: false,
+                    declared: false,
+                    docBlock: {
+                        kind: IntermediateKind.IntermediateDocBlock,
+                        text: '',
+                    },
+                    initialiser: {
+                        kind: IntermediateKind.IntermediateCallableExpression,
+                        text: 'document.getElementById("main_canvas")',
+                        typeAssertion: undefined,
+                        asType: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "HTMLCanvasElement",
                         },
-                        initialiser: {
-                            kind: IntermediateKind.IntermediateCallableExpression,
-                            text: 'document.getElementById("main_canvas")',
-                            typeAssertion: undefined,
-                            asType: {
-                                kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: "HTMLCanvasElement",
-                            },
-                        },
-                        typeRef: undefined,
-                    }
-                ],
-            }
-        ],
-    },
+                    },
+                    typeRef: undefined,
+                },
+            ],
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

@@ -38,83 +38,81 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "filter2",
-                typeParameters: [
-                    {
-                        kind: IntermediateKind.IntermediateGenericType,
-                        name: "Type",
-                        constraint: undefined,
-                        defaultType: undefined,
-                    },
-                    {
-                        kind: IntermediateKind.IntermediateGenericType,
-                        name: "Func",
-                        constraint: {
-                            kind: IntermediateKind.IntermediateFunctionTypeSignature,
-                            typeParameters: [],
-                            parameters: [
-                                {
-                                    kind: IntermediateKind.IntermediateTypedCallableParameter,
-                                    paramName: "arg",
-                                    optional: false,
-                                    typeRef: {
-                                        kind: IntermediateKind.IntermediateFixedTypeReference,
-                                        typeName: "Type",
-                                    },
-                                    initializer: undefined,
-                                },
-                            ],
-                            returnType: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "boolean",
-                            },
-                        },
-                        defaultType: undefined,
-                    },
-                ],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "arr",
-                        optional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateArrayTypeReference,
-                            typeRef:
-                            {
-                                kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: "Type",
-                            },
-                        },
-                        initializer: undefined,
-                    },
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "func",
-                        optional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "Func",
-                        },
-                        initializer: undefined,
-                    },
-                ],
-                returnType: {
-                    kind: IntermediateKind.IntermediateArrayTypeReference,
-                    typeRef:
-                    {
-                        kind: IntermediateKind.IntermediateFixedTypeReference,
-                        typeName: "Type",
-                    },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "filter2",
+            typeParameters: [
+                {
+                    kind: IntermediateKind.IntermediateGenericType,
+                    name: "Type",
+                    constraint: undefined,
+                    defaultType: undefined,
                 },
-                hasBody: true,
+                {
+                    kind: IntermediateKind.IntermediateGenericType,
+                    name: "Func",
+                    constraint: {
+                        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        typeParameters: [],
+                        parameters: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedCallableParameter,
+                                paramName: "arg",
+                                optional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                    typeName: "Type",
+                                },
+                                initializer: undefined,
+                            },
+                        ],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "boolean",
+                        },
+                    },
+                    defaultType: undefined,
+                },
+            ],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "arr",
+                    optional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateArrayTypeReference,
+                        typeRef:
+                        {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "Type",
+                        },
+                    },
+                    initializer: undefined,
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "func",
+                    optional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Func",
+                    },
+                    initializer: undefined,
+                },
+            ],
+            returnType: {
+                kind: IntermediateKind.IntermediateArrayTypeReference,
+                typeRef:
+                {
+                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                    typeName: "Type",
+                },
             },
-        ],
-    },
+            hasBody: true,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

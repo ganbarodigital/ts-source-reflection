@@ -38,39 +38,37 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "doSomething",
-                typeParameters: [],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "x",
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateUnionType,
-                            typeRefs: [
-                                {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: 'string',
-                                },
-                                {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: 'null',
-                                },
-                            ],
-                        },
-                        optional: false,
-                        initializer: undefined,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "doSomething",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "x",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateUnionType,
+                        typeRefs: [
+                            {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: 'string',
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: 'null',
+                            },
+                        ],
                     },
-                ],
-                returnType: undefined,
-                hasBody: true,
-            }
-        ],
-    },
+                    optional: false,
+                    initializer: undefined,
+                },
+            ],
+            returnType: undefined,
+            hasBody: true,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

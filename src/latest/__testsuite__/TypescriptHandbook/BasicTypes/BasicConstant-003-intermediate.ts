@@ -38,42 +38,40 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        VariableStatement: [
-            {
-                kind: IntermediateKind.IntermediateVariableDeclarations,
-                variables: [
-                    {
-                        kind: IntermediateKind.IntermediateVariableDeclaration,
-                        variableName: "obj",
-                        constant: true,
-                        exported: false,
-                        declared: false,
-                        docBlock: {
-                            kind: IntermediateKind.IntermediateDocBlock,
-                            text: '',
-                        },
-                        initialiser: {
-                            kind: IntermediateKind.IntermediateObjectLiteral,
-                            properties: [
-                                {
-                                    kind: IntermediateKind.IntermediatePropertyAssignment,
-                                    propertyName: "counter",
-                                    initialiser: {
-                                        kind: IntermediateKind.IntermediateNumericLiteral,
-                                        value: "0"
-                                    },
-                                }
-                            ],
-                            asType: undefined,
-                            typeAssertion: undefined,
-                        },
-                        typeRef: undefined,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateVariableDeclarations,
+            variables: [
+                {
+                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    variableName: "obj",
+                    constant: true,
+                    exported: false,
+                    declared: false,
+                    docBlock: {
+                        kind: IntermediateKind.IntermediateDocBlock,
+                        text: '',
                     },
-                ],
-            }
-        ],
-    },
+                    initialiser: {
+                        kind: IntermediateKind.IntermediateObjectLiteral,
+                        properties: [
+                            {
+                                kind: IntermediateKind.IntermediatePropertyAssignment,
+                                propertyName: "counter",
+                                initialiser: {
+                                    kind: IntermediateKind.IntermediateNumericLiteral,
+                                    value: "0"
+                                },
+                            }
+                        ],
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                    typeRef: undefined,
+                },
+            ],
+        }
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

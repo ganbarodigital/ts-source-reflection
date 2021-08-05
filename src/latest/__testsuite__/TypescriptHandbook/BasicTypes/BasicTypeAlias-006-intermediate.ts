@@ -38,39 +38,37 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
-    children: {
-        TypeAliasDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateTypeAliasDefinition,
-                typeName: "SomeConstructor",
-                typeRef: {
-                    kind: IntermediateKind.IntermediateAnonymousClassType,
-                    members: [
-                        {
-                            kind: IntermediateKind.IntermediateConstructorDefinition,
-                            typeParameters: [],
-                            parameters: [
-                                {
-                                    kind: IntermediateKind.IntermediateTypedCallableParameter,
-                                    paramName: "s",
-                                    optional: false,
-                                    typeRef: {
-                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                        typeName: "string",
-                                    },
-                                    initializer: undefined,
+    children: [
+        {
+            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            typeName: "SomeConstructor",
+            typeRef: {
+                kind: IntermediateKind.IntermediateAnonymousClassType,
+                members: [
+                    {
+                        kind: IntermediateKind.IntermediateConstructorDefinition,
+                        typeParameters: [],
+                        parameters: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedCallableParameter,
+                                paramName: "s",
+                                optional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "string",
                                 },
-                            ],
-                            returnType: {
-                                kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: "SomeObject",
+                                initializer: undefined,
                             },
+                        ],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "SomeObject",
                         },
-                    ],
-                },
+                    },
+                ],
             },
-        ],
-    },
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

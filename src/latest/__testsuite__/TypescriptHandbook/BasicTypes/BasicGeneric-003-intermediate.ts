@@ -38,60 +38,58 @@ import {
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile =  {
-    children: {
-        FunctionDeclaration: [
-            {
-                kind: IntermediateKind.IntermediateFunction,
-                declared: false,
-                name: "longest",
-                typeParameters: [
-                    {
-                        kind: IntermediateKind.IntermediateGenericType,
-                        name: "Type",
-                        constraint: {
-                            kind: IntermediateKind.IntermediateAnonymousClassType,
-                            members: [
-                                {
-                                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                                    propName: "length",
-                                    propIsOptional: false,
-                                    typeRef: {
-                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                        typeName: "number",
-                                    },
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "longest",
+            typeParameters: [
+                {
+                    kind: IntermediateKind.IntermediateGenericType,
+                    name: "Type",
+                    constraint: {
+                        kind: IntermediateKind.IntermediateAnonymousClassType,
+                        members: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                                propName: "length",
+                                propIsOptional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
                                 },
-                            ],
-                        },
-                        defaultType: undefined,
+                            },
+                        ],
                     },
-                ],
-                parameters: [
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "a",
-                        optional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "Type",
-                        },
-                        initializer: undefined,
+                    defaultType: undefined,
+                },
+            ],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "a",
+                    optional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Type",
                     },
-                    {
-                        kind: IntermediateKind.IntermediateTypedCallableParameter,
-                        paramName: "b",
-                        optional: false,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "Type",
-                        },
-                        initializer: undefined,
+                    initializer: undefined,
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "b",
+                    optional: false,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Type",
                     },
-                ],
-                returnType: undefined,
-                hasBody: true,
-            },
-        ],
-    },
+                    initializer: undefined,
+                },
+            ],
+            returnType: undefined,
+            hasBody: true,
+        },
+    ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 
