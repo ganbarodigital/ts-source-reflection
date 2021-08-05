@@ -34,10 +34,12 @@
 
 import { IntermediateCallSignature } from "../IntermediateCallSignature";
 import { IntermediateConstructorDefinition } from "../IntermediateConstructorDefinition";
+import { IntermediateMethodDefinition } from "../IntermediateMethodDefinition";
 import { IntermediatePropertyDefinition } from "../IntermediatePropertyDefinition";
 
 export type IntermediateMemberDefinition =
     IntermediatePropertyDefinition
     | IntermediateCallSignature
     | IntermediateConstructorDefinition
+    | IntermediateMethodDefinition
     ;
