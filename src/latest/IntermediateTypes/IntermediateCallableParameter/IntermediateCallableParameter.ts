@@ -37,8 +37,10 @@ import {
     IntermediateTypedCallableParameter,
     IntermediateUntypedCallableParameter
 } from "..";
+import { IntermediateCallableRestParameter } from "../IntermediateCallableRestParameter/IntermediateCallableRestParameter";
 
 export type IntermediateCallableParameter =
     IntermediateAnonymousCallableParameter
+    | IntermediateCallableRestParameter
     | IntermediateUntypedCallableParameter
     | IntermediateTypedCallableParameter;
