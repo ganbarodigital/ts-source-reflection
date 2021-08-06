@@ -32,27 +32,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./findDocBlockText";
-export * from "./findExtendsHeritageClauses";
-export * from "./findImplementsHeritageClauses";
-export * from "./getStatementKind";
-export * from "./hasBody";
-export * from "./hasDeclaredModifier";
-export * from "./hasDotDotDotToken";
-export * from "./isAnonymousClassType";
-export * from "./isDeclareKeyword";
-export * from "./isExportKeyword";
-export * from "./isNodeExported";
-export * from "./mustBeCallSignatureDeclaration";
-export * from "./mustBeClassDeclaration";
-export * from "./mustBeConstructSignatureDeclaration";
-export * from "./mustBeConstructorDeclaration";
-export * from "./mustBeFunctionDeclaration";
-export * from "./mustBeImportClause";
-export * from "./mustBeImportDeclaration";
-export * from "./mustBeInterfaceDeclaration";
-export * from "./mustBePropertyAssignment";
-export * from "./mustBePropertySignature";
-export * from "./mustBeTypeAliasDeclaration";
-export * from "./mustBeTypeReference";
-export * from "./mustBeVariableStatement";
+import { DotDotDotToken } from "typescript";
+
+export function hasDotDotDotToken(
+    input: DotDotDotToken | undefined
+): boolean
+{
+    if (input) {
+        return true;
+    }
+
+    return false;
+}
