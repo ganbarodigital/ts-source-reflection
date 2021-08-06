@@ -34,11 +34,11 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { NodeArray, ParameterDeclaration } from "typescript";
-import { IntermediateCallableParameter, IntermediateExpression, IntermediateKind, IntermediateTypedCallableParameter, IntermediateUntypedCallableParameter } from "../IntermediateTypes";
+import { IntermediateCallableParameter, IntermediateCallableRestParameter, IntermediateExpression, IntermediateKind, IntermediateTypedCallableParameter, IntermediateUntypedCallableParameter } from "../IntermediateTypes";
 import { processInitializer } from "./processInitializer";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
-
+import * as AST from "../AST";
 
 export function processFunctionParameters(
     input: NodeArray<ParameterDeclaration>
@@ -47,42 +47,58 @@ export function processFunctionParameters(
     const retval: IntermediateCallableParameter[] = [];
 
     input.forEach((paramDec) => {
-        // this is a placeholder for now
-        //
-        // we will be expanding this as we add more test cases, and
-        // eventually we will have to refactor it to handle edge cases
-        // better & without introducing complexity
-
-        // do we have a default value for the parameter?
-        let initializer: Maybe<IntermediateExpression>;
-        if (paramDec.initializer) {
-            initializer = processInitializer(paramDec.initializer);
-        }
-
-        // special case - untyped parameter
-        if (!paramDec.type) {
-            // tslint:disable-next-line: no-angle-bracket-type-assertion
-            retval.push(<IntermediateUntypedCallableParameter>{
-                kind: IntermediateKind.IntermediateUntypedCallableParameter,
-                paramName: paramDec.name.getText(),
-                initializer,
-                optional: processQuestionToken(paramDec.questionToken),
+        // special case - rest parameter
+        if (AST.hasDotDotDotToken(paramDec.dotDotDotToken)) {
+            retval.push(<IntermediateCallableRestParameter>{
+                kind: IntermediateKind.IntermediateCallableRestParameter,
+                typeRef: processFunctionParameter(paramDec),
             });
 
             return;
         }
 
-        // general case - typed parameter
-        // tslint:disable-next-line: no-angle-bracket-type-assertion
-        retval.push(<IntermediateTypedCallableParameter>{
-            kind: IntermediateKind.IntermediateTypedCallableParameter,
-            paramName: paramDec.name.getText(),
-            typeRef: processTypeNode(paramDec.type),
-            optional: processQuestionToken(paramDec.questionToken),
-            initializer,
-        });
+        // general case
+        retval.push(processFunctionParameter(paramDec));
     });
 
     // all done
     return retval;
+}
+
+function processFunctionParameter(
+    paramDec: ParameterDeclaration
+): IntermediateCallableParameter
+{
+    // this is a placeholder for now
+    //
+    // we will be expanding this as we add more test cases, and
+    // eventually we will have to refactor it to handle edge cases
+    // better & without introducing complexity
+
+    // do we have a default value for the parameter?
+    let initializer: Maybe<IntermediateExpression>;
+    if (paramDec.initializer) {
+        initializer = processInitializer(paramDec.initializer);
+    }
+
+    // special case - untyped parameter
+    if (!paramDec.type) {
+        // tslint:disable-next-line: no-angle-bracket-type-assertion
+        return <IntermediateUntypedCallableParameter>{
+            kind: IntermediateKind.IntermediateUntypedCallableParameter,
+            paramName: paramDec.name.getText(),
+            initializer,
+            optional: processQuestionToken(paramDec.questionToken),
+        };
+    }
+
+    // general case - typed parameter
+    // tslint:disable-next-line: no-angle-bracket-type-assertion
+    return <IntermediateTypedCallableParameter>{
+        kind: IntermediateKind.IntermediateTypedCallableParameter,
+        paramName: paramDec.name.getText(),
+        typeRef: processTypeNode(paramDec.type),
+        optional: processQuestionToken(paramDec.questionToken),
+        initializer,
+    };
 }
