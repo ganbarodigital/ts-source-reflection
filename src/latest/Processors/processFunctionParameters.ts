@@ -31,14 +31,16 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-
-import { Maybe } from "@safelytyped/core-types";
 import { NodeArray, ParameterDeclaration } from "typescript";
-import { IntermediateCallableParameter, IntermediateCallableRestParameter, IntermediateExpression, IntermediateKind, IntermediateTypedCallableParameter, IntermediateUntypedCallableParameter } from "../IntermediateTypes";
-import { processInitializer } from "./processInitializer";
-import { processQuestionToken } from "./processQuestionToken";
-import { processTypeNode } from "./processTypeNode";
+
 import * as AST from "../AST";
+import {
+    IntermediateCallableParameter,
+    IntermediateCallableRestParameter,
+    IntermediateKind,
+} from "../IntermediateTypes";
+import { processParameterDeclaration } from "./processParameterDeclaration";
+
 
 export function processFunctionParameters(
     input: NodeArray<ParameterDeclaration>
@@ -51,54 +53,17 @@ export function processFunctionParameters(
         if (AST.hasDotDotDotToken(paramDec.dotDotDotToken)) {
             retval.push(<IntermediateCallableRestParameter>{
                 kind: IntermediateKind.IntermediateCallableRestParameter,
-                typeRef: processFunctionParameter(paramDec),
+                typeRef: processParameterDeclaration(paramDec),
             });
 
             return;
         }
 
         // general case
-        retval.push(processFunctionParameter(paramDec));
+        retval.push(processParameterDeclaration(paramDec));
     });
 
     // all done
     return retval;
 }
 
-function processFunctionParameter(
-    paramDec: ParameterDeclaration
-): IntermediateCallableParameter
-{
-    // this is a placeholder for now
-    //
-    // we will be expanding this as we add more test cases, and
-    // eventually we will have to refactor it to handle edge cases
-    // better & without introducing complexity
-
-    // do we have a default value for the parameter?
-    let initializer: Maybe<IntermediateExpression>;
-    if (paramDec.initializer) {
-        initializer = processInitializer(paramDec.initializer);
-    }
-
-    // special case - untyped parameter
-    if (!paramDec.type) {
-        // tslint:disable-next-line: no-angle-bracket-type-assertion
-        return <IntermediateUntypedCallableParameter>{
-            kind: IntermediateKind.IntermediateUntypedCallableParameter,
-            paramName: paramDec.name.getText(),
-            initializer,
-            optional: processQuestionToken(paramDec.questionToken),
-        };
-    }
-
-    // general case - typed parameter
-    // tslint:disable-next-line: no-angle-bracket-type-assertion
-    return <IntermediateTypedCallableParameter>{
-        kind: IntermediateKind.IntermediateTypedCallableParameter,
-        paramName: paramDec.name.getText(),
-        typeRef: processTypeNode(paramDec.type),
-        optional: processQuestionToken(paramDec.questionToken),
-        initializer,
-    };
-}

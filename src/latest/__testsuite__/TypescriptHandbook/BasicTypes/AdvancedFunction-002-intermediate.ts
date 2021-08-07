@@ -31,48 +31,49 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { Maybe } from "@safelytyped/core-types";
-import { Statement } from "typescript";
-import * as AST from "../AST";
-import { mustBeFunctionDeclaration } from "../AST";
+
 import {
-    IntermediateFunction,
-    IntermediateGenericType,
     IntermediateKind,
-    IntermediateTypeReference
-} from "../IntermediateTypes";
-import { processFunctionParameters } from "./processFunctionParameters";
-import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
-import { StatementProcessor } from "./StatementProcessor";
+    IntermediateSourceFile
+} from "../../../IntermediateTypes";
 
-export const processFunctionDeclaration: StatementProcessor = (
-    input: Statement
-): IntermediateFunction => {
-    // make sure we have what we need
-    const funcDec = mustBeFunctionDeclaration(input);
-
-    // at this point, we *know* that we're looking at a function :)
-
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (funcDec.typeParameters) {
-        typeParameters = processTypeParameters(funcDec.typeParameters);
-    }
-
-    // do we have a return type?
-    let retType: Maybe<IntermediateTypeReference>;
-    if (funcDec.type) {
-        retType = processTypeNode(funcDec.type);
-    }
-
-    return {
-        kind: IntermediateKind.IntermediateFunction,
-        declared: AST.hasDeclaredModifier(input.modifiers),
-        typeParameters: typeParameters,
-        name: funcDec.name?.text,
-        parameters: processFunctionParameters(funcDec.parameters),
-        returnType: retType,
-        hasBody: AST.hasBody(funcDec.body),
-    }
+const expectedResult: IntermediateSourceFile = {
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            declared: false,
+            name: "sum",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateObjectBindingParameter,
+                    parameters: [
+                        {
+                            kind: IntermediateKind.IntermediateUntypedCallableParameter,
+                            paramName: "a",
+                            optional: false,
+                            initializer: undefined,
+                        },
+                        {
+                            kind: IntermediateKind.IntermediateUntypedCallableParameter,
+                            paramName: "b",
+                            optional: false,
+                            initializer: undefined,
+                        },
+                        {
+                            kind: IntermediateKind.IntermediateUntypedCallableParameter,
+                            paramName: "c",
+                            optional: false,
+                            initializer: undefined,
+                        },
+                    ],
+                },
+            ],
+            returnType: undefined,
+            hasBody: true,
+        },
+    ],
+    kind: IntermediateKind.IntermediateSourceFile,
 }
+
+export default expectedResult;

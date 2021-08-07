@@ -31,48 +31,53 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+
 import { Maybe } from "@safelytyped/core-types";
-import { Statement } from "typescript";
-import * as AST from "../AST";
-import { mustBeFunctionDeclaration } from "../AST";
-import {
-    IntermediateFunction,
-    IntermediateGenericType,
-    IntermediateKind,
-    IntermediateTypeReference
-} from "../IntermediateTypes";
-import { processFunctionParameters } from "./processFunctionParameters";
-import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
-import { StatementProcessor } from "./StatementProcessor";
+import { BindingElement, NodeArray, ObjectBindingPattern } from "typescript";
+import { IntermediateCallableParameter, IntermediateExpression, IntermediateKind, IntermediateUntypedCallableParameter } from "../IntermediateTypes";
+import { IntermediateObjectBindingParameter } from "../IntermediateTypes/IntermediateObjectBindingParameter";
+import { processInitializer } from "./processInitializer";
 
-export const processFunctionDeclaration: StatementProcessor = (
-    input: Statement
-): IntermediateFunction => {
-    // make sure we have what we need
-    const funcDec = mustBeFunctionDeclaration(input);
-
-    // at this point, we *know* that we're looking at a function :)
-
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (funcDec.typeParameters) {
-        typeParameters = processTypeParameters(funcDec.typeParameters);
-    }
-
-    // do we have a return type?
-    let retType: Maybe<IntermediateTypeReference>;
-    if (funcDec.type) {
-        retType = processTypeNode(funcDec.type);
-    }
-
+export function processObjectBindingPattern(
+    input: ObjectBindingPattern
+): IntermediateObjectBindingParameter
+{
+    // all done
     return {
-        kind: IntermediateKind.IntermediateFunction,
-        declared: AST.hasDeclaredModifier(input.modifiers),
-        typeParameters: typeParameters,
-        name: funcDec.name?.text,
-        parameters: processFunctionParameters(funcDec.parameters),
-        returnType: retType,
-        hasBody: AST.hasBody(funcDec.body),
+        kind: IntermediateKind.IntermediateObjectBindingParameter,
+        parameters: processBindingElements(input.elements),
+    };
+}
+
+function processBindingElements(
+    input: NodeArray<BindingElement>
+): IntermediateCallableParameter[]
+{
+    // our return value
+    const retval: IntermediateCallableParameter[] = [];
+
+    input.forEach((bindingElement) => {
+        retval.push(processBindingElement(bindingElement));
+    });
+
+    // all done
+    return retval;
+}
+
+function processBindingElement(
+    input: BindingElement
+): IntermediateCallableParameter
+{
+    // do we have a default value for the parameter?
+    let initializer: Maybe<IntermediateExpression>;
+    if (input.initializer) {
+        initializer = processInitializer(input.initializer);
+    }
+
+    return <IntermediateUntypedCallableParameter>{
+        kind: IntermediateKind.IntermediateUntypedCallableParameter,
+        paramName: input.name!.getText(),
+        initializer,
+        optional: false,
     }
 }
