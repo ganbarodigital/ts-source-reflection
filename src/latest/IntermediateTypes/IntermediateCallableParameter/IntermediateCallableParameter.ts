@@ -38,9 +38,11 @@ import {
     IntermediateUntypedCallableParameter
 } from "..";
 import { IntermediateCallableRestParameter } from "../IntermediateCallableRestParameter/IntermediateCallableRestParameter";
+import { IntermediateObjectBindingParameter } from "../IntermediateObjectBindingParameter";
 
 export type IntermediateCallableParameter =
     IntermediateAnonymousCallableParameter
     | IntermediateCallableRestParameter
+    | IntermediateObjectBindingParameter
     | IntermediateUntypedCallableParameter
     | IntermediateTypedCallableParameter;
