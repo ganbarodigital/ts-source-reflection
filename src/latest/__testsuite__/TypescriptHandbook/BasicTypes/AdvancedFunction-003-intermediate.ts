@@ -67,7 +67,38 @@ const expectedResult: IntermediateSourceFile = {
                             initializer: undefined,
                         },
                     ],
-                    typeRef: undefined,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateAnonymousClassType,
+                        members: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                                propName: "a",
+                                propIsOptional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                                propName: "b",
+                                propIsOptional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                                propName: "c",
+                                propIsOptional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                },
+                            },
+                        ],
+                    },
                 },
             ],
             returnType: undefined,

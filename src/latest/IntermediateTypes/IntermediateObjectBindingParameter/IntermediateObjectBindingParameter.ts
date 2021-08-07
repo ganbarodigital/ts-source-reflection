@@ -32,12 +32,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { Maybe } from "@safelytyped/core-types";
 import { IntermediateCallableParameter } from "../IntermediateCallableParameter";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateObjectBindingParameter
     extends IntermediateItem<IntermediateKind.IntermediateObjectBindingParameter>
 {
     parameters: IntermediateCallableParameter[];
+    typeRef: Maybe<IntermediateTypeReference>;
 }

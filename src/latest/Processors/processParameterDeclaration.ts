@@ -64,7 +64,10 @@ export function processParameterDeclaration(
     //
     // why it hides in the parameter name is beyond me!
     if (isObjectBindingPattern(paramDec.name)) {
-        return processObjectBindingPattern(paramDec.name);
+        return processObjectBindingPattern({
+            param: paramDec.name,
+            paramType: paramDec.type,
+        });
     }
 
     // do we have a default value for the parameter?

@@ -33,19 +33,31 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { BindingElement, NodeArray, ObjectBindingPattern } from "typescript";
-import { IntermediateCallableParameter, IntermediateExpression, IntermediateKind, IntermediateUntypedCallableParameter } from "../IntermediateTypes";
+import { BindingElement, NodeArray, ObjectBindingPattern, TypeNode } from "typescript";
+import { IntermediateCallableParameter, IntermediateExpression, IntermediateKind, IntermediateTypeReference, IntermediateUntypedCallableParameter } from "../IntermediateTypes";
 import { IntermediateObjectBindingParameter } from "../IntermediateTypes/IntermediateObjectBindingParameter";
 import { processInitializer } from "./processInitializer";
+import { processTypeNode } from "./processTypeNode";
 
-export function processObjectBindingPattern(
-    input: ObjectBindingPattern
+export function processObjectBindingPattern({
+    param,
+    paramType,
+}: {
+    param: ObjectBindingPattern,
+    paramType: Maybe<TypeNode>,
+}
 ): IntermediateObjectBindingParameter
 {
+    let typeRef: Maybe<IntermediateTypeReference>;
+    if (paramType) {
+        typeRef = processTypeNode(paramType);
+    }
+
     // all done
     return {
         kind: IntermediateKind.IntermediateObjectBindingParameter,
-        parameters: processBindingElements(input.elements),
+        parameters: processBindingElements(param.elements),
+        typeRef,
     };
 }
 
