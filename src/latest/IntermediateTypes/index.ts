@@ -67,6 +67,7 @@ export * from "./IntermediateMethodSignature";
 export * from "./IntermediateMethodDefinition";
 // export * from "./IntermediateModule";
 export * from "./IntermediateNumericLiteral";
+export * from "./IntermediateObjectBindingParameter";
 export * from "./IntermediateObjectLiteral";
 export * from "./IntermediateParenthesizedType";
 export * from "./IntermediatePropertyAssignment";
