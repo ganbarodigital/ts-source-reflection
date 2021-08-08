@@ -96,6 +96,23 @@ function processBindingElement(
         initializer = processInitializer(input.initializer);
     }
 
+    // do we have a receiver alias set?
+    //
+    // this is where:
+    //
+    // - the caller sets the property using `paramName`,
+    // - but the receiving function accesses the value using the
+    //   `receiverAlias`
+
+    if (input.propertyName) {
+        return <IntermediateObjectBindingElement>{
+            kind: IntermediateKind.IntermediateObjectBindingElement,
+            paramName: input.propertyName.getText(),
+            initializer,
+            receiverAlias: input.name.getText(),
+        }
+    }
+
     return <IntermediateObjectBindingElement>{
         kind: IntermediateKind.IntermediateObjectBindingElement,
         paramName: input.name.getText(),
