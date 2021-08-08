@@ -33,14 +33,14 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { IntermediateCallableParameter } from "../IntermediateCallableParameter";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateObjectBindingElement } from "../IntermediateObjectBindingElement";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateObjectBindingParameter
     extends IntermediateItem<IntermediateKind.IntermediateObjectBindingParameter>
 {
-    parameters: IntermediateCallableParameter[];
+    parameters: IntermediateObjectBindingElement[];
     typeRef: Maybe<IntermediateTypeReference>;
 }

@@ -33,9 +33,19 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { BindingElement, NodeArray, ObjectBindingPattern, TypeNode } from "typescript";
-import { IntermediateCallableParameter, IntermediateExpression, IntermediateKind, IntermediateTypeReference, IntermediateUntypedCallableParameter } from "../IntermediateTypes";
-import { IntermediateObjectBindingParameter } from "../IntermediateTypes/IntermediateObjectBindingParameter";
+import {
+    BindingElement,
+    NodeArray,
+    ObjectBindingPattern,
+    TypeNode
+} from "typescript";
+import {
+    IntermediateExpression,
+    IntermediateKind,
+    IntermediateObjectBindingElement,
+    IntermediateObjectBindingParameter,
+    IntermediateTypeReference
+} from "../IntermediateTypes";
 import { processInitializer } from "./processInitializer";
 import { processTypeNode } from "./processTypeNode";
 
@@ -63,10 +73,10 @@ export function processObjectBindingPattern({
 
 function processBindingElements(
     input: NodeArray<BindingElement>
-): IntermediateCallableParameter[]
+): IntermediateObjectBindingElement[]
 {
     // our return value
-    const retval: IntermediateCallableParameter[] = [];
+    const retval: IntermediateObjectBindingElement[] = [];
 
     input.forEach((bindingElement) => {
         retval.push(processBindingElement(bindingElement));
@@ -78,7 +88,7 @@ function processBindingElements(
 
 function processBindingElement(
     input: BindingElement
-): IntermediateCallableParameter
+): IntermediateObjectBindingElement
 {
     // do we have a default value for the parameter?
     let initializer: Maybe<IntermediateExpression>;
@@ -86,10 +96,10 @@ function processBindingElement(
         initializer = processInitializer(input.initializer);
     }
 
-    return <IntermediateUntypedCallableParameter>{
-        kind: IntermediateKind.IntermediateUntypedCallableParameter,
-        paramName: input.name!.getText(),
+    return <IntermediateObjectBindingElement>{
+        kind: IntermediateKind.IntermediateObjectBindingElement,
+        paramName: input.name.getText(),
         initializer,
-        optional: false,
+        receiverAlias: undefined,
     }
 }

@@ -89,28 +89,28 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateObjectBindingParameter,
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateUntypedCallableParameter,
+                            kind: IntermediateKind.IntermediateObjectBindingElement,
                             paramName: "shape",
-                            optional: false,
                             initializer: undefined,
+                            receiverAlias: undefined,
                         },
                         {
-                            kind: IntermediateKind.IntermediateUntypedCallableParameter,
+                            kind: IntermediateKind.IntermediateObjectBindingElement,
                             paramName: "xPos",
-                            optional: false,
                             initializer: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "0",
                             },
+                            receiverAlias: undefined,
                         },
                         {
-                            kind: IntermediateKind.IntermediateUntypedCallableParameter,
+                            kind: IntermediateKind.IntermediateObjectBindingElement,
                             paramName: "yPos",
-                            optional: false,
                             initializer: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "0",
                             },
+                            receiverAlias: undefined,
                         },
                     ],
                     typeRef: {
