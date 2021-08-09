@@ -42,7 +42,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateInterface,
             declared: false,
-            name: "StringArray",
+            name: "ReadonlyStringArray",
             exported: false,
             docBlock: {
                 kind: IntermediateKind.IntermediateDocBlock,
@@ -65,7 +65,7 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "string",
                         },
                     },
-                    sigIsReadonly: false,
+                    sigIsReadonly: true,
                 },
             ],
         },

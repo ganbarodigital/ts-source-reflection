@@ -54,4 +54,16 @@ export interface IntermediateIndexSignature
     value: {
         valueTypeRef: IntermediateTypeReference;
     }
+
+    /**
+     * `sigIsReadonly` is `true` if this index signature has the
+     * `readonly` modifier in front of it
+     *
+     * e.g.
+     *
+     * ```
+     * readonly [index: number]: string;
+     * ```
+     */
+    sigIsReadonly: boolean;
 }

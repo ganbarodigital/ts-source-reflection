@@ -75,6 +75,7 @@ const expectedResult: IntermediateSourceFile = {
                             ],
                         },
                     },
+                    sigIsReadonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,

@@ -35,6 +35,7 @@
 import { IndexSignatureDeclaration } from "typescript";
 import { IntermediateIndexSignature, IntermediateKind } from "../IntermediateTypes";
 import { processTypeNode } from "./processTypeNode";
+import * as AST from "../AST";
 
 export function processIndexSignatureDeclaration(
     input: IndexSignatureDeclaration
@@ -55,5 +56,6 @@ export function processIndexSignatureDeclaration(
         value: {
             valueTypeRef: processTypeNode(input.type),
         },
+        sigIsReadonly: AST.hasReadonlyModifier(input.modifiers),
     }
 }
