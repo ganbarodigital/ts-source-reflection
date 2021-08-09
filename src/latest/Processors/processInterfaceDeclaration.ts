@@ -75,7 +75,9 @@ function getBaseInterfaceTypes(
     // find the implement clauses (if any)
     const heritageClauses = AST.findExtendsHeritageClauses(input);
     for (const clause of heritageClauses) {
-        retval.push(processExpressionWithTypeArguments(clause.types[0]));
+        for (const clauseType of clause.types) {
+            retval.push(processExpressionWithTypeArguments(clauseType));
+        }
     }
 
     return retval;
