@@ -49,6 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                         propName: "name",
                         propIsOptional: false,
+                        propIsReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "string",
@@ -74,6 +75,7 @@ const expectedResult: IntermediateSourceFile = {
                                 kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                                 propName: "honey",
                                 propIsOptional: false,
+                                propIsReadonly: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "boolean"

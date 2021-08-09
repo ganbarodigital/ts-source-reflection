@@ -41,5 +41,6 @@ export interface IntermediateTypedPropertyDefinition
 {
     propName: string;
     propIsOptional: boolean;
+    propIsReadonly: boolean;
     typeRef: IntermediateTypeReference;
 }

@@ -54,6 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "kind",
                     propIsOptional: false,
+                    propIsReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
@@ -72,6 +73,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "radius",
                     propIsOptional: true,
+                    propIsReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: 'number',
@@ -81,6 +83,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "sideLength",
                     propIsOptional: true,
+                    propIsReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: 'number',

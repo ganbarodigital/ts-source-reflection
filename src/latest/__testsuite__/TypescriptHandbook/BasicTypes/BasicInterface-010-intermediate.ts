@@ -42,7 +42,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateInterface,
             declared: false,
-            name: "Animal",
+            name: "mondayExample2",
             exported: false,
             docBlock: {
                 kind: IntermediateKind.IntermediateDocBlock,
@@ -52,41 +52,23 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                    propName: "name",
+                    propName: "a",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    propIsReadonly: true,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
-                    },
+                    }
                 },
-            ],
-        },
-        {
-            kind: IntermediateKind.IntermediateInterface,
-            declared: false,
-            name: "Bear",
-            exported: false,
-            docBlock: {
-                kind: IntermediateKind.IntermediateDocBlock,
-                text: undefined,
-            },
-            extends: [
-                {
-                    kind: IntermediateKind.IntermediateFixedTypeArgument,
-                    name: "Animal",
-                },
-            ],
-            members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                    propName: "honey",
+                    propName: "b",
                     propIsOptional: false,
                     propIsReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                        typeName: "boolean",
-                    },
+                        typeName: "number",
+                    }
                 },
             ],
         },

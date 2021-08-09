@@ -55,6 +55,7 @@ const expectedResult: IntermediateSourceFile = {
                                 kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                                 propName: "first",
                                 propIsOptional: false,
+                                propIsReadonly: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "string",
@@ -64,6 +65,7 @@ const expectedResult: IntermediateSourceFile = {
                                 kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                                 propName: "last",
                                 propIsOptional: true,
+                                propIsReadonly: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "string",

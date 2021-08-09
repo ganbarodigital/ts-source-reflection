@@ -49,6 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                         propName: "a",
                         propIsOptional: false,
+                        propIsReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "number",
@@ -58,6 +59,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                         propName: "b",
                         propIsOptional: false,
+                        propIsReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "number",
@@ -67,6 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                         propName: "c",
                         propIsOptional: false,
+                        propIsReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "number",

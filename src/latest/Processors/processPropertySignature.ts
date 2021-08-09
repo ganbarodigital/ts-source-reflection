@@ -58,6 +58,7 @@ export function processPropertySignature
         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
         propName: input.name.getText(),
         propIsOptional: processQuestionToken(input.questionToken),
+        propIsReadonly: AST.hasReadonlyModifier(input.modifiers),
         typeRef: processTypeNode(input.type),
     };
 }

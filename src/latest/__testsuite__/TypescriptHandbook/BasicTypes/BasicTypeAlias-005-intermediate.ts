@@ -49,6 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                         propName: "description",
                         propIsOptional: false,
+                        propIsReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "string",
