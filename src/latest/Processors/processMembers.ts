@@ -33,11 +33,23 @@
 //
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
-import { isCallSignatureDeclaration, isConstructorDeclaration, isConstructSignatureDeclaration, isMethodDeclaration, isMethodSignature, isPropertySignature, NodeArray, SyntaxKind, TypeElement } from "typescript";
+import {
+    isCallSignatureDeclaration,
+    isConstructorDeclaration,
+    isConstructSignatureDeclaration,
+    isMethodDeclaration,
+    isMethodSignature,
+    isPropertySignature,
+    NodeArray,
+    SyntaxKind,
+    TypeElement
+} from "typescript";
+import * as AST from "../AST";
 import { IntermediateMemberDefinition } from "../IntermediateTypes";
 import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
 import { processConstructorDeclaration } from "./processConstructorDeclaration";
 import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
+import { processIndexSignatureDeclaration } from "./processIndexSignatureDeclaration";
 import { processMethodDeclaration } from "./processMethodDeclaration";
 import { processMethodSignature } from "./processMethodSignature";
 import { processPropertySignature } from "./processPropertySignature";
@@ -76,6 +88,12 @@ export function processMembers(
 
         if (isMethodDeclaration(member)) {
             retval.push(processMethodDeclaration(member));
+            continue;
+        }
+
+        if (AST.isIndexSignature(member)) {
+            retval.push(processIndexSignatureDeclaration(member));
+            continue;
         }
 
         // if we get here, we have an unsupported type
