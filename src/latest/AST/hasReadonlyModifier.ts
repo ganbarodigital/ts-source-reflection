@@ -32,29 +32,18 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./findDocBlockText";
-export * from "./findExtendsHeritageClauses";
-export * from "./findImplementsHeritageClauses";
-export * from "./getStatementKind";
-export * from "./hasBody";
-export * from "./hasDeclaredModifier";
-export * from "./hasDotDotDotToken";
-export * from "./hasReadonlyModifier";
-export * from "./isAnonymousClassType";
-export * from "./isDeclareKeyword";
-export * from "./isExportKeyword";
-export * from "./isNodeExported";
-export * from "./isReadonlyKeyword";
-export * from "./mustBeCallSignatureDeclaration";
-export * from "./mustBeClassDeclaration";
-export * from "./mustBeConstructSignatureDeclaration";
-export * from "./mustBeConstructorDeclaration";
-export * from "./mustBeFunctionDeclaration";
-export * from "./mustBeImportClause";
-export * from "./mustBeImportDeclaration";
-export * from "./mustBeInterfaceDeclaration";
-export * from "./mustBePropertyAssignment";
-export * from "./mustBePropertySignature";
-export * from "./mustBeTypeAliasDeclaration";
-export * from "./mustBeTypeReference";
-export * from "./mustBeVariableStatement";
+import { ModifiersArray } from "typescript";
+import * as AST from ".";
+
+export function hasReadonlyModifier(
+    input: ModifiersArray | undefined
+): boolean
+{
+    // do we have any modifiers?
+    if (!input) {
+        return false;
+    }
+
+    // do we have a ReadonlyKeyword in the modifiers array?
+    return input.some((member) => AST.isReadonlyKeyword(member));
+}
