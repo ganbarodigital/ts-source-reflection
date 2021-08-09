@@ -36,6 +36,7 @@ import { PropertySignature } from "typescript";
 import { IntermediateKind, IntermediatePropertyDefinition } from "../IntermediateTypes";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
+import * as AST from "../AST";
 
 export function processPropertySignature
 (
@@ -48,6 +49,7 @@ export function processPropertySignature
             kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
             propName: input.name.getText(),
             propIsOptional: processQuestionToken(input.questionToken),
+            propIsReadonly: AST.hasReadonlyModifier(input.modifiers),
         }
     }
 

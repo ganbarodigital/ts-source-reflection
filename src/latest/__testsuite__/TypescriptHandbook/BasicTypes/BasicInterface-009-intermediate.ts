@@ -31,13 +31,41 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
 
-export interface IntermediateUntypedPropertyDefinition
-    extends IntermediateItem<IntermediateKind.IntermediateUntypedPropertyDefinition>
-{
-    propName: string;
-    propIsOptional: boolean;
-    propIsReadonly: boolean;
+import {
+    IntermediateKind,
+    IntermediateSourceFile
+} from "../../../IntermediateTypes";
+
+const expectedResult: IntermediateSourceFile = {
+    children: [
+        {
+            kind: IntermediateKind.IntermediateInterface,
+            declared: false,
+            name: "mondayExample",
+            exported: false,
+            docBlock: {
+                kind: IntermediateKind.IntermediateDocBlock,
+                text: undefined,
+            },
+            extends: [],
+            members: [
+                {
+                    kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
+                    propName: "a",
+                    propIsOptional: false,
+                    propIsReadonly: true,
+                },
+                {
+                    kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
+                    propName: "b",
+                    propIsOptional: false,
+                    propIsReadonly: false,
+                },
+            ],
+        },
+    ],
+    kind: IntermediateKind.IntermediateSourceFile,
 }
+
+export default expectedResult;
