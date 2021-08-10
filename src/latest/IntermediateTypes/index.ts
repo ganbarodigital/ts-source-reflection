@@ -57,6 +57,7 @@ export * from "./IntermediateFunction";
 export * from "./IntermediateFunctionTypeSignature";
 export * from "./IntermediateGenericType";
 export * from "./IntermediateGenericTypeArgument";
+export * from "./IntermediateGenericTypeReference";
 export * from "./IntermediateImportItem";
 export * from "./IntermediateIndexSignature";
 export * from "./IntermediateInterface";
