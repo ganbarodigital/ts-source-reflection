@@ -88,7 +88,6 @@ export * from "./IntermediateTypeAssertable";
 export * from "./IntermediateDeclarable";
 export * from "./IntermediateTypedCallableParameter";
 export * from "./IntermediateTypedPropertyDefinition";
-export * from "./IntermediateTypeIntersection";
 export * from "./IntermediateTypePredicate";
 export * from "./IntermediateTypeReference";
 export * from "./IntermediateUnionType";

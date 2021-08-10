@@ -62,7 +62,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
             typeName: "Bear",
             typeRef: {
-                kind: IntermediateKind.IntermediateTypeIntersection,
+                kind: IntermediateKind.IntermediateIntersectionType,
                 typeRefs: [
                     {
                         kind: IntermediateKind.IntermediateFixedTypeReference,

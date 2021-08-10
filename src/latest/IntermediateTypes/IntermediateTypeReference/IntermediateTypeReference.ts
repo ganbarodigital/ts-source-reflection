@@ -37,9 +37,9 @@ import { IntermediateBuiltInTypeReference } from "../IntermediateBuiltInTypeRefe
 import { IntermediateConstTypeCast } from "../IntermediateConstTypeCast";
 import { IntermediateFixedTypeReference } from "../IntermediateFixedTypeReference";
 import { IntermediateFunctionTypeSignature } from "../IntermediateFunctionTypeSignature";
+import { IntermediateIntersectionType } from "../IntermediateIntersectionType";
 import { IntermediateLiteralType } from "../IntermediateLiteralType";
 import { IntermediateParenthesizedType } from "../IntermediateParenthesizedType";
-import { IntermediateTypeIntersection } from "../IntermediateTypeIntersection";
 import { IntermediateTypePredicate } from "../IntermediateTypePredicate";
 import { IntermediateUnionType } from "../IntermediateUnionType";
 
@@ -51,8 +51,8 @@ export type IntermediateTypeReference
       | IntermediateConstTypeCast
       | IntermediateFixedTypeReference
       | IntermediateFunctionTypeSignature
+      | IntermediateIntersectionType
       | IntermediateLiteralType
       | IntermediateParenthesizedType
-      | IntermediateTypeIntersection
       | IntermediateTypePredicate
       | IntermediateUnionType;

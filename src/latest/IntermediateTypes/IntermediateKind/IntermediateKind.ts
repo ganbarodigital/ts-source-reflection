@@ -76,7 +76,6 @@ export enum IntermediateKind {
     IntermediateTypeAliasDefinition,
     IntermediateTypeArgument,
     IntermediateTypeDefinition,
-    IntermediateTypeIntersection,
     IntermediateTypePredicate,
     IntermediateTypedCallableParameter,
     IntermediateUnionType,

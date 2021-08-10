@@ -33,16 +33,16 @@
 //
 
 import { IntersectionTypeNode } from "typescript";
-import { IntermediateKind, IntermediateTypeIntersection } from "../IntermediateTypes";
+import { IntermediateIntersectionType, IntermediateKind } from "../IntermediateTypes";
 import { processTypeNode } from "./processTypeNode";
 
 export function processIntersectionNode(
     input: IntersectionTypeNode
-): IntermediateTypeIntersection
+): IntermediateIntersectionType
 {
     // this will be our return value
-    const retval: IntermediateTypeIntersection = {
-        kind: IntermediateKind.IntermediateTypeIntersection,
+    const retval: IntermediateIntersectionType = {
+        kind: IntermediateKind.IntermediateIntersectionType,
         typeRefs: []
     }
 
