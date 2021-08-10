@@ -31,9 +31,11 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-
 import { TypeReferenceNode } from "typescript";
+
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
+import { processTypeNode } from "./processTypeNode";
+
 
 export function processTypeReferenceNode
 (
@@ -49,6 +51,20 @@ export function processTypeReferenceNode
     if (typeName === "const") {
         return {
             kind: IntermediateKind.IntermediateConstTypeCast,
+        }
+    }
+
+    // special case - generic type
+    if (input.typeArguments) {
+        const typeArguments: IntermediateTypeReference[] = [];
+        input.typeArguments.forEach((member) => {
+            typeArguments.push(processTypeNode(member));
+        });
+
+        return {
+            kind: IntermediateKind.IntermediateGenericTypeReference,
+            typeName: input.typeName.getText(),
+            typeArguments,
         }
     }
 
