@@ -48,6 +48,7 @@ const expectedResult: IntermediateSourceFile = {
             exported: false,
             declared: false,
             name: "Box",
+            typeParameters: [],
             extends: [],
             members: [
                 {

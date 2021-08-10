@@ -45,6 +45,7 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateDocBlock,
                 text: undefined,
             },
+            typeParameters: [],
             extends: [],
             members: [
                 {
@@ -68,6 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateDocBlock,
                 text: undefined,
             },
+            typeParameters: [],
             extends: [],
             members: [
                 {

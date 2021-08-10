@@ -37,12 +37,14 @@ import * as AST from "../AST";
 import { hasDeclaredModifier } from "../AST";
 import { mustBeInterfaceDeclaration } from "../AST/mustBeInterfaceDeclaration";
 import {
+    IntermediateGenericType,
     IntermediateInterface,
     IntermediateKind,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { processMembers } from "./processMembers";
+import { processTypeParameters } from "./processTypeParameters";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processInterfaceDeclaration: StatementProcessor = (
@@ -51,11 +53,18 @@ export const processInterfaceDeclaration: StatementProcessor = (
     // make sure we're dealing with an actual interface
     const interfaceDec = mustBeInterfaceDeclaration(input);
 
+    // do we have any type parameters?
+    let typeParameters: IntermediateGenericType[] = [];
+    if (interfaceDec.typeParameters) {
+        typeParameters = processTypeParameters(interfaceDec.typeParameters);
+    }
+
     // all done
     return {
         kind: IntermediateKind.IntermediateInterface,
         declared: hasDeclaredModifier(input.modifiers),
         name: interfaceDec.name.text,
+        typeParameters,
         docBlock: {
             kind: IntermediateKind.IntermediateDocBlock,
             text: AST.findDocBlockText(interfaceDec),

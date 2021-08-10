@@ -49,6 +49,7 @@ const expectedResult: IntermediateSourceFile = {
             exported: false,
             declared: false,
             name: "DB",
+            typeParameters: [],
             extends: [],
             members: [
                 {
