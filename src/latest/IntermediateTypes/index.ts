@@ -60,6 +60,7 @@ export * from "./IntermediateGenericTypeArgument";
 export * from "./IntermediateImportItem";
 export * from "./IntermediateIndexSignature";
 export * from "./IntermediateInterface";
+export * from "./IntermediateIntersectionType";
 export * from "./IntermediateItem";
 export * from "./IntermediateKind";
 export * from "./IntermediateLiteralType";
