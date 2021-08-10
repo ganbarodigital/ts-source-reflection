@@ -57,6 +57,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 ],
             },
+            typeParameters: [],
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
@@ -85,6 +86,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 ],
             },
+            typeParameters: [],
         },
     ],
     kind: IntermediateKind.IntermediateSourceFile,

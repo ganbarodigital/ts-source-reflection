@@ -46,6 +46,7 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                 typeName: "string",
             },
+            typeParameters: [],
         },
         {
             kind: IntermediateKind.IntermediateFunction,

@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateGenericType } from "../IntermediateGenericType";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
@@ -40,5 +41,6 @@ export interface IntermediateTypeAliasDefinition
     extends IntermediateItem<IntermediateKind.IntermediateTypeAliasDefinition>
 {
     typeName: string;
+    typeParameters: IntermediateGenericType[];
     typeRef: IntermediateTypeReference;
 }
