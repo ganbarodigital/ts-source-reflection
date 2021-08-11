@@ -53,6 +53,7 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "string",
                     },
                     optional: false,
+                    readonly: false,
                     initializer: undefined,
                 },
                 {
@@ -63,6 +64,7 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "Date",
                     },
                     optional: false,
+                    readonly: false,
                     initializer: undefined,
                 },
             ],

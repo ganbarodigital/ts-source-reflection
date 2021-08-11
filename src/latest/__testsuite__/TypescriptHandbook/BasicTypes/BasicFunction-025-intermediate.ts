@@ -49,6 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedCallableParameter,
                     paramName: "value",
                     optional: false,
+                    readonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateGenericTypeReference,
                         typeName: "Array",

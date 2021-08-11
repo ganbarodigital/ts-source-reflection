@@ -70,6 +70,7 @@ const expectedResult: IntermediateSourceFile =  {
                     kind: IntermediateKind.IntermediateTypedCallableParameter,
                     paramName: "a",
                     optional: false,
+                    readonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Type",
@@ -80,6 +81,7 @@ const expectedResult: IntermediateSourceFile =  {
                     kind: IntermediateKind.IntermediateTypedCallableParameter,
                     paramName: "b",
                     optional: false,
+                    readonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Type",

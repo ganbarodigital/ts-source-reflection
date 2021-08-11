@@ -65,6 +65,7 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                     },
                     optional: false,
+                    readonly: false,
                     initializer: undefined,
                 },
             ],

@@ -49,6 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedCallableParameter,
                     paramName: "n",
                     optional: false,
+                    readonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -61,6 +62,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateTypedCallableParameter,
                         paramName: "m",
                         optional: false,
+                        readonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateArrayTypeReference,
                             typeRef: {

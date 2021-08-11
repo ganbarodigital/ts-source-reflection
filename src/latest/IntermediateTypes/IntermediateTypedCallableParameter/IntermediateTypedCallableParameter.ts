@@ -44,5 +44,6 @@ export interface IntermediateTypedCallableParameter
     paramName: string;
     typeRef: IntermediateTypeReference;
     optional: boolean;
+    readonly: boolean;
     initializer: Maybe<IntermediateExpression>;
 }

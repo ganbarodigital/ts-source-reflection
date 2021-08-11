@@ -65,6 +65,7 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                     },
                     optional: false,
+                    readonly: false,
                     initializer: undefined,
                 },
                 {
@@ -75,6 +76,7 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: 'number',
                     },
                     optional: false,
+                    readonly: false,
                     initializer: undefined,
                 },
             ],

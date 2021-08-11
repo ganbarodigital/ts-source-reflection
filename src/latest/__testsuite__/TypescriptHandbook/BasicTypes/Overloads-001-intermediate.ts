@@ -54,6 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: undefined,
                     optional: false,
+                    readonly: false,
                 },
             ],
             returnType: {
@@ -77,6 +78,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: undefined,
                     optional: false,
+                    readonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameter,
@@ -87,6 +89,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: undefined,
                     optional: false,
+                    readonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameter,
@@ -97,6 +100,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: undefined,
                     optional: false,
+                    readonly: false,
                 },
             ],
             returnType: {
@@ -120,6 +124,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: undefined,
                     optional: false,
+                    readonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameter,
@@ -130,6 +135,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: undefined,
                     optional: true,
+                    readonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameter,
@@ -140,6 +146,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: undefined,
                     optional: true,
+                    readonly: false,
                 },
             ],
             returnType: {

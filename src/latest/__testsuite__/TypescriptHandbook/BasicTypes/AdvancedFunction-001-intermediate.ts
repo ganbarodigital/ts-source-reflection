@@ -66,6 +66,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedCallableParameter,
                             paramName: "filter",
                             optional: false,
+                            readonly: false,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateFunctionTypeSignature,
                                 typeParameters: [],
@@ -74,6 +75,7 @@ const expectedResult: IntermediateSourceFile = {
                                         kind: IntermediateKind.IntermediateTypedCallableParameter,
                                         paramName: "this",
                                         optional: false,
+                                        readonly: false,
                                         typeRef: {
                                             kind: IntermediateKind.IntermediateFixedTypeReference,
                                             typeName: "User",
