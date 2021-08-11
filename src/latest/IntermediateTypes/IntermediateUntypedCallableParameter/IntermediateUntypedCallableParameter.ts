@@ -41,5 +41,6 @@ export interface IntermediateUntypedCallableParameter
 {
     paramName: string;
     optional: boolean;
+    readonly: boolean;
     initializer: Maybe<IntermediateExpression>;
 }

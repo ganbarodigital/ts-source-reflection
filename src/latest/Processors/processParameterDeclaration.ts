@@ -84,6 +84,7 @@ export function processParameterDeclaration(
             paramName: paramDec.name.getText(),
             initializer,
             optional: processQuestionToken(paramDec.questionToken),
+            readonly: AST.hasReadonlyModifier(paramDec.modifiers),
         };
     }
 

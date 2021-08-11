@@ -50,6 +50,7 @@ const expectedResult: IntermediateSourceFile = {
                     paramName: "x",
                     initializer: undefined,
                     optional: false,
+                    readonly: false,
                 }
             ],
             returnType: undefined,

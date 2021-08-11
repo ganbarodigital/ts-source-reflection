@@ -49,6 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateUntypedCallableParameter,
                     paramName: "a",
                     optional: false,
+                    readonly: false,
                     initializer: undefined,
                 },
             ],
