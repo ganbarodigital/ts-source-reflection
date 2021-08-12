@@ -31,8 +31,17 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import {
+    isArrayTypeNode,
+    isFunctionTypeNode,
+    isIntersectionTypeNode,
+    isLiteralTypeNode,
+    isParenthesizedTypeNode,
+    isTypePredicateNode,
+    isUnionTypeNode,
+    TypeNode,
+} from "typescript";
 
-import { isArrayTypeNode, isFunctionTypeNode, isIntersectionTypeNode, isLiteralTypeNode, isParenthesizedTypeNode, isTypePredicateNode, isUnionTypeNode, TypeNode } from "typescript";
 import { isAnonymousClassType } from "../AST";
 import { mustBeTypeReference } from "../AST/mustBeTypeReference";
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
@@ -46,6 +55,7 @@ import { processParenthesizedType } from "./processParenthesisedType";
 import { processTypePredicate } from "./processTypePredicate";
 import { processTypeReferenceNode } from "./processTypeReferenceNode";
 import { processUnionType } from "./processUnionType";
+
 
 export function processTypeNode
 (
@@ -101,7 +111,7 @@ export function processTypeNode
         return processParenthesizedType(input);
     }
 
-   // generic case
+    // generic case
     //
     // use a type guarantee to keep the compiler happy!
     const typeRef = mustBeTypeReference(input);

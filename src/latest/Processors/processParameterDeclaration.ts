@@ -32,7 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import { Maybe } from "@safelytyped/core-types";
-import { isObjectBindingPattern, ParameterDeclaration } from "typescript";
+import {
+    isObjectBindingPattern,
+    isTypeOperatorNode,
+    ParameterDeclaration,
+    SyntaxKind,
+    TypeNode,
+} from "typescript";
 
 import {
     IntermediateCallableParameter,
@@ -45,7 +51,6 @@ import { processInitializer } from "./processInitializer";
 import { processObjectBindingPattern } from "./processObjectBindingPattern";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
-import * as AST from "../AST";
 
 export function processParameterDeclaration(
     paramDec: ParameterDeclaration
@@ -70,6 +75,19 @@ export function processParameterDeclaration(
         });
     }
 
+    // special case - parameter is readonly
+    //
+    // instead of being a modifier, this is buried in the parameter
+    // type instead
+    let readonly: boolean = false;
+    let paramType: TypeNode | undefined = paramDec.type;
+    if (paramType && isTypeOperatorNode(paramType)) {
+        if (paramType.operator === SyntaxKind.ReadonlyKeyword) {
+            readonly = true;
+            paramType = paramType.type;
+        }
+    }
+
     // do we have a default value for the parameter?
     let initializer: Maybe<IntermediateExpression>;
     if (paramDec.initializer) {
@@ -77,14 +95,14 @@ export function processParameterDeclaration(
     }
 
     // special case - untyped parameter
-    if (!paramDec.type) {
+    if (!paramType) {
         // tslint:disable-next-line: no-angle-bracket-type-assertion
         return <IntermediateUntypedCallableParameter>{
             kind: IntermediateKind.IntermediateUntypedCallableParameter,
             paramName: paramDec.name.getText(),
             initializer,
             optional: processQuestionToken(paramDec.questionToken),
-            readonly: AST.hasReadonlyModifier(paramDec.modifiers),
+            readonly,
         };
     }
 
@@ -93,9 +111,9 @@ export function processParameterDeclaration(
     return <IntermediateTypedCallableParameter>{
         kind: IntermediateKind.IntermediateTypedCallableParameter,
         paramName: paramDec.name.getText(),
-        typeRef: processTypeNode(paramDec.type),
+        typeRef: processTypeNode(paramType),
         optional: processQuestionToken(paramDec.questionToken),
-        readonly: AST.hasReadonlyModifier(paramDec.modifiers),
+        readonly,
         initializer,
     };
 }
