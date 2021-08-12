@@ -36,21 +36,20 @@ import {
     isObjectBindingPattern,
     isTypeOperatorNode,
     ParameterDeclaration,
-    SyntaxKind,
-    TypeNode,
+    SyntaxKind
 } from "typescript";
-
 import {
     IntermediateCallableParameter,
     IntermediateExpression,
     IntermediateKind,
     IntermediateTypedCallableParameter,
-    IntermediateUntypedCallableParameter,
+    IntermediateUntypedCallableParameter
 } from "../IntermediateTypes";
 import { processInitializer } from "./processInitializer";
 import { processObjectBindingPattern } from "./processObjectBindingPattern";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
+
 
 export function processParameterDeclaration(
     paramDec: ParameterDeclaration
@@ -75,19 +74,6 @@ export function processParameterDeclaration(
         });
     }
 
-    // special case - parameter is readonly
-    //
-    // instead of being a modifier, this is buried in the parameter
-    // type instead
-    let readonly: boolean = false;
-    let paramType: TypeNode | undefined = paramDec.type;
-    if (paramType && isTypeOperatorNode(paramType)) {
-        if (paramType.operator === SyntaxKind.ReadonlyKeyword) {
-            readonly = true;
-            paramType = paramType.type;
-        }
-    }
-
     // do we have a default value for the parameter?
     let initializer: Maybe<IntermediateExpression>;
     if (paramDec.initializer) {
@@ -95,15 +81,29 @@ export function processParameterDeclaration(
     }
 
     // special case - untyped parameter
-    if (!paramType) {
+    //
+    // NOTE: untyped parameters cannot be `readonly`
+    if (!paramDec.type) {
         // tslint:disable-next-line: no-angle-bracket-type-assertion
         return <IntermediateUntypedCallableParameter>{
             kind: IntermediateKind.IntermediateUntypedCallableParameter,
             paramName: paramDec.name.getText(),
             initializer,
             optional: processQuestionToken(paramDec.questionToken),
-            readonly,
         };
+    }
+
+    // special case - parameter is readonly
+    //
+    // instead of being a modifier, this is buried in the parameter
+    // type instead
+    let readonly: boolean = false;
+    let paramType = paramDec.type;
+    if (paramType && isTypeOperatorNode(paramType)) {
+        if (paramType.operator === SyntaxKind.ReadonlyKeyword) {
+            readonly = true;
+            paramType = paramType.type;
+        }
     }
 
     // general case - typed parameter
