@@ -42,10 +42,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            docBlock: {
-                kind: IntermediateKind.IntermediateDocBlock,
-                text: undefined,
-            },
+            docBlock: undefined,
             exported: false,
             declared: false,
             name: "DB",
@@ -54,10 +51,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateMethodSignature,
-                    docBlock: {
-                        kind: IntermediateKind.IntermediateDocBlock,
-                        text: undefined,
-                    },
+                    docBlock: undefined,
                     static: false,
                     public: IntermediateRestrictableScope.PUBLIC,
                     name: "filterUsers",

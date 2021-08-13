@@ -32,12 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
 import { IntermediateItem } from "..";
 import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateDocBlock
     extends IntermediateItem<IntermediateKind.IntermediateDocBlock>
 {
-    text: Maybe<string>;
+    text: string;
 }

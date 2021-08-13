@@ -42,6 +42,7 @@ import {
     IntermediateKind,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
+import { processDocBlock } from "./processDocBlock";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { processMembers } from "./processMembers";
 import { processTypeParameters } from "./processTypeParameters";
@@ -65,10 +66,7 @@ export const processInterfaceDeclaration: StatementProcessor = (
         declared: hasDeclaredModifier(input.modifiers),
         name: interfaceDec.name.text,
         typeParameters,
-        docBlock: {
-            kind: IntermediateKind.IntermediateDocBlock,
-            text: AST.findDocBlockText(interfaceDec),
-        },
+        docBlock: processDocBlock(interfaceDec),
         exported: AST.isNodeExported(interfaceDec),
         extends: getBaseInterfaceTypes(interfaceDec),
         members: processMembers(interfaceDec.members),

@@ -60,10 +60,7 @@ const expectedResult: IntermediateSourceFile = {
             ],
             typeParameters: [],
             extends: [],
-            docBlock: {
-                kind: IntermediateKind.IntermediateDocBlock,
-                text: undefined,
-            },
+            docBlock: undefined,
             exported: false,
         },
     ],

@@ -31,20 +31,21 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-
 import { Maybe } from "@safelytyped/core-types";
 import { MethodSignature } from "typescript";
-import * as AST from "../AST";
+
 import {
     IntermediateGenericType,
     IntermediateKind,
     IntermediateMethodSignature,
     IntermediateRestrictableScope,
-    IntermediateTypeReference
+    IntermediateTypeReference,
 } from "../IntermediateTypes";
+import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processTypeNode } from "./processTypeNode";
 import { processTypeParameters } from "./processTypeParameters";
+
 
 export function processMethodSignature(
     input: MethodSignature
@@ -64,10 +65,7 @@ export function processMethodSignature(
 
     return {
         kind: IntermediateKind.IntermediateMethodSignature,
-        docBlock: {
-            kind: IntermediateKind.IntermediateDocBlock,
-            text: AST.findDocBlockText(input),
-        },
+        docBlock: processDocBlock(input),
         // this is a placeholder for now
         static: false,
         // this is a placeholder for now

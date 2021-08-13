@@ -42,6 +42,7 @@ import {
     IntermediateRestrictableScope,
     IntermediateTypeReference
 } from "../IntermediateTypes";
+import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processTypeNode } from "./processTypeNode";
 import { processTypeParameters } from "./processTypeParameters";
@@ -64,10 +65,7 @@ export function processMethodDeclaration(
 
     return {
         kind: IntermediateKind.IntermediateMethodDefinition,
-        docBlock: {
-            kind: IntermediateKind.IntermediateDocBlock,
-            text: AST.findDocBlockText(input),
-        },
+        docBlock: processDocBlock(input),
         // this is a placeholder for now
         static: false,
         // this is a placeholder for now

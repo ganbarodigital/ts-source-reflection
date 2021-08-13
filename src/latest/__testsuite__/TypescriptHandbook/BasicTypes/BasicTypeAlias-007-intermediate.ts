@@ -41,10 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            docBlock: {
-                kind: IntermediateKind.IntermediateDocBlock,
-                text: undefined,
-            },
+            docBlock: undefined,
             declared: false,
             exported: false,
             name: "Box",
@@ -72,10 +69,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateInterface,
-            docBlock: {
-                kind: IntermediateKind.IntermediateDocBlock,
-                text: undefined,
-            },
+            docBlock: undefined,
             declared: false,
             exported: false,
             name: "Apple",

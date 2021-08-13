@@ -44,10 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             declared: false,
             name: "Animal",
             exported: false,
-            docBlock: {
-                kind: IntermediateKind.IntermediateDocBlock,
-                text: undefined,
-            },
+            docBlock: undefined,
             typeParameters: [],
             extends: [],
             members: [
@@ -68,10 +65,7 @@ const expectedResult: IntermediateSourceFile = {
             declared: false,
             name: "Bear",
             exported: false,
-            docBlock: {
-                kind: IntermediateKind.IntermediateDocBlock,
-                text: undefined,
-            },
+            docBlock: undefined,
             typeParameters: [],
             extends: [
                 {

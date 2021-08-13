@@ -44,10 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             declared: false,
             name: "Options",
             exported: false,
-            docBlock: {
-                kind: IntermediateKind.IntermediateDocBlock,
-                text: undefined,
-            },
+            docBlock: undefined,
             typeParameters: [],
             extends: [],
             members: [

@@ -43,10 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateInterface,
             declared: false,
             name: "CallOrConstruct",
-            docBlock: {
-                kind: IntermediateKind.IntermediateDocBlock,
-                text: undefined,
-            },
+            docBlock: undefined,
             typeParameters: [],
             exported: false,
             extends: [],
