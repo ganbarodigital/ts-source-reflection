@@ -48,6 +48,7 @@ const expectedResult: IntermediateSourceFile = {
                     constant: false,
                     exported: false,
                     declared: false,
+                    readonly: false,
                     docBlock: {
                         kind: IntermediateKind.IntermediateDocBlock,
                         text: '',

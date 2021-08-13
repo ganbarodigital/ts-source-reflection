@@ -32,11 +32,19 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { NodeFlags, Statement, VariableDeclaration } from "typescript";
+import { Maybe } from "@safelytyped/core-types";
+import {
+    isTypeOperatorNode,
+    NodeFlags,
+    Statement,
+    SyntaxKind,
+    VariableDeclaration
+} from "typescript";
 import * as AST from "../AST";
 import { isNodeExported } from "../AST";
 import {
-    IntermediateKind, IntermediateVariableDeclaration,
+    IntermediateExpression,
+    IntermediateKind, IntermediateTypeReference, IntermediateVariableDeclaration,
     IntermediateVariableDeclarations
 } from "../IntermediateTypes";
 import { processInitializer } from "./processInitializer";
@@ -85,8 +93,33 @@ function processVariableDeclaration(
     }
 ): IntermediateVariableDeclaration
 {
+    // special case - variable is readonly
+    //
+    // instead of being a modifier, this is buried in the variable
+    // type instead
+    let readonly: boolean = false;
+    let varType = input.type;
+    if (varType && isTypeOperatorNode(varType)) {
+        if (varType.operator === SyntaxKind.ReadonlyKeyword) {
+            readonly = true;
+            varType = varType.type;
+        }
+    }
+
+    // does this variable have an explicit type?
+    let typeRef: Maybe<IntermediateTypeReference>;
+    if (varType) {
+        typeRef = processTypeNode(varType);
+    }
+
+    // does this variable have an initial value?
+    let initialiser: Maybe<IntermediateExpression>;
+    if (input.initializer) {
+        initialiser = processInitializer(input.initializer);
+    }
+
     // this will be our return value
-    const retval: IntermediateVariableDeclaration = {
+    return <IntermediateVariableDeclaration>{
         kind: IntermediateKind.IntermediateVariableDeclaration,
         docBlock: {
             kind: IntermediateKind.IntermediateDocBlock,
@@ -95,22 +128,10 @@ function processVariableDeclaration(
         declared: AST.hasDeclaredModifier(input.modifiers),
         constant: contextFlags.constant,
         exported: contextFlags.exported,
+        readonly,
         variableName: input.name.getText(),
-        initialiser: undefined,
-        typeRef: undefined,
+        initialiser,
+        typeRef,
     }
-
-    // does this variable have an explicit type?
-    if (input.type) {
-        retval.typeRef = processTypeNode(input.type);
-    }
-
-    // does this variable have an initial value?
-    if (input.initializer) {
-        retval.initialiser = processInitializer(input.initializer);
-    }
-
-    // all done
-    return retval;
 }
 

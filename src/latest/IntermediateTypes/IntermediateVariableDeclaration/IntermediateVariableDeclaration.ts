@@ -50,6 +50,7 @@ export interface IntermediateVariableDeclaration
         IntermediateDeclarable
 {
     variableName: string;
+    readonly: boolean;
     typeRef: Maybe<IntermediateTypeReference>;
     initialiser: Maybe<IntermediateExpression>;
 }

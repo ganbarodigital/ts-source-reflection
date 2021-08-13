@@ -110,6 +110,7 @@ const expectedResult: IntermediateSourceFile = {
                     declared: false,
                     exported: false,
                     constant: true,
+                    readonly: false,
                     variableName: "db",
                     docBlock: {
                         kind: IntermediateKind.IntermediateDocBlock,
@@ -133,6 +134,7 @@ const expectedResult: IntermediateSourceFile = {
                     declared: false,
                     exported: false,
                     constant: true,
+                    readonly: false,
                     variableName: "admins",
                     docBlock: {
                         kind: IntermediateKind.IntermediateDocBlock,

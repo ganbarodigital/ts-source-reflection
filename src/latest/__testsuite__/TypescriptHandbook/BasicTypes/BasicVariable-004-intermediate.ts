@@ -44,22 +44,26 @@ const expectedResult: IntermediateSourceFile = {
             variables: [
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
-                    variableName: "changingString",
+                    variableName: "x",
                     constant: false,
-                    exported: true,
+                    exported: false,
                     declared: false,
-                    readonly: false,
+                    readonly: true,
                     docBlock: {
                         kind: IntermediateKind.IntermediateDocBlock,
                         text: '',
                     },
                     initialiser: {
-                        kind: IntermediateKind.IntermediateStringLiteral,
-                        value: 'Hello World',
-                        asType: undefined,
-                        typeAssertion: undefined,
+                        kind: IntermediateKind.IntermediateArrayLiteralExpression,
+                        value: "[]",
                     },
-                    typeRef: undefined,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateArrayTypeReference,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "string",
+                        },
+                    },
                 }
             ],
         }
