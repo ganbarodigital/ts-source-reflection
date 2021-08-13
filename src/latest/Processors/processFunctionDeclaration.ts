@@ -41,6 +41,7 @@ import {
     IntermediateKind,
     IntermediateTypeReference
 } from "../IntermediateTypes";
+import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processTypeNode } from "./processTypeNode";
 import { processTypeParameters } from "./processTypeParameters";
@@ -68,6 +69,7 @@ export const processFunctionDeclaration: StatementProcessor = (
 
     return {
         kind: IntermediateKind.IntermediateFunction,
+        docBlock: processDocBlock(input),
         declared: AST.hasDeclaredModifier(input.modifiers),
         typeParameters: typeParameters,
         name: funcDec.name?.text,

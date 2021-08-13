@@ -50,6 +50,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateFunction,
+            docBlock: undefined,
             declared: false,
             name: "sanitizeInput",
             typeParameters: [],
