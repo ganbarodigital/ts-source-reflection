@@ -53,7 +53,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateDocBlock,
                         text: '',
                     },
-                    initialiser: {
+                    initializer: {
                         kind: IntermediateKind.IntermediateStringLiteral,
                         value: 'Hello World',
                         asType: undefined,

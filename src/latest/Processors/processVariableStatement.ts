@@ -130,7 +130,7 @@ function processVariableDeclaration(
         exported: contextFlags.exported,
         readonly,
         variableName: input.name.getText(),
-        initialiser,
+        initializer: initialiser,
         typeRef,
     }
 }

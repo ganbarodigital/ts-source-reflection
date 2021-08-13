@@ -52,5 +52,5 @@ export interface IntermediateVariableDeclaration
     variableName: string;
     readonly: boolean;
     typeRef: Maybe<IntermediateTypeReference>;
-    initialiser: Maybe<IntermediateExpression>;
+    initializer: Maybe<IntermediateExpression>;
 }

@@ -53,7 +53,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateDocBlock,
                         text: '',
                     },
-                    initialiser: {
+                    initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
                         text: 'Symbol("name")',
                         asType: undefined,
@@ -77,7 +77,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateDocBlock,
                         text: '',
                     },
-                    initialiser: {
+                    initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
                         text: 'Symbol("name")',
                         asType: undefined,

@@ -53,7 +53,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateDocBlock,
                         text: '',
                     },
-                    initialiser: {
+                    initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
                         text: 'BigInt(100)',
                         typeAssertion: undefined,

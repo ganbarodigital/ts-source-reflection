@@ -53,7 +53,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateDocBlock,
                         text: '',
                     },
-                    initialiser: undefined,
+                    initializer: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateParenthesizedType,
                         typeRef: {

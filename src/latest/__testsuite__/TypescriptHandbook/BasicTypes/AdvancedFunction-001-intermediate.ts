@@ -117,7 +117,7 @@ const expectedResult: IntermediateSourceFile = {
                         text: "",
                     },
                     typeRef: undefined,
-                    initialiser: {
+                    initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
                         text: "getDB()",
                         typeAssertion: undefined,
@@ -141,7 +141,7 @@ const expectedResult: IntermediateSourceFile = {
                         text: "",
                     },
                     typeRef: undefined,
-                    initialiser: {
+                    initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
                         text: "db.filterUsers(function (this: User) {\n    return this.admin;\n})",
                         typeAssertion: undefined,
