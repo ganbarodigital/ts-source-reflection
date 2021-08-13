@@ -59,7 +59,7 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediatePropertyAssignment,
                                 propertyName: "url",
-                                initialiser: {
+                                initializer: {
                                     kind: IntermediateKind.IntermediateStringLiteral,
                                     value: "https://example.com",
                                     typeAssertion: undefined,
@@ -69,7 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediatePropertyAssignment,
                                 propertyName: "method",
-                                initialiser: {
+                                initializer: {
                                     kind: IntermediateKind.IntermediateStringLiteral,
                                     value: "GET",
                                     typeAssertion: undefined,

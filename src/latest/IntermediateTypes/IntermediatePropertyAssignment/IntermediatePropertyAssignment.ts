@@ -40,5 +40,5 @@ export interface IntermediatePropertyAssignment
     extends IntermediateItem<IntermediateKind.IntermediatePropertyAssignment>
 {
     propertyName: string;
-    initialiser: IntermediateExpression;
+    initializer: IntermediateExpression;
 }

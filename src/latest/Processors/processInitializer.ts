@@ -33,9 +33,26 @@
 //
 
 import { UnsupportedTypeError, DEFAULT_DATA_PATH, getClassNames } from "@safelytyped/core-types";
-import { Expression, isNumericLiteral, isStringLiteral, isCallExpression, isObjectLiteralExpression, isTypeAssertionExpression, isAsExpression, isBigIntLiteral, isArrayLiteralExpression, PropertyAssignment } from "typescript";
+import {
+    Expression,
+    isNumericLiteral,
+    isStringLiteral,
+    isCallExpression,
+    isObjectLiteralExpression,
+    isTypeAssertionExpression,
+    isAsExpression,
+    isBigIntLiteral,
+    isArrayLiteralExpression,
+    PropertyAssignment
+} from "typescript";
 import { mustBePropertyAssignment } from "../AST";
-import { IntermediateExpression, IntermediateKind, IntermediateObjectLiteral, IntermediateTypeAssertable, IntermediatePropertyAssignment } from "../IntermediateTypes";
+import {
+    IntermediateExpression,
+    IntermediateKind,
+    IntermediateObjectLiteral,
+    IntermediateTypeAssertable,
+    IntermediatePropertyAssignment
+} from "../IntermediateTypes";
 import { processTypeNode } from "./processTypeNode";
 
 
@@ -127,6 +144,6 @@ function processPropertyAssignment(
     return {
         kind: IntermediateKind.IntermediatePropertyAssignment,
         propertyName: input.name.getText(),
-        initialiser: processInitializer(input.initializer),
+        initializer: processInitializer(input.initializer),
     }
 }

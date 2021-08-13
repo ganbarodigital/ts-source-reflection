@@ -83,7 +83,7 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediatePropertyAssignment,
                                 propertyName: "contents",
-                                initialiser: {
+                                initializer: {
                                     kind: IntermediateKind.IntermediateStringLiteral,
                                     value: "hello world",
                                     asType: undefined,
