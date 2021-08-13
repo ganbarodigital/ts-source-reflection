@@ -36,11 +36,11 @@ import { Maybe } from "@safelytyped/core-types";
 import { ClassDeclaration, Statement } from "typescript";
 import * as AST from "../AST";
 import {
-    IntermediateClass,
-    IntermediateGenericType,
+    IntermediateClass, IntermediateGenericType,
     IntermediateKind,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
+import { processDocBlock } from "./processDocBlock";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { processTypeParameters } from "./processTypeParameters";
 import { StatementProcessor } from "./StatementProcessor";
@@ -60,10 +60,7 @@ export const processClassDeclaration: StatementProcessor = (
         name: classDec.name?.text || '',
         kind: IntermediateKind.IntermediateClass,
         typeParameters,
-        docBlock: {
-            kind: IntermediateKind.IntermediateDocBlock,
-            text: AST.findDocBlockText(classDec),
-        },
+        docBlock: processDocBlock(classDec),
         exported: AST.isNodeExported(classDec),
         extendsTypeParameter: getBaseClassType(classDec),
         implementsTypeParameters: getBaseInterfaceTypes(classDec),
