@@ -106,10 +106,7 @@ const expectedResult: IntermediateSourceFile = {
                     constant: true,
                     readonly: false,
                     variableName: "db",
-                    docBlock: {
-                        kind: IntermediateKind.IntermediateDocBlock,
-                        text: "",
-                    },
+                    docBlock: undefined,
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
@@ -130,10 +127,7 @@ const expectedResult: IntermediateSourceFile = {
                     constant: true,
                     readonly: false,
                     variableName: "admins",
-                    docBlock: {
-                        kind: IntermediateKind.IntermediateDocBlock,
-                        text: "",
-                    },
+                    docBlock: undefined,
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,

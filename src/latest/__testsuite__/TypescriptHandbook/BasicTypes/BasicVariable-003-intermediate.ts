@@ -70,10 +70,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: false,
                     declared: false,
                     readonly: false,
-                    docBlock: {
-                        kind: IntermediateKind.IntermediateDocBlock,
-                        text: '',
-                    },
+                    docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateObjectLiteral,
                         properties: [

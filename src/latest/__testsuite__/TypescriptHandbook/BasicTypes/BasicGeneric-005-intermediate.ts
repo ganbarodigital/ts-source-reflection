@@ -77,10 +77,7 @@ const expectedResult: IntermediateSourceFile = {
                     declared: false,
                     exported: false,
                     readonly: false,
-                    docBlock: {
-                        kind: IntermediateKind.IntermediateDocBlock,
-                        text: "",
-                    },
+                    docBlock: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateGenericTypeReference,
                         typeName: "Box",

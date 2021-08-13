@@ -44,9 +44,12 @@ import * as AST from "../AST";
 import { isNodeExported } from "../AST";
 import {
     IntermediateExpression,
-    IntermediateKind, IntermediateTypeReference, IntermediateVariableDeclaration,
+    IntermediateKind,
+    IntermediateTypeReference,
+    IntermediateVariableDeclaration,
     IntermediateVariableDeclarations
 } from "../IntermediateTypes";
+import { processDocBlock } from "./processDocBlock";
 import { processInitializer } from "./processInitializer";
 import { processTypeNode } from "./processTypeNode";
 import { StatementProcessor } from "./StatementProcessor";
@@ -121,10 +124,7 @@ function processVariableDeclaration(
     // this will be our return value
     return <IntermediateVariableDeclaration>{
         kind: IntermediateKind.IntermediateVariableDeclaration,
-        docBlock: {
-            kind: IntermediateKind.IntermediateDocBlock,
-            text: '',
-        },
+        docBlock: processDocBlock(input),
         declared: AST.hasDeclaredModifier(input.modifiers),
         constant: contextFlags.constant,
         exported: contextFlags.exported,

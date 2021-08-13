@@ -49,10 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: false,
                     declared: false,
                     readonly: true,
-                    docBlock: {
-                        kind: IntermediateKind.IntermediateDocBlock,
-                        text: '',
-                    },
+                    docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateArrayLiteralExpression,
                         value: "[]",

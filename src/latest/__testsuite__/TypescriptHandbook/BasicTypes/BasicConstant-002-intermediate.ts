@@ -49,10 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: true,
                     declared: false,
                     readonly: false,
-                    docBlock: {
-                        kind: IntermediateKind.IntermediateDocBlock,
-                        text: '',
-                    },
+                    docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
                         text: 'document.getElementById("main_canvas")',
