@@ -37,6 +37,7 @@ import {
     isIntersectionTypeNode,
     isLiteralTypeNode,
     isParenthesizedTypeNode,
+    isTupleTypeNode,
     isTypePredicateNode,
     isUnionTypeNode,
     TypeNode,
@@ -52,6 +53,7 @@ import { processFunctionType } from "./processFunctionType";
 import { processIntersectionNode } from "./processIntersectionNode";
 import { processLiteralTypeNode } from "./processLiteralTypeNode";
 import { processParenthesizedType } from "./processParenthesisedType";
+import { processTupleType } from "./processTupleType";
 import { processTypePredicate } from "./processTypePredicate";
 import { processTypeReferenceNode } from "./processTypeReferenceNode";
 import { processUnionType } from "./processUnionType";
@@ -109,6 +111,11 @@ export function processTypeNode
     // special case - types in parenthesis
     if (isParenthesizedTypeNode(input)) {
         return processParenthesizedType(input);
+    }
+
+    // special case - tuple type
+    if (isTupleTypeNode(input)) {
+        return processTupleType(input);
     }
 
     // generic case
