@@ -1,0 +1,3 @@
+function readButtonInput(...args: [string, number, ...boolean[]]) {
+    // ...
+}
