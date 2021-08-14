@@ -74,6 +74,7 @@ export enum IntermediateKind {
     IntermediateReference,
     IntermediateSourceFile,
     IntermediateStringLiteral,
+    IntermediateTupleType,
     IntermediateTypeAliasDefinition,
     IntermediateTypeArgument,
     IntermediateTypeDefinition,
