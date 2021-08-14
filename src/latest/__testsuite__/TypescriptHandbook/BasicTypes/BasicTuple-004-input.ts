@@ -1,0 +1,1 @@
+type StringNumberBooleans = [string, number, ...boolean[]];

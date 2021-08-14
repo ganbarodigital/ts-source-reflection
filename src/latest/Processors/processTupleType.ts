@@ -33,8 +33,7 @@
 //
 
 import {
-    isOptionalTypeNode,
-    NamedTupleMember,
+    isOptionalTypeNode, NamedTupleMember,
     TupleTypeNode,
     TypeNode
 } from "typescript";

@@ -37,6 +37,7 @@ import {
     isIntersectionTypeNode,
     isLiteralTypeNode,
     isParenthesizedTypeNode,
+    isRestTypeNode,
     isTupleTypeNode,
     isTypePredicateNode,
     isUnionTypeNode,
@@ -116,6 +117,14 @@ export function processTypeNode
     // special case - tuple type
     if (isTupleTypeNode(input)) {
         return processTupleType(input);
+    }
+
+    // special case - rest type
+    if (isRestTypeNode(input)) {
+        return {
+            kind: IntermediateKind.IntermediateRestType,
+            typeRef: processTypeNode(input.type),
+        }
     }
 
     // generic case
