@@ -85,6 +85,7 @@ export * from "./IntermediateSourceFileChildren";
 export * from "./IntermediateStaticable";
 export * from "./IntermediateStringLiteral";
 export * from "./IntermediateTupleType";
+export * from "./IntermediateTupleTypeElement";
 export * from "./IntermediateTypeAliasDefinition";
 export * from "./IntermediateTypeArgument";
 export * from "./IntermediateTypeAssertable";
