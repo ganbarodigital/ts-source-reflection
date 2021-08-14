@@ -41,6 +41,7 @@ import { IntermediateGenericTypeReference } from "../IntermediateGenericTypeRefe
 import { IntermediateIntersectionType } from "../IntermediateIntersectionType";
 import { IntermediateLiteralType } from "../IntermediateLiteralType";
 import { IntermediateParenthesizedType } from "../IntermediateParenthesizedType";
+import { IntermediateRestType } from "../IntermediateRestType";
 import { IntermediateTupleType } from "../IntermediateTupleType";
 import { IntermediateTypePredicate } from "../IntermediateTypePredicate";
 import { IntermediateUnionType } from "../IntermediateUnionType";
@@ -57,6 +58,7 @@ export type IntermediateTypeReference
       | IntermediateIntersectionType
       | IntermediateLiteralType
       | IntermediateParenthesizedType
+      | IntermediateRestType
       | IntermediateTupleType
       | IntermediateTypePredicate
       | IntermediateUnionType;
