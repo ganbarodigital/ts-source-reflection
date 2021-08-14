@@ -1,0 +1,1 @@
+type Either2dOr3d = [number, number, number?];

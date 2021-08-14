@@ -54,12 +54,20 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateTupleType,
                         elements: [
                             {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "string",
+                                kind: IntermediateKind.IntermediateTupleTypeElement,
+                                optional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "string",
+                                },
                             },
                             {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "number",
+                                kind: IntermediateKind.IntermediateTupleTypeElement,
+                                optional: false,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                },
                             },
                         ],
                     },

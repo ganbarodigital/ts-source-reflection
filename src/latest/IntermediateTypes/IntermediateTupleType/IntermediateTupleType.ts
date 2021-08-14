@@ -34,10 +34,10 @@
 
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { IntermediateTupleTypeElement } from "../IntermediateTupleTypeElement";
 
 export interface IntermediateTupleType
     extends IntermediateItem<IntermediateKind.IntermediateTupleType>
 {
-    elements: IntermediateTypeReference[];
+    elements: IntermediateTupleTypeElement[];
 }

@@ -33,51 +33,48 @@
 //
 
 import {
-    isOptionalTypeNode,
-    NamedTupleMember,
-    TupleTypeNode,
-    TypeNode
-} from "typescript";
-import {
     IntermediateKind,
-    IntermediateTupleType,
-    IntermediateTupleTypeElement
-} from "../IntermediateTypes";
-import { processTypeNode } from "./processTypeNode";
+    IntermediateSourceFile
+} from "../../../IntermediateTypes";
 
-export function processTupleType(
-    input: TupleTypeNode
-): IntermediateTupleType
-{
-    const elements: IntermediateTupleTypeElement[] = [];
-
-    for (const member of input.elements) {
-        elements.push(processTupleTypeElement(member));
-    }
-
-    return {
-        kind: IntermediateKind.IntermediateTupleType,
-        elements,
-    }
+const expectedResult: IntermediateSourceFile = {
+    children: [
+        {
+            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            typeName: "Either2dOr3d",
+            typeRef: {
+                kind: IntermediateKind.IntermediateTupleType,
+                elements: [
+                    {
+                        kind: IntermediateKind.IntermediateTupleTypeElement,
+                        optional: false,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
+                        },
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateTupleTypeElement,
+                        optional: false,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
+                        },
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateTupleTypeElement,
+                        optional: true,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
+                        },
+                    },
+                ],
+            },
+            typeParameters: [],
+        },
+    ],
+    kind: IntermediateKind.IntermediateSourceFile,
 }
 
-function processTupleTypeElement(
-    input: TypeNode | NamedTupleMember
-): IntermediateTupleTypeElement
-{
-    // special case - optional element
-    //
-    // this is a keyword, instead of being a question token
-    let optional = false;
-    let elemType = input;
-    if (isOptionalTypeNode(input)) {
-        optional = true;
-        elemType = input.type;
-    }
-
-    return {
-        kind: IntermediateKind.IntermediateTupleTypeElement,
-        typeRef: processTypeNode(elemType),
-        optional,
-    }
-}
+export default expectedResult;
