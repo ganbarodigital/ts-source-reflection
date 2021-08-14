@@ -32,14 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import { NodeArray, ParameterDeclaration } from "typescript";
-
-import * as AST from "../AST";
 import {
-    IntermediateCallableParameter,
-    IntermediateCallableRestParameter,
-    IntermediateKind,
+    IntermediateCallableParameter
 } from "../IntermediateTypes";
 import { processParameterDeclaration } from "./processParameterDeclaration";
+
 
 
 export function processFunctionParameters(
@@ -49,16 +46,6 @@ export function processFunctionParameters(
     const retval: IntermediateCallableParameter[] = [];
 
     input.forEach((paramDec) => {
-        // special case - rest parameter
-        if (AST.hasDotDotDotToken(paramDec.dotDotDotToken)) {
-            retval.push(<IntermediateCallableRestParameter>{
-                kind: IntermediateKind.IntermediateCallableRestParameter,
-                typeRef: processParameterDeclaration(paramDec),
-            });
-
-            return;
-        }
-
         // general case
         retval.push(processParameterDeclaration(paramDec));
     });

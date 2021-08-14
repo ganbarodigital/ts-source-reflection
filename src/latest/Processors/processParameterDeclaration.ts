@@ -49,7 +49,7 @@ import { processInitializer } from "./processInitializer";
 import { processObjectBindingPattern } from "./processObjectBindingPattern";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
-
+import * as AST from "../AST";
 
 export function processParameterDeclaration(
     paramDec: ParameterDeclaration
@@ -106,8 +106,22 @@ export function processParameterDeclaration(
         }
     }
 
+    // special case - rest parameter
+    if (AST.hasDotDotDotToken(paramDec.dotDotDotToken)) {
+        return <IntermediateTypedCallableParameter>{
+            kind: IntermediateKind.IntermediateTypedCallableParameter,
+            paramName: paramDec.name.getText(),
+            typeRef: {
+                kind: IntermediateKind.IntermediateRestType,
+                typeRef: processTypeNode(paramType),
+            },
+            optional: processQuestionToken(paramDec.questionToken),
+            readonly,
+            initializer,
+        };
+    }
+
     // general case - typed parameter
-    // tslint:disable-next-line: no-angle-bracket-type-assertion
     return <IntermediateTypedCallableParameter>{
         kind: IntermediateKind.IntermediateTypedCallableParameter,
         paramName: paramDec.name.getText(),
