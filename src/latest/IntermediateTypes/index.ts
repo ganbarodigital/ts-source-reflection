@@ -78,6 +78,7 @@ export * from "./IntermediateParenthesizedType";
 export * from "./IntermediatePropertyAssignment";
 export * from "./IntermediatePropertyDefinition";
 export * from "./IntermediateReference";
+export * from "./IntermediateRestType";
 export * from "./IntermediateRestrictableScope";
 export * from "./IntermediateRestrictableScopeItem";
 export * from "./IntermediateSourceFile";
