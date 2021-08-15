@@ -33,7 +33,7 @@
 //
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
-import { TypeReferenceNode, isTypeReferenceNode, TypeNode } from "typescript";
+import { TypeReferenceNode, isTypeReferenceNode, TypeNode, SyntaxKind } from "typescript";
 
 export function mustBeTypeReference(input: TypeNode): TypeReferenceNode
 {
@@ -43,6 +43,8 @@ export function mustBeTypeReference(input: TypeNode): TypeReferenceNode
     }
 
     // if we get here, we're not happy
+    // tslint:disable-next-line: no-console
+    console.log(getClassNames(input), SyntaxKind[input.kind]);
     throw new UnsupportedTypeError({
         public: {
             dataPath: DEFAULT_DATA_PATH,
