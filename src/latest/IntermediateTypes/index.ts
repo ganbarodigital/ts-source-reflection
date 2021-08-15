@@ -65,6 +65,7 @@ export * from "./IntermediateIntersectionType";
 export * from "./IntermediateItem";
 export * from "./IntermediateKind";
 export * from "./IntermediateLiteralType";
+export * from "./IntermediateMemberDefinition";
 export * from "./IntermediateMemberSignature";
 export * from "./IntermediateMethodSignature";
 export * from "./IntermediateMethodDefinition";
