@@ -41,7 +41,7 @@ import {
 import { IntermediateDeclarable } from "../IntermediateDeclarable";
 import { IntermediateGenericType } from "../IntermediateGenericType";
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateMemberDefinition } from "../IntermediateMemberDefinition";
+import { IntermediateMemberSignature } from "../IntermediateMemberSignature";
 
 export interface IntermediateInterface
     extends IntermediateItem<IntermediateKind.IntermediateInterface>,
@@ -52,5 +52,5 @@ export interface IntermediateInterface
     name: string;
     typeParameters: IntermediateGenericType[];
     extends: IntermediateTypeArgument[];
-    members: IntermediateMemberDefinition[];
+    members: IntermediateMemberSignature[];
 }

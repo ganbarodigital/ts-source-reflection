@@ -32,4 +32,18 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateMemberDefinition";
+import { IntermediateCallSignature } from "../IntermediateCallSignature";
+import { IntermediateConstructorDefinition } from "../IntermediateConstructorDefinition";
+import { IntermediateIndexSignature } from "../IntermediateIndexSignature";
+import { IntermediateMethodDefinition } from "../IntermediateMethodDefinition";
+import { IntermediateMethodSignature } from "../IntermediateMethodSignature";
+import { IntermediatePropertySignature } from "../IntermediatePropertySignature";
+
+export type IntermediateMemberSignature =
+    IntermediatePropertySignature
+    | IntermediateCallSignature
+    | IntermediateConstructorDefinition
+    | IntermediateIndexSignature
+    | IntermediateMethodDefinition
+    | IntermediateMethodSignature
+    ;

@@ -45,7 +45,7 @@ import {
     TypeElement
 } from "typescript";
 import * as AST from "../AST";
-import { IntermediateMemberDefinition } from "../IntermediateTypes";
+import { IntermediateMemberSignature } from "../IntermediateTypes";
 import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
 import { processConstructorDeclaration } from "./processConstructorDeclaration";
 import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
@@ -56,9 +56,9 @@ import { processPropertySignature } from "./processPropertySignature";
 
 export function processMembers(
     input: NodeArray<TypeElement | ClassElement>
-): IntermediateMemberDefinition[]
+): IntermediateMemberSignature[]
 {
-    const retval: IntermediateMemberDefinition[] = [];
+    const retval: IntermediateMemberSignature[] = [];
 
     for (const member of input) {
         if (isPropertySignature(member)) {

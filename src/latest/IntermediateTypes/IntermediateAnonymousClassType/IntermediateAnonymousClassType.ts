@@ -34,10 +34,10 @@
 
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateMemberDefinition } from "../IntermediateMemberDefinition";
+import { IntermediateMemberSignature } from "../IntermediateMemberSignature";
 
 export interface IntermediateAnonymousClassType
     extends IntermediateItem<IntermediateKind.IntermediateAnonymousClassType>
 {
-    members: IntermediateMemberDefinition[];
+    members: IntermediateMemberSignature[];
 }
