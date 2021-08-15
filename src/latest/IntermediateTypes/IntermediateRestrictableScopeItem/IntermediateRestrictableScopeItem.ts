@@ -32,9 +32,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { Maybe } from "@safelytyped/core-types";
 import { IntermediateRestrictableScope } from "../";
 
 export interface IntermediateRestrictableScopeItem
 {
-    public: IntermediateRestrictableScope,
+    accessModifier: Maybe<IntermediateRestrictableScope>,
 }

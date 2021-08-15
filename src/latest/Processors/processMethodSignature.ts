@@ -33,18 +33,17 @@
 //
 import { Maybe } from "@safelytyped/core-types";
 import { MethodSignature } from "typescript";
-
 import {
     IntermediateGenericType,
     IntermediateKind,
     IntermediateMethodSignature,
-    IntermediateRestrictableScope,
-    IntermediateTypeReference,
+    IntermediateTypeReference
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processTypeNode } from "./processTypeNode";
 import { processTypeParameters } from "./processTypeParameters";
+
 
 
 export function processMethodSignature(
@@ -69,7 +68,7 @@ export function processMethodSignature(
         // this is a placeholder for now
         static: false,
         // this is a placeholder for now
-        public: IntermediateRestrictableScope.PUBLIC,
+        accessModifier: undefined,
         name: input.name.getText(),
         parameters: processFunctionParameters(input.parameters),
         typeParameters,

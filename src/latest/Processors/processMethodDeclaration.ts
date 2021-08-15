@@ -39,7 +39,6 @@ import {
     IntermediateGenericType,
     IntermediateKind,
     IntermediateMethodDefinition,
-    IntermediateRestrictableScope,
     IntermediateTypeReference
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
@@ -69,7 +68,7 @@ export function processMethodDeclaration(
         // this is a placeholder for now
         static: false,
         // this is a placeholder for now
-        public: IntermediateRestrictableScope.PUBLIC,
+        accessModifier: undefined,
         name: input.name.getText(),
         parameters: processFunctionParameters(input.parameters),
         typeParameters,

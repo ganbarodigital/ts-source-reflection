@@ -34,7 +34,6 @@
 
 import {
     IntermediateKind,
-    IntermediateRestrictableScope,
     IntermediateSourceFile
 } from "../../../IntermediateTypes";
 
@@ -53,7 +52,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
                     static: false,
-                    public: IntermediateRestrictableScope.PUBLIC,
+                    accessModifier: undefined,
                     name: "filterUsers",
                     parameters: [
                         {
