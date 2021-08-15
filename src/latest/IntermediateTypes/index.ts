@@ -90,6 +90,7 @@ export * from "./IntermediateTypeAliasDefinition";
 export * from "./IntermediateTypeArgument";
 export * from "./IntermediateTypeAssertable";
 export * from "./IntermediateTypedCallableParameter";
+export * from "./IntermediateTypedPropertyDefinition";
 export * from "./IntermediateTypedPropertySignature";
 export * from "./IntermediateTypePredicate";
 export * from "./IntermediateTypeReference";
