@@ -32,9 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateMethodDefinition } from "../IntermediateMethodDefinition";
 import { IntermediateTypedPropertyDefinition } from "../IntermediateTypedPropertyDefinition";
 import { IntermediateUntypedPropertyDefinition } from "../IntermediateUntypedPropertyDefinition";
 
 export type IntermediateMemberDefinition =
-    IntermediateTypedPropertyDefinition
+    IntermediateMethodDefinition
+    | IntermediateTypedPropertyDefinition
     | IntermediateUntypedPropertyDefinition;
