@@ -34,11 +34,12 @@
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
 import {
-    ClassElement, isMethodDeclaration, NodeArray,
+    ClassElement, isMethodDeclaration, isPropertyDeclaration, NodeArray,
     SyntaxKind
 } from "typescript";
 import { IntermediateMemberDefinition } from "../IntermediateTypes";
 import { processMethodDeclaration } from "./processMethodDeclaration";
+import { processPropertyDeclaration } from "./processPropertyDeclaration";
 
 export function processMemberDeclarations(
     input: NodeArray<ClassElement>
@@ -47,10 +48,10 @@ export function processMemberDeclarations(
     const retval: IntermediateMemberDefinition[] = [];
 
     for (const member of input) {
-        // if (isPropertyDeclaration(member)) {
-        //     retval.push(processPropertyDeclaration(member));
-        //     continue;
-        // }
+        if (isPropertyDeclaration(member)) {
+            retval.push(processPropertyDeclaration(member));
+            continue;
+        }
 
         // if (isCallSignatureDeclaration(member)) {
         //     retval.push(processCallSignatureDeclaration(member));

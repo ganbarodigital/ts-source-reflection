@@ -32,11 +32,16 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { Maybe } from "@safelytyped/core-types";
+import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateUntypedPropertyDefinition
     extends IntermediateItem<IntermediateKind.IntermediateUntypedPropertyDefinition>
 {
-
+    propName: string;
+    propIsOptional: boolean;
+    propIsReadonly: boolean;
+    initializer: Maybe<IntermediateExpression>;
 }
