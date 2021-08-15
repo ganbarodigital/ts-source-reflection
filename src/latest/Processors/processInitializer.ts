@@ -32,29 +32,29 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { UnsupportedTypeError, DEFAULT_DATA_PATH, getClassNames } from "@safelytyped/core-types";
+import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
 import {
     Expression,
-    isNumericLiteral,
-    isStringLiteral,
-    isCallExpression,
-    isObjectLiteralExpression,
-    isTypeAssertionExpression,
+    isArrayLiteralExpression,
     isAsExpression,
     isBigIntLiteral,
-    isArrayLiteralExpression,
+    isCallExpression,
+    isNumericLiteral,
+    isObjectLiteralExpression,
+    isStringLiteral,
+    isTypeAssertionExpression,
     PropertyAssignment
 } from "typescript";
+import * as AST from "../AST";
 import { mustBePropertyAssignment } from "../AST";
 import {
     IntermediateExpression,
     IntermediateKind,
     IntermediateObjectLiteral,
-    IntermediateTypeAssertable,
-    IntermediatePropertyAssignment
+    IntermediatePropertyAssignment,
+    IntermediateTypeAssertable
 } from "../IntermediateTypes";
 import { processTypeNode } from "./processTypeNode";
-
 
 export function processInitializer(
     input: Expression
@@ -127,7 +127,23 @@ export function processInitializer(
         }
     }
 
+    if (AST.isTrueKeyword(input)) {
+        return {
+            kind: IntermediateKind.IntermediateBooleanLiteral,
+            value: "true",
+        }
+    }
+
+    if (AST.isFalseKeyword(input)) {
+        return {
+            kind: IntermediateKind.IntermediateBooleanLiteral,
+            value: "false",
+        }
+    }
+
     // if we get here, we do not know how to process this variable
+    // tslint:disable-next-line: no-console
+    console.log(getClassNames(input));
     throw new UnsupportedTypeError({
         public: {
             dataPath: DEFAULT_DATA_PATH,
