@@ -39,6 +39,7 @@ export enum IntermediateKind {
     IntermediateArrayLiteralExpression,
     IntermediateArrayTypeReference,
     IntermediateBigintLiteral,
+    IntermediateBooleanLiteral,
 
     // I'm not 100% sure we should treat built-in types separately
     // so this may disappear in the future!

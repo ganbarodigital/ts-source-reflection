@@ -37,6 +37,7 @@ export * from "./IntermediateAnonymousClassType";
 export * from "./IntermediateArrayLiteralExpression";
 export * from "./IntermediateArrayTypeReference";
 export * from "./IntermediateBigintLiteral";
+export * from "./IntermediateBooleanLiteral";
 export * from "./IntermediateBuiltInTypeReference";
 export * from "./IntermediateCallSignature";
 export * from "./IntermediateCallable";
