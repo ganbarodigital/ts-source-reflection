@@ -32,7 +32,6 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
 import { ClassDeclaration, Statement } from "typescript";
 import * as AST from "../AST";
 import {
@@ -63,28 +62,28 @@ export const processClassDeclaration: StatementProcessor = (
         typeParameters,
         docBlock: processDocBlock(classDec),
         exported: AST.isNodeExported(classDec),
-        extendsTypeParameter: getBaseClassType(classDec),
+        extends: getBaseClassType(classDec),
         implementsTypeParameters: getBaseInterfaceTypes(classDec),
     };
 }
 
 function getBaseClassType(
     input: ClassDeclaration
-): Maybe<IntermediateTypeArgument>
+): IntermediateTypeArgument[]
 {
-    // does this class extend anything?
+    // our return value
+    const retval: IntermediateTypeArgument[] = [];
+
+    // find the 'extend' clauses
     const heritageClauses = AST.findExtendsHeritageClauses(input);
-    if (heritageClauses.length === 0) {
-        // no, it does not
-        return undefined;
-    }
-
-    // if we get here, then yes it does (yay!)
     for (const clause of heritageClauses) {
-        return processExpressionWithTypeArguments(clause.types[0]);
+        for (const clauseType of clause.types) {
+            retval.push(processExpressionWithTypeArguments(clauseType));
+        }
     }
 
-    return undefined;
+    // all done
+    return retval;
 }
 
 function getBaseInterfaceTypes(

@@ -32,7 +32,6 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
 import {
     IntermediateDocumentedItem,
     IntermediateExportableItem,
@@ -51,6 +50,6 @@ export interface IntermediateClass
 {
     name: string;
     typeParameters: IntermediateGenericType[];
-    extendsTypeParameter: Maybe<IntermediateTypeArgument>;
+    extends: IntermediateTypeArgument[];
     implementsTypeParameters: IntermediateTypeArgument[];
 }
