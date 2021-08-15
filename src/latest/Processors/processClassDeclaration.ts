@@ -35,7 +35,8 @@
 import { ClassDeclaration, Statement } from "typescript";
 import * as AST from "../AST";
 import {
-    IntermediateClass, IntermediateGenericType,
+    IntermediateClass,
+    IntermediateGenericType,
     IntermediateKind,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
@@ -63,7 +64,7 @@ export const processClassDeclaration: StatementProcessor = (
         docBlock: processDocBlock(classDec),
         exported: AST.isNodeExported(classDec),
         extends: getBaseClassType(classDec),
-        implementsTypeParameters: getBaseInterfaceTypes(classDec),
+        implements: getBaseInterfaceTypes(classDec),
     };
 }
 
@@ -95,9 +96,12 @@ function getBaseInterfaceTypes(
     // find the implement clauses (if any)
     const heritageClauses = AST.findImplementsHeritageClauses(input);
     for (const clause of heritageClauses) {
-        retval.push(processExpressionWithTypeArguments(clause.types[0]));
+        for (const clauseType of clause.types) {
+            retval.push(processExpressionWithTypeArguments(clauseType));
+        }
     }
 
+    // all done
     return retval;
 }
 

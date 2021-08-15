@@ -51,5 +51,5 @@ export interface IntermediateClass
     name: string;
     typeParameters: IntermediateGenericType[];
     extends: IntermediateTypeArgument[];
-    implementsTypeParameters: IntermediateTypeArgument[];
+    implements: IntermediateTypeArgument[];
 }
