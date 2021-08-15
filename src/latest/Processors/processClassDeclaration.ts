@@ -42,7 +42,7 @@ import {
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
-import { processMemberSignatures } from "./processMemberSignatures";
+import { processMemberDeclarations } from "./processMethodDeclarations";
 import { processTypeParameters } from "./processTypeParameters";
 import { StatementProcessor } from "./StatementProcessor";
 
@@ -66,7 +66,7 @@ export const processClassDeclaration: StatementProcessor = (
         exported: AST.isNodeExported(classDec),
         extends: getBaseClassType(classDec),
         implements: getBaseInterfaceTypes(classDec),
-        members: processMemberSignatures(classDec.members),
+        members: processMemberDeclarations(classDec.members),
     };
 }
 

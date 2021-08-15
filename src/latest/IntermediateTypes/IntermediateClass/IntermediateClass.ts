@@ -31,7 +31,6 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-
 import {
     IntermediateDocumentedItem,
     IntermediateExportableItem,
@@ -41,7 +40,8 @@ import {
 import { IntermediateDeclarable } from "../IntermediateDeclarable";
 import { IntermediateGenericType } from "../IntermediateGenericType";
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateMemberSignature } from "../IntermediateMemberSignature";
+import { IntermediateMemberDefinition } from "../IntermediateMemberDefinition";
+
 
 export interface IntermediateClass
     extends IntermediateItem<IntermediateKind.IntermediateClass>,
@@ -53,5 +53,5 @@ export interface IntermediateClass
     typeParameters: IntermediateGenericType[];
     extends: IntermediateTypeArgument[];
     implements: IntermediateTypeArgument[];
-    members: IntermediateMemberSignature[];
+    members: IntermediateMemberDefinition[];
 }
