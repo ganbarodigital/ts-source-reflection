@@ -54,7 +54,7 @@ import { processMethodDeclaration } from "./processMethodDeclaration";
 import { processMethodSignature } from "./processMethodSignature";
 import { processPropertySignature } from "./processPropertySignature";
 
-export function processMembers(
+export function processMemberSignatures(
     input: NodeArray<TypeElement | ClassElement>
 ): IntermediateMemberSignature[]
 {

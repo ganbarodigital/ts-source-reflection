@@ -37,14 +37,14 @@ import {
 import {
     IntermediateAnonymousClassType, IntermediateKind
 } from "../IntermediateTypes";
-import { processMembers } from "./processMembers";
+import { processMemberSignatures } from "./processMemberSignatures";
 
 export function processAnonymousClassType(
     input: TypeLiteralNode
 ): IntermediateAnonymousClassType {
     return {
         kind: IntermediateKind.IntermediateAnonymousClassType,
-        members: processMembers(input.members),
+        members: processMemberSignatures(input.members),
     }
 }
 
