@@ -58,6 +58,7 @@ export const processClassDeclaration: StatementProcessor = (
 
     return {
         name: classDec.name?.text || '',
+        declared: AST.hasDeclaredModifier(input.modifiers),
         kind: IntermediateKind.IntermediateClass,
         typeParameters,
         docBlock: processDocBlock(classDec),

@@ -39,11 +39,13 @@ import {
     IntermediateItem,
     IntermediateTypeArgument
 } from "..";
+import { IntermediateDeclarable } from "../IntermediateDeclarable";
 import { IntermediateGenericType } from "../IntermediateGenericType";
 import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateClass
     extends IntermediateItem<IntermediateKind.IntermediateClass>,
+        IntermediateDeclarable,
         IntermediateDocumentedItem,
         IntermediateExportableItem
 {
