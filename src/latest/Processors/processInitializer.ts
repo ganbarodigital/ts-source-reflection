@@ -39,6 +39,7 @@ import {
     isAsExpression,
     isBigIntLiteral,
     isCallExpression,
+    isNewExpression,
     isNumericLiteral,
     isObjectLiteralExpression,
     isStringLiteral,
@@ -138,6 +139,18 @@ export function processInitializer(
         return {
             kind: IntermediateKind.IntermediateBooleanLiteral,
             value: "false",
+        }
+    }
+
+    if (isNewExpression(input)) {
+        // temporary
+        return {
+            kind: IntermediateKind.IntermediateNewExpression,
+            typeRef: {
+                kind: IntermediateKind.IntermediateFixedTypeReference,
+                typeName: input.expression.getText(),
+            },
+            arguments: [],
         }
     }
 

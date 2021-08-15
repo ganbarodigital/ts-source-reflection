@@ -32,7 +32,9 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import {
+    ConstructorTypeNode,
     isArrayTypeNode,
+    isConstructorTypeNode,
     isFunctionTypeNode,
     isIntersectionTypeNode,
     isLiteralTypeNode,
@@ -43,20 +45,26 @@ import {
     isTypePredicateNode,
     isUnionTypeNode,
     SyntaxKind,
-    TypeNode,
+    TypeNode
 } from "typescript";
-
 import { isAnonymousClassType } from "../AST";
 import { mustBeTypeReference } from "../AST/mustBeTypeReference";
-import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
+import {
+    IntermediateConstructorDefinition,
+    IntermediateGenericType,
+    IntermediateKind,
+    IntermediateTypeReference
+} from "../IntermediateTypes";
 import { isBuiltInType } from "./isBuiltinType";
 import { processAnonymousClassType } from "./processAnonymousClassType";
 import { processBuiltInType } from "./processBuiltInType";
+import { processFunctionParameters } from "./processFunctionParameters";
 import { processFunctionType } from "./processFunctionType";
 import { processIntersectionNode } from "./processIntersectionNode";
 import { processLiteralTypeNode } from "./processLiteralTypeNode";
 import { processParenthesizedType } from "./processParenthesisedType";
 import { processTupleType } from "./processTupleType";
+import { processTypeParameters } from "./processTypeParameters";
 import { processTypePredicate } from "./processTypePredicate";
 import { processTypeReferenceNode } from "./processTypeReferenceNode";
 import { processUnionType } from "./processUnionType";
@@ -139,9 +147,32 @@ export function processTypeNode
         }
     }
 
+    // special case - constructor type
+    if (isConstructorTypeNode(input)) {
+        return processConstructorTypeNode(input);
+    }
+
     // generic case
     //
     // use a type guarantee to keep the compiler happy!
     const typeRef = mustBeTypeReference(input);
     return processTypeReferenceNode(typeRef);
+}
+
+function processConstructorTypeNode(
+    input: ConstructorTypeNode
+): IntermediateConstructorDefinition
+{
+    // do we have type parameters?
+    let typeParameters: IntermediateGenericType[] = [];
+    if (input.typeParameters) {
+        typeParameters = processTypeParameters(input.typeParameters);
+    }
+
+    return {
+        kind: IntermediateKind.IntermediateConstructorDefinition,
+        typeParameters,
+        parameters: processFunctionParameters(input.parameters),
+        returnType: processTypeNode(input.type),
+    }
 }
