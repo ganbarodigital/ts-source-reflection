@@ -34,6 +34,7 @@
 
 export * from "./IntermediateAnonymousCallableParameter";
 export * from "./IntermediateAnonymousClassType";
+export * from "./IntermediateArgument";
 export * from "./IntermediateArrayLiteralExpression";
 export * from "./IntermediateArrayTypeReference";
 export * from "./IntermediateBigintLiteral";
