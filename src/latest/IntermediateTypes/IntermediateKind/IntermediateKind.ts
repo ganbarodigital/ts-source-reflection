@@ -65,6 +65,7 @@ export enum IntermediateKind {
     IntermediateMethodDefinition,
     IntermediateMethodSignature,
     IntermediateModule,
+    IntermediateNewExpression,
     IntermediateNumericLiteral,
     IntermediateObjectBindingElement,
     IntermediateObjectBindingParameter,

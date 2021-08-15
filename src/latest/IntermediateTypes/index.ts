@@ -73,6 +73,7 @@ export * from "./IntermediateMemberSignature";
 export * from "./IntermediateMethodSignature";
 export * from "./IntermediateMethodDefinition";
 // export * from "./IntermediateModule";
+export * from "./IntermediateNewExpression";
 export * from "./IntermediateNumericLiteral";
 export * from "./IntermediateObjectBindingElement";
 export * from "./IntermediateObjectBindingParameter";
