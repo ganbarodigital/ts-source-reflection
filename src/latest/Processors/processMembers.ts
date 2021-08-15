@@ -34,6 +34,7 @@
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
 import {
+    ClassElement,
     isCallSignatureDeclaration,
     isConstructorDeclaration,
     isConstructSignatureDeclaration,
@@ -55,7 +56,7 @@ import { processMethodSignature } from "./processMethodSignature";
 import { processPropertySignature } from "./processPropertySignature";
 
 export function processMembers(
-    input: NodeArray<TypeElement>
+    input: NodeArray<TypeElement | ClassElement>
 ): IntermediateMemberDefinition[]
 {
     const retval: IntermediateMemberDefinition[] = [];
