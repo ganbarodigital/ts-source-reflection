@@ -34,7 +34,7 @@
 
 import { Node, SyntaxKind, FalseLiteral } from "typescript";
 
-export function isFalseLiteral(input: Node): input is FalseLiteral
+export function isFalseKeyword(input: Node): input is FalseLiteral
 {
     if (input.kind === SyntaxKind.FalseKeyword) {
         return true;

@@ -34,7 +34,7 @@
 
 import { Node, SyntaxKind, TrueLiteral } from "typescript";
 
-export function isTrueLiteral(input: Node): input is TrueLiteral
+export function isTrueKeyword(input: Node): input is TrueLiteral
 {
     if (input.kind === SyntaxKind.TrueKeyword) {
         return true;
