@@ -36,7 +36,7 @@ import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateBooleanLiteral
-    extends IntermediateItem<IntermediateKind.BooleanLiteral>
+    extends IntermediateItem<IntermediateKind.IntermediateBooleanLiteral>
 {
     value: string;
 }
