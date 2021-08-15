@@ -32,32 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./findDocBlockText";
-export * from "./findExtendsHeritageClauses";
-export * from "./findImplementsHeritageClauses";
-export * from "./getStatementKind";
-export * from "./hasBody";
-export * from "./hasDeclaredModifier";
-export * from "./hasDotDotDotToken";
-export * from "./hasReadonlyModifier";
-export * from "./isAnonymousClassType";
-export * from "./isDeclareKeyword";
-export * from "./isExportKeyword";
-export * from "./isFalseKeyword";
-export * from "./isIndexSignature";
-export * from "./isNodeExported";
-export * from "./isReadonlyKeyword";
-export * from "./isTrueKeyword";
-export * from "./mustBeCallSignatureDeclaration";
-export * from "./mustBeClassDeclaration";
-export * from "./mustBeConstructSignatureDeclaration";
-export * from "./mustBeConstructorDeclaration";
-export * from "./mustBeFunctionDeclaration";
-export * from "./mustBeImportClause";
-export * from "./mustBeImportDeclaration";
-export * from "./mustBeInterfaceDeclaration";
-export * from "./mustBePropertyAssignment";
-export * from "./mustBePropertySignature";
-export * from "./mustBeTypeAliasDeclaration";
-export * from "./mustBeTypeReference";
-export * from "./mustBeVariableStatement";
+import { Node, SyntaxKind, FalseLiteral } from "typescript";
+
+export function isFalseLiteral(input: Node): input is FalseLiteral
+{
+    if (input.kind === SyntaxKind.FalseKeyword) {
+        return true;
+    }
+
+    return false;
+}
