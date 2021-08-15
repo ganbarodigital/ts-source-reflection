@@ -63,6 +63,7 @@ export * from "./IntermediateIndexSignature";
 export * from "./IntermediateInterface";
 export * from "./IntermediateIntersectionType";
 export * from "./IntermediateItem";
+export * from "./IntermediateKeyofTypeReference";
 export * from "./IntermediateKind";
 export * from "./IntermediateLiteralType";
 export * from "./IntermediateMemberDefinition";

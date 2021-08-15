@@ -60,6 +60,7 @@ export enum IntermediateKind {
     IntermediateInterface,
     IntermediateIntersectionType,
     IntermediateLiteralType,
+    IntermediateKeyofTypeReference,
     IntermediateMethodDefinition,
     IntermediateMethodSignature,
     IntermediateModule,
