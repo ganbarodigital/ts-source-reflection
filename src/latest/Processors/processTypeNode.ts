@@ -39,8 +39,10 @@ import {
     isParenthesizedTypeNode,
     isRestTypeNode,
     isTupleTypeNode,
+    isTypeOperatorNode,
     isTypePredicateNode,
     isUnionTypeNode,
+    SyntaxKind,
     TypeNode,
 } from "typescript";
 
@@ -65,6 +67,16 @@ export function processTypeNode
     input: TypeNode
 ): IntermediateTypeReference
 {
+    // special case - we have a keyof type
+    if (isTypeOperatorNode(input)) {
+        if (input.operator === SyntaxKind.KeyOfKeyword) {
+            return {
+                kind: IntermediateKind.IntermediateKeyofTypeReference,
+                typeRef: processTypeNode(input.type),
+            }
+        }
+    }
+
     // special case - we have an array
     if (isArrayTypeNode(input)) {
         return {
