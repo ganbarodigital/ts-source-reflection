@@ -49,7 +49,7 @@ const expectedResult: IntermediateSourceFile = {
             extends: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propName: "a",
                     propIsOptional: false,
                     propIsReadonly: true,
@@ -59,7 +59,7 @@ const expectedResult: IntermediateSourceFile = {
                     }
                 },
                 {
-                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propName: "b",
                     propIsOptional: false,
                     propIsReadonly: false,

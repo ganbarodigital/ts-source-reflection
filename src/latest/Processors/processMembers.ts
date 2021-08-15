@@ -39,8 +39,7 @@ import {
     isConstructorDeclaration,
     isConstructSignatureDeclaration,
     isMethodDeclaration,
-    isMethodSignature,
-    isPropertySignature,
+    isMethodSignature, isPropertySignature,
     NodeArray,
     SyntaxKind,
     TypeElement

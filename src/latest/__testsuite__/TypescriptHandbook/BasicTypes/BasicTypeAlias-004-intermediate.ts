@@ -46,7 +46,7 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
                     {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                        kind: IntermediateKind.IntermediateTypedPropertySignature,
                         propName: "swim",
                         propIsOptional: false,
                         propIsReadonly: false,

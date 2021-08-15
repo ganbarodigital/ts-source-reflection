@@ -52,7 +52,7 @@ const expectedResult: IntermediateSourceFile =  {
                         kind: IntermediateKind.IntermediateAnonymousClassType,
                         members: [
                             {
-                                kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
                                 propName: "length",
                                 propIsOptional: false,
                                 propIsReadonly: false,

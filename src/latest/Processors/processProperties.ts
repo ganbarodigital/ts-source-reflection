@@ -34,15 +34,15 @@
 
 import { isPropertySignature, NodeArray, TypeElement } from "typescript";
 import * as AST from "../AST";
-import { IntermediatePropertyDefinition } from "../IntermediateTypes";
+import { IntermediatePropertySignature } from "../IntermediateTypes";
 import { processPropertySignature } from "./processPropertySignature";
 
 export function processProperties(
     input: NodeArray<TypeElement>
-): IntermediatePropertyDefinition[]
+): IntermediatePropertySignature[]
 {
     // this will be our return value
-    const retval: IntermediatePropertyDefinition[] = [];
+    const retval: IntermediatePropertySignature[] = [];
 
     // find and process all the property definitions in this
     // anonymous class

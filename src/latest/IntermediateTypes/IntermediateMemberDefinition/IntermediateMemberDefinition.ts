@@ -37,10 +37,10 @@ import { IntermediateConstructorDefinition } from "../IntermediateConstructorDef
 import { IntermediateIndexSignature } from "../IntermediateIndexSignature";
 import { IntermediateMethodDefinition } from "../IntermediateMethodDefinition";
 import { IntermediateMethodSignature } from "../IntermediateMethodSignature";
-import { IntermediatePropertyDefinition } from "../IntermediatePropertyDefinition";
+import { IntermediatePropertySignature } from "../IntermediatePropertySignature";
 
 export type IntermediateMemberDefinition =
-    IntermediatePropertyDefinition
+    IntermediatePropertySignature
     | IntermediateCallSignature
     | IntermediateConstructorDefinition
     | IntermediateIndexSignature

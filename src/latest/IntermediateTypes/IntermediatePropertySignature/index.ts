@@ -32,9 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateTypedPropertyDefinition } from "../IntermediateTypedPropertyDefinition";
-import { IntermediateUntypedPropertyDefinition } from "../IntermediateUntypedPropertyDefinition";
-
-export type IntermediatePropertyDefinition
-    = IntermediateTypedPropertyDefinition
-      | IntermediateUntypedPropertyDefinition;
+export * from "./IntermediatePropertySignature";

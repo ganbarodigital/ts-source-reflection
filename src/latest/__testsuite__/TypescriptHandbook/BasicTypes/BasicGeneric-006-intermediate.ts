@@ -54,7 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
                     {
-                        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                        kind: IntermediateKind.IntermediateTypedPropertySignature,
                         propName: "contents",
                         propIsOptional: false,
                         propIsReadonly: false,

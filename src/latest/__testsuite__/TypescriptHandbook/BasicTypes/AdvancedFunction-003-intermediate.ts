@@ -72,7 +72,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateAnonymousClassType,
                         members: [
                             {
-                                kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
                                 propName: "a",
                                 propIsOptional: false,
                                 propIsReadonly: false,
@@ -82,7 +82,7 @@ const expectedResult: IntermediateSourceFile = {
                                 },
                             },
                             {
-                                kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
                                 propName: "b",
                                 propIsOptional: false,
                                 propIsReadonly: false,
@@ -92,7 +92,7 @@ const expectedResult: IntermediateSourceFile = {
                                 },
                             },
                             {
-                                kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
                                 propName: "c",
                                 propIsOptional: false,
                                 propIsReadonly: false,

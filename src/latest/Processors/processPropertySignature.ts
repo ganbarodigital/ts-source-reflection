@@ -33,7 +33,7 @@
 //
 
 import { PropertySignature } from "typescript";
-import { IntermediateKind, IntermediatePropertyDefinition } from "../IntermediateTypes";
+import { IntermediateKind, IntermediatePropertySignature } from "../IntermediateTypes";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
 import * as AST from "../AST";
@@ -41,12 +41,12 @@ import * as AST from "../AST";
 export function processPropertySignature
 (
     input: PropertySignature
-): IntermediatePropertyDefinition
+): IntermediatePropertySignature
 {
     // special case: untyped property
     if (!input.type) {
         return {
-            kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
+            kind: IntermediateKind.IntermediateUntypedPropertySignature,
             propName: input.name.getText(),
             propIsOptional: processQuestionToken(input.questionToken),
             propIsReadonly: AST.hasReadonlyModifier(input.modifiers),
@@ -55,7 +55,7 @@ export function processPropertySignature
 
     // general case: typed property
     return {
-        kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+        kind: IntermediateKind.IntermediateTypedPropertySignature,
         propName: input.name.getText(),
         propIsOptional: processQuestionToken(input.questionToken),
         propIsReadonly: AST.hasReadonlyModifier(input.modifiers),
