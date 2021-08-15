@@ -84,6 +84,7 @@ export enum IntermediateKind {
     IntermediateTypedPropertySignature,
     IntermediateUnionType,
     IntermediateUntypedCallableParameter,
+    IntermediateUntypedPropertyDefinition,
     IntermediateUntypedPropertySignature,
     IntermediateVariableDeclaration,
     IntermediateVariableDeclarations,

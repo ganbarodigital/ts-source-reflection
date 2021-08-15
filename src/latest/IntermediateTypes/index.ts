@@ -96,6 +96,7 @@ export * from "./IntermediateTypePredicate";
 export * from "./IntermediateTypeReference";
 export * from "./IntermediateUnionType";
 export * from "./IntermediateUntypedCallableParameter";
+export * from "./IntermediateUntypedPropertyDefinition";
 export * from "./IntermediateUntypedPropertySignature";
 export * from "./IntermediateVariableDeclaration";
 export * from "./IntermediateVariableDeclarations";
