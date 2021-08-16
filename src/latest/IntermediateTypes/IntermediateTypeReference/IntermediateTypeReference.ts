@@ -45,6 +45,7 @@ import { IntermediateLiteralType } from "../IntermediateLiteralType";
 import { IntermediateParenthesizedType } from "../IntermediateParenthesizedType";
 import { IntermediateRestType } from "../IntermediateRestType";
 import { IntermediateTupleType } from "../IntermediateTupleType";
+import { IntermediateTypeofTypeReference } from "../IntermediateTypeofTypeReference";
 import { IntermediateTypePredicate } from "../IntermediateTypePredicate";
 import { IntermediateUnionType } from "../IntermediateUnionType";
 
@@ -65,4 +66,5 @@ export type IntermediateTypeReference
       | IntermediateRestType
       | IntermediateTupleType
       | IntermediateTypePredicate
+      | IntermediateTypeofTypeReference
       | IntermediateUnionType;
