@@ -58,6 +58,7 @@ export enum IntermediateKind {
     IntermediateGenericTypeReference,
     IntermediateImportItem,
     IntermediateIndexSignature,
+    IntermediateIndexedAccessTypeReference,
     IntermediateInterface,
     IntermediateIntersectionType,
     IntermediateLiteralType,
