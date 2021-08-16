@@ -32,13 +32,20 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { IndexedAccessTypeNode } from "typescript";
+import {
+    IntermediateIndexedAccessTypeReference,
+    IntermediateKind
+} from "../IntermediateTypes";
+import { processTypeNode } from "./processTypeNode";
 
-export interface IntermediateIndexedAccessTypeReference
-    extends IntermediateItem<IntermediateKind.IntermediateIndexedAccessTypeReference>
+export function processIndexedAccessType(
+    input: IndexedAccessTypeNode
+): IntermediateIndexedAccessTypeReference
 {
-    typeRef: IntermediateTypeReference;
-    indexRef: IntermediateTypeReference;
+    return {
+        kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
+        typeRef: processTypeNode(input.objectType),
+        indexRef: processTypeNode(input.indexType),
+    }
 }

@@ -36,6 +36,7 @@ import {
     isArrayTypeNode,
     isConstructorTypeNode,
     isFunctionTypeNode,
+    isIndexedAccessTypeNode,
     isIntersectionTypeNode,
     isLiteralTypeNode,
     isParenthesizedTypeNode,
@@ -61,6 +62,7 @@ import { processAnonymousClassType } from "./processAnonymousClassType";
 import { processBuiltInType } from "./processBuiltInType";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processFunctionType } from "./processFunctionType";
+import { processIndexedAccessType } from "./processIndexedAccessType";
 import { processIntersectionNode } from "./processIntersectionNode";
 import { processLiteralTypeNode } from "./processLiteralTypeNode";
 import { processParenthesizedType } from "./processParenthesisedType";
@@ -163,6 +165,11 @@ export function processTypeNode
     // special case - constructor type
     if (isConstructorTypeNode(input)) {
         return processConstructorTypeNode(input);
+    }
+
+    // special case - indexed access type
+    if (isIndexedAccessTypeNode(input)) {
+        return processIndexedAccessType(input);
     }
 
     // generic case
