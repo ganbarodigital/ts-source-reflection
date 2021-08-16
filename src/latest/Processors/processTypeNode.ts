@@ -43,6 +43,7 @@ import {
     isTupleTypeNode,
     isTypeOperatorNode,
     isTypePredicateNode,
+    isTypeQueryNode,
     isUnionTypeNode,
     SyntaxKind,
     TypeNode
@@ -82,6 +83,18 @@ export function processTypeNode
                 kind: IntermediateKind.IntermediateKeyofTypeReference,
                 typeRef: processTypeNode(input.type),
             }
+        }
+    }
+
+    // special case - we have a typeof type
+    //
+    // unlike most of our other type references, it doesn't wrap
+    // a type, it refers to another symbol defined within the same
+    // scope
+    if (isTypeQueryNode(input)) {
+        return {
+            kind: IntermediateKind.IntermediateTypeofTypeReference,
+            entityName: input.exprName.getText(),
         }
     }
 

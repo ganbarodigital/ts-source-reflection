@@ -32,11 +32,40 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
+import {
+    IntermediateKind,
+    IntermediateSourceFile
+} from "../../../IntermediateTypes";
 
-export interface IntermediateTypeofTypeReference
-    extends IntermediateItem<IntermediateKind.IntermediateTypeofTypeReference>
-{
-    entityName: string;
+const expectedResult: IntermediateSourceFile = {
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            docBlock: undefined,
+            name: "f",
+            declared: false,
+            typeParameters: [],
+            parameters: [],
+            returnType: undefined,
+            hasBody: true,
+        },
+        {
+            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            typeName: "P",
+            typeParameters: [],
+            typeRef: {
+                kind: IntermediateKind.IntermediateGenericTypeReference,
+                typeName: "ReturnType",
+                typeArguments: [
+                    {
+                        kind: IntermediateKind.IntermediateTypeofTypeReference,
+                        entityName: "f",
+                    },
+                ],
+            },
+        },
+    ],
+    kind: IntermediateKind.IntermediateSourceFile,
 }
+
+export default expectedResult;
