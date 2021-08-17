@@ -50,7 +50,7 @@ import {
     IntermediateVariableDeclarations
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
-import { processInitializer } from "./processInitializer";
+import { processExpression } from "./processExpression";
 import { processTypeNode } from "./processTypeNode";
 import { StatementProcessor } from "./StatementProcessor";
 
@@ -118,7 +118,7 @@ function processVariableDeclaration(
     // does this variable have an initial value?
     let initialiser: Maybe<IntermediateExpression>;
     if (input.initializer) {
-        initialiser = processInitializer(input.initializer);
+        initialiser = processExpression(input.initializer);
     }
 
     // this will be our return value

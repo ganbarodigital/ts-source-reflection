@@ -59,7 +59,7 @@ import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
 import { processCallExpression } from "./processCallExpression";
 import { processTypeNode } from "./processTypeNode";
 
-export function processInitializer(
+export function processExpression(
     input: Expression
 ): IntermediateExpression
 {
@@ -100,13 +100,13 @@ export function processInitializer(
     }
 
     if (isTypeAssertionExpression(input)) {
-        const retval = processInitializer(input.expression);
+        const retval = processExpression(input.expression);
         (retval as IntermediateTypeAssertable).typeAssertion = processTypeNode(input.type);
         return retval;
     }
 
     if (isAsExpression(input)) {
-        const retval = processInitializer(input.expression);
+        const retval = processExpression(input.expression);
         (retval as IntermediateTypeAssertable).asType = processTypeNode(input.type);
         return retval;
     }
@@ -167,6 +167,6 @@ function processPropertyAssignment(
     return {
         kind: IntermediateKind.IntermediatePropertyAssignment,
         propertyName: input.name.getText(),
-        initializer: processInitializer(input.initializer),
+        initializer: processExpression(input.initializer),
     }
 }

@@ -41,7 +41,7 @@ import {
     IntermediateTypedPropertyDefinition,
     IntermediateUntypedPropertyDefinition,
 } from "../IntermediateTypes";
-import { processInitializer } from "./processInitializer";
+import { processExpression } from "./processExpression";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
 
@@ -52,7 +52,7 @@ export function processPropertyDeclaration(
 {
     let initializer: Maybe<IntermediateExpression>;
     if (input.initializer) {
-        initializer = processInitializer(input.initializer);
+        initializer = processExpression(input.initializer);
     }
 
     // special case: untyped property

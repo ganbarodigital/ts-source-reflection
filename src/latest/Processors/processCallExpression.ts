@@ -34,7 +34,7 @@
 
 import { CallExpression } from "typescript";
 import { IntermediateCallableExpression, IntermediateKind } from "../IntermediateTypes";
-import { processInitializer } from "./processInitializer";
+import { processExpression } from "./processExpression";
 
 export function processCallExpression(
     input: CallExpression
@@ -54,7 +54,7 @@ export function processCallExpression(
     // a parameter is what appears in a function / method signature
     // an argument is what appears when the function / method gets called
     for (const argument of input.arguments) {
-        retval.arguments.push(processInitializer(argument));
+        retval.arguments.push(processExpression(argument));
     }
 
     // all done

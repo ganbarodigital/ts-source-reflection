@@ -46,7 +46,7 @@ import {
     IntermediateObjectBindingParameter,
     IntermediateTypeReference
 } from "../IntermediateTypes";
-import { processInitializer } from "./processInitializer";
+import { processExpression } from "./processExpression";
 import { processTypeNode } from "./processTypeNode";
 
 export function processObjectBindingPattern({
@@ -93,7 +93,7 @@ function processBindingElement(
     // do we have a default value for the parameter?
     let initializer: Maybe<IntermediateExpression>;
     if (input.initializer) {
-        initializer = processInitializer(input.initializer);
+        initializer = processExpression(input.initializer);
     }
 
     // do we have a receiver alias set?

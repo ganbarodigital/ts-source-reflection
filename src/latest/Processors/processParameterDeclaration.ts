@@ -45,7 +45,7 @@ import {
     IntermediateTypedCallableParameter,
     IntermediateUntypedCallableParameter
 } from "../IntermediateTypes";
-import { processInitializer } from "./processInitializer";
+import { processExpression } from "./processExpression";
 import { processObjectBindingPattern } from "./processObjectBindingPattern";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
@@ -77,7 +77,7 @@ export function processParameterDeclaration(
     // do we have a default value for the parameter?
     let initializer: Maybe<IntermediateExpression>;
     if (paramDec.initializer) {
-        initializer = processInitializer(paramDec.initializer);
+        initializer = processExpression(paramDec.initializer);
     }
 
     // special case - untyped parameter
