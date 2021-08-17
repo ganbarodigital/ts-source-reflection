@@ -52,6 +52,7 @@ export enum IntermediateKind {
     IntermediateFixedTypeArgument,
     IntermediateFixedTypeReference,
     IntermediateFunction,
+    IntermediateFunctionExpression,
     IntermediateFunctionTypeSignature,
     IntermediateGenericType,
     IntermediateGenericTypeArgument,

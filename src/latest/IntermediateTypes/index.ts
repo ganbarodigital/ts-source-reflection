@@ -56,6 +56,7 @@ export * from "./IntermediateExpression";
 export * from "./IntermediateFixedTypeArgument";
 export * from "./IntermediateFixedTypeReference";
 export * from "./IntermediateFunction";
+export * from "./IntermediateFunctionExpression";
 export * from "./IntermediateFunctionTypeSignature";
 export * from "./IntermediateGenericType";
 export * from "./IntermediateGenericTypeArgument";
