@@ -32,40 +32,24 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateKind,
-    IntermediateSourceFile
-} from "../../../IntermediateTypes";
+import { ArrayLiteralExpression } from "typescript";
+import { IntermediateArrayLiteralExpression, IntermediateKind } from "../IntermediateTypes";
+import { processInitializer } from "./processInitializer";
 
-const expectedResult: IntermediateSourceFile = {
-    children: [
-        {
-            kind: IntermediateKind.IntermediateVariableDeclarations,
-            variables: [
-                {
-                    kind: IntermediateKind.IntermediateVariableDeclaration,
-                    variableName: "x",
-                    constant: false,
-                    exported: false,
-                    declared: false,
-                    readonly: true,
-                    docBlock: undefined,
-                    initializer: {
-                        kind: IntermediateKind.IntermediateArrayLiteralExpression,
-                        elements: [],
-                    },
-                    typeRef: {
-                        kind: IntermediateKind.IntermediateArrayTypeReference,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "string",
-                        },
-                    },
-                }
-            ],
-        }
-    ],
-    kind: IntermediateKind.IntermediateSourceFile,
+export function processArrayLiteralExpression(
+    input: ArrayLiteralExpression
+): IntermediateArrayLiteralExpression
+{
+    // our return value
+    const retval: IntermediateArrayLiteralExpression = {
+        kind: IntermediateKind.IntermediateArrayLiteralExpression,
+        elements: [],
+    }
+
+    for(const element of input.elements) {
+        retval.elements.push(processInitializer(element));
+    }
+
+    // all done
+    return retval;
 }
-
-export default expectedResult;

@@ -52,7 +52,26 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateArrayLiteralExpression,
-                        value: '[getSmallPet(), getSmallPet(), getSmallPet()]',
+                        elements: [
+                            {
+                                kind: IntermediateKind.IntermediateCallableExpression,
+                                text: "getSmallPet()",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateCallableExpression,
+                                text: "getSmallPet()",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateCallableExpression,
+                                text: "getSmallPet()",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                        ],
                     },
                     typeRef: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,

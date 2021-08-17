@@ -32,11 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateArrayLiteralExpression
     extends IntermediateItem<IntermediateKind.IntermediateArrayLiteralExpression>
 {
-    value: string;
+    elements: IntermediateExpression[];
 }

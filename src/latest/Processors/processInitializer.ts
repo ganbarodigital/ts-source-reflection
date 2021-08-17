@@ -55,6 +55,7 @@ import {
     IntermediatePropertyAssignment,
     IntermediateTypeAssertable
 } from "../IntermediateTypes";
+import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
 import { processTypeNode } from "./processTypeNode";
 
 export function processInitializer(
@@ -122,10 +123,7 @@ export function processInitializer(
     }
 
     if (isArrayLiteralExpression(input)) {
-        return {
-            kind: IntermediateKind.IntermediateArrayLiteralExpression,
-            value: input.getText(),
-        }
+        return processArrayLiteralExpression(input);
     }
 
     if (AST.isTrueKeyword(input)) {
