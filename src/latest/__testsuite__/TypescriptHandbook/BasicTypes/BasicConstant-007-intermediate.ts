@@ -52,9 +52,17 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        text: 'Symbol("name")',
-                        asType: undefined,
+                        target: "Symbol",
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateStringLiteral,
+                                value: "name",
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            }
+                        ],
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     typeRef: undefined,
                 }
@@ -73,9 +81,17 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        text: 'Symbol("name")',
-                        asType: undefined,
+                        target: "Symbol",
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateStringLiteral,
+                                value: "name",
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            }
+                        ],
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     typeRef: undefined,
                 }

@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateArgument } from "../IntermediateArgument";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateTypeAssertable } from "../IntermediateTypeAssertable";
@@ -41,5 +42,6 @@ export interface IntermediateCallableExpression
     extends IntermediateItem<IntermediateKind.IntermediateCallableExpression>,
         IntermediateTypeAssertable
 {
-    text: string;
+    target: string;
+    arguments: IntermediateArgument[];
 }

@@ -55,19 +55,22 @@ const expectedResult: IntermediateSourceFile = {
                         elements: [
                             {
                                 kind: IntermediateKind.IntermediateCallableExpression,
-                                text: "getSmallPet()",
+                                target: "getSmallPet",
+                                arguments: [],
                                 typeAssertion: undefined,
                                 asType: undefined,
                             },
                             {
                                 kind: IntermediateKind.IntermediateCallableExpression,
-                                text: "getSmallPet()",
+                                target: "getSmallPet",
+                                arguments: [],
                                 typeAssertion: undefined,
                                 asType: undefined,
                             },
                             {
                                 kind: IntermediateKind.IntermediateCallableExpression,
-                                text: "getSmallPet()",
+                                target: "getSmallPet",
+                                arguments: [],
                                 typeAssertion: undefined,
                                 asType: undefined,
                             },

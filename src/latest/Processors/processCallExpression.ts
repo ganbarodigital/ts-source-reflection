@@ -32,45 +32,31 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateKind,
-    IntermediateSourceFile
-} from "../../../IntermediateTypes";
+import { CallExpression } from "typescript";
+import { IntermediateCallableExpression, IntermediateKind } from "../IntermediateTypes";
+import { processInitializer } from "./processInitializer";
 
-const expectedResult: IntermediateSourceFile = {
-    children: [
-        {
-            kind: IntermediateKind.IntermediateVariableDeclarations,
-            variables: [
-                {
-                    kind: IntermediateKind.IntermediateVariableDeclaration,
-                    variableName: "oneHundred",
-                    constant: true,
-                    exported: false,
-                    declared: false,
-                    readonly: false,
-                    docBlock: undefined,
-                    initializer: {
-                        kind: IntermediateKind.IntermediateCallableExpression,
-                        target: "BigInt",
-                        arguments: [
-                            {
-                                kind: IntermediateKind.IntermediateNumericLiteral,
-                                value: '100',
-                            }
-                        ],
-                        typeAssertion: undefined,
-                        asType: undefined,
-                    },
-                    typeRef: {
-                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                        typeName: "bigint",
-                    },
-                }
-            ],
-        }
-    ],
-    kind: IntermediateKind.IntermediateSourceFile,
+export function processCallExpression(
+    input: CallExpression
+): IntermediateCallableExpression
+{
+    // our return value
+    const retval: IntermediateCallableExpression = {
+        kind: IntermediateKind.IntermediateCallableExpression,
+        target: input.expression.getText(),
+        arguments: [],
+        asType: undefined,
+        typeAssertion: undefined,
+    }
+
+    // what arguments do we have?
+    //
+    // a parameter is what appears in a function / method signature
+    // an argument is what appears when the function / method gets called
+    for (const argument of input.arguments) {
+        retval.arguments.push(processInitializer(argument));
+    }
+
+    // all done
+    return retval;
 }
-
-export default expectedResult;

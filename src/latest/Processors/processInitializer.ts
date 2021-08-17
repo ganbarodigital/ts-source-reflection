@@ -56,6 +56,7 @@ import {
     IntermediateTypeAssertable
 } from "../IntermediateTypes";
 import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
+import { processCallExpression } from "./processCallExpression";
 import { processTypeNode } from "./processTypeNode";
 
 export function processInitializer(
@@ -79,12 +80,7 @@ export function processInitializer(
     }
 
     if (isCallExpression(input)) {
-        return {
-            kind: IntermediateKind.IntermediateCallableExpression,
-            text: input.getText(),
-            typeAssertion: undefined,
-            asType: undefined,
-        }
+        return processCallExpression(input);
     }
 
     if (isObjectLiteralExpression(input)) {
