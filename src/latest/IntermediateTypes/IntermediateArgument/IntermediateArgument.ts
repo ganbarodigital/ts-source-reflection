@@ -32,22 +32,8 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateArrayLiteralExpression } from "../IntermediateArrayLiteralExpression";
-import { IntermediateBigintLiteral } from "../IntermediateBigintLiteral";
-import { IntermediateBooleanLiteral } from "../IntermediateBooleanLiteral";
 import { IntermediateExpression } from "../IntermediateExpression";
-import { IntermediateFunctionTypeSignature } from "../IntermediateFunctionTypeSignature";
-import { IntermediateNumericLiteral } from "../IntermediateNumericLiteral";
-import { IntermediateObjectLiteral } from "../IntermediateObjectLiteral";
-import { IntermediateStringLiteral } from "../IntermediateStringLiteral";
 
-// placeholder for the future
-export type IntermediateArgument =
-      IntermediateArrayLiteralExpression
-    | IntermediateBigintLiteral
-    | IntermediateBooleanLiteral
-    | IntermediateExpression
-    | IntermediateFunctionTypeSignature
-    | IntermediateNumericLiteral
-    | IntermediateObjectLiteral
-    | IntermediateStringLiteral;
+// for now, it appears that every supported expression
+// is a valid argument
+export type IntermediateArgument = IntermediateExpression;
