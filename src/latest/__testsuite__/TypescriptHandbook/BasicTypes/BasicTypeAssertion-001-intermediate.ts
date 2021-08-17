@@ -52,7 +52,15 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        text: 'document.getElementById("main_canvas")',
+                        target: "document.getElementById",
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateStringLiteral,
+                                value: "main_canvas",
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            }
+                        ],
                         typeAssertion: undefined,
                         asType: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
