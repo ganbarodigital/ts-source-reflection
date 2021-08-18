@@ -109,7 +109,8 @@ const expectedResult: IntermediateSourceFile = {
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        text: "getDB()",
+                        target: "getDB",
+                        arguments: [],
                         typeAssertion: undefined,
                         asType: undefined,
                     },
@@ -130,7 +131,27 @@ const expectedResult: IntermediateSourceFile = {
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        text: "db.filterUsers(function (this: User) {\n    return this.admin;\n})",
+                        target: "db.filterUsers",
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateFunctionExpression,
+                                typeParameters: [],
+                                parameters: [
+                                    {
+                                        kind: IntermediateKind.IntermediateTypedCallableParameter,
+                                        paramName: "this",
+                                        optional: false,
+                                        readonly: false,
+                                        typeRef: {
+                                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                                            typeName: "User",
+                                        },
+                                        initializer: undefined,
+                                    },
+                                ],
+                                returnType: undefined,
+                            },
+                        ],
                         typeAssertion: undefined,
                         asType: undefined,
                     },

@@ -39,12 +39,14 @@ import {
     isAsExpression,
     isBigIntLiteral,
     isCallExpression,
+    isFunctionExpression,
     isNewExpression,
     isNumericLiteral,
     isObjectLiteralExpression,
     isStringLiteral,
     isTypeAssertionExpression,
-    PropertyAssignment
+    PropertyAssignment,
+    SyntaxKind
 } from "typescript";
 import * as AST from "../AST";
 import { mustBePropertyAssignment } from "../AST";
@@ -57,6 +59,7 @@ import {
 } from "../IntermediateTypes";
 import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
 import { processCallExpression } from "./processCallExpression";
+import { processFunctionExpression } from "./processFunctionExpression";
 import { processTypeNode } from "./processTypeNode";
 
 export function processExpression(
@@ -148,9 +151,13 @@ export function processExpression(
         }
     }
 
+    if (isFunctionExpression(input)) {
+        return processFunctionExpression(input);
+    }
+
     // if we get here, we do not know how to process this variable
     // tslint:disable-next-line: no-console
-    console.log(getClassNames(input));
+    console.log(getClassNames(input), SyntaxKind[input.kind]);
     throw new UnsupportedTypeError({
         public: {
             dataPath: DEFAULT_DATA_PATH,
