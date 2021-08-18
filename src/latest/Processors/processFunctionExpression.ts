@@ -32,17 +32,34 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import { IntermediateCallableParameter } from "../IntermediateCallableParameter";
-import { IntermediateGenericType } from "../IntermediateGenericType";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { FunctionExpression } from "typescript";
+import { IntermediateFunctionExpression, IntermediateKind } from "../IntermediateTypes";
+import { processFunctionParameters } from "./processFunctionParameters";
+import { processTypeNode } from "./processTypeNode";
+import { processTypeParameters } from "./processTypeParameters";
 
-export interface IntermediateFunctionExpression
-    extends IntermediateItem<IntermediateKind.IntermediateFunctionExpression>
+export function processFunctionExpression(
+    input: FunctionExpression
+): IntermediateFunctionExpression
 {
-    typeParameters: IntermediateGenericType[];
-    parameters: IntermediateCallableParameter[];
-    returnType: Maybe<IntermediateTypeReference>;
+    // our return value
+    const retval: IntermediateFunctionExpression = {
+        kind: IntermediateKind.IntermediateFunctionExpression,
+        typeParameters: [],
+        parameters: processFunctionParameters(input.parameters),
+        returnType: undefined,
+    }
+
+    // do we have generic type parameters?
+    if (input.typeParameters) {
+        retval.typeParameters = processTypeParameters(input.typeParameters);
+    }
+
+    // do we have a return value?
+    if (input.type) {
+        retval.returnType = processTypeNode(input.type);
+    }
+
+    // all done
+    return retval;
 }
