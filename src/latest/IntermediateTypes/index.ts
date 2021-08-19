@@ -65,6 +65,7 @@ export * from "./IntermediateGenericTypeReference";
 export * from "./IntermediateImportItem";
 export * from "./IntermediateIndexSignature";
 export * from "./IntermediateIndexedAccessTypeReference";
+export * from "./IntermediateInferType";
 export * from "./IntermediateInterface";
 export * from "./IntermediateIntersectionType";
 export * from "./IntermediateItem";
