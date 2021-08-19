@@ -38,6 +38,7 @@ import {
     isConstructorTypeNode,
     isFunctionTypeNode,
     isIndexedAccessTypeNode,
+    isInferTypeNode,
     isIntersectionTypeNode,
     isLiteralTypeNode,
     isParenthesizedTypeNode,
@@ -65,6 +66,7 @@ import { processConditionalType } from "./processConditionalType";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processFunctionType } from "./processFunctionType";
 import { processIndexedAccessType } from "./processIndexedAccessType";
+import { processInferType } from "./processInferType";
 import { processIntersectionNode } from "./processIntersectionNode";
 import { processLiteralTypeNode } from "./processLiteralTypeNode";
 import { processParenthesizedType } from "./processParenthesisedType";
@@ -177,6 +179,11 @@ export function processTypeNode
     // special case - conditional type
     if (isConditionalTypeNode(input)) {
         return processConditionalType(input);
+    }
+
+    // special case - infer type
+    if (isInferTypeNode(input)) {
+        return processInferType(input);
     }
 
     // generic case
