@@ -32,12 +32,16 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateGenericType } from "../IntermediateGenericType";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
+import { InferTypeNode } from "typescript";
+import { IntermediateInferType, IntermediateKind } from "../IntermediateTypes";
+import { processGenericTypeDeclaration } from "./processGenericTypeDeclaration";
 
-export interface IntermediateInferType
-    extends IntermediateItem<IntermediateKind.IntermediateInferType>
+export function processInferType(
+    input: InferTypeNode
+): IntermediateInferType
 {
-    typeParameter: IntermediateGenericType;
+    return {
+        kind: IntermediateKind.IntermediateInferType,
+        typeParameter: processGenericTypeDeclaration(input.typeParameter),
+    }
 }
