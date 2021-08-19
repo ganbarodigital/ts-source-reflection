@@ -46,6 +46,7 @@ export enum IntermediateKind {
     IntermediateBuiltInTypeReference,
     IntermediateCallSignature,
     IntermediateClass,
+    IntermediateConditionalType,
     IntermediateConstTypeCast,
     IntermediateConstructorDefinition,
     IntermediateDocBlock,
