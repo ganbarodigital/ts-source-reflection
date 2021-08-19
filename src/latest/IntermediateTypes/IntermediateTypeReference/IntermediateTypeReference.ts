@@ -41,6 +41,7 @@ import { IntermediateFixedTypeReference } from "../IntermediateFixedTypeReferenc
 import { IntermediateFunctionTypeSignature } from "../IntermediateFunctionTypeSignature";
 import { IntermediateGenericTypeReference } from "../IntermediateGenericTypeReference";
 import { IntermediateIndexedAccessTypeReference } from "../IntermediateIndexedAccessTypeReference";
+import { IntermediateInferType } from "../IntermediateInferType";
 import { IntermediateIntersectionType } from "../IntermediateIntersectionType";
 import { IntermediateKeyofTypeReference } from "../IntermediateKeyofTypeReference";
 import { IntermediateLiteralType } from "../IntermediateLiteralType";
@@ -63,6 +64,7 @@ export type IntermediateTypeReference
       | IntermediateFunctionTypeSignature
       | IntermediateGenericTypeReference
       | IntermediateIndexedAccessTypeReference
+      | IntermediateInferType
       | IntermediateIntersectionType
       | IntermediateKeyofTypeReference
       | IntermediateLiteralType
