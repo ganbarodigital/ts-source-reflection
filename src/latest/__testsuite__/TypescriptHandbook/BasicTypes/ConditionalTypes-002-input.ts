@@ -1,0 +1,11 @@
+interface IdLabel {
+    id: number /* some fields */;
+}
+
+interface NameLabel {
+    name: string /* other fields */;
+}
+
+type NameOrId<T extends number | string> = T extends number
+  ? IdLabel
+  : NameLabel;
