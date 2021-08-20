@@ -40,6 +40,7 @@ import {
     isBigIntLiteral,
     isCallExpression,
     isFunctionExpression,
+    isIdentifier,
     isNewExpression,
     isNumericLiteral,
     isObjectLiteralExpression,
@@ -153,6 +154,13 @@ export function processExpression(
 
     if (isFunctionExpression(input)) {
         return processFunctionExpression(input);
+    }
+
+    if (isIdentifier(input)) {
+        return {
+            kind: IntermediateKind.IntermediateIdentifierReference,
+            name: input.text,
+        }
     }
 
     // if we get here, we do not know how to process this variable
