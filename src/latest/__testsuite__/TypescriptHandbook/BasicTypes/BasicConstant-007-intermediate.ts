@@ -53,6 +53,7 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
                         target: "Symbol",
+                        typeArguments: [],
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
@@ -82,6 +83,7 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
                         target: "Symbol",
+                        typeArguments: [],
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,

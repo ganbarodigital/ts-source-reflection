@@ -53,6 +53,7 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
                         target: "BigInt",
+                        typeArguments: [],
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateNumericLiteral,

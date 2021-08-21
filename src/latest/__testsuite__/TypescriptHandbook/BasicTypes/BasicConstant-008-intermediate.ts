@@ -56,6 +56,7 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateCallableExpression,
                                 target: "getSmallPet",
+                                typeArguments: [],
                                 arguments: [],
                                 typeAssertion: undefined,
                                 asType: undefined,
@@ -63,6 +64,7 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateCallableExpression,
                                 target: "getSmallPet",
+                                typeArguments: [],
                                 arguments: [],
                                 typeAssertion: undefined,
                                 asType: undefined,
@@ -70,6 +72,7 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateCallableExpression,
                                 target: "getSmallPet",
+                                typeArguments: [],
                                 arguments: [],
                                 typeAssertion: undefined,
                                 asType: undefined,

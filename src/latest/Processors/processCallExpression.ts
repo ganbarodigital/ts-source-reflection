@@ -33,8 +33,12 @@
 //
 
 import { CallExpression } from "typescript";
-import { IntermediateCallableExpression, IntermediateKind } from "../IntermediateTypes";
+import {
+    IntermediateCallableExpression,
+    IntermediateKind
+} from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { processTypeNode } from "./processTypeNode";
 
 export function processCallExpression(
     input: CallExpression
@@ -44,9 +48,17 @@ export function processCallExpression(
     const retval: IntermediateCallableExpression = {
         kind: IntermediateKind.IntermediateCallableExpression,
         target: input.expression.getText(),
+        typeArguments: [],
         arguments: [],
         asType: undefined,
         typeAssertion: undefined,
+    }
+
+    // do we have any type arguments?
+    if (input.typeArguments) {
+        for (const typeArgument of input.typeArguments) {
+            retval.typeArguments.push(processTypeNode(typeArgument));
+        }
     }
 
     // what arguments do we have?

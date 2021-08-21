@@ -110,6 +110,7 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
                         target: "getDB",
+                        typeArguments: [],
                         arguments: [],
                         typeAssertion: undefined,
                         asType: undefined,
@@ -132,6 +133,7 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
                         target: "db.filterUsers",
+                        typeArguments: [],
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateFunctionExpression,
