@@ -36,6 +36,7 @@ import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelyt
 import {
     Expression,
     isArrayLiteralExpression,
+    isArrowFunction,
     isAsExpression,
     isBigIntLiteral,
     isCallExpression,
@@ -60,6 +61,7 @@ import {
     IntermediateTypeAssertable
 } from "../IntermediateTypes";
 import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
+import { processArrowFunction } from "./processArrowFunction";
 import { processCallExpression } from "./processCallExpression";
 import { processFunctionExpression } from "./processFunctionExpression";
 import { processSpreadElement } from "./processSpreadElement";
@@ -167,6 +169,10 @@ export function processExpression(
 
     if (isSpreadElement(input)) {
         return processSpreadElement(input);
+    }
+
+    if (isArrowFunction(input)) {
+        return processArrowFunction(input);
     }
 
     // if we get here, we do not know how to process this variable
