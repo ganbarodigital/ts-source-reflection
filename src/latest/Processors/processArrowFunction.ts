@@ -32,13 +32,48 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateCallable } from "../IntermediateCallable";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
+import { Maybe } from "@safelytyped/core-types";
+import { ArrowFunction } from "typescript";
+import {
+    IntermediateArrowFunction,
+    IntermediateCallableParameter,
+    IntermediateGenericType,
+    IntermediateKind,
+    IntermediateTypeReference
+} from "../IntermediateTypes";
+import { processParameterDeclaration } from "./processParameterDeclaration";
+import { processTypeNode } from "./processTypeNode";
+import { processTypeParameters } from "./processTypeParameters";
+import * as AST from "../AST";
 
-export interface IntermediateArrowFunction
-    extends IntermediateItem<IntermediateKind.IntermediateArrowFunction>,
-        IntermediateCallable
+export function processArrowFunction(
+    input: ArrowFunction
+): IntermediateArrowFunction
 {
-    hasBody: boolean;
+    // do we have any type parameters?
+    let typeParameters: IntermediateGenericType[] = [];
+    if (input.typeParameters) {
+        typeParameters = processTypeParameters(input.typeParameters);
+    }
+
+    // do we have any parameters?
+    const parameters: IntermediateCallableParameter[] = [];
+    for (const param of input.parameters) {
+        parameters.push(processParameterDeclaration(param));
+    }
+
+    // what about a return type?
+    let returnType: Maybe<IntermediateTypeReference>;
+    if (input.type) {
+        returnType = processTypeNode(input.type);
+    }
+
+    // all done!
+    return {
+        kind: IntermediateKind.IntermediateArrowFunction,
+        typeParameters,
+        parameters,
+        returnType,
+        hasBody: AST.hasBody(input.body),
+    }
 }

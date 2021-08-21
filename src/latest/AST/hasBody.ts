@@ -32,10 +32,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Block } from "typescript";
+import { Block, ConciseBody } from "typescript";
 
 export function hasBody(
-    input: Block | undefined
+    input: Block | ConciseBody | undefined
 ): boolean
 {
     // this is probably too simplistic?
