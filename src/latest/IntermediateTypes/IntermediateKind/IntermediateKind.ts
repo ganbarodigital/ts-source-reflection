@@ -38,6 +38,7 @@ export enum IntermediateKind {
     IntermediateAnonymousClassType,
     IntermediateArrayLiteralExpression,
     IntermediateArrayTypeReference,
+    IntermediateArrowFunction,
     IntermediateBigintLiteral,
     IntermediateBooleanLiteral,
 
