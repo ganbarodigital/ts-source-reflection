@@ -32,33 +32,22 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./findDocBlockText";
-export * from "./findExtendsHeritageClauses";
-export * from "./findImplementsHeritageClauses";
-export * from "./getStatementKind";
-export * from "./hasBody";
-export * from "./hasDeclaredModifier";
-export * from "./hasDotDotDotToken";
-export * from "./hasReadonlyModifier";
-export * from "./isAnonymousClassType";
-export * from "./isDeclareKeyword";
-export * from "./isExportKeyword";
-export * from "./isFalseKeyword";
-export * from "./isIndexSignature";
-export * from "./isNodeExported";
-export * from "./isReadonlyKeyword";
-export * from "./isTrueKeyword";
-export * from "./mustBeCallSignatureDeclaration";
-export * from "./mustBeClassDeclaration";
-export * from "./mustBeConstructSignatureDeclaration";
-export * from "./mustBeConstructorDeclaration";
-export * from "./mustBeExpressionStatement";
-export * from "./mustBeFunctionDeclaration";
-export * from "./mustBeImportClause";
-export * from "./mustBeImportDeclaration";
-export * from "./mustBeInterfaceDeclaration";
-export * from "./mustBePropertyAssignment";
-export * from "./mustBePropertySignature";
-export * from "./mustBeTypeAliasDeclaration";
-export * from "./mustBeTypeReference";
-export * from "./mustBeVariableStatement";
+import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
+import { isExpressionStatement, Statement, ExpressionStatement } from "typescript";
+
+export function mustBeExpressionStatement(input: Statement): ExpressionStatement
+{
+    // what do we have?
+    if (isExpressionStatement(input)) {
+        return input;
+    }
+
+    // if we get here, we're not happy
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: 'ExpressionStatement',
+            actual: getClassNames(input)[0],
+        }
+    });
+}
