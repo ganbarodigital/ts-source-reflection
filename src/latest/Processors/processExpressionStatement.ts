@@ -32,19 +32,17 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateClass } from "../IntermediateClass";
-import { IntermediateExpression } from "../IntermediateExpression";
-import { IntermediateFunction } from "../IntermediateFunction";
-import { IntermediateImportItem } from "../IntermediateImportItem";
-import { IntermediateInterface } from "../IntermediateInterface";
-import { IntermediateTypeAliasDefinition } from "../IntermediateTypeAliasDefinition";
-import { IntermediateVariableDeclarations } from "../IntermediateVariableDeclarations";
+import { Statement } from "typescript";
+import { mustBeExpressionStatement } from "../AST";
+import { IntermediateExpression } from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
+import { StatementProcessor } from "./StatementProcessor";
 
-export type IntermediateSourceFileChild =
-    IntermediateClass
-    | IntermediateExpression
-    | IntermediateFunction
-    | IntermediateImportItem
-    | IntermediateInterface
-    | IntermediateTypeAliasDefinition
-    | IntermediateVariableDeclarations;
+export const processExpressionStatement: StatementProcessor = (
+    input: Statement
+): IntermediateExpression => {
+    // make sure we have what we need
+    const expDec = mustBeExpressionStatement(input);
+
+    return processExpression(expDec.expression);
+}

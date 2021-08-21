@@ -33,7 +33,7 @@
 //
 import { FunctionPointerTable, searchFunctionPointerTable } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
-import { NodeArray, SourceFile, Statement } from "typescript";
+import { NodeArray, SourceFile, Statement, SyntaxKind } from "typescript";
 import { getStatementKind } from "../AST";
 import {
     IntermediateKind,
@@ -41,17 +41,17 @@ import {
     IntermediateSourceFileChild
 } from "../IntermediateTypes";
 import { processClassDeclaration } from "./processClassDeclaration";
+import { processExpressionStatement } from "./processExpressionStatement";
 import { processFunctionDeclaration } from "./processFunctionDeclaration";
 import { processInterfaceDeclaration } from "./processInterfaceDeclaration";
 import { processTypeAliasDeclaration } from "./processTypeAliasDeclaration";
 import { processVariableStatement } from "./processVariableStatement";
 import { StatementProcessor } from "./StatementProcessor";
 
-
-
 const statementProcessors: FunctionPointerTable<string, StatementProcessor> = {
     'InterfaceDeclaration': processInterfaceDeclaration,
     'ClassDeclaration': processClassDeclaration,
+    'ExpressionStatement': processExpressionStatement,
     'FunctionDeclaration': processFunctionDeclaration,
     'TypeAliasDeclaration': processTypeAliasDeclaration,
     'VariableStatement': processVariableStatement,
@@ -84,6 +84,8 @@ function processStatements(
 
         // did we get a statement that we support?
         if (!kind) {
+            // tslint:disable-next-line: no-console
+            console.log("Skipping unsupported statement " + SyntaxKind[statement.kind]);
             continue;
         }
 
@@ -103,7 +105,7 @@ function processStatements(
         if (processedItem) {
             result.push(processedItem);
         }
-    };
+    }
 
     // all done
     return result;

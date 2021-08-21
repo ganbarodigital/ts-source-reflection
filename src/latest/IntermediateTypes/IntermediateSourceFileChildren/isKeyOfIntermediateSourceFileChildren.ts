@@ -43,6 +43,7 @@ export function isKeyOfIntermediateSourceFileChildren(
     // to calculate this type for us ...
     const validChildren: HashMap<boolean> = {
         ClassDeclaration: true,
+        ExpressionStatement: true,
         FunctionDeclaration: true,
         ImportDeclaration: true,
         InterfaceDeclaration: true,
