@@ -92,7 +92,7 @@ export * from "./IntermediateRestrictableScope";
 export * from "./IntermediateRestrictableScopeItem";
 export * from "./IntermediateSourceFile";
 export * from "./IntermediateSourceFileChildren";
-export * from "./IntermediateSpreadOperator";
+export * from "./IntermediateSpreadElement";
 export * from "./IntermediateStaticable";
 export * from "./IntermediateStringLiteral";
 export * from "./IntermediateTupleType";

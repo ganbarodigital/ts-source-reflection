@@ -32,11 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 
-export interface IntermediateSpreadOperator
+export interface IntermediateSpreadElement
     extends IntermediateItem<IntermediateKind.IntermediateSpreadOperator>
 {
-
+    target: IntermediateExpression;
 }
