@@ -44,6 +44,7 @@ import {
     isNewExpression,
     isNumericLiteral,
     isObjectLiteralExpression,
+    isSpreadElement,
     isStringLiteral,
     isTypeAssertionExpression,
     PropertyAssignment,
@@ -61,6 +62,7 @@ import {
 import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
 import { processCallExpression } from "./processCallExpression";
 import { processFunctionExpression } from "./processFunctionExpression";
+import { processSpreadElement } from "./processSpreadElement";
 import { processTypeNode } from "./processTypeNode";
 
 export function processExpression(
@@ -161,6 +163,10 @@ export function processExpression(
             kind: IntermediateKind.IntermediateIdentifierReference,
             name: input.text,
         }
+    }
+
+    if (isSpreadElement(input)) {
+        return processSpreadElement(input);
     }
 
     // if we get here, we do not know how to process this variable
