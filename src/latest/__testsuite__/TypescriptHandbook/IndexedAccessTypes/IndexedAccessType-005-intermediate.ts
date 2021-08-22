@@ -72,7 +72,9 @@ const expectedResult: IntermediateSourceFile = {
                                         initializer: {
                                             kind: IntermediateKind.IntermediateNumericLiteral,
                                             value: "15",
-                                        }
+                                            asType: undefined,
+                                            typeAssertion: undefined,
+                                        },
                                     },
                                 ],
                                 typeAssertion: undefined,
@@ -97,7 +99,9 @@ const expectedResult: IntermediateSourceFile = {
                                         initializer: {
                                             kind: IntermediateKind.IntermediateNumericLiteral,
                                             value: "23",
-                                        }
+                                            asType: undefined,
+                                            typeAssertion: undefined,
+                                        },
                                     },
                                 ],
                                 typeAssertion: undefined,
@@ -122,7 +126,9 @@ const expectedResult: IntermediateSourceFile = {
                                         initializer: {
                                             kind: IntermediateKind.IntermediateNumericLiteral,
                                             value: "38",
-                                        }
+                                            asType: undefined,
+                                            typeAssertion: undefined,
+                                        },
                                     },
                                 ],
                                 typeAssertion: undefined,

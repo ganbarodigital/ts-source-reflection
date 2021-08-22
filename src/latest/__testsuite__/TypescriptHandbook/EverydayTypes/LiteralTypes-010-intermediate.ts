@@ -58,7 +58,9 @@ const expectedResult: IntermediateSourceFile = {
                                 propertyName: "counter",
                                 initializer: {
                                     kind: IntermediateKind.IntermediateNumericLiteral,
-                                    value: "0"
+                                    value: "0",
+                                    asType: undefined,
+                                    typeAssertion: undefined,
                                 },
                             }
                         ],

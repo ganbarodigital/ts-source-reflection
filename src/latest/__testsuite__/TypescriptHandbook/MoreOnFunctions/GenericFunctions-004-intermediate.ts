@@ -133,14 +133,20 @@ const expectedResult: IntermediateSourceFile = {
                                     {
                                         kind: IntermediateKind.IntermediateNumericLiteral,
                                         value: "1",
+                                        asType: undefined,
+                                        typeAssertion: undefined,
                                     },
                                     {
                                         kind: IntermediateKind.IntermediateNumericLiteral,
                                         value: "2",
+                                        asType: undefined,
+                                        typeAssertion: undefined,
                                     },
                                     {
                                         kind: IntermediateKind.IntermediateNumericLiteral,
                                         value: "3",
+                                        asType: undefined,
+                                        typeAssertion: undefined,
                                     },
                                 ],
                             },

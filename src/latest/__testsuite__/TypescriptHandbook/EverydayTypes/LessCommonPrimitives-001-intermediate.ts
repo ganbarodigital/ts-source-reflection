@@ -63,6 +63,8 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: '100',
+                                asType: undefined,
+                                typeAssertion: undefined,
                             }
                         ],
                         typeAssertion: undefined,

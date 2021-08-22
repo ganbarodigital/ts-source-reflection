@@ -79,6 +79,8 @@ export function processExpression(
         return {
             kind: IntermediateKind.IntermediateNumericLiteral,
             value: input.text,
+            asType: undefined,
+            typeAssertion: undefined,
         }
     }
     if (isStringLiteral(input)) {

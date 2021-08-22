@@ -34,9 +34,11 @@
 
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateTypeAssertable } from "../IntermediateTypeAssertable";
 
 export interface IntermediateNumericLiteral
-    extends IntermediateItem<IntermediateKind.IntermediateNumericLiteral>
+    extends IntermediateItem<IntermediateKind.IntermediateNumericLiteral>,
+        IntermediateTypeAssertable
 {
     value: string;
 }

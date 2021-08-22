@@ -111,10 +111,13 @@ const expectedResult: IntermediateSourceFile = {
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
+
                     },
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "4",
+                        asType: undefined,
+                        typeAssertion: undefined,
                     },
                 },
             ],

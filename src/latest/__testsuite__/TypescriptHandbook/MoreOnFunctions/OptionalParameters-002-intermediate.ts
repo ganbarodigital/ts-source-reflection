@@ -37,7 +37,7 @@ import {
     IntermediateSourceFile
 } from "../../../IntermediateTypes";
 
-const expectedResult: IntermediateSourceFile =  {
+const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateFunction,
@@ -53,6 +53,8 @@ const expectedResult: IntermediateSourceFile =  {
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "10",
+                        asType: undefined,
+                        typeAssertion: undefined,
                     },
                 },
             ],
