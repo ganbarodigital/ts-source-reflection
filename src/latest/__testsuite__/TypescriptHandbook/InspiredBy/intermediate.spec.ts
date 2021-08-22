@@ -35,6 +35,7 @@ import { HashMap, isObject } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import { expect } from "chai";
 import * as fs from "fs";
+import * as path from "path";
 import * as ts from "typescript";
 import * as fileExists from "file-exists";
 
@@ -95,13 +96,17 @@ localFiles.forEach((filename) => {
     }
 });
 
-describe("basic types intermediate processing", () => {
+const testSuiteName = path.basename(path.dirname(__dirname))
+    + "/"
+    + path.basename(__dirname);
+
+describe(testSuiteName + " intermediate processing", () => {
     for (const testdata of TEST_FILES) {
         it("parses " + testdata.sourceFile + " correctly", () => {
             // ----------------------------------------------------------------
             // setup your test
 
-            const inputFile = process.cwd() + "/src/latest/__testsuite__/TypescriptHandbook/BasicTypes/" + testdata.sourceFile;
+            const inputFile = __dirname + "/" + testdata.sourceFile;
             const sourceCode = fs.readFileSync(inputFile, 'utf-8');
             const sourceFile = ts.createSourceFile(inputFile, sourceCode, ts.ScriptTarget.Latest, true);
 
