@@ -72,8 +72,7 @@ import { processTypeNode } from "./processTypeNode";
 
 export function processExpression(
     input: Expression
-): IntermediateExpression
-{
+): IntermediateExpression {
     // we will refactor this later on
     if (isNumericLiteral(input)) {
         return {
@@ -139,6 +138,8 @@ export function processExpression(
         return {
             kind: IntermediateKind.IntermediateBooleanLiteral,
             value: "true",
+            asType: undefined,
+            typeAssertion: undefined,
         }
     }
 
@@ -146,6 +147,8 @@ export function processExpression(
         return {
             kind: IntermediateKind.IntermediateBooleanLiteral,
             value: "false",
+            asType: undefined,
+            typeAssertion: undefined,
         }
     }
 
@@ -192,20 +195,19 @@ export function processExpression(
 
     // if we get here, we do not know how to process this variable
     // tslint:disable-next-line: no-console
-    console.log(getClassNames(input), SyntaxKind[input.kind]);
+    console.log(getClassNames(input), SyntaxKind[ input.kind ]);
     throw new UnsupportedTypeError({
         public: {
             dataPath: DEFAULT_DATA_PATH,
             expected: "CallExpression",
-            actual: getClassNames(input)[0]
+            actual: getClassNames(input)[ 0 ]
         }
     });
 }
 
 function processPropertyAssignment(
     input: PropertyAssignment
-): IntermediatePropertyAssignment
-{
+): IntermediatePropertyAssignment {
     return {
         kind: IntermediateKind.IntermediatePropertyAssignment,
         propertyName: input.name.getText(),

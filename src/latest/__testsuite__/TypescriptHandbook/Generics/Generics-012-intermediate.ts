@@ -61,6 +61,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateBooleanLiteral,
                         value: "true",
+                        asType: undefined,
+                        typeAssertion: undefined,
                     },
                 },
             ],
