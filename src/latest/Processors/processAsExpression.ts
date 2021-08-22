@@ -32,14 +32,18 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateExpression } from "../IntermediateExpression";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { AsExpression } from "typescript";
+import { IntermediateAsExpression, IntermediateKind } from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
+import { processTypeNode } from "./processTypeNode";
 
-export interface IntermediateAsExpression
-    extends IntermediateItem<IntermediateKind.IntermediateAsExpression>
+export function processAsExpression(
+    input: AsExpression
+): IntermediateAsExpression
 {
-    target: IntermediateExpression;
-    typeRef: IntermediateTypeReference;
+    return {
+        kind: IntermediateKind.IntermediateAsExpression,
+        target: processExpression(input.expression),
+        typeRef: processTypeNode(input.type),
+    }
 }

@@ -62,6 +62,7 @@ import {
 } from "../IntermediateTypes";
 import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
 import { processArrowFunction } from "./processArrowFunction";
+import { processAsExpression } from "./processAsExpression";
 import { processCallExpression } from "./processCallExpression";
 import { processFunctionExpression } from "./processFunctionExpression";
 import { processPropertyAccessExpression } from "./processPropertyAccessExpression";
@@ -178,6 +179,10 @@ export function processExpression(
 
     if (isPropertyAccessExpression(input)) {
         return processPropertyAccessExpression(input);
+    }
+
+    if (isAsExpression(input)) {
+        return processAsExpression(input);
     }
 
     // if we get here, we do not know how to process this variable
