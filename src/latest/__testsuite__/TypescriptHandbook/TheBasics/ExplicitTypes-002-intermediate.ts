@@ -47,16 +47,26 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             parameters: [
                 {
-                    kind: IntermediateKind.IntermediateUntypedCallableParameter,
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
                     paramName: "person",
-                    initializer: undefined,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
+                    },
                     optional: false,
+                    readonly: false,
+                    initializer: undefined,
                 },
                 {
-                    kind: IntermediateKind.IntermediateUntypedCallableParameter,
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
                     paramName: "date",
-                    initializer: undefined,
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Date",
+                    },
                     optional: false,
+                    readonly: false,
+                    initializer: undefined,
                 },
             ],
             returnType: undefined,
