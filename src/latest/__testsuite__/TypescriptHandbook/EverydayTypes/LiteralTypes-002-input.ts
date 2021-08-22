@@ -1,0 +1,1 @@
+const constantString = "Hello World";
