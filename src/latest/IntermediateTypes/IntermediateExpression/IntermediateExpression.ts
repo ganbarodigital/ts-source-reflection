@@ -42,6 +42,7 @@ import { IntermediateIdentifierReference } from "../IntermediateIdentifierRefere
 import { IntermediateNewExpression } from "../IntermediateNewExpression";
 import { IntermediateNumericLiteral } from "../IntermediateNumericLiteral";
 import { IntermediateObjectLiteral } from "../IntermediateObjectLiteral";
+import { IntermediatePropertyAccessExpression } from "../IntermediatePropertyAccessExpression";
 import { IntermediateSpreadElement } from "../IntermediateSpreadElement";
 import { IntermediateStringLiteral } from "../IntermediateStringLiteral";
 
@@ -56,6 +57,7 @@ export type IntermediateExpression
       | IntermediateNewExpression
       | IntermediateNumericLiteral
       | IntermediateObjectLiteral
+      | IntermediatePropertyAccessExpression
       | IntermediateSpreadElement
       | IntermediateStringLiteral
       ;
