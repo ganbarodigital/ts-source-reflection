@@ -43,6 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
             declared: false,
+            exported: false,
             name: "firstElement1",
             typeParameters: [
                 {
@@ -75,6 +76,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
             declared: false,
+            exported: false,
             name: "firstElement2",
             typeParameters: [
                 {

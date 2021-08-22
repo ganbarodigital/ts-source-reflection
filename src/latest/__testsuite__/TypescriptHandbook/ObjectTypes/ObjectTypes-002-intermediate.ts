@@ -74,6 +74,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             declared: false,
             docBlock: undefined,
+            exported: false,
             name: "greet",
             typeParameters: [],
             parameters: [

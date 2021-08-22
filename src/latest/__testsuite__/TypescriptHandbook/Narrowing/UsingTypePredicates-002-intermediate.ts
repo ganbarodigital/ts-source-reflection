@@ -125,6 +125,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
             declared: false,
+            exported: false,
             name: "isFish",
             typeParameters: [],
             parameters: [
@@ -163,6 +164,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
             declared: false,
+            exported: false,
             name: "getSmallPet",
             typeParameters: [],
             parameters: [],

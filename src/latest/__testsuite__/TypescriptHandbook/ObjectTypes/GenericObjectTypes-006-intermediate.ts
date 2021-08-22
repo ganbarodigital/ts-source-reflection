@@ -71,6 +71,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
             declared: false,
+            exported: false,
             name: "setContents",
             typeParameters: [
                 {

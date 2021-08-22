@@ -71,6 +71,7 @@ export const processFunctionDeclaration: StatementProcessor = (
         kind: IntermediateKind.IntermediateFunction,
         docBlock: processDocBlock(input),
         declared: AST.hasDeclaredModifier(input.modifiers),
+        exported: AST.hasExportModifier(input.modifiers),
         typeParameters: typeParameters,
         name: funcDec.name?.text,
         parameters: processFunctionParameters(funcDec.parameters),

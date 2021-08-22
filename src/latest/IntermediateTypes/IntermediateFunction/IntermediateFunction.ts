@@ -40,12 +40,14 @@ import {
 } from "..";
 import { IntermediateDeclarable } from "../IntermediateDeclarable";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
+import { IntermediateExportableItem } from "../IntermediateExportableItem";
 
 export interface IntermediateFunction
     extends IntermediateItem<IntermediateKind.IntermediateFunction>,
         IntermediateCallable,
         IntermediateDocumentedItem,
-        IntermediateDeclarable
+        IntermediateDeclarable,
+        IntermediateExportableItem
 {
     kind: IntermediateKind.IntermediateFunction;
     name: Maybe<string>;
