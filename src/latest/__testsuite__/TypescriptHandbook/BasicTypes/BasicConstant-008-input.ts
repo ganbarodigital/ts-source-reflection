@@ -1,1 +1,0 @@
-const zoo: (Fish | Bird)[] = [getSmallPet(), getSmallPet(), getSmallPet()];
