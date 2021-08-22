@@ -37,7 +37,7 @@ import {
     IntermediateSourceFile
 } from "../../../IntermediateTypes";
 
-const expectedResult: IntermediateSourceFile =  {
+const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateFunction,
@@ -105,7 +105,10 @@ const expectedResult: IntermediateSourceFile =  {
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        target: "combine",
+                        target: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "combine",
+                        },
                         typeArguments: [
                             {
                                 kind: IntermediateKind.IntermediateUnionType,

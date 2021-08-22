@@ -45,6 +45,7 @@ import {
     isNewExpression,
     isNumericLiteral,
     isObjectLiteralExpression,
+    isPropertyAccessExpression,
     isSpreadElement,
     isStringLiteral,
     isTypeAssertionExpression,
@@ -52,7 +53,6 @@ import {
     SyntaxKind
 } from "typescript";
 import * as AST from "../AST";
-import { mustBePropertyAssignment } from "../AST";
 import {
     IntermediateExpression,
     IntermediateKind,
@@ -64,6 +64,7 @@ import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
 import { processArrowFunction } from "./processArrowFunction";
 import { processCallExpression } from "./processCallExpression";
 import { processFunctionExpression } from "./processFunctionExpression";
+import { processPropertyAccessExpression } from "./processPropertyAccessExpression";
 import { processSpreadElement } from "./processSpreadElement";
 import { processTypeNode } from "./processTypeNode";
 
@@ -100,7 +101,7 @@ export function processExpression(
         }
 
         for (const member of input.properties) {
-            const propAssignment = mustBePropertyAssignment(member);
+            const propAssignment = AST.mustBePropertyAssignment(member);
             retval.properties.push(processPropertyAssignment(propAssignment));
         }
 
@@ -173,6 +174,10 @@ export function processExpression(
 
     if (isArrowFunction(input)) {
         return processArrowFunction(input);
+    }
+
+    if (isPropertyAccessExpression(input)) {
+        return processPropertyAccessExpression(input);
     }
 
     // if we get here, we do not know how to process this variable

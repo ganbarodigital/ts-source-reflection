@@ -52,7 +52,10 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        target: "BigInt",
+                        target: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "BigInt",
+                        },
                         typeArguments: [],
                         arguments: [
                             {

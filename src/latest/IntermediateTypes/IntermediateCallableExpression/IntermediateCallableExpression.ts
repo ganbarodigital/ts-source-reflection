@@ -33,6 +33,7 @@
 //
 
 import { IntermediateArgument } from "../IntermediateArgument";
+import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateTypeAssertable } from "../IntermediateTypeAssertable";
@@ -43,7 +44,7 @@ export interface IntermediateCallableExpression
     extends IntermediateItem<IntermediateKind.IntermediateCallableExpression>,
         IntermediateTypeAssertable
 {
-    target: string;
+    target: IntermediateExpression;
     typeArguments: IntermediateTypeReference[];
     arguments: IntermediateArgument[];
 }

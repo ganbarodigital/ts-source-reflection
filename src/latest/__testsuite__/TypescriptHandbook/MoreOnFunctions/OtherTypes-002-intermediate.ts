@@ -78,7 +78,10 @@ const expectedResult: IntermediateSourceFile = {
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        target: "safeParse",
+                        target: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "safeParse",
+                        },
                         typeArguments: [],
                         arguments: [
                             {

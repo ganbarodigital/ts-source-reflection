@@ -52,7 +52,10 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        target: "Symbol",
+                        target: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "Symbol",
+                        },
                         typeArguments: [],
                         arguments: [
                             {
@@ -82,7 +85,10 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        target: "Symbol",
+                        target: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "Symbol",
+                        },
                         typeArguments: [],
                         arguments: [
                             {

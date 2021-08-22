@@ -197,7 +197,10 @@ const expectedResult: IntermediateSourceFile = {
                         elements: [
                             {
                                 kind: IntermediateKind.IntermediateCallableExpression,
-                                target: "getSmallPet",
+                                target: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "getSmallPet",
+                                },
                                 typeArguments: [],
                                 arguments: [],
                                 typeAssertion: undefined,
@@ -205,7 +208,10 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateCallableExpression,
-                                target: "getSmallPet",
+                                target: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "getSmallPet",
+                                },
                                 typeArguments: [],
                                 arguments: [],
                                 typeAssertion: undefined,
@@ -213,7 +219,10 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateCallableExpression,
-                                target: "getSmallPet",
+                                target: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "getSmallPet",
+                                },
                                 typeArguments: [],
                                 arguments: [],
                                 typeAssertion: undefined,
@@ -263,7 +272,14 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        target: "zoo.filter",
+                        target: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "zoo",
+                            },
+                            propName: "filter",
+                        },
                         typeArguments: [],
                         arguments: [
                             {
@@ -297,7 +313,14 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        target: "zoo.filter",
+                        target: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "zoo",
+                            },
+                            propName: "filter",
+                        },
                         typeArguments: [],
                         arguments: [
                             {
@@ -337,7 +360,14 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        target: "zoo.filter",
+                        target: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "zoo",
+                            },
+                            propName: "filter",
+                        },
                         typeArguments: [],
                         arguments: [
                             {

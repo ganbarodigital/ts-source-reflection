@@ -47,7 +47,7 @@ export function processCallExpression(
     // our return value
     const retval: IntermediateCallableExpression = {
         kind: IntermediateKind.IntermediateCallableExpression,
-        target: input.expression.getText(),
+        target: processExpression(input.expression),
         typeArguments: [],
         arguments: [],
         asType: undefined,

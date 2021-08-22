@@ -52,7 +52,14 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        target: "document.getElementById",
+                        target: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "document",
+                            },
+                            propName: "getElementById",
+                        },
                         typeArguments: [],
                         arguments: [
                             {

@@ -105,7 +105,14 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateCallableExpression,
-            target: "arr1.push",
+            target: {
+                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                target: {
+                    kind: IntermediateKind.IntermediateIdentifierReference,
+                    name: "arr1",
+                },
+                propName: "push",
+            },
             typeArguments: [],
             arguments: [
                 {

@@ -109,7 +109,10 @@ const expectedResult: IntermediateSourceFile = {
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        target: "getDB",
+                        target: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "getDB",
+                        },
                         typeArguments: [],
                         arguments: [],
                         typeAssertion: undefined,
@@ -132,7 +135,14 @@ const expectedResult: IntermediateSourceFile = {
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallableExpression,
-                        target: "db.filterUsers",
+                        target: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "db",
+                            },
+                            propName: "filterUsers",
+                        },
                         typeArguments: [],
                         arguments: [
                             {
