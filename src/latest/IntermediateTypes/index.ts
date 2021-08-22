@@ -85,6 +85,7 @@ export * from "./IntermediateNumericLiteral";
 export * from "./IntermediateObjectBindingElement";
 export * from "./IntermediateObjectBindingParameter";
 export * from "./IntermediateObjectLiteral";
+export * from "./IntermediateParenthesizedExpression";
 export * from "./IntermediateParenthesizedType";
 export * from "./IntermediatePropertyAccessExpression";
 export * from "./IntermediatePropertyAssignment";
