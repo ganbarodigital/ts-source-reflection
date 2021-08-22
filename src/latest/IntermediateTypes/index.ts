@@ -38,6 +38,7 @@ export * from "./IntermediateArgument";
 export * from "./IntermediateArrayLiteralExpression";
 export * from "./IntermediateArrayTypeReference";
 export * from "./IntermediateArrowFunction";
+export * from "./IntermediateAsExpression";
 export * from "./IntermediateBigintLiteral";
 export * from "./IntermediateBooleanLiteral";
 export * from "./IntermediateBuiltInTypeReference";
