@@ -33,7 +33,6 @@
 //
 
 export enum IntermediateKind {
-    IntermediateCallableExpression,
     IntermediateAnonymousCallableParameter,
     IntermediateAnonymousClassType,
     IntermediateArrayLiteralExpression,
@@ -46,6 +45,7 @@ export enum IntermediateKind {
     // so this may disappear in the future!
     IntermediateBuiltInTypeReference,
     IntermediateCallSignature,
+    IntermediateCallableExpression,
     IntermediateClass,
     IntermediateConditionalType,
     IntermediateConstTypeCast,
