@@ -77,6 +77,7 @@ export enum IntermediateKind {
     IntermediateObjectBindingParameter,
     IntermediateObjectLiteral,
     IntermediateParenthesizedType,
+    IntermediatePropertyAccessExpression,
     IntermediatePropertyAssignment,
     IntermediateReference,
     IntermediateRestType,
