@@ -32,12 +32,16 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateExpression } from "../IntermediateExpression";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
+import { ParenthesizedExpression } from "typescript";
+import { IntermediateKind, IntermediateParenthesizedExpression } from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
 
-export interface IntermediateParenthesizedExpression
-    extends IntermediateItem<IntermediateKind.IntermediateParenthesizedExpression>
+export function processParenthesizedExpression(
+    input: ParenthesizedExpression
+): IntermediateParenthesizedExpression
 {
-    expression: IntermediateExpression;
+    return {
+        kind: IntermediateKind.IntermediateParenthesizedExpression,
+        expression: processExpression(input.expression),
+    }
 }

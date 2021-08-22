@@ -45,6 +45,7 @@ import {
     isNewExpression,
     isNumericLiteral,
     isObjectLiteralExpression,
+    isParenthesizedExpression,
     isPropertyAccessExpression,
     isSpreadElement,
     isStringLiteral,
@@ -65,6 +66,7 @@ import { processArrowFunction } from "./processArrowFunction";
 import { processAsExpression } from "./processAsExpression";
 import { processCallExpression } from "./processCallExpression";
 import { processFunctionExpression } from "./processFunctionExpression";
+import { processParenthesizedExpression } from "./processParenthesizedExpression";
 import { processPropertyAccessExpression } from "./processPropertyAccessExpression";
 import { processSpreadElement } from "./processSpreadElement";
 import { processTypeNode } from "./processTypeNode";
@@ -183,6 +185,10 @@ export function processExpression(
 
     if (isAsExpression(input)) {
         return processAsExpression(input);
+    }
+
+    if (isParenthesizedExpression(input)) {
+        return processParenthesizedExpression(input);
     }
 
     // if we get here, we do not know how to process this variable
