@@ -43,5 +43,7 @@ export function processParenthesizedExpression(
     return {
         kind: IntermediateKind.IntermediateParenthesizedExpression,
         expression: processExpression(input.expression),
+        asType: undefined,
+        typeAssertion: undefined,
     }
 }

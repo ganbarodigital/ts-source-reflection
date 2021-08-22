@@ -35,9 +35,11 @@
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateTypeAssertable } from "../IntermediateTypeAssertable";
 
 export interface IntermediateParenthesizedExpression
-    extends IntermediateItem<IntermediateKind.IntermediateParenthesizedExpression>
+    extends IntermediateItem<IntermediateKind.IntermediateParenthesizedExpression>,
+        IntermediateTypeAssertable
 {
     expression: IntermediateExpression;
 }

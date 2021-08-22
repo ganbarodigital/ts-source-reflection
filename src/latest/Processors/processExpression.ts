@@ -168,6 +168,8 @@ export function processExpression(
         return {
             kind: IntermediateKind.IntermediateIdentifierReference,
             name: input.text,
+            asType: undefined,
+            typeAssertion: undefined,
         }
     }
 
