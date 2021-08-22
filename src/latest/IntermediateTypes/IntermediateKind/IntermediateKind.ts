@@ -35,7 +35,7 @@
 export enum IntermediateKind {
     IntermediateAnonymousCallableParameter,
     IntermediateAnonymousClassType,
-    IntermediateArrayLiteralExpression,
+    IntermediateArrayLiteral,
     IntermediateArrayTypeReference,
     IntermediateArrowFunction,
     IntermediateBigintLiteral,

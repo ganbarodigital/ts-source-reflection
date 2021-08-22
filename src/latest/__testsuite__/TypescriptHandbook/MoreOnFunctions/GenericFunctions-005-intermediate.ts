@@ -129,7 +129,7 @@ const expectedResult: IntermediateSourceFile = {
                         typeArguments: [],
                         arguments: [
                             {
-                                kind: IntermediateKind.IntermediateArrayLiteralExpression,
+                                kind: IntermediateKind.IntermediateArrayLiteral,
                                 elements: [
                                     {
                                         kind: IntermediateKind.IntermediateNumericLiteral,
@@ -183,7 +183,7 @@ const expectedResult: IntermediateSourceFile = {
                         typeArguments: [],
                         arguments: [
                             {
-                                kind: IntermediateKind.IntermediateArrayLiteralExpression,
+                                kind: IntermediateKind.IntermediateArrayLiteral,
                                 elements: [
                                     {
                                         kind: IntermediateKind.IntermediateNumericLiteral,

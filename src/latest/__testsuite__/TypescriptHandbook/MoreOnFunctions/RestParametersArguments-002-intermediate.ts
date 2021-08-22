@@ -52,7 +52,7 @@ const expectedResult: IntermediateSourceFile = {
                     readonly: false,
                     typeRef: undefined,
                     initializer: {
-                        kind: IntermediateKind.IntermediateArrayLiteralExpression,
+                        kind: IntermediateKind.IntermediateArrayLiteral,
                         elements: [
                             {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
@@ -92,7 +92,7 @@ const expectedResult: IntermediateSourceFile = {
                     readonly: false,
                     typeRef: undefined,
                     initializer: {
-                        kind: IntermediateKind.IntermediateArrayLiteralExpression,
+                        kind: IntermediateKind.IntermediateArrayLiteral,
                         elements: [
                             {
                                 kind: IntermediateKind.IntermediateNumericLiteral,

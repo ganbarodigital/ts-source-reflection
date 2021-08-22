@@ -33,16 +33,16 @@
 //
 
 import { ArrayLiteralExpression } from "typescript";
-import { IntermediateArrayLiteralExpression, IntermediateKind } from "../IntermediateTypes";
+import { IntermediateArrayLiteral, IntermediateKind } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 
 export function processArrayLiteralExpression(
     input: ArrayLiteralExpression
-): IntermediateArrayLiteralExpression
+): IntermediateArrayLiteral
 {
     // our return value
-    const retval: IntermediateArrayLiteralExpression = {
-        kind: IntermediateKind.IntermediateArrayLiteralExpression,
+    const retval: IntermediateArrayLiteral = {
+        kind: IntermediateKind.IntermediateArrayLiteral,
         elements: [],
         asType: undefined,
         typeAssertion: undefined,

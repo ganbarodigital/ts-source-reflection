@@ -51,7 +51,7 @@ const expectedResult: IntermediateSourceFile = {
                     readonly: true,
                     docBlock: undefined,
                     initializer: {
-                        kind: IntermediateKind.IntermediateArrayLiteralExpression,
+                        kind: IntermediateKind.IntermediateArrayLiteral,
                         elements: [],
                         asType: undefined,
                         typeAssertion: undefined,

@@ -51,7 +51,7 @@ const expectedResult: IntermediateSourceFile = {
                     readonly: false,
                     variableName: "MyArray",
                     initializer: {
-                        kind: IntermediateKind.IntermediateArrayLiteralExpression,
+                        kind: IntermediateKind.IntermediateArrayLiteral,
                         elements: [
                             {
                                 kind: IntermediateKind.IntermediateObjectLiteral,

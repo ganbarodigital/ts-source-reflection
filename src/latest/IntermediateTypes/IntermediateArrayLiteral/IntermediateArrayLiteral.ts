@@ -32,4 +32,14 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateArrayLiteralExpression";
+import { IntermediateExpression } from "../IntermediateExpression";
+import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateTypeAssertable } from "../IntermediateTypeAssertable";
+
+export interface IntermediateArrayLiteral
+    extends IntermediateItem<IntermediateKind.IntermediateArrayLiteral>,
+        IntermediateTypeAssertable
+{
+    elements: IntermediateExpression[];
+}

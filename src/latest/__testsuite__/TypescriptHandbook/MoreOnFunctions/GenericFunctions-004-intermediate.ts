@@ -128,7 +128,7 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                         arguments: [
                             {
-                                kind: IntermediateKind.IntermediateArrayLiteralExpression,
+                                kind: IntermediateKind.IntermediateArrayLiteral,
                                 elements: [
                                     {
                                         kind: IntermediateKind.IntermediateNumericLiteral,
@@ -153,7 +153,7 @@ const expectedResult: IntermediateSourceFile = {
                                 typeAssertion: undefined,
                             },
                             {
-                                kind: IntermediateKind.IntermediateArrayLiteralExpression,
+                                kind: IntermediateKind.IntermediateArrayLiteral,
                                 elements: [
                                     {
                                         kind: IntermediateKind.IntermediateStringLiteral,

@@ -52,7 +52,7 @@ const expectedResult: IntermediateSourceFile = {
                     constant: true,
                     typeRef: undefined,
                     initializer: {
-                        kind: IntermediateKind.IntermediateArrayLiteralExpression,
+                        kind: IntermediateKind.IntermediateArrayLiteral,
                         elements: [
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
