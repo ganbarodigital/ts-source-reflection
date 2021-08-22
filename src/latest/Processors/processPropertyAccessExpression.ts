@@ -32,13 +32,17 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateExpression } from "../IntermediateExpression";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
+import { PropertyAccessExpression } from "typescript";
+import { IntermediateKind, IntermediatePropertyAccessExpression } from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
 
-export interface IntermediatePropertyAccessExpression
-    extends IntermediateItem<IntermediateKind.IntermediatePropertyAccessExpression>
+export function processPropertyAccessExpression(
+    input: PropertyAccessExpression
+): IntermediatePropertyAccessExpression
 {
-    target: IntermediateExpression;
-    propName: string;
+    return {
+        kind: IntermediateKind.IntermediatePropertyAccessExpression,
+        target: processExpression(input.expression),
+        propName: input.name.text,
+    }
 }
