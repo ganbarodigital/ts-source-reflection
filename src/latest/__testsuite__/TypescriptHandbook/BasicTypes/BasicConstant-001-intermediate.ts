@@ -57,6 +57,8 @@ const expectedResult: IntermediateSourceFile = {
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "document",
+                                asType: undefined,
+                                typeAssertion: undefined,
                             },
                             propName: "getElementById",
                         },

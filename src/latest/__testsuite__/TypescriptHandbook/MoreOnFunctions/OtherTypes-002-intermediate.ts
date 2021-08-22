@@ -81,6 +81,8 @@ const expectedResult: IntermediateSourceFile = {
                         target: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "safeParse",
+                            asType: undefined,
+                            typeAssertion: undefined,
                         },
                         typeArguments: [],
                         arguments: [

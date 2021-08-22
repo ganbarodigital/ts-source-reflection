@@ -55,6 +55,8 @@ const expectedResult: IntermediateSourceFile = {
                         target: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Symbol",
+                            asType: undefined,
+                            typeAssertion: undefined,
                         },
                         typeArguments: [],
                         arguments: [
@@ -88,6 +90,8 @@ const expectedResult: IntermediateSourceFile = {
                         target: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Symbol",
+                            asType: undefined,
+                            typeAssertion: undefined,
                         },
                         typeArguments: [],
                         arguments: [

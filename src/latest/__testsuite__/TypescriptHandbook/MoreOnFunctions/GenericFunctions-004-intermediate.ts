@@ -108,6 +108,8 @@ const expectedResult: IntermediateSourceFile = {
                         target: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "combine",
+                            asType: undefined,
+                            typeAssertion: undefined,
                         },
                         typeArguments: [
                             {

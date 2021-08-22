@@ -123,6 +123,8 @@ const expectedResult: IntermediateSourceFile = {
                         target: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "firstElement1",
+                            asType: undefined,
+                            typeAssertion: undefined,
                         },
                         typeArguments: [],
                         arguments: [
@@ -167,6 +169,8 @@ const expectedResult: IntermediateSourceFile = {
                         target: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "firstElement2",
+                            asType: undefined,
+                            typeAssertion: undefined,
                         },
                         typeArguments: [],
                         arguments: [

@@ -118,6 +118,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "identity",
+                        asType: undefined,
+                        typeAssertion: undefined,
                     },
                 },
             ],

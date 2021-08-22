@@ -110,6 +110,8 @@ const expectedResult: IntermediateSourceFile = {
                 target: {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "arr1",
+                    asType: undefined,
+                    typeAssertion: undefined,
                 },
                 propName: "push",
             },
@@ -120,6 +122,8 @@ const expectedResult: IntermediateSourceFile = {
                     target: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "arr2",
+                        asType: undefined,
+                        typeAssertion: undefined,
                     },
                 },
             ],

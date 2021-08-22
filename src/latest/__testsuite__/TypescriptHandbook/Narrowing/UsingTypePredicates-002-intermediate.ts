@@ -200,6 +200,8 @@ const expectedResult: IntermediateSourceFile = {
                                 target: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "getSmallPet",
+                                    asType: undefined,
+                                    typeAssertion: undefined,
                                 },
                                 typeArguments: [],
                                 arguments: [],
@@ -211,6 +213,8 @@ const expectedResult: IntermediateSourceFile = {
                                 target: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "getSmallPet",
+                                    asType: undefined,
+                                    typeAssertion: undefined,
                                 },
                                 typeArguments: [],
                                 arguments: [],
@@ -222,6 +226,8 @@ const expectedResult: IntermediateSourceFile = {
                                 target: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "getSmallPet",
+                                    asType: undefined,
+                                    typeAssertion: undefined,
                                 },
                                 typeArguments: [],
                                 arguments: [],
@@ -277,6 +283,8 @@ const expectedResult: IntermediateSourceFile = {
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "zoo",
+                                asType: undefined,
+                                typeAssertion: undefined,
                             },
                             propName: "filter",
                         },
@@ -285,6 +293,8 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "isFish",
+                                asType: undefined,
+                                typeAssertion: undefined,
                             },
                         ],
                         typeAssertion: undefined,
@@ -318,6 +328,8 @@ const expectedResult: IntermediateSourceFile = {
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "zoo",
+                                asType: undefined,
+                                typeAssertion: undefined,
                             },
                             propName: "filter",
                         },
@@ -326,6 +338,8 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "isFish",
+                                asType: undefined,
+                                typeAssertion: undefined,
                             },
                         ],
                         typeAssertion: undefined,
@@ -365,6 +379,8 @@ const expectedResult: IntermediateSourceFile = {
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "zoo",
+                                asType: undefined,
+                                typeAssertion: undefined,
                             },
                             propName: "filter",
                         },

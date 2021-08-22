@@ -112,6 +112,8 @@ const expectedResult: IntermediateSourceFile = {
                         target: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "getDB",
+                            asType: undefined,
+                            typeAssertion: undefined,
                         },
                         typeArguments: [],
                         arguments: [],
@@ -140,6 +142,8 @@ const expectedResult: IntermediateSourceFile = {
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "db",
+                                asType: undefined,
+                                typeAssertion: undefined,
                             },
                             propName: "filterUsers",
                         },

@@ -55,6 +55,8 @@ const expectedResult: IntermediateSourceFile = {
                         target: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "BigInt",
+                            asType: undefined,
+                            typeAssertion: undefined,
                         },
                         typeArguments: [],
                         arguments: [
