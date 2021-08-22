@@ -63,7 +63,6 @@ import {
 } from "../IntermediateTypes";
 import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
 import { processArrowFunction } from "./processArrowFunction";
-import { processAsExpression } from "./processAsExpression";
 import { processCallExpression } from "./processCallExpression";
 import { processFunctionExpression } from "./processFunctionExpression";
 import { processParenthesizedExpression } from "./processParenthesizedExpression";
@@ -183,10 +182,6 @@ export function processExpression(
 
     if (isPropertyAccessExpression(input)) {
         return processPropertyAccessExpression(input);
-    }
-
-    if (isAsExpression(input)) {
-        return processAsExpression(input);
     }
 
     if (isParenthesizedExpression(input)) {
