@@ -70,6 +70,28 @@ const expectedResult: IntermediateSourceFile = {
                 },
             ],
         },
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            docBlock: undefined,
+            declared: false,
+            name: "printCoord",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    paramName: "pt",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Point",
+                    },
+                    optional: false,
+                    readonly: false,
+                    initializer: undefined,
+                },
+            ],
+            returnType: undefined,
+            hasBody: true,
+        },
     ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
