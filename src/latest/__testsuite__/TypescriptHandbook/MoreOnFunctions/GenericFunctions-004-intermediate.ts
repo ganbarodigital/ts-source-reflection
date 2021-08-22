@@ -149,6 +149,8 @@ const expectedResult: IntermediateSourceFile = {
                                         typeAssertion: undefined,
                                     },
                                 ],
+                                asType: undefined,
+                                typeAssertion: undefined,
                             },
                             {
                                 kind: IntermediateKind.IntermediateArrayLiteralExpression,
@@ -160,6 +162,8 @@ const expectedResult: IntermediateSourceFile = {
                                         typeAssertion: undefined,
                                     },
                                 ],
+                                asType: undefined,
+                                typeAssertion: undefined,
                             },
                         ],
                         asType: undefined,

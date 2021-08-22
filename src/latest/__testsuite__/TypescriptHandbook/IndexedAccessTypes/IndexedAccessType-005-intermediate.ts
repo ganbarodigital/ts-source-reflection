@@ -135,6 +135,8 @@ const expectedResult: IntermediateSourceFile = {
                                 asType: undefined,
                             },
                         ],
+                        asType: undefined,
+                        typeAssertion: undefined,
                     },
                     typeRef: undefined,
                 },

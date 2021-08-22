@@ -235,6 +235,8 @@ const expectedResult: IntermediateSourceFile = {
                                 asType: undefined,
                             },
                         ],
+                        asType: undefined,
+                        typeAssertion: undefined,
                     },
                     typeRef: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,

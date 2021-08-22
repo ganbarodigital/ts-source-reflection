@@ -53,6 +53,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateArrayLiteralExpression,
                         elements: [],
+                        asType: undefined,
+                        typeAssertion: undefined,
                     },
                     typeRef: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,

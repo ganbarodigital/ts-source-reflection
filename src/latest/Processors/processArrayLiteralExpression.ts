@@ -44,6 +44,8 @@ export function processArrayLiteralExpression(
     const retval: IntermediateArrayLiteralExpression = {
         kind: IntermediateKind.IntermediateArrayLiteralExpression,
         elements: [],
+        asType: undefined,
+        typeAssertion: undefined,
     }
 
     for(const element of input.elements) {
