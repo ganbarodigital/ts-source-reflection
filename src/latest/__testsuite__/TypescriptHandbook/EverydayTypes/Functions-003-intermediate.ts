@@ -84,6 +84,8 @@ const expectedResult: IntermediateSourceFile = {
                 target: {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "names",
+                    asType: undefined,
+                    typeAssertion: undefined,
                 },
                 propName: "forEach",
             },
