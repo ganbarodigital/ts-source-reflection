@@ -34,7 +34,7 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { MappedTypeNode } from "typescript";
-import { IntermediateKind, IntermediateMappedType, IntermediateTypeReference } from "../IntermediateTypes";
+import { IntermediateKind, IntermediateMappedType, IntermediateMappingModifier, IntermediateTypeReference } from "../IntermediateTypes";
 import { processTypeNode } from "./processTypeNode";
 
 export function processMappedType(
@@ -59,6 +59,10 @@ export function processMappedType(
         index: {
             indexName,
             constraint,
+            mappingModifiers: {
+                readonly: IntermediateMappingModifier.NO_CHANGE,
+                optional: IntermediateMappingModifier.NO_CHANGE,
+            }
         },
         value: {
             valueTypeRef,

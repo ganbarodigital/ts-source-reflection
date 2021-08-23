@@ -34,6 +34,7 @@
 
 import {
     IntermediateKind,
+    IntermediateMappingModifier,
     IntermediateSourceFile
 } from "../../../IntermediateTypes";
 
@@ -60,6 +61,10 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             typeName: "Type",
                         },
+                    },
+                    mappingModifiers: {
+                        readonly: IntermediateMappingModifier.NO_CHANGE,
+                        optional: IntermediateMappingModifier.NO_CHANGE,
                     },
                 },
                 value: {

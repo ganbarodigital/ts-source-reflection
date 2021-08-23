@@ -35,6 +35,7 @@
 import { Maybe } from "@safelytyped/core-types";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateMappingModifier } from "../IntermediateMappingModifier";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 /**
@@ -48,6 +49,10 @@ export interface IntermediateMappedType
     index: {
         indexName: string;
         constraint: IntermediateTypeReference;
+        mappingModifiers: {
+            readonly: IntermediateMappingModifier;
+            optional: IntermediateMappingModifier;
+        }
     }
 
     value: {
