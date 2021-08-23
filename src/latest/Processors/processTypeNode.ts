@@ -41,6 +41,7 @@ import {
     isInferTypeNode,
     isIntersectionTypeNode,
     isLiteralTypeNode,
+    isMappedTypeNode,
     isParenthesizedTypeNode,
     isRestTypeNode,
     isTupleTypeNode,
@@ -69,6 +70,7 @@ import { processIndexedAccessType } from "./processIndexedAccessType";
 import { processInferType } from "./processInferType";
 import { processIntersectionNode } from "./processIntersectionNode";
 import { processLiteralTypeNode } from "./processLiteralTypeNode";
+import { processMappedType } from "./processMappedType";
 import { processParenthesizedType } from "./processParenthesisedType";
 import { processTupleType } from "./processTupleType";
 import { processTypeParameters } from "./processTypeParameters";
@@ -184,6 +186,11 @@ export function processTypeNode
     // special case - infer type
     if (isInferTypeNode(input)) {
         return processInferType(input);
+    }
+
+    // special case - mapped type
+    if (isMappedTypeNode(input)) {
+        return processMappedType(input);
     }
 
     // generic case
