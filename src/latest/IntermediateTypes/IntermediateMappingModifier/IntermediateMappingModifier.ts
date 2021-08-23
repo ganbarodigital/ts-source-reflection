@@ -33,7 +33,6 @@
 //
 
 export enum IntermediateMappingModifier {
-    NO_CHANGE,
     REMOVE,
     ADD
 }

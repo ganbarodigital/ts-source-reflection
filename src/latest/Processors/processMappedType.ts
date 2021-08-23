@@ -33,8 +33,20 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { MappedTypeNode } from "typescript";
-import { IntermediateKind, IntermediateMappedType, IntermediateMappingModifier, IntermediateTypeReference } from "../IntermediateTypes";
+import {
+    MappedTypeNode,
+    MinusToken,
+    PlusToken,
+    QuestionToken,
+    ReadonlyToken,
+    SyntaxKind
+} from "typescript";
+import {
+    IntermediateKind,
+    IntermediateMappedType,
+    IntermediateMappingModifier,
+    IntermediateTypeReference
+} from "../IntermediateTypes";
 import { processTypeNode } from "./processTypeNode";
 
 export function processMappedType(
@@ -60,12 +72,35 @@ export function processMappedType(
             indexName,
             constraint,
             mappingModifiers: {
-                readonly: IntermediateMappingModifier.NO_CHANGE,
-                optional: IntermediateMappingModifier.NO_CHANGE,
+                readonly: processMappingModifier(input.readonlyToken),
+                optional: processMappingModifier(input.questionToken),
             }
         },
         value: {
             valueTypeRef,
         }
+    }
+}
+
+function processMappingModifier(
+    input: ReadonlyToken | MinusToken | PlusToken | QuestionToken | undefined
+): Maybe<IntermediateMappingModifier>
+{
+    // special case - no modifier set
+    if (!input) {
+        return undefined;
+    }
+
+    switch (input.kind) {
+        case SyntaxKind.MinusToken:
+            return IntermediateMappingModifier.REMOVE;
+        case SyntaxKind.PlusToken:
+            return IntermediateMappingModifier.ADD;
+        case SyntaxKind.ReadonlyKeyword:
+        case SyntaxKind.QuestionToken:
+            return undefined;
+        default:
+            const _exhaustiveCheck: never = input;
+            return _exhaustiveCheck;
     }
 }

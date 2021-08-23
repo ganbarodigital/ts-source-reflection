@@ -50,8 +50,8 @@ export interface IntermediateMappedType
         indexName: string;
         constraint: IntermediateTypeReference;
         mappingModifiers: {
-            readonly: IntermediateMappingModifier;
-            optional: IntermediateMappingModifier;
+            readonly: Maybe<IntermediateMappingModifier>;
+            optional: Maybe<IntermediateMappingModifier>;
         }
     }
 

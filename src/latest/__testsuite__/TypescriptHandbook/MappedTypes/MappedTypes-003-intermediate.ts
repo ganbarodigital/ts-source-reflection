@@ -33,14 +33,16 @@
 //
 
 import {
-    IntermediateKind, IntermediateSourceFile
+    IntermediateKind,
+    IntermediateMappingModifier,
+    IntermediateSourceFile
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "OptionsFlags",
+            typeName: "CreateMutable",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -61,53 +63,50 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     },
                     mappingModifiers: {
-                        readonly: undefined,
+                        readonly: IntermediateMappingModifier.REMOVE,
                         optional: undefined,
                     },
                 },
                 value: {
                     valueTypeRef: {
-                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                        typeName: "boolean",
+                        kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
+                        indexRef: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "Property",
+                        },
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "Type",
+                        },
                     },
                 },
             },
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "FeatureFlags",
+            typeName: "LockedAccount",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "darkMode",
+                        propName: "id",
                         propIsOptional: false,
-                        propIsReadonly: false,
+                        propIsReadonly: true,
                         typeRef: {
-                            kind: IntermediateKind.IntermediateFunctionTypeSignature,
-                            typeParameters: [],
-                            parameters: [],
-                            returnType: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "void",
-                            },
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "string",
                         },
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "newUserProfile",
+                        propName: "name",
                         propIsOptional: false,
-                        propIsReadonly: false,
+                        propIsReadonly: true,
                         typeRef: {
-                            kind: IntermediateKind.IntermediateFunctionTypeSignature,
-                            typeParameters: [],
-                            parameters: [],
-                            returnType: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "void",
-                            },
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "string",
                         },
                     },
                 ],
@@ -115,15 +114,15 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "FeatureOptions",
+            typeName: "UnlockedAccount",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
-                typeName: "OptionsFlags",
+                typeName: "CreateMutable",
                 typeArguments: [
                     {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
-                        typeName: "FeatureFlags",
+                        typeName: "LockedAccount",
                     },
                 ],
             },
