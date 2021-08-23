@@ -33,24 +33,35 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { MappedTypeNode } from "typescript";
+import { IntermediateKind, IntermediateMappedType, IntermediateTypeReference } from "../IntermediateTypes";
+import { processTypeNode } from "./processTypeNode";
 
-/**
- * @remarks
- *
- * This data structure is designed to be very similar to our
- * {@link IntermediateIndexSignature}.
- */
-export interface IntermediateMappedType
-    extends IntermediateItem<IntermediateKind.IntermediateMappedType> {
-    index: {
-        indexName: string;
-        constraint: IntermediateTypeReference;
+export function processMappedType(
+    input: MappedTypeNode
+): IntermediateMappedType
+{
+    // the definition of the index is hidden away in
+    // the node's typeParameter field ...
+    const indexName = input.typeParameter.name.text;
+    const constraint = processTypeNode(input.typeParameter.constraint!);
+
+    // does the mapped type's value have a type?
+    //
+    // according to the AST, not always ...
+    let valueTypeRef: Maybe<IntermediateTypeReference>;
+    if (input.type) {
+        valueTypeRef = processTypeNode(input.type);
     }
 
-    value: {
-        valueTypeRef: Maybe<IntermediateTypeReference>;
+    return {
+        kind: IntermediateKind.IntermediateMappedType,
+        index: {
+            indexName,
+            constraint,
+        },
+        value: {
+            valueTypeRef,
+        }
     }
 }
