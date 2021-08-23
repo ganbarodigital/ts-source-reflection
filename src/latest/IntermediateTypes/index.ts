@@ -74,6 +74,7 @@ export * from "./IntermediateItem";
 export * from "./IntermediateKeyofTypeReference";
 export * from "./IntermediateKind";
 export * from "./IntermediateLiteralType";
+export * from "./IntermediateMappedType";
 export * from "./IntermediateMemberDefinition";
 export * from "./IntermediateMemberSignature";
 export * from "./IntermediateMethodSignature";
