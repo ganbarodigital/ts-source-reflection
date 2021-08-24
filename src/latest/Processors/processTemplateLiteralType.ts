@@ -32,13 +32,41 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { TemplateLiteralTypeNode, TemplateLiteralTypeSpan } from "typescript";
+import {
+    IntermediateKind,
+    IntermediateTemplateLiteralSpan,
+    IntermediateTemplateLiteralType
+} from "../IntermediateTypes";
+import { processTypeNode } from "./processTypeNode";
 
-export interface IntermediateTemplateLiteralSpan
-    extends IntermediateItem<IntermediateKind.IntermediateTemplateLiteralSpan>
+export function processTemplateLiteralType(
+    input: TemplateLiteralTypeNode
+): IntermediateTemplateLiteralType
 {
-    typeRef: IntermediateTypeReference;
-    tail: string;
+    // this will be our return value
+    const retval: IntermediateTemplateLiteralType = {
+        kind: IntermediateKind.IntermediateTemplateLiteralType,
+        head: input.head.getText(),
+        spans: [],
+    }
+
+    // add in the parts of the template
+    for (const span of input.templateSpans) {
+        retval.spans.push(processTemplateLiteralTypeSpan(span));
+    }
+
+    // all done
+    return retval;
+}
+
+function processTemplateLiteralTypeSpan(
+    input: TemplateLiteralTypeSpan
+): IntermediateTemplateLiteralSpan
+{
+    return {
+        kind: IntermediateKind.IntermediateTemplateLiteralSpan,
+        typeRef: processTypeNode(input.type),
+        tail: input.literal.getText(),
+    }
 }

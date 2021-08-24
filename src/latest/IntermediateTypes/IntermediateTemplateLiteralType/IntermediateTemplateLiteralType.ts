@@ -34,9 +34,11 @@
 
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateTemplateLiteralSpan } from "../IntermediateTemplateLiteralSpan";
 
 export interface IntermediateTemplateLiteralType
     extends IntermediateItem<IntermediateKind.IntermediateTemplateLiteralType>
 {
-
+    head: string;
+    spans: IntermediateTemplateLiteralSpan[];
 }
