@@ -86,6 +86,7 @@ export enum IntermediateKind {
     IntermediateSourceFile,
     IntermediateSpreadOperator,
     IntermediateStringLiteral,
+    IntermediateTemplateLiteralType,
     IntermediateTupleType,
     IntermediateTupleTypeElement,
     IntermediateTypeAliasDefinition,
