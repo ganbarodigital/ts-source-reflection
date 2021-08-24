@@ -101,7 +101,7 @@ export * from "./IntermediateSpreadElement";
 export * from "./IntermediateStaticable";
 export * from "./IntermediateStringLiteral";
 export * from "./IntermediateTemplateLiteralType";
-export * from "./IntermediateTemplateSpan";
+export * from "./IntermediateTemplateLiteralSpan";
 export * from "./IntermediateTupleType";
 export * from "./IntermediateTupleTypeElement";
 export * from "./IntermediateTypeAliasDefinition";

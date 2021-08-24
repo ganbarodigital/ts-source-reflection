@@ -32,11 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-
-export interface IntermediateTemplateSpan
-    extends IntermediateItem<IntermediateKind.IntermediateTemplateSpan>
-{
-
-}
+export * from "./IntermediateTemplateLiteralSpan";
