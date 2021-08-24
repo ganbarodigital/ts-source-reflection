@@ -44,21 +44,23 @@ import {
     isMappedTypeNode,
     isParenthesizedTypeNode,
     isRestTypeNode,
+    isTemplateLiteralTypeNode,
     isTupleTypeNode,
     isTypeOperatorNode,
     isTypePredicateNode,
     isTypeQueryNode,
     isUnionTypeNode,
     SyntaxKind,
-    TypeNode
+    TypeNode,
 } from "typescript";
+
 import { isAnonymousClassType } from "../AST";
 import { mustBeTypeReference } from "../AST/mustBeTypeReference";
 import {
     IntermediateConstructorDefinition,
     IntermediateGenericType,
     IntermediateKind,
-    IntermediateTypeReference
+    IntermediateTypeReference,
 } from "../IntermediateTypes";
 import { isBuiltInType } from "./isBuiltinType";
 import { processAnonymousClassType } from "./processAnonymousClassType";
@@ -72,6 +74,7 @@ import { processIntersectionNode } from "./processIntersectionNode";
 import { processLiteralTypeNode } from "./processLiteralTypeNode";
 import { processMappedType } from "./processMappedType";
 import { processParenthesizedType } from "./processParenthesisedType";
+import { processTemplateLiteralType } from "./processTemplateLiteralType";
 import { processTupleType } from "./processTupleType";
 import { processTypeParameters } from "./processTypeParameters";
 import { processTypePredicate } from "./processTypePredicate";
@@ -191,6 +194,11 @@ export function processTypeNode
     // special case - mapped type
     if (isMappedTypeNode(input)) {
         return processMappedType(input);
+    }
+
+    // special case - template literal
+    if (isTemplateLiteralTypeNode(input)) {
+        return processTemplateLiteralType(input);
     }
 
     // generic case

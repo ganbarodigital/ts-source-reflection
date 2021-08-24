@@ -66,6 +66,7 @@ const expectedResult: IntermediateSourceFile = {
                         readonly: undefined,
                         optional: IntermediateMappingModifier.REMOVE,
                     },
+                    nameMap: undefined,
                 },
                 value: {
                     valueTypeRef: {

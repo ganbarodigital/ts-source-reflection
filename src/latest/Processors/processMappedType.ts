@@ -66,6 +66,12 @@ export function processMappedType(
         valueTypeRef = processTypeNode(input.type);
     }
 
+    // are we rewriting the key, while we're at it?
+    let nameMap: Maybe<IntermediateTypeReference>;
+    if (input.nameType) {
+        nameMap = processTypeNode(input.nameType);
+    }
+
     return {
         kind: IntermediateKind.IntermediateMappedType,
         index: {
@@ -74,7 +80,8 @@ export function processMappedType(
             mappingModifiers: {
                 readonly: processMappingModifier(input.readonlyToken),
                 optional: processMappingModifier(input.questionToken),
-            }
+            },
+            nameMap,
         },
         value: {
             valueTypeRef,

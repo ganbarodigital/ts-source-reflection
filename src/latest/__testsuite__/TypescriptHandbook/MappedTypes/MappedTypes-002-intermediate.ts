@@ -64,6 +64,7 @@ const expectedResult: IntermediateSourceFile = {
                         readonly: undefined,
                         optional: undefined,
                     },
+                    nameMap: undefined,
                 },
                 value: {
                     valueTypeRef: {

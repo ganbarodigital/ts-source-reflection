@@ -52,7 +52,8 @@ export interface IntermediateMappedType
         mappingModifiers: {
             readonly: Maybe<IntermediateMappingModifier>;
             optional: Maybe<IntermediateMappingModifier>;
-        }
+        },
+        nameMap: Maybe<IntermediateTypeReference>;
     }
 
     value: {
