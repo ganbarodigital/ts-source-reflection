@@ -47,7 +47,15 @@ export function processTemplateLiteralType(
     // this will be our return value
     const retval: IntermediateTemplateLiteralType = {
         kind: IntermediateKind.IntermediateTemplateLiteralType,
-        head: input.head.getText(),
+        //
+        // NOTE:
+        //
+        // we use `.text` here instead of `.getText()` because
+        // they contain different values. `.getText()` includes
+        // the `${` characters, which any downstream layer or
+        // library would have to strip out for themselves
+        //
+        head: input.head.text,
         spans: [],
     }
 
@@ -67,6 +75,14 @@ function processTemplateLiteralTypeSpan(
     return {
         kind: IntermediateKind.IntermediateTemplateLiteralSpan,
         typeRef: processTypeNode(input.type),
-        tail: input.literal.getText(),
+        //
+        // NOTE:
+        //
+        // we use `.text` here instead of `.getText()` because
+        // they contain different values. `.getText()` includes
+        // the closing '}`' characters, which any downstream
+        // layer or library would have to strip out for themselves
+        //
+        tail: input.literal.text,
     }
 }

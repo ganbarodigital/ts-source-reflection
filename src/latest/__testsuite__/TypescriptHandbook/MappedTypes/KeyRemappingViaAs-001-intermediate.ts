@@ -67,7 +67,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     nameMap: {
                         kind: IntermediateKind.IntermediateTemplateLiteralType,
-                        head: "`get${",
+                        head: "get",
                         spans: [
                             {
                                 kind: IntermediateKind.IntermediateTemplateLiteralSpan,
@@ -90,7 +90,7 @@ const expectedResult: IntermediateSourceFile = {
                                         }
                                     ]
                                 },
-                                tail: "}`",
+                                tail: "",
                             },
                         ],
                     },
