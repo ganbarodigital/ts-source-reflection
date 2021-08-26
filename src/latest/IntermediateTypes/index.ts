@@ -39,6 +39,7 @@ export * from "./IntermediateArrayLiteral";
 export * from "./IntermediateArrayTypeReference";
 export * from "./IntermediateArrowFunction";
 export * from "./IntermediateBigintLiteral";
+export * from "./IntermediateBinaryExpression";
 export * from "./IntermediateBooleanLiteral";
 export * from "./IntermediateBuiltInTypeReference";
 export * from "./IntermediateCallSignature";
