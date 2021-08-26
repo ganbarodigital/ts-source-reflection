@@ -32,15 +32,19 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateExpression } from "../IntermediateExpression";
-import { IntermediateExpressionOperator } from "../IntermediateExpressionOperator";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
+import { BinaryExpression } from "typescript";
+import { IntermediateBinaryExpression, IntermediateKind } from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
+import { processExpressionOperator } from "./processExpressionOperator";
 
-export interface IntermediateBinaryExpression
-    extends IntermediateItem<IntermediateKind.IntermediateBinaryExpression>
+export function processBinaryExpression(
+    input: BinaryExpression
+): IntermediateBinaryExpression
 {
-    left: IntermediateExpression;
-    operator: IntermediateExpressionOperator;
-    right: IntermediateExpression;
+    return {
+        kind: IntermediateKind.IntermediateBinaryExpression,
+        left: processExpression(input.left),
+        operator: processExpressionOperator(input.operatorToken),
+        right: processExpression(input.right),
+    }
 }
