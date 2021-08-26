@@ -35,6 +35,7 @@
 import { IntermediateArrayLiteral } from "../IntermediateArrayLiteral";
 import { IntermediateArrowFunction } from "../IntermediateArrowFunction";
 import { IntermediateBigintLiteral } from "../IntermediateBigintLiteral";
+import { IntermediateBinaryExpression } from "../IntermediateBinaryExpression";
 import { IntermediateBooleanLiteral } from "../IntermediateBooleanLiteral";
 import { IntermediateCallableExpression } from "../IntermediateCallableExpression";
 import { IntermediateFunctionExpression } from "../IntermediateFunctionExpression";
@@ -51,6 +52,7 @@ export type IntermediateExpression
     = IntermediateArrayLiteral
       | IntermediateArrowFunction
       | IntermediateBigintLiteral
+      | IntermediateBinaryExpression
       | IntermediateBooleanLiteral
       | IntermediateCallableExpression
       | IntermediateFunctionExpression
