@@ -39,6 +39,7 @@ import {
     isArrowFunction,
     isAsExpression,
     isBigIntLiteral,
+    isBinaryExpression,
     isCallExpression,
     isFunctionExpression,
     isIdentifier,
@@ -63,6 +64,7 @@ import {
 } from "../IntermediateTypes";
 import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
 import { processArrowFunction } from "./processArrowFunction";
+import { processBinaryExpression } from "./processBinaryExpression";
 import { processCallExpression } from "./processCallExpression";
 import { processFunctionExpression } from "./processFunctionExpression";
 import { processParenthesizedExpression } from "./processParenthesizedExpression";
@@ -191,6 +193,10 @@ export function processExpression(
 
     if (isParenthesizedExpression(input)) {
         return processParenthesizedExpression(input);
+    }
+
+    if (isBinaryExpression(input)) {
+        return processBinaryExpression(input);
     }
 
     // if we get here, we do not know how to process this variable
