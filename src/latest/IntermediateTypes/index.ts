@@ -56,6 +56,7 @@ export * from "./IntermediateDocBlock";
 export * from "./IntermediateDocumentedItem";
 export * from "./IntermediateExportableItem";
 export * from "./IntermediateExpression";
+export * from "./IntermediateExpressionOperator";
 export * from "./IntermediateFixedTypeArgument";
 export * from "./IntermediateFixedTypeReference";
 export * from "./IntermediateFunction";
