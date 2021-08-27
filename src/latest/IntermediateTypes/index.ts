@@ -120,7 +120,7 @@ export * from "./IntermediateTypedPropertyDefinition";
 export * from "./IntermediateTypedPropertySignature";
 export * from "./IntermediateTypeofTypeReference";
 export * from "./IntermediateUnionType";
-export * from "./IntermediateUntypedCallableParameter";
+export * from "./IntermediateUntypedCallableParameterDefinition";
 export * from "./IntermediateUntypedCallableParameterSignature";
 export * from "./IntermediateUntypedPropertyDefinition";
 export * from "./IntermediateUntypedPropertySignature";
