@@ -32,18 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import { IntermediateExpression } from "../IntermediateExpression";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
-
-export interface IntermediateTypedCallableParameter
-    extends IntermediateItem<IntermediateKind.IntermediateTypedCallableParameter>
-{
-    paramName: string;
-    typeRef: IntermediateTypeReference;
-    optional: boolean;
-    readonly: boolean;
-    initializer: Maybe<IntermediateExpression>;
-}
+export * from "./IntermediateTypedCallableParameterDefinition";

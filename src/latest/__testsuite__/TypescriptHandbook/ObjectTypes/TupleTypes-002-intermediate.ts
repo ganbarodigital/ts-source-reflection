@@ -47,7 +47,7 @@ const expectedResult: IntermediateSourceFile = {
             name: "doSomething",
             parameters: [
                 {
-                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "pair",
                     optional: false,
                     readonly: false,

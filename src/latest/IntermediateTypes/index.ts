@@ -114,7 +114,7 @@ export * from "./IntermediateTypeArgument";
 export * from "./IntermediateTypeAssertable";
 export * from "./IntermediateTypePredicate";
 export * from "./IntermediateTypeReference";
-export * from "./IntermediateTypedCallableParameter";
+export * from "./IntermediateTypedCallableParameterDefinition";
 export * from "./IntermediateTypedCallableParameterSignature";
 export * from "./IntermediateTypedPropertyDefinition";
 export * from "./IntermediateTypedPropertySignature";

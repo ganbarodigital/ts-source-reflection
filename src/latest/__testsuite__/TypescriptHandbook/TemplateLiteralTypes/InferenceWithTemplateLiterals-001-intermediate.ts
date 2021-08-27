@@ -84,7 +84,7 @@ const expectedResult: IntermediateSourceFile = {
                         name: "on",
                         parameters: [
                             {
-                                kind: IntermediateKind.IntermediateTypedCallableParameter,
+                                kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                                 paramName: "eventName",
                                 readonly: false,
                                 optional: false,
@@ -105,7 +105,7 @@ const expectedResult: IntermediateSourceFile = {
                                 initializer: undefined,
                             },
                             {
-                                kind: IntermediateKind.IntermediateTypedCallableParameter,
+                                kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                                 paramName: "callback",
                                 readonly: false,
                                 optional: false,
@@ -114,7 +114,7 @@ const expectedResult: IntermediateSourceFile = {
                                     typeParameters: [],
                                     parameters: [
                                         {
-                                            kind: IntermediateKind.IntermediateTypedCallableParameter,
+                                            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                                             paramName: "newValue",
                                             readonly: false,
                                             optional: false,
@@ -164,7 +164,7 @@ const expectedResult: IntermediateSourceFile = {
             ],
             parameters: [
                 {
-                    kind: IntermediateKind.IntermediateTypedCallableParameter,
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "obj",
                     readonly: false,
                     optional: false,

@@ -42,7 +42,7 @@ import {
     IntermediateCallableParameterDefinition,
     IntermediateExpression,
     IntermediateKind,
-    IntermediateTypedCallableParameter,
+    IntermediateTypedCallableParameterDefinition,
     IntermediateUntypedCallableParameter
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
@@ -108,8 +108,8 @@ export function processParameterDeclaration(
 
     // special case - rest parameter
     if (AST.hasDotDotDotToken(paramDec.dotDotDotToken)) {
-        return <IntermediateTypedCallableParameter>{
-            kind: IntermediateKind.IntermediateTypedCallableParameter,
+        return <IntermediateTypedCallableParameterDefinition>{
+            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
             paramName: paramDec.name.getText(),
             typeRef: {
                 kind: IntermediateKind.IntermediateRestType,
@@ -122,8 +122,8 @@ export function processParameterDeclaration(
     }
 
     // general case - typed parameter
-    return <IntermediateTypedCallableParameter>{
-        kind: IntermediateKind.IntermediateTypedCallableParameter,
+    return <IntermediateTypedCallableParameterDefinition>{
+        kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
         paramName: paramDec.name.getText(),
         typeRef: processTypeNode(paramType),
         optional: processQuestionToken(paramDec.questionToken),
