@@ -40,9 +40,7 @@ import {
 import {
     ClassElement,
     isCallSignatureDeclaration,
-    isConstructSignatureDeclaration,
-    isMethodDeclaration,
-    isMethodSignature,
+    isConstructSignatureDeclaration, isMethodSignature,
     isPropertySignature,
     NodeArray,
     SyntaxKind,
@@ -53,7 +51,6 @@ import { IntermediateMemberSignature } from "../IntermediateTypes";
 import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
 import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
 import { processIndexSignatureDeclaration } from "./processIndexSignatureDeclaration";
-import { processMethodDeclaration } from "./processMethodDeclaration";
 import { processMethodSignature } from "./processMethodSignature";
 import { processPropertySignature } from "./processPropertySignature";
 
@@ -81,11 +78,6 @@ export function processMemberSignatures(
 
         if (isMethodSignature(member)) {
             retval.push(processMethodSignature(member));
-            continue;
-        }
-
-        if (isMethodDeclaration(member)) {
-            retval.push(processMethodDeclaration(member));
             continue;
         }
 
