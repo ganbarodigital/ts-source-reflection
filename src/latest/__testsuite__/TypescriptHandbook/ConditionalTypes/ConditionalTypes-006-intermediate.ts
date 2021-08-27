@@ -61,7 +61,7 @@ const expectedResult: IntermediateSourceFile = {
                     typeParameters: [],
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                             paramName: "args",
                             optional: false,
                             readonly: false,
@@ -75,7 +75,6 @@ const expectedResult: IntermediateSourceFile = {
                                     },
                                 },
                             },
-                            initializer: undefined,
                         },
                     ],
                     returnType: {
@@ -131,7 +130,7 @@ const expectedResult: IntermediateSourceFile = {
                         typeParameters: [],
                         parameters: [
                             {
-                                kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "x",
                                 optional: false,
                                 readonly: false,
@@ -139,7 +138,6 @@ const expectedResult: IntermediateSourceFile = {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "string",
                                 },
-                                initializer: undefined,
                             },
                         ],
                         returnType: {
@@ -163,7 +161,7 @@ const expectedResult: IntermediateSourceFile = {
                         typeParameters: [],
                         parameters: [
                             {
-                                kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "a",
                                 optional: false,
                                 readonly: false,
@@ -171,10 +169,9 @@ const expectedResult: IntermediateSourceFile = {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "boolean",
                                 },
-                                initializer: undefined,
                             },
                             {
-                                kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "b",
                                 optional: false,
                                 readonly: false,
@@ -182,7 +179,6 @@ const expectedResult: IntermediateSourceFile = {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "boolean",
                                 },
-                                initializer: undefined,
                             },
                         ],
                         returnType: {

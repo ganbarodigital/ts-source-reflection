@@ -32,14 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
 import { IntermediateItem, IntermediateKind } from "..";
-import { IntermediateExpression } from "../IntermediateExpression";
 
 export interface IntermediateUntypedCallableParameterSignature
     extends IntermediateItem<IntermediateKind.IntermediateUntypedCallableParameterSignature>
 {
     paramName: string;
     optional: boolean;
-    initializer: Maybe<IntermediateExpression>;
 }

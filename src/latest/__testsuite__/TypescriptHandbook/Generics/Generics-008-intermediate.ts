@@ -77,7 +77,7 @@ const expectedResult: IntermediateSourceFile = {
                         typeParameters: [],
                         parameters: [
                             {
-                                kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "x",
                                 optional: false,
                                 readonly: false,
@@ -85,10 +85,9 @@ const expectedResult: IntermediateSourceFile = {
                                     kind: IntermediateKind.IntermediateFixedTypeReference,
                                     typeName: "NumType",
                                 },
-                                initializer: undefined,
                             },
                             {
-                                kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "y",
                                 optional: false,
                                 readonly: false,
@@ -96,7 +95,6 @@ const expectedResult: IntermediateSourceFile = {
                                     kind: IntermediateKind.IntermediateFixedTypeReference,
                                     typeName: "NumType",
                                 },
-                                initializer: undefined,
                             },
                         ],
                         returnType: {

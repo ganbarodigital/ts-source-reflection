@@ -40,7 +40,7 @@ import {
     IntermediateKind,
     IntermediateTypeReference
 } from "../IntermediateTypes";
-import { processFunctionParameters } from "./processFunctionParameters";
+import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { processTypeNode } from "./processTypeNode";
 import { processTypeParameters } from "./processTypeParameters";
 
@@ -64,7 +64,7 @@ export function processFunctionType(
     return {
         kind: IntermediateKind.IntermediateFunctionTypeSignature,
         typeParameters,
-        parameters: processFunctionParameters(input.parameters),
+        parameters: processCallableParameterSignatures(input.parameters),
         returnType: retType,
     }
 }

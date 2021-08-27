@@ -62,7 +62,7 @@ const expectedResult: IntermediateSourceFile = {
                         name: "on",
                         parameters: [
                             {
-                                kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "eventName",
                                 readonly: false,
                                 optional: false,
@@ -92,10 +92,9 @@ const expectedResult: IntermediateSourceFile = {
                                         },
                                     ],
                                 },
-                                initializer: undefined,
                             },
                             {
-                                kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "callback",
                                 readonly: false,
                                 optional: false,
@@ -104,7 +103,7 @@ const expectedResult: IntermediateSourceFile = {
                                     typeParameters: [],
                                     parameters: [
                                         {
-                                            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                                            kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                             paramName: "newValue",
                                             readonly: false,
                                             optional: false,
@@ -112,7 +111,6 @@ const expectedResult: IntermediateSourceFile = {
                                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                                 typeName: "any",
                                             },
-                                            initializer: undefined,
                                         },
                                     ],
                                     returnType: {
@@ -120,7 +118,6 @@ const expectedResult: IntermediateSourceFile = {
                                         typeName: "void",
                                     }
                                 },
-                                initializer: undefined,
                             }
                         ],
                         returnType: {

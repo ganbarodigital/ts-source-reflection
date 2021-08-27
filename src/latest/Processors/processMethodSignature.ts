@@ -39,8 +39,8 @@ import {
     IntermediateMethodSignature,
     IntermediateTypeReference
 } from "../IntermediateTypes";
+import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { processDocBlock } from "./processDocBlock";
-import { processFunctionParameters } from "./processFunctionParameters";
 import { processTypeNode } from "./processTypeNode";
 import { processTypeParameters } from "./processTypeParameters";
 
@@ -70,7 +70,7 @@ export function processMethodSignature(
         // this is a placeholder for now
         accessModifier: undefined,
         name: input.name.getText(),
-        parameters: processFunctionParameters(input.parameters),
+        parameters: processCallableParameterSignatures(input.parameters),
         typeParameters,
         returnType,
     }

@@ -84,7 +84,7 @@ const expectedResult: IntermediateSourceFile = {
                         typeParameters: [],
                         parameters: [
                             {
-                                kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "arg",
                                 optional: false,
                                 readonly: false,
@@ -92,7 +92,6 @@ const expectedResult: IntermediateSourceFile = {
                                     kind: IntermediateKind.IntermediateFixedTypeReference,
                                     typeName: "Input",
                                 },
-                                initializer: undefined,
                             },
                         ],
                         returnType: {

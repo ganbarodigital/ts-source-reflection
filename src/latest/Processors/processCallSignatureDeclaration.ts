@@ -34,8 +34,13 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { CallSignatureDeclaration } from "typescript";
-import { IntermediateCallSignature, IntermediateGenericType, IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
-import { processFunctionParameters } from "./processFunctionParameters";
+import {
+    IntermediateCallSignature,
+    IntermediateGenericType,
+    IntermediateKind,
+    IntermediateTypeReference
+} from "../IntermediateTypes";
+import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { processTypeNode } from "./processTypeNode";
 import { processTypeParameters } from "./processTypeParameters";
 
@@ -58,7 +63,7 @@ export function processCallSignatureDeclaration(
     return {
         kind: IntermediateKind.IntermediateCallSignature,
         typeParameters,
-        parameters: processFunctionParameters(input.parameters),
+        parameters: processCallableParameterSignatures(input.parameters),
         returnType: retType,
     }
 }

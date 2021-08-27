@@ -31,46 +31,26 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-
+import { NodeArray, ParameterDeclaration } from "typescript";
 import {
-    IntermediateKind,
-    IntermediateSourceFile
-} from "../../../IntermediateTypes";
+    IntermediateCallableParameterSignature
+} from "../IntermediateTypes";
+import { processParameterSignature } from "./processParameterSignature";
 
-const expectedResult: IntermediateSourceFile = {
-    children: [
-        {
-            kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "SomeConstructor",
-            typeRef: {
-                kind: IntermediateKind.IntermediateAnonymousClassType,
-                members: [
-                    {
-                        kind: IntermediateKind.IntermediateConstructorSignature,
-                        typeParameters: [],
-                        parameters: [
-                            {
-                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                paramName: "s",
-                                optional: false,
-                                readonly: false,
-                                typeRef: {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: "string",
-                                },
-                            },
-                        ],
-                        returnType: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "SomeObject",
-                        },
-                    },
-                ],
-            },
-            typeParameters: [],
-        },
-    ],
-    kind: IntermediateKind.IntermediateSourceFile,
+
+
+export function processCallableParameterSignatures(
+    input: NodeArray<ParameterDeclaration>
+): IntermediateCallableParameterSignature[] {
+    // our return value
+    const retval: IntermediateCallableParameterSignature[] = [];
+
+    input.forEach((paramDec) => {
+        // general case
+        retval.push(processParameterSignature(paramDec));
+    });
+
+    // all done
+    return retval;
 }
 
-export default expectedResult;

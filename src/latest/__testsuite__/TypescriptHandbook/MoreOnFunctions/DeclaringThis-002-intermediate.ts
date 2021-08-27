@@ -56,7 +56,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "filterUsers",
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                             paramName: "filter",
                             optional: false,
                             readonly: false,
@@ -65,7 +65,7 @@ const expectedResult: IntermediateSourceFile = {
                                 typeParameters: [],
                                 parameters: [
                                     {
-                                        kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                                        kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                         paramName: "input",
                                         optional: false,
                                         readonly: false,
@@ -73,7 +73,6 @@ const expectedResult: IntermediateSourceFile = {
                                             kind: IntermediateKind.IntermediateFixedTypeReference,
                                             typeName: "User",
                                         },
-                                        initializer: undefined,
                                     },
                                 ],
                                 returnType: {
@@ -81,7 +80,6 @@ const expectedResult: IntermediateSourceFile = {
                                     typeName: "boolean",
                                 },
                             },
-                            initializer: undefined,
                         },
                     ],
                     typeParameters: [],
