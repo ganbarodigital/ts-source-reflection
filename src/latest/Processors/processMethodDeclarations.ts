@@ -34,10 +34,11 @@
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
 import {
-    ClassElement, isMethodDeclaration, isPropertyDeclaration, NodeArray,
+    ClassElement, isConstructorDeclaration, isMethodDeclaration, isPropertyDeclaration, NodeArray,
     SyntaxKind
 } from "typescript";
 import { IntermediateMemberDefinition } from "../IntermediateTypes";
+import { processConstructorDeclaration } from "./processConstructorDeclaration";
 import { processMethodDeclaration } from "./processMethodDeclaration";
 import { processPropertyDeclaration } from "./processPropertyDeclaration";
 
@@ -58,10 +59,10 @@ export function processMemberDeclarations(
         //     continue;
         // }
 
-        // if (isConstructorDeclaration(member)) {
-        //     retval.push(processConstructorDeclaration(member));
-        //     continue;
-        // }
+        if (isConstructorDeclaration(member)) {
+            retval.push(processConstructorDeclaration(member));
+            continue;
+        }
 
         // if (isConstructSignatureDeclaration(member)) {
         //     retval.push(processConstructSignatureDeclaration(member));

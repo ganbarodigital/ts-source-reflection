@@ -33,7 +33,7 @@
 //
 
 import { IntermediateCallSignature } from "../IntermediateCallSignature";
-import { IntermediateConstructorDefinition } from "../IntermediateConstructorDefinition";
+import { IntermediateConstructorSignature } from "../IntermediateConstructorSignature";
 import { IntermediateIndexSignature } from "../IntermediateIndexSignature";
 import { IntermediateMethodDefinition } from "../IntermediateMethodDefinition";
 import { IntermediateMethodSignature } from "../IntermediateMethodSignature";
@@ -42,7 +42,7 @@ import { IntermediatePropertySignature } from "../IntermediatePropertySignature"
 export type IntermediateMemberSignature =
     IntermediatePropertySignature
     | IntermediateCallSignature
-    | IntermediateConstructorDefinition
+    | IntermediateConstructorSignature
     | IntermediateIndexSignature
     | IntermediateMethodDefinition
     | IntermediateMethodSignature

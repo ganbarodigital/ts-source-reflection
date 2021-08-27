@@ -32,14 +32,18 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
+import {
+    DEFAULT_DATA_PATH,
+    getClassNames,
+    UnsupportedTypeError
+} from "@safelytyped/core-types";
 import {
     ClassElement,
     isCallSignatureDeclaration,
-    isConstructorDeclaration,
     isConstructSignatureDeclaration,
     isMethodDeclaration,
-    isMethodSignature, isPropertySignature,
+    isMethodSignature,
+    isPropertySignature,
     NodeArray,
     SyntaxKind,
     TypeElement
@@ -47,7 +51,6 @@ import {
 import * as AST from "../AST";
 import { IntermediateMemberSignature } from "../IntermediateTypes";
 import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
-import { processConstructorDeclaration } from "./processConstructorDeclaration";
 import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
 import { processIndexSignatureDeclaration } from "./processIndexSignatureDeclaration";
 import { processMethodDeclaration } from "./processMethodDeclaration";
@@ -68,11 +71,6 @@ export function processMemberSignatures(
 
         if (isCallSignatureDeclaration(member)) {
             retval.push(processCallSignatureDeclaration(member));
-            continue;
-        }
-
-        if (isConstructorDeclaration(member)) {
-            retval.push(processConstructorDeclaration(member));
             continue;
         }
 
@@ -98,12 +96,12 @@ export function processMemberSignatures(
 
         // if we get here, we have an unsupported type
         // tslint:disable-next-line: no-console
-        console.log(getClassNames(member), SyntaxKind[member.kind]);
+        console.log("unsupported member signature", getClassNames(member), SyntaxKind[member.kind]);
 
         throw new UnsupportedTypeError({
             public: {
                 dataPath: DEFAULT_DATA_PATH,
-                expected: "a supported member type",
+                expected: "a supported member signature type",
                 actual: getClassNames(member)[0],
             }
         });

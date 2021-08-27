@@ -34,15 +34,15 @@
 
 import { isConstructSignatureDeclaration, NodeArray, TypeElement } from "typescript";
 import * as AST from "../AST";
-import { IntermediateConstructorDefinition } from "../IntermediateTypes/IntermediateConstructorDefinition/IntermediateConstructorDefinition";
+import { IntermediateConstructorSignature } from "../IntermediateTypes";
 import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
 
-export function processConstructorDeclarations(
+export function processConstructSignatureDeclarations(
     input: NodeArray<TypeElement>
-): IntermediateConstructorDefinition[]
+): IntermediateConstructorSignature[]
 {
     // this will be our return value
-    const retval: IntermediateConstructorDefinition[] = [];
+    const retval: IntermediateConstructorSignature[] = [];
 
     // find and process all the call signatures in this anonymous
     // class

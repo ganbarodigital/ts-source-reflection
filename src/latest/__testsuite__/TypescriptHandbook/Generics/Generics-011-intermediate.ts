@@ -63,7 +63,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateAnonymousClassType,
                         members: [
                             {
-                                kind: IntermediateKind.IntermediateConstructorDefinition,
+                                kind: IntermediateKind.IntermediateConstructorSignature,
                                 typeParameters: [],
                                 parameters: [],
                                 returnType: {

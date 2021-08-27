@@ -49,7 +49,7 @@ const expectedResult: IntermediateSourceFile = {
             extends: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateConstructorDefinition,
+                    kind: IntermediateKind.IntermediateConstructorSignature,
                     typeParameters: [],
                     parameters: [
                         {
