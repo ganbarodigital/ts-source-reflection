@@ -36,7 +36,7 @@ import { Maybe } from "@safelytyped/core-types";
 import { ArrowFunction } from "typescript";
 import {
     IntermediateArrowFunction,
-    IntermediateCallableParameter,
+    IntermediateCallableParameterDefinition,
     IntermediateGenericType,
     IntermediateKind,
     IntermediateTypeReference
@@ -57,7 +57,7 @@ export function processArrowFunction(
     }
 
     // do we have any parameters?
-    const parameters: IntermediateCallableParameter[] = [];
+    const parameters: IntermediateCallableParameterDefinition[] = [];
     for (const param of input.parameters) {
         parameters.push(processParameterDeclaration(param));
     }

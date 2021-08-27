@@ -32,4 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateCallableParameter";
+export * from "./IntermediateCallableParameterDefinition";

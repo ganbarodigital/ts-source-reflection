@@ -39,7 +39,7 @@ import {
     SyntaxKind
 } from "typescript";
 import {
-    IntermediateCallableParameter,
+    IntermediateCallableParameterDefinition,
     IntermediateExpression,
     IntermediateKind,
     IntermediateTypedCallableParameter,
@@ -53,7 +53,7 @@ import * as AST from "../AST";
 
 export function processParameterDeclaration(
     paramDec: ParameterDeclaration
-): IntermediateCallableParameter
+): IntermediateCallableParameterDefinition
 {
     // this is a placeholder for now
     //
