@@ -34,12 +34,10 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { IntermediateCallableParameterSignature } from "..";
-import { IntermediateGenericType } from "../IntermediateGenericType";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateCallableSignature
 {
-    typeParameters: IntermediateGenericType[];
     parameters: IntermediateCallableParameterSignature[];
     returnType: Maybe<IntermediateTypeReference>;
 }

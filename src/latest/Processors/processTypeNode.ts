@@ -32,7 +32,6 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import {
-    ConstructorTypeNode,
     isArrayTypeNode,
     isConditionalTypeNode,
     isConstructorTypeNode,
@@ -51,16 +50,13 @@ import {
     isTypeQueryNode,
     isUnionTypeNode,
     SyntaxKind,
-    TypeNode,
+    TypeNode
 } from "typescript";
-
 import { isAnonymousClassType } from "../AST";
 import { mustBeTypeReference } from "../AST/mustBeTypeReference";
 import {
-    IntermediateConstructorDefinition,
-    IntermediateGenericType,
     IntermediateKind,
-    IntermediateTypeReference,
+    IntermediateTypeReference
 } from "../IntermediateTypes";
 import { isBuiltInType } from "./isBuiltinType";
 import { processAnonymousClassType } from "./processAnonymousClassType";
@@ -76,17 +72,16 @@ import { processMappedType } from "./processMappedType";
 import { processParenthesizedType } from "./processParenthesisedType";
 import { processTemplateLiteralType } from "./processTemplateLiteralType";
 import { processTupleType } from "./processTupleType";
-import { processTypeParameters } from "./processTypeParameters";
 import { processTypePredicate } from "./processTypePredicate";
 import { processTypeReferenceNode } from "./processTypeReferenceNode";
 import { processUnionType } from "./processUnionType";
 
 
+
 export function processTypeNode
-(
-    input: TypeNode
-): IntermediateTypeReference
-{
+    (
+        input: TypeNode
+    ): IntermediateTypeReference {
     // special case - we have a keyof type
     if (isTypeOperatorNode(input)) {
         if (input.operator === SyntaxKind.KeyOfKeyword) {
@@ -173,7 +168,11 @@ export function processTypeNode
 
     // special case - constructor type
     if (isConstructorTypeNode(input)) {
-        return processConstructorTypeNode(input);
+        return {
+            kind: IntermediateKind.IntermediateConstructorDefinition,
+            parameters: processFunctionParameters(input.parameters),
+            returnType: processTypeNode(input.type),
+        }
     }
 
     // special case - indexed access type
@@ -206,22 +205,4 @@ export function processTypeNode
     // use a type guarantee to keep the compiler happy!
     const typeRef = mustBeTypeReference(input);
     return processTypeReferenceNode(typeRef);
-}
-
-function processConstructorTypeNode(
-    input: ConstructorTypeNode
-): IntermediateConstructorDefinition
-{
-    // do we have type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (input.typeParameters) {
-        typeParameters = processTypeParameters(input.typeParameters);
-    }
-
-    return {
-        kind: IntermediateKind.IntermediateConstructorDefinition,
-        typeParameters,
-        parameters: processFunctionParameters(input.parameters),
-        returnType: processTypeNode(input.type),
-    }
 }

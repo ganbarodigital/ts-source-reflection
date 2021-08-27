@@ -32,24 +32,9 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateCallableDefinition,
-    IntermediateItem,
-    IntermediateKind,
-    IntermediateRestrictableScopeItem,
-    IntermediateStaticable
-} from "..";
-import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
-import { IntermediateGenericable } from "../IntermediateGenericable";
+import { IntermediateGenericType } from "../IntermediateGenericType";
 
-export interface IntermediateMethodDefinition
-    extends IntermediateItem<IntermediateKind.IntermediateMethodDefinition>,
-        IntermediateCallableDefinition,
-        IntermediateDocumentedItem,
-        IntermediateGenericable,
-        IntermediateRestrictableScopeItem,
-        IntermediateStaticable
+export interface IntermediateGenericable
 {
-    name: string;
-    hasBody: boolean;
+    typeParameters: IntermediateGenericType[];
 }

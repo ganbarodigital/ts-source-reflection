@@ -33,12 +33,14 @@
 //
 
 import { IntermediateCallableSignature } from "../IntermediateCallableSignature";
+import { IntermediateGenericable } from "../IntermediateGenericable";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateCallSignature
     extends IntermediateItem<IntermediateKind.IntermediateCallSignature>,
-        IntermediateCallableSignature
+        IntermediateCallableSignature,
+        IntermediateGenericable
 {
 
 }

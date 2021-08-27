@@ -33,12 +33,14 @@
 //
 
 import { IntermediateCallableDefinition } from "../IntermediateCallableDefinition";
+import { IntermediateGenericable } from "../IntermediateGenericable";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateArrowFunction
     extends IntermediateItem<IntermediateKind.IntermediateArrowFunction>,
-        IntermediateCallableDefinition
+        IntermediateCallableDefinition,
+        IntermediateGenericable
 {
     hasBody: boolean;
 }

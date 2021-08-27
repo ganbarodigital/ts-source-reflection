@@ -219,7 +219,6 @@ const expectedResult: IntermediateSourceFile = {
                     readonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateConstructorDefinition,
-                        typeParameters: [],
                         parameters: [],
                         returnType: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,

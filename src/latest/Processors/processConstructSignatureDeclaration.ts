@@ -36,23 +36,17 @@ import { Maybe } from "@safelytyped/core-types";
 import { ConstructSignatureDeclaration } from "typescript";
 import {
     IntermediateConstructorSignature,
-    IntermediateGenericType,
     IntermediateKind,
     IntermediateTypeReference
 } from "../IntermediateTypes";
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
 
 export function processConstructSignatureDeclaration(
     input: ConstructSignatureDeclaration
 ): IntermediateConstructorSignature
 {
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (input.typeParameters) {
-        typeParameters = processTypeParameters(input.typeParameters);
-    }
+    // constructors cannot have type parameters
 
     // do we have a return type?
     let retType: Maybe<IntermediateTypeReference>;
@@ -62,7 +56,6 @@ export function processConstructSignatureDeclaration(
 
     return {
         kind: IntermediateKind.IntermediateConstructorSignature,
-        typeParameters,
         parameters: processCallableParameterSignatures(input.parameters),
         returnType: retType,
     }

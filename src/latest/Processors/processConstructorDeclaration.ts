@@ -34,20 +34,19 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { ConstructorDeclaration } from "typescript";
-import { IntermediateConstructorDefinition, IntermediateGenericType, IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
+import {
+    IntermediateConstructorDefinition,
+    IntermediateKind,
+    IntermediateTypeReference
+} from "../IntermediateTypes";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
 
 export function processConstructorDeclaration(
     input: ConstructorDeclaration
 ): IntermediateConstructorDefinition
 {
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (input.typeParameters) {
-        typeParameters = processTypeParameters(input.typeParameters);
-    }
+    // constructors cannot have type parameters
 
     // do we have a return type?
     let retType: Maybe<IntermediateTypeReference>;
@@ -57,7 +56,6 @@ export function processConstructorDeclaration(
 
     return {
         kind: IntermediateKind.IntermediateConstructorDefinition,
-        typeParameters,
         parameters: processFunctionParameters(input.parameters),
         returnType: retType,
     }

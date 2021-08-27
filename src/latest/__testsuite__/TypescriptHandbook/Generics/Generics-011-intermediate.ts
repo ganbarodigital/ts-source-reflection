@@ -64,7 +64,6 @@ const expectedResult: IntermediateSourceFile = {
                         members: [
                             {
                                 kind: IntermediateKind.IntermediateConstructorSignature,
-                                typeParameters: [],
                                 parameters: [],
                                 returnType: {
                                     kind: IntermediateKind.IntermediateFixedTypeReference,

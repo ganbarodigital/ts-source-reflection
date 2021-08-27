@@ -37,10 +37,12 @@ import {
     IntermediateItem,
     IntermediateKind
 } from "..";
+import { IntermediateGenericable } from "../IntermediateGenericable";
 
 export interface IntermediateFunctionTypeSignature
     extends IntermediateItem<IntermediateKind.IntermediateFunctionTypeSignature>,
-        IntermediateCallableSignature
+        IntermediateCallableSignature,
+        IntermediateGenericable
 {
     kind: IntermediateKind.IntermediateFunctionTypeSignature
 }
