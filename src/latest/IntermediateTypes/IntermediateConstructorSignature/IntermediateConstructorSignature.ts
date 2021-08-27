@@ -32,13 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateCallable } from "../IntermediateCallable";
+import { IntermediateCallableSignature } from "../IntermediateCallableSignature";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateConstructorSignature
     extends IntermediateItem<IntermediateKind.IntermediateConstructorSignature>,
-        IntermediateCallable
+        IntermediateCallableSignature
 {
 
 }

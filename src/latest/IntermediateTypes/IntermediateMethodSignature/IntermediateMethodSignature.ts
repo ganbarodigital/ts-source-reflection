@@ -33,17 +33,17 @@
 //
 
 import {
-    IntermediateCallable,
     IntermediateItem,
     IntermediateKind,
     IntermediateRestrictableScopeItem,
     IntermediateStaticable
 } from "..";
+import { IntermediateCallableSignature } from "../IntermediateCallableSignature";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 
 export interface IntermediateMethodSignature
     extends IntermediateItem<IntermediateKind.IntermediateMethodSignature>,
-        IntermediateCallable,
+        IntermediateCallableSignature,
         IntermediateDocumentedItem,
         IntermediateRestrictableScopeItem,
         IntermediateStaticable

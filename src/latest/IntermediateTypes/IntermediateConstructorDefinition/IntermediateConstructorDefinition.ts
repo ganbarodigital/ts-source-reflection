@@ -32,13 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateCallable } from "../IntermediateCallable";
+import { IntermediateCallableDefinition } from "../IntermediateCallableDefinition";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateConstructorDefinition
     extends IntermediateItem<IntermediateKind.IntermediateConstructorDefinition>,
-        IntermediateCallable
+        IntermediateCallableDefinition
 {
 
 }

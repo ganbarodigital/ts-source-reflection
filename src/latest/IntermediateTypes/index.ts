@@ -43,7 +43,7 @@ export * from "./IntermediateBinaryExpression";
 export * from "./IntermediateBooleanLiteral";
 export * from "./IntermediateBuiltInTypeReference";
 export * from "./IntermediateCallSignature";
-export * from "./IntermediateCallable";
+export * from "./IntermediateCallableDefinition";
 export * from "./IntermediateCallableExpression";
 export * from "./IntermediateCallableParameter";
 export * from "./IntermediateCallableSignature";

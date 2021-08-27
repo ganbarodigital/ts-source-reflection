@@ -34,7 +34,7 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import {
-    IntermediateCallable,
+    IntermediateCallableDefinition,
     IntermediateItem,
     IntermediateKind
 } from "..";
@@ -44,7 +44,7 @@ import { IntermediateExportableItem } from "../IntermediateExportableItem";
 
 export interface IntermediateFunction
     extends IntermediateItem<IntermediateKind.IntermediateFunction>,
-        IntermediateCallable,
+        IntermediateCallableDefinition,
         IntermediateDocumentedItem,
         IntermediateDeclarable,
         IntermediateExportableItem

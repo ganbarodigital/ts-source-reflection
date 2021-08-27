@@ -32,4 +32,14 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateCallable";
+import { Maybe } from "@safelytyped/core-types";
+import { IntermediateCallableParameter } from "..";
+import { IntermediateGenericType } from "../IntermediateGenericType";
+import { IntermediateTypeReference } from "../IntermediateTypeReference";
+
+export interface IntermediateCallableDefinition
+{
+    typeParameters: IntermediateGenericType[];
+    parameters: IntermediateCallableParameter[];
+    returnType: Maybe<IntermediateTypeReference>;
+}

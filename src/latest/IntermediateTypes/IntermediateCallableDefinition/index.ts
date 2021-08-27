@@ -32,15 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import { IntermediateCallableParameter } from "..";
-import { IntermediateGenericType } from "../IntermediateGenericType";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
-
-// tslint:disable-next-line: no-empty-interface
-export interface IntermediateCallable
-{
-    typeParameters: IntermediateGenericType[];
-    parameters: IntermediateCallableParameter[];
-    returnType: Maybe<IntermediateTypeReference>;
-}
+export * from "./IntermediateCallableDefinition";
