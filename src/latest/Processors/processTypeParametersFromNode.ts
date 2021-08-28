@@ -32,18 +32,26 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { NodeArray, TypeParameterDeclaration } from "typescript";
+import { ClassLikeDeclarationBase, InterfaceDeclaration, SignatureDeclarationBase, TypeAliasDeclaration } from "typescript";
 import { IntermediateGenericType } from "../IntermediateTypes";
 import { processGenericTypeDeclaration } from "./processGenericTypeDeclaration";
 
-export function processTypeParameters(
-    input: NodeArray<TypeParameterDeclaration>
+export function processTypeParametersFromNode(
+    input: SignatureDeclarationBase
+        | ClassLikeDeclarationBase
+        | InterfaceDeclaration
+        | TypeAliasDeclaration
 ): IntermediateGenericType[]
 {
-    // this will be our return value
     const retval: IntermediateGenericType[] = [];
 
-    for (const member of input) {
+    // special case - no type parameters at all
+    if (!input.typeParameters) {
+        return retval;
+    }
+
+    // general case - we have type parameters to unpack
+    for (const member of input.typeParameters) {
         retval.push(processGenericTypeDeclaration(member));
     }
 

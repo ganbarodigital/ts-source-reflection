@@ -34,28 +34,21 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { ArrowFunction } from "typescript";
+import * as AST from "../AST";
 import {
     IntermediateArrowFunction,
     IntermediateCallableParameterDefinition,
-    IntermediateGenericType,
     IntermediateKind,
     IntermediateTypeReference
 } from "../IntermediateTypes";
 import { processParameterDeclaration } from "./processParameterDeclaration";
 import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
-import * as AST from "../AST";
+import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processArrowFunction(
     input: ArrowFunction
 ): IntermediateArrowFunction
 {
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (input.typeParameters) {
-        typeParameters = processTypeParameters(input.typeParameters);
-    }
-
     // do we have any parameters?
     const parameters: IntermediateCallableParameterDefinition[] = [];
     for (const param of input.parameters) {
@@ -71,7 +64,7 @@ export function processArrowFunction(
     // all done!
     return {
         kind: IntermediateKind.IntermediateArrowFunction,
-        typeParameters,
+        typeParameters: processTypeParametersFromNode(input),
         parameters,
         returnType,
         hasBody: AST.hasBody(input.body),

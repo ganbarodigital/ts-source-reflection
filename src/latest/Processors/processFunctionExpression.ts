@@ -36,7 +36,7 @@ import { FunctionExpression } from "typescript";
 import { IntermediateFunctionExpression, IntermediateKind } from "../IntermediateTypes";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
+import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processFunctionExpression(
     input: FunctionExpression
@@ -45,14 +45,9 @@ export function processFunctionExpression(
     // our return value
     const retval: IntermediateFunctionExpression = {
         kind: IntermediateKind.IntermediateFunctionExpression,
-        typeParameters: [],
+        typeParameters: processTypeParametersFromNode(input),
         parameters: processFunctionParameters(input.parameters),
         returnType: undefined,
-    }
-
-    // do we have generic type parameters?
-    if (input.typeParameters) {
-        retval.typeParameters = processTypeParameters(input.typeParameters);
     }
 
     // do we have a return value?

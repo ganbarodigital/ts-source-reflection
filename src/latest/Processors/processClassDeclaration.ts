@@ -36,14 +36,13 @@ import { ClassDeclaration, Statement } from "typescript";
 import * as AST from "../AST";
 import {
     IntermediateClass,
-    IntermediateGenericType,
     IntermediateKind,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { processMemberDeclarations } from "./processMethodDeclarations";
-import { processTypeParameters } from "./processTypeParameters";
+import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processClassDeclaration: StatementProcessor = (
@@ -52,16 +51,11 @@ export const processClassDeclaration: StatementProcessor = (
     // make sure we have the right kind of statement
     const classDec = AST.mustBeClassDeclaration(input);
 
-    let typeParameters: IntermediateGenericType[] = [];
-    if (classDec.typeParameters) {
-        typeParameters = processTypeParameters(classDec.typeParameters);
-    }
-
     return {
         name: classDec.name?.text || '',
         declared: AST.hasDeclaredModifier(input.modifiers),
         kind: IntermediateKind.IntermediateClass,
-        typeParameters,
+        typeParameters: processTypeParametersFromNode(classDec),
         docBlock: processDocBlock(classDec),
         exported: AST.isNodeExported(classDec),
         extends: getBaseClassType(classDec),

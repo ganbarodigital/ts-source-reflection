@@ -36,25 +36,17 @@ import { Maybe } from "@safelytyped/core-types";
 import { FunctionTypeNode } from "typescript";
 import {
     IntermediateFunctionTypeSignature,
-    IntermediateGenericType,
     IntermediateKind,
     IntermediateTypeReference
 } from "../IntermediateTypes";
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
+import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processFunctionType(
     input: FunctionTypeNode
 ): IntermediateFunctionTypeSignature
 {
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (input.typeParameters) {
-        typeParameters = processTypeParameters(input.typeParameters);
-    }
-
-
     // do we have a return type?
     let retType: Maybe<IntermediateTypeReference>;
     if (input.type) {
@@ -63,7 +55,7 @@ export function processFunctionType(
 
     return {
         kind: IntermediateKind.IntermediateFunctionTypeSignature,
-        typeParameters,
+        typeParameters: processTypeParametersFromNode(input),
         parameters: processCallableParameterSignatures(input.parameters),
         returnType: retType,
     }

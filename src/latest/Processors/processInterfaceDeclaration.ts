@@ -37,7 +37,6 @@ import * as AST from "../AST";
 import { hasDeclaredModifier } from "../AST";
 import { mustBeInterfaceDeclaration } from "../AST/mustBeInterfaceDeclaration";
 import {
-    IntermediateGenericType,
     IntermediateInterface,
     IntermediateKind,
     IntermediateTypeArgument
@@ -45,7 +44,7 @@ import {
 import { processDocBlock } from "./processDocBlock";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { processMemberSignatures } from "./processMemberSignatures";
-import { processTypeParameters } from "./processTypeParameters";
+import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processInterfaceDeclaration: StatementProcessor = (
@@ -54,18 +53,12 @@ export const processInterfaceDeclaration: StatementProcessor = (
     // make sure we're dealing with an actual interface
     const interfaceDec = mustBeInterfaceDeclaration(input);
 
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (interfaceDec.typeParameters) {
-        typeParameters = processTypeParameters(interfaceDec.typeParameters);
-    }
-
     // all done
     return {
         kind: IntermediateKind.IntermediateInterface,
         declared: hasDeclaredModifier(input.modifiers),
         name: interfaceDec.name.text,
-        typeParameters,
+        typeParameters: processTypeParametersFromNode(interfaceDec),
         docBlock: processDocBlock(interfaceDec),
         exported: AST.isNodeExported(interfaceDec),
         extends: getBaseInterfaceTypes(interfaceDec),

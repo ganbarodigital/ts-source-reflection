@@ -34,7 +34,6 @@
 import { Maybe } from "@safelytyped/core-types";
 import { MethodSignature } from "typescript";
 import {
-    IntermediateGenericType,
     IntermediateKind,
     IntermediateMethodSignature,
     IntermediateTypeReference
@@ -42,7 +41,7 @@ import {
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { processDocBlock } from "./processDocBlock";
 import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
+import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 
 
@@ -50,12 +49,6 @@ export function processMethodSignature(
     input: MethodSignature
 ): IntermediateMethodSignature
 {
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (input.typeParameters) {
-        typeParameters = processTypeParameters(input.typeParameters);
-    }
-
     // do we have a return type?
     let returnType: Maybe<IntermediateTypeReference>;
     if (input.type) {
@@ -71,7 +64,7 @@ export function processMethodSignature(
         accessModifier: undefined,
         name: input.name.getText(),
         parameters: processCallableParameterSignatures(input.parameters),
-        typeParameters,
+        typeParameters: processTypeParametersFromNode(input),
         returnType,
     }
 }

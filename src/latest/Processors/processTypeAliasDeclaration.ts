@@ -35,13 +35,12 @@
 import { Statement } from "typescript";
 import { mustBeTypeAliasDeclaration } from "../AST/mustBeTypeAliasDeclaration";
 import {
-    IntermediateGenericType,
     IntermediateKind,
     IntermediateTypeAliasDefinition
 } from "../IntermediateTypes";
-import { StatementProcessor } from "./StatementProcessor";
 import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
+import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
+import { StatementProcessor } from "./StatementProcessor";
 
 export const processTypeAliasDeclaration: StatementProcessor = (
     input: Statement
@@ -51,16 +50,10 @@ export const processTypeAliasDeclaration: StatementProcessor = (
 
     // at this point, we *know* that we're looking at a type alias :)
 
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (typeAliasDec.typeParameters) {
-        typeParameters = processTypeParameters(typeAliasDec.typeParameters);
-    }
-
     return {
         kind: IntermediateKind.IntermediateTypeAliasDefinition,
         typeName: typeAliasDec.name.text,
         typeRef: processTypeNode(typeAliasDec.type),
-        typeParameters,
+        typeParameters: processTypeParametersFromNode(typeAliasDec),
     }
 }

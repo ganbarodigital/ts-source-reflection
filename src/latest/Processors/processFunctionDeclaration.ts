@@ -37,14 +37,13 @@ import * as AST from "../AST";
 import { mustBeFunctionDeclaration } from "../AST";
 import {
     IntermediateFunction,
-    IntermediateGenericType,
     IntermediateKind,
     IntermediateTypeReference
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
+import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processFunctionDeclaration: StatementProcessor = (
@@ -54,12 +53,6 @@ export const processFunctionDeclaration: StatementProcessor = (
     const funcDec = mustBeFunctionDeclaration(input);
 
     // at this point, we *know* that we're looking at a function :)
-
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (funcDec.typeParameters) {
-        typeParameters = processTypeParameters(funcDec.typeParameters);
-    }
 
     // do we have a return type?
     let retType: Maybe<IntermediateTypeReference>;
@@ -72,7 +65,7 @@ export const processFunctionDeclaration: StatementProcessor = (
         docBlock: processDocBlock(input),
         declared: AST.hasDeclaredModifier(input.modifiers),
         exported: AST.hasExportModifier(input.modifiers),
-        typeParameters: typeParameters,
+        typeParameters: processTypeParametersFromNode(funcDec),
         name: funcDec.name?.text,
         parameters: processFunctionParameters(funcDec.parameters),
         returnType: retType,

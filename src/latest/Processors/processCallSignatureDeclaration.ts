@@ -36,24 +36,16 @@ import { Maybe } from "@safelytyped/core-types";
 import { CallSignatureDeclaration } from "typescript";
 import {
     IntermediateCallSignature,
-    IntermediateGenericType,
     IntermediateKind,
     IntermediateTypeReference
 } from "../IntermediateTypes";
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
+import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processCallSignatureDeclaration(
     input: CallSignatureDeclaration
-): IntermediateCallSignature
-{
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (input.typeParameters) {
-        typeParameters = processTypeParameters(input.typeParameters);
-    }
-
+): IntermediateCallSignature {
     // do we have a return type?
     let retType: Maybe<IntermediateTypeReference>;
     if (input.type) {
@@ -62,7 +54,7 @@ export function processCallSignatureDeclaration(
 
     return {
         kind: IntermediateKind.IntermediateCallSignature,
-        typeParameters,
+        typeParameters: processTypeParametersFromNode(input),
         parameters: processCallableParameterSignatures(input.parameters),
         returnType: retType,
     }

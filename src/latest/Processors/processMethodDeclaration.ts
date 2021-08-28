@@ -36,7 +36,6 @@ import { Maybe } from "@safelytyped/core-types";
 import { MethodDeclaration } from "typescript";
 import * as AST from "../AST";
 import {
-    IntermediateGenericType,
     IntermediateKind,
     IntermediateMethodDefinition,
     IntermediateTypeReference
@@ -44,18 +43,12 @@ import {
 import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processTypeNode } from "./processTypeNode";
-import { processTypeParameters } from "./processTypeParameters";
+import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processMethodDeclaration(
     input: MethodDeclaration
 ): IntermediateMethodDefinition
 {
-    // do we have any type parameters?
-    let typeParameters: IntermediateGenericType[] = [];
-    if (input.typeParameters) {
-        typeParameters = processTypeParameters(input.typeParameters);
-    }
-
     // do we have a return type?
     let returnType: Maybe<IntermediateTypeReference>;
     if (input.type) {
@@ -71,7 +64,7 @@ export function processMethodDeclaration(
         accessModifier: undefined,
         name: input.name.getText(),
         parameters: processFunctionParameters(input.parameters),
-        typeParameters,
+        typeParameters: processTypeParametersFromNode(input),
         returnType,
         hasBody: AST.hasBody(input.body),
     }
