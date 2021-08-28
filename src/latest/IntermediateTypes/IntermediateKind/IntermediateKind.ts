@@ -61,6 +61,7 @@ export enum IntermediateKind {
     IntermediateGenericType,
     IntermediateGenericTypeArgument,
     IntermediateGenericTypeReference,
+    IntermediateGetter,
     IntermediateIdentifierReference,
     IntermediateImportItem,
     IntermediateIndexSignature,
