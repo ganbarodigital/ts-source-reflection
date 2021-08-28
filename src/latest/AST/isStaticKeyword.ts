@@ -32,36 +32,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./findDocBlockText";
-export * from "./findExtendsHeritageClauses";
-export * from "./findImplementsHeritageClauses";
-export * from "./getStatementKind";
-export * from "./hasBody";
-export * from "./getRestrictableScope";
-export * from "./hasDeclaredModifier";
-export * from "./hasExportModifier";
-export * from "./hasDotDotDotToken";
-export * from "./hasReadonlyModifier";
-export * from "./isAnonymousClassType";
-export * from "./isDeclareKeyword";
-export * from "./isExportKeyword";
-export * from "./isFalseKeyword";
-export * from "./isIndexSignature";
-export * from "./isNodeExported";
-export * from "./isReadonlyKeyword";
-export * from "./isStaticKeyword";
-export * from "./isTrueKeyword";
-export * from "./mustBeCallSignatureDeclaration";
-export * from "./mustBeClassDeclaration";
-export * from "./mustBeConstructSignatureDeclaration";
-export * from "./mustBeConstructorDeclaration";
-export * from "./mustBeExpressionStatement";
-export * from "./mustBeFunctionDeclaration";
-export * from "./mustBeImportClause";
-export * from "./mustBeImportDeclaration";
-export * from "./mustBeInterfaceDeclaration";
-export * from "./mustBePropertyAssignment";
-export * from "./mustBePropertySignature";
-export * from "./mustBeTypeAliasDeclaration";
-export * from "./mustBeTypeReference";
-export * from "./mustBeVariableStatement";
+import { Modifier, StaticKeyword, SyntaxKind } from "typescript";
+
+export function isStaticKeyword(
+    input: Modifier
+): input is StaticKeyword
+{
+    if (input.kind === SyntaxKind.StaticKeyword) {
+        return true;
+    }
+
+    return false;
+}
