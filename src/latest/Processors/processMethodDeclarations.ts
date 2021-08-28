@@ -34,13 +34,15 @@
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
 import {
-    ClassElement, isConstructorDeclaration, isMethodDeclaration, isPropertyDeclaration, NodeArray,
+    ClassElement, isConstructorDeclaration, isGetAccessorDeclaration, isMethodDeclaration, isPropertyDeclaration, isSetAccessorDeclaration, NodeArray,
     SyntaxKind
 } from "typescript";
 import { IntermediateMemberDefinition } from "../IntermediateTypes";
 import { processConstructorDeclaration } from "./processConstructorDeclaration";
+import { processGetAccessorDeclaration } from "./processGetAccessorDeclaration";
 import { processMethodDeclaration } from "./processMethodDeclaration";
 import { processPropertyDeclaration } from "./processPropertyDeclaration";
+import { processSetAccessorDeclaration } from "./processSetAccessorDeclaration";
 
 export function processMemberDeclarations(
     input: NodeArray<ClassElement>
@@ -54,35 +56,25 @@ export function processMemberDeclarations(
             continue;
         }
 
-        // if (isCallSignatureDeclaration(member)) {
-        //     retval.push(processCallSignatureDeclaration(member));
-        //     continue;
-        // }
-
         if (isConstructorDeclaration(member)) {
             retval.push(processConstructorDeclaration(member));
             continue;
         }
-
-        // if (isConstructSignatureDeclaration(member)) {
-        //     retval.push(processConstructSignatureDeclaration(member));
-        //     continue;
-        // }
-
-        // if (isMethodSignature(member)) {
-        //     retval.push(processMethodSignature(member));
-        //     continue;
-        // }
 
         if (isMethodDeclaration(member)) {
             retval.push(processMethodDeclaration(member));
             continue;
         }
 
-        // if (AST.isIndexSignature(member)) {
-        //     retval.push(processIndexSignatureDeclaration(member));
-        //     continue;
-        // }
+        if (isGetAccessorDeclaration(member)) {
+            retval.push(processGetAccessorDeclaration(member));
+            continue;
+        }
+
+        if (isSetAccessorDeclaration(member)) {
+            retval.push(processSetAccessorDeclaration(member));
+            continue;
+        }
 
         // if we get here, we have an unsupported type
         // tslint:disable-next-line: no-console
