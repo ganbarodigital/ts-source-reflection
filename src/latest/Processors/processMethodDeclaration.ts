@@ -53,7 +53,7 @@ export function processMethodDeclaration(
         // this is a placeholder for now
         static: false,
         // this is a placeholder for now
-        accessModifier: undefined,
+        accessModifier: AST.getRestrictableScope(input),
         name: input.name.getText(),
         parameters: processFunctionParameters(input.parameters),
         typeParameters: processTypeParametersFromNode(input),

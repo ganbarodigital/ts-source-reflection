@@ -41,6 +41,7 @@ import { processDocBlock } from "./processDocBlock";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
+import * as AST from "../AST";
 
 
 export function processMethodSignature(
@@ -53,7 +54,7 @@ export function processMethodSignature(
         // this is a placeholder for now
         static: false,
         // this is a placeholder for now
-        accessModifier: undefined,
+        accessModifier: AST.getRestrictableScope(input),
         name: input.name.getText(),
         parameters: processCallableParameterSignatures(input.parameters),
         typeParameters: processTypeParametersFromNode(input),
