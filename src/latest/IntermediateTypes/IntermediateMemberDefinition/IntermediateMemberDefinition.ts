@@ -34,6 +34,7 @@
 
 import { IntermediateConstructorDefinition } from "../IntermediateConstructorDefinition";
 import { IntermediateGetter } from "../IntermediateGetter";
+import { IntermediateIndexSignature } from "../IntermediateIndexSignature";
 import { IntermediateMethodDefinition } from "../IntermediateMethodDefinition";
 import { IntermediateSetter } from "../IntermediateSetter";
 import { IntermediateTypedPropertyDefinition } from "../IntermediateTypedPropertyDefinition";
@@ -42,6 +43,7 @@ import { IntermediateUntypedPropertyDefinition } from "../IntermediateUntypedPro
 export type IntermediateMemberDefinition =
     IntermediateConstructorDefinition
     | IntermediateGetter
+    | IntermediateIndexSignature
     | IntermediateMethodDefinition
     | IntermediateSetter
     | IntermediateTypedPropertyDefinition

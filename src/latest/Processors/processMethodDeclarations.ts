@@ -32,9 +32,19 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
 import {
-    ClassElement, isConstructorDeclaration, isGetAccessorDeclaration, isMethodDeclaration, isPropertyDeclaration, isSetAccessorDeclaration, NodeArray,
+    DEFAULT_DATA_PATH,
+    getClassNames,
+    UnsupportedTypeError
+} from "@safelytyped/core-types";
+import {
+    ClassElement,
+    isConstructorDeclaration,
+    isGetAccessorDeclaration,
+    isMethodDeclaration,
+    isPropertyDeclaration,
+    isSetAccessorDeclaration,
+    NodeArray,
     SyntaxKind
 } from "typescript";
 import { IntermediateMemberDefinition } from "../IntermediateTypes";
@@ -43,6 +53,8 @@ import { processGetAccessorDeclaration } from "./processGetAccessorDeclaration";
 import { processMethodDeclaration } from "./processMethodDeclaration";
 import { processPropertyDeclaration } from "./processPropertyDeclaration";
 import { processSetAccessorDeclaration } from "./processSetAccessorDeclaration";
+import * as AST from "../AST";
+import { processIndexSignatureDeclaration } from "./processIndexSignatureDeclaration";
 
 export function processMemberDeclarations(
     input: NodeArray<ClassElement>
@@ -73,6 +85,11 @@ export function processMemberDeclarations(
 
         if (isSetAccessorDeclaration(member)) {
             retval.push(processSetAccessorDeclaration(member));
+            continue;
+        }
+
+        if (AST.isIndexSignature(member)) {
+            retval.push(processIndexSignatureDeclaration(member));
             continue;
         }
 
