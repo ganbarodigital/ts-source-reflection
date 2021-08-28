@@ -33,12 +33,16 @@
 //
 
 import { IntermediateConstructorDefinition } from "../IntermediateConstructorDefinition";
+import { IntermediateGetter } from "../IntermediateGetter";
 import { IntermediateMethodDefinition } from "../IntermediateMethodDefinition";
+import { IntermediateSetter } from "../IntermediateSetter";
 import { IntermediateTypedPropertyDefinition } from "../IntermediateTypedPropertyDefinition";
 import { IntermediateUntypedPropertyDefinition } from "../IntermediateUntypedPropertyDefinition";
 
 export type IntermediateMemberDefinition =
     IntermediateConstructorDefinition
+    | IntermediateGetter
     | IntermediateMethodDefinition
+    | IntermediateSetter
     | IntermediateTypedPropertyDefinition
     | IntermediateUntypedPropertyDefinition;
