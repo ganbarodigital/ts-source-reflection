@@ -54,6 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "name",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",

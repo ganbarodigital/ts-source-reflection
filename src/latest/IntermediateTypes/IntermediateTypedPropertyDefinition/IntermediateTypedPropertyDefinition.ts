@@ -36,10 +36,12 @@ import { Maybe } from "@safelytyped/core-types";
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateRestrictableScopeItem } from "../IntermediateRestrictableScopeItem";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateTypedPropertyDefinition
-    extends IntermediateItem<IntermediateKind.IntermediateTypedPropertyDefinition>
+    extends IntermediateItem<IntermediateKind.IntermediateTypedPropertyDefinition>,
+        IntermediateRestrictableScopeItem
 {
     propName: string;
     propIsOptional: boolean;

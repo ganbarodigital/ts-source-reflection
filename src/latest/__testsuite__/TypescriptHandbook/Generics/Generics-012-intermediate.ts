@@ -54,6 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "hasMask",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "boolean",
@@ -82,6 +83,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "nametag",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -110,6 +112,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "numLegs",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -144,6 +147,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "keeper",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "BeeKeeper",
@@ -179,6 +183,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "keeper",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "ZooKeeper",

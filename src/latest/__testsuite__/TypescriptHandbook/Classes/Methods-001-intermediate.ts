@@ -54,6 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "x",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    accessModifier: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "10",
@@ -66,6 +67,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "y",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    accessModifier: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "10",
