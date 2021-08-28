@@ -79,7 +79,7 @@ const expectedResult: IntermediateSourceFile = {
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
-                        target: {
+                        expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "safeParse",
                             asType: undefined,

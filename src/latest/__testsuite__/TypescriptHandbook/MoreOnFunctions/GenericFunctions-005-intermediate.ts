@@ -122,7 +122,7 @@ const expectedResult: IntermediateSourceFile = {
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
-                        target: {
+                        expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "firstElement1",
                             asType: undefined,
@@ -176,7 +176,7 @@ const expectedResult: IntermediateSourceFile = {
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
-                        target: {
+                        expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "firstElement2",
                             asType: undefined,

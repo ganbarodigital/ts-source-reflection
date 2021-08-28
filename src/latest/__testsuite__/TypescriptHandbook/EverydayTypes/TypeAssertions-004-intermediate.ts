@@ -52,7 +52,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
-                        target: {
+                        expression: {
                             kind: IntermediateKind.IntermediatePropertyAccessExpression,
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,

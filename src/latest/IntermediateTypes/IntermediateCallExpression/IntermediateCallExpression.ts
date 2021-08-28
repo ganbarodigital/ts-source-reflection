@@ -44,7 +44,7 @@ export interface IntermediateCallExpression
     extends IntermediateItem<IntermediateKind.IntermediateCallExpression>,
         IntermediateTypeAssertable
 {
-    target: IntermediateExpression;
+    expression: IntermediateExpression;
     typeArguments: IntermediateTypeReference[];
     arguments: IntermediateArgument[];
 }

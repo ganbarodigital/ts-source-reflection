@@ -199,7 +199,7 @@ const expectedResult: IntermediateSourceFile = {
                         elements: [
                             {
                                 kind: IntermediateKind.IntermediateCallExpression,
-                                target: {
+                                expression: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "getSmallPet",
                                     asType: undefined,
@@ -212,7 +212,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateCallExpression,
-                                target: {
+                                expression: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "getSmallPet",
                                     asType: undefined,
@@ -225,7 +225,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateCallExpression,
-                                target: {
+                                expression: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "getSmallPet",
                                     asType: undefined,
@@ -282,7 +282,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
-                        target: {
+                        expression: {
                             kind: IntermediateKind.IntermediatePropertyAccessExpression,
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
@@ -327,7 +327,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
-                        target: {
+                        expression: {
                             kind: IntermediateKind.IntermediatePropertyAccessExpression,
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
@@ -378,7 +378,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
-                        target: {
+                        expression: {
                             kind: IntermediateKind.IntermediatePropertyAccessExpression,
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,

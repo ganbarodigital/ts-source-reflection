@@ -47,7 +47,7 @@ export function processCallExpression(
     // our return value
     const retval: IntermediateCallExpression = {
         kind: IntermediateKind.IntermediateCallExpression,
-        target: processExpression(input.expression),
+        expression: processExpression(input.expression),
         typeArguments: [],
         arguments: [],
         asType: undefined,

@@ -81,7 +81,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateCallExpression,
-            target: {
+            expression: {
                 kind: IntermediateKind.IntermediatePropertyAccessExpression,
                 target: {
                     kind: IntermediateKind.IntermediateIdentifierReference,
