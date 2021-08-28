@@ -35,26 +35,17 @@
 import { FunctionExpression } from "typescript";
 import { IntermediateFunctionExpression, IntermediateKind } from "../IntermediateTypes";
 import { processFunctionParameters } from "./processFunctionParameters";
-import { processTypeNode } from "./processTypeNode";
+import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processFunctionExpression(
     input: FunctionExpression
 ): IntermediateFunctionExpression
 {
-    // our return value
-    const retval: IntermediateFunctionExpression = {
+    return {
         kind: IntermediateKind.IntermediateFunctionExpression,
         typeParameters: processTypeParametersFromNode(input),
         parameters: processFunctionParameters(input.parameters),
-        returnType: undefined,
+        returnType: processReturnTypeFromNode(input),
     }
-
-    // do we have a return value?
-    if (input.type) {
-        retval.returnType = processTypeNode(input.type);
-    }
-
-    // all done
-    return retval;
 }

@@ -32,29 +32,21 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
 import { MethodDeclaration } from "typescript";
 import * as AST from "../AST";
 import {
     IntermediateKind,
-    IntermediateMethodDefinition,
-    IntermediateTypeReference
+    IntermediateMethodDefinition
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
-import { processTypeNode } from "./processTypeNode";
+import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processMethodDeclaration(
     input: MethodDeclaration
 ): IntermediateMethodDefinition
 {
-    // do we have a return type?
-    let returnType: Maybe<IntermediateTypeReference>;
-    if (input.type) {
-        returnType = processTypeNode(input.type);
-    }
-
     return {
         kind: IntermediateKind.IntermediateMethodDefinition,
         docBlock: processDocBlock(input),
@@ -65,7 +57,7 @@ export function processMethodDeclaration(
         name: input.name.getText(),
         parameters: processFunctionParameters(input.parameters),
         typeParameters: processTypeParametersFromNode(input),
-        returnType,
+        returnType: processReturnTypeFromNode(input),
         hasBody: AST.hasBody(input.body),
     }
 }

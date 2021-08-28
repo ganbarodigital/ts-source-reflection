@@ -32,23 +32,22 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { ConstructSignatureDeclaration } from "typescript";
-import {
-    IntermediateConstructorSignature,
-    IntermediateKind
-} from "../IntermediateTypes";
-import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
-import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
+import { Maybe } from "@safelytyped/core-types";
+import { TypeNode } from "typescript";
+import { IntermediateTypeReference } from "../IntermediateTypes";
+import { processTypeNode } from "./processTypeNode";
 
-export function processConstructSignatureDeclaration(
-    input: ConstructSignatureDeclaration
-): IntermediateConstructorSignature
+type NodeWithReturnType = {
+    readonly type?: TypeNode
+}
+
+export function processReturnTypeFromNode(
+    input: NodeWithReturnType
+): Maybe<IntermediateTypeReference>
 {
-    // constructors cannot have type parameters
-
-    return {
-        kind: IntermediateKind.IntermediateConstructorSignature,
-        parameters: processCallableParameterSignatures(input.parameters),
-        returnType: processReturnTypeFromNode(input),
+    if (!input.type) {
+        return undefined;
     }
+
+    return processTypeNode(input.type);
 }

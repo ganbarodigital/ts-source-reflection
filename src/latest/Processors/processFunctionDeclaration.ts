@@ -31,18 +31,16 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { Maybe } from "@safelytyped/core-types";
 import { Statement } from "typescript";
 import * as AST from "../AST";
 import { mustBeFunctionDeclaration } from "../AST";
 import {
     IntermediateFunction,
-    IntermediateKind,
-    IntermediateTypeReference
+    IntermediateKind
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
-import { processTypeNode } from "./processTypeNode";
+import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 import { StatementProcessor } from "./StatementProcessor";
 
@@ -54,12 +52,6 @@ export const processFunctionDeclaration: StatementProcessor = (
 
     // at this point, we *know* that we're looking at a function :)
 
-    // do we have a return type?
-    let retType: Maybe<IntermediateTypeReference>;
-    if (funcDec.type) {
-        retType = processTypeNode(funcDec.type);
-    }
-
     return {
         kind: IntermediateKind.IntermediateFunction,
         docBlock: processDocBlock(input),
@@ -68,7 +60,7 @@ export const processFunctionDeclaration: StatementProcessor = (
         typeParameters: processTypeParametersFromNode(funcDec),
         name: funcDec.name?.text,
         parameters: processFunctionParameters(funcDec.parameters),
-        returnType: retType,
+        returnType: processReturnTypeFromNode(funcDec),
         hasBody: AST.hasBody(funcDec.body),
     }
 }

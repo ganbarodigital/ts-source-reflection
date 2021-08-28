@@ -32,15 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
 import { ConstructorDeclaration } from "typescript";
 import {
     IntermediateConstructorDefinition,
-    IntermediateKind,
-    IntermediateTypeReference
+    IntermediateKind
 } from "../IntermediateTypes";
 import { processFunctionParameters } from "./processFunctionParameters";
-import { processTypeNode } from "./processTypeNode";
+import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 
 export function processConstructorDeclaration(
     input: ConstructorDeclaration
@@ -48,15 +46,9 @@ export function processConstructorDeclaration(
 {
     // constructors cannot have type parameters
 
-    // do we have a return type?
-    let retType: Maybe<IntermediateTypeReference>;
-    if (input.type) {
-        retType = processTypeNode(input.type);
-    }
-
     return {
         kind: IntermediateKind.IntermediateConstructorDefinition,
         parameters: processFunctionParameters(input.parameters),
-        returnType: retType,
+        returnType: processReturnTypeFromNode(input),
     }
 }

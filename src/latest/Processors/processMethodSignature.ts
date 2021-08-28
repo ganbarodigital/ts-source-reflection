@@ -31,16 +31,14 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { Maybe } from "@safelytyped/core-types";
 import { MethodSignature } from "typescript";
 import {
     IntermediateKind,
-    IntermediateMethodSignature,
-    IntermediateTypeReference
+    IntermediateMethodSignature
 } from "../IntermediateTypes";
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { processDocBlock } from "./processDocBlock";
-import { processTypeNode } from "./processTypeNode";
+import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 
@@ -49,12 +47,6 @@ export function processMethodSignature(
     input: MethodSignature
 ): IntermediateMethodSignature
 {
-    // do we have a return type?
-    let returnType: Maybe<IntermediateTypeReference>;
-    if (input.type) {
-        returnType = processTypeNode(input.type);
-    }
-
     return {
         kind: IntermediateKind.IntermediateMethodSignature,
         docBlock: processDocBlock(input),
@@ -65,6 +57,6 @@ export function processMethodSignature(
         name: input.name.getText(),
         parameters: processCallableParameterSignatures(input.parameters),
         typeParameters: processTypeParametersFromNode(input),
-        returnType,
+        returnType: processReturnTypeFromNode(input),
     }
 }

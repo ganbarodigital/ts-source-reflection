@@ -32,30 +32,22 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
 import { CallSignatureDeclaration } from "typescript";
 import {
     IntermediateCallSignature,
-    IntermediateKind,
-    IntermediateTypeReference
+    IntermediateKind
 } from "../IntermediateTypes";
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
-import { processTypeNode } from "./processTypeNode";
+import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processCallSignatureDeclaration(
     input: CallSignatureDeclaration
 ): IntermediateCallSignature {
-    // do we have a return type?
-    let retType: Maybe<IntermediateTypeReference>;
-    if (input.type) {
-        retType = processTypeNode(input.type);
-    }
-
     return {
         kind: IntermediateKind.IntermediateCallSignature,
         typeParameters: processTypeParametersFromNode(input),
         parameters: processCallableParameterSignatures(input.parameters),
-        returnType: retType,
+        returnType: processReturnTypeFromNode(input),
     }
 }

@@ -32,17 +32,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
 import { ArrowFunction } from "typescript";
 import * as AST from "../AST";
 import {
     IntermediateArrowFunction,
     IntermediateCallableParameterDefinition,
-    IntermediateKind,
-    IntermediateTypeReference
+    IntermediateKind
 } from "../IntermediateTypes";
 import { processParameterDeclaration } from "./processParameterDeclaration";
-import { processTypeNode } from "./processTypeNode";
+import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processArrowFunction(
@@ -55,18 +53,12 @@ export function processArrowFunction(
         parameters.push(processParameterDeclaration(param));
     }
 
-    // what about a return type?
-    let returnType: Maybe<IntermediateTypeReference>;
-    if (input.type) {
-        returnType = processTypeNode(input.type);
-    }
-
     // all done!
     return {
         kind: IntermediateKind.IntermediateArrowFunction,
         typeParameters: processTypeParametersFromNode(input),
         parameters,
-        returnType,
+        returnType: processReturnTypeFromNode(input),
         hasBody: AST.hasBody(input.body),
     }
 }
