@@ -55,6 +55,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "x",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -67,6 +68,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "y",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,

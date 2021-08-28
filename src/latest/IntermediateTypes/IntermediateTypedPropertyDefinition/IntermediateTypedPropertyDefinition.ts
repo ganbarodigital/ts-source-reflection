@@ -46,6 +46,7 @@ export interface IntermediateTypedPropertyDefinition
     propName: string;
     propIsOptional: boolean;
     propIsReadonly: boolean;
+    propIsStatic: boolean;
     typeRef: IntermediateTypeReference;
     initializer: Maybe<IntermediateExpression>;
 }

@@ -61,6 +61,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "zeroValue",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
@@ -73,6 +74,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "add",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFunctionTypeSignature,

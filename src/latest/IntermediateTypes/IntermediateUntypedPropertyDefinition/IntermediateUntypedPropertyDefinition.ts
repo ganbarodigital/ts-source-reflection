@@ -45,5 +45,6 @@ export interface IntermediateUntypedPropertyDefinition
     propName: string;
     propIsOptional: boolean;
     propIsReadonly: boolean;
+    propIsStatic: boolean;
     initializer: Maybe<IntermediateExpression>;
 }

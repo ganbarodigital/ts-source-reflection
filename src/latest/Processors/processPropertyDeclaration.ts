@@ -62,6 +62,7 @@ export function processPropertyDeclaration(
             propName: input.name.getText(),
             propIsOptional: processQuestionToken(input.questionToken),
             propIsReadonly: AST.hasReadonlyModifier(input.modifiers),
+            propIsStatic: AST.hasStaticModifier(input),
             accessModifier: AST.getRestrictableScope(input),
             initializer,
         }
@@ -73,6 +74,7 @@ export function processPropertyDeclaration(
         propName: input.name.getText(),
         propIsOptional: processQuestionToken(input.questionToken),
         propIsReadonly: AST.hasReadonlyModifier(input.modifiers),
+        propIsStatic: AST.hasStaticModifier(input),
         typeRef: processTypeNode(input.type),
         accessModifier: AST.getRestrictableScope(input),
         initializer,

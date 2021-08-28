@@ -56,6 +56,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "x",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    propIsStatic: false,
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "10",

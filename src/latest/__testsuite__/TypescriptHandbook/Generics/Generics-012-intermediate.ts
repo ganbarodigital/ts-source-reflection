@@ -54,6 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "hasMask",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -83,6 +84,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "nametag",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -112,6 +114,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "numLegs",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -147,6 +150,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "keeper",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
@@ -183,6 +187,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "keeper",
                     propIsOptional: false,
                     propIsReadonly: false,
+                    propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
