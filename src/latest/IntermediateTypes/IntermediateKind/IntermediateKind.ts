@@ -46,7 +46,7 @@ export enum IntermediateKind {
     // so this may disappear in the future!
     IntermediateBuiltInTypeReference,
     IntermediateCallSignature,
-    IntermediateCallableExpression,
+    IntermediateCallExpression,
     IntermediateClass,
     IntermediateConditionalType,
     IntermediateConstTypeCast,

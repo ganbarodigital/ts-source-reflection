@@ -40,8 +40,8 @@ import { IntermediateTypeAssertable } from "../IntermediateTypeAssertable";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 // this is a placeholder for now
-export interface IntermediateCallableExpression
-    extends IntermediateItem<IntermediateKind.IntermediateCallableExpression>,
+export interface IntermediateCallExpression
+    extends IntermediateItem<IntermediateKind.IntermediateCallExpression>,
         IntermediateTypeAssertable
 {
     target: IntermediateExpression;

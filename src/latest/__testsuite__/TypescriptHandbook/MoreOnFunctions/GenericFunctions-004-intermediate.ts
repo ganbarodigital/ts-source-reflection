@@ -105,7 +105,7 @@ const expectedResult: IntermediateSourceFile = {
                     variableName: "arr",
                     typeRef: undefined,
                     initializer: {
-                        kind: IntermediateKind.IntermediateCallableExpression,
+                        kind: IntermediateKind.IntermediateCallExpression,
                         target: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "combine",

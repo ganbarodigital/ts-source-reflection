@@ -106,7 +106,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     typeRef: undefined,
                     initializer: {
-                        kind: IntermediateKind.IntermediateCallableExpression,
+                        kind: IntermediateKind.IntermediateCallExpression,
                         target: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "getDB",
@@ -134,7 +134,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     typeRef: undefined,
                     initializer: {
-                        kind: IntermediateKind.IntermediateCallableExpression,
+                        kind: IntermediateKind.IntermediateCallExpression,
                         target: {
                             kind: IntermediateKind.IntermediatePropertyAccessExpression,
                             target: {

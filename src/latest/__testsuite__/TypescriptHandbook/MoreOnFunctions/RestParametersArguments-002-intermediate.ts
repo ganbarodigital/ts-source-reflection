@@ -120,7 +120,7 @@ const expectedResult: IntermediateSourceFile = {
             ],
         },
         {
-            kind: IntermediateKind.IntermediateCallableExpression,
+            kind: IntermediateKind.IntermediateCallExpression,
             target: {
                 kind: IntermediateKind.IntermediatePropertyAccessExpression,
                 target: {

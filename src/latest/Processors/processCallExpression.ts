@@ -34,7 +34,7 @@
 
 import { CallExpression } from "typescript";
 import {
-    IntermediateCallableExpression,
+    IntermediateCallExpression,
     IntermediateKind
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
@@ -42,11 +42,11 @@ import { processTypeNode } from "./processTypeNode";
 
 export function processCallExpression(
     input: CallExpression
-): IntermediateCallableExpression
+): IntermediateCallExpression
 {
     // our return value
-    const retval: IntermediateCallableExpression = {
-        kind: IntermediateKind.IntermediateCallableExpression,
+    const retval: IntermediateCallExpression = {
+        kind: IntermediateKind.IntermediateCallExpression,
         target: processExpression(input.expression),
         typeArguments: [],
         arguments: [],

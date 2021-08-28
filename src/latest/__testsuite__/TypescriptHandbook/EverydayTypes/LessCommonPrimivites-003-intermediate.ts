@@ -51,7 +51,7 @@ const expectedResult: IntermediateSourceFile = {
                     readonly: false,
                     docBlock: undefined,
                     initializer: {
-                        kind: IntermediateKind.IntermediateCallableExpression,
+                        kind: IntermediateKind.IntermediateCallExpression,
                         target: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Symbol",
@@ -86,7 +86,7 @@ const expectedResult: IntermediateSourceFile = {
                     readonly: false,
                     docBlock: undefined,
                     initializer: {
-                        kind: IntermediateKind.IntermediateCallableExpression,
+                        kind: IntermediateKind.IntermediateCallExpression,
                         target: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Symbol",
