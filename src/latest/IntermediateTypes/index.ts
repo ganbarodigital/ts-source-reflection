@@ -49,6 +49,7 @@ export * from "./IntermediateCallableParameterDefinition";
 export * from "./IntermediateCallableParameterSignature";
 export * from "./IntermediateCallableSignature";
 export * from "./IntermediateClass";
+export * from "./IntermediateClassAccessor";
 export * from "./IntermediateConditionalType";
 export * from "./IntermediateConstantItem";
 export * from "./IntermediateConstructorDefinition";
