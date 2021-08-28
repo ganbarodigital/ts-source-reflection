@@ -50,9 +50,7 @@ export function processMethodDeclaration(
     return {
         kind: IntermediateKind.IntermediateMethodDefinition,
         docBlock: processDocBlock(input),
-        // this is a placeholder for now
-        static: false,
-        // this is a placeholder for now
+        static: AST.hasStaticModifier(input),
         accessModifier: AST.getRestrictableScope(input),
         name: input.name.getText(),
         parameters: processFunctionParameters(input.parameters),

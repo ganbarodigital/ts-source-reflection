@@ -44,6 +44,6 @@ export function hasStaticModifier(
         return false;
     }
 
-    // do we have a ReadonlyKeyword in the modifiers array?
+    // do we have a StaticKeyword in the modifiers array?
     return input.modifiers.some((member) => AST.isStaticKeyword(member));
 }
