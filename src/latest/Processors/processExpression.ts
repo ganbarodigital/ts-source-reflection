@@ -67,6 +67,7 @@ import { processArrowFunction } from "./processArrowFunction";
 import { processBinaryExpression } from "./processBinaryExpression";
 import { processCallExpression } from "./processCallExpression";
 import { processFunctionExpression } from "./processFunctionExpression";
+import { processNewExpression } from "./processNewExpression";
 import { processParenthesizedExpression } from "./processParenthesizedExpression";
 import { processPropertyAccessExpression } from "./processPropertyAccessExpression";
 import { processSpreadElement } from "./processSpreadElement";
@@ -155,15 +156,7 @@ export function processExpression(
     }
 
     if (isNewExpression(input)) {
-        // temporary
-        return {
-            kind: IntermediateKind.IntermediateNewExpression,
-            typeRef: {
-                kind: IntermediateKind.IntermediateFixedTypeReference,
-                typeName: input.expression.getText(),
-            },
-            arguments: [],
-        }
+        return processNewExpression(input);
     }
 
     if (isFunctionExpression(input)) {
