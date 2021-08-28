@@ -103,6 +103,7 @@ export * from "./IntermediateReference";
 export * from "./IntermediateRestType";
 export * from "./IntermediateRestrictableScope";
 export * from "./IntermediateRestrictableScopeItem";
+export * from "./IntermediateSetter";
 export * from "./IntermediateSourceFile";
 export * from "./IntermediateSourceFileChildren";
 export * from "./IntermediateSpreadElement";

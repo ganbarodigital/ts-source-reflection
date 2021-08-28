@@ -86,6 +86,7 @@ export enum IntermediateKind {
     IntermediatePropertyAssignment,
     IntermediateReference,
     IntermediateRestType,
+    IntermediateSetter,
     IntermediateSourceFile,
     IntermediateSpreadOperator,
     IntermediateStringLiteral,
