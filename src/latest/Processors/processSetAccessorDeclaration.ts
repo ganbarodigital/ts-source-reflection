@@ -32,14 +32,21 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateCallableParameterDefinition } from "../IntermediateCallableParameterDefinition";
-import { IntermediateClassAccessor } from "../IntermediateClassAccessor";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
+import { SetAccessorDeclaration } from "typescript";
+import { IntermediateKind, IntermediateSetter } from "../IntermediateTypes";
+import { processDocBlock } from "./processDocBlock";
+import { processFunctionParameters } from "./processFunctionParameters";
+import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
-export interface IntermediateSetter
-    extends IntermediateItem<IntermediateKind.IntermediateSetter>,
-        IntermediateClassAccessor
+export function processSetAccessorDeclaration(
+    input: SetAccessorDeclaration
+): IntermediateSetter
 {
-    parameters: IntermediateCallableParameterDefinition[];
+    return {
+        kind: IntermediateKind.IntermediateSetter,
+        docBlock: processDocBlock(input),
+        name: input.name.getText(),
+        typeParameters: processTypeParametersFromNode(input),
+        parameters: processFunctionParameters(input.parameters),
+    }
 }
