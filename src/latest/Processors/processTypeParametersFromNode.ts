@@ -32,15 +32,16 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { ClassLikeDeclarationBase, InterfaceDeclaration, SignatureDeclarationBase, TypeAliasDeclaration } from "typescript";
+import { NodeArray, TypeParameterDeclaration } from "typescript";
 import { IntermediateGenericType } from "../IntermediateTypes";
 import { processGenericTypeDeclaration } from "./processGenericTypeDeclaration";
 
+type NodeWithTypeParameters = {
+    readonly typeParameters?: NodeArray<TypeParameterDeclaration>
+}
+
 export function processTypeParametersFromNode(
-    input: SignatureDeclarationBase
-        | ClassLikeDeclarationBase
-        | InterfaceDeclaration
-        | TypeAliasDeclaration
+    input: NodeWithTypeParameters
 ): IntermediateGenericType[]
 {
     const retval: IntermediateGenericType[] = [];
