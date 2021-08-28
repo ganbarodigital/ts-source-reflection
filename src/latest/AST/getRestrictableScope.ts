@@ -32,35 +32,28 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./findDocBlockText";
-export * from "./findExtendsHeritageClauses";
-export * from "./findImplementsHeritageClauses";
-export * from "./getStatementKind";
-export * from "./hasBody";
-export * from "./getRestrictableScope";
-export * from "./hasDeclaredModifier";
-export * from "./hasExportModifier";
-export * from "./hasDotDotDotToken";
-export * from "./hasReadonlyModifier";
-export * from "./isAnonymousClassType";
-export * from "./isDeclareKeyword";
-export * from "./isExportKeyword";
-export * from "./isFalseKeyword";
-export * from "./isIndexSignature";
-export * from "./isNodeExported";
-export * from "./isReadonlyKeyword";
-export * from "./isTrueKeyword";
-export * from "./mustBeCallSignatureDeclaration";
-export * from "./mustBeClassDeclaration";
-export * from "./mustBeConstructSignatureDeclaration";
-export * from "./mustBeConstructorDeclaration";
-export * from "./mustBeExpressionStatement";
-export * from "./mustBeFunctionDeclaration";
-export * from "./mustBeImportClause";
-export * from "./mustBeImportDeclaration";
-export * from "./mustBeInterfaceDeclaration";
-export * from "./mustBePropertyAssignment";
-export * from "./mustBePropertySignature";
-export * from "./mustBeTypeAliasDeclaration";
-export * from "./mustBeTypeReference";
-export * from "./mustBeVariableStatement";
+import { Maybe } from "@safelytyped/core-types";
+import { SyntaxKind } from "typescript";
+import { IntermediateRestrictableScope } from "../IntermediateTypes";
+import { NodeWithModifiers } from "./NodeWithModifiers";
+export function getRestrictableScope(
+    input: NodeWithModifiers
+): Maybe<IntermediateRestrictableScope>
+{
+    // okay, so what scope do we have?
+    for (const member of input.modifiers ?? []) {
+        switch (member.kind) {
+            case SyntaxKind.PublicKeyword:
+                return IntermediateRestrictableScope.PUBLIC;
+            case SyntaxKind.ProtectedKeyword:
+                return IntermediateRestrictableScope.PROTECTED;
+            case SyntaxKind.PrivateKeyword:
+                return IntermediateRestrictableScope.PRIVATE;
+        }
+    }
+
+    // if we get here, there's no scope restriction in the list
+    // of modifiers
+
+    return undefined;
+}
