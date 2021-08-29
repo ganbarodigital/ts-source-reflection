@@ -53,7 +53,7 @@ import { processGetAccessorDeclaration } from "./processGetAccessorDeclaration";
 import { processMethodDeclaration } from "./processMethodDeclaration";
 import { processPropertyDeclaration } from "./processPropertyDeclaration";
 import { processSetAccessorDeclaration } from "./processSetAccessorDeclaration";
-import * as AST from "../AST";
+import { AST } from "../AST";
 import { processIndexSignatureDeclaration } from "./processIndexSignatureDeclaration";
 
 export function processMemberDeclarations(

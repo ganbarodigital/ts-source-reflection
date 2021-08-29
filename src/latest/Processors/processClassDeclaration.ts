@@ -33,7 +33,7 @@
 //
 
 import { ClassDeclaration, Statement } from "typescript";
-import * as AST from "../AST";
+import { AST } from "../AST";
 import {
     IntermediateClass,
     IntermediateKind,

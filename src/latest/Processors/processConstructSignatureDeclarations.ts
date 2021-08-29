@@ -33,7 +33,7 @@
 //
 
 import { isConstructSignatureDeclaration, NodeArray, TypeElement } from "typescript";
-import * as AST from "../AST";
+import { AST } from "../AST";
 import { IntermediateConstructorSignature } from "../IntermediateTypes";
 import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
 

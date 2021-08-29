@@ -33,7 +33,7 @@
 //
 
 import { isPropertySignature, NodeArray, TypeElement } from "typescript";
-import * as AST from "../AST";
+import { AST } from "../AST";
 import { IntermediatePropertySignature } from "../IntermediateTypes";
 import { processPropertySignature } from "./processPropertySignature";
 

@@ -34,7 +34,7 @@
 import { Maybe } from "@safelytyped/core-types";
 import { Node } from "typescript";
 
-import * as AST from "../AST";
+import { AST } from "../AST";
 import { IntermediateDocBlock, IntermediateKind } from "../IntermediateTypes";
 
 

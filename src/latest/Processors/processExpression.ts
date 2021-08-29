@@ -54,7 +54,7 @@ import {
     PropertyAssignment,
     SyntaxKind
 } from "typescript";
-import * as AST from "../AST";
+import { AST } from "../AST";
 import {
     IntermediateExpression,
     IntermediateKind,

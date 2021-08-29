@@ -36,7 +36,7 @@ import { PropertySignature } from "typescript";
 import { IntermediateKind, IntermediatePropertySignature } from "../IntermediateTypes";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
-import * as AST from "../AST";
+import { AST } from "../AST";
 
 export function processPropertySignature
 (

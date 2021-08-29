@@ -33,7 +33,7 @@
 //
 
 import { MethodDeclaration } from "typescript";
-import * as AST from "../AST";
+import { AST } from "../AST";
 import {
     IntermediateKind,
     IntermediateMethodDefinition

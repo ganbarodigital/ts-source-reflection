@@ -34,7 +34,7 @@
 
 import { AnyHashMap } from "@safelytyped/core-types";
 import { isNamedImports, Node, Statement } from "typescript";
-import * as AST from "../AST";
+import { AST } from "../AST";
 import {
     IntermediateImportItem,
     IntermediateKind,

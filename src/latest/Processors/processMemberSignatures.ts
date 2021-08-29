@@ -46,7 +46,7 @@ import {
     SyntaxKind,
     TypeElement
 } from "typescript";
-import * as AST from "../AST";
+import { AST } from "../AST";
 import { IntermediateMemberSignature } from "../IntermediateTypes";
 import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
 import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";

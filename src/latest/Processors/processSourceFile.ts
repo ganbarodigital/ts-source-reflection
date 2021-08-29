@@ -34,7 +34,7 @@
 import { FunctionPointerTable, searchFunctionPointerTable } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import { NodeArray, SourceFile, Statement, SyntaxKind } from "typescript";
-import { getStatementKind } from "../AST";
+import { AST } from "../AST";
 import {
     IntermediateKind,
     IntermediateSourceFile,
@@ -80,7 +80,7 @@ function processStatements(
 
     for(const statement of statements) {
         // shorthand
-        const kind = getStatementKind(statement);
+        const kind = AST.getStatementKind(statement);
 
         // did we get a statement that we support?
         if (!kind) {

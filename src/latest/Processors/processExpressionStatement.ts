@@ -33,7 +33,7 @@
 //
 
 import { Statement } from "typescript";
-import { mustBeExpressionStatement } from "../AST";
+import { AST } from "../AST";
 import { IntermediateExpression } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 import { StatementProcessor } from "./StatementProcessor";
@@ -42,7 +42,7 @@ export const processExpressionStatement: StatementProcessor = (
     input: Statement
 ): IntermediateExpression => {
     // make sure we have what we need
-    const expDec = mustBeExpressionStatement(input);
+    const expDec = AST.mustBeExpressionStatement(input);
 
     return processExpression(expDec.expression);
 }

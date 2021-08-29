@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import * as AST from ".";
+import { AST } from "./AST";
 import { NodeWithModifiers } from "./NodeWithModifiers";
 
 export function hasStaticModifier(

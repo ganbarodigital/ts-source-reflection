@@ -49,7 +49,7 @@ import { processExpression } from "./processExpression";
 import { processObjectBindingPattern } from "./processObjectBindingPattern";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
-import * as AST from "../AST";
+import { AST } from "../AST";
 
 export function processParameterDeclaration(
     paramDec: ParameterDeclaration

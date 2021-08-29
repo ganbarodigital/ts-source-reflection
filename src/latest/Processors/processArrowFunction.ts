@@ -33,7 +33,7 @@
 //
 
 import { ArrowFunction } from "typescript";
-import * as AST from "../AST";
+import { AST } from "../AST";
 import {
     IntermediateArrowFunction,
     IntermediateCallableParameterDefinition,

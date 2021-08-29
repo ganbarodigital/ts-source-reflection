@@ -37,7 +37,7 @@ import {
     ParameterDeclaration,
     SyntaxKind
 } from "typescript";
-import * as AST from "../AST";
+import { AST } from "../AST";
 import {
     IntermediateCallableParameterSignature,
     IntermediateKind,

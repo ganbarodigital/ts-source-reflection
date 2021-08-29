@@ -52,8 +52,7 @@ import {
     SyntaxKind,
     TypeNode
 } from "typescript";
-import { isAnonymousClassType } from "../AST";
-import { mustBeTypeReference } from "../AST/mustBeTypeReference";
+import { AST } from "../AST";
 import {
     IntermediateKind,
     IntermediateTypeReference
@@ -113,7 +112,7 @@ export function processTypeNode
     }
 
     // special case - anonymous class
-    if (isAnonymousClassType(input)) {
+    if (AST.isAnonymousClassType(input)) {
         // what's in the class?
         return processAnonymousClassType(input);
     }
@@ -203,6 +202,6 @@ export function processTypeNode
     // generic case
     //
     // use a type guarantee to keep the compiler happy!
-    const typeRef = mustBeTypeReference(input);
+    const typeRef = AST.mustBeTypeReference(input);
     return processTypeReferenceNode(typeRef);
 }

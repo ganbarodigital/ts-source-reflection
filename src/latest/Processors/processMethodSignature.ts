@@ -41,7 +41,7 @@ import { processDocBlock } from "./processDocBlock";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
-import * as AST from "../AST";
+import { AST } from "../AST";
 
 
 export function processMethodSignature(

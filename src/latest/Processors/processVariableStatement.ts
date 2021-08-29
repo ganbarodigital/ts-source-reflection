@@ -40,8 +40,7 @@ import {
     SyntaxKind,
     VariableDeclaration
 } from "typescript";
-import * as AST from "../AST";
-import { isNodeExported } from "../AST";
+import { AST } from "../AST";
 import {
     IntermediateExpression,
     IntermediateKind,
@@ -69,7 +68,7 @@ export const processVariableStatement: StatementProcessor = (
     // some information about the variables are actually stored
     // at the list level (doh!)
     const contextFlags = {
-        exported: isNodeExported(input),
+        exported: AST.isNodeExported(input),
         constant: false,
     }
     // tslint:disable-next-line: no-bitwise

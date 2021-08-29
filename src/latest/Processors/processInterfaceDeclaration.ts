@@ -33,9 +33,7 @@
 //
 
 import { InterfaceDeclaration, Statement } from "typescript";
-import * as AST from "../AST";
-import { hasDeclaredModifier } from "../AST";
-import { mustBeInterfaceDeclaration } from "../AST/mustBeInterfaceDeclaration";
+import { AST } from "../AST";
 import {
     IntermediateInterface,
     IntermediateKind,
@@ -51,12 +49,12 @@ export const processInterfaceDeclaration: StatementProcessor = (
     input: Statement
 ): IntermediateInterface => {
     // make sure we're dealing with an actual interface
-    const interfaceDec = mustBeInterfaceDeclaration(input);
+    const interfaceDec = AST.mustBeInterfaceDeclaration(input);
 
     // all done
     return {
         kind: IntermediateKind.IntermediateInterface,
-        declared: hasDeclaredModifier(input.modifiers),
+        declared: AST.hasDeclaredModifier(input.modifiers),
         name: interfaceDec.name.text,
         typeParameters: processTypeParametersFromNode(interfaceDec),
         docBlock: processDocBlock(interfaceDec),

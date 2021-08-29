@@ -32,8 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import { Statement } from "typescript";
-import * as AST from "../AST";
-import { mustBeFunctionDeclaration } from "../AST";
+import { AST } from "../AST";
 import {
     IntermediateFunction,
     IntermediateKind
@@ -48,7 +47,7 @@ export const processFunctionDeclaration: StatementProcessor = (
     input: Statement
 ): IntermediateFunction => {
     // make sure we have what we need
-    const funcDec = mustBeFunctionDeclaration(input);
+    const funcDec = AST.mustBeFunctionDeclaration(input);
 
     // at this point, we *know* that we're looking at a function :)
 
