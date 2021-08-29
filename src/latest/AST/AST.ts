@@ -76,6 +76,7 @@ import { hasBody } from "./hasBody";
 import { hasDeclaredModifier } from "./hasDeclaredModifier";
 import { hasDotDotDotToken } from "./hasDotDotDotToken";
 import { hasExportModifier } from "./hasExportModifier";
+import { hasPrivateModifier } from "./hasPrivateModifier";
 import { hasProtectedModifier } from "./hasProtectedModifier";
 import { hasPublicModifier } from "./hasPublicModifier";
 import { hasReadonlyModifier } from "./hasReadonlyModifier";
@@ -118,6 +119,7 @@ export class AST
     static hasDotDotDotToken = hasDotDotDotToken;
     static hasExportModifier = hasExportModifier;
     static hasReadonlyModifier = hasReadonlyModifier;
+    static hasPrivateModifier = hasPrivateModifier;
     static hasProtectedModifier = hasProtectedModifier;
     static hasPublicModifier = hasPublicModifier;
     static hasStaticModifier = hasStaticModifier;
