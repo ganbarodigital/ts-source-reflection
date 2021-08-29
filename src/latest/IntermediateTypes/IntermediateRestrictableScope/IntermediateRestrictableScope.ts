@@ -34,7 +34,7 @@
 
 export enum IntermediateRestrictableScope
 {
-    PUBLIC,
+    PUBLIC = 1,
     PROTECTED,
     PRIVATE,
 }
