@@ -33,15 +33,14 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { IntermediateItem, IntermediateKind } from "..";
-import { IntermediateExpression } from "../IntermediateExpression";
+import { IntermediateKind } from "..";
 import { IntermediateRestrictableScope } from "../IntermediateRestrictableScope";
+import { IntermediateUntypedCallableParameterDefinition } from "../IntermediateUntypedCallableParameterDefinition";
 
-export interface IntermediateUntypedConstructorParameterDefinition
-    extends IntermediateItem<IntermediateKind.IntermediateUntypedConstructorParameterDefinition>
+export type IntermediateUntypedConstructorParameterDefinition
+    = Omit<IntermediateUntypedCallableParameterDefinition, "kind">
+    &
 {
-    paramName: string;
-    optional: boolean;
+    kind: IntermediateKind.IntermediateUntypedConstructorParameterDefinition;
     setsPropertyWithScope: Maybe<IntermediateRestrictableScope>;
-    initializer: Maybe<IntermediateExpression>;
 }
