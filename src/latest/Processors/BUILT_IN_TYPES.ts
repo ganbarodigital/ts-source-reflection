@@ -33,8 +33,9 @@
 //
 
 import { SyntaxKind } from "typescript";
+import { IntermediateBuiltInType } from "../IntermediateTypes";
 
-export const BUILT_IN_TYPES: string[] = [];
+export const BUILT_IN_TYPES: IntermediateBuiltInType[] = [];
 BUILT_IN_TYPES[SyntaxKind.AnyKeyword] = "any";
 BUILT_IN_TYPES[SyntaxKind.BigIntKeyword] = "bigint";
 BUILT_IN_TYPES[SyntaxKind.BooleanKeyword] = "boolean";

@@ -32,11 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateBuiltInType } from "../IntermediateBuiltInType";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateBuiltInTypeReference
     extends IntermediateItem<IntermediateKind.IntermediateBuiltInTypeReference>
 {
-    typeName: string;
+    typeName: IntermediateBuiltInType
 }
