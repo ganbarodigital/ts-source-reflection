@@ -84,6 +84,7 @@ import { isExportKeyword } from "./isExportKeyword";
 import { isFalseKeyword } from "./isFalseKeyword";
 import { isIndexSignature } from "./isIndexSignature";
 import { isNodeExported } from "./isNodeExported";
+import { isProtectedKeyword } from "./isProtectedKeyword";
 import { isPublicKeyword } from "./isPublicKeyword";
 import { isReadonlyKeyword } from "./isReadonlyKeyword";
 import { isStaticKeyword } from "./isStaticKeyword";
@@ -121,6 +122,7 @@ export class AST
     static isFalseKeyword = isFalseKeyword;
     static isIndexSignature = isIndexSignature;
     static isNodeExported = isNodeExported;
+    static isProtectedKeyword = isProtectedKeyword;
     static isPublicKeyword = isPublicKeyword;
     static isReadonlyKeyword = isReadonlyKeyword;
     static isStaticKeyword = isStaticKeyword;
