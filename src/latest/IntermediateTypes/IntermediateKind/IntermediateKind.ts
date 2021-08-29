@@ -100,6 +100,7 @@ export enum IntermediateKind {
     IntermediateTypePredicate,
     IntermediateTypedCallableParameterDefinition,
     IntermediateTypedCallableParameterSignature,
+    IntermediateTypedConstructorParameterDefinition,
     IntermediateTypedPropertyDefinition,
     IntermediateTypedPropertySignature,
     IntermediateTypeofTypeReference,
