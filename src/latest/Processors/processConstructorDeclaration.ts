@@ -86,7 +86,10 @@ function processConstructorParameter(
     );
 
     // special case - object binding parameters cannot contain
-    // hidden parameter definitions
+    // parameter property definitions
+    //
+    // if this changes in a future release of Typescript, we're going
+    // to have some fun crowbaring that support in!
     if (retval.kind === IntermediateKind.IntermediateObjectBindingParameter) {
         return retval;
     }
@@ -101,6 +104,15 @@ function processConstructorParameter(
     }
     else if (AST.hasPrivateModifier(input.modifiers)) {
         retval.setsPropertyWithScope = IntermediateRestrictableScope.PRIVATE;
+    }
+
+    // unlike normal parameters, the 'readonly' flag actually *is* in the
+    // modifiers list for constructor parameters
+    //
+    // this means that untyped parameter properties can be 'readonly'
+    // (untyped callable parameters cannot be 'readonly')
+    if (AST.hasReadonlyModifier(input.modifiers)) {
+        retval.readonly = true;
     }
 
     // all done
@@ -122,6 +134,9 @@ function mapFunctionParameterToConstructorParameter(
                 ...input,
                 kind: IntermediateKind.IntermediateUntypedConstructorParameterDefinition,
                 setsPropertyWithScope: undefined,
+                // untyped callable parameters don't have this,
+                // so let's set an explicit default value
+                readonly: false,
             }
 
         case IntermediateKind.IntermediateTypedCallableParameterDefinition:
@@ -129,6 +144,10 @@ function mapFunctionParameterToConstructorParameter(
                 ...input,
                 kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                 setsPropertyWithScope: undefined,
+                // ignore what was there for normal parameters,
+                // because this needs to be handled differently
+                // for the constructor
+                readonly: false,
             }
 
         default:

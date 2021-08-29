@@ -43,4 +43,5 @@ export type IntermediateUntypedConstructorParameterDefinition
 {
     kind: IntermediateKind.IntermediateUntypedConstructorParameterDefinition;
     setsPropertyWithScope: Maybe<IntermediateRestrictableScope>;
+    readonly: boolean;
 }

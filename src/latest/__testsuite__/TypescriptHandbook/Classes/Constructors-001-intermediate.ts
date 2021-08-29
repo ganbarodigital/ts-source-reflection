@@ -82,6 +82,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateUntypedConstructorParameterDefinition,
                             paramName: "x",
                             optional: false,
+                            readonly: false,
                             setsPropertyWithScope: undefined,
                             initializer: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
@@ -94,6 +95,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateUntypedConstructorParameterDefinition,
                             paramName: "y",
                             optional: false,
+                            readonly: false,
                             setsPropertyWithScope: undefined,
                             initializer: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
