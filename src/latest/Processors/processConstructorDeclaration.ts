@@ -119,22 +119,16 @@ function mapFunctionParameterToConstructorParameter(
 
         case IntermediateKind.IntermediateUntypedCallableParameterDefinition:
             return <IntermediateUntypedConstructorParameterDefinition> {
+                ...input,
                 kind: IntermediateKind.IntermediateUntypedConstructorParameterDefinition,
-                paramName: input.paramName,
-                optional: input.optional,
                 setsPropertyWithScope: undefined,
-                initializer: input.initializer,
             }
 
         case IntermediateKind.IntermediateTypedCallableParameterDefinition:
             return <IntermediateTypedConstructorParameterDefinition>{
+                ...input,
                 kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
-                paramName: input.paramName,
-                readonly: input.readonly,
-                optional: input.optional,
                 setsPropertyWithScope: undefined,
-                typeRef: input.typeRef,
-                initializer: input.initializer,
             }
 
         default:
