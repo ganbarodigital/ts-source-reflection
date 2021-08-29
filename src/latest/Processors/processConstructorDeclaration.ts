@@ -32,23 +32,115 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { ConstructorDeclaration } from "typescript";
+import { ConstructorDeclaration, ConstructorTypeNode, NodeArray, ParameterDeclaration } from "typescript";
+import { AST } from "../AST";
 import {
     IntermediateConstructorDefinition,
-    IntermediateKind
+    IntermediateConstructorParameterDefinition,
+    IntermediateKind,
+    IntermediateObjectBindingParameter,
+    IntermediateRestrictableScope,
+    IntermediateTypedCallableParameterDefinition,
+    IntermediateTypedConstructorParameterDefinition,
+    IntermediateUntypedCallableParameterDefinition,
+    IntermediateUntypedConstructorParameterDefinition
 } from "../IntermediateTypes";
-import { processFunctionParameters } from "./processFunctionParameters";
+import { processParameterDeclaration } from "./processParameterDeclaration";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 
 export function processConstructorDeclaration(
-    input: ConstructorDeclaration
-): IntermediateConstructorDefinition
-{
-    // constructors cannot have type parameters
-
+    input: ConstructorDeclaration | ConstructorTypeNode
+): IntermediateConstructorDefinition {
     return {
         kind: IntermediateKind.IntermediateConstructorDefinition,
-        parameters: processFunctionParameters(input.parameters),
+        parameters: processConstructorParameters(input.parameters),
         returnType: processReturnTypeFromNode(input),
+    }
+}
+
+function processConstructorParameters(
+    input: NodeArray<ParameterDeclaration>
+): IntermediateConstructorParameterDefinition[] {
+    // our return value
+    const retval: IntermediateConstructorParameterDefinition[] = [];
+
+    // constructor parameters have unique behaviour,
+    // which is why we're handling them separately
+    // to regular function parameters
+
+    input.forEach((paramDec) => {
+        retval.push(processConstructorParameter(paramDec));
+    });
+
+    // all done
+    return retval;
+}
+
+function processConstructorParameter(
+    input: ParameterDeclaration
+): IntermediateConstructorParameterDefinition {
+    // we can reuse the existing support for all parameters
+    // to save us repeating ourselves here
+    const retval = mapFunctionParameterToConstructorParameter(
+        processParameterDeclaration(input)
+    );
+
+    // special case - object binding parameters cannot contain
+    // hidden parameter definitions
+    if (retval.kind === IntermediateKind.IntermediateObjectBindingParameter) {
+        return retval;
+    }
+
+    // are we looking at a property definition, hidden away
+    // as a parameter to the constructor?
+    if (AST.hasPublicModifier(input.modifiers)) {
+        retval.setsPropertyWithScope = IntermediateRestrictableScope.PUBLIC;
+    }
+    else if (AST.hasProtectedModifier(input.modifiers)) {
+        retval.setsPropertyWithScope = IntermediateRestrictableScope.PROTECTED;
+    }
+    else if (AST.hasPrivateModifier(input.modifiers)) {
+        retval.setsPropertyWithScope = IntermediateRestrictableScope.PRIVATE;
+    }
+
+    // all done
+    return retval;
+
+}
+
+function mapFunctionParameterToConstructorParameter(
+    input: IntermediateTypedCallableParameterDefinition
+        | IntermediateUntypedCallableParameterDefinition
+        | IntermediateObjectBindingParameter
+): IntermediateConstructorParameterDefinition {
+    switch(input.kind) {
+        case IntermediateKind.IntermediateObjectBindingParameter:
+            return input;
+
+        case IntermediateKind.IntermediateUntypedCallableParameterDefinition:
+            return <IntermediateUntypedConstructorParameterDefinition> {
+                kind: IntermediateKind.IntermediateUntypedConstructorParameterDefinition,
+                paramName: input.paramName,
+                optional: input.optional,
+                setsPropertyWithScope: undefined,
+                initializer: input.initializer,
+            }
+
+        case IntermediateKind.IntermediateTypedCallableParameterDefinition:
+            return <IntermediateTypedConstructorParameterDefinition>{
+                kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
+                paramName: input.paramName,
+                readonly: input.readonly,
+                optional: input.optional,
+                setsPropertyWithScope: undefined,
+                typeRef: input.typeRef,
+                initializer: input.initializer,
+            }
+
+        default:
+            // by design, this code is unreachable, and therefore
+            // impossible to include in code coverage
+            const _exhaustiveCheck: never = input;
+            return _exhaustiveCheck;
     }
 }

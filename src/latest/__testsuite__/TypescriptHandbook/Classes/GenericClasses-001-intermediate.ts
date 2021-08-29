@@ -72,10 +72,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstructorDefinition,
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "value",
                             optional: false,
                             readonly: false,
+                            setsPropertyWithScope: undefined,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
                                 typeName: "Type",

@@ -38,10 +38,11 @@ import {
     ParameterDeclaration,
     SyntaxKind
 } from "typescript";
+import { AST } from "../AST";
 import {
-    IntermediateCallableParameterDefinition,
     IntermediateExpression,
     IntermediateKind,
+    IntermediateObjectBindingParameter,
     IntermediateTypedCallableParameterDefinition,
     IntermediateUntypedCallableParameterDefinition
 } from "../IntermediateTypes";
@@ -49,11 +50,12 @@ import { processExpression } from "./processExpression";
 import { processObjectBindingPattern } from "./processObjectBindingPattern";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
-import { AST } from "../AST";
 
 export function processParameterDeclaration(
     paramDec: ParameterDeclaration
-): IntermediateCallableParameterDefinition
+): IntermediateTypedCallableParameterDefinition
+    | IntermediateUntypedCallableParameterDefinition
+    | IntermediateObjectBindingParameter
 {
     // this is a placeholder for now
     //

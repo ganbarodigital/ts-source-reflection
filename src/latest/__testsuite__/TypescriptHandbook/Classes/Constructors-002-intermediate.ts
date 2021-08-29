@@ -53,10 +53,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstructorDefinition,
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "x",
                             optional: false,
                             readonly: false,
+                            setsPropertyWithScope: undefined,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "number",
@@ -64,10 +65,11 @@ const expectedResult: IntermediateSourceFile = {
                             initializer: undefined,
                         },
                         {
-                            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "y",
                             optional: false,
                             readonly: false,
+                            setsPropertyWithScope: undefined,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "string",
@@ -81,10 +83,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstructorDefinition,
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "s",
                             optional: false,
                             readonly: false,
+                            setsPropertyWithScope: undefined,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "string",
@@ -98,10 +101,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstructorDefinition,
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "xs",
                             optional: false,
                             readonly: false,
+                            setsPropertyWithScope: undefined,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "any",
@@ -109,10 +113,11 @@ const expectedResult: IntermediateSourceFile = {
                             initializer: undefined,
                         },
                         {
-                            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "y",
                             optional: true,
                             readonly: false,
+                            setsPropertyWithScope: undefined,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "any",
