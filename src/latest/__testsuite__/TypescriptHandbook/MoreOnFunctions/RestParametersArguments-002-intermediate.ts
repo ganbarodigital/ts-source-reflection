@@ -48,7 +48,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "arr1",
                     declared: false,
                     exported: false,
-                    constant: true,
+                    isConstant: true,
                     isReadonly: false,
                     typeRef: undefined,
                     initializer: {
@@ -88,7 +88,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "arr2",
                     declared: false,
                     exported: false,
-                    constant: true,
+                    isConstant: true,
                     isReadonly: false,
                     typeRef: undefined,
                     initializer: {

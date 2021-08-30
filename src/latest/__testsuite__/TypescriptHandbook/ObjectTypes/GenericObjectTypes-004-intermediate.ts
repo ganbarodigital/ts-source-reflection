@@ -94,7 +94,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     name: "boxA",
-                    constant: false,
+                    isConstant: false,
                     declared: false,
                     exported: false,
                     isReadonly: false,
@@ -135,7 +135,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     name: "boxB",
-                    constant: false,
+                    isConstant: false,
                     declared: false,
                     exported: false,
                     isReadonly: false,

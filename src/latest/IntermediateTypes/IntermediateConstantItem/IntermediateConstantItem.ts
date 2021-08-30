@@ -33,5 +33,5 @@
 //
 
 export interface IntermediateConstantItem {
-    constant: boolean;
+    isConstant: boolean;
 }

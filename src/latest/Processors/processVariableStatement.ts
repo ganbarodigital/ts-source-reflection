@@ -125,7 +125,7 @@ function processVariableDeclaration(
         kind: IntermediateKind.IntermediateVariableDeclaration,
         docBlock: processDocBlock(input),
         declared: AST.hasDeclaredModifier(input.modifiers),
-        constant: contextFlags.constant,
+        isConstant: contextFlags.constant,
         exported: contextFlags.exported,
         isReadonly,
         name: input.name.getText(),

@@ -45,7 +45,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     name: "firstName",
-                    constant: true,
+                    isConstant: true,
                     exported: false,
                     declared: false,
                     isReadonly: false,
@@ -80,7 +80,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     name: "secondName",
-                    constant: true,
+                    isConstant: true,
                     exported: false,
                     declared: false,
                     isReadonly: false,

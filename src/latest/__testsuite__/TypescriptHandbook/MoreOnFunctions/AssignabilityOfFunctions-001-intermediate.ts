@@ -62,7 +62,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "f1",
                     declared: false,
                     exported: false,
-                    constant: true,
+                    isConstant: true,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
@@ -87,7 +87,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "f2",
                     declared: false,
                     exported: false,
-                    constant: true,
+                    isConstant: true,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
@@ -112,7 +112,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "f3",
                     declared: false,
                     exported: false,
-                    constant: true,
+                    isConstant: true,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,

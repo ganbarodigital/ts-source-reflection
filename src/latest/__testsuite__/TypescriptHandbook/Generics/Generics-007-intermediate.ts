@@ -119,7 +119,7 @@ const expectedResult: IntermediateSourceFile = {
                     isReadonly: false,
                     exported: false,
                     declared: false,
-                    constant: false,
+                    isConstant: false,
                     name: "myIdentity",
                     typeRef: {
                         kind: IntermediateKind.IntermediateGenericTypeReference,

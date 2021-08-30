@@ -111,7 +111,7 @@ const expectedResult: IntermediateSourceFile = {
                     declared: false,
                     exported: false,
                     isReadonly: false,
-                    constant: true,
+                    isConstant: true,
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateNewExpression,

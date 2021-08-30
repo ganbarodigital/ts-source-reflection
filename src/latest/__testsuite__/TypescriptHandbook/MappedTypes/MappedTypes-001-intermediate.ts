@@ -84,7 +84,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "conforms",
                     declared: false,
                     exported: false,
-                    constant: true,
+                    isConstant: true,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,

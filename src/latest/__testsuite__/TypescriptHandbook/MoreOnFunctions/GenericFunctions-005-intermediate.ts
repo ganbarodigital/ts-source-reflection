@@ -117,7 +117,7 @@ const expectedResult: IntermediateSourceFile = {
                     declared: false,
                     exported: false,
                     isReadonly: false,
-                    constant: true,
+                    isConstant: true,
                     name: "a",
                     typeRef: undefined,
                     initializer: {
@@ -171,7 +171,7 @@ const expectedResult: IntermediateSourceFile = {
                     declared: false,
                     exported: false,
                     isReadonly: false,
-                    constant: true,
+                    isConstant: true,
                     name: "b",
                     typeRef: undefined,
                     initializer: {

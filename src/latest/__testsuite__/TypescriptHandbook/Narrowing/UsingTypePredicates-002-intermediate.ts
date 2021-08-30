@@ -189,7 +189,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     name: "zoo",
-                    constant: true,
+                    isConstant: true,
                     exported: false,
                     declared: false,
                     isReadonly: false,
@@ -270,7 +270,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     exported: false,
                     declared: false,
-                    constant: true,
+                    isConstant: true,
                     isReadonly: false,
                     name: "underWater1",
                     typeRef: {
@@ -315,7 +315,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     exported: false,
                     declared: false,
-                    constant: true,
+                    isConstant: true,
                     isReadonly: false,
                     name: "underWater2",
                     typeRef: {
@@ -366,7 +366,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     exported: false,
                     declared: false,
-                    constant: true,
+                    isConstant: true,
                     isReadonly: false,
                     name: "underWater3",
                     typeRef: {

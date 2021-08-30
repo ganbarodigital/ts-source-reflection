@@ -73,7 +73,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     name: "obj",
                     isReadonly: false,
-                    constant: true,
+                    isConstant: true,
                     exported: false,
                     declared: false,
                     typeRef: undefined,
