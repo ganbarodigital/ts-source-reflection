@@ -71,6 +71,7 @@ import { mustBeExpressionStatement } from "./mustBeExpressionStatement";
 import { mustBeFunctionDeclaration } from "./mustBeFunctionDeclaration";
 import { mustBeImportClause } from "./mustBeImportClause";
 import { mustBeImportDeclaration } from "./mustBeImportDeclaration";
+import { mustBeImportEqualsDeclaration } from "./mustBeImportEqualsDeclaration";
 import { mustBeInterfaceDeclaration } from "./mustBeInterfaceDeclaration";
 import { mustBePropertyAssignment } from "./mustBePropertyAssignment";
 import { mustBePropertySignature } from "./mustBePropertySignature";
@@ -118,6 +119,7 @@ export class AST
     static mustBeFunctionDeclaration = mustBeFunctionDeclaration;
     static mustBeImportClause = mustBeImportClause;
     static mustBeImportDeclaration = mustBeImportDeclaration;
+    static mustBeImportEqualsDeclaration = mustBeImportEqualsDeclaration;
     static mustBeInterfaceDeclaration = mustBeInterfaceDeclaration;
     static mustBePropertyAssignment = mustBePropertyAssignment;
     static mustBePropertySignature = mustBePropertySignature;
