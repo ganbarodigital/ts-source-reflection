@@ -77,6 +77,7 @@ export * from "./IntermediateGenericable";
 export * from "./IntermediateGetter";
 export * from "./IntermediateIdentifiedItem";
 export * from "./IntermediateIdentifierReference";
+export * from "./IntermediateImportDeclarations";
 export * from "./IntermediateImportItem";
 export * from "./IntermediateIndexSignature";
 export * from "./IntermediateIndexedAccessTypeReference";
