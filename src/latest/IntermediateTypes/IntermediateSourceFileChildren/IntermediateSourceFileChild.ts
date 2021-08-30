@@ -33,18 +33,18 @@
 //
 
 import { IntermediateClass } from "../IntermediateClass";
+import { IntermediateExportDeclaration } from "../IntermediateExportDeclaration";
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateFunction } from "../IntermediateFunction";
-import { IntermediateImportItem } from "../IntermediateImportItem";
 import { IntermediateInterface } from "../IntermediateInterface";
 import { IntermediateTypeAliasDefinition } from "../IntermediateTypeAliasDefinition";
 import { IntermediateVariableDeclarations } from "../IntermediateVariableDeclarations";
 
 export type IntermediateSourceFileChild =
     IntermediateClass
+    | IntermediateExportDeclaration
     | IntermediateExpression
     | IntermediateFunction
-    | IntermediateImportItem
     | IntermediateInterface
     | IntermediateTypeAliasDefinition
     | IntermediateVariableDeclarations;

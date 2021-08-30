@@ -32,24 +32,41 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { HashMap } from "@safelytyped/core-types";
+import { HashMap, RequireAllAttributesMap } from "@safelytyped/core-types";
 import { IntermediateSourceFileChildren } from "./IntermediateSourceFileChildren";
+
+//
+// Let me explain what is happening here ...
+//
+// I'm trying to use the compiler to make sure that VALID_CHILREN
+// *always* contains every AST node that:
+//
+// a) can appear as an immediate child of a source file, and
+// b) that we can currently support
+//
+// This way, if we ever add support for more AST nodes at the
+// source file level, the compiler should notice, and it should
+// refuse to compile this file until we remember to add in
+// the new nodes types :)
+//
+// There is probably a neater way to do this. Patches to do so
+// are most welcome.
+//
+type ValidChildren = RequireAllAttributesMap<IntermediateSourceFileChildren, true>;
+
+const VALID_CHILDREN: ValidChildren & HashMap<true> = {
+    ClassDeclaration: true,
+    ExportDeclaration: true,
+    ExpressionStatement: true,
+    FunctionDeclaration: true,
+    InterfaceDeclaration: true,
+    TypeAliasDeclaration: true,
+    VariableStatement: true,
+}
 
 export function isKeyOfIntermediateSourceFileChildren(
     input: string
 ): input is keyof IntermediateSourceFileChildren
 {
-    // I'm sure there's a way to get the Typescript compiler
-    // to calculate this type for us ...
-    const validChildren: HashMap<boolean> = {
-        ClassDeclaration: true,
-        ExpressionStatement: true,
-        FunctionDeclaration: true,
-        ImportDeclaration: true,
-        InterfaceDeclaration: true,
-        TypeAliasDeclaration: true,
-        VariableStatement: true,
-    }
-
-    return validChildren[input];
+    return VALID_CHILDREN[input] || false;
 }

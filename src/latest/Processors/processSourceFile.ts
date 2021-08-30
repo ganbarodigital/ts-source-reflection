@@ -31,16 +31,18 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { FunctionPointerTable, searchFunctionPointerTable } from "@safelytyped/core-types";
+import { FunctionPointerTable, RequireAllAttributesMap, searchFunctionPointerTable } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import { NodeArray, SourceFile, Statement, SyntaxKind } from "typescript";
 import { AST } from "../AST";
 import {
     IntermediateKind,
     IntermediateSourceFile,
-    IntermediateSourceFileChild
+    IntermediateSourceFileChild,
+    IntermediateSourceFileChildren
 } from "../IntermediateTypes";
 import { processClassDeclaration } from "./processClassDeclaration";
+import { processExportDeclaration } from "./processExportDeclaration";
 import { processExpressionStatement } from "./processExpressionStatement";
 import { processFunctionDeclaration } from "./processFunctionDeclaration";
 import { processInterfaceDeclaration } from "./processInterfaceDeclaration";
@@ -48,13 +50,16 @@ import { processTypeAliasDeclaration } from "./processTypeAliasDeclaration";
 import { processVariableStatement } from "./processVariableStatement";
 import { StatementProcessor } from "./StatementProcessor";
 
-const statementProcessors: FunctionPointerTable<string, StatementProcessor> = {
-    'InterfaceDeclaration': processInterfaceDeclaration,
-    'ClassDeclaration': processClassDeclaration,
-    'ExpressionStatement': processExpressionStatement,
-    'FunctionDeclaration': processFunctionDeclaration,
-    'TypeAliasDeclaration': processTypeAliasDeclaration,
-    'VariableStatement': processVariableStatement,
+type StatementProcessors = RequireAllAttributesMap<IntermediateSourceFileChildren, StatementProcessor>;
+
+const statementProcessors: StatementProcessors & FunctionPointerTable<string, StatementProcessor> = {
+    ClassDeclaration: processClassDeclaration,
+    ExpressionStatement: processExpressionStatement,
+    ExportDeclaration: processExportDeclaration,
+    FunctionDeclaration: processFunctionDeclaration,
+    InterfaceDeclaration: processInterfaceDeclaration,
+    TypeAliasDeclaration: processTypeAliasDeclaration,
+    VariableStatement: processVariableStatement,
 }
 
 export function processSourceFile(
