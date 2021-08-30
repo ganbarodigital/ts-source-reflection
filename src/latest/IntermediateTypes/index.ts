@@ -98,6 +98,7 @@ export * from "./IntermediateMemberDefinition";
 export * from "./IntermediateMemberSignature";
 export * from "./IntermediateMethodSignature";
 export * from "./IntermediateMethodDefinition";
+export * from "./IntermediateNamespaceImport";
 // export * from "./IntermediateModule";
 export * from "./IntermediateNewExpression";
 export * from "./IntermediateNumericLiteral";
