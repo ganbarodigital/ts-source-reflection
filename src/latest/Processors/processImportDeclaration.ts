@@ -32,7 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { isNamedImports, NamedImports, Statement } from "typescript";
+import {
+    isNamedImports,
+    NamedImportBindings,
+    NamedImports,
+    NamespaceImport,
+    Statement
+} from "typescript";
 import { AST } from "../AST";
 import {
     IntermediateImportDeclaration,
@@ -78,8 +84,11 @@ export function processImportDeclaration(
     }
 
     // do we have any `{ XXX }` parts to the import?
-    if (importClause.namedBindings && isNamedImports(importClause.namedBindings)) {
-        retval.items = [...retval.items, ...processNamedBindings(importClause.namedBindings)];
+    if (importClause.namedBindings) {
+        retval.items = [
+            ...retval.items,
+            ...processNamedBindings(importClause.namedBindings)
+        ];
     }
 
     // add other import bindings here
@@ -87,7 +96,19 @@ export function processImportDeclaration(
     return retval;
 }
 
-function processNamedBindings(input: NamedImports): IntermediateImportItem[]
+function processNamedBindings(
+    input: NamedImportBindings
+): IntermediateImportItem[]
+{
+    // what kind of named bindings do we have?
+    if (isNamedImports(input)) {
+        return processNamedImports(input);
+    }
+
+    return processNamespaceImport(input);
+}
+
+function processNamedImports(input: NamedImports): IntermediateImportItem[]
 {
     const retval: IntermediateImportItem[] = [];
 
@@ -108,4 +129,16 @@ function processNamedBindings(input: NamedImports): IntermediateImportItem[]
     }
 
     return retval;
+}
+
+function processNamespaceImport(
+    input: NamespaceImport
+): IntermediateImportItem[]
+{
+    return [
+        {
+            kind: IntermediateKind.IntermediateNamespaceImport,
+            name: processIdentifier(input.name),
+        }
+    ];
 }
