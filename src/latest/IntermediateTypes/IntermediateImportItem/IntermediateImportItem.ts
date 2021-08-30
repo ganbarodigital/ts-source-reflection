@@ -33,8 +33,10 @@
 //
 
 import { IntermediateAliasedImportBinding } from "../IntermediateAliasedImportBinding";
+import { IntermediateDefaultImport } from "../IntermediateDefaultImport";
 import { IntermediateImportBinding } from "../IntermediateImportBinding";
 
 export type IntermediateImportItem
     = IntermediateAliasedImportBinding
+    | IntermediateDefaultImport
     | IntermediateImportBinding;
