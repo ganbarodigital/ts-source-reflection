@@ -92,6 +92,7 @@ export enum IntermediateKind {
     IntermediateParenthesizedType,
     IntermediatePropertyAccessExpression,
     IntermediatePropertyAssignment,
+    IntermediateQualifiedName,
     IntermediateReference,
     IntermediateRestType,
     IntermediateSetter,
