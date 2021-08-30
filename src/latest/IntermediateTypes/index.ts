@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+export * from "./IntermediateAbstractItem";
 export * from "./IntermediateAnonymousCallableParameter";
 export * from "./IntermediateAnonymousClassType";
 export * from "./IntermediateArgument";
