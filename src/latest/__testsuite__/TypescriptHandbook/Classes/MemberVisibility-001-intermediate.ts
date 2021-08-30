@@ -55,7 +55,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
                     accessModifier: IntermediateRestrictableScope.PUBLIC,
-                    static: false,
+                    isStatic: false,
                     isAbstract: false,
                     name: "greet",
                     typeParameters: [],

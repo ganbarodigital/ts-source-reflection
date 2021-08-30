@@ -36,7 +36,7 @@ import {
     IntermediateItem,
     IntermediateKind,
     IntermediateRestrictableScopeItem,
-    IntermediateStaticable
+    IntermediateStaticItem
 } from "..";
 import { IntermediateCallableSignature } from "../IntermediateCallableSignature";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
@@ -48,7 +48,7 @@ export interface IntermediateMethodSignature
         IntermediateDocumentedItem,
         IntermediateGenericable,
         IntermediateRestrictableScopeItem,
-        IntermediateStaticable
+        IntermediateStaticItem
 {
     name: string;
 }

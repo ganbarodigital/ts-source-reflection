@@ -53,7 +53,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
                     accessModifier: undefined,
-                    static: true,
+                    isStatic: true,
                     isAbstract: false,
                     name: "getGreeting",
                     typeParameters: [],
@@ -84,7 +84,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "myGreeting",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     initializer:{
                         kind: IntermediateKind.IntermediateCallExpression,

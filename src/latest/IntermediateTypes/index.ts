@@ -112,7 +112,7 @@ export * from "./IntermediateSetter";
 export * from "./IntermediateSourceFile";
 export * from "./IntermediateSourceFileChildren";
 export * from "./IntermediateSpreadElement";
-export * from "./IntermediateStaticable";
+export * from "./IntermediateStaticItem";
 export * from "./IntermediateStringLiteral";
 export * from "./IntermediateTemplateLiteralType";
 export * from "./IntermediateTemplateLiteralSpan";

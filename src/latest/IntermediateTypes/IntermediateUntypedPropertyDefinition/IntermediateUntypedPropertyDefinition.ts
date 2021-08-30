@@ -39,14 +39,15 @@ import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
 import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
 import { IntermediateRestrictableScopeItem } from "../IntermediateRestrictableScopeItem";
+import { IntermediateStaticItem } from "../IntermediateStaticItem";
 
 export interface IntermediateUntypedPropertyDefinition
     extends IntermediateItem<IntermediateKind.IntermediateUntypedPropertyDefinition>,
         IntermediateOptionalItem,
         IntermediateReadonlyItem,
-        IntermediateRestrictableScopeItem
+        IntermediateRestrictableScopeItem,
+        IntermediateStaticItem
 {
     propName: string;
-    propIsStatic: boolean;
     initializer: Maybe<IntermediateExpression>;
 }

@@ -51,7 +51,7 @@ export function processMethodSignature(
     return {
         kind: IntermediateKind.IntermediateMethodSignature,
         docBlock: processDocBlock(input),
-        static: AST.hasStaticModifier(input),
+        isStatic: AST.hasStaticModifier(input),
         accessModifier: AST.getRestrictableScope(input),
         name: input.name.getText(),
         parameters: processCallableParameterSignatures(input.parameters),

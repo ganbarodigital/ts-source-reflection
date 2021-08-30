@@ -56,7 +56,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "name",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     initializer: {
                         kind: IntermediateKind.IntermediateStringLiteral,
                         value: "MyClass",
@@ -70,7 +70,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "getName",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     initializer: {
                         kind: IntermediateKind.IntermediateArrowFunction,
                         typeParameters: [],

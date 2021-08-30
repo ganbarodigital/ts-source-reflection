@@ -55,7 +55,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "#barkAmount",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
@@ -69,7 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "personality",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     initializer: {
                         kind: IntermediateKind.IntermediateStringLiteral,
                         value: "happy",

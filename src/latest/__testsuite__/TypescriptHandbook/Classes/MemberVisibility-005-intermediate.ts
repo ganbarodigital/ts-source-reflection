@@ -57,7 +57,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "x",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "10",
@@ -69,7 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
                     accessModifier: IntermediateRestrictableScope.PUBLIC,
-                    static: false,
+                    isStatic: false,
                     isAbstract: false,
                     name: "sameAs",
                     typeParameters: [],

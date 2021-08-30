@@ -37,7 +37,7 @@ import {
     IntermediateItem,
     IntermediateKind,
     IntermediateRestrictableScopeItem,
-    IntermediateStaticable
+    IntermediateStaticItem
 } from "..";
 import { IntermediateAbstractItem } from "../IntermediateAbstractItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
@@ -50,7 +50,7 @@ export interface IntermediateMethodDefinition
         IntermediateDocumentedItem,
         IntermediateGenericable,
         IntermediateRestrictableScopeItem,
-        IntermediateStaticable
+        IntermediateStaticItem
 {
     name: string;
     hasBody: boolean;

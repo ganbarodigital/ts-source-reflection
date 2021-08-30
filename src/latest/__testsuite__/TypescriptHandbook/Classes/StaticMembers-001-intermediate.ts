@@ -55,7 +55,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "x",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: true,
+                    isStatic: true,
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
@@ -67,7 +67,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
                     accessModifier: undefined,
-                    static: true,
+                    isStatic: true,
                     isAbstract: false,
                     name: "printX",
                     typeParameters: [],

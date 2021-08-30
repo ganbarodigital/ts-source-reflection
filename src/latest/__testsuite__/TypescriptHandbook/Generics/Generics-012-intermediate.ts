@@ -55,7 +55,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "hasMask",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -86,7 +86,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "nametag",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -117,7 +117,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "numLegs",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -154,7 +154,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "keeper",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
@@ -192,7 +192,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "keeper",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,

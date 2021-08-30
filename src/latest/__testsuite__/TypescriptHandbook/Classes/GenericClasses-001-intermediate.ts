@@ -61,7 +61,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "contents",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,

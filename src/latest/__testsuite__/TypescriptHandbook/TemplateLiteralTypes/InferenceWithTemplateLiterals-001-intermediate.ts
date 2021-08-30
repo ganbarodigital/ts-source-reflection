@@ -57,7 +57,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateMethodSignature,
                         docBlock: undefined,
                         accessModifier: undefined,
-                        static: false,
+                        isStatic:false,
                         typeParameters: [
                             {
                                 kind: IntermediateKind.IntermediateGenericType,

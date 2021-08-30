@@ -56,7 +56,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "contents",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -73,7 +73,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     name: "set",
                     accessModifier: undefined,
-                    static: false,
+                    isStatic: false,
                     isAbstract: false,
                     typeParameters: [],
                     parameters: [
@@ -113,7 +113,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
-                    static: false,
+                    isStatic: false,
                     isAbstract: false,
                     accessModifier: undefined,
                     name: "clear",

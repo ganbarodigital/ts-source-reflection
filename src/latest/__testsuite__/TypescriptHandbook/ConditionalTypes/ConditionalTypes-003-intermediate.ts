@@ -122,7 +122,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
                     accessModifier: undefined,
-                    static: false,
+                    isStatic:false,
                     name: "bark",
                     typeParameters: [],
                     parameters: [],

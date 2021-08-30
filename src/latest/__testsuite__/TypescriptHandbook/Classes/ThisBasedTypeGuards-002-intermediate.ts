@@ -61,7 +61,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "value",
                     isReadonly: false,
                     isOptional: true,
-                    propIsStatic: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
@@ -72,7 +72,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
-                    static: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     isAbstract: false,
                     name: "hasValue",

@@ -39,16 +39,17 @@ import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
 import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
 import { IntermediateRestrictableScopeItem } from "../IntermediateRestrictableScopeItem";
+import { IntermediateStaticItem } from "../IntermediateStaticItem";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateTypedPropertyDefinition
     extends IntermediateItem<IntermediateKind.IntermediateTypedPropertyDefinition>,
         IntermediateOptionalItem,
         IntermediateReadonlyItem,
-        IntermediateRestrictableScopeItem
+        IntermediateRestrictableScopeItem,
+        IntermediateStaticItem
 {
     propName: string;
-    propIsStatic: boolean;
     typeRef: IntermediateTypeReference;
     initializer: Maybe<IntermediateExpression>;
 }

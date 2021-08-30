@@ -54,7 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
-                    static: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     isAbstract: false,
                     name: "isFile",
@@ -73,7 +73,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
-                    static: false,
+                    isStatic: false,
                     isAbstract: false,
                     accessModifier: undefined,
                     name: "isDirectory",
@@ -92,7 +92,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
-                    static: false,
+                    isStatic: false,
                     isAbstract: false,
                     accessModifier: undefined,
                     name: "isNetworked",
@@ -217,7 +217,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "children",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,

@@ -55,7 +55,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "x",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
@@ -69,7 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                     propName: "y",
                     isOptional: false,
                     isReadonly: false,
-                    propIsStatic: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
@@ -82,7 +82,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
                     accessModifier: undefined,
-                    static: false,
+                    isStatic: false,
                     isAbstract: false,
                     name: "scale",
                     typeParameters: [],
