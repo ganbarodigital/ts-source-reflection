@@ -92,6 +92,7 @@ export enum IntermediateKind {
     IntermediateStringLiteral,
     IntermediateTemplateLiteralType,
     IntermediateTemplateLiteralSpan,
+    IntermediateThisType,
     IntermediateTupleType,
     IntermediateTupleTypeElement,
     IntermediateTypeAliasDefinition,
