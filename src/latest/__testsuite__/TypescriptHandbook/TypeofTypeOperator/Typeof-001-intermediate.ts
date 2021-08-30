@@ -45,6 +45,7 @@ const expectedResult: IntermediateSourceFile = {
             name: "f",
             isDeclared: false,
             isExported: false,
+            isDefaultExport: false,
             typeParameters: [],
             parameters: [],
             returnType: undefined,

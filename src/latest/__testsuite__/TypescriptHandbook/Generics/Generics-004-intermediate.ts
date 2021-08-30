@@ -43,6 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             isDeclared: false,
             isExported: false,
+            isDefaultExport: false,
             docBlock: undefined,
             name: "identity",
             typeParameters: [
@@ -80,6 +81,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     isReadonly: false,
                     isExported: false,
+                    isDefaultExport: false,
                     isDeclared: false,
                     isConstant: false,
                     name: "myIdentity",

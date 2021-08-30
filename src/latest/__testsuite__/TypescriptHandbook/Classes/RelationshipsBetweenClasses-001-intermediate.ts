@@ -44,6 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: false,
             isExported: false,
+            isDefaultExport: false,
             isAbstract: false,
             name: "Point1",
             typeParameters: [],
@@ -85,6 +86,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: false,
             isExported: false,
+            isDefaultExport: false,
             isAbstract: false,
             name: "Point2",
             typeParameters: [],
@@ -131,6 +133,7 @@ const expectedResult: IntermediateSourceFile = {
                     isConstant: true,
                     isDeclared: false,
                     isExported: false,
+                    isDefaultExport: false,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,

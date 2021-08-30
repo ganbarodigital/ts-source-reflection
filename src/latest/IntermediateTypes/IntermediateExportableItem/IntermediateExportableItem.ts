@@ -37,4 +37,5 @@ export interface IntermediateExportableItem {
      * can the item be imported into other modules?
      */
     isExported: boolean;
+    isDefaultExport: boolean;
 }

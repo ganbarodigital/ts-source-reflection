@@ -59,6 +59,7 @@ export const processInterfaceDeclaration: StatementProcessor = (
         typeParameters: processTypeParametersFromNode(interfaceDec),
         docBlock: processDocBlock(interfaceDec),
         isExported: AST.isNodeExported(interfaceDec),
+        isDefaultExport: AST.hasDefaultModifier(interfaceDec.modifiers),
         extends: getBaseInterfaceTypes(interfaceDec),
         members: processMemberSignatures(interfaceDec.members),
     }

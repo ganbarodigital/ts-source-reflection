@@ -48,6 +48,7 @@ const expectedResult: IntermediateSourceFile = {
                     isConstant: true,
                     isDeclared: false,
                     isExported: false,
+                    isDefaultExport: false,
                     isReadonly: false,
                     name: "MyArray",
                     initializer: {

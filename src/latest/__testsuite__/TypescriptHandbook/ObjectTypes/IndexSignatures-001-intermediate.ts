@@ -44,6 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             isDeclared: false,
             name: "StringArray",
             isExported: false,
+            isDefaultExport: false,
             docBlock: undefined,
             typeParameters: [],
             extends: [],

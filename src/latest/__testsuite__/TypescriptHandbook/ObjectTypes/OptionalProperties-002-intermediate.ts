@@ -44,6 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             isDeclared: false,
             name: "PaintOptions",
             isExported: false,
+            isDefaultExport: false,
             docBlock: undefined,
             typeParameters: [],
             extends: [],
@@ -85,6 +86,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: false,
             isExported: false,
+            isDefaultExport: false,
             name: "paintShape",
             typeParameters: [],
             parameters: [

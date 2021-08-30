@@ -62,6 +62,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "f1",
                     isDeclared: false,
                     isExported: false,
+                    isDefaultExport: false,
                     isConstant: true,
                     isReadonly: false,
                     typeRef: {
@@ -87,6 +88,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "f2",
                     isDeclared: false,
                     isExported: false,
+                    isDefaultExport: false,
                     isConstant: true,
                     isReadonly: false,
                     typeRef: {
@@ -112,6 +114,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "f3",
                     isDeclared: false,
                     isExported: false,
+                    isDefaultExport: false,
                     isConstant: true,
                     isReadonly: false,
                     typeRef: {

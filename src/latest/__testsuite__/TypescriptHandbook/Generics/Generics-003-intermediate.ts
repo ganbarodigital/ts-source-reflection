@@ -43,6 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             isDeclared: false,
             isExported: false,
+            isDefaultExport: false,
             docBlock: undefined,
             name: "loggingIdentity",
             typeParameters: [

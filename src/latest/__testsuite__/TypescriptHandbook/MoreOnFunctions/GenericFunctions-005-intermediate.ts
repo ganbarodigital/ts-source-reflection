@@ -44,6 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: false,
             isExported: false,
+            isDefaultExport: false,
             name: "firstElement1",
             typeParameters: [
                 {
@@ -77,6 +78,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: false,
             isExported: false,
+            isDefaultExport: false,
             name: "firstElement2",
             typeParameters: [
                 {
@@ -116,6 +118,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     isDeclared: false,
                     isExported: false,
+                    isDefaultExport: false,
                     isReadonly: false,
                     isConstant: true,
                     name: "a",
@@ -170,6 +173,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     isDeclared: false,
                     isExported: false,
+                    isDefaultExport: false,
                     isReadonly: false,
                     isConstant: true,
                     name: "b",

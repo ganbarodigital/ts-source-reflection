@@ -47,6 +47,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "myCanvas",
                     isConstant: true,
                     isExported: false,
+                    isDefaultExport: false,
                     isDeclared: false,
                     isReadonly: false,
                     docBlock: undefined,

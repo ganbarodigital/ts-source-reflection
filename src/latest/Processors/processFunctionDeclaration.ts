@@ -56,6 +56,7 @@ export const processFunctionDeclaration: StatementProcessor = (
         docBlock: processDocBlock(input),
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
         isExported: AST.hasExportModifier(input.modifiers),
+        isDefaultExport: AST.hasDefaultModifier(input.modifiers),
         typeParameters: processTypeParametersFromNode(funcDec),
         name: funcDec.name?.text,
         parameters: processFunctionParameters(funcDec.parameters),

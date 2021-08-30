@@ -44,6 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             isDeclared: false,
             name: "BasicAddress",
             isExported: false,
+            isDefaultExport: false,
             docBlock: undefined,
             typeParameters: [],
             extends: [],
@@ -105,6 +106,7 @@ const expectedResult: IntermediateSourceFile = {
             isDeclared: false,
             name: "AddressWithUnit",
             isExported: false,
+            isDefaultExport: false,
             docBlock: undefined,
             typeParameters: [],
             extends: [

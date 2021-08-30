@@ -44,6 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: false,
             isExported: false,
+            isDefaultExport: false,
             name: "safeParse",
             typeParameters: [],
             parameters: [
@@ -75,6 +76,7 @@ const expectedResult: IntermediateSourceFile = {
                     isReadonly: false,
                     isConstant: true,
                     isExported: false,
+                    isDefaultExport: false,
                     isDeclared: false,
                     typeRef: undefined,
                     initializer: {

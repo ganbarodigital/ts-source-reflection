@@ -44,6 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             isDeclared: false,
             name: "Colorful",
             isExported: false,
+            isDefaultExport: false,
             docBlock: undefined,
             typeParameters: [],
             extends: [],
@@ -65,6 +66,7 @@ const expectedResult: IntermediateSourceFile = {
             isDeclared: false,
             name: "Circle",
             isExported: false,
+            isDefaultExport: false,
             docBlock: undefined,
             typeParameters: [],
             extends: [],
@@ -86,6 +88,7 @@ const expectedResult: IntermediateSourceFile = {
             isDeclared: false,
             name: "ColorfulCircle",
             isExported: false,
+            isDefaultExport: false,
             docBlock: undefined,
             typeParameters: [],
             extends: [

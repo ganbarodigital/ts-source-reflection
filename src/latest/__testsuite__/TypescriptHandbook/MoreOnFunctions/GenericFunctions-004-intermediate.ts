@@ -44,6 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: false,
             isExported: false,
+            isDefaultExport: false,
             name: "combine",
             typeParameters: [
                 {
@@ -100,6 +101,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     isDeclared: false,
                     isExported: false,
+                    isDefaultExport: false,
                     isReadonly: false,
                     isConstant: true,
                     name: "arr",

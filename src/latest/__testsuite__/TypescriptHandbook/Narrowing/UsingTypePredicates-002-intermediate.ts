@@ -64,6 +64,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             name: "Fish",
             isExported: false,
+            isDefaultExport: false,
             isDeclared: false,
             extends: [
                 {
@@ -95,6 +96,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             name: "Bird",
             isExported: false,
+            isDefaultExport: false,
             isDeclared: false,
             extends: [
                 {
@@ -126,6 +128,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: false,
             isExported: false,
+            isDefaultExport: false,
             name: "isFish",
             typeParameters: [],
             parameters: [
@@ -165,6 +168,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: false,
             isExported: false,
+            isDefaultExport: false,
             name: "getSmallPet",
             typeParameters: [],
             parameters: [],
@@ -191,6 +195,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "zoo",
                     isConstant: true,
                     isExported: false,
+                    isDefaultExport: false,
                     isDeclared: false,
                     isReadonly: false,
                     docBlock: undefined,
@@ -269,6 +274,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
                     isExported: false,
+                    isDefaultExport: false,
                     isDeclared: false,
                     isConstant: true,
                     isReadonly: false,
@@ -314,6 +320,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
                     isExported: false,
+                    isDefaultExport: false,
                     isDeclared: false,
                     isConstant: true,
                     isReadonly: false,
@@ -365,6 +372,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
                     isExported: false,
+                    isDefaultExport: false,
                     isDeclared: false,
                     isConstant: true,
                     isReadonly: false,

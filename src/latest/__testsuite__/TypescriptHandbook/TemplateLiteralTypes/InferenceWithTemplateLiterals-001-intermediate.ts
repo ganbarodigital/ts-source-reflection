@@ -150,6 +150,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: true,
             isExported: false,
+            isDefaultExport: false,
             name: "makeWatchedObject",
             typeParameters: [
                 {

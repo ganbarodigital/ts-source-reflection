@@ -120,6 +120,7 @@ const expectedResult: IntermediateSourceFile = {
             name: "Person",
             typeParameters: [],
             isExported: false,
+            isDefaultExport: false,
             isDeclared: false,
             docBlock: undefined,
             extends: [],

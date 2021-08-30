@@ -44,6 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: true,
             isExported: false,
+            isDefaultExport: false,
             name: "stringOrNum",
             typeParameters: [],
             parameters: [
@@ -70,6 +71,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: true,
             isExported: false,
+            isDefaultExport: false,
             name: "stringOrNum",
             typeParameters: [],
             parameters: [
@@ -96,6 +98,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: true,
             isExported: false,
+            isDefaultExport: false,
             name: "stringOrNum",
             typeParameters: [],
             parameters: [

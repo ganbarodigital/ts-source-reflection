@@ -45,6 +45,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: false,
             isExported: false,
+            isDefaultExport: false,
             isAbstract: false,
             typeParameters: [],
             name: "Greeter",
@@ -82,6 +83,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             isDeclared: false,
             isExported: false,
+            isDefaultExport: false,
             isAbstract: false,
             name: "SpecialGreeter",
             extends: [
@@ -115,6 +117,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     isDeclared: false,
                     isExported: false,
+                    isDefaultExport: false,
                     isReadonly: false,
                     isConstant: true,
                     name: "g",

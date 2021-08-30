@@ -127,6 +127,7 @@ function processVariableDeclaration(
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
         isConstant: contextFlags.constant,
         isExported: contextFlags.exported,
+        isDefaultExport: AST.hasDefaultModifier(input.modifiers),
         isReadonly,
         name: input.name.getText(),
         initializer: initialiser,
