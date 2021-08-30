@@ -43,6 +43,6 @@ export function processTypePredicate(
     return {
         kind: IntermediateKind.IntermediateTypePredicate,
         parameterName: input.parameterName.getText(),
-        typeRef: processTypeNode(input.type!)
+        assertedRef: processTypeNode(input.type!)
     }
 }

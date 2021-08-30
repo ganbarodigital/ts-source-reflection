@@ -153,7 +153,7 @@ const expectedResult: IntermediateSourceFile = {
             returnType: {
                 kind: IntermediateKind.IntermediateTypePredicate,
                 parameterName: "pet",
-                typeRef: {
+                assertedRef: {
                     kind: IntermediateKind.IntermediateFixedTypeReference,
                     typeName: 'Fish',
                 },
@@ -404,7 +404,7 @@ const expectedResult: IntermediateSourceFile = {
                                 returnType: {
                                     kind: IntermediateKind.IntermediateTypePredicate,
                                     parameterName: "pet",
-                                    typeRef: {
+                                    assertedRef: {
                                         kind: IntermediateKind.IntermediateFixedTypeReference,
                                         typeName: "Fish",
                                     },

@@ -63,7 +63,7 @@ const expectedResult: IntermediateSourceFile = {
                     returnType: {
                         kind: IntermediateKind.IntermediateTypePredicate,
                         parameterName: "this",
-                        typeRef: {
+                        assertedRef: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             typeName: "FileRep",
                         },
@@ -82,7 +82,7 @@ const expectedResult: IntermediateSourceFile = {
                     returnType: {
                         kind: IntermediateKind.IntermediateTypePredicate,
                         parameterName: "this",
-                        typeRef: {
+                        assertedRef: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             typeName: "Directory",
                         },
@@ -101,7 +101,7 @@ const expectedResult: IntermediateSourceFile = {
                     returnType: {
                         kind: IntermediateKind.IntermediateTypePredicate,
                         parameterName: "this",
-                        typeRef: {
+                        assertedRef: {
                             kind: IntermediateKind.IntermediateIntersectionType,
                             typeRefs: [
                                 {

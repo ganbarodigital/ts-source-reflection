@@ -81,7 +81,7 @@ const expectedResult: IntermediateSourceFile = {
                     returnType: {
                         kind: IntermediateKind.IntermediateTypePredicate,
                         parameterName: "this",
-                        typeRef: {
+                        assertedRef: {
                             kind: IntermediateKind.IntermediateAnonymousClassType,
                             members: [
                                 {

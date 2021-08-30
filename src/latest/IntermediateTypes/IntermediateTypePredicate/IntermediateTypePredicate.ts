@@ -40,5 +40,5 @@ export interface IntermediateTypePredicate
     extends IntermediateItem<IntermediateKind.IntermediateTypePredicate>
 {
     parameterName: string;
-    typeRef: IntermediateTypeReference;
+    assertedRef: IntermediateTypeReference;
 }
