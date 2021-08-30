@@ -49,6 +49,7 @@ import { IntermediateMappedType } from "../IntermediateMappedType";
 import { IntermediateParenthesizedType } from "../IntermediateParenthesizedType";
 import { IntermediateRestType } from "../IntermediateRestType";
 import { IntermediateTemplateLiteralType } from "../IntermediateTemplateLiteralType";
+import { IntermediateThisType } from "../IntermediateThisType";
 import { IntermediateTupleType } from "../IntermediateTupleType";
 import { IntermediateTypeofTypeReference } from "../IntermediateTypeofTypeReference";
 import { IntermediateTypePredicate } from "../IntermediateTypePredicate";
@@ -74,6 +75,7 @@ export type IntermediateTypeReference
       | IntermediateParenthesizedType
       | IntermediateRestType
       | IntermediateTemplateLiteralType
+      | IntermediateThisType
       | IntermediateTupleType
       | IntermediateTypePredicate
       | IntermediateTypeofTypeReference
