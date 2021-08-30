@@ -55,6 +55,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     accessModifier: undefined,
                     static: false,
+                    isAbstract: false,
                     name: "greet",
                     typeParameters: [],
                     parameters: [],
@@ -84,6 +85,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     accessModifier: undefined,
                     static: false,
+                    isAbstract: false,
                     name: "greet",
                     typeParameters: [],
                     parameters: [

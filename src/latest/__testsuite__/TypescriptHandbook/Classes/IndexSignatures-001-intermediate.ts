@@ -101,6 +101,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "check",
                     accessModifier: undefined,
                     static: false,
+                    isAbstract: false,
                     typeParameters: [],
                     parameters: [
                         {

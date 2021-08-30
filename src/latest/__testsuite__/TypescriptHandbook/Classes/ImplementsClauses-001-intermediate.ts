@@ -85,6 +85,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "ping",
                     accessModifier: undefined,
                     static: false,
+                    isAbstract: false,
                     typeParameters: [],
                     parameters: [],
                     returnType: undefined,

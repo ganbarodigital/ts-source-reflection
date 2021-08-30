@@ -83,6 +83,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     accessModifier: undefined,
                     static: false,
+                    isAbstract: false,
                     name: "scale",
                     typeParameters: [],
                     parameters: [

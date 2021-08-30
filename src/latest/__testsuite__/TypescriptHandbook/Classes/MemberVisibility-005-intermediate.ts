@@ -70,6 +70,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     accessModifier: IntermediateRestrictableScope.PUBLIC,
                     static: false,
+                    isAbstract: false,
                     name: "sameAs",
                     typeParameters: [],
                     parameters: [

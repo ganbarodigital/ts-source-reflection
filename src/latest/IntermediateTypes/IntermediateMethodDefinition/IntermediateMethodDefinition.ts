@@ -39,11 +39,13 @@ import {
     IntermediateRestrictableScopeItem,
     IntermediateStaticable
 } from "..";
+import { IntermediateAbstractItem } from "../IntermediateAbstractItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateGenericable } from "../IntermediateGenericable";
 
 export interface IntermediateMethodDefinition
     extends IntermediateItem<IntermediateKind.IntermediateMethodDefinition>,
+        IntermediateAbstractItem,
         IntermediateCallableDefinition,
         IntermediateDocumentedItem,
         IntermediateGenericable,

@@ -74,6 +74,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "set",
                     accessModifier: undefined,
                     static: false,
+                    isAbstract: false,
                     typeParameters: [],
                     parameters: [
                         {
@@ -113,6 +114,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
                     static: false,
+                    isAbstract: false,
                     accessModifier: undefined,
                     name: "clear",
                     typeParameters: [],

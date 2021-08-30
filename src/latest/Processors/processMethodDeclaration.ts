@@ -52,6 +52,7 @@ export function processMethodDeclaration(
         docBlock: processDocBlock(input),
         static: AST.hasStaticModifier(input),
         accessModifier: AST.getRestrictableScope(input),
+        isAbstract: AST.hasAbstractModifier(input.modifiers),
         name: input.name.getText(),
         parameters: processFunctionParameters(input.parameters),
         typeParameters: processTypeParametersFromNode(input),

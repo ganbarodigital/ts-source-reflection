@@ -74,6 +74,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     static: false,
                     accessModifier: undefined,
+                    isAbstract: false,
                     name: "hasValue",
                     typeParameters: [],
                     parameters: [],
