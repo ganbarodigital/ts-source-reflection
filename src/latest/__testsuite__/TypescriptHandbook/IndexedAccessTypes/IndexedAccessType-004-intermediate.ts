@@ -103,7 +103,7 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
-                typeRef: {
+                valueRef: {
                     kind: IntermediateKind.IntermediateFixedTypeReference,
                     typeName: "Person",
                 },

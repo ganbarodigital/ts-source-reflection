@@ -76,7 +76,7 @@ const expectedResult: IntermediateSourceFile = {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
                                 typeName: "Property",
                             },
-                            typeRef: {
+                            valueRef: {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
                                 typeName: "Type",
                             },

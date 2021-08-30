@@ -148,7 +148,7 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
-                typeRef: {
+                valueRef: {
                     kind: IntermediateKind.IntermediateTypeofTypeReference,
                     entityName: "MyArray",
                 },
@@ -164,9 +164,9 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
-                typeRef: {
+                valueRef: {
                     kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
-                    typeRef: {
+                    valueRef: {
                         kind: IntermediateKind.IntermediateTypeofTypeReference,
                         entityName: "MyArray",
                     },
@@ -187,7 +187,7 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
-                typeRef: {
+                valueRef: {
                     kind: IntermediateKind.IntermediateFixedTypeReference,
                     typeName: "Person",
                 },

@@ -39,6 +39,6 @@ import { IntermediateTypeReference } from "../IntermediateTypeReference";
 export interface IntermediateIndexedAccessTypeReference
     extends IntermediateItem<IntermediateKind.IntermediateIndexedAccessTypeReference>
 {
-    typeRef: IntermediateTypeReference;
+    valueRef: IntermediateTypeReference;
     indexRef: IntermediateTypeReference;
 }

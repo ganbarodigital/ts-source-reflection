@@ -45,7 +45,7 @@ export function processIndexedAccessType(
 {
     return {
         kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
-        typeRef: processTypeNode(input.objectType),
+        valueRef: processTypeNode(input.objectType),
         indexRef: processTypeNode(input.indexType),
     }
 }
