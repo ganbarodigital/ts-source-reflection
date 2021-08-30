@@ -32,12 +32,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
+import { ShorthandPropertyAssignment } from "typescript";
+import { IntermediateKind, IntermediateShorthandPropertyAssignment } from "../IntermediateTypes";
 
-export interface IntermediateShorthandPropertyAssignment
-    extends IntermediateItem<IntermediateKind.IntermediateShorthandPropertyAssignment>,
-        IntermediateIdentifiedItem
+export function processShorthandPropertyAssignment(
+    input: ShorthandPropertyAssignment
+): IntermediateShorthandPropertyAssignment
 {
+    return {
+        kind: IntermediateKind.IntermediateShorthandPropertyAssignment,
+        name: input.name.getText(),
+    }
 }
