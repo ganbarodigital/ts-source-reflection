@@ -86,6 +86,7 @@ export * from "./IntermediateIntersectionType";
 export * from "./IntermediateItem";
 export * from "./IntermediateKeyofTypeReference";
 export * from "./IntermediateKind";
+export * from "./IntermediateLetDeclaration";
 export * from "./IntermediateLiteralType";
 export * from "./IntermediateMappedType";
 export * from "./IntermediateMappingModifier";
