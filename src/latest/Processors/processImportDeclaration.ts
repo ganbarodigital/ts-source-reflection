@@ -63,11 +63,8 @@ export function processImportDeclaration(
 
     // special case - we have no import clause
     //
-    // I have no idea (yet) how this could appear in the AST,
-    // but the types say it is a real thing
-    //
-    // for now, if we see this, we bail ... and we'll straighten
-    // this out at a later date when we have an example to look at
+    // this happens when an import statement is basically
+    // used to trigger the loading & processing of another file
     if (!importDec.importClause) {
         return retval;
     }
