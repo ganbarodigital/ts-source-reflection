@@ -39,14 +39,14 @@ import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
 import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { IntermediateTypedItem } from "../IntermediateTypedItem";
 
 export interface IntermediateTypedCallableParameterDefinition
     extends IntermediateItem<IntermediateKind.IntermediateTypedCallableParameterDefinition>,
         IntermediateIdentifiedItem,
         IntermediateOptionalItem,
-        IntermediateReadonlyItem
+        IntermediateReadonlyItem,
+        IntermediateTypedItem
 {
-    typeRef: IntermediateTypeReference;
     initializer: Maybe<IntermediateExpression>;
 }
