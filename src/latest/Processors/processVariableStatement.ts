@@ -1,3 +1,4 @@
+// tslint:disable: no-bitwise
 //
 // Copyright (c) 2021-present Ganbaro Digital Ltd
 // All rights reserved.
@@ -44,6 +45,7 @@ import { AST } from "../AST";
 import {
     IntermediateExpression,
     IntermediateKind,
+    IntermediateLetDeclaration,
     IntermediateTypeReference,
     IntermediateVariableDeclaration,
     IntermediateVariableDeclarations
@@ -52,6 +54,12 @@ import { processDocBlock } from "./processDocBlock";
 import { processExpression } from "./processExpression";
 import { processTypeNode } from "./processTypeNode";
 import { StatementProcessor } from "./StatementProcessor";
+
+type CONTEXT_FLAGS = {
+    exported: boolean;
+    constant: boolean;
+    kind: IntermediateKind.IntermediateLetDeclaration | IntermediateKind.IntermediateVariableDeclaration;
+}
 
 export const processVariableStatement: StatementProcessor = (
     input: Statement
@@ -67,13 +75,18 @@ export const processVariableStatement: StatementProcessor = (
 
     // some information about the variables are actually stored
     // at the list level (doh!)
-    const contextFlags = {
+    const contextFlags: CONTEXT_FLAGS = {
         exported: AST.isNodeExported(input),
         constant: false,
+        kind: IntermediateKind.IntermediateVariableDeclaration
     }
-    // tslint:disable-next-line: no-bitwise
+
     if (variableStmt.declarationList.flags & NodeFlags.Const) {
         contextFlags.constant = true;
+    }
+
+    if (variableStmt.declarationList.flags & NodeFlags.Let) {
+        contextFlags.kind = IntermediateKind.IntermediateLetDeclaration;
     }
 
     // what do we have?
@@ -89,11 +102,8 @@ export const processVariableStatement: StatementProcessor = (
 
 function processVariableDeclaration(
     input: VariableDeclaration,
-    contextFlags: {
-        exported: boolean;
-        constant: boolean;
-    }
-): IntermediateVariableDeclaration
+    contextFlags: CONTEXT_FLAGS,
+): IntermediateVariableDeclaration | IntermediateLetDeclaration
 {
     // special case - variable is readonly
     //
@@ -120,9 +130,9 @@ function processVariableDeclaration(
         initialiser = processExpression(input.initializer);
     }
 
-    // this will be our return value
-    return <IntermediateVariableDeclaration>{
-        kind: IntermediateKind.IntermediateVariableDeclaration,
+    // all done
+    return {
+        kind: contextFlags.kind,
         docBlock: processDocBlock(input),
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
         isConstant: contextFlags.constant,
