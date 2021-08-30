@@ -47,20 +47,14 @@ import {
     isNumericLiteral,
     isObjectLiteralExpression,
     isParenthesizedExpression,
-    isPropertyAccessExpression,
-    isSpreadElement,
+    isPropertyAccessExpression, isSpreadElement,
     isStringLiteral,
-    isTypeAssertionExpression,
-    PropertyAssignment,
-    SyntaxKind
+    isTypeAssertionExpression, SyntaxKind
 } from "typescript";
 import { AST } from "../AST";
 import {
     IntermediateExpression,
-    IntermediateKind,
-    IntermediateObjectLiteral,
-    IntermediatePropertyAssignment,
-    IntermediateTypeAssertable
+    IntermediateKind, IntermediateTypeAssertable
 } from "../IntermediateTypes";
 import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
 import { processArrowFunction } from "./processArrowFunction";
@@ -69,6 +63,7 @@ import { processCallExpression } from "./processCallExpression";
 import { processFunctionExpression } from "./processFunctionExpression";
 import { processIdentifier } from "./processIdentifier";
 import { processNewExpression } from "./processNewExpression";
+import { processObjectLiteralExpression } from "./processObjectLiteralExpression";
 import { processParenthesizedExpression } from "./processParenthesizedExpression";
 import { processPropertyAccessExpression } from "./processPropertyAccessExpression";
 import { processSpreadElement } from "./processSpreadElement";
@@ -100,19 +95,7 @@ export function processExpression(
     }
 
     if (isObjectLiteralExpression(input)) {
-        const retval: IntermediateObjectLiteral = {
-            kind: IntermediateKind.IntermediateObjectLiteral,
-            properties: [],
-            asType: undefined,
-            typeAssertion: undefined,
-        }
-
-        for (const member of input.properties) {
-            const propAssignment = AST.mustBePropertyAssignment(member);
-            retval.properties.push(processPropertyAssignment(propAssignment));
-        }
-
-        return retval;
+        return processObjectLiteralExpression(input);
     }
 
     if (isTypeAssertionExpression(input)) {
@@ -198,14 +181,4 @@ export function processExpression(
             actual: getClassNames(input)[ 0 ]
         }
     });
-}
-
-function processPropertyAssignment(
-    input: PropertyAssignment
-): IntermediatePropertyAssignment {
-    return {
-        kind: IntermediateKind.IntermediatePropertyAssignment,
-        propertyName: input.name.getText(),
-        initializer: processExpression(input.initializer),
-    }
 }

@@ -32,15 +32,16 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediatePropertyAssignment } from "../IntermediatePropertyAssignment";
-import { IntermediateShorthandPropertyAssignment } from "../IntermediateShorthandPropertyAssignment";
-import { IntermediateTypeAssertable } from "../IntermediateTypeAssertable";
+import { PropertyAssignment } from "typescript";
+import { IntermediateKind, IntermediatePropertyAssignment } from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
 
-export interface IntermediateObjectLiteral
-    extends IntermediateItem<IntermediateKind.IntermediateObjectLiteral>,
-        IntermediateTypeAssertable
-{
-    properties: (IntermediatePropertyAssignment | IntermediateShorthandPropertyAssignment)[];
+export function processPropertyAssignment(
+    input: PropertyAssignment
+): IntermediatePropertyAssignment {
+    return {
+        kind: IntermediateKind.IntermediatePropertyAssignment,
+        propertyName: input.name.getText(),
+        initializer: processExpression(input.initializer),
+    }
 }

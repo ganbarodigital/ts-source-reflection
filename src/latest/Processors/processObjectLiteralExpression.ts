@@ -32,15 +32,37 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediatePropertyAssignment } from "../IntermediatePropertyAssignment";
-import { IntermediateShorthandPropertyAssignment } from "../IntermediateShorthandPropertyAssignment";
-import { IntermediateTypeAssertable } from "../IntermediateTypeAssertable";
+import { isShorthandPropertyAssignment, ObjectLiteralExpression } from "typescript";
+import { AST } from "../AST";
+import { IntermediateKind, IntermediateObjectLiteral } from "../IntermediateTypes";
+import { processPropertyAssignment } from "./processPropertyAssignment";
+import { processShorthandPropertyAssignment } from "./processShorthandPropertyAssignment";
 
-export interface IntermediateObjectLiteral
-    extends IntermediateItem<IntermediateKind.IntermediateObjectLiteral>,
-        IntermediateTypeAssertable
+export function processObjectLiteralExpression(
+    input: ObjectLiteralExpression
+): IntermediateObjectLiteral
 {
-    properties: (IntermediatePropertyAssignment | IntermediateShorthandPropertyAssignment)[];
+    // this will be our return value
+    const retval: IntermediateObjectLiteral = {
+        kind: IntermediateKind.IntermediateObjectLiteral,
+        properties: [],
+        asType: undefined,
+        typeAssertion: undefined,
+    }
+
+    for (const member of input.properties) {
+        // special case - shorthand assignment
+        if (isShorthandPropertyAssignment(member)) {
+            retval.properties.push(processShorthandPropertyAssignment(member));
+            continue;
+        }
+
+        // general case
+        const propAssignment = AST.mustBePropertyAssignment(member);
+        retval.properties.push(processPropertyAssignment(propAssignment));
+    }
+
+    // all done
+    return retval;
+
 }
