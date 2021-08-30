@@ -37,6 +37,7 @@ import { findExtendsHeritageClauses } from "./findExtendsHeritageClauses";
 import { findImplementsHeritageClauses } from "./findImplementsHeritageClauses";
 import { getRestrictableScope } from "./getRestrictableScope";
 import { getStatementKind } from "./getStatementKind";
+import { hasAbstractModifier } from "./hasAbstractModifier";
 import { hasBody } from "./hasBody";
 import { hasDeclaredModifier } from "./hasDeclaredModifier";
 import { hasDotDotDotToken } from "./hasDotDotDotToken";
@@ -80,6 +81,7 @@ export class AST
     static findImplementsHeritageClauses = findImplementsHeritageClauses;
     static getRestrictableScope = getRestrictableScope;
     static getStatementKind = getStatementKind;
+    static hasAbstractModifier = hasAbstractModifier;
     static hasBody = hasBody;
     static hasDeclaredModifier = hasDeclaredModifier;
     static hasDotDotDotToken = hasDotDotDotToken;
