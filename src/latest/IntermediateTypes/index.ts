@@ -103,6 +103,7 @@ export * from "./IntermediateMethodSignature";
 export * from "./IntermediateMethodDefinition";
 export * from "./IntermediateNamespaceImport";
 // export * from "./IntermediateModule";
+export * from "./IntermediateModuleReference";
 export * from "./IntermediateNewExpression";
 export * from "./IntermediateNumericLiteral";
 export * from "./IntermediateObjectBindingElement";
