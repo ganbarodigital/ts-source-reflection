@@ -34,11 +34,11 @@
 
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { IntermediateTypedItem } from "../IntermediateTypedItem";
 
 export interface IntermediateTemplateLiteralSpan
-    extends IntermediateItem<IntermediateKind.IntermediateTemplateLiteralSpan>
+    extends IntermediateItem<IntermediateKind.IntermediateTemplateLiteralSpan>,
+        IntermediateTypedItem
 {
-    typeRef: IntermediateTypeReference;
     tail: string;
 }

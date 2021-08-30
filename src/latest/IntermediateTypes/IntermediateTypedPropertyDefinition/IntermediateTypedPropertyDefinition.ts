@@ -41,7 +41,7 @@ import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
 import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
 import { IntermediateRestrictableScopeItem } from "../IntermediateRestrictableScopeItem";
 import { IntermediateStaticItem } from "../IntermediateStaticItem";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { IntermediateTypedItem } from "../IntermediateTypedItem";
 
 export interface IntermediateTypedPropertyDefinition
     extends IntermediateItem<IntermediateKind.IntermediateTypedPropertyDefinition>,
@@ -49,8 +49,8 @@ export interface IntermediateTypedPropertyDefinition
         IntermediateOptionalItem,
         IntermediateReadonlyItem,
         IntermediateRestrictableScopeItem,
-        IntermediateStaticItem
+        IntermediateStaticItem,
+        IntermediateTypedItem
 {
-    typeRef: IntermediateTypeReference;
     initializer: Maybe<IntermediateExpression>;
 }

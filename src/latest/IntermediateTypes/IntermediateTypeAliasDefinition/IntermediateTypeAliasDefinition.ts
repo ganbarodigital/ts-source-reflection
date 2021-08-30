@@ -36,12 +36,12 @@ import { IntermediateGenericType } from "../IntermediateGenericType";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { IntermediateTypedItem } from "../IntermediateTypedItem";
 
 export interface IntermediateTypeAliasDefinition
     extends IntermediateItem<IntermediateKind.IntermediateTypeAliasDefinition>,
-        IntermediateIdentifiedItem
+        IntermediateIdentifiedItem,
+        IntermediateTypedItem
 {
     typeParameters: IntermediateGenericType[];
-    typeRef: IntermediateTypeReference;
 }

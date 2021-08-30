@@ -37,13 +37,13 @@ import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
 import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { IntermediateTypedItem } from "../IntermediateTypedItem";
 
 export interface IntermediateTypedPropertySignature
     extends IntermediateItem<IntermediateKind.IntermediateTypedPropertySignature>,
         IntermediateIdentifiedItem,
         IntermediateOptionalItem,
-        IntermediateReadonlyItem
+        IntermediateReadonlyItem,
+        IntermediateTypedItem
 {
-    typeRef: IntermediateTypeReference;
 }

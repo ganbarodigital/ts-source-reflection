@@ -35,11 +35,11 @@
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { IntermediateTypedItem } from "../IntermediateTypedItem";
 
 export interface IntermediateTupleTypeElement
     extends IntermediateItem<IntermediateKind.IntermediateTupleTypeElement>,
-        IntermediateOptionalItem
+        IntermediateOptionalItem,
+        IntermediateTypedItem
 {
-    typeRef: IntermediateTypeReference;
 }

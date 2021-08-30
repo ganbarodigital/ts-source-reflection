@@ -34,10 +34,10 @@
 
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { IntermediateTypedItem } from "../IntermediateTypedItem";
 
 export interface IntermediateRestType
-    extends IntermediateItem<IntermediateKind.IntermediateRestType>
+    extends IntermediateItem<IntermediateKind.IntermediateRestType>,
+        IntermediateTypedItem
 {
-    typeRef: IntermediateTypeReference;
 }
