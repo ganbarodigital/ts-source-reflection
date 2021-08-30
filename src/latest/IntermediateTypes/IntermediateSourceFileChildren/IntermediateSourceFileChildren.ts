@@ -36,6 +36,7 @@ import { IntermediateClass } from "../IntermediateClass";
 import { IntermediateExportDeclaration } from "../IntermediateExportDeclaration";
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateFunction } from "../IntermediateFunction";
+import { IntermediateImportAssignment } from "../IntermediateImportAssignment";
 import { IntermediateImportDeclaration } from "../IntermediateImportDeclaration";
 import { IntermediateInterface } from "../IntermediateInterface";
 import { IntermediateTypeAliasDefinition } from "../IntermediateTypeAliasDefinition";
@@ -56,6 +57,7 @@ export interface IntermediateSourceFileChildren {
     ExportDeclaration?: IntermediateExportDeclaration[];
     ExpressionStatement?: IntermediateExpression[];
     FunctionDeclaration?: IntermediateFunction[];
+    ImportEqualsDeclaration?: IntermediateImportAssignment;
     ImportDeclaration?: IntermediateImportDeclaration[];
     InterfaceDeclaration?: IntermediateInterface[];
     TypeAliasDeclaration?: IntermediateTypeAliasDefinition[];

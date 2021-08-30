@@ -32,43 +32,25 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { HashMap, RequireAllAttributesMap } from "@safelytyped/core-types";
-import { IntermediateSourceFileChildren } from "./IntermediateSourceFileChildren";
+import { Statement } from "typescript";
+import { AST } from "../AST";
+import {
+    IntermediateImportAssignment, IntermediateKind
+} from "../IntermediateTypes";
+import { processModuleReference } from "./processModuleReference";
+import { processIdentifier } from "./processIdentifier";
+import { StatementProcessor } from "./StatementProcessor";
 
-//
-// Let me explain what is happening here ...
-//
-// I'm trying to use the compiler to make sure that VALID_CHILREN
-// *always* contains every AST node that:
-//
-// a) can appear as an immediate child of a source file, and
-// b) that we can currently support
-//
-// This way, if we ever add support for more AST nodes at the
-// source file level, the compiler should notice, and it should
-// refuse to compile this file until we remember to add in
-// the new nodes types :)
-//
-// There is probably a neater way to do this. Patches to do so
-// are most welcome.
-//
-type ValidChildren = RequireAllAttributesMap<IntermediateSourceFileChildren, true>;
+export const processImportEqualsDeclaration: StatementProcessor = (
+    input: Statement
+): IntermediateImportAssignment => {
+    // make sure we have the right kind of statement
+    const importDec = AST.mustBeImportEqualsDeclaration(input);
 
-const VALID_CHILDREN: ValidChildren & HashMap<true> = {
-    ClassDeclaration: true,
-    ExportDeclaration: true,
-    ExpressionStatement: true,
-    FunctionDeclaration: true,
-    ImportDeclaration: true,
-    ImportEqualsDeclaration: true,
-    InterfaceDeclaration: true,
-    TypeAliasDeclaration: true,
-    VariableStatement: true,
+    return {
+        kind: IntermediateKind.IntermediateImportAssignment,
+        name: processIdentifier(importDec.name),
+        modRef: processModuleReference(importDec.moduleReference),
+    };
 }
 
-export function isKeyOfIntermediateSourceFileChildren(
-    input: string
-): input is keyof IntermediateSourceFileChildren
-{
-    return VALID_CHILDREN[input] || false;
-}

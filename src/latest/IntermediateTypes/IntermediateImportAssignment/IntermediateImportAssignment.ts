@@ -32,14 +32,14 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateExternalModuleReference } from "../IntermediateExternalModuleReference";
 import { IntermediateIdentifierReference } from "../IntermediateIdentifierReference";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateModuleReference } from "../IntermediateModuleReference";
 
 export interface IntermediateImportAssignment
     extends IntermediateItem<IntermediateKind.IntermediateImportAssignment>
 {
     name: IntermediateIdentifierReference;
-    modRef: IntermediateExternalModuleReference;
+    modRef: IntermediateModuleReference;
 }

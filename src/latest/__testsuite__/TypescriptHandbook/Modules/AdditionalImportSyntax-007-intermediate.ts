@@ -32,43 +32,33 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { HashMap, RequireAllAttributesMap } from "@safelytyped/core-types";
-import { IntermediateSourceFileChildren } from "./IntermediateSourceFileChildren";
+import {
+    IntermediateKind,
+    IntermediateSourceFile
+} from "../../../IntermediateTypes";
 
-//
-// Let me explain what is happening here ...
-//
-// I'm trying to use the compiler to make sure that VALID_CHILREN
-// *always* contains every AST node that:
-//
-// a) can appear as an immediate child of a source file, and
-// b) that we can currently support
-//
-// This way, if we ever add support for more AST nodes at the
-// source file level, the compiler should notice, and it should
-// refuse to compile this file until we remember to add in
-// the new nodes types :)
-//
-// There is probably a neater way to do this. Patches to do so
-// are most welcome.
-//
-type ValidChildren = RequireAllAttributesMap<IntermediateSourceFileChildren, true>;
-
-const VALID_CHILDREN: ValidChildren & HashMap<true> = {
-    ClassDeclaration: true,
-    ExportDeclaration: true,
-    ExpressionStatement: true,
-    FunctionDeclaration: true,
-    ImportDeclaration: true,
-    ImportEqualsDeclaration: true,
-    InterfaceDeclaration: true,
-    TypeAliasDeclaration: true,
-    VariableStatement: true,
+const expectedResult: IntermediateSourceFile = {
+    children: [
+        {
+            kind: IntermediateKind.IntermediateImportAssignment,
+            name: {
+                kind: IntermediateKind.IntermediateIdentifierReference,
+                name: "fs",
+                typeAssertion: undefined,
+                asType: undefined,
+            },
+            modRef: {
+                kind: IntermediateKind.IntermediateExternalModuleReference,
+                source: {
+                    kind: IntermediateKind.IntermediateStringLiteral,
+                    value: "fs",
+                    asType: undefined,
+                    typeAssertion: undefined,
+                },
+            },
+        },
+    ],
+    kind: IntermediateKind.IntermediateSourceFile,
 }
 
-export function isKeyOfIntermediateSourceFileChildren(
-    input: string
-): input is keyof IntermediateSourceFileChildren
-{
-    return VALID_CHILDREN[input] || false;
-}
+export default expectedResult;
