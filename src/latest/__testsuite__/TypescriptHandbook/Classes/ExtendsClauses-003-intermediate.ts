@@ -52,7 +52,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
-                    propName: "name",
+                    name: "name",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
@@ -89,7 +89,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
-                    propName: "name",
+                    name: "name",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
@@ -113,7 +113,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: false,
                     isReadonly: false,
                     constant: true,
-                    variableName: "d",
+                    name: "d",
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateNewExpression,

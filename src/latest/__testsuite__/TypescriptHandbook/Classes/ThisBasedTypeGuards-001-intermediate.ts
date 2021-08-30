@@ -121,7 +121,7 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
-                            paramName: "path",
+                            name: "path",
                             isReadonly: false,
                             isOptional: false,
                             setsPropertyWithScope: IntermediateRestrictableScope.PUBLIC,
@@ -133,7 +133,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
-                            paramName: "networked",
+                            name: "networked",
                             isReadonly: false,
                             isOptional: false,
                             setsPropertyWithScope: IntermediateRestrictableScope.PRIVATE,
@@ -169,7 +169,7 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
-                            paramName: "path",
+                            name: "path",
                             isReadonly: false,
                             isOptional: false,
                             setsPropertyWithScope: undefined,
@@ -181,7 +181,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
-                            paramName: "content",
+                            name: "content",
                             isReadonly: false,
                             isOptional: false,
                             setsPropertyWithScope: IntermediateRestrictableScope.PUBLIC,
@@ -214,7 +214,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                    propName: "children",
+                    name: "children",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
@@ -241,7 +241,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "host",
+                    name: "host",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {

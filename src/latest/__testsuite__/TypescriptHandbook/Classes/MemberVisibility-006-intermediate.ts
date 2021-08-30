@@ -52,7 +52,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
                     accessModifier: undefined,
-                    propName: "#barkAmount",
+                    name: "#barkAmount",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
@@ -66,7 +66,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
                     accessModifier: undefined,
-                    propName: "personality",
+                    name: "personality",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,

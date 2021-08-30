@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "ExtractPII",
+            name: "ExtractPII",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -86,7 +86,7 @@ const expectedResult: IntermediateSourceFile = {
                             members: [
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                                    propName: "pii",
+                                    name: "pii",
                                     isOptional: false,
                                     isReadonly: false,
                                     typeRef: {
@@ -110,14 +110,14 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "DBFields",
+            name: "DBFields",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "id",
+                        name: "id",
                         isOptional: false,
                         isReadonly: false,
                         typeRef: {
@@ -125,7 +125,7 @@ const expectedResult: IntermediateSourceFile = {
                             members: [
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                                    propName: "format",
+                                    name: "format",
                                     isOptional: false,
                                     isReadonly: false,
                                     typeRef: {
@@ -138,7 +138,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "name",
+                        name: "name",
                         isOptional: false,
                         isReadonly: false,
                         typeRef: {
@@ -146,7 +146,7 @@ const expectedResult: IntermediateSourceFile = {
                             members: [
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                                    propName: "type",
+                                    name: "type",
                                     isOptional: false,
                                     isReadonly: false,
                                     typeRef: {
@@ -156,7 +156,7 @@ const expectedResult: IntermediateSourceFile = {
                                 },
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                                    propName: "pii",
+                                    name: "pii",
                                     isOptional: false,
                                     isReadonly: false,
                                     typeRef: {
@@ -172,7 +172,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "ObjectsNeedingGDPRDeletion",
+            name: "ObjectsNeedingGDPRDeletion",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,

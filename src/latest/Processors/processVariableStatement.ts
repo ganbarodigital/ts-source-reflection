@@ -128,7 +128,7 @@ function processVariableDeclaration(
         constant: contextFlags.constant,
         exported: contextFlags.exported,
         isReadonly,
-        variableName: input.name.getText(),
+        name: input.name.getText(),
         initializer: initialiser,
         typeRef,
     }

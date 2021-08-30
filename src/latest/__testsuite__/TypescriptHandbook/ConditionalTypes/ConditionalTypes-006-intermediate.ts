@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "GetReturnType",
+            name: "GetReturnType",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -62,7 +62,7 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                            paramName: "args",
+                            name: "args",
                             isOptional: false,
                             isReadonly: false,
                             typeRef: {
@@ -99,7 +99,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Num",
+            name: "Num",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -119,7 +119,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Str",
+            name: "Str",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -131,7 +131,7 @@ const expectedResult: IntermediateSourceFile = {
                         parameters: [
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                paramName: "x",
+                                name: "x",
                                 isOptional: false,
                                 isReadonly: false,
                                 typeRef: {
@@ -150,7 +150,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Bools",
+            name: "Bools",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -162,7 +162,7 @@ const expectedResult: IntermediateSourceFile = {
                         parameters: [
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                paramName: "a",
+                                name: "a",
                                 isOptional: false,
                                 isReadonly: false,
                                 typeRef: {
@@ -172,7 +172,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                paramName: "b",
+                                name: "b",
                                 isOptional: false,
                                 isReadonly: false,
                                 typeRef: {

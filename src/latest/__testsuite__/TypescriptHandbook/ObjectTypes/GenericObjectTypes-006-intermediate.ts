@@ -57,7 +57,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "contents",
+                    name: "contents",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -84,7 +84,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "box",
+                    name: "box",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -101,7 +101,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "newContents",
+                    name: "newContents",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {

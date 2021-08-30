@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "name",
+                    name: "name",
                     isOptional: true,
                     isReadonly: false,
                     typeRef: {
@@ -60,7 +60,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "street",
+                    name: "street",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -70,7 +70,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "city",
+                    name: "city",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -80,7 +80,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "country",
+                    name: "country",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -90,7 +90,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "postalCode",
+                    name: "postalCode",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -116,7 +116,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "unit",
+                    name: "unit",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {

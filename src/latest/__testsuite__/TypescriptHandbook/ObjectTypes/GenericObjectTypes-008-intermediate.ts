@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "OrNull",
+            name: "OrNull",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -66,7 +66,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "OneOrMany",
+            name: "OneOrMany",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -94,7 +94,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "OneOrManyOrNull",
+            name: "OneOrManyOrNull",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -122,7 +122,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "OneOrManyOrNullStrings",
+            name: "OneOrManyOrNullStrings",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,

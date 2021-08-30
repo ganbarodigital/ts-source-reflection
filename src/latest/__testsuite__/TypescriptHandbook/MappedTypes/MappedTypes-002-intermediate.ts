@@ -40,7 +40,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "OptionsFlags",
+            name: "OptionsFlags",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -76,14 +76,14 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "FeatureFlags",
+            name: "FeatureFlags",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "darkMode",
+                        name: "darkMode",
                         isOptional: false,
                         isReadonly: false,
                         typeRef: {
@@ -98,7 +98,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "newUserProfile",
+                        name: "newUserProfile",
                         isOptional: false,
                         isReadonly: false,
                         typeRef: {
@@ -116,7 +116,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "FeatureOptions",
+            name: "FeatureOptions",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,

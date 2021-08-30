@@ -34,6 +34,7 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { IntermediateExpression } from "../IntermediateExpression";
+import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
@@ -42,10 +43,10 @@ import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateTypedCallableParameterDefinition
     extends IntermediateItem<IntermediateKind.IntermediateTypedCallableParameterDefinition>,
+        IntermediateIdentifiedItem,
         IntermediateOptionalItem,
         IntermediateReadonlyItem
 {
-    paramName: string;
     typeRef: IntermediateTypeReference;
     initializer: Maybe<IntermediateExpression>;
 }

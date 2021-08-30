@@ -56,7 +56,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "arr",
+                    name: "arr",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -95,7 +95,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "arr",
+                    name: "arr",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -118,7 +118,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: false,
                     isReadonly: false,
                     constant: true,
-                    variableName: "a",
+                    name: "a",
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
@@ -172,7 +172,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: false,
                     isReadonly: false,
                     constant: true,
-                    variableName: "b",
+                    name: "b",
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,

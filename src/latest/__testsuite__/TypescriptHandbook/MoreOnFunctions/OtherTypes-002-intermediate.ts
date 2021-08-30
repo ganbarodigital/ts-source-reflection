@@ -49,7 +49,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "s",
+                    name: "s",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -71,7 +71,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
-                    variableName: "obj",
+                    name: "obj",
                     isReadonly: false,
                     constant: true,
                     exported: false,

@@ -42,6 +42,7 @@ import {
 import { IntermediateAbstractItem } from "../IntermediateAbstractItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateGenericable } from "../IntermediateGenericable";
+import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 
 export interface IntermediateMethodDefinition
     extends IntermediateItem<IntermediateKind.IntermediateMethodDefinition>,
@@ -49,9 +50,9 @@ export interface IntermediateMethodDefinition
         IntermediateCallableDefinition,
         IntermediateDocumentedItem,
         IntermediateGenericable,
+        IntermediateIdentifiedItem,
         IntermediateRestrictableScopeItem,
         IntermediateStaticItem
 {
-    name: string;
     hasBody: boolean;
 }

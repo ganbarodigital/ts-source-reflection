@@ -52,19 +52,19 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
-                            paramName: "a",
+                            name: "a",
                             initializer: undefined,
                             receiverAlias: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
-                            paramName: "b",
+                            name: "b",
                             initializer: undefined,
                             receiverAlias: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
-                            paramName: "c",
+                            name: "c",
                             initializer: undefined,
                             receiverAlias: undefined,
                         },

@@ -44,7 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             variables: [
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
-                    variableName: "expr",
+                    name: "expr",
                     constant: true,
                     exported: false,
                     declared: false,
@@ -65,7 +65,7 @@ const expectedResult: IntermediateSourceFile = {
             variables: [
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
-                    variableName: "a",
+                    name: "a",
                     constant: true,
                     exported: false,
                     declared: false,

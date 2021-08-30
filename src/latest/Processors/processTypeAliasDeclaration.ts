@@ -52,7 +52,7 @@ export const processTypeAliasDeclaration: StatementProcessor = (
 
     return {
         kind: IntermediateKind.IntermediateTypeAliasDefinition,
-        typeName: typeAliasDec.name.text,
+        name: typeAliasDec.name.text,
         typeRef: processTypeNode(typeAliasDec.type),
         typeParameters: processTypeParametersFromNode(typeAliasDec),
     }

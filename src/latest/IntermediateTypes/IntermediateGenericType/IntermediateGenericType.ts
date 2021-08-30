@@ -34,13 +34,14 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { IntermediateItem } from "..";
+import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateGenericType
-    extends IntermediateItem<IntermediateKind.IntermediateGenericType>
+    extends IntermediateItem<IntermediateKind.IntermediateGenericType>,
+        IntermediateIdentifiedItem
 {
-    name: string;
     constraint: Maybe<IntermediateTypeReference>;
     defaultType: Maybe<string>;
 }

@@ -75,7 +75,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: false,
                     isReadonly: false,
                     constant: true,
-                    variableName: "g",
+                    name: "g",
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateNewExpression,

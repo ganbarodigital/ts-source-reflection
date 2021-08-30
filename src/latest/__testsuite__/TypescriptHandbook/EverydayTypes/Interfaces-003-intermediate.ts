@@ -41,13 +41,13 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Animal",
+            name: "Animal",
             typeRef: {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "name",
+                        name: "name",
                         isOptional: false,
                         isReadonly: false,
                         typeRef: {
@@ -61,7 +61,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Bear",
+            name: "Bear",
             typeRef: {
                 kind: IntermediateKind.IntermediateIntersectionType,
                 typeRefs: [
@@ -74,7 +74,7 @@ const expectedResult: IntermediateSourceFile = {
                         members: [
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
-                                propName: "honey",
+                                name: "honey",
                                 isOptional: false,
                                 isReadonly: false,
                                 typeRef: {

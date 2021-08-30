@@ -107,7 +107,7 @@ function processBindingElement(
     if (input.propertyName) {
         return <IntermediateObjectBindingElement>{
             kind: IntermediateKind.IntermediateObjectBindingElement,
-            paramName: input.propertyName.getText(),
+            name: input.propertyName.getText(),
             initializer,
             receiverAlias: input.name.getText(),
         }
@@ -115,7 +115,7 @@ function processBindingElement(
 
     return <IntermediateObjectBindingElement>{
         kind: IntermediateKind.IntermediateObjectBindingElement,
-        paramName: input.name.getText(),
+        name: input.name.getText(),
         initializer,
         receiverAlias: undefined,
     }

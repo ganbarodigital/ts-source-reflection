@@ -33,11 +33,12 @@
 //
 
 import { IntermediateItem, IntermediateKind } from "..";
+import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
 
 export interface IntermediateUntypedCallableParameterSignature
     extends IntermediateItem<IntermediateKind.IntermediateUntypedCallableParameterSignature>,
+        IntermediateIdentifiedItem,
         IntermediateOptionalItem
 {
-    paramName: string;
 }

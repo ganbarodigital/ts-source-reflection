@@ -52,19 +52,19 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
-                            paramName: "a",
+                            name: "a",
                             initializer: undefined,
                             receiverAlias: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
-                            paramName: "b",
+                            name: "b",
                             initializer: undefined,
                             receiverAlias: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
-                            paramName: "c",
+                            name: "c",
                             initializer: undefined,
                             receiverAlias: undefined,
                         },
@@ -74,7 +74,7 @@ const expectedResult: IntermediateSourceFile = {
                         members: [
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
-                                propName: "a",
+                                name: "a",
                                 isOptional: false,
                                 isReadonly: false,
                                 typeRef: {
@@ -84,7 +84,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
-                                propName: "b",
+                                name: "b",
                                 isOptional: false,
                                 isReadonly: false,
                                 typeRef: {
@@ -94,7 +94,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
-                                propName: "c",
+                                name: "c",
                                 isOptional: false,
                                 isReadonly: false,
                                 typeRef: {

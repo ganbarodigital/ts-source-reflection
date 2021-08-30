@@ -57,7 +57,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "contents",
+                    name: "contents",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -72,7 +72,7 @@ const expectedResult: IntermediateSourceFile = {
             variables: [
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
-                    variableName: "box",
+                    name: "box",
                     constant: false,
                     declared: false,
                     exported: false,

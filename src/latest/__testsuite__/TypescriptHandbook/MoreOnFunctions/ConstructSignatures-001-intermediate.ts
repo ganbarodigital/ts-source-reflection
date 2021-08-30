@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "SomeConstructor",
+            name: "SomeConstructor",
             typeRef: {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile = {
                         parameters: [
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                paramName: "s",
+                                name: "s",
                                 isOptional: false,
                                 isReadonly: false,
                                 typeRef: {

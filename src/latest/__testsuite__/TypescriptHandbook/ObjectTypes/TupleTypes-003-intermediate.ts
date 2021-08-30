@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Either2dOr3d",
+            name: "Either2dOr3d",
             typeRef: {
                 kind: IntermediateKind.IntermediateTupleType,
                 elements: [

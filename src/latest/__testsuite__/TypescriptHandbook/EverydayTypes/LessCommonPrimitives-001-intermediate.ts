@@ -44,7 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             variables: [
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
-                    variableName: "oneHundred",
+                    name: "oneHundred",
                     constant: true,
                     exported: false,
                     declared: false,

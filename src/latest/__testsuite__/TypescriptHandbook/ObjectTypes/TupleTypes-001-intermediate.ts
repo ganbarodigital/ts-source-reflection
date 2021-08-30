@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "StringNumberPair",
+            name: "StringNumberPair",
             typeRef: {
                 kind: IntermediateKind.IntermediateTupleType,
                 elements: [

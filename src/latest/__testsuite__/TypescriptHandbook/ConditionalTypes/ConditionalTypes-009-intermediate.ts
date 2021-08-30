@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "ToArrayNonDist",
+            name: "ToArrayNonDist",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -93,7 +93,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "StrArrOrNumArr",
+            name: "StrArrOrNumArr",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,

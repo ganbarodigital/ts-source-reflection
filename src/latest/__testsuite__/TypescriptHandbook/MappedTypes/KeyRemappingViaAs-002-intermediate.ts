@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "RemoveKindField",
+            name: "RemoveKindField",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -106,7 +106,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "kind",
+                    name: "kind",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -116,7 +116,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "radius",
+                    name: "radius",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -128,7 +128,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "KindlessCircle",
+            name: "KindlessCircle",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,

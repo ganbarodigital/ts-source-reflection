@@ -52,7 +52,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     isOptional: false,
                     isReadonly: false,
-                    propName: "color",
+                    name: "color",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -73,7 +73,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     isOptional: false,
                     isReadonly: false,
-                    propName: "radius",
+                    name: "radius",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -83,7 +83,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "ColorfulCircle",
+            name: "ColorfulCircle",
             typeRef: {
                 kind: IntermediateKind.IntermediateIntersectionType,
                 typeRefs: [

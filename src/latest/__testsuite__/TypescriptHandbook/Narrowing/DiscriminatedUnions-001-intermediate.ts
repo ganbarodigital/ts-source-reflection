@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "kind",
+                    name: "kind",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -69,7 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "radius",
+                    name: "radius",
                     isOptional: true,
                     isReadonly: false,
                     typeRef: {
@@ -79,7 +79,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "sideLength",
+                    name: "sideLength",
                     isOptional: true,
                     isReadonly: false,
                     typeRef: {

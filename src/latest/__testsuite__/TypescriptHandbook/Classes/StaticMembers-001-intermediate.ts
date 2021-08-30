@@ -52,7 +52,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
                     accessModifier: undefined,
-                    propName: "x",
+                    name: "x",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: true,

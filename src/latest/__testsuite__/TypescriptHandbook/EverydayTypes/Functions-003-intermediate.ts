@@ -45,7 +45,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
-                    variableName: "names",
+                    name: "names",
                     declared: false,
                     exported: false,
                     isReadonly: false,
@@ -99,7 +99,7 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateUntypedCallableParameterDefinition,
-                            paramName: "s",
+                            name: "s",
                             isOptional: false,
                             initializer: undefined,
                         },

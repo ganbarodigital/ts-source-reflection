@@ -50,13 +50,13 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertySignature,
-                    propName: "a",
+                    name: "a",
                     isOptional: false,
                     isReadonly: true,
                 },
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertySignature,
-                    propName: "b",
+                    name: "b",
                     isOptional: false,
                     isReadonly: false,
                 },

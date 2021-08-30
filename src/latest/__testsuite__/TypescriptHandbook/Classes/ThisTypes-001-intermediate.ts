@@ -53,7 +53,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     accessModifier: undefined,
-                    propName: "contents",
+                    name: "contents",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
@@ -79,7 +79,7 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                            paramName: "value",
+                            name: "value",
                             isReadonly: false,
                             isOptional: false,
                             typeRef: {
@@ -134,7 +134,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: false,
                     isReadonly: false,
                     constant: true,
-                    variableName: "a",
+                    name: "a",
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateNewExpression,
@@ -157,7 +157,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: false,
                     isReadonly: false,
                     constant: true,
-                    variableName: "b",
+                    name: "b",
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,

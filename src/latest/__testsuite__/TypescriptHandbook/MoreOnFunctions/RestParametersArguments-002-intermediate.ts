@@ -45,7 +45,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
-                    variableName: "arr1",
+                    name: "arr1",
                     declared: false,
                     exported: false,
                     constant: true,
@@ -85,7 +85,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
-                    variableName: "arr2",
+                    name: "arr2",
                     declared: false,
                     exported: false,
                     constant: true,

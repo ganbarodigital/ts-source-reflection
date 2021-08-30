@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "UppercaseGreeting",
+            name: "UppercaseGreeting",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateLiteralType,
@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "UncomfortableGreeting",
+            name: "UncomfortableGreeting",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,

@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Greeting",
+            name: "Greeting",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateLiteralType,
@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "ShoutyGreeting",
+            name: "ShoutyGreeting",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -65,7 +65,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "ASCIICacheKey",
+            name: "ASCIICacheKey",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -100,7 +100,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "MainID",
+            name: "MainID",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,

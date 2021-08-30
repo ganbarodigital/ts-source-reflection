@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "GreetFunction",
+            name: "GreetFunction",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateFunctionTypeSignature,
@@ -49,7 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                 parameters: [
                     {
                         kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                        paramName: "a",
+                        name: "a",
                         isOptional: false,
                         isReadonly: false,
                         typeRef: {
@@ -74,7 +74,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "fn",
+                    name: "fn",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {

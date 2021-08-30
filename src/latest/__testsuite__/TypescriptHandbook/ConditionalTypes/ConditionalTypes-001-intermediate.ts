@@ -94,7 +94,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Example1",
+            name: "Example1",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateConditionalType,
@@ -118,7 +118,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Example2",
+            name: "Example2",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateConditionalType,

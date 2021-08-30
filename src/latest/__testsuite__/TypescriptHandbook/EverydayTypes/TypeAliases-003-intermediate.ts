@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "UserInputSanitizedString",
+            name: "UserInputSanitizedString",
             typeRef: {
                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                 typeName: "string",
@@ -58,7 +58,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "str",
+                    name: "str",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",

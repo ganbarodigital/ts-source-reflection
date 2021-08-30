@@ -42,7 +42,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Concrete",
+            name: "Concrete",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -85,14 +85,14 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "MaybeUser",
+            name: "MaybeUser",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "id",
+                        name: "id",
                         isOptional: false,
                         isReadonly: false,
                         typeRef: {
@@ -102,7 +102,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "name",
+                        name: "name",
                         isOptional: true,
                         isReadonly: false,
                         typeRef: {
@@ -112,7 +112,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "age",
+                        name: "age",
                         isOptional: true,
                         isReadonly: false,
                         typeRef: {
@@ -125,7 +125,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "User",
+            name: "User",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,

@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Flatten",
+            name: "Flatten",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,

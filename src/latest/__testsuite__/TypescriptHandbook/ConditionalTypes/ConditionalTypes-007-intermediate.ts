@@ -49,7 +49,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "x",
+                    name: "x",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -75,7 +75,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "x",
+                    name: "x",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -101,7 +101,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "x",
+                    name: "x",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -137,7 +137,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "T1",
+            name: "T1",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,

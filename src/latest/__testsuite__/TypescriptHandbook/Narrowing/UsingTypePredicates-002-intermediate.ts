@@ -41,14 +41,14 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Pet",
+            name: "Pet",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "name",
+                        name: "name",
                         isOptional: false,
                         isReadonly: false,
                         typeRef: {
@@ -75,7 +75,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "swim",
+                    name: "swim",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -106,7 +106,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "fly",
+                    name: "fly",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -131,7 +131,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "pet",
+                    name: "pet",
                     typeRef: {
                         kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
@@ -188,7 +188,7 @@ const expectedResult: IntermediateSourceFile = {
             variables: [
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
-                    variableName: "zoo",
+                    name: "zoo",
                     constant: true,
                     exported: false,
                     declared: false,
@@ -272,7 +272,7 @@ const expectedResult: IntermediateSourceFile = {
                     declared: false,
                     constant: true,
                     isReadonly: false,
-                    variableName: "underWater1",
+                    name: "underWater1",
                     typeRef: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
@@ -317,7 +317,7 @@ const expectedResult: IntermediateSourceFile = {
                     declared: false,
                     constant: true,
                     isReadonly: false,
-                    variableName: "underWater2",
+                    name: "underWater2",
                     typeRef: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
@@ -368,7 +368,7 @@ const expectedResult: IntermediateSourceFile = {
                     declared: false,
                     constant: true,
                     isReadonly: false,
-                    variableName: "underWater3",
+                    name: "underWater3",
                     typeRef: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
@@ -396,7 +396,7 @@ const expectedResult: IntermediateSourceFile = {
                                 parameters: [
                                     {
                                         kind: IntermediateKind.IntermediateUntypedCallableParameterDefinition,
-                                        paramName: "pet",
+                                        name: "pet",
                                         isOptional: false,
                                         initializer: undefined,
                                     },

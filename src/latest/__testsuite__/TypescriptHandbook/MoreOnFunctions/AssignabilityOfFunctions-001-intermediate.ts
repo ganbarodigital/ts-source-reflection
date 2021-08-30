@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "voidFunc",
+            name: "voidFunc",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateFunctionTypeSignature,
@@ -59,7 +59,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
-                    variableName: "f1",
+                    name: "f1",
                     declared: false,
                     exported: false,
                     constant: true,
@@ -84,7 +84,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
-                    variableName: "f2",
+                    name: "f2",
                     declared: false,
                     exported: false,
                     constant: true,
@@ -109,7 +109,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
-                    variableName: "f3",
+                    name: "f3",
                     declared: false,
                     exported: false,
                     constant: true,

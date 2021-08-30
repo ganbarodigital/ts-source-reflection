@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "shape",
+                    name: "shape",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -60,7 +60,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "xPos",
+                    name: "xPos",
                     isOptional: true,
                     isReadonly: false,
                     typeRef: {
@@ -70,7 +70,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "yPos",
+                    name: "yPos",
                     isOptional: true,
                     isReadonly: false,
                     typeRef: {
@@ -93,13 +93,13 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
-                            paramName: "shape",
+                            name: "shape",
                             initializer: undefined,
                             receiverAlias: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
-                            paramName: "xPos",
+                            name: "xPos",
                             initializer: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "0",
@@ -110,7 +110,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
-                            paramName: "yPos",
+                            name: "yPos",
                             initializer: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "0",

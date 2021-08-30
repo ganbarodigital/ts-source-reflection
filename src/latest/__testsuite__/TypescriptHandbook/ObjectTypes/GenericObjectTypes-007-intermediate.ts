@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Box",
+            name: "Box",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -55,7 +55,7 @@ const expectedResult: IntermediateSourceFile = {
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "contents",
+                        name: "contents",
                         isOptional: false,
                         isReadonly: false,
                         typeRef: {

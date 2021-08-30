@@ -57,7 +57,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "contents",
+                    name: "contents",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -79,7 +79,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "AppleBox",
+            name: "AppleBox",
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
                 typeName: "Box",

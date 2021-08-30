@@ -49,7 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                     declared: false,
                     exported: false,
                     isReadonly: false,
-                    variableName: "MyArray",
+                    name: "MyArray",
                     initializer: {
                         kind: IntermediateKind.IntermediateArrayLiteral,
                         elements: [
@@ -144,7 +144,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Person",
+            name: "Person",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
@@ -160,7 +160,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Age",
+            name: "Age",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
@@ -183,7 +183,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Age2",
+            name: "Age2",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateIndexedAccessTypeReference,

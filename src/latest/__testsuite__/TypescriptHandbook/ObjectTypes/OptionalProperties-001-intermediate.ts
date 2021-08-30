@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "shape",
+                    name: "shape",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -60,7 +60,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "xPos",
+                    name: "xPos",
                     isOptional: true,
                     isReadonly: false,
                     typeRef: {
@@ -70,7 +70,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "yPos",
+                    name: "yPos",
                     isOptional: true,
                     isReadonly: false,
                     typeRef: {
@@ -90,7 +90,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "opts",
+                    name: "opts",
                     isReadonly: false,
                     isOptional: false,
                     typeRef: {

@@ -34,13 +34,14 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { IntermediateExpression } from "../IntermediateExpression";
+import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateObjectBindingElement
-    extends IntermediateItem<IntermediateKind.IntermediateObjectBindingElement>
+    extends IntermediateItem<IntermediateKind.IntermediateObjectBindingElement>,
+        IntermediateIdentifiedItem
 {
-    paramName: string;
     initializer: Maybe<IntermediateExpression>;
     receiverAlias: Maybe<string>;
 }

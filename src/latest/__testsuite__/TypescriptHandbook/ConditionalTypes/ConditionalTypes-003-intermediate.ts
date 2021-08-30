@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "MessageOf",
+            name: "MessageOf",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -61,7 +61,7 @@ const expectedResult: IntermediateSourceFile = {
                     members: [
                         {
                             kind: IntermediateKind.IntermediateTypedPropertySignature,
-                            propName: "message",
+                            name: "message",
                             isOptional: false,
                             isReadonly: false,
                             typeRef: {
@@ -99,7 +99,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "message",
+                    name: "message",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -135,7 +135,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "EmailMessageContents",
+            name: "EmailMessageContents",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -150,7 +150,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "DogMessageContents",
+            name: "DogMessageContents",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,

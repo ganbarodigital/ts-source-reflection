@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "PropEventSource",
+            name: "PropEventSource",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -85,7 +85,7 @@ const expectedResult: IntermediateSourceFile = {
                         parameters: [
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                paramName: "eventName",
+                                name: "eventName",
                                 isReadonly: false,
                                 isOptional: false,
                                 typeRef: {
@@ -105,7 +105,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                paramName: "callback",
+                                name: "callback",
                                 isReadonly: false,
                                 isOptional: false,
                                 typeRef: {
@@ -114,7 +114,7 @@ const expectedResult: IntermediateSourceFile = {
                                     parameters: [
                                         {
                                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                            paramName: "newValue",
+                                            name: "newValue",
                                             isReadonly: false,
                                             isOptional: false,
                                             typeRef: {
@@ -162,7 +162,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "obj",
+                    name: "obj",
                     isReadonly: false,
                     isOptional: false,
                     typeRef: {

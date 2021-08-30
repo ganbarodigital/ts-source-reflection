@@ -72,7 +72,7 @@ export function processParameterSignature(
         // tslint:disable-next-line: no-angle-bracket-type-assertion
         return <IntermediateUntypedCallableParameterSignature>{
             kind: IntermediateKind.IntermediateUntypedCallableParameterSignature,
-            paramName: paramDec.name.getText(),
+            name: paramDec.name.getText(),
             isOptional: processQuestionToken(paramDec.questionToken),
         };
     }
@@ -94,7 +94,7 @@ export function processParameterSignature(
     if (AST.hasDotDotDotToken(paramDec.dotDotDotToken)) {
         return <IntermediateTypedCallableParameterSignature>{
             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-            paramName: paramDec.name.getText(),
+            name: paramDec.name.getText(),
             typeRef: {
                 kind: IntermediateKind.IntermediateRestType,
                 typeRef: processTypeNode(paramType),
@@ -107,7 +107,7 @@ export function processParameterSignature(
     // general case - typed parameter
     return <IntermediateTypedCallableParameterSignature>{
         kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-        paramName: paramDec.name.getText(),
+        name: paramDec.name.getText(),
         typeRef: processTypeNode(paramType),
         isOptional: processQuestionToken(paramDec.questionToken),
         isReadonly,

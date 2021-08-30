@@ -41,14 +41,14 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Point",
+            name: "Point",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "x",
+                        name: "x",
                         isOptional: false,
                         isReadonly: false,
                         typeRef: {
@@ -58,7 +58,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "y",
+                        name: "y",
                         isOptional: false,
                         isReadonly: false,
                         typeRef: {
@@ -71,7 +71,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "P",
+            name: "P",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateKeyofTypeReference,

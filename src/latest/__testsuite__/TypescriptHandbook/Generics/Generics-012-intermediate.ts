@@ -52,7 +52,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                    propName: "hasMask",
+                    name: "hasMask",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
@@ -83,7 +83,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                    propName: "nametag",
+                    name: "nametag",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
@@ -114,7 +114,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                    propName: "numLegs",
+                    name: "numLegs",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
@@ -151,7 +151,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                    propName: "keeper",
+                    name: "keeper",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
@@ -189,7 +189,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-                    propName: "keeper",
+                    name: "keeper",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
@@ -229,7 +229,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "c",
+                    name: "c",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {

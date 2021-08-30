@@ -41,13 +41,13 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "DescribableFunction",
+            name: "DescribableFunction",
             typeRef: {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "description",
+                        name: "description",
                         isOptional: false,
                         isReadonly: false,
                         typeRef: {
@@ -61,7 +61,7 @@ const expectedResult: IntermediateSourceFile = {
                         parameters: [
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                paramName: "someArg",
+                                name: "someArg",
                                 isOptional: false,
                                 isReadonly: false,
                                 typeRef: {

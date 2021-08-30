@@ -61,7 +61,7 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                            paramName: "arg",
+                            name: "arg",
                             isOptional: false,
                             isReadonly: false,
                             typeRef: {
@@ -94,7 +94,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "arg",
+                    name: "arg",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -120,7 +120,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: false,
                     declared: false,
                     constant: false,
-                    variableName: "myIdentity",
+                    name: "myIdentity",
                     typeRef: {
                         kind: IntermediateKind.IntermediateGenericTypeReference,
                         typeName: "GenericIdentityFn",

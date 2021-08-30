@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "World",
+            name: "World",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateLiteralType,
@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Greeting",
+            name: "Greeting",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateTemplateLiteralType,

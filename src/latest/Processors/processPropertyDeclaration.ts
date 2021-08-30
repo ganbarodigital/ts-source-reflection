@@ -59,7 +59,7 @@ export function processPropertyDeclaration(
     if (!input.type) {
         return {
             kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
-            propName: input.name.getText(),
+            name: input.name.getText(),
             isOptional: processQuestionToken(input.questionToken),
             isReadonly: AST.hasReadonlyModifier(input.modifiers),
             isStatic: AST.hasStaticModifier(input),
@@ -71,7 +71,7 @@ export function processPropertyDeclaration(
     // general case: typed property
     return {
         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
-        propName: input.name.getText(),
+        name: input.name.getText(),
         isOptional: processQuestionToken(input.questionToken),
         isReadonly: AST.hasReadonlyModifier(input.modifiers),
         isStatic: AST.hasStaticModifier(input),

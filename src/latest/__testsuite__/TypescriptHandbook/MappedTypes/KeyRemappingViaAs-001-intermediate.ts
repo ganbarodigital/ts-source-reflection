@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "Getters",
+            name: "Getters",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -126,7 +126,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "name",
+                    name: "name",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -136,7 +136,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "age",
+                    name: "age",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -146,7 +146,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    propName: "location",
+                    name: "location",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -158,7 +158,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "LazyPerson",
+            name: "LazyPerson",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,

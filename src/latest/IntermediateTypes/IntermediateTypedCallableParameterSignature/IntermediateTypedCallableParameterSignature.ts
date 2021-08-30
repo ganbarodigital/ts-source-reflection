@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
@@ -40,9 +41,9 @@ import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateTypedCallableParameterSignature
     extends IntermediateItem<IntermediateKind.IntermediateTypedCallableParameterSignature>,
+        IntermediateIdentifiedItem,
         IntermediateOptionalItem,
         IntermediateReadonlyItem
 {
-    paramName: string;
     typeRef: IntermediateTypeReference;
 }

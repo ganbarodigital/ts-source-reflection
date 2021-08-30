@@ -45,7 +45,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
-                    variableName: "myName",
+                    name: "myName",
                     declared: false,
                     isReadonly: false,
                     constant: false,

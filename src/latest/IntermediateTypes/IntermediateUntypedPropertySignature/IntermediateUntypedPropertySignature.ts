@@ -31,6 +31,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
@@ -38,8 +39,8 @@ import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
 
 export interface IntermediateUntypedPropertySignature
     extends IntermediateItem<IntermediateKind.IntermediateUntypedPropertySignature>,
+        IntermediateIdentifiedItem,
         IntermediateOptionalItem,
         IntermediateReadonlyItem
 {
-    propName: string;
 }

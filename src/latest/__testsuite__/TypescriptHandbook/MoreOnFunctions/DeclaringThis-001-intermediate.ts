@@ -57,7 +57,7 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                            paramName: "filter",
+                            name: "filter",
                             isOptional: false,
                             isReadonly: false,
                             typeRef: {
@@ -66,7 +66,7 @@ const expectedResult: IntermediateSourceFile = {
                                 parameters: [
                                     {
                                         kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                        paramName: "this",
+                                        name: "this",
                                         isOptional: false,
                                         isReadonly: false,
                                         typeRef: {
@@ -102,7 +102,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: false,
                     constant: true,
                     isReadonly: false,
-                    variableName: "db",
+                    name: "db",
                     docBlock: undefined,
                     typeRef: undefined,
                     initializer: {
@@ -130,7 +130,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: false,
                     constant: true,
                     isReadonly: false,
-                    variableName: "admins",
+                    name: "admins",
                     docBlock: undefined,
                     typeRef: undefined,
                     initializer: {
@@ -153,7 +153,7 @@ const expectedResult: IntermediateSourceFile = {
                                 parameters: [
                                     {
                                         kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                                        paramName: "this",
+                                        name: "this",
                                         isOptional: false,
                                         isReadonly: false,
                                         typeRef: {

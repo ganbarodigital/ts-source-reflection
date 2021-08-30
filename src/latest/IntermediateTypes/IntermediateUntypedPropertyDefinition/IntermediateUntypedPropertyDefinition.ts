@@ -34,6 +34,7 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { IntermediateExpression } from "../IntermediateExpression";
+import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
@@ -43,11 +44,11 @@ import { IntermediateStaticItem } from "../IntermediateStaticItem";
 
 export interface IntermediateUntypedPropertyDefinition
     extends IntermediateItem<IntermediateKind.IntermediateUntypedPropertyDefinition>,
+        IntermediateIdentifiedItem,
         IntermediateOptionalItem,
         IntermediateReadonlyItem,
         IntermediateRestrictableScopeItem,
         IntermediateStaticItem
 {
-    propName: string;
     initializer: Maybe<IntermediateExpression>;
 }

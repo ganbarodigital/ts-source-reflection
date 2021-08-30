@@ -52,13 +52,13 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
-                            paramName: "shape",
+                            name: "shape",
                             initializer: undefined,
                             receiverAlias: "Shape",
                         },
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
-                            paramName: "xPos",
+                            name: "xPos",
                             initializer: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "100",

@@ -42,7 +42,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "CreateMutable",
+            name: "CreateMutable",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -85,14 +85,14 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "LockedAccount",
+            name: "LockedAccount",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "id",
+                        name: "id",
                         isOptional: false,
                         isReadonly: true,
                         typeRef: {
@@ -102,7 +102,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
-                        propName: "name",
+                        name: "name",
                         isOptional: false,
                         isReadonly: true,
                         typeRef: {
@@ -115,7 +115,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
-            typeName: "UnlockedAccount",
+            name: "UnlockedAccount",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,

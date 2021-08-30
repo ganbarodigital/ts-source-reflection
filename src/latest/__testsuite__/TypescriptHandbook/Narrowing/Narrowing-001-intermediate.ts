@@ -49,7 +49,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "padding",
+                    name: "padding",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
@@ -69,7 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
-                    paramName: "input",
+                    name: "input",
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
