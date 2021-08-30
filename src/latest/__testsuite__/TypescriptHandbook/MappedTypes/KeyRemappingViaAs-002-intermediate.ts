@@ -99,7 +99,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateInterface,
             name: "Circle",
             typeParameters: [],
-            exported: false,
+            isExported: false,
             isDeclared: false,
             docBlock: undefined,
             extends: [],

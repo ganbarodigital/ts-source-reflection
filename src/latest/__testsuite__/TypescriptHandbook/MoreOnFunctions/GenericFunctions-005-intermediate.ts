@@ -43,7 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
             isDeclared: false,
-            exported: false,
+            isExported: false,
             name: "firstElement1",
             typeParameters: [
                 {
@@ -76,7 +76,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
             isDeclared: false,
-            exported: false,
+            isExported: false,
             name: "firstElement2",
             typeParameters: [
                 {
@@ -115,7 +115,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
                     isDeclared: false,
-                    exported: false,
+                    isExported: false,
                     isReadonly: false,
                     isConstant: true,
                     name: "a",
@@ -169,7 +169,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
                     isDeclared: false,
-                    exported: false,
+                    isExported: false,
                     isReadonly: false,
                     isConstant: true,
                     name: "b",

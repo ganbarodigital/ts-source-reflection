@@ -126,7 +126,7 @@ function processVariableDeclaration(
         docBlock: processDocBlock(input),
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
         isConstant: contextFlags.constant,
-        exported: contextFlags.exported,
+        isExported: contextFlags.exported,
         isReadonly,
         name: input.name.getText(),
         initializer: initialiser,

@@ -43,7 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
             isDeclared: false,
-            exported: false,
+            isExported: false,
             name: "combine",
             typeParameters: [
                 {
@@ -99,7 +99,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
                     isDeclared: false,
-                    exported: false,
+                    isExported: false,
                     isReadonly: false,
                     isConstant: true,
                     name: "arr",

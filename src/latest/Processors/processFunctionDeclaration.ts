@@ -55,7 +55,7 @@ export const processFunctionDeclaration: StatementProcessor = (
         kind: IntermediateKind.IntermediateFunction,
         docBlock: processDocBlock(input),
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
-        exported: AST.hasExportModifier(input.modifiers),
+        isExported: AST.hasExportModifier(input.modifiers),
         typeParameters: processTypeParametersFromNode(funcDec),
         name: funcDec.name?.text,
         parameters: processFunctionParameters(funcDec.parameters),

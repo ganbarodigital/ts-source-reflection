@@ -47,7 +47,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     name: "names",
                     isDeclared: false,
-                    exported: false,
+                    isExported: false,
                     isReadonly: false,
                     isConstant: true,
                     typeRef: undefined,

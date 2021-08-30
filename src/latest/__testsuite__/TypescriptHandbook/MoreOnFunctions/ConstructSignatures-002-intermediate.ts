@@ -45,7 +45,7 @@ const expectedResult: IntermediateSourceFile = {
             name: "CallOrConstruct",
             docBlock: undefined,
             typeParameters: [],
-            exported: false,
+            isExported: false,
             extends: [],
             members: [
                 {

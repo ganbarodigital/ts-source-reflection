@@ -47,7 +47,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     isConstant: true,
                     isDeclared: false,
-                    exported: false,
+                    isExported: false,
                     isReadonly: false,
                     name: "MyArray",
                     initializer: {

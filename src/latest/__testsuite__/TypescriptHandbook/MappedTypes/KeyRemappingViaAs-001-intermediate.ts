@@ -119,7 +119,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateInterface,
             name: "Person",
             typeParameters: [],
-            exported: false,
+            isExported: false,
             isDeclared: false,
             docBlock: undefined,
             extends: [],

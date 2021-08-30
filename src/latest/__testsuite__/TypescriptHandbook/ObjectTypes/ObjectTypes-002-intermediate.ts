@@ -43,7 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             isDeclared: false,
-            exported: false,
+            isExported: false,
             name: "Person",
             extends: [],
             typeParameters: [],
@@ -74,7 +74,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             isDeclared: false,
             docBlock: undefined,
-            exported: false,
+            isExported: false,
             name: "greet",
             typeParameters: [],
             parameters: [

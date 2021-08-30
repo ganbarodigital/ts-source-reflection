@@ -43,7 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
             isDeclared: false,
-            exported: false,
+            isExported: false,
             name: "draw",
             typeParameters: [],
             parameters: [

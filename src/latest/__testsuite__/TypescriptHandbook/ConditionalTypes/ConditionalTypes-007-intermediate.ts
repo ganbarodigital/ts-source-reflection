@@ -43,7 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
             isDeclared: true,
-            exported: false,
+            isExported: false,
             name: "stringOrNum",
             typeParameters: [],
             parameters: [
@@ -69,7 +69,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
             isDeclared: true,
-            exported: false,
+            isExported: false,
             name: "stringOrNum",
             typeParameters: [],
             parameters: [
@@ -95,7 +95,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
             isDeclared: true,
-            exported: false,
+            isExported: false,
             name: "stringOrNum",
             typeParameters: [],
             parameters: [

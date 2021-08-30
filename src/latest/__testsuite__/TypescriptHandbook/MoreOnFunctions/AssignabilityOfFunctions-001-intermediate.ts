@@ -61,7 +61,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     name: "f1",
                     isDeclared: false,
-                    exported: false,
+                    isExported: false,
                     isConstant: true,
                     isReadonly: false,
                     typeRef: {
@@ -86,7 +86,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     name: "f2",
                     isDeclared: false,
-                    exported: false,
+                    isExported: false,
                     isConstant: true,
                     isReadonly: false,
                     typeRef: {
@@ -111,7 +111,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     name: "f3",
                     isDeclared: false,
-                    exported: false,
+                    isExported: false,
                     isConstant: true,
                     isReadonly: false,
                     typeRef: {

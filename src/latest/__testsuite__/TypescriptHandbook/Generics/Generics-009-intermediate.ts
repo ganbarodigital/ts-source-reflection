@@ -42,7 +42,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
-            exported: false,
+            isExported: false,
             isDeclared: false,
             name: "Lengthwise",
             typeParameters: [],
@@ -64,7 +64,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
             isDeclared: false,
-            exported: false,
+            isExported: false,
             name: "loggingIdentity",
             typeParameters: [
                 {

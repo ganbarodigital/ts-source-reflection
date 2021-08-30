@@ -43,7 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             isDeclared: false,
-            exported: false,
+            isExported: false,
             name: "GenericIdentityFn",
             extends: [],
             typeParameters: [
@@ -80,7 +80,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateFunction,
             isDeclared: false,
-            exported: false,
+            isExported: false,
             docBlock: undefined,
             name: "identity",
             typeParameters: [
@@ -117,7 +117,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
                     isReadonly: false,
-                    exported: false,
+                    isExported: false,
                     isDeclared: false,
                     isConstant: false,
                     name: "myIdentity",

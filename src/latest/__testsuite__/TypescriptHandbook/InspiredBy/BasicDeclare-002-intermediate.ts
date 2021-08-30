@@ -61,7 +61,7 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             extends: [],
             docBlock: undefined,
-            exported: false,
+            isExported: false,
         },
     ],
     kind: IntermediateKind.IntermediateSourceFile,

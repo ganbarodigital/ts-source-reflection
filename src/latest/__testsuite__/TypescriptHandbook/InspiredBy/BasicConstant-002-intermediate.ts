@@ -46,7 +46,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     name: "myCanvas",
                     isConstant: true,
-                    exported: true,
+                    isExported: true,
                     isDeclared: false,
                     isReadonly: false,
                     docBlock: undefined,

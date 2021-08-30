@@ -43,7 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             isDeclared: false,
-            exported: false,
+            isExported: false,
             name: "Animal",
             typeParameters: [],
             extends: [],
@@ -67,7 +67,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             isDeclared: false,
-            exported: false,
+            isExported: false,
             name: "Dog",
             typeParameters: [],
             extends: [

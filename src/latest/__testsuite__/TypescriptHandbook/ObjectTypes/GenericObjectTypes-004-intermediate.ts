@@ -43,7 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             isDeclared: false,
-            exported: false,
+            isExported: false,
             name: "Box",
             extends: [],
             typeParameters: [
@@ -71,7 +71,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             isDeclared: false,
-            exported: false,
+            isExported: false,
             name: "StringBox",
             extends: [],
             typeParameters: [],
@@ -96,7 +96,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "boxA",
                     isConstant: false,
                     isDeclared: false,
-                    exported: false,
+                    isExported: false,
                     isReadonly: false,
                     docBlock: undefined,
                     typeRef: {
@@ -137,7 +137,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "boxB",
                     isConstant: false,
                     isDeclared: false,
-                    exported: false,
+                    isExported: false,
                     isReadonly: false,
                     docBlock: undefined,
                     typeRef: {

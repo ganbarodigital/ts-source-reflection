@@ -43,7 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             isDeclared: false,
-            exported: false,
+            isExported: false,
             name: "Box",
             extends: [],
             typeParameters: [
@@ -75,7 +75,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "box",
                     isConstant: false,
                     isDeclared: false,
-                    exported: false,
+                    isExported: false,
                     isReadonly: false,
                     docBlock: undefined,
                     typeRef: {

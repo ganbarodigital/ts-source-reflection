@@ -42,7 +42,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            exported: false,
+            isExported: false,
             isDeclared: false,
             isAbstract: false,
             name: "GenericNumber",

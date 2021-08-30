@@ -57,7 +57,7 @@ export const processClassDeclaration: StatementProcessor = (
         kind: IntermediateKind.IntermediateClass,
         typeParameters: processTypeParametersFromNode(classDec),
         docBlock: processDocBlock(classDec),
-        exported: AST.isNodeExported(classDec),
+        isExported: AST.isNodeExported(classDec),
         extends: getBaseClassType(classDec),
         isAbstract: AST.hasAbstractModifier(input.modifiers),
         implements: getBaseInterfaceTypes(classDec),
