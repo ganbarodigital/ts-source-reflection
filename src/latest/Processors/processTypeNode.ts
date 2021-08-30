@@ -44,6 +44,7 @@ import {
     isParenthesizedTypeNode,
     isRestTypeNode,
     isTemplateLiteralTypeNode,
+    isThisTypeNode,
     isTupleTypeNode,
     isTypeOperatorNode,
     isTypePredicateNode,
@@ -193,6 +194,13 @@ export function processTypeNode(
     // special case - template literal
     if (isTemplateLiteralTypeNode(input)) {
         return processTemplateLiteralType(input);
+    }
+
+    // special case - `this` as a type
+    if (isThisTypeNode(input)) {
+        return {
+            kind: IntermediateKind.IntermediateThisType
+        }
     }
 
     // generic case
