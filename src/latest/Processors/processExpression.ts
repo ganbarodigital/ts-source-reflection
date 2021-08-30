@@ -67,6 +67,7 @@ import { processArrowFunction } from "./processArrowFunction";
 import { processBinaryExpression } from "./processBinaryExpression";
 import { processCallExpression } from "./processCallExpression";
 import { processFunctionExpression } from "./processFunctionExpression";
+import { processIdentifier } from "./processIdentifier";
 import { processNewExpression } from "./processNewExpression";
 import { processParenthesizedExpression } from "./processParenthesizedExpression";
 import { processPropertyAccessExpression } from "./processPropertyAccessExpression";
@@ -164,12 +165,7 @@ export function processExpression(
     }
 
     if (isIdentifier(input)) {
-        return {
-            kind: IntermediateKind.IntermediateIdentifierReference,
-            name: input.text,
-            asType: undefined,
-            typeAssertion: undefined,
-        }
+        return processIdentifier(input);
     }
 
     if (isSpreadElement(input)) {
