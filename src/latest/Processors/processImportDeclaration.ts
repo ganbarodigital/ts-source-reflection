@@ -40,6 +40,7 @@ import {
     IntermediateKind
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { processIdentifier } from "./processIdentifier";
 
 export function processImportDeclaration(
     input: Statement
@@ -68,8 +69,17 @@ export function processImportDeclaration(
     // at this point, we have an import clause to process
     const importClause = importDec.importClause;
 
+    // special case - have we imported an `export default` item?
+    if (importClause.name) {
+        retval.items.push({
+            kind: IntermediateKind.IntermediateDefaultImport,
+            name: processIdentifier(importClause.name),
+        });
+    }
+
+    // do we have any `{ XXX }` parts to the import?
     if (importClause.namedBindings && isNamedImports(importClause.namedBindings)) {
-        retval.items = processNamedBindings(importClause.namedBindings);
+        retval.items = [...retval.items, ...processNamedBindings(importClause.namedBindings)];
     }
 
     // add other import bindings here

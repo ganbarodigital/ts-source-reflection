@@ -32,12 +32,51 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateIdentifierReference } from "../IntermediateIdentifierReference";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
+import {
+    IntermediateKind,
+    IntermediateSourceFile
+} from "../../../IntermediateTypes";
 
-export interface IntermediateDefaultImport
-    extends IntermediateItem<IntermediateKind.IntermediateDefaultImport>
-{
-    name: IntermediateIdentifierReference;
+const expectedResult: IntermediateSourceFile = {
+    children: [
+        {
+            kind: IntermediateKind.IntermediateImportDeclaration,
+            items: [
+                {
+                    kind: IntermediateKind.IntermediateDefaultImport,
+                    name: {
+                        kind: IntermediateKind.IntermediateIdentifierReference,
+                        name: "RNGen",
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                },
+                {
+                    kind: IntermediateKind.IntermediateAliasedImportBinding,
+                    exportedName: {
+                        kind: IntermediateKind.IntermediateIdentifierReference,
+                        name: "pi",
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                    name: {
+                        kind: IntermediateKind.IntermediateIdentifierReference,
+                        name: "π",
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+
+                }
+            ],
+            source: {
+                kind: IntermediateKind.IntermediateStringLiteral,
+                value: "./maths.js",
+                asType: undefined,
+                typeAssertion: undefined,
+            },
+        },
+    ],
+    kind: IntermediateKind.IntermediateSourceFile,
 }
+
+export default expectedResult;
