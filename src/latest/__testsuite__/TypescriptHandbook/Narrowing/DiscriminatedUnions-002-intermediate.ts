@@ -105,6 +105,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "Shape",
             typeParameters: [],
             typeRef: {

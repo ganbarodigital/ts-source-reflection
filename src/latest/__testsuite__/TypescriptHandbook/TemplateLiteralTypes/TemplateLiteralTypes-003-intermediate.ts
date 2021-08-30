@@ -41,6 +41,8 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "EmailLocaleIDs",
             typeParameters: [],
             typeRef: {
@@ -59,6 +61,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "FooterLocaleIDs",
             typeParameters: [],
             typeRef: {
@@ -77,6 +81,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "AllLocaleIDs",
             typeParameters: [],
             typeRef: {
@@ -105,6 +111,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "Lang",
             typeParameters: [],
             typeRef: {
@@ -127,6 +135,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "LocaleMessageIDs",
             typeParameters: [],
             typeRef: {

@@ -41,6 +41,8 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "ID",
             typeRef: {
                 kind: IntermediateKind.IntermediateUnionType,

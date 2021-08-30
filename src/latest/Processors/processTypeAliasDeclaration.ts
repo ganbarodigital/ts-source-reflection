@@ -33,6 +33,7 @@
 //
 
 import { Statement } from "typescript";
+import { AST } from "../AST";
 import { mustBeTypeAliasDeclaration } from "../AST/mustBeTypeAliasDeclaration";
 import {
     IntermediateKind,
@@ -53,6 +54,8 @@ export const processTypeAliasDeclaration: StatementProcessor = (
     return {
         kind: IntermediateKind.IntermediateTypeAliasDefinition,
         name: typeAliasDec.name.text,
+        isExported: AST.hasExportModifier(input.modifiers),
+        isDefaultExport: AST.hasDefaultModifier(input.modifiers),
         typeRef: processTypeNode(typeAliasDec.type),
         typeParameters: processTypeParametersFromNode(typeAliasDec),
     }

@@ -42,6 +42,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
             name: "Flatten",
+            isExported: false,
+            isDefaultExport: false,
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,

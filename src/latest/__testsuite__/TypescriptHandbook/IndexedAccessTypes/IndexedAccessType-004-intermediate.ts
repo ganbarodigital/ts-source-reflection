@@ -41,6 +41,8 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "Person",
             typeParameters: [],
             typeRef: {
@@ -81,6 +83,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "AliveOrName",
             typeParameters: [],
             typeRef: {
@@ -99,6 +103,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "I3",
             typeParameters: [],
             typeRef: {

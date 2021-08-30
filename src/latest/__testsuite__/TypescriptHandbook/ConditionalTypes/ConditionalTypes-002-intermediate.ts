@@ -86,6 +86,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
             name: "NameOrId",
+            isExported: false,
+            isDefaultExport: false,
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,

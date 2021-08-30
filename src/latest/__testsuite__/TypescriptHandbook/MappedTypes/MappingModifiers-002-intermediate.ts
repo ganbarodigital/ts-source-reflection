@@ -42,6 +42,8 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "Concrete",
             typeParameters: [
                 {
@@ -85,6 +87,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "MaybeUser",
             typeParameters: [],
             typeRef: {
@@ -125,6 +129,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "User",
             typeParameters: [],
             typeRef: {

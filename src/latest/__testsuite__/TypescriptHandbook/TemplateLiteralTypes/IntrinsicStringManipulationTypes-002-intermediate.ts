@@ -41,6 +41,8 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "Greeting",
             typeParameters: [],
             typeRef: {
@@ -50,6 +52,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "QuietGreeting",
             typeParameters: [],
             typeRef: {
@@ -65,6 +69,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "ASCIICacheKey",
             typeParameters: [
                 {
@@ -100,6 +106,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "MainID",
             typeParameters: [],
             typeRef: {

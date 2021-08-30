@@ -85,6 +85,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "ColorfulCircle",
             typeRef: {
                 kind: IntermediateKind.IntermediateIntersectionType,

@@ -41,6 +41,8 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "Animal",
             typeRef: {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
@@ -61,6 +63,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            isExported: false,
+            isDefaultExport: false,
             name: "Bear",
             typeRef: {
                 kind: IntermediateKind.IntermediateIntersectionType,

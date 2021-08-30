@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateExportableItem } from "../IntermediateExportableItem";
 import { IntermediateGenericType } from "../IntermediateGenericType";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateItem } from "../IntermediateItem";
@@ -40,6 +41,7 @@ import { IntermediateTypedItem } from "../IntermediateTypedItem";
 
 export interface IntermediateTypeAliasDefinition
     extends IntermediateItem<IntermediateKind.IntermediateTypeAliasDefinition>,
+        IntermediateExportableItem,
         IntermediateIdentifiedItem,
         IntermediateTypedItem
 {

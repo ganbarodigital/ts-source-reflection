@@ -42,6 +42,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
             name: "MessageOf",
+            isExported: false,
+            isDefaultExport: false,
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -138,6 +140,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
             name: "EmailMessageContents",
+            isExported: false,
+            isDefaultExport: false,
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -153,6 +157,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
             name: "DogMessageContents",
+            isExported: false,
+            isDefaultExport: false,
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,

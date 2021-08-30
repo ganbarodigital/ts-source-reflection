@@ -141,6 +141,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
             name: "T1",
+            isExported: false,
+            isDefaultExport: false,
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,

@@ -42,6 +42,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
             name: "Flatten",
+            isExported: false,
+            isDefaultExport: false,
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -83,6 +85,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
             name: "Str",
+            isExported: false,
+            isDefaultExport: false,
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -101,6 +105,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
             name: "Num",
+            isExported: false,
+            isDefaultExport: false,
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
