@@ -40,6 +40,7 @@ import { getStatementKind } from "./getStatementKind";
 import { hasAbstractModifier } from "./hasAbstractModifier";
 import { hasBody } from "./hasBody";
 import { hasDeclaredModifier } from "./hasDeclaredModifier";
+import { hasDefaultModifier } from "./hasDefaultModifier";
 import { hasDotDotDotToken } from "./hasDotDotDotToken";
 import { hasExportModifier } from "./hasExportModifier";
 import { hasPrivateModifier } from "./hasPrivateModifier";
@@ -86,6 +87,7 @@ export class AST
     static hasAbstractModifier = hasAbstractModifier;
     static hasBody = hasBody;
     static hasDeclaredModifier = hasDeclaredModifier;
+    static hasDefaultModifier = hasDefaultModifier;
     static hasDotDotDotToken = hasDotDotDotToken;
     static hasExportModifier = hasExportModifier;
     static hasReadonlyModifier = hasReadonlyModifier;
