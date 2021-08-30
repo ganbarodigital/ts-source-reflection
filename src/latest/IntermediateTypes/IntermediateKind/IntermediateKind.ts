@@ -53,6 +53,7 @@ export enum IntermediateKind {
     IntermediateConstructorDefinition,
     IntermediateConstructorSignature,
     IntermediateDocBlock,
+    IntermediateExportDeclaration,
     IntermediateFixedTypeArgument,
     IntermediateFixedTypeReference,
     IntermediateFunction,

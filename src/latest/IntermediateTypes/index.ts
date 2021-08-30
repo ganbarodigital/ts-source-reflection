@@ -61,6 +61,7 @@ export * from "./IntermediateConstTypeCast";
 export * from "./IntermediateDeclarableItem";
 export * from "./IntermediateDocBlock";
 export * from "./IntermediateDocumentedItem";
+export * from "./IntermediateExportDeclaration";
 export * from "./IntermediateExportableItem";
 export * from "./IntermediateExpression";
 export * from "./IntermediateExpressionOperator";
