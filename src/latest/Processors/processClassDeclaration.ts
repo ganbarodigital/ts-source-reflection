@@ -59,6 +59,7 @@ export const processClassDeclaration: StatementProcessor = (
         docBlock: processDocBlock(classDec),
         exported: AST.isNodeExported(classDec),
         extends: getBaseClassType(classDec),
+        isAbstract: AST.hasAbstractModifier(input.modifiers),
         implements: getBaseInterfaceTypes(classDec),
         members: processMemberDeclarations(classDec.members),
     };

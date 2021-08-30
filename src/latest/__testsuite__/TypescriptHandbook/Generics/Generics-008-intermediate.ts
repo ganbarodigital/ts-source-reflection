@@ -44,6 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             exported: false,
             declared: false,
+            isAbstract: false,
             name: "GenericNumber",
             typeParameters: [
                 {

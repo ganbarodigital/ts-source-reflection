@@ -44,6 +44,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             declared: false,
             exported: false,
+            isAbstract: false,
             name: "GoodGreeter",
             typeParameters: [],
             extends: [],

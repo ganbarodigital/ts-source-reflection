@@ -45,6 +45,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             declared: false,
             exported: false,
+            isAbstract: false,
             name: "FileSystemObject",
             typeParameters: [],
             extends: [],
@@ -149,6 +150,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             declared: false,
             exported: false,
+            isAbstract: false,
             name: "FileRep",
             typeParameters: [],
             extends: [
@@ -196,6 +198,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             declared: false,
             exported: false,
+            isAbstract: false,
             name: "Directory",
             typeParameters: [],
             extends: [
