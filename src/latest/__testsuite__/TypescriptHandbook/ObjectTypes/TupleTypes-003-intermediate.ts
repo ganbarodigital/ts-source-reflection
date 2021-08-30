@@ -47,7 +47,7 @@ const expectedResult: IntermediateSourceFile = {
                 elements: [
                     {
                         kind: IntermediateKind.IntermediateTupleTypeElement,
-                        optional: false,
+                        isOptional: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "number",
@@ -55,7 +55,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     {
                         kind: IntermediateKind.IntermediateTupleTypeElement,
-                        optional: false,
+                        isOptional: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "number",
@@ -63,7 +63,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     {
                         kind: IntermediateKind.IntermediateTupleTypeElement,
-                        optional: true,
+                        isOptional: true,
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "number",

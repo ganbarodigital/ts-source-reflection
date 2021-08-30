@@ -123,7 +123,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "path",
                             isReadonly: false,
-                            optional: false,
+                            isOptional: false,
                             setsPropertyWithScope: IntermediateRestrictableScope.PUBLIC,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -135,7 +135,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "networked",
                             isReadonly: false,
-                            optional: false,
+                            isOptional: false,
                             setsPropertyWithScope: IntermediateRestrictableScope.PRIVATE,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -171,7 +171,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "path",
                             isReadonly: false,
-                            optional: false,
+                            isOptional: false,
                             setsPropertyWithScope: undefined,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -183,7 +183,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "content",
                             isReadonly: false,
-                            optional: false,
+                            isOptional: false,
                             setsPropertyWithScope: IntermediateRestrictableScope.PUBLIC,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -215,7 +215,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "children",
-                    propIsOptional: false,
+                    isOptional: false,
                     isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
@@ -242,7 +242,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propName: "host",
-                    propIsOptional: false,
+                    isOptional: false,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,

@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "x",
-                    optional: false,
+                    isOptional: false,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -76,7 +76,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "x",
-                    optional: false,
+                    isOptional: false,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -102,7 +102,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "x",
-                    optional: false,
+                    isOptional: false,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateUnionType,

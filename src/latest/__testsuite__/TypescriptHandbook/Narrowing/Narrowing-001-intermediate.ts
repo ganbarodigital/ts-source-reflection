@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "padding",
-                    optional: false,
+                    isOptional: false,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateUnionType,
@@ -70,7 +70,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "input",
-                    optional: false,
+                    isOptional: false,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,

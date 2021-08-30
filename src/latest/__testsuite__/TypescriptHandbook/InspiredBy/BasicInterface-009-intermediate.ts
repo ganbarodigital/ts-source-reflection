@@ -51,13 +51,13 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertySignature,
                     propName: "a",
-                    propIsOptional: false,
+                    isOptional: false,
                     isReadonly: true,
                 },
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertySignature,
                     propName: "b",
-                    propIsOptional: false,
+                    isOptional: false,
                     isReadonly: false,
                 },
             ],

@@ -33,12 +33,13 @@
 //
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
 import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
 
 export interface IntermediateUntypedPropertySignature
     extends IntermediateItem<IntermediateKind.IntermediateUntypedPropertySignature>,
+        IntermediateOptionalItem,
         IntermediateReadonlyItem
 {
     propName: string;
-    propIsOptional: boolean;
 }

@@ -56,7 +56,7 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
                                 propName: "first",
-                                propIsOptional: false,
+                                isOptional: false,
                                 isReadonly: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -66,7 +66,7 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
                                 propName: "last",
-                                propIsOptional: true,
+                                isOptional: true,
                                 isReadonly: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -75,7 +75,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                         ],
                     },
-                    optional: false,
+                    isOptional: false,
                     isReadonly: false,
                     initializer: undefined,
                 },

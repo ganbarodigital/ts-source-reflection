@@ -51,7 +51,7 @@ const expectedResult: IntermediateSourceFile =  {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "arr",
                     isReadonly: false,
-                    optional: false,
+                    isOptional: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
@@ -65,7 +65,7 @@ const expectedResult: IntermediateSourceFile =  {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "callback",
                     isReadonly: false,
-                    optional: false,
+                    isOptional: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFunctionTypeSignature,
                         typeParameters: [],
@@ -74,7 +74,7 @@ const expectedResult: IntermediateSourceFile =  {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "arg",
                                 isReadonly: false,
-                                optional: false,
+                                isOptional: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "any",
@@ -84,7 +84,7 @@ const expectedResult: IntermediateSourceFile =  {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "index",
                                 isReadonly: false,
-                                optional: true,
+                                isOptional: true,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "number",

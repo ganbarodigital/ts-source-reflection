@@ -48,7 +48,7 @@ export function processPropertySignature
         return {
             kind: IntermediateKind.IntermediateUntypedPropertySignature,
             propName: input.name.getText(),
-            propIsOptional: processQuestionToken(input.questionToken),
+            isOptional: processQuestionToken(input.questionToken),
             isReadonly: AST.hasReadonlyModifier(input.modifiers),
         }
     }
@@ -57,7 +57,7 @@ export function processPropertySignature
     return {
         kind: IntermediateKind.IntermediateTypedPropertySignature,
         propName: input.name.getText(),
-        propIsOptional: processQuestionToken(input.questionToken),
+        isOptional: processQuestionToken(input.questionToken),
         isReadonly: AST.hasReadonlyModifier(input.modifiers),
         typeRef: processTypeNode(input.type),
     };

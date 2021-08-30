@@ -91,7 +91,7 @@ export function processParameterDeclaration(
             kind: IntermediateKind.IntermediateUntypedCallableParameterDefinition,
             paramName: paramDec.name.getText(),
             initializer,
-            optional: processQuestionToken(paramDec.questionToken),
+            isOptional: processQuestionToken(paramDec.questionToken),
         };
     }
 
@@ -117,7 +117,7 @@ export function processParameterDeclaration(
                 kind: IntermediateKind.IntermediateRestType,
                 typeRef: processTypeNode(paramType),
             },
-            optional: processQuestionToken(paramDec.questionToken),
+            isOptional: processQuestionToken(paramDec.questionToken),
             isReadonly,
             initializer,
         };
@@ -128,7 +128,7 @@ export function processParameterDeclaration(
         kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
         paramName: paramDec.name.getText(),
         typeRef: processTypeNode(paramType),
-        optional: processQuestionToken(paramDec.questionToken),
+        isOptional: processQuestionToken(paramDec.questionToken),
         isReadonly,
         initializer,
     };

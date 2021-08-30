@@ -56,7 +56,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "x",
-                            optional: false,
+                            isOptional: false,
                             isReadonly: false,
                             setsPropertyWithScope: undefined,
                             typeRef: {
@@ -68,7 +68,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "y",
-                            optional: false,
+                            isOptional: false,
                             isReadonly: false,
                             setsPropertyWithScope: undefined,
                             typeRef: {
@@ -86,7 +86,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "s",
-                            optional: false,
+                            isOptional: false,
                             isReadonly: false,
                             setsPropertyWithScope: undefined,
                             typeRef: {
@@ -104,7 +104,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "xs",
-                            optional: false,
+                            isOptional: false,
                             isReadonly: false,
                             setsPropertyWithScope: undefined,
                             typeRef: {
@@ -116,7 +116,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "y",
-                            optional: true,
+                            isOptional: true,
                             isReadonly: false,
                             setsPropertyWithScope: undefined,
                             typeRef: {

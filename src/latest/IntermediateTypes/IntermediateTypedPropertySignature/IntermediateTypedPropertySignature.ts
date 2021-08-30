@@ -34,14 +34,15 @@
 
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
 import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateTypedPropertySignature
     extends IntermediateItem<IntermediateKind.IntermediateTypedPropertySignature>,
+        IntermediateOptionalItem,
         IntermediateReadonlyItem
 {
     propName: string;
-    propIsOptional: boolean;
     typeRef: IntermediateTypeReference;
 }

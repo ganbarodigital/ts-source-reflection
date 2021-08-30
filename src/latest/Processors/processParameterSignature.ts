@@ -73,7 +73,7 @@ export function processParameterSignature(
         return <IntermediateUntypedCallableParameterSignature>{
             kind: IntermediateKind.IntermediateUntypedCallableParameterSignature,
             paramName: paramDec.name.getText(),
-            optional: processQuestionToken(paramDec.questionToken),
+            isOptional: processQuestionToken(paramDec.questionToken),
         };
     }
 
@@ -99,7 +99,7 @@ export function processParameterSignature(
                 kind: IntermediateKind.IntermediateRestType,
                 typeRef: processTypeNode(paramType),
             },
-            optional: processQuestionToken(paramDec.questionToken),
+            isOptional: processQuestionToken(paramDec.questionToken),
             isReadonly,
         };
     }
@@ -109,7 +109,7 @@ export function processParameterSignature(
         kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
         paramName: paramDec.name.getText(),
         typeRef: processTypeNode(paramType),
-        optional: processQuestionToken(paramDec.questionToken),
+        isOptional: processQuestionToken(paramDec.questionToken),
         isReadonly,
     };
 }

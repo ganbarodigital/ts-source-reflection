@@ -60,7 +60,7 @@ export function processPropertyDeclaration(
         return {
             kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
             propName: input.name.getText(),
-            propIsOptional: processQuestionToken(input.questionToken),
+            isOptional: processQuestionToken(input.questionToken),
             isReadonly: AST.hasReadonlyModifier(input.modifiers),
             propIsStatic: AST.hasStaticModifier(input),
             accessModifier: AST.getRestrictableScope(input),
@@ -72,7 +72,7 @@ export function processPropertyDeclaration(
     return {
         kind: IntermediateKind.IntermediateTypedPropertyDefinition,
         propName: input.name.getText(),
-        propIsOptional: processQuestionToken(input.questionToken),
+        isOptional: processQuestionToken(input.questionToken),
         isReadonly: AST.hasReadonlyModifier(input.modifiers),
         propIsStatic: AST.hasStaticModifier(input),
         typeRef: processTypeNode(input.type),

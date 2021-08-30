@@ -49,7 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         propName: "name",
-                        propIsOptional: false,
+                        isOptional: false,
                         isReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -76,7 +76,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propName: "swim",
-                    propIsOptional: false,
+                    isOptional: false,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFunctionTypeSignature,
@@ -107,7 +107,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propName: "fly",
-                    propIsOptional: false,
+                    isOptional: false,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFunctionTypeSignature,
@@ -145,7 +145,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                         ],
                     },
-                    optional: false,
+                    isOptional: false,
                     isReadonly: false,
                     initializer: undefined,
                 },
@@ -397,7 +397,7 @@ const expectedResult: IntermediateSourceFile = {
                                     {
                                         kind: IntermediateKind.IntermediateUntypedCallableParameterDefinition,
                                         paramName: "pet",
-                                        optional: false,
+                                        isOptional: false,
                                         initializer: undefined,
                                     },
                                 ],

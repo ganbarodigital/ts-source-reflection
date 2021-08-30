@@ -51,7 +51,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propName: "width",
-                    propIsOptional: false,
+                    isOptional: false,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -84,7 +84,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                         ],
                     },
-                    optional: false,
+                    isOptional: false,
                     isReadonly: false,
                     initializer: undefined,
                 },

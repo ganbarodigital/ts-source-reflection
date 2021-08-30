@@ -55,7 +55,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "x",
-                            optional: false,
+                            isOptional: false,
                             isReadonly: true,
                             setsPropertyWithScope: IntermediateRestrictableScope.PUBLIC,
                             typeRef: {
@@ -67,7 +67,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "y",
-                            optional: false,
+                            isOptional: false,
                             isReadonly: false,
                             setsPropertyWithScope: IntermediateRestrictableScope.PROTECTED,
                             typeRef: {
@@ -79,7 +79,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "z",
-                            optional: false,
+                            isOptional: false,
                             isReadonly: false,
                             setsPropertyWithScope: IntermediateRestrictableScope.PRIVATE,
                             typeRef: {

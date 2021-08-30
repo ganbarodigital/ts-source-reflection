@@ -67,16 +67,16 @@ function processTupleTypeElement(
     // special case - optional element
     //
     // this is a keyword, instead of being a question token
-    let optional = false;
+    let isOptional = false;
     let elemType = input;
     if (isOptionalTypeNode(input)) {
-        optional = true;
+        isOptional = true;
         elemType = input.type;
     }
 
     return {
         kind: IntermediateKind.IntermediateTupleTypeElement,
         typeRef: processTypeNode(elemType),
-        optional,
+        isOptional,
     }
 }

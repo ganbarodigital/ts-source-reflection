@@ -58,7 +58,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                             paramName: "filter",
-                            optional: false,
+                            isOptional: false,
                             isReadonly: false,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateFunctionTypeSignature,
@@ -67,7 +67,7 @@ const expectedResult: IntermediateSourceFile = {
                                     {
                                         kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                         paramName: "input",
-                                        optional: false,
+                                        isOptional: false,
                                         isReadonly: false,
                                         typeRef: {
                                             kind: IntermediateKind.IntermediateFixedTypeReference,

@@ -63,7 +63,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
                     },
-                    optional: false,
+                    isOptional: false,
                     isReadonly: false,
                     initializer: undefined,
                 },

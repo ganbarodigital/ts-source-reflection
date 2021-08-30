@@ -48,7 +48,7 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         propName: "description",
-                        propIsOptional: false,
+                        isOptional: false,
                         isReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -62,7 +62,7 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "someArg",
-                                optional: false,
+                                isOptional: false,
                                 isReadonly: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,

@@ -63,7 +63,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                             paramName: "args",
-                            optional: false,
+                            isOptional: false,
                             isReadonly: false,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateRestType,
@@ -132,7 +132,7 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "x",
-                                optional: false,
+                                isOptional: false,
                                 isReadonly: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -163,7 +163,7 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "a",
-                                optional: false,
+                                isOptional: false,
                                 isReadonly: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -173,7 +173,7 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "b",
-                                optional: false,
+                                isOptional: false,
                                 isReadonly: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,

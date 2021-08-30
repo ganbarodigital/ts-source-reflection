@@ -50,14 +50,14 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "pair",
-                    optional: false,
+                    isOptional: false,
                     isReadonly: true,
                     typeRef: {
                         kind: IntermediateKind.IntermediateTupleType,
                         elements: [
                             {
                                 kind: IntermediateKind.IntermediateTupleTypeElement,
-                                optional: false,
+                                isOptional: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "string",
@@ -65,7 +65,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTupleTypeElement,
-                                optional: false,
+                                isOptional: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "number",
