@@ -41,6 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateImportDeclaration,
+            isTypeOnly: false,
             items: [
                 {
                     kind: IntermediateKind.IntermediateNamespaceImport,

@@ -32,15 +32,45 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateExpression } from "../IntermediateExpression";
-import { IntermediateImportItem } from "../IntermediateImportItem";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
+import {
+    IntermediateKind,
+    IntermediateSourceFile
+} from "../../../IntermediateTypes";
 
-export interface IntermediateImportDeclaration
-    extends IntermediateItem<IntermediateKind.IntermediateImportDeclaration>
-{
-    items: IntermediateImportItem[];
-    isTypeOnly: boolean;
-    source: IntermediateExpression;
+const expectedResult: IntermediateSourceFile = {
+    children: [
+        {
+            kind: IntermediateKind.IntermediateImportDeclaration,
+            isTypeOnly: true,
+            items: [
+                {
+                    kind: IntermediateKind.IntermediateImportBinding,
+                    name: {
+                        kind: IntermediateKind.IntermediateIdentifierReference,
+                        name: "Cat",
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                },
+                {
+                    kind: IntermediateKind.IntermediateImportBinding,
+                    name: {
+                        kind: IntermediateKind.IntermediateIdentifierReference,
+                        name: "Dog",
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                },
+            ],
+            source: {
+                kind: IntermediateKind.IntermediateStringLiteral,
+                value: "./animal.js",
+                asType: undefined,
+                typeAssertion: undefined,
+            },
+        },
+    ],
+    kind: IntermediateKind.IntermediateSourceFile,
 }
+
+export default expectedResult;

@@ -57,6 +57,7 @@ export function processImportDeclaration(
 
     const retval: IntermediateImportDeclaration = {
         kind: IntermediateKind.IntermediateImportDeclaration,
+        isTypeOnly: false,
         items: [],
         source: processExpression(importDec.moduleSpecifier),
     };
@@ -71,6 +72,9 @@ export function processImportDeclaration(
 
     // at this point, we have an import clause to process
     const importClause = importDec.importClause;
+
+    // special case - do we have an `import type` situation?
+    retval.isTypeOnly = importClause.isTypeOnly;
 
     // special case - have we imported an `export default` item?
     if (importClause.name) {
