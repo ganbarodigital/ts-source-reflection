@@ -59,6 +59,7 @@ const VALID_CHILDREN: ValidChildren & HashMap<true> = {
     ExportDeclaration: true,
     ExpressionStatement: true,
     FunctionDeclaration: true,
+    ImportDeclaration: true,
     InterfaceDeclaration: true,
     TypeAliasDeclaration: true,
     VariableStatement: true,

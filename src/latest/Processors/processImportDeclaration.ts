@@ -32,57 +32,70 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { AnyHashMap } from "@safelytyped/core-types";
-import { isNamedImports, Node, Statement } from "typescript";
+import { isNamedImports, NamedImports, Statement } from "typescript";
 import { AST } from "../AST";
 import {
+    IntermediateImportDeclaration,
     IntermediateImportItem,
-    IntermediateKind,
-    IntermediateSourceFile
+    IntermediateKind
 } from "../IntermediateTypes";
-
-// const childProcessors: FunctionPointerTable<string, NodeProcessor> = {
-//     ImportClause: processImportClause,
-// }
+import { processExpression } from "./processExpression";
 
 export function processImportDeclaration(
-    sourceFile: IntermediateSourceFile,
     input: Statement
-): IntermediateImportItem[]
+): IntermediateImportDeclaration
 {
     // make sure we have what we expect
     const importDec = AST.mustBeImportDeclaration(input);
 
-    let retval: IntermediateImportItem[] = [];
+    const retval: IntermediateImportDeclaration = {
+        kind: IntermediateKind.IntermediateImportDeclaration,
+        items: [],
+        source: processExpression(importDec.moduleSpecifier),
+    };
 
-    if (importDec.importClause) {
-        retval = [ ...retval, ...processImportClause(importDec.importClause, importDec.moduleSpecifier.getText()) ];
+    // special case - we have no import clause
+    //
+    // I have no idea (yet) how this could appear in the AST,
+    // but the types say it is a real thing
+    //
+    // for now, if we see this, we bail ... and we'll straighten
+    // this out at a later date when we have an example to look at
+    if (!importDec.importClause) {
+        return retval;
     }
+
+    // at this point, we have an import clause to process
+    const importClause = importDec.importClause;
+
+    if (importClause.namedBindings && isNamedImports(importClause.namedBindings)) {
+        retval.items = processNamedBindings(importClause.namedBindings);
+    }
+
+    // add other import bindings here
 
     return retval;
 }
 
-function processImportClause(input: Node, origin: string): IntermediateImportItem[]
+function processNamedBindings(input: NamedImports): IntermediateImportItem[]
 {
-    const importClause = AST.mustBeImportClause(input);
+    const retval: IntermediateImportItem[] = [];
 
-    const data = input as AnyHashMap;
-    data.parent = null;
-
-    // tslint:disable-next-line: no-console
-    console.log(data);
-
-    const items: IntermediateImportItem[] = [];
-
-    if (importClause.namedBindings && isNamedImports(importClause.namedBindings)) {
-        for (const member of importClause.namedBindings.elements) {
-            items.push({
-                name: member.name.text,
-                from: origin,
-                kind: IntermediateKind.IntermediateImportItem,
+    for (const member of input.elements) {
+        // are we renaming an import?
+        if (member.propertyName) {
+            retval.push({
+                kind: IntermediateKind.IntermediateAliasedImportBinding,
+                exportedName: processExpression(member.propertyName),
+                name: processExpression(member.name),
+            });
+        } else {
+            retval.push({
+                kind: IntermediateKind.IntermediateImportBinding,
+                name: processExpression(member.name),
             });
         }
     }
 
-    return items;
+    return retval;
 }

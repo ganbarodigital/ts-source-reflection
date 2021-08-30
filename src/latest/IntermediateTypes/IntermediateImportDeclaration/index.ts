@@ -32,4 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateImportDeclarations";
+export * from "./IntermediateImportDeclaration";

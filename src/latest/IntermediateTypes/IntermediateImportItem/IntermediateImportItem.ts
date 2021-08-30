@@ -32,12 +32,9 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem } from "..";
-import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateAliasedImportBinding } from "../IntermediateAliasedImportBinding";
+import { IntermediateImportBinding } from "../IntermediateImportBinding";
 
-export interface IntermediateImportItem
-    extends IntermediateItem<IntermediateKind.IntermediateImportItem>
-{
-    name: string;
-    from: string;
-}
+export type IntermediateImportItem
+    = IntermediateAliasedImportBinding
+    | IntermediateImportBinding;

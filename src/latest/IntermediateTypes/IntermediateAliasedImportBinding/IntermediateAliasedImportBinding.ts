@@ -32,32 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateClass } from "../IntermediateClass";
-import { IntermediateExportDeclaration } from "../IntermediateExportDeclaration";
 import { IntermediateExpression } from "../IntermediateExpression";
-import { IntermediateFunction } from "../IntermediateFunction";
-import { IntermediateImportDeclaration } from "../IntermediateImportDeclaration";
-import { IntermediateInterface } from "../IntermediateInterface";
-import { IntermediateTypeAliasDefinition } from "../IntermediateTypeAliasDefinition";
-import { IntermediateVariableDeclarations } from "../IntermediateVariableDeclarations";
+import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateKind } from "../IntermediateKind";
 
-/**
- * `IntermediateSourceFileChildren` lists all the AST node types
- *
- * a) that can appear as the immediate child of a source file, and
- * b) that we support
- *
- * It's mostly used to power some code that tries to use the compiler
- * to prove that `processSourceFile()` et al aren't missing any
- * nodes that they should be supporting.
- */
-export interface IntermediateSourceFileChildren {
-    ClassDeclaration?: IntermediateClass[];
-    ExportDeclaration?: IntermediateExportDeclaration[];
-    ExpressionStatement?: IntermediateExpression[];
-    FunctionDeclaration?: IntermediateFunction[];
-    ImportDeclaration?: IntermediateImportDeclaration[];
-    InterfaceDeclaration?: IntermediateInterface[];
-    TypeAliasDeclaration?: IntermediateTypeAliasDefinition[];
-    VariableStatement?: IntermediateVariableDeclarations[];
+export interface IntermediateAliasedImportBinding
+    extends IntermediateItem<IntermediateKind.IntermediateAliasedImportBinding>
+{
+    exportedName: IntermediateExpression;
+    name: IntermediateExpression;
 }

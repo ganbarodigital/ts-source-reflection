@@ -45,6 +45,7 @@ import { processClassDeclaration } from "./processClassDeclaration";
 import { processExportDeclaration } from "./processExportDeclaration";
 import { processExpressionStatement } from "./processExpressionStatement";
 import { processFunctionDeclaration } from "./processFunctionDeclaration";
+import { processImportDeclaration } from "./processImportDeclaration";
 import { processInterfaceDeclaration } from "./processInterfaceDeclaration";
 import { processTypeAliasDeclaration } from "./processTypeAliasDeclaration";
 import { processVariableStatement } from "./processVariableStatement";
@@ -52,11 +53,12 @@ import { StatementProcessor } from "./StatementProcessor";
 
 type StatementProcessors = RequireAllAttributesMap<IntermediateSourceFileChildren, StatementProcessor>;
 
-const statementProcessors: StatementProcessors & FunctionPointerTable<string, StatementProcessor> = {
+const statementProcessors: StatementProcessors = {
     ClassDeclaration: processClassDeclaration,
     ExpressionStatement: processExpressionStatement,
     ExportDeclaration: processExportDeclaration,
     FunctionDeclaration: processFunctionDeclaration,
+    ImportDeclaration: processImportDeclaration,
     InterfaceDeclaration: processInterfaceDeclaration,
     TypeAliasDeclaration: processTypeAliasDeclaration,
     VariableStatement: processVariableStatement,
@@ -98,7 +100,7 @@ function processStatements(
         // console.log("Processing node: " + kind);
 
         const statementProcessor = searchFunctionPointerTable(
-            statementProcessors,
+            statementProcessors as FunctionPointerTable<string, StatementProcessor>,
             [kind],
             () => { return undefined }
         );

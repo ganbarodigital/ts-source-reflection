@@ -33,6 +33,7 @@
 //
 
 export * from "./IntermediateAbstractItem";
+export * from "./IntermediateAliasedImportBinding";
 export * from "./IntermediateAnonymousCallableParameter";
 export * from "./IntermediateAnonymousClassType";
 export * from "./IntermediateArgument";
@@ -77,7 +78,8 @@ export * from "./IntermediateGenericable";
 export * from "./IntermediateGetter";
 export * from "./IntermediateIdentifiedItem";
 export * from "./IntermediateIdentifierReference";
-export * from "./IntermediateImportDeclarations";
+export * from "./IntermediateImportBinding";
+export * from "./IntermediateImportDeclaration";
 export * from "./IntermediateImportItem";
 export * from "./IntermediateIndexSignature";
 export * from "./IntermediateIndexedAccessTypeReference";

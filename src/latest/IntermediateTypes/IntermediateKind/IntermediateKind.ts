@@ -33,6 +33,7 @@
 //
 
 export enum IntermediateKind {
+    IntermediateAliasedImportBinding,
     IntermediateAnonymousCallableParameter,
     IntermediateAnonymousClassType,
     IntermediateArrayLiteral,
@@ -64,8 +65,8 @@ export enum IntermediateKind {
     IntermediateGenericTypeReference,
     IntermediateGetter,
     IntermediateIdentifierReference,
-    IntermediateImportDeclarations,
-    IntermediateImportItem,
+    IntermediateImportBinding,
+    IntermediateImportDeclaration,
     IntermediateIndexSignature,
     IntermediateIndexedAccessTypeReference,
     IntermediateInferType,
