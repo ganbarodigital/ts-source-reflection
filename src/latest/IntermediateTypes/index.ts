@@ -102,6 +102,7 @@ export * from "./IntermediateParenthesizedType";
 export * from "./IntermediatePropertyAccessExpression";
 export * from "./IntermediatePropertyAssignment";
 export * from "./IntermediatePropertySignature";
+export * from "./IntermediateReadonlyItem";
 export * from "./IntermediateReference";
 export * from "./IntermediateRestType";
 export * from "./IntermediateRestrictableScope";
