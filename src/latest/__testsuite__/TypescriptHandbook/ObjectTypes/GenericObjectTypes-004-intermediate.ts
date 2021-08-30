@@ -94,7 +94,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             variables: [
                 {
-                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    kind: IntermediateKind.IntermediateLetDeclaration,
                     name: "boxA",
                     isConstant: false,
                     isDeclared: false,
@@ -136,7 +136,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             variables: [
                 {
-                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    kind: IntermediateKind.IntermediateLetDeclaration,
                     name: "boxB",
                     isConstant: false,
                     isDeclared: false,
