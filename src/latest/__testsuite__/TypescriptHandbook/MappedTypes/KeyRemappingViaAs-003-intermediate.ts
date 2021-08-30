@@ -88,7 +88,7 @@ const expectedResult: IntermediateSourceFile = {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                                     propName: "pii",
                                     propIsOptional: false,
-                                    propIsReadonly: false,
+                                    isReadonly: false,
                                     typeRef: {
                                         kind: IntermediateKind.IntermediateLiteralType,
                                         typeName: "true",
@@ -119,7 +119,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         propName: "id",
                         propIsOptional: false,
-                        propIsReadonly: false,
+                        isReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateAnonymousClassType,
                             members: [
@@ -127,7 +127,7 @@ const expectedResult: IntermediateSourceFile = {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                                     propName: "format",
                                     propIsOptional: false,
-                                    propIsReadonly: false,
+                                    isReadonly: false,
                                     typeRef: {
                                         kind: IntermediateKind.IntermediateLiteralType,
                                         typeName: '"incrementing"',
@@ -140,7 +140,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         propName: "name",
                         propIsOptional: false,
-                        propIsReadonly: false,
+                        isReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateAnonymousClassType,
                             members: [
@@ -148,7 +148,7 @@ const expectedResult: IntermediateSourceFile = {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                                     propName: "type",
                                     propIsOptional: false,
-                                    propIsReadonly: false,
+                                    isReadonly: false,
                                     typeRef: {
                                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                         typeName: "string",
@@ -158,7 +158,7 @@ const expectedResult: IntermediateSourceFile = {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                                     propName: "pii",
                                     propIsOptional: false,
-                                    propIsReadonly: false,
+                                    isReadonly: false,
                                     typeRef: {
                                         kind: IntermediateKind.IntermediateLiteralType,
                                         typeName: "true",

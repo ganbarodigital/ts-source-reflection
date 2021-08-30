@@ -56,7 +56,7 @@ const expectedResult: IntermediateSourceFile = {
                     accessModifier: IntermediateRestrictableScope.PROTECTED,
                     propName: "m",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
@@ -88,7 +88,7 @@ const expectedResult: IntermediateSourceFile = {
                     accessModifier: undefined,
                     propName: "m",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
@@ -107,7 +107,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     declared: false,
                     exported: false,
-                    readonly: false,
+                    isReadonly: false,
                     constant: true,
                     variableName: "d",
                     typeRef: undefined,

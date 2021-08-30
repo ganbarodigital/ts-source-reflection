@@ -54,7 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "hasMask",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
@@ -85,7 +85,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "nametag",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
@@ -116,7 +116,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "numLegs",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
@@ -153,7 +153,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "keeper",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
@@ -191,7 +191,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "keeper",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
@@ -231,7 +231,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "c",
                     optional: false,
-                    readonly: false,
+                    isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateConstructorDefinition,
                         parameters: [],

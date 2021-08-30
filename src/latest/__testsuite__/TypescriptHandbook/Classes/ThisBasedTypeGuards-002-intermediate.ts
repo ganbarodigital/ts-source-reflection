@@ -59,7 +59,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "value",
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsOptional: true,
                     propIsStatic: false,
                     accessModifier: undefined,
@@ -88,7 +88,7 @@ const expectedResult: IntermediateSourceFile = {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                                     propName: "value",
                                     propIsOptional: false,
-                                    propIsReadonly: false,
+                                    isReadonly: false,
                                     typeRef: {
                                         kind: IntermediateKind.IntermediateFixedTypeReference,
                                         typeName: "T",
@@ -110,7 +110,7 @@ const expectedResult: IntermediateSourceFile = {
                     variableName: "box",
                     declared: false,
                     exported: false,
-                    readonly: false,
+                    isReadonly: false,
                     constant: true,
                     typeRef: undefined,
                     initializer: {

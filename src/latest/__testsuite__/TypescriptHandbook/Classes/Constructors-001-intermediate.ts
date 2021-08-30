@@ -54,7 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "x",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
@@ -67,7 +67,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "y",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
@@ -83,7 +83,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateUntypedConstructorParameterDefinition,
                             paramName: "x",
                             optional: false,
-                            readonly: false,
+                            isReadonly: false,
                             setsPropertyWithScope: undefined,
                             initializer: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
@@ -96,7 +96,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateUntypedConstructorParameterDefinition,
                             paramName: "y",
                             optional: false,
-                            readonly: false,
+                            isReadonly: false,
                             setsPropertyWithScope: undefined,
                             initializer: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,

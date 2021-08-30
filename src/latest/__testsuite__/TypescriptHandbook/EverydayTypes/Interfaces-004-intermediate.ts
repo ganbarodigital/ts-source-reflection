@@ -49,7 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propName: "title",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -70,7 +70,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propName: "ts",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "TypeScriptAPI",

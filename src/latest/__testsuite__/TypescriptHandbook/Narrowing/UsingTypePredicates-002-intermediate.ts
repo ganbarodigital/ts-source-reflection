@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         propName: "name",
                         propIsOptional: false,
-                        propIsReadonly: false,
+                        isReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "string",
@@ -77,7 +77,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propName: "swim",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFunctionTypeSignature,
                         typeParameters: [],
@@ -108,7 +108,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propName: "fly",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFunctionTypeSignature,
                         typeParameters: [],
@@ -146,7 +146,7 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                     },
                     optional: false,
-                    readonly: false,
+                    isReadonly: false,
                     initializer: undefined,
                 },
             ],
@@ -192,7 +192,7 @@ const expectedResult: IntermediateSourceFile = {
                     constant: true,
                     exported: false,
                     declared: false,
-                    readonly: false,
+                    isReadonly: false,
                     docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateArrayLiteral,
@@ -271,7 +271,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: false,
                     declared: false,
                     constant: true,
-                    readonly: false,
+                    isReadonly: false,
                     variableName: "underWater1",
                     typeRef: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
@@ -316,7 +316,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: false,
                     declared: false,
                     constant: true,
-                    readonly: false,
+                    isReadonly: false,
                     variableName: "underWater2",
                     typeRef: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
@@ -367,7 +367,7 @@ const expectedResult: IntermediateSourceFile = {
                     exported: false,
                     declared: false,
                     constant: true,
-                    readonly: false,
+                    isReadonly: false,
                     variableName: "underWater3",
                     typeRef: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,

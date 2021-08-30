@@ -63,7 +63,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                             paramName: "arg",
                             optional: false,
-                            readonly: false,
+                            isReadonly: false,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
                                 typeName: "Type",
@@ -96,7 +96,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "arg",
                     optional: false,
-                    readonly: false,
+                    isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Type",
@@ -116,7 +116,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
-                    readonly: false,
+                    isReadonly: false,
                     exported: false,
                     declared: false,
                     constant: false,

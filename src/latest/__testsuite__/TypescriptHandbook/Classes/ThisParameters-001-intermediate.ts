@@ -55,7 +55,7 @@ const expectedResult: IntermediateSourceFile = {
                     accessModifier: undefined,
                     propName: "name",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     initializer: {
                         kind: IntermediateKind.IntermediateStringLiteral,
@@ -76,7 +76,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                             paramName: "this",
-                            readonly: false,
+                            isReadonly: false,
                             optional: false,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,

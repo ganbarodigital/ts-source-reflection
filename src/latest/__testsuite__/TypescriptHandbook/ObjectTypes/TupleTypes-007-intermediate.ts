@@ -51,7 +51,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "pair",
                     optional: false,
-                    readonly: true,
+                    isReadonly: true,
                     typeRef: {
                         kind: IntermediateKind.IntermediateTupleType,
                         elements: [

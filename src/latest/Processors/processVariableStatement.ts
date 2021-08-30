@@ -99,11 +99,11 @@ function processVariableDeclaration(
     //
     // instead of being a modifier, this is buried in the variable
     // type instead
-    let readonly: boolean = false;
+    let isReadonly: boolean = false;
     let varType = input.type;
     if (varType && isTypeOperatorNode(varType)) {
         if (varType.operator === SyntaxKind.ReadonlyKeyword) {
-            readonly = true;
+            isReadonly = true;
             varType = varType.type;
         }
     }
@@ -127,7 +127,7 @@ function processVariableDeclaration(
         declared: AST.hasDeclaredModifier(input.modifiers),
         constant: contextFlags.constant,
         exported: contextFlags.exported,
-        readonly,
+        isReadonly,
         variableName: input.name.getText(),
         initializer: initialiser,
         typeRef,

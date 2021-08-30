@@ -55,7 +55,7 @@ const expectedResult: IntermediateSourceFile = {
                     accessModifier: undefined,
                     propName: "contents",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -80,7 +80,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                             paramName: "value",
-                            readonly: false,
+                            isReadonly: false,
                             optional: false,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -132,7 +132,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     declared: false,
                     exported: false,
-                    readonly: false,
+                    isReadonly: false,
                     constant: true,
                     variableName: "a",
                     typeRef: undefined,
@@ -155,7 +155,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     declared: false,
                     exported: false,
-                    readonly: false,
+                    isReadonly: false,
                     constant: true,
                     variableName: "b",
                     typeRef: undefined,

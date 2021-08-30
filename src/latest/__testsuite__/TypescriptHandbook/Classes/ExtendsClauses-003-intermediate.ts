@@ -54,7 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
                     propName: "name",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
                     initializer: {
@@ -91,7 +91,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
                     propName: "name",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
                     initializer: {
@@ -111,7 +111,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     declared: false,
                     exported: false,
-                    readonly: false,
+                    isReadonly: false,
                     constant: true,
                     variableName: "d",
                     typeRef: undefined,

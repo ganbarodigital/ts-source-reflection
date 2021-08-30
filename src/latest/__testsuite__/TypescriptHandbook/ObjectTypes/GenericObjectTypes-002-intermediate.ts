@@ -51,7 +51,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propName: "contents",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -66,7 +66,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
-                    readonly: false,
+                    isReadonly: false,
                     exported: false,
                     declared: false,
                     constant: false,

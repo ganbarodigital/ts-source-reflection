@@ -36,15 +36,16 @@ import { Maybe } from "@safelytyped/core-types";
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
 import { IntermediateRestrictableScopeItem } from "../IntermediateRestrictableScopeItem";
 
 export interface IntermediateUntypedPropertyDefinition
     extends IntermediateItem<IntermediateKind.IntermediateUntypedPropertyDefinition>,
+        IntermediateReadonlyItem,
         IntermediateRestrictableScopeItem
 {
     propName: string;
     propIsOptional: boolean;
-    propIsReadonly: boolean;
     propIsStatic: boolean;
     initializer: Maybe<IntermediateExpression>;
 }

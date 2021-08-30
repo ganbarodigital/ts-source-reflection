@@ -93,7 +93,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                             paramName: "times",
                             optional: false,
-                            readonly: false,
+                            isReadonly: false,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "number",
@@ -114,7 +114,7 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     declared: false,
                     exported: false,
-                    readonly: false,
+                    isReadonly: false,
                     constant: true,
                     variableName: "d",
                     typeRef: undefined,

@@ -86,7 +86,7 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "eventName",
-                                readonly: false,
+                                isReadonly: false,
                                 optional: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateTemplateLiteralType,
@@ -106,7 +106,7 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "callback",
-                                readonly: false,
+                                isReadonly: false,
                                 optional: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateFunctionTypeSignature,
@@ -115,7 +115,7 @@ const expectedResult: IntermediateSourceFile = {
                                         {
                                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                             paramName: "newValue",
-                                            readonly: false,
+                                            isReadonly: false,
                                             optional: false,
                                             typeRef: {
                                                 kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
@@ -163,7 +163,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "obj",
-                    readonly: false,
+                    isReadonly: false,
                     optional: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,

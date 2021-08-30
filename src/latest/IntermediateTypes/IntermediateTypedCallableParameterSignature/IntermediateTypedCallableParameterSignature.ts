@@ -34,13 +34,14 @@
 
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateTypedCallableParameterSignature
-    extends IntermediateItem<IntermediateKind.IntermediateTypedCallableParameterSignature>
+    extends IntermediateItem<IntermediateKind.IntermediateTypedCallableParameterSignature>,
+        IntermediateReadonlyItem
 {
     paramName: string;
     typeRef: IntermediateTypeReference;
     optional: boolean;
-    readonly: boolean;
 }

@@ -1,4 +1,4 @@
-// this tests proves that we support untyped, readonly properties
+// this tests proves that we support untyped, isReadonly properties
 // on an interface
 
 interface mondayExample2 {

@@ -49,7 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         propName: "swim",
                         propIsOptional: false,
-                        propIsReadonly: false,
+                        isReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateFunctionTypeSignature,
                             typeParameters: [],

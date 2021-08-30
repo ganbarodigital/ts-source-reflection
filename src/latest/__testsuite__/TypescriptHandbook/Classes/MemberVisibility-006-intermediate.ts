@@ -54,7 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     accessModifier: undefined,
                     propName: "#barkAmount",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
@@ -68,7 +68,7 @@ const expectedResult: IntermediateSourceFile = {
                     accessModifier: undefined,
                     propName: "personality",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     initializer: {
                         kind: IntermediateKind.IntermediateStringLiteral,

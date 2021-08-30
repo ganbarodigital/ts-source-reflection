@@ -61,7 +61,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "zeroValue",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
@@ -74,7 +74,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "add",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
@@ -85,7 +85,7 @@ const expectedResult: IntermediateSourceFile = {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "x",
                                 optional: false,
-                                readonly: false,
+                                isReadonly: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateFixedTypeReference,
                                     typeName: "NumType",
@@ -95,7 +95,7 @@ const expectedResult: IntermediateSourceFile = {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                 paramName: "y",
                                 optional: false,
-                                readonly: false,
+                                isReadonly: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateFixedTypeReference,
                                     typeName: "NumType",

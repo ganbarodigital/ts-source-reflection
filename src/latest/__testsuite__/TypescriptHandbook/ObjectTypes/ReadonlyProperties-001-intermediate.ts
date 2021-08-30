@@ -52,7 +52,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propName: "prop",
                     propIsOptional: false,
-                    propIsReadonly: true,
+                    isReadonly: true,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",

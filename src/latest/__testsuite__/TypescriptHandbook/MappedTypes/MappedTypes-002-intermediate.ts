@@ -85,7 +85,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         propName: "darkMode",
                         propIsOptional: false,
-                        propIsReadonly: false,
+                        isReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateFunctionTypeSignature,
                             typeParameters: [],
@@ -100,7 +100,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         propName: "newUserProfile",
                         propIsOptional: false,
-                        propIsReadonly: false,
+                        isReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateFunctionTypeSignature,
                             typeParameters: [],

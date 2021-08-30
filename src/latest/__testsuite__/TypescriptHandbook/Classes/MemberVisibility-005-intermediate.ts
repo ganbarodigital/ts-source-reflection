@@ -56,7 +56,7 @@ const expectedResult: IntermediateSourceFile = {
                     accessModifier: IntermediateRestrictableScope.PRIVATE,
                     propName: "x",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
@@ -78,7 +78,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                             paramName: "other",
                             optional: false,
-                            readonly: false,
+                            isReadonly: false,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
                                 typeName: "A",

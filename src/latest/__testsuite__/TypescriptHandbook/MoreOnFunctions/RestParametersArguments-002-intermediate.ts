@@ -49,7 +49,7 @@ const expectedResult: IntermediateSourceFile = {
                     declared: false,
                     exported: false,
                     constant: true,
-                    readonly: false,
+                    isReadonly: false,
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateArrayLiteral,
@@ -89,7 +89,7 @@ const expectedResult: IntermediateSourceFile = {
                     declared: false,
                     exported: false,
                     constant: true,
-                    readonly: false,
+                    isReadonly: false,
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateArrayLiteral,

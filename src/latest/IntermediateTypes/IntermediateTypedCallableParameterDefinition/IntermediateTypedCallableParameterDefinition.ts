@@ -36,14 +36,15 @@ import { Maybe } from "@safelytyped/core-types";
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateTypedCallableParameterDefinition
-    extends IntermediateItem<IntermediateKind.IntermediateTypedCallableParameterDefinition>
+    extends IntermediateItem<IntermediateKind.IntermediateTypedCallableParameterDefinition>,
+        IntermediateReadonlyItem
 {
     paramName: string;
     typeRef: IntermediateTypeReference;
     optional: boolean;
-    readonly: boolean;
     initializer: Maybe<IntermediateExpression>;
 }

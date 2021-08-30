@@ -54,7 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
                     propName: "_size",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
                     initializer: {
@@ -84,7 +84,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                             paramName: "value",
                             optional: false,
-                            readonly: false,
+                            isReadonly: false,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateUnionType,
                                 typeRefs: [

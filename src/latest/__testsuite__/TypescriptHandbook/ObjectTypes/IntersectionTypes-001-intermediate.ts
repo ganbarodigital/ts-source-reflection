@@ -51,7 +51,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propName: "color",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -72,7 +72,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propName: "radius",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,

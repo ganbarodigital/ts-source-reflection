@@ -40,6 +40,7 @@ import { IntermediateExportableItem } from "../IntermediateExportableItem";
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateVariableDeclaration
@@ -47,10 +48,10 @@ export interface IntermediateVariableDeclaration
         IntermediateDocumentedItem,
         IntermediateExportableItem,
         IntermediateConstantItem,
-        IntermediateDeclarable
+        IntermediateDeclarable,
+        IntermediateReadonlyItem
 {
     variableName: string;
-    readonly: boolean;
     typeRef: Maybe<IntermediateTypeReference>;
     initializer: Maybe<IntermediateExpression>;
 }

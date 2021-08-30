@@ -85,7 +85,7 @@ const expectedResult: IntermediateSourceFile = {
                     declared: false,
                     exported: false,
                     constant: true,
-                    readonly: false,
+                    isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "OnlyBoolsAndHorses",

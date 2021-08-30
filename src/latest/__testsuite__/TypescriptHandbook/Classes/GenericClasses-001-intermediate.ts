@@ -60,7 +60,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "contents",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
@@ -76,7 +76,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "value",
                             optional: false,
-                            readonly: false,
+                            isReadonly: false,
                             setsPropertyWithScope: undefined,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
@@ -98,7 +98,7 @@ const expectedResult: IntermediateSourceFile = {
                     declared: false,
                     exported: false,
                     constant: true,
-                    readonly: false,
+                    isReadonly: false,
                     variableName: "b",
                     typeRef: undefined,
                     initializer: {

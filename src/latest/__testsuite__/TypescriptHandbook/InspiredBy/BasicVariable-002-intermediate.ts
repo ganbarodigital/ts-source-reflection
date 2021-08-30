@@ -48,7 +48,7 @@ const expectedResult: IntermediateSourceFile = {
                     constant: false,
                     exported: true,
                     declared: false,
-                    readonly: false,
+                    isReadonly: false,
                     docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateStringLiteral,

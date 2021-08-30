@@ -34,14 +34,15 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { IntermediateKind } from "..";
+import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
 import { IntermediateRestrictableScope } from "../IntermediateRestrictableScope";
 import { IntermediateUntypedCallableParameterDefinition } from "../IntermediateUntypedCallableParameterDefinition";
 
 export type IntermediateUntypedConstructorParameterDefinition
     = Omit<IntermediateUntypedCallableParameterDefinition, "kind">
+    & IntermediateReadonlyItem
     &
 {
     kind: IntermediateKind.IntermediateUntypedConstructorParameterDefinition;
     setsPropertyWithScope: Maybe<IntermediateRestrictableScope>;
-    readonly: boolean;
 }

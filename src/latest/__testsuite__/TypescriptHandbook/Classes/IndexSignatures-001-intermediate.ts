@@ -76,7 +76,7 @@ const expectedResult: IntermediateSourceFile = {
                                             {
                                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                                 paramName: "s",
-                                                readonly: false,
+                                                isReadonly: false,
                                                 optional: false,
                                                 typeRef: {
                                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -107,7 +107,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                             paramName: "s",
-                            readonly: false,
+                            isReadonly: false,
                             optional: false,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,

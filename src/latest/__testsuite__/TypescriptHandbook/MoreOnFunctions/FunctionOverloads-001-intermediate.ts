@@ -56,7 +56,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: undefined,
                     optional: false,
-                    readonly: false,
+                    isReadonly: false,
                 },
             ],
             returnType: {
@@ -82,7 +82,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: undefined,
                     optional: false,
-                    readonly: false,
+                    isReadonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
@@ -93,7 +93,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: undefined,
                     optional: false,
-                    readonly: false,
+                    isReadonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
@@ -104,7 +104,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: undefined,
                     optional: false,
-                    readonly: false,
+                    isReadonly: false,
                 },
             ],
             returnType: {
@@ -130,7 +130,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: undefined,
                     optional: false,
-                    readonly: false,
+                    isReadonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
@@ -141,7 +141,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: undefined,
                     optional: true,
-                    readonly: false,
+                    isReadonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
@@ -152,7 +152,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: undefined,
                     optional: true,
-                    readonly: false,
+                    isReadonly: false,
                 },
             ],
             returnType: {

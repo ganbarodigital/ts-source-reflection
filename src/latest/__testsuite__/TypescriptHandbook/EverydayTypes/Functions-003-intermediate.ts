@@ -48,7 +48,7 @@ const expectedResult: IntermediateSourceFile = {
                     variableName: "names",
                     declared: false,
                     exported: false,
-                    readonly: false,
+                    isReadonly: false,
                     constant: true,
                     typeRef: undefined,
                     initializer: {

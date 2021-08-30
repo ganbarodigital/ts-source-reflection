@@ -50,7 +50,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "s",
-                    readonly: false,
+                    isReadonly: false,
                     optional: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -76,7 +76,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "arr",
-                    readonly: false,
+                    isReadonly: false,
                     optional: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
@@ -105,7 +105,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "x",
-                    readonly: false,
+                    isReadonly: false,
                     optional: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,

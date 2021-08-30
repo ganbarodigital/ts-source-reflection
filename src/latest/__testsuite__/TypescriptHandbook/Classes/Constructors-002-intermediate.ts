@@ -57,7 +57,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "x",
                             optional: false,
-                            readonly: false,
+                            isReadonly: false,
                             setsPropertyWithScope: undefined,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -69,7 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "y",
                             optional: false,
-                            readonly: false,
+                            isReadonly: false,
                             setsPropertyWithScope: undefined,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -87,7 +87,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "s",
                             optional: false,
-                            readonly: false,
+                            isReadonly: false,
                             setsPropertyWithScope: undefined,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -105,7 +105,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "xs",
                             optional: false,
-                            readonly: false,
+                            isReadonly: false,
                             setsPropertyWithScope: undefined,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -117,7 +117,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "y",
                             optional: true,
-                            readonly: false,
+                            isReadonly: false,
                             setsPropertyWithScope: undefined,
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,

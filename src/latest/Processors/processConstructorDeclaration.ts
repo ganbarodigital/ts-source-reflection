@@ -112,7 +112,7 @@ function processConstructorParameter(
     // this means that untyped parameter properties can be 'readonly'
     // (untyped callable parameters cannot be 'readonly')
     if (AST.hasReadonlyModifier(input.modifiers)) {
-        retval.readonly = true;
+        retval.isReadonly = true;
     }
 
     // all done
@@ -136,7 +136,7 @@ function mapFunctionParameterToConstructorParameter(
                 setsPropertyWithScope: undefined,
                 // untyped callable parameters don't have this,
                 // so let's set an explicit default value
-                readonly: false,
+                isReadonly: false,
             }
 
         case IntermediateKind.IntermediateTypedCallableParameterDefinition:
@@ -147,7 +147,7 @@ function mapFunctionParameterToConstructorParameter(
                 // ignore what was there for normal parameters,
                 // because this needs to be handled differently
                 // for the constructor
-                readonly: false,
+                isReadonly: false,
             }
 
         default:

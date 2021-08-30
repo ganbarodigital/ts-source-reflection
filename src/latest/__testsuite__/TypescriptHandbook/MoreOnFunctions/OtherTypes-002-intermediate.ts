@@ -51,7 +51,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
                     paramName: "s",
                     optional: false,
-                    readonly: false,
+                    isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -72,7 +72,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
                     variableName: "obj",
-                    readonly: false,
+                    isReadonly: false,
                     constant: true,
                     exported: false,
                     declared: false,

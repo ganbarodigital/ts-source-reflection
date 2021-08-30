@@ -99,11 +99,11 @@ export function processParameterDeclaration(
     //
     // instead of being a modifier, this is buried in the parameter
     // type instead
-    let readonly: boolean = false;
+    let isReadonly: boolean = false;
     let paramType = paramDec.type;
     if (paramType && isTypeOperatorNode(paramType)) {
         if (paramType.operator === SyntaxKind.ReadonlyKeyword) {
-            readonly = true;
+            isReadonly = true;
             paramType = paramType.type;
         }
     }
@@ -118,7 +118,7 @@ export function processParameterDeclaration(
                 typeRef: processTypeNode(paramType),
             },
             optional: processQuestionToken(paramDec.questionToken),
-            readonly,
+            isReadonly,
             initializer,
         };
     }
@@ -129,7 +129,7 @@ export function processParameterDeclaration(
         paramName: paramDec.name.getText(),
         typeRef: processTypeNode(paramType),
         optional: processQuestionToken(paramDec.questionToken),
-        readonly,
+        isReadonly,
         initializer,
     };
 }

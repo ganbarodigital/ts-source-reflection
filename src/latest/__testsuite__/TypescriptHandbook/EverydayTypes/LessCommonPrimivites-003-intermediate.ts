@@ -48,7 +48,7 @@ const expectedResult: IntermediateSourceFile = {
                     constant: true,
                     exported: false,
                     declared: false,
-                    readonly: false,
+                    isReadonly: false,
                     docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
@@ -83,7 +83,7 @@ const expectedResult: IntermediateSourceFile = {
                     constant: true,
                     exported: false,
                     declared: false,
-                    readonly: false,
+                    isReadonly: false,
                     docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,

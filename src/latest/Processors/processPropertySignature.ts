@@ -49,7 +49,7 @@ export function processPropertySignature
             kind: IntermediateKind.IntermediateUntypedPropertySignature,
             propName: input.name.getText(),
             propIsOptional: processQuestionToken(input.questionToken),
-            propIsReadonly: AST.hasReadonlyModifier(input.modifiers),
+            isReadonly: AST.hasReadonlyModifier(input.modifiers),
         }
     }
 
@@ -58,7 +58,7 @@ export function processPropertySignature
         kind: IntermediateKind.IntermediateTypedPropertySignature,
         propName: input.name.getText(),
         propIsOptional: processQuestionToken(input.questionToken),
-        propIsReadonly: AST.hasReadonlyModifier(input.modifiers),
+        isReadonly: AST.hasReadonlyModifier(input.modifiers),
         typeRef: processTypeNode(input.type),
     };
 }

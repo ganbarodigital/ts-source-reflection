@@ -122,7 +122,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "path",
-                            readonly: false,
+                            isReadonly: false,
                             optional: false,
                             setsPropertyWithScope: IntermediateRestrictableScope.PUBLIC,
                             typeRef: {
@@ -134,7 +134,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "networked",
-                            readonly: false,
+                            isReadonly: false,
                             optional: false,
                             setsPropertyWithScope: IntermediateRestrictableScope.PRIVATE,
                             typeRef: {
@@ -170,7 +170,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "path",
-                            readonly: false,
+                            isReadonly: false,
                             optional: false,
                             setsPropertyWithScope: undefined,
                             typeRef: {
@@ -182,7 +182,7 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                             paramName: "content",
-                            readonly: false,
+                            isReadonly: false,
                             optional: false,
                             setsPropertyWithScope: IntermediateRestrictableScope.PUBLIC,
                             typeRef: {
@@ -216,7 +216,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDefinition,
                     propName: "children",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     propIsStatic: false,
                     accessModifier: undefined,
                     typeRef: {
@@ -243,7 +243,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     propName: "host",
                     propIsOptional: false,
-                    propIsReadonly: false,
+                    isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
