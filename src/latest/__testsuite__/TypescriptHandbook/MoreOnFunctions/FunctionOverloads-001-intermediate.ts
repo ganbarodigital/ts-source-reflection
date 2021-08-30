@@ -42,7 +42,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             name: "makeDate",
             typeParameters: [],
@@ -68,7 +68,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             name: "makeDate",
             typeParameters: [],
@@ -116,7 +116,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             name: "makeDate",
             typeParameters: [],

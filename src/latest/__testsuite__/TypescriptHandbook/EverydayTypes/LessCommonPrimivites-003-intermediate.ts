@@ -47,7 +47,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "firstName",
                     isConstant: true,
                     exported: false,
-                    declared: false,
+                    isDeclared: false,
                     isReadonly: false,
                     docBlock: undefined,
                     initializer: {
@@ -82,7 +82,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "secondName",
                     isConstant: true,
                     exported: false,
-                    declared: false,
+                    isDeclared: false,
                     isReadonly: false,
                     docBlock: undefined,
                     initializer: {

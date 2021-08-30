@@ -34,7 +34,7 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { IntermediateConstantItem } from "../IntermediateConstantItem";
-import { IntermediateDeclarable } from "../IntermediateDeclarable";
+import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateExportableItem } from "../IntermediateExportableItem";
 import { IntermediateExpression } from "../IntermediateExpression";
@@ -49,7 +49,7 @@ export interface IntermediateVariableDeclaration
         IntermediateDocumentedItem,
         IntermediateExportableItem,
         IntermediateConstantItem,
-        IntermediateDeclarable,
+        IntermediateDeclarableItem,
         IntermediateIdentifiedItem,
         IntermediateReadonlyItem
 {

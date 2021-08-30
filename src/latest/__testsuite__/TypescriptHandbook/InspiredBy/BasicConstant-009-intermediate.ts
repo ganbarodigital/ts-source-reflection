@@ -47,7 +47,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "zoo",
                     isConstant: true,
                     exported: false,
-                    declared: false,
+                    isDeclared: false,
                     isReadonly: false,
                     docBlock: undefined,
                     initializer: undefined,

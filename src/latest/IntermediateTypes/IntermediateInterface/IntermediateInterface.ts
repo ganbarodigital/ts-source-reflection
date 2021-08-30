@@ -38,7 +38,7 @@ import {
     IntermediateItem,
     IntermediateTypeArgument
 } from "..";
-import { IntermediateDeclarable } from "../IntermediateDeclarable";
+import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
 import { IntermediateGenericType } from "../IntermediateGenericType";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateKind } from "../IntermediateKind";
@@ -46,7 +46,7 @@ import { IntermediateMemberSignature } from "../IntermediateMemberSignature";
 
 export interface IntermediateInterface
     extends IntermediateItem<IntermediateKind.IntermediateInterface>,
-        IntermediateDeclarable,
+        IntermediateDeclarableItem,
         IntermediateDocumentedItem,
         IntermediateExportableItem,
         IntermediateIdentifiedItem

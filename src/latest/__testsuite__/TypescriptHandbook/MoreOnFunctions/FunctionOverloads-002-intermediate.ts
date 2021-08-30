@@ -42,7 +42,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             name: "len",
             typeParameters: [],
@@ -68,7 +68,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             name: "len",
             typeParameters: [],
@@ -97,7 +97,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             name: "len",
             typeParameters: [],

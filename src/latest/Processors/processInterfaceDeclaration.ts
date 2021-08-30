@@ -54,7 +54,7 @@ export const processInterfaceDeclaration: StatementProcessor = (
     // all done
     return {
         kind: IntermediateKind.IntermediateInterface,
-        declared: AST.hasDeclaredModifier(input.modifiers),
+        isDeclared: AST.hasDeclaredModifier(input.modifiers),
         name: interfaceDec.name.text,
         typeParameters: processTypeParametersFromNode(interfaceDec),
         docBlock: processDocBlock(interfaceDec),

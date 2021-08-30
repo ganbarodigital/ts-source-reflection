@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateFunction,
-            declared: false,
+            isDeclared: false,
             docBlock: undefined,
             exported: false,
             name: "greet",

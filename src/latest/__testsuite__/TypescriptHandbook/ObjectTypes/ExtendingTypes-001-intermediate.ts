@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            declared: false,
+            isDeclared: false,
             name: "BasicAddress",
             exported: false,
             docBlock: undefined,
@@ -102,7 +102,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateInterface,
-            declared: false,
+            isDeclared: false,
             name: "AddressWithUnit",
             exported: false,
             docBlock: undefined,

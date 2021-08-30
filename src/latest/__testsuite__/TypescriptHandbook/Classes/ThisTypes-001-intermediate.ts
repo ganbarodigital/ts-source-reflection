@@ -42,7 +42,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             isAbstract: false,
             name: "Box",
@@ -97,7 +97,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             isAbstract: false,
             name: "ClearableBox",
@@ -130,7 +130,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
-                    declared: false,
+                    isDeclared: false,
                     exported: false,
                     isReadonly: false,
                     isConstant: true,
@@ -153,7 +153,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
-                    declared: false,
+                    isDeclared: false,
                     exported: false,
                     isReadonly: false,
                     isConstant: true,

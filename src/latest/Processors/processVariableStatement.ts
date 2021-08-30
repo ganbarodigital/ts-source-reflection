@@ -124,7 +124,7 @@ function processVariableDeclaration(
     return <IntermediateVariableDeclaration>{
         kind: IntermediateKind.IntermediateVariableDeclaration,
         docBlock: processDocBlock(input),
-        declared: AST.hasDeclaredModifier(input.modifiers),
+        isDeclared: AST.hasDeclaredModifier(input.modifiers),
         isConstant: contextFlags.constant,
         exported: contextFlags.exported,
         isReadonly,

@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            declared: true,
+            isDeclared: true,
             name: "I",
             members: [
                 {

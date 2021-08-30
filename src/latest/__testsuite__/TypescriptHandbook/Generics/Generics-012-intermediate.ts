@@ -42,7 +42,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             isAbstract: false,
             name: "BeeKeeper",
@@ -73,7 +73,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             isAbstract: false,
             name: "ZooKeeper",
@@ -104,7 +104,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             isAbstract: false,
             name: "Animal",
@@ -136,7 +136,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             isAbstract: false,
             name: "Bee",
@@ -174,7 +174,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             isAbstract: false,
             name: "Lion",
@@ -212,7 +212,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             name: "createInstance",
             typeParameters: [

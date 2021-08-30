@@ -42,7 +42,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             name: "Box",
             extends: [],
@@ -70,7 +70,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             name: "Apple",
             typeParameters: [],

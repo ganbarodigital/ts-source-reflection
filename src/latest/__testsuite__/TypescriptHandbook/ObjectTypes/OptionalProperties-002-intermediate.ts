@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            declared: false,
+            isDeclared: false,
             name: "PaintOptions",
             exported: false,
             docBlock: undefined,
@@ -83,7 +83,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             name: "paintShape",
             typeParameters: [],

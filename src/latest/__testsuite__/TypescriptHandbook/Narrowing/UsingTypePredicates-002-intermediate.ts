@@ -64,7 +64,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             name: "Fish",
             exported: false,
-            declared: false,
+            isDeclared: false,
             extends: [
                 {
                     kind: IntermediateKind.IntermediateFixedTypeArgument,
@@ -95,7 +95,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             name: "Bird",
             exported: false,
-            declared: false,
+            isDeclared: false,
             extends: [
                 {
                     kind: IntermediateKind.IntermediateFixedTypeArgument,
@@ -124,7 +124,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             name: "isFish",
             typeParameters: [],
@@ -163,7 +163,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             name: "getSmallPet",
             typeParameters: [],
@@ -191,7 +191,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "zoo",
                     isConstant: true,
                     exported: false,
-                    declared: false,
+                    isDeclared: false,
                     isReadonly: false,
                     docBlock: undefined,
                     initializer: {
@@ -269,7 +269,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
                     exported: false,
-                    declared: false,
+                    isDeclared: false,
                     isConstant: true,
                     isReadonly: false,
                     name: "underWater1",
@@ -314,7 +314,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
                     exported: false,
-                    declared: false,
+                    isDeclared: false,
                     isConstant: true,
                     isReadonly: false,
                     name: "underWater2",
@@ -365,7 +365,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
                     exported: false,
-                    declared: false,
+                    isDeclared: false,
                     isConstant: true,
                     isReadonly: false,
                     name: "underWater3",

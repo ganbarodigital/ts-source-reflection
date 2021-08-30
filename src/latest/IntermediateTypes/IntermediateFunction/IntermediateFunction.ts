@@ -38,7 +38,7 @@ import {
     IntermediateItem,
     IntermediateKind
 } from "..";
-import { IntermediateDeclarable } from "../IntermediateDeclarable";
+import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateExportableItem } from "../IntermediateExportableItem";
 import { IntermediateGenericable } from "../IntermediateGenericable";
@@ -47,7 +47,7 @@ export interface IntermediateFunction
     extends IntermediateItem<IntermediateKind.IntermediateFunction>,
         IntermediateCallableDefinition,
         IntermediateDocumentedItem,
-        IntermediateDeclarable,
+        IntermediateDeclarableItem,
         IntermediateExportableItem,
         IntermediateGenericable
 {

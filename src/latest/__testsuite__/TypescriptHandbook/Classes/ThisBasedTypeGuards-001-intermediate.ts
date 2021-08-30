@@ -43,7 +43,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             isAbstract: false,
             name: "FileSystemObject",
@@ -151,7 +151,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             isAbstract: false,
             name: "FileRep",
@@ -199,7 +199,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             isAbstract: false,
             name: "Directory",
@@ -235,7 +235,7 @@ const expectedResult: IntermediateSourceFile = {
             docBlock: undefined,
             name: "Networked",
             exported: false,
-            declared: false,
+            isDeclared: false,
             extends: [],
             typeParameters: [],
             members: [

@@ -38,7 +38,7 @@ import {
     IntermediateTypeArgument
 } from "..";
 import { IntermediateAbstractItem } from "../IntermediateAbstractItem";
-import { IntermediateDeclarable } from "../IntermediateDeclarable";
+import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
 import { IntermediateGenericType } from "../IntermediateGenericType";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateKind } from "../IntermediateKind";
@@ -48,7 +48,7 @@ import { IntermediateMemberDefinition } from "../IntermediateMemberDefinition";
 export interface IntermediateClass
     extends IntermediateItem<IntermediateKind.IntermediateClass>,
         IntermediateAbstractItem,
-        IntermediateDeclarable,
+        IntermediateDeclarableItem,
         IntermediateDocumentedItem,
         IntermediateExportableItem,
         IntermediateIdentifiedItem

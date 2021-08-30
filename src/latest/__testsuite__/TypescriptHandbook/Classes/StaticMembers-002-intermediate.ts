@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             isAbstract: false,
             typeParameters: [],
@@ -66,7 +66,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             isAbstract: false,
             name: "Derived",

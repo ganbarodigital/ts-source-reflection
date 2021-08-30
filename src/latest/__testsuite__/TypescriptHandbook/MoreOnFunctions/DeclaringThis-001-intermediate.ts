@@ -43,7 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             exported: false,
-            declared: false,
+            isDeclared: false,
             name: "DB",
             typeParameters: [],
             extends: [],
@@ -98,7 +98,7 @@ const expectedResult: IntermediateSourceFile = {
             variables: [
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
-                    declared: false,
+                    isDeclared: false,
                     exported: false,
                     isConstant: true,
                     isReadonly: false,
@@ -126,7 +126,7 @@ const expectedResult: IntermediateSourceFile = {
             variables: [
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
-                    declared: false,
+                    isDeclared: false,
                     exported: false,
                     isConstant: true,
                     isReadonly: false,

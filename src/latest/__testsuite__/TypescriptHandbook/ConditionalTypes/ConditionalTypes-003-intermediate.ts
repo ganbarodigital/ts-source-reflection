@@ -91,7 +91,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             name: "Email",
             typeParameters: [],
@@ -112,7 +112,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             name: "Dog",
             typeParameters: [],

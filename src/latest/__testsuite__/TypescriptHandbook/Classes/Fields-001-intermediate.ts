@@ -43,7 +43,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             isAbstract: false,
             name: "Point",
@@ -85,7 +85,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
-                    declared: false,
+                    isDeclared: false,
                     exported: false,
                     isConstant: true,
                     isReadonly: false,

@@ -46,7 +46,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
                     isConstant: true,
-                    declared: false,
+                    isDeclared: false,
                     exported: false,
                     isReadonly: false,
                     name: "MyArray",

@@ -100,7 +100,7 @@ const expectedResult: IntermediateSourceFile = {
             name: "Circle",
             typeParameters: [],
             exported: false,
-            declared: false,
+            isDeclared: false,
             docBlock: undefined,
             extends: [],
             members: [

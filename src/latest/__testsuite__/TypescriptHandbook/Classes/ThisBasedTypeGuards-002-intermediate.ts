@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
-            declared: false,
+            isDeclared: false,
             exported: false,
             isAbstract: false,
             name: "Box",
@@ -108,7 +108,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVariableDeclaration,
                     docBlock: undefined,
                     name: "box",
-                    declared: false,
+                    isDeclared: false,
                     exported: false,
                     isReadonly: false,
                     isConstant: true,

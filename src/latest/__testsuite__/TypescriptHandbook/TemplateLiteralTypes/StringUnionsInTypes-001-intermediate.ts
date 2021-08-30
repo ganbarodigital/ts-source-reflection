@@ -131,7 +131,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: undefined,
-            declared: true,
+            isDeclared: true,
             exported: false,
             name: "makeWatchedObject",
             typeParameters: [

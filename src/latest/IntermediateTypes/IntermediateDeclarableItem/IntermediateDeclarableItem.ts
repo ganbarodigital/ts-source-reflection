@@ -32,4 +32,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateDeclarable";
+/**
+ * `IntermediateDeclarableItem` is an interface. Extend it when you have
+ * any intermediate construct that supports the `declare` keyword.
+ */
+export interface IntermediateDeclarableItem {
+    isDeclared: boolean;
+}
