@@ -60,6 +60,7 @@ export * from "./IntermediateConstructorParameterDefinition";
 export * from "./IntermediateConstructorSignature";
 export * from "./IntermediateConstTypeCast";
 export * from "./IntermediateDeclarableItem";
+export * from "./IntermediateDefaultImport";
 export * from "./IntermediateDocBlock";
 export * from "./IntermediateDocumentedItem";
 export * from "./IntermediateExportDeclaration";
