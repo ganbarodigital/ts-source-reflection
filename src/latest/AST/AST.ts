@@ -50,6 +50,7 @@ import { hasStaticModifier } from "./hasStaticModifier";
 import { isAbstractKeyword } from "./isAbstractKeyword";
 import { isAnonymousClassType } from "./isAnonymousClassType";
 import { isDeclareKeyword } from "./isDeclareKeyword";
+import { isDefaultKeyword } from "./isDefaultKeyword";
 import { isExportKeyword } from "./isExportKeyword";
 import { isFalseKeyword } from "./isFalseKeyword";
 import { isIndexSignature } from "./isIndexSignature";
@@ -95,6 +96,7 @@ export class AST
     static isAbstractKeyword = isAbstractKeyword;
     static isAnonymousClassType = isAnonymousClassType;
     static isDeclareKeyword = isDeclareKeyword;
+    static isDefaultKeyword = isDefaultKeyword;
     static isExportKeyword = isExportKeyword;
     static isFalseKeyword = isFalseKeyword;
     static isIndexSignature = isIndexSignature;
