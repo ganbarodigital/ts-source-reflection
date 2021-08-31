@@ -39,6 +39,7 @@ import {
     IntermediateKind,
     IntermediateTypeAliasDefinition
 } from "../IntermediateTypes";
+import { processDocBlock } from "./processDocBlock";
 import { processTypeNode } from "./processTypeNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 import { StatementProcessor } from "./StatementProcessor";
@@ -53,6 +54,7 @@ export const processTypeAliasDeclaration: StatementProcessor = (
 
     return {
         kind: IntermediateKind.IntermediateTypeAliasDefinition,
+        docBlock: processDocBlock(typeAliasDec),
         name: typeAliasDec.name.text,
         isExported: AST.hasExportModifier(input.modifiers),
         isDefaultExport: AST.hasDefaultModifier(input.modifiers),

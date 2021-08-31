@@ -41,6 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             name: "GetReturnType",
             isExported: false,
             isDefaultExport: false,
@@ -101,6 +102,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             name: "Num",
             isExported: false,
             isDefaultExport: false,
@@ -123,6 +125,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             name: "Str",
             isExported: false,
             isDefaultExport: false,
@@ -156,6 +159,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             name: "Bools",
             isExported: false,
             isDefaultExport: false,

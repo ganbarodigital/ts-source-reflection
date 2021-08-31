@@ -96,6 +96,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             name: "Example1",
             isExported: false,
             isDefaultExport: false,
@@ -122,6 +123,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             name: "Example2",
             isExported: false,
             isDefaultExport: false,

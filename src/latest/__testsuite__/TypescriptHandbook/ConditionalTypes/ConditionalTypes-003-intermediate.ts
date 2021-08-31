@@ -41,6 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             name: "MessageOf",
             isExported: false,
             isDefaultExport: false,
@@ -139,6 +140,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             name: "EmailMessageContents",
             isExported: false,
             isDefaultExport: false,
@@ -156,6 +158,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             name: "DogMessageContents",
             isExported: false,
             isDefaultExport: false,

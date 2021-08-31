@@ -41,6 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             isExported: false,
             isDefaultExport: false,
             name: "ToArrayNonDist",
@@ -95,6 +96,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             isExported: false,
             isDefaultExport: false,
             name: "StrArrOrNumArr",

@@ -41,6 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             isExported: false,
             isDefaultExport: false,
             name: "EmailLocaleIDs",
@@ -61,6 +62,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             isExported: false,
             isDefaultExport: false,
             name: "FooterLocaleIDs",
@@ -81,6 +83,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             isExported: false,
             isDefaultExport: false,
             name: "AllLocaleIDs",

@@ -40,6 +40,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             isExported: false,
             isDefaultExport: false,
             name: "OptionsFlags",
@@ -78,6 +79,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             isExported: false,
             isDefaultExport: false,
             name: "FeatureFlags",
@@ -120,6 +122,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             isExported: false,
             isDefaultExport: false,
             name: "FeatureOptions",

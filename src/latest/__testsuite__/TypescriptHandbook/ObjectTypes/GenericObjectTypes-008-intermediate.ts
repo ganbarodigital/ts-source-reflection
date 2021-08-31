@@ -41,6 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             isExported: false,
             isDefaultExport: false,
             name: "OrNull",
@@ -68,6 +69,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             isExported: false,
             isDefaultExport: false,
             name: "OneOrMany",
@@ -98,6 +100,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             isExported: false,
             isDefaultExport: false,
             name: "OneOrManyOrNull",
@@ -128,6 +131,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            docBlock: undefined,
             isExported: false,
             isDefaultExport: false,
             name: "OneOrManyOrNullStrings",
