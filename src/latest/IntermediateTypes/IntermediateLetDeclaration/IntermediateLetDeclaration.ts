@@ -33,10 +33,11 @@
 //
 
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateVariableDeclaration } from "../IntermediateVariableDeclaration";
+import { IntermediateVarDeclaration } from "../IntermediateVarDeclaration";
 
 export type IntermediateLetDeclaration
-    = Omit<IntermediateVariableDeclaration, "kind"> &
+    = Omit<IntermediateVarDeclaration, "kind" | "const"> &
 {
     kind: IntermediateKind.IntermediateLetDeclaration;
+    isConstant: false;
 }

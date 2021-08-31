@@ -43,7 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             variables: [
                 {
-                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    kind: IntermediateKind.IntermediateConstDeclaration,
                     name: "myCanvas",
                     isConstant: true,
                     isExported: false,

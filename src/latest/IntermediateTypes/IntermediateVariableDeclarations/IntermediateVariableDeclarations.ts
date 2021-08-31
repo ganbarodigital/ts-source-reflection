@@ -34,11 +34,10 @@
 
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateLetDeclaration } from "../IntermediateLetDeclaration";
 import { IntermediateVariableDeclaration } from "../IntermediateVariableDeclaration/IntermediateVariableDeclaration";
 
 export interface IntermediateVariableDeclarations
     extends IntermediateItem<IntermediateKind.IntermediateVariableDeclarations>
 {
-    variables: (IntermediateLetDeclaration | IntermediateVariableDeclaration)[];
+    variables: IntermediateVariableDeclaration[];
 }

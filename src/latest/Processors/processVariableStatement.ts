@@ -45,7 +45,6 @@ import { AST } from "../AST";
 import {
     IntermediateExpression,
     IntermediateKind,
-    IntermediateLetDeclaration,
     IntermediateTypeReference,
     IntermediateVariableDeclaration,
     IntermediateVariableDeclarations
@@ -57,8 +56,9 @@ import { StatementProcessor } from "./StatementProcessor";
 
 type CONTEXT_FLAGS = {
     exported: boolean;
-    constant: boolean;
-    kind: IntermediateKind.IntermediateLetDeclaration | IntermediateKind.IntermediateVariableDeclaration;
+    kind: IntermediateKind.IntermediateConstDeclaration
+        | IntermediateKind.IntermediateLetDeclaration
+        | IntermediateKind.IntermediateVarDeclaration;
 }
 
 export const processVariableStatement: StatementProcessor = (
@@ -77,12 +77,11 @@ export const processVariableStatement: StatementProcessor = (
     // at the list level (doh!)
     const contextFlags: CONTEXT_FLAGS = {
         exported: AST.isNodeExported(input),
-        constant: false,
-        kind: IntermediateKind.IntermediateVariableDeclaration
+        kind: IntermediateKind.IntermediateVarDeclaration
     }
 
     if (variableStmt.declarationList.flags & NodeFlags.Const) {
-        contextFlags.constant = true;
+        contextFlags.kind = IntermediateKind.IntermediateConstDeclaration;
     }
 
     if (variableStmt.declarationList.flags & NodeFlags.Let) {
@@ -103,7 +102,7 @@ export const processVariableStatement: StatementProcessor = (
 function processVariableDeclaration(
     input: VariableDeclaration,
     contextFlags: CONTEXT_FLAGS,
-): IntermediateVariableDeclaration | IntermediateLetDeclaration
+): IntermediateVariableDeclaration
 {
     // special case - variable is readonly
     //
@@ -130,12 +129,28 @@ function processVariableDeclaration(
         initialiser = processExpression(input.initializer);
     }
 
+    // this is necessary to keep the compiler happy
+    if (contextFlags.kind === IntermediateKind.IntermediateConstDeclaration) {
+        return {
+            kind: contextFlags.kind,
+            docBlock: processDocBlock(input),
+            isDeclared: AST.hasDeclaredModifier(input.modifiers),
+            isConstant: true,
+            isExported: contextFlags.exported,
+            isDefaultExport: AST.hasDefaultModifier(input.modifiers),
+            isReadonly,
+            name: input.name.getText(),
+            initializer: initialiser,
+            typeRef,
+        }
+    }
+
     // all done
     return {
         kind: contextFlags.kind,
         docBlock: processDocBlock(input),
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
-        isConstant: contextFlags.constant,
+        isConstant: false,
         isExported: contextFlags.exported,
         isDefaultExport: AST.hasDefaultModifier(input.modifiers),
         isReadonly,

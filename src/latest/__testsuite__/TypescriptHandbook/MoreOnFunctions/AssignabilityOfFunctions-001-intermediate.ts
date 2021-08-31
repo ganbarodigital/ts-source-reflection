@@ -59,7 +59,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             variables: [
                 {
-                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     name: "f1",
                     isDeclared: false,
@@ -85,7 +85,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             variables: [
                 {
-                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     name: "f2",
                     isDeclared: false,
@@ -111,7 +111,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             variables: [
                 {
-                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     name: "f3",
                     isDeclared: false,

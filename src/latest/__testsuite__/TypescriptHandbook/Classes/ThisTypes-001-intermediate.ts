@@ -130,7 +130,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             variables: [
                 {
-                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     isDeclared: false,
                     isExported: false,
@@ -154,7 +154,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             variables: [
                 {
-                    kind: IntermediateKind.IntermediateVariableDeclaration,
+                    kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     isDeclared: false,
                     isDefaultExport: false,

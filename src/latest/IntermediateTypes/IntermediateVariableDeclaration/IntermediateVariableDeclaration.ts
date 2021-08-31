@@ -32,27 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import { IntermediateConstantItem } from "../IntermediateConstantItem";
-import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
-import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
-import { IntermediateExportableItem } from "../IntermediateExportableItem";
-import { IntermediateExpression } from "../IntermediateExpression";
-import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { IntermediateConstDeclaration } from "../IntermediateConstDeclaration";
+import { IntermediateLetDeclaration } from "../IntermediateLetDeclaration";
+import { IntermediateVarDeclaration } from "../IntermediateVarDeclaration";
 
-export interface IntermediateVariableDeclaration
-    extends IntermediateItem<IntermediateKind.IntermediateVariableDeclaration>,
-        IntermediateDocumentedItem,
-        IntermediateExportableItem,
-        IntermediateConstantItem,
-        IntermediateDeclarableItem,
-        IntermediateIdentifiedItem,
-        IntermediateReadonlyItem
-{
-    typeRef: Maybe<IntermediateTypeReference>;
-    initializer: Maybe<IntermediateExpression>;
-}
+export type IntermediateVariableDeclaration
+    = IntermediateConstDeclaration
+    | IntermediateLetDeclaration
+    | IntermediateVarDeclaration;

@@ -32,6 +32,26 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export interface IntermediateConstantItem {
-    isConstant: boolean;
+import { Maybe } from "@safelytyped/core-types";
+import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
+import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
+import { IntermediateExportableItem } from "../IntermediateExportableItem";
+import { IntermediateExpression } from "../IntermediateExpression";
+import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
+import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
+import { IntermediateTypeReference } from "../IntermediateTypeReference";
+
+export interface IntermediateVarDeclaration
+    extends IntermediateItem<IntermediateKind.IntermediateVarDeclaration>,
+        IntermediateDocumentedItem,
+        IntermediateExportableItem,
+        IntermediateDeclarableItem,
+        IntermediateIdentifiedItem,
+        IntermediateReadonlyItem
+{
+    isConstant: false;
+    typeRef: Maybe<IntermediateTypeReference>;
+    initializer: Maybe<IntermediateExpression>;
 }
