@@ -50,6 +50,7 @@ export enum IntermediateKind {
     IntermediateCallExpression,
     IntermediateClass,
     IntermediateConditionalType,
+    IntermediateConstDeclaration,
     IntermediateConstTypeCast,
     IntermediateConstructorDefinition,
     IntermediateConstructorSignature,
