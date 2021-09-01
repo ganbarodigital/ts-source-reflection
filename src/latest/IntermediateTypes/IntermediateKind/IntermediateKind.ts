@@ -57,6 +57,7 @@ export enum IntermediateKind {
     IntermediateDefaultImport,
     IntermediateDestructuredConstDeclaration,
     IntermediateDestructuredLetDeclaration,
+    IntermediateDestructuredVarDeclaration,
     IntermediateDocBlock,
     IntermediateExportDeclaration,
     IntermediateExternalModuleReference,
