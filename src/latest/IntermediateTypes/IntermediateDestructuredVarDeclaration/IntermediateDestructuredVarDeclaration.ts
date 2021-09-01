@@ -35,8 +35,9 @@
 import { IntermediateDestructuredConstDeclaration, IntermediateKind } from "..";
 
 export type IntermediateDestructuredVarDeclaration =
-    Omit<IntermediateDestructuredConstDeclaration, "kind">
+    Omit<IntermediateDestructuredConstDeclaration, "kind" | "isConstant">
     &
 {
     kind: IntermediateKind.IntermediateDestructuredVarDeclaration;
+    isConstant: false;
 }

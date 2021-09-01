@@ -35,8 +35,9 @@
 import { IntermediateDestructuredConstDeclaration, IntermediateKind } from "..";
 
 export type IntermediateDestructuredLetDeclaration =
-    Omit<IntermediateDestructuredConstDeclaration, "kind">
+    Omit<IntermediateDestructuredConstDeclaration, "kind" | "isConstant">
     &
 {
     kind: IntermediateKind.IntermediateDestructuredLetDeclaration;
+    isConstant: false;
 }

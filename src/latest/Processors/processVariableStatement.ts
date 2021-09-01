@@ -33,10 +33,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
+import { DEFAULT_DATA_PATH, getClassNames, Maybe, UnsupportedTypeError } from "@safelytyped/core-types";
 import {
+    isIdentifier,
+    isObjectBindingPattern,
     isTypeOperatorNode,
     NodeFlags,
+    ObjectBindingPattern,
     Statement,
     SyntaxKind,
     VariableDeclaration
@@ -90,9 +93,17 @@ export const processVariableStatement: StatementProcessor = (
 
     // what do we have?
     for (const member of variableStmt.declarationList.declarations) {
-        retval.variables.push(
-            processVariableDeclaration(member, contextFlags)
-        );
+        // are we looking at a destructured object?
+        if (isIdentifier(member.name)) {
+            retval.variables.push(
+                processVariableDeclaration(member, contextFlags)
+            );
+        }
+        else {
+            retval.variables.push(
+                processDestructuredVariableDeclaration(member, contextFlags)
+            )
+        }
     }
 
     // all done
@@ -160,3 +171,102 @@ function processVariableDeclaration(
     }
 }
 
+// we need to be able to map the single variable kinds
+// onto the destructured kinds
+type KindToMapFrom = IntermediateKind.IntermediateConstDeclaration
+    | IntermediateKind.IntermediateLetDeclaration
+    | IntermediateKind.IntermediateVarDeclaration;
+
+type ValidDestructuredObjectKinds =
+    IntermediateKind.IntermediateDestructuredConstDeclaration
+    | IntermediateKind.IntermediateDestructuredLetDeclaration
+    | IntermediateKind.IntermediateDestructuredVarDeclaration;
+
+type KindMap<T> = {
+    [ key in KindToMapFrom]: T;
+}
+
+const MapKindToDestructuredObject: KindMap<ValidDestructuredObjectKinds> = {
+    [IntermediateKind.IntermediateConstDeclaration]: IntermediateKind.IntermediateDestructuredConstDeclaration,
+    [IntermediateKind.IntermediateLetDeclaration]: IntermediateKind.IntermediateDestructuredLetDeclaration,
+    [IntermediateKind.IntermediateVarDeclaration]: IntermediateKind.IntermediateDestructuredVarDeclaration,
+}
+
+function processDestructuredVariableDeclaration(
+    input: VariableDeclaration,
+    contextFlags: CONTEXT_FLAGS
+): IntermediateVariableDeclaration
+{
+    // special case - variable is readonly
+    //
+    // instead of being a modifier, this is buried in the variable
+    // type instead
+    let isReadonly: boolean = false;
+    let varType = input.type;
+    if (varType && isTypeOperatorNode(varType)) {
+        if (varType.operator === SyntaxKind.ReadonlyKeyword) {
+            isReadonly = true;
+            varType = varType.type;
+        }
+    }
+
+    // does this variable have an initial value?
+    let initializer: Maybe<IntermediateExpression>;
+    if (input.initializer) {
+        initializer = processExpression(input.initializer);
+    }
+
+    if (isObjectBindingPattern(input.name)) {
+        const kind = MapKindToDestructuredObject[contextFlags.kind];
+
+        if (kind === IntermediateKind.IntermediateDestructuredConstDeclaration) {
+            return {
+                kind,
+                docBlock: processDocBlock(input),
+                isDeclared: AST.hasDeclaredModifier(input.modifiers),
+                isConstant: true,
+                isExported: contextFlags.exported,
+                isDefaultExport: AST.hasDefaultModifier(input.modifiers),
+                isReadonly,
+                members: processDestructuredObjectDeclaration(input.name),
+                initializer,
+            }
+        }
+
+        return {
+            kind,
+            docBlock: processDocBlock(input),
+            isDeclared: AST.hasDeclaredModifier(input.modifiers),
+            isConstant: false,
+            isExported: contextFlags.exported,
+            isDefaultExport: AST.hasDefaultModifier(input.modifiers),
+            isReadonly,
+            members: processDestructuredObjectDeclaration(input.name),
+            initializer,
+        }
+    }
+
+    // if we get here, we're looking at an array binding pattern
+    // tslint:disable-next-line: no-console
+    console.log("unsupported var name type: ", getClassNames(input.name), SyntaxKind[input.name.kind]);
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: "supported var declaration name type",
+            actual: getClassNames(input.name)[0],
+        }
+    });
+}
+
+function processDestructuredObjectDeclaration(
+    input: ObjectBindingPattern
+): string[]
+{
+    const retval: string[] = [];
+
+    for (const element of input.elements) {
+        retval.push(element.name.getText());
+    }
+
+    return retval;
+}

@@ -32,10 +32,17 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem, IntermediateKind } from "..";
+import { Maybe } from "@safelytyped/core-types";
+import { IntermediateDeclarableItem, IntermediateDocumentedItem, IntermediateExportableItem, IntermediateExpression, IntermediateItem, IntermediateKind, IntermediateReadonlyItem } from "..";
 
 export interface IntermediateDestructuredConstDeclaration
-    extends IntermediateItem<IntermediateKind.IntermediateDestructuredConstDeclaration>
+    extends IntermediateItem<IntermediateKind.IntermediateDestructuredConstDeclaration>,
+        IntermediateDeclarableItem,
+        IntermediateDocumentedItem,
+        IntermediateExportableItem,
+        IntermediateReadonlyItem
 {
+    isConstant: true,
     members: string[];
+    initializer: Maybe<IntermediateExpression>;
 }
