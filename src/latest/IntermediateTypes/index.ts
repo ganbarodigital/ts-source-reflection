@@ -62,6 +62,7 @@ export * from "./IntermediateConstructorSignature";
 export * from "./IntermediateDeclarableItem";
 export * from "./IntermediateDefaultImport";
 export * from "./IntermediateDestructuredConstDeclaration";
+export * from "./IntermediateDestructuredLetDeclaration";
 export * from "./IntermediateDocBlock";
 export * from "./IntermediateDocumentedItem";
 export * from "./IntermediateEntityName";
