@@ -1,0 +1,1 @@
+type T2 = Exclude<string | number | (() => void), Function>;
