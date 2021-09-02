@@ -1,0 +1,1 @@
+type T0 = Parameters<() => string>;
