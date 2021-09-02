@@ -1,0 +1,1 @@
+type T1 = Extract<string | number | (() => void), Function>;
