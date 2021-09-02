@@ -1,0 +1,1 @@
+type T5 = Parameters<never>;
