@@ -1,0 +1,1 @@
+type T4 = Parameters<any>;
