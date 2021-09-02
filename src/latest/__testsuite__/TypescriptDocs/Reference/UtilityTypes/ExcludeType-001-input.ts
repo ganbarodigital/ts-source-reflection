@@ -1,0 +1,1 @@
+type T0 = Exclude<"a" | "b" | "c", "a">;
