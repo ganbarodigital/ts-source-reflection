@@ -1,0 +1,1 @@
+type T2 = Parameters<<T>(arg: T) => T>;
