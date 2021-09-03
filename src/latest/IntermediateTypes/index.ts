@@ -60,6 +60,7 @@ export * from "./IntermediateConstructorDefinition";
 export * from "./IntermediateConstructorParameterDefinition";
 export * from "./IntermediateConstructorSignature";
 export * from "./IntermediateDeclarableItem";
+export * from "./IntermediateDecoratableItem";
 export * from "./IntermediateDecorator";
 export * from "./IntermediateDefaultImport";
 export * from "./IntermediateDestructuredConstDeclaration";
