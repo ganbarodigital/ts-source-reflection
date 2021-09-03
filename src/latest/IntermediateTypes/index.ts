@@ -56,7 +56,7 @@ export * from "./IntermediateClassAccessor";
 export * from "./IntermediateConditionalType";
 export * from "./IntermediateConstDeclaration";
 export * from "./IntermediateConstTypeCast";
-export * from "./IntermediateConstructorDefinition";
+export * from "./IntermediateConstructorDeclaration";
 export * from "./IntermediateConstructorParameterDefinition";
 export * from "./IntermediateConstructorSignature";
 export * from "./IntermediateDeclarableItem";

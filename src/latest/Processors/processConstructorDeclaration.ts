@@ -35,7 +35,7 @@
 import { ConstructorDeclaration, ConstructorTypeNode, NodeArray, ParameterDeclaration } from "typescript";
 import { AST } from "../AST";
 import {
-    IntermediateConstructorDefinition,
+    IntermediateConstructorDeclaration,
     IntermediateConstructorParameterDefinition,
     IntermediateKind,
     IntermediateObjectBindingParameter,
@@ -50,9 +50,9 @@ import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 
 export function processConstructorDeclaration(
     input: ConstructorDeclaration | ConstructorTypeNode
-): IntermediateConstructorDefinition {
+): IntermediateConstructorDeclaration {
     return {
-        kind: IntermediateKind.IntermediateConstructorDefinition,
+        kind: IntermediateKind.IntermediateConstructorDeclaration,
         parameters: processConstructorParameters(input.parameters),
         returnType: processReturnTypeFromNode(input),
     }

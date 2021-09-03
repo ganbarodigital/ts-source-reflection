@@ -32,17 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import {
-    IntermediateConstructorParameterDefinition,
-    IntermediateTypeReference
-} from "..";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-
-export interface IntermediateConstructorDefinition
-    extends IntermediateItem<IntermediateKind.IntermediateConstructorDefinition>
-{
-    parameters: IntermediateConstructorParameterDefinition[];
-    returnType: Maybe<IntermediateTypeReference>;
-}
+export * from "./IntermediateConstructorDeclaration";

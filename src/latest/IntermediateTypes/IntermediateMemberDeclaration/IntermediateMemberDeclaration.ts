@@ -33,14 +33,14 @@
 //
 
 import { IntermediatePropertyDeclaration } from "..";
-import { IntermediateConstructorDefinition } from "../IntermediateConstructorDefinition";
+import { IntermediateConstructorDeclaration } from "../IntermediateConstructorDeclaration";
 import { IntermediateGetter } from "../IntermediateGetter";
 import { IntermediateIndexSignature } from "../IntermediateIndexSignature";
 import { IntermediateMethodDefinition } from "../IntermediateMethodDefinition";
 import { IntermediateSetter } from "../IntermediateSetter";
 
 export type IntermediateMemberDeclaration =
-    IntermediateConstructorDefinition
+    IntermediateConstructorDeclaration
     | IntermediateGetter
     | IntermediateIndexSignature
     | IntermediateMethodDefinition

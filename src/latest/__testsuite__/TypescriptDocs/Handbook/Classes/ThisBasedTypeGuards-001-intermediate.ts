@@ -122,7 +122,7 @@ const expectedResult: IntermediateSourceFile = {
                     hasBody: true,
                 },
                 {
-                    kind: IntermediateKind.IntermediateConstructorDefinition,
+                    kind: IntermediateKind.IntermediateConstructorDeclaration,
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
@@ -172,7 +172,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateConstructorDefinition,
+                    kind: IntermediateKind.IntermediateConstructorDeclaration,
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,

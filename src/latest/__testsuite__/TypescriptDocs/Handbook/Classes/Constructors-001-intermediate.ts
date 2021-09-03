@@ -79,7 +79,7 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: undefined,
                 },
                 {
-                    kind: IntermediateKind.IntermediateConstructorDefinition,
+                    kind: IntermediateKind.IntermediateConstructorDeclaration,
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateUntypedConstructorParameterDefinition,
