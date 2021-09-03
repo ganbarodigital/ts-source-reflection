@@ -47,7 +47,7 @@ import {
     NodeArray,
     SyntaxKind
 } from "typescript";
-import { IntermediateMemberDefinition } from "../IntermediateTypes";
+import { IntermediateMemberDeclaration } from "../IntermediateTypes";
 import { processConstructorDeclaration } from "./processConstructorDeclaration";
 import { processGetAccessorDeclaration } from "./processGetAccessorDeclaration";
 import { processMethodDeclaration } from "./processMethodDeclaration";
@@ -58,9 +58,9 @@ import { processIndexSignatureDeclaration } from "./processIndexSignatureDeclara
 
 export function processMemberDeclarations(
     input: NodeArray<ClassElement>
-): IntermediateMemberDefinition[]
+): IntermediateMemberDeclaration[]
 {
-    const retval: IntermediateMemberDefinition[] = [];
+    const retval: IntermediateMemberDeclaration[] = [];
 
     for (const member of input) {
         if (isPropertyDeclaration(member)) {

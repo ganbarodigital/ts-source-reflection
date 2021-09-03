@@ -102,7 +102,7 @@ export * from "./IntermediateLetDeclaration";
 export * from "./IntermediateLiteralType";
 export * from "./IntermediateMappedType";
 export * from "./IntermediateMappingModifier";
-export * from "./IntermediateMemberDefinition";
+export * from "./IntermediateMemberDeclaration";
 export * from "./IntermediateMemberSignature";
 export * from "./IntermediateMethodSignature";
 export * from "./IntermediateMethodDefinition";

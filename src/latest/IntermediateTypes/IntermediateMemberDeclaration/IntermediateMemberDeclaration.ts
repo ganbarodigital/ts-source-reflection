@@ -39,7 +39,7 @@ import { IntermediateIndexSignature } from "../IntermediateIndexSignature";
 import { IntermediateMethodDefinition } from "../IntermediateMethodDefinition";
 import { IntermediateSetter } from "../IntermediateSetter";
 
-export type IntermediateMemberDefinition =
+export type IntermediateMemberDeclaration =
     IntermediateConstructorDefinition
     | IntermediateGetter
     | IntermediateIndexSignature

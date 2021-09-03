@@ -43,7 +43,7 @@ import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
 import { IntermediateGenericType } from "../IntermediateGenericType";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateMemberDefinition } from "../IntermediateMemberDefinition";
+import { IntermediateMemberDeclaration } from "../IntermediateMemberDeclaration";
 
 
 export interface IntermediateClass
@@ -58,5 +58,5 @@ export interface IntermediateClass
     typeParameters: IntermediateGenericType[];
     extends: IntermediateTypeArgument[];
     implements: IntermediateTypeArgument[];
-    members: IntermediateMemberDefinition[];
+    members: IntermediateMemberDeclaration[];
 }
