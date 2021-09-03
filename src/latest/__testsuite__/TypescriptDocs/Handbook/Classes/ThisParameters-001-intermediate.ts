@@ -53,7 +53,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     accessModifier: undefined,
                     name: "name",
                     isOptional: false,
@@ -67,7 +67,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDefinition,
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
                     name: "getName",
@@ -77,7 +77,7 @@ const expectedResult: IntermediateSourceFile = {
                     typeParameters: [],
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                             name: "this",
                             isReadonly: false,
                             isOptional: false,

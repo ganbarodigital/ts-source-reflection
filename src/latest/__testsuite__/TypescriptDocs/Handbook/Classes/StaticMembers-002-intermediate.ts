@@ -52,7 +52,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateMethodDefinition,
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
                     accessModifier: undefined,
@@ -85,7 +85,7 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     name: "myGreeting",
                     isOptional: false,
                     isReadonly: false,

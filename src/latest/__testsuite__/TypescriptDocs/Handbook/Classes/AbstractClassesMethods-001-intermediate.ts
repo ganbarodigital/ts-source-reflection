@@ -53,7 +53,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateMethodDefinition,
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
                     name: "getName",
@@ -69,7 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                     hasBody: false,
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDefinition,
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
                     name: "printName",

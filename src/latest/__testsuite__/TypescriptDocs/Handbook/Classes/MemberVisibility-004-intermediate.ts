@@ -54,7 +54,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     accessModifier: IntermediateRestrictableScope.PRIVATE,
                     name: "x",
                     isOptional: false,

@@ -129,20 +129,20 @@ function mapFunctionParameterToConstructorParameter(
         case IntermediateKind.IntermediateObjectBindingParameter:
             return input;
 
-        case IntermediateKind.IntermediateUntypedCallableParameterDefinition:
+        case IntermediateKind.IntermediateUntypedCallableParameterDeclaration:
             return <IntermediateUntypedConstructorParameterDeclaration> {
                 ...input,
-                kind: IntermediateKind.IntermediateUntypedConstructorParameterDefinition,
+                kind: IntermediateKind.IntermediateUntypedConstructorParameterDeclaration,
                 setsPropertyWithScope: undefined,
                 // untyped callable parameters don't have this,
                 // so let's set an explicit default value
                 isReadonly: false,
             }
 
-        case IntermediateKind.IntermediateTypedCallableParameterDefinition:
+        case IntermediateKind.IntermediateTypedCallableParameterDeclaration:
             return <IntermediateTypedConstructorParameterDeclaration>{
                 ...input,
-                kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
+                kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                 setsPropertyWithScope: undefined,
                 // ignore what was there for normal parameters,
                 // because this needs to be handled differently

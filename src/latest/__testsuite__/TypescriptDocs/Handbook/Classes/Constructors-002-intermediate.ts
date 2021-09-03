@@ -56,7 +56,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstructorDeclaration,
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             name: "x",
                             isOptional: false,
                             isReadonly: false,
@@ -68,7 +68,7 @@ const expectedResult: IntermediateSourceFile = {
                             initializer: undefined,
                         },
                         {
-                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             name: "y",
                             isOptional: false,
                             isReadonly: false,
@@ -86,7 +86,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstructorDeclaration,
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             name: "s",
                             isOptional: false,
                             isReadonly: false,
@@ -104,7 +104,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstructorDeclaration,
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             name: "xs",
                             isOptional: false,
                             isReadonly: false,
@@ -116,7 +116,7 @@ const expectedResult: IntermediateSourceFile = {
                             initializer: undefined,
                         },
                         {
-                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             name: "y",
                             isOptional: true,
                             isReadonly: false,

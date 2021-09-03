@@ -42,7 +42,7 @@ import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
 import { IntermediateTypedItem } from "../IntermediateTypedItem";
 
 export interface IntermediateTypedCallableParameterDeclaration
-    extends IntermediateItem<IntermediateKind.IntermediateTypedCallableParameterDefinition>,
+    extends IntermediateItem<IntermediateKind.IntermediateTypedCallableParameterDeclaration>,
         IntermediateIdentifiedItem,
         IntermediateOptionalItem,
         IntermediateReadonlyItem,

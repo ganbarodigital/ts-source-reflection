@@ -49,7 +49,7 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             parameters: [
                 {
-                    kind: IntermediateKind.IntermediateUntypedCallableParameterDefinition,
+                    kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
                     name: "x",
                     initializer: undefined,
                     isOptional: false,

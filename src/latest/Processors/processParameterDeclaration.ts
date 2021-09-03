@@ -88,7 +88,7 @@ export function processParameterDeclaration(
     if (!paramDec.type) {
         // tslint:disable-next-line: no-angle-bracket-type-assertion
         return <IntermediateUntypedCallableParameterDeclaration>{
-            kind: IntermediateKind.IntermediateUntypedCallableParameterDefinition,
+            kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
             name: paramDec.name.getText(),
             initializer,
             isOptional: processQuestionToken(paramDec.questionToken),
@@ -111,7 +111,7 @@ export function processParameterDeclaration(
     // special case - rest parameter
     if (AST.hasDotDotDotToken(paramDec.dotDotDotToken)) {
         return <IntermediateTypedCallableParameterDeclaration>{
-            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+            kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
             name: paramDec.name.getText(),
             typeRef: {
                 kind: IntermediateKind.IntermediateRestType,
@@ -125,7 +125,7 @@ export function processParameterDeclaration(
 
     // general case - typed parameter
     return <IntermediateTypedCallableParameterDeclaration>{
-        kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+        kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
         name: paramDec.name.getText(),
         typeRef: processTypeNode(paramType),
         isOptional: processQuestionToken(paramDec.questionToken),

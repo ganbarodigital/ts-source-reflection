@@ -54,7 +54,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     accessModifier: IntermediateRestrictableScope.PRIVATE,
                     name: "x",
                     isOptional: false,
@@ -68,7 +68,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDefinition,
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
                     accessModifier: IntermediateRestrictableScope.PUBLIC,
@@ -78,7 +78,7 @@ const expectedResult: IntermediateSourceFile = {
                     typeParameters: [],
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                             name: "other",
                             isOptional: false,
                             isReadonly: false,

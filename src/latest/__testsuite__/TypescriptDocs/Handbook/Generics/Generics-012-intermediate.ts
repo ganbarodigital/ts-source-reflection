@@ -53,7 +53,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     name: "hasMask",
                     isOptional: false,
                     isReadonly: false,
@@ -86,7 +86,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     name: "nametag",
                     isOptional: false,
                     isReadonly: false,
@@ -119,7 +119,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     name: "numLegs",
                     isOptional: false,
                     isReadonly: false,
@@ -158,7 +158,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     name: "keeper",
                     isOptional: false,
                     isReadonly: false,
@@ -198,7 +198,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     name: "keeper",
                     isOptional: false,
                     isReadonly: false,
@@ -239,7 +239,7 @@ const expectedResult: IntermediateSourceFile = {
             ],
             parameters: [
                 {
-                    kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     name: "c",
                     isOptional: false,
                     isReadonly: false,

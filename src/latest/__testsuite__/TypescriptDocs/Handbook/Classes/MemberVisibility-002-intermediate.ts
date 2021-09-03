@@ -54,7 +54,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateMethodDefinition,
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
                     accessModifier: IntermediateRestrictableScope.PUBLIC,
@@ -67,7 +67,7 @@ const expectedResult: IntermediateSourceFile = {
                     hasBody: true,
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDefinition,
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
                     accessModifier: IntermediateRestrictableScope.PROTECTED,
@@ -100,7 +100,7 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateMethodDefinition,
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
                     accessModifier: IntermediateRestrictableScope.PUBLIC,

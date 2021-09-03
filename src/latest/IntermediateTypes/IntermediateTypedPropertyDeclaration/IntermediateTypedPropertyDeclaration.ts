@@ -44,7 +44,7 @@ import { IntermediateStaticItem } from "../IntermediateStaticItem";
 import { IntermediateTypedItem } from "../IntermediateTypedItem";
 
 export interface IntermediateTypedPropertyDeclaration
-    extends IntermediateItem<IntermediateKind.IntermediateTypedPropertyDefinition>,
+    extends IntermediateItem<IntermediateKind.IntermediateTypedPropertyDeclaration>,
         IntermediateIdentifiedItem,
         IntermediateOptionalItem,
         IntermediateReadonlyItem,

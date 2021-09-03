@@ -39,7 +39,7 @@ import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
 
 export interface IntermediateUntypedCallableParameterDeclaration
-    extends IntermediateItem<IntermediateKind.IntermediateUntypedCallableParameterDefinition>,
+    extends IntermediateItem<IntermediateKind.IntermediateUntypedCallableParameterDeclaration>,
         IntermediateIdentifiedItem,
         IntermediateOptionalItem
 {

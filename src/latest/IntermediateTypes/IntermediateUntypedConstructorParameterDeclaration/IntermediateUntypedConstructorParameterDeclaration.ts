@@ -43,6 +43,6 @@ export type IntermediateUntypedConstructorParameterDeclaration
     & IntermediateReadonlyItem
     &
 {
-    kind: IntermediateKind.IntermediateUntypedConstructorParameterDefinition;
+    kind: IntermediateKind.IntermediateUntypedConstructorParameterDeclaration;
     setsPropertyWithScope: Maybe<IntermediateRestrictableScope>;
 }

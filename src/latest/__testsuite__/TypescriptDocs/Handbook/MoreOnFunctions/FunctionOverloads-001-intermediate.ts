@@ -49,7 +49,7 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             parameters: [
                 {
-                    kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     name: "timestamp",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -76,7 +76,7 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             parameters: [
                 {
-                    kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     name: "m",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -87,7 +87,7 @@ const expectedResult: IntermediateSourceFile = {
                     isReadonly: false,
                 },
                 {
-                    kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     name: "d",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -98,7 +98,7 @@ const expectedResult: IntermediateSourceFile = {
                     isReadonly: false,
                 },
                 {
-                    kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     name: "y",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -125,7 +125,7 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             parameters: [
                 {
-                    kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     name: "mOrTimestamp",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -136,7 +136,7 @@ const expectedResult: IntermediateSourceFile = {
                     isReadonly: false,
                 },
                 {
-                    kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     name: "d",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -147,7 +147,7 @@ const expectedResult: IntermediateSourceFile = {
                     isReadonly: false,
                 },
                 {
-                    kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     name: "y",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,

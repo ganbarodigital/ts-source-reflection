@@ -98,7 +98,7 @@ const expectedResult: IntermediateSourceFile = {
                     sigIsReadonly: false,
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDefinition,
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
                     name: "check",
@@ -108,7 +108,7 @@ const expectedResult: IntermediateSourceFile = {
                     typeParameters: [],
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                             name: "s",
                             isReadonly: false,
                             isOptional: false,

@@ -59,7 +59,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     name: "contents",
                     isOptional: false,
                     isReadonly: false,
@@ -75,7 +75,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstructorDeclaration,
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             name: "value",
                             isOptional: false,
                             isReadonly: false,

@@ -59,7 +59,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     name: "value",
                     isReadonly: false,
                     isOptional: true,
@@ -72,7 +72,7 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: undefined,
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDefinition,
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
                     isStatic: false,

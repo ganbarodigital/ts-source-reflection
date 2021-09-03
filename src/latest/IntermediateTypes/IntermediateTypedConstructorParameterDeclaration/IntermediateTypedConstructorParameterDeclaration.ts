@@ -41,6 +41,6 @@ export type IntermediateTypedConstructorParameterDeclaration
     = Omit<IntermediateTypedCallableParameterDeclaration, "kind">
     &
 {
-    kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition;
+    kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration;
     setsPropertyWithScope: Maybe<IntermediateRestrictableScope>;
 }

@@ -53,7 +53,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateUntypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     name: "_length",
                     isOptional: false,
                     isReadonly: false,
@@ -82,7 +82,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "length",
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateUntypedCallableParameterDefinition,
+                            kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
                             name: "value",
                             isOptional: false,
                             initializer: undefined,

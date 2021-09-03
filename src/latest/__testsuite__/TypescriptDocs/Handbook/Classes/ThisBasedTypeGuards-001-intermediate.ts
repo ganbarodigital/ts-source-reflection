@@ -54,7 +54,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateMethodDefinition,
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
                     isStatic: false,
@@ -74,7 +74,7 @@ const expectedResult: IntermediateSourceFile = {
                     hasBody: true,
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDefinition,
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
                     isStatic: false,
@@ -94,7 +94,7 @@ const expectedResult: IntermediateSourceFile = {
                     hasBody: true,
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDefinition,
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
                     isStatic: false,
@@ -125,7 +125,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstructorDeclaration,
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             name: "path",
                             isReadonly: false,
                             isOptional: false,
@@ -137,7 +137,7 @@ const expectedResult: IntermediateSourceFile = {
                             initializer: undefined,
                         },
                         {
-                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             name: "networked",
                             isReadonly: false,
                             isOptional: false,
@@ -175,7 +175,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstructorDeclaration,
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             name: "path",
                             isReadonly: false,
                             isOptional: false,
@@ -187,7 +187,7 @@ const expectedResult: IntermediateSourceFile = {
                             initializer: undefined,
                         },
                         {
-                            kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             name: "content",
                             isReadonly: false,
                             isOptional: false,
@@ -222,7 +222,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateTypedPropertyDefinition,
+                    kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     name: "children",
                     isOptional: false,
                     isReadonly: false,

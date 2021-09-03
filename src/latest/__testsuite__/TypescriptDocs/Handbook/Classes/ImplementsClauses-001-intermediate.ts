@@ -83,7 +83,7 @@ const expectedResult: IntermediateSourceFile = {
             ],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateMethodDefinition,
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
                     name: "ping",

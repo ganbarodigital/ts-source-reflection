@@ -46,7 +46,7 @@ import { IntermediateGenericable } from "../IntermediateGenericable";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 
 export interface IntermediateMethodDeclaration
-    extends IntermediateItem<IntermediateKind.IntermediateMethodDefinition>,
+    extends IntermediateItem<IntermediateKind.IntermediateMethodDeclaration>,
         IntermediateAbstractItem,
         IntermediateCallableDeclaration,
         IntermediateDecoratableItem,

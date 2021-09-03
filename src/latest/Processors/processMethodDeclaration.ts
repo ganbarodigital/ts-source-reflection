@@ -49,7 +49,7 @@ export function processMethodDeclaration(
 ): IntermediateMethodDeclaration
 {
     return {
-        kind: IntermediateKind.IntermediateMethodDefinition,
+        kind: IntermediateKind.IntermediateMethodDeclaration,
         docBlock: processDocBlock(input),
         decorators: processDecorators(input),
         isStatic: AST.hasStaticModifier(input),
