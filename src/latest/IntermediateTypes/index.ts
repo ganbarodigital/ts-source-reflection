@@ -105,7 +105,7 @@ export * from "./IntermediateMappingModifier";
 export * from "./IntermediateMemberDeclaration";
 export * from "./IntermediateMemberSignature";
 export * from "./IntermediateMethodSignature";
-export * from "./IntermediateMethodDefinition";
+export * from "./IntermediateMethodDeclaration";
 export * from "./IntermediateNamespaceImport";
 // export * from "./IntermediateModule";
 export * from "./IntermediateModuleReference";

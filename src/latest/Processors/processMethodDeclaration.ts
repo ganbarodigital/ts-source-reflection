@@ -36,7 +36,7 @@ import { MethodDeclaration } from "typescript";
 import { AST } from "../AST";
 import {
     IntermediateKind,
-    IntermediateMethodDefinition
+    IntermediateMethodDeclaration
 } from "../IntermediateTypes";
 import { processDecorators } from "./processDecorators";
 import { processDocBlock } from "./processDocBlock";
@@ -46,7 +46,7 @@ import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processMethodDeclaration(
     input: MethodDeclaration
-): IntermediateMethodDefinition
+): IntermediateMethodDeclaration
 {
     return {
         kind: IntermediateKind.IntermediateMethodDefinition,
