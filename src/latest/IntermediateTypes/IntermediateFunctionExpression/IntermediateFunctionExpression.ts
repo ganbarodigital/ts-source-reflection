@@ -33,7 +33,7 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { IntermediateCallableParameterDefinition } from "../IntermediateCallableParameterDefinition";
+import { IntermediateCallableParameterDeclaration } from "../IntermediateCallableParameterDeclaration";
 import { IntermediateGenericType } from "../IntermediateGenericType";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
@@ -43,6 +43,6 @@ export interface IntermediateFunctionExpression
     extends IntermediateItem<IntermediateKind.IntermediateFunctionExpression>
 {
     typeParameters: IntermediateGenericType[];
-    parameters: IntermediateCallableParameterDefinition[];
+    parameters: IntermediateCallableParameterDeclaration[];
     returnType: Maybe<IntermediateTypeReference>;
 }

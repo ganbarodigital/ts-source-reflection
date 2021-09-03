@@ -36,7 +36,7 @@ import { ArrowFunction } from "typescript";
 import { AST } from "../AST";
 import {
     IntermediateArrowFunction,
-    IntermediateCallableParameterDefinition,
+    IntermediateCallableParameterDeclaration,
     IntermediateKind
 } from "../IntermediateTypes";
 import { processParameterDeclaration } from "./processParameterDeclaration";
@@ -48,7 +48,7 @@ export function processArrowFunction(
 ): IntermediateArrowFunction
 {
     // do we have any parameters?
-    const parameters: IntermediateCallableParameterDefinition[] = [];
+    const parameters: IntermediateCallableParameterDeclaration[] = [];
     for (const param of input.parameters) {
         parameters.push(processParameterDeclaration(param));
     }

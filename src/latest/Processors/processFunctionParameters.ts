@@ -33,7 +33,7 @@
 //
 import { NodeArray, ParameterDeclaration } from "typescript";
 import {
-    IntermediateCallableParameterDefinition
+    IntermediateCallableParameterDeclaration
 } from "../IntermediateTypes";
 import { processParameterDeclaration } from "./processParameterDeclaration";
 
@@ -41,9 +41,9 @@ import { processParameterDeclaration } from "./processParameterDeclaration";
 
 export function processFunctionParameters(
     input: NodeArray<ParameterDeclaration>
-): IntermediateCallableParameterDefinition[] {
+): IntermediateCallableParameterDeclaration[] {
     // our return value
-    const retval: IntermediateCallableParameterDefinition[] = [];
+    const retval: IntermediateCallableParameterDeclaration[] = [];
 
     input.forEach((paramDec) => {
         // general case

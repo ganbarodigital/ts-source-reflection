@@ -39,7 +39,7 @@ import {
     IntermediateUntypedCallableParameterDefinition
 } from "..";
 
-export type IntermediateCallableParameterDefinition =
+export type IntermediateCallableParameterDeclaration =
     IntermediateAnonymousCallableParameter
     | IntermediateObjectBindingParameter
     | IntermediateUntypedCallableParameterDefinition

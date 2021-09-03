@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateCallableParameterDefinition } from "../IntermediateCallableParameterDefinition";
+import { IntermediateCallableParameterDeclaration } from "../IntermediateCallableParameterDeclaration";
 import { IntermediateClassAccessor } from "../IntermediateClassAccessor";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
@@ -41,5 +41,5 @@ export interface IntermediateSetter
     extends IntermediateItem<IntermediateKind.IntermediateSetter>,
         IntermediateClassAccessor
 {
-    parameters: IntermediateCallableParameterDefinition[];
+    parameters: IntermediateCallableParameterDeclaration[];
 }

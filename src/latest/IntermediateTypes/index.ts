@@ -48,7 +48,7 @@ export * from "./IntermediateBuiltInTypeReference";
 export * from "./IntermediateCallExpression";
 export * from "./IntermediateCallSignature";
 export * from "./IntermediateCallableDeclaration";
-export * from "./IntermediateCallableParameterDefinition";
+export * from "./IntermediateCallableParameterDeclaration";
 export * from "./IntermediateCallableParameterSignature";
 export * from "./IntermediateCallableSignature";
 export * from "./IntermediateClass";
