@@ -73,6 +73,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
+                    decorators: [],
                     name: "set",
                     accessModifier: undefined,
                     isStatic: false,
@@ -117,6 +118,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
+                    decorators: [],
                     isStatic: false,
                     isAbstract: false,
                     accessModifier: undefined,

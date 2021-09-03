@@ -100,6 +100,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
+                    decorators: [],
                     name: "check",
                     accessModifier: undefined,
                     isStatic: false,

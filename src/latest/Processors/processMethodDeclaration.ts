@@ -38,6 +38,7 @@ import {
     IntermediateKind,
     IntermediateMethodDefinition
 } from "../IntermediateTypes";
+import { processDecorators } from "./processDecorators";
 import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
@@ -50,6 +51,7 @@ export function processMethodDeclaration(
     return {
         kind: IntermediateKind.IntermediateMethodDefinition,
         docBlock: processDocBlock(input),
+        decorators: processDecorators(input),
         isStatic: AST.hasStaticModifier(input),
         accessModifier: AST.getRestrictableScope(input),
         isAbstract: AST.hasAbstractModifier(input.modifiers),

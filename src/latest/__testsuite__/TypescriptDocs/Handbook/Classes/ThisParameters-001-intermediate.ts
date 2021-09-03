@@ -69,6 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodDefinition,
                     docBlock: undefined,
+                    decorators: [],
                     name: "getName",
                     accessModifier: undefined,
                     isAbstract: false,

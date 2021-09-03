@@ -34,6 +34,7 @@
 
 import {
     IntermediateCallableDefinition,
+    IntermediateDecoratableItem,
     IntermediateItem,
     IntermediateKind,
     IntermediateRestrictableScopeItem,
@@ -48,6 +49,7 @@ export interface IntermediateMethodDefinition
     extends IntermediateItem<IntermediateKind.IntermediateMethodDefinition>,
         IntermediateAbstractItem,
         IntermediateCallableDefinition,
+        IntermediateDecoratableItem,
         IntermediateDocumentedItem,
         IntermediateGenericable,
         IntermediateIdentifiedItem,
