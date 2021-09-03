@@ -42,6 +42,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
+            decorators: [],
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
@@ -74,6 +75,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
+            decorators: [],
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
@@ -106,6 +108,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
+            decorators: [],
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
@@ -139,6 +142,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
+            decorators: [],
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
@@ -178,6 +182,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
+            decorators: [],
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,

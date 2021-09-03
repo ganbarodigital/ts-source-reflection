@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import {
+    IntermediateDecoratableItem,
     IntermediateDocumentedItem,
     IntermediateExportableItem,
     IntermediateItem,
@@ -49,6 +50,7 @@ export interface IntermediateClass
     extends IntermediateItem<IntermediateKind.IntermediateClass>,
         IntermediateAbstractItem,
         IntermediateDeclarableItem,
+        IntermediateDecoratableItem,
         IntermediateDocumentedItem,
         IntermediateExportableItem,
         IntermediateIdentifiedItem

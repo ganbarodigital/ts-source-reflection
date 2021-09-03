@@ -39,6 +39,7 @@ import {
     IntermediateKind,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
+import { processDecorators } from "./processDecorators";
 import { processDocBlock } from "./processDocBlock";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { processMemberDeclarations } from "./processMethodDeclarations";
@@ -57,6 +58,7 @@ export const processClassDeclaration: StatementProcessor = (
         kind: IntermediateKind.IntermediateClass,
         typeParameters: processTypeParametersFromNode(classDec),
         docBlock: processDocBlock(classDec),
+        decorators: processDecorators(classDec),
         isExported: AST.isNodeExported(classDec),
         isDefaultExport: AST.hasDefaultModifier(classDec.modifiers),
         extends: getBaseClassType(classDec),
