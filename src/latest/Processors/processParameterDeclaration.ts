@@ -44,7 +44,7 @@ import {
     IntermediateKind,
     IntermediateObjectBindingParameter,
     IntermediateTypedCallableParameterDeclaration,
-    IntermediateUntypedCallableParameterDefinition
+    IntermediateUntypedCallableParameterDeclaration
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 import { processObjectBindingPattern } from "./processObjectBindingPattern";
@@ -54,7 +54,7 @@ import { processTypeNode } from "./processTypeNode";
 export function processParameterDeclaration(
     paramDec: ParameterDeclaration
 ): IntermediateTypedCallableParameterDeclaration
-    | IntermediateUntypedCallableParameterDefinition
+    | IntermediateUntypedCallableParameterDeclaration
     | IntermediateObjectBindingParameter
 {
     // this is a placeholder for now
@@ -87,7 +87,7 @@ export function processParameterDeclaration(
     // NOTE: untyped parameters cannot be `readonly`
     if (!paramDec.type) {
         // tslint:disable-next-line: no-angle-bracket-type-assertion
-        return <IntermediateUntypedCallableParameterDefinition>{
+        return <IntermediateUntypedCallableParameterDeclaration>{
             kind: IntermediateKind.IntermediateUntypedCallableParameterDefinition,
             name: paramDec.name.getText(),
             initializer,

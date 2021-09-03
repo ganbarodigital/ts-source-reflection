@@ -38,7 +38,7 @@ import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
 
-export interface IntermediateUntypedCallableParameterDefinition
+export interface IntermediateUntypedCallableParameterDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateUntypedCallableParameterDefinition>,
         IntermediateIdentifiedItem,
         IntermediateOptionalItem

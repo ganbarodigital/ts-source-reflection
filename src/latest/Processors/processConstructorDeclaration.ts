@@ -42,7 +42,7 @@ import {
     IntermediateRestrictableScope,
     IntermediateTypedCallableParameterDeclaration,
     IntermediateTypedConstructorParameterDeclaration,
-    IntermediateUntypedCallableParameterDefinition,
+    IntermediateUntypedCallableParameterDeclaration,
     IntermediateUntypedConstructorParameterDefinition
 } from "../IntermediateTypes";
 import { processParameterDeclaration } from "./processParameterDeclaration";
@@ -122,7 +122,7 @@ function processConstructorParameter(
 
 function mapFunctionParameterToConstructorParameter(
     input: IntermediateTypedCallableParameterDeclaration
-        | IntermediateUntypedCallableParameterDefinition
+        | IntermediateUntypedCallableParameterDeclaration
         | IntermediateObjectBindingParameter
 ): IntermediateConstructorParameterDeclaration {
     switch(input.kind) {
