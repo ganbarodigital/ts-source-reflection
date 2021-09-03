@@ -60,6 +60,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                    decorators: [],
                     name: "contents",
                     isOptional: false,
                     isReadonly: false,

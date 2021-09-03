@@ -54,6 +54,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                    decorators: [],
                     name: "name",
                     isOptional: false,
                     isReadonly: false,

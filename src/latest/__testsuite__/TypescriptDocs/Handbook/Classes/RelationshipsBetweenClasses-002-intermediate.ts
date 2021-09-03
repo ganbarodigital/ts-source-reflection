@@ -54,6 +54,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                    decorators: [],
                     name: "name",
                     isOptional: false,
                     isReadonly: false,
@@ -67,6 +68,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                    decorators: [],
                     name: "age",
                     isOptional: false,
                     isReadonly: false,
@@ -95,6 +97,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                    decorators: [],
                     name: "name",
                     isOptional: false,
                     isReadonly: false,
@@ -108,6 +111,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                    decorators: [],
                     name: "age",
                     isOptional: false,
                     isReadonly: false,
@@ -121,6 +125,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                    decorators: [],
                     name: "salary",
                     isOptional: false,
                     isReadonly: false,

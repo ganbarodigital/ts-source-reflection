@@ -53,6 +53,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
+                    decorators: [],
                     accessModifier: undefined,
                     name: "#barkAmount",
                     isOptional: false,
@@ -67,6 +68,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
+                    decorators: [],
                     accessModifier: undefined,
                     name: "personality",
                     isOptional: false,

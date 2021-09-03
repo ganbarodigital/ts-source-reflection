@@ -39,6 +39,7 @@ import {
     IntermediateKind,
     IntermediatePropertyDeclaration
 } from "../IntermediateTypes";
+import { processDecorators } from "./processDecorators";
 import { processExpression } from "./processExpression";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
@@ -58,6 +59,7 @@ export function processPropertyDeclaration(
     if (!input.type) {
         return {
             kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
+            decorators: processDecorators(input),
             name: input.name.getText(),
             isOptional: processQuestionToken(input.questionToken),
             isReadonly: AST.hasReadonlyModifier(input.modifiers),
@@ -70,6 +72,7 @@ export function processPropertyDeclaration(
     // general case: typed property
     return {
         kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+        decorators: processDecorators(input),
         name: input.name.getText(),
         isOptional: processQuestionToken(input.questionToken),
         isReadonly: AST.hasReadonlyModifier(input.modifiers),
