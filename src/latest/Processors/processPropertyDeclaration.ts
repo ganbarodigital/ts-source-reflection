@@ -33,22 +33,21 @@
 //
 import { Maybe } from "@safelytyped/core-types";
 import { PropertyDeclaration } from "typescript";
-
 import { AST } from "../AST";
 import {
     IntermediateExpression,
     IntermediateKind,
-    IntermediateTypedPropertyDefinition,
-    IntermediateUntypedPropertyDefinition,
+    IntermediatePropertyDeclaration
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
 
 
+
 export function processPropertyDeclaration(
     input: PropertyDeclaration
-): IntermediateTypedPropertyDefinition | IntermediateUntypedPropertyDefinition
+): IntermediatePropertyDeclaration
 {
     let initializer: Maybe<IntermediateExpression>;
     if (input.initializer) {
