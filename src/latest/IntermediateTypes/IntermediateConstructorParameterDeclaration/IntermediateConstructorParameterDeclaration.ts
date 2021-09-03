@@ -34,9 +34,9 @@
 
 import { IntermediateObjectBindingParameter } from "../IntermediateObjectBindingParameter";
 import { IntermediateTypedConstructorParameterDeclaration } from "../IntermediateTypedConstructorParameterDeclaration";
-import { IntermediateUntypedConstructorParameterDefinition } from "../IntermediateUntypedConstructorParameterDefinition";
+import { IntermediateUntypedConstructorParameterDeclaration } from "../IntermediateUntypedConstructorParameterDeclaration";
 
 export type IntermediateConstructorParameterDeclaration
     = IntermediateTypedConstructorParameterDeclaration
-    | IntermediateUntypedConstructorParameterDefinition
+    | IntermediateUntypedConstructorParameterDeclaration
     | IntermediateObjectBindingParameter;

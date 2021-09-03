@@ -43,7 +43,7 @@ import {
     IntermediateTypedCallableParameterDeclaration,
     IntermediateTypedConstructorParameterDeclaration,
     IntermediateUntypedCallableParameterDeclaration,
-    IntermediateUntypedConstructorParameterDefinition
+    IntermediateUntypedConstructorParameterDeclaration
 } from "../IntermediateTypes";
 import { processParameterDeclaration } from "./processParameterDeclaration";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
@@ -130,7 +130,7 @@ function mapFunctionParameterToConstructorParameter(
             return input;
 
         case IntermediateKind.IntermediateUntypedCallableParameterDefinition:
-            return <IntermediateUntypedConstructorParameterDefinition> {
+            return <IntermediateUntypedConstructorParameterDeclaration> {
                 ...input,
                 kind: IntermediateKind.IntermediateUntypedConstructorParameterDefinition,
                 setsPropertyWithScope: undefined,

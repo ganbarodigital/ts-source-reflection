@@ -38,7 +38,7 @@ import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
 import { IntermediateRestrictableScope } from "../IntermediateRestrictableScope";
 import { IntermediateUntypedCallableParameterDeclaration } from "../IntermediateUntypedCallableParameterDeclaration";
 
-export type IntermediateUntypedConstructorParameterDefinition
+export type IntermediateUntypedConstructorParameterDeclaration
     = Omit<IntermediateUntypedCallableParameterDeclaration, "kind">
     & IntermediateReadonlyItem
     &
