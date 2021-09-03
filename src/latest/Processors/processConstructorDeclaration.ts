@@ -41,7 +41,7 @@ import {
     IntermediateObjectBindingParameter,
     IntermediateRestrictableScope,
     IntermediateTypedCallableParameterDeclaration,
-    IntermediateTypedConstructorParameterDefinition,
+    IntermediateTypedConstructorParameterDeclaration,
     IntermediateUntypedCallableParameterDefinition,
     IntermediateUntypedConstructorParameterDefinition
 } from "../IntermediateTypes";
@@ -140,7 +140,7 @@ function mapFunctionParameterToConstructorParameter(
             }
 
         case IntermediateKind.IntermediateTypedCallableParameterDefinition:
-            return <IntermediateTypedConstructorParameterDefinition>{
+            return <IntermediateTypedConstructorParameterDeclaration>{
                 ...input,
                 kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition,
                 setsPropertyWithScope: undefined,

@@ -32,15 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateRestrictableScope } from "../IntermediateRestrictableScope";
-import { IntermediateTypedCallableParameterDeclaration } from "../IntermediateTypedCallableParameterDeclaration";
-
-export type IntermediateTypedConstructorParameterDefinition
-    = Omit<IntermediateTypedCallableParameterDeclaration, "kind">
-    &
-{
-    kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition;
-    setsPropertyWithScope: Maybe<IntermediateRestrictableScope>;
-}
+export * from "./IntermediateTypedConstructorParameterDeclaration";
