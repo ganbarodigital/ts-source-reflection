@@ -32,8 +32,8 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateTypedPropertyDefinition, IntermediateUntypedPropertyDefinition } from "..";
+import { IntermediateTypedPropertyDeclaration, IntermediateUntypedPropertyDefinition } from "..";
 
 export type IntermediatePropertyDeclaration =
-    IntermediateTypedPropertyDefinition
+    IntermediateTypedPropertyDeclaration
     | IntermediateUntypedPropertyDefinition

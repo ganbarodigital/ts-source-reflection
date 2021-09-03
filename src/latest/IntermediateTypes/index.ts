@@ -148,7 +148,7 @@ export * from "./IntermediateTypedCallableParameterDeclaration";
 export * from "./IntermediateTypedCallableParameterSignature";
 export * from "./IntermediateTypedConstructorParameterDeclaration";
 export * from "./IntermediateTypedItem";
-export * from "./IntermediateTypedPropertyDefinition";
+export * from "./IntermediateTypedPropertyDeclaration";
 export * from "./IntermediateTypedPropertySignature";
 export * from "./IntermediateTypeofTypeReference";
 export * from "./IntermediateUnionType";

@@ -43,7 +43,7 @@ import { IntermediateRestrictableScopeItem } from "../IntermediateRestrictableSc
 import { IntermediateStaticItem } from "../IntermediateStaticItem";
 import { IntermediateTypedItem } from "../IntermediateTypedItem";
 
-export interface IntermediateTypedPropertyDefinition
+export interface IntermediateTypedPropertyDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateTypedPropertyDefinition>,
         IntermediateIdentifiedItem,
         IntermediateOptionalItem,
