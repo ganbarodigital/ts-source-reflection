@@ -32,14 +32,14 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateCallableDefinition } from "../IntermediateCallableDefinition";
+import { IntermediateCallableDeclaration } from "../IntermediateCallableDeclaration";
 import { IntermediateGenericable } from "../IntermediateGenericable";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateArrowFunction
     extends IntermediateItem<IntermediateKind.IntermediateArrowFunction>,
-        IntermediateCallableDefinition,
+        IntermediateCallableDeclaration,
         IntermediateGenericable
 {
     hasBody: boolean;

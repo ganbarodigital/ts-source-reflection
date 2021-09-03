@@ -33,7 +33,7 @@
 //
 
 import {
-    IntermediateCallableDefinition,
+    IntermediateCallableDeclaration,
     IntermediateDecoratableItem,
     IntermediateItem,
     IntermediateKind,
@@ -48,7 +48,7 @@ import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 export interface IntermediateMethodDefinition
     extends IntermediateItem<IntermediateKind.IntermediateMethodDefinition>,
         IntermediateAbstractItem,
-        IntermediateCallableDefinition,
+        IntermediateCallableDeclaration,
         IntermediateDecoratableItem,
         IntermediateDocumentedItem,
         IntermediateGenericable,

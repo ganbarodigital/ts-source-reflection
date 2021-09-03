@@ -36,7 +36,7 @@ import { Maybe } from "@safelytyped/core-types";
 import { IntermediateCallableParameterDefinition } from "..";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
-export interface IntermediateCallableDefinition
+export interface IntermediateCallableDeclaration
 {
     parameters: IntermediateCallableParameterDefinition[];
     returnType: Maybe<IntermediateTypeReference>;
