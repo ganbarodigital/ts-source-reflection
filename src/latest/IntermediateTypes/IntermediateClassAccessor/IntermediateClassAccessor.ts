@@ -32,11 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateDecoratableItem } from "..";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateGenericable } from "../IntermediateGenericable";
 
 export interface IntermediateClassAccessor
-    extends IntermediateDocumentedItem,
+    extends IntermediateDecoratableItem,
+        IntermediateDocumentedItem,
         IntermediateGenericable
 {
     name: string;

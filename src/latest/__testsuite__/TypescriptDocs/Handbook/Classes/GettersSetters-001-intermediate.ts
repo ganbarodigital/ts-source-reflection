@@ -69,6 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateGetter,
                     docBlock: undefined,
+                    decorators: [],
                     typeParameters: [],
                     name: "length",
                     returnType: undefined,
@@ -76,6 +77,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateSetter,
                     docBlock: undefined,
+                    decorators: [],
                     typeParameters: [],
                     name: "length",
                     parameters: [
