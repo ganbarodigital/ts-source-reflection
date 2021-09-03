@@ -119,6 +119,7 @@ export * from "./IntermediateParenthesizedExpression";
 export * from "./IntermediateParenthesizedType";
 export * from "./IntermediatePropertyAccessExpression";
 export * from "./IntermediatePropertyAssignment";
+export * from "./IntermediatePropertyDeclaration";
 export * from "./IntermediatePropertySignature";
 export * from "./IntermediateQualifiedName";
 export * from "./IntermediateReadonlyItem";
