@@ -32,4 +32,23 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateUntypedPropertyDefinition";
+import { Maybe } from "@safelytyped/core-types";
+import { IntermediateExpression } from "../IntermediateExpression";
+import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
+import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
+import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
+import { IntermediateRestrictableScopeItem } from "../IntermediateRestrictableScopeItem";
+import { IntermediateStaticItem } from "../IntermediateStaticItem";
+
+export interface IntermediateUntypedPropertyDeclaration
+    extends IntermediateItem<IntermediateKind.IntermediateUntypedPropertyDefinition>,
+        IntermediateIdentifiedItem,
+        IntermediateOptionalItem,
+        IntermediateReadonlyItem,
+        IntermediateRestrictableScopeItem,
+        IntermediateStaticItem
+{
+    initializer: Maybe<IntermediateExpression>;
+}

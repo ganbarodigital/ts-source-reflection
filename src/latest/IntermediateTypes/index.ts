@@ -155,7 +155,7 @@ export * from "./IntermediateUnionType";
 export * from "./IntermediateUntypedCallableParameterDeclaration";
 export * from "./IntermediateUntypedCallableParameterSignature";
 export * from "./IntermediateUntypedConstructorParameterDeclaration";
-export * from "./IntermediateUntypedPropertyDefinition";
+export * from "./IntermediateUntypedPropertyDeclaration";
 export * from "./IntermediateUntypedPropertySignature";
 export * from "./IntermediateVarDeclaration";
 export * from "./IntermediateVariableDeclaration";
