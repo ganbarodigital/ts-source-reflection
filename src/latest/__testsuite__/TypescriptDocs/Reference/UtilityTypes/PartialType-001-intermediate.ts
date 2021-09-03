@@ -82,6 +82,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
                     name: "todo",
                     isOptional: false,
                     isReadonly: false,
@@ -93,6 +94,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
                     name: "fieldsToUpdate",
                     isOptional: false,
                     isReadonly: false,

@@ -46,6 +46,7 @@ import {
     IntermediateTypedCallableParameterDeclaration,
     IntermediateUntypedCallableParameterDeclaration
 } from "../IntermediateTypes";
+import { processDecorators } from "./processDecorators";
 import { processExpression } from "./processExpression";
 import { processObjectBindingPattern } from "./processObjectBindingPattern";
 import { processQuestionToken } from "./processQuestionToken";
@@ -89,6 +90,7 @@ export function processParameterDeclaration(
         // tslint:disable-next-line: no-angle-bracket-type-assertion
         return <IntermediateUntypedCallableParameterDeclaration>{
             kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
+            decorators: processDecorators(paramDec),
             name: paramDec.name.getText(),
             initializer,
             isOptional: processQuestionToken(paramDec.questionToken),
@@ -112,6 +114,7 @@ export function processParameterDeclaration(
     if (AST.hasDotDotDotToken(paramDec.dotDotDotToken)) {
         return <IntermediateTypedCallableParameterDeclaration>{
             kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+            decorators: processDecorators(paramDec),
             name: paramDec.name.getText(),
             typeRef: {
                 kind: IntermediateKind.IntermediateRestType,
@@ -126,6 +129,7 @@ export function processParameterDeclaration(
     // general case - typed parameter
     return <IntermediateTypedCallableParameterDeclaration>{
         kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+        decorators: processDecorators(paramDec),
         name: paramDec.name.getText(),
         typeRef: processTypeNode(paramType),
         isOptional: processQuestionToken(paramDec.questionToken),

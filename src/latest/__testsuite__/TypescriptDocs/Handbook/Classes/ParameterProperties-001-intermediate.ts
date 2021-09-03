@@ -56,6 +56,7 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
+                            decorators: [],
                             name: "x",
                             isOptional: false,
                             isReadonly: true,
@@ -68,6 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
+                            decorators: [],
                             name: "y",
                             isOptional: false,
                             isReadonly: false,
@@ -80,6 +82,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
+                            decorators: [],
                             name: "z",
                             isOptional: false,
                             isReadonly: false,

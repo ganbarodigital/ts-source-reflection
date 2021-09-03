@@ -137,6 +137,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
                     name: "pet",
                     typeRef: {
                         kind: IntermediateKind.IntermediateUnionType,
@@ -407,6 +408,7 @@ const expectedResult: IntermediateSourceFile = {
                                 parameters: [
                                     {
                                         kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
+                                        decorators: [],
                                         name: "pet",
                                         isOptional: false,
                                         initializer: undefined,

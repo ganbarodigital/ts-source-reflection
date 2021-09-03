@@ -62,6 +62,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
                     name: "str",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,

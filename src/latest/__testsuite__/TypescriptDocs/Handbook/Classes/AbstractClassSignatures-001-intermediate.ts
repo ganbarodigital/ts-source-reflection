@@ -127,6 +127,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
                     name: "ctor",
                     isOptional: false,
                     isReadonly: false,

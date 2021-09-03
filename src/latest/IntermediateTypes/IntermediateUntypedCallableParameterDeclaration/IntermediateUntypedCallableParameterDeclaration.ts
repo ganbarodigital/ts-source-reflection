@@ -33,13 +33,14 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { IntermediateItem, IntermediateKind } from "..";
+import { IntermediateDecoratableItem, IntermediateItem, IntermediateKind } from "..";
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
 
 export interface IntermediateUntypedCallableParameterDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateUntypedCallableParameterDeclaration>,
+        IntermediateDecoratableItem,
         IntermediateIdentifiedItem,
         IntermediateOptionalItem
 {

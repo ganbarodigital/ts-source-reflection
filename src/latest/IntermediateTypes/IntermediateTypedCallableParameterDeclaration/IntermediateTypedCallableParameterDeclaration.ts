@@ -33,6 +33,7 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
+import { IntermediateDecoratableItem } from "..";
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateItem } from "../IntermediateItem";
@@ -43,6 +44,7 @@ import { IntermediateTypedItem } from "../IntermediateTypedItem";
 
 export interface IntermediateTypedCallableParameterDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateTypedCallableParameterDeclaration>,
+        IntermediateDecoratableItem,
         IntermediateIdentifiedItem,
         IntermediateOptionalItem,
         IntermediateReadonlyItem,

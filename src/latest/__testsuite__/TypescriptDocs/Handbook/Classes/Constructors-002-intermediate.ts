@@ -57,6 +57,7 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
+                            decorators: [],
                             name: "x",
                             isOptional: false,
                             isReadonly: false,
@@ -69,6 +70,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
+                            decorators: [],
                             name: "y",
                             isOptional: false,
                             isReadonly: false,
@@ -87,6 +89,7 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
+                            decorators: [],
                             name: "s",
                             isOptional: false,
                             isReadonly: false,
@@ -105,6 +108,7 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
+                            decorators: [],
                             name: "xs",
                             isOptional: false,
                             isReadonly: false,
@@ -117,6 +121,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
+                            decorators: [],
                             name: "y",
                             isOptional: true,
                             isReadonly: false,

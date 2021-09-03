@@ -50,6 +50,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
                     name: "s",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -61,6 +62,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
                     name: "alignment",
                     typeRef: {
                         kind: IntermediateKind.IntermediateUnionType,

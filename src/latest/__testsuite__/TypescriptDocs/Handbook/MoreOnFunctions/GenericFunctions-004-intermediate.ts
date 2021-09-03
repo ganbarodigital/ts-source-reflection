@@ -57,6 +57,7 @@ const expectedResult: IntermediateSourceFile = {
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
                     name: "arr1",
                     isOptional: false,
                     isReadonly: false,
@@ -71,6 +72,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
                     name: "arr2",
                     isOptional: false,
                     isReadonly: false,

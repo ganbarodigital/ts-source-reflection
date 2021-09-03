@@ -126,6 +126,7 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
+                            decorators: [],
                             name: "path",
                             isReadonly: false,
                             isOptional: false,
@@ -138,6 +139,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
+                            decorators: [],
                             name: "networked",
                             isReadonly: false,
                             isOptional: false,
@@ -176,6 +178,7 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
+                            decorators: [],
                             name: "path",
                             isReadonly: false,
                             isOptional: false,
@@ -188,6 +191,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
+                            decorators: [],
                             name: "content",
                             isReadonly: false,
                             isOptional: false,
