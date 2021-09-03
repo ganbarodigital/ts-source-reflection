@@ -32,4 +32,21 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateTypedCallableParameterDefinition";
+import { Maybe } from "@safelytyped/core-types";
+import { IntermediateExpression } from "../IntermediateExpression";
+import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
+import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
+import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
+import { IntermediateTypedItem } from "../IntermediateTypedItem";
+
+export interface IntermediateTypedCallableParameterDeclaration
+    extends IntermediateItem<IntermediateKind.IntermediateTypedCallableParameterDefinition>,
+        IntermediateIdentifiedItem,
+        IntermediateOptionalItem,
+        IntermediateReadonlyItem,
+        IntermediateTypedItem
+{
+    initializer: Maybe<IntermediateExpression>;
+}

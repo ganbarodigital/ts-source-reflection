@@ -43,7 +43,7 @@ import {
     IntermediateExpression,
     IntermediateKind,
     IntermediateObjectBindingParameter,
-    IntermediateTypedCallableParameterDefinition,
+    IntermediateTypedCallableParameterDeclaration,
     IntermediateUntypedCallableParameterDefinition
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
@@ -53,7 +53,7 @@ import { processTypeNode } from "./processTypeNode";
 
 export function processParameterDeclaration(
     paramDec: ParameterDeclaration
-): IntermediateTypedCallableParameterDefinition
+): IntermediateTypedCallableParameterDeclaration
     | IntermediateUntypedCallableParameterDefinition
     | IntermediateObjectBindingParameter
 {
@@ -110,7 +110,7 @@ export function processParameterDeclaration(
 
     // special case - rest parameter
     if (AST.hasDotDotDotToken(paramDec.dotDotDotToken)) {
-        return <IntermediateTypedCallableParameterDefinition>{
+        return <IntermediateTypedCallableParameterDeclaration>{
             kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
             name: paramDec.name.getText(),
             typeRef: {
@@ -124,7 +124,7 @@ export function processParameterDeclaration(
     }
 
     // general case - typed parameter
-    return <IntermediateTypedCallableParameterDefinition>{
+    return <IntermediateTypedCallableParameterDeclaration>{
         kind: IntermediateKind.IntermediateTypedCallableParameterDefinition,
         name: paramDec.name.getText(),
         typeRef: processTypeNode(paramType),

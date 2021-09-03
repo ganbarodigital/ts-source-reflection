@@ -35,10 +35,10 @@
 import { Maybe } from "@safelytyped/core-types";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateRestrictableScope } from "../IntermediateRestrictableScope";
-import { IntermediateTypedCallableParameterDefinition } from "../IntermediateTypedCallableParameterDefinition";
+import { IntermediateTypedCallableParameterDeclaration } from "../IntermediateTypedCallableParameterDeclaration";
 
 export type IntermediateTypedConstructorParameterDefinition
-    = Omit<IntermediateTypedCallableParameterDefinition, "kind">
+    = Omit<IntermediateTypedCallableParameterDeclaration, "kind">
     &
 {
     kind: IntermediateKind.IntermediateTypedConstructorParameterDefinition;
