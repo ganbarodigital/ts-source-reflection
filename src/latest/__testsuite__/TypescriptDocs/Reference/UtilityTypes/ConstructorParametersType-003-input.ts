@@ -1,0 +1,1 @@
+type T2 = ConstructorParameters<RegExpConstructor>;
