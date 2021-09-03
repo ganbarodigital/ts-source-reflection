@@ -1,0 +1,1 @@
+type T2 = InstanceType<never>;
