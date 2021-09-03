@@ -139,7 +139,7 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: false,
         },
         {
-            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
             name: "T1",
             isExported: false,

@@ -139,7 +139,7 @@ export * from "./IntermediateTemplateLiteralSpan";
 export * from "./IntermediateThisType";
 export * from "./IntermediateTupleType";
 export * from "./IntermediateTupleTypeElement";
-export * from "./IntermediateTypeAliasDefinition";
+export * from "./IntermediateTypeAliasDeclaration";
 export * from "./IntermediateTypeArgument";
 export * from "./IntermediateTypeAssertable";
 export * from "./IntermediateTypePredicate";

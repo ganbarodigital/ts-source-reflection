@@ -40,7 +40,7 @@ import {
 const expectedResult: IntermediateSourceFile = {
     children: [
         {
-            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
             name: "GetReturnType",
             isExported: false,
@@ -101,7 +101,7 @@ const expectedResult: IntermediateSourceFile = {
             },
         },
         {
-            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
             name: "Num",
             isExported: false,
@@ -124,7 +124,7 @@ const expectedResult: IntermediateSourceFile = {
             },
         },
         {
-            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
             name: "Str",
             isExported: false,
@@ -158,7 +158,7 @@ const expectedResult: IntermediateSourceFile = {
             },
         },
         {
-            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
             name: "Bools",
             isExported: false,

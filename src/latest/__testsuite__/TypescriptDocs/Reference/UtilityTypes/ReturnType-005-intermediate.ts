@@ -76,7 +76,7 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: false
         },
         {
-            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
             isDefaultExport: false,
             isExported: false,

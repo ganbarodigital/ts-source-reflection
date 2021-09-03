@@ -83,7 +83,7 @@ const expectedResult: IntermediateSourceFile = {
             ],
         },
         {
-            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
             isDefaultExport: false,
             isExported: false,

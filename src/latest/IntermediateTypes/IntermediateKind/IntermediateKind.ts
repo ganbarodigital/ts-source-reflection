@@ -110,7 +110,7 @@ export enum IntermediateKind {
     IntermediateThisType,
     IntermediateTupleType,
     IntermediateTupleTypeElement,
-    IntermediateTypeAliasDefinition,
+    IntermediateTypeAliasDeclaration,
     IntermediateTypeArgument,
     IntermediateTypeDefinition,
     IntermediateTypePredicate,

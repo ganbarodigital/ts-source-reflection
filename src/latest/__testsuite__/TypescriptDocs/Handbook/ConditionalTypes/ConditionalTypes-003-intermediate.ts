@@ -40,7 +40,7 @@ import {
 const expectedResult: IntermediateSourceFile = {
     children: [
         {
-            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
             name: "MessageOf",
             isExported: false,
@@ -139,7 +139,7 @@ const expectedResult: IntermediateSourceFile = {
             ],
         },
         {
-            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
             name: "EmailMessageContents",
             isExported: false,
@@ -157,7 +157,7 @@ const expectedResult: IntermediateSourceFile = {
             },
         },
         {
-            kind: IntermediateKind.IntermediateTypeAliasDefinition,
+            kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
             name: "DogMessageContents",
             isExported: false,

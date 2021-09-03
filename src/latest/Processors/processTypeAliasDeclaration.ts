@@ -37,7 +37,7 @@ import { AST } from "../AST";
 import { mustBeTypeAliasDeclaration } from "../AST/mustBeTypeAliasDeclaration";
 import {
     IntermediateKind,
-    IntermediateTypeAliasDefinition
+    IntermediateTypeAliasDeclaration
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
 import { processTypeNode } from "./processTypeNode";
@@ -46,14 +46,14 @@ import { StatementProcessor } from "./StatementProcessor";
 
 export const processTypeAliasDeclaration: StatementProcessor = (
     input: Statement
-): IntermediateTypeAliasDefinition => {
+): IntermediateTypeAliasDeclaration => {
     // make sure we have what we need
     const typeAliasDec = mustBeTypeAliasDeclaration(input);
 
     // at this point, we *know* that we're looking at a type alias :)
 
     return {
-        kind: IntermediateKind.IntermediateTypeAliasDefinition,
+        kind: IntermediateKind.IntermediateTypeAliasDeclaration,
         docBlock: processDocBlock(typeAliasDec),
         name: typeAliasDec.name.text,
         isExported: AST.hasExportModifier(input.modifiers),

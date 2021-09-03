@@ -39,7 +39,7 @@ import { IntermediateFunction } from "../IntermediateFunction";
 import { IntermediateImportAssignment } from "../IntermediateImportAssignment";
 import { IntermediateImportDeclaration } from "../IntermediateImportDeclaration";
 import { IntermediateInterface } from "../IntermediateInterface";
-import { IntermediateTypeAliasDefinition } from "../IntermediateTypeAliasDefinition";
+import { IntermediateTypeAliasDeclaration } from "../IntermediateTypeAliasDeclaration";
 import { IntermediateVariableDeclarations } from "../IntermediateVariableDeclarations";
 
 export type IntermediateSourceFileChild =
@@ -50,5 +50,5 @@ export type IntermediateSourceFileChild =
     | IntermediateImportAssignment
     | IntermediateImportDeclaration
     | IntermediateInterface
-    | IntermediateTypeAliasDefinition
+    | IntermediateTypeAliasDeclaration
     | IntermediateVariableDeclarations;

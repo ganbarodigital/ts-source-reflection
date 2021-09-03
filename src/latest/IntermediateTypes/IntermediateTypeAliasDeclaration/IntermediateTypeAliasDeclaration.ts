@@ -40,8 +40,8 @@ import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateTypedItem } from "../IntermediateTypedItem";
 
-export interface IntermediateTypeAliasDefinition
-    extends IntermediateItem<IntermediateKind.IntermediateTypeAliasDefinition>,
+export interface IntermediateTypeAliasDeclaration
+    extends IntermediateItem<IntermediateKind.IntermediateTypeAliasDeclaration>,
         IntermediateDocumentedItem,
         IntermediateExportableItem,
         IntermediateIdentifiedItem,
