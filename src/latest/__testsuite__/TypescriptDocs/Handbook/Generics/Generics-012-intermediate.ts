@@ -54,6 +54,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                    docBlock: undefined,
                     decorators: [],
                     name: "hasMask",
                     isOptional: false,
@@ -88,6 +89,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                    docBlock: undefined,
                     decorators: [],
                     name: "nametag",
                     isOptional: false,
@@ -122,6 +124,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                    docBlock: undefined,
                     decorators: [],
                     name: "numLegs",
                     isOptional: false,
@@ -162,6 +165,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                    docBlock: undefined,
                     decorators: [],
                     name: "keeper",
                     isOptional: false,
@@ -203,6 +207,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                    docBlock: undefined,
                     decorators: [],
                     name: "keeper",
                     isOptional: false,

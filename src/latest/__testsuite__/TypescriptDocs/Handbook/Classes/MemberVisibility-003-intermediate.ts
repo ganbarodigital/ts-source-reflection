@@ -55,6 +55,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
+                    docBlock: undefined,
                     decorators: [],
                     accessModifier: IntermediateRestrictableScope.PROTECTED,
                     name: "m",
@@ -90,6 +91,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
+                    docBlock: undefined,
                     decorators: [],
                     accessModifier: undefined,
                     name: "m",

@@ -53,6 +53,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
+                    docBlock: undefined,
                     decorators: [],
                     accessModifier: undefined,
                     name: "x",

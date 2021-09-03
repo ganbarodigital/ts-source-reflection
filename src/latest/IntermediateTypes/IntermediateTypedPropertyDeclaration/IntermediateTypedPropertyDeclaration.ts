@@ -33,7 +33,7 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { IntermediateDecoratableItem } from "..";
+import { IntermediateDecoratableItem, IntermediateDocumentedItem } from "..";
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateItem } from "../IntermediateItem";
@@ -47,6 +47,7 @@ import { IntermediateTypedItem } from "../IntermediateTypedItem";
 export interface IntermediateTypedPropertyDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateTypedPropertyDeclaration>,
         IntermediateDecoratableItem,
+        IntermediateDocumentedItem,
         IntermediateIdentifiedItem,
         IntermediateOptionalItem,
         IntermediateReadonlyItem,

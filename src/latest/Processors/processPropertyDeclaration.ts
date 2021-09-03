@@ -40,6 +40,7 @@ import {
     IntermediatePropertyDeclaration
 } from "../IntermediateTypes";
 import { processDecorators } from "./processDecorators";
+import { processDocBlock } from "./processDocBlock";
 import { processExpression } from "./processExpression";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
@@ -59,6 +60,7 @@ export function processPropertyDeclaration(
     if (!input.type) {
         return {
             kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
+            docBlock: processDocBlock(input),
             decorators: processDecorators(input),
             name: input.name.getText(),
             isOptional: processQuestionToken(input.questionToken),
@@ -72,6 +74,7 @@ export function processPropertyDeclaration(
     // general case: typed property
     return {
         kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+        docBlock: processDocBlock(input),
         decorators: processDecorators(input),
         name: input.name.getText(),
         isOptional: processQuestionToken(input.questionToken),
