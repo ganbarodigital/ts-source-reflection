@@ -36,7 +36,7 @@ import { ConstructorDeclaration, ConstructorTypeNode, NodeArray, ParameterDeclar
 import { AST } from "../AST";
 import {
     IntermediateConstructorDeclaration,
-    IntermediateConstructorParameterDefinition,
+    IntermediateConstructorParameterDeclaration,
     IntermediateKind,
     IntermediateObjectBindingParameter,
     IntermediateRestrictableScope,
@@ -60,9 +60,9 @@ export function processConstructorDeclaration(
 
 function processConstructorParameters(
     input: NodeArray<ParameterDeclaration>
-): IntermediateConstructorParameterDefinition[] {
+): IntermediateConstructorParameterDeclaration[] {
     // our return value
-    const retval: IntermediateConstructorParameterDefinition[] = [];
+    const retval: IntermediateConstructorParameterDeclaration[] = [];
 
     // constructor parameters have unique behaviour,
     // which is why we're handling them separately
@@ -78,7 +78,7 @@ function processConstructorParameters(
 
 function processConstructorParameter(
     input: ParameterDeclaration
-): IntermediateConstructorParameterDefinition {
+): IntermediateConstructorParameterDeclaration {
     // we can reuse the existing support for all parameters
     // to save us repeating ourselves here
     const retval = mapFunctionParameterToConstructorParameter(
@@ -124,7 +124,7 @@ function mapFunctionParameterToConstructorParameter(
     input: IntermediateTypedCallableParameterDefinition
         | IntermediateUntypedCallableParameterDefinition
         | IntermediateObjectBindingParameter
-): IntermediateConstructorParameterDefinition {
+): IntermediateConstructorParameterDeclaration {
     switch(input.kind) {
         case IntermediateKind.IntermediateObjectBindingParameter:
             return input;

@@ -32,4 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateConstructorParameterDefinition";
+import { IntermediateObjectBindingParameter } from "../IntermediateObjectBindingParameter";
+import { IntermediateTypedConstructorParameterDefinition } from "../IntermediateTypedConstructorParameterDefinition";
+import { IntermediateUntypedConstructorParameterDefinition } from "../IntermediateUntypedConstructorParameterDefinition";
+
+export type IntermediateConstructorParameterDeclaration
+    = IntermediateTypedConstructorParameterDefinition
+    | IntermediateUntypedConstructorParameterDefinition
+    | IntermediateObjectBindingParameter;
