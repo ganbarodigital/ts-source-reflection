@@ -256,6 +256,7 @@ const expectedResult: IntermediateSourceFile = {
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateConstructorDeclaration,
+                        docBlock: undefined,
                         parameters: [],
                         returnType: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,

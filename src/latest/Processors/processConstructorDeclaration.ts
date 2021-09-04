@@ -45,6 +45,7 @@ import {
     IntermediateUntypedCallableParameterDeclaration,
     IntermediateUntypedConstructorParameterDeclaration
 } from "../IntermediateTypes";
+import { processDocBlock } from "./processDocBlock";
 import { processParameterDeclaration } from "./processParameterDeclaration";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 
@@ -53,6 +54,7 @@ export function processConstructorDeclaration(
 ): IntermediateConstructorDeclaration {
     return {
         kind: IntermediateKind.IntermediateConstructorDeclaration,
+        docBlock: processDocBlock(input),
         parameters: processConstructorParameters(input.parameters),
         returnType: processReturnTypeFromNode(input),
     }
