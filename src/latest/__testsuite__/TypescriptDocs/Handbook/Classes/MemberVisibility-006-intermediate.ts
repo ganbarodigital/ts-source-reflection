@@ -86,6 +86,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateConstructorDeclaration,
                     docBlock: undefined,
+                    accessModifier: undefined,
                     parameters: [],
                     returnType: undefined,
                 }

@@ -76,6 +76,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateConstructorDeclaration,
                     docBlock: undefined,
+                    accessModifier: undefined,
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,

@@ -36,6 +36,7 @@ import { Maybe } from "@safelytyped/core-types";
 import {
     IntermediateConstructorParameterDeclaration,
     IntermediateDocumentedItem,
+    IntermediateRestrictableScopeItem,
     IntermediateTypeReference
 } from "..";
 import { IntermediateItem } from "../IntermediateItem";
@@ -43,7 +44,8 @@ import { IntermediateKind } from "../IntermediateKind";
 
 export interface IntermediateConstructorDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateConstructorDeclaration>,
-        IntermediateDocumentedItem
+        IntermediateDocumentedItem,
+        IntermediateRestrictableScopeItem
 {
     parameters: IntermediateConstructorParameterDeclaration[];
     returnType: Maybe<IntermediateTypeReference>;

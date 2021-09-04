@@ -55,6 +55,7 @@ export function processConstructorDeclaration(
     return {
         kind: IntermediateKind.IntermediateConstructorDeclaration,
         docBlock: processDocBlock(input),
+        accessModifier: AST.getRestrictableScope(input),
         parameters: processConstructorParameters(input.parameters),
         returnType: processReturnTypeFromNode(input),
     }
