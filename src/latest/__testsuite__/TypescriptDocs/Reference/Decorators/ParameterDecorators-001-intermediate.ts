@@ -1,0 +1,318 @@
+//
+// Copyright (c) 2021-present Ganbaro Digital Ltd
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions
+// are met:
+//
+//   * Re-distributions of source code must retain the above copyright
+//     notice, this list of conditions and the following disclaimer.
+//
+//   * Redistributions in binary form must reproduce the above copyright
+//     notice, this list of conditions and the following disclaimer in
+//     the documentation and/or other materials provided with the
+//     distribution.
+//
+//   * Neither the names of the copyright holders nor the names of his
+//     contributors may be used to endorse or promote products derived
+//     from this software without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+// FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+// COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+// INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+// BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+// LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+// LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+// ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+// POSSIBILITY OF SUCH DAMAGE.
+//
+
+import {
+    IntermediateKind, IntermediateSourceFile
+} from "../../../../IntermediateTypes";
+
+const expectedResult: IntermediateSourceFile = {
+    children: [
+        {
+            kind: IntermediateKind.IntermediateImportDeclaration,
+            isTypeOnly: false,
+            items: [],
+            source: {
+                kind: IntermediateKind.IntermediateStringLiteral,
+                value: "reflect-metadata",
+                asType: undefined,
+                typeAssertion: undefined,
+            },
+        },
+        {
+            kind: IntermediateKind.IntermediateVariableDeclarations,
+            variables: [
+                {
+                    kind: IntermediateKind.IntermediateConstDeclaration,
+                    isConstant: true,
+                    isDeclared: false,
+                    isDefaultExport: false,
+                    isExported: false,
+                    isReadonly: false,
+                    docBlock: undefined,
+                    name: "requiredMetadataKey",
+                    typeRef: undefined,
+                    initializer: {
+                        kind: IntermediateKind.IntermediateCallExpression,
+                        expression: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "Symbol",
+                            asType: undefined,
+                            typeAssertion: undefined,
+                        },
+                        typeArguments: [],
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateStringLiteral,
+                                value: "required",
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            }
+                        ],
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                },
+            ],
+        },
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "required",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
+                    name: "target",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Object",
+                    },
+                    initializer: undefined,
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
+                    name: "propertyKey",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateUnionType,
+                        typeRefs: [
+                            {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "string",
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "symbol",
+                            },
+                        ],
+                    },
+                    initializer: undefined,
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
+                    name: "parameterIndex",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
+                    },
+                    initializer: undefined,
+                },
+            ],
+            returnType: undefined,
+            hasBody: true,
+        },
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "validate",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
+                    name: "target",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "any",
+                    },
+                    initializer: undefined,
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
+                    name: "propertyName",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
+                    },
+                    initializer: undefined,
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                    decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
+                    name: "descriptor",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateGenericTypeReference,
+                        typeName: "TypedPropertyDescriptor",
+                        typeArguments: [
+                            {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "Function",
+                            },
+                        ],
+                    },
+                    initializer: undefined,
+                },
+            ],
+            returnType: undefined,
+            hasBody: true,
+        },
+        {
+            kind: IntermediateKind.IntermediateClass,
+            docBlock: undefined,
+            decorators: [],
+            isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "BugReport",
+            typeParameters: [],
+            extends: [],
+            implements: [],
+            members: [
+                {
+                    kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
+                    docBlock: undefined,
+                    decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
+                    isStatic: false,
+                    accessModifier: undefined,
+                    name: "type",
+                    initializer: {
+                        kind: IntermediateKind.IntermediateStringLiteral,
+                        value: "report",
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                },
+                {
+                    kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                    docBlock: undefined,
+                    decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
+                    isStatic: false,
+                    accessModifier: undefined,
+                    name: "title",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
+                    },
+                    initializer: undefined,
+                },
+                {
+                    kind: IntermediateKind.IntermediateConstructorDeclaration,
+                    docBlock: undefined,
+                    accessModifier: undefined,
+                    parameters: [
+                        {
+                            kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
+                            decorators: [],
+                            isOptional: false,
+                            isReadonly: false,
+                            setsPropertyWithScope: undefined,
+                            name: "t",
+                            typeRef: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "string",
+                            },
+                            initializer: undefined,
+                        }
+                    ],
+                    returnType: undefined,
+                },
+                {
+                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    docBlock: undefined,
+                    decorators: [
+                        {
+                            kind: IntermediateKind.IntermediateDecorator,
+                            expression: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "validate",
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            },
+                        },
+                    ],
+                    isAbstract: false,
+                    isStatic: false,
+                    accessModifier: undefined,
+                    name: "print",
+                    typeParameters: [],
+                    parameters: [
+                        {
+                            kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                            decorators: [
+                                {
+                                    kind: IntermediateKind.IntermediateDecorator,
+                                    expression: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "required",
+                                        asType: undefined,
+                                        typeAssertion: undefined,
+                                    },
+                                },
+                            ],
+                            isOptional: false,
+                            isReadonly: false,
+                            name: "verbose",
+                            typeRef: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "boolean",
+                            },
+                            initializer: undefined,
+                        },
+                    ],
+                    returnType: undefined,
+                    hasBody: true,
+                },
+            ],
+        },
+    ],
+    kind: IntermediateKind.IntermediateSourceFile,
+}
+
+export default expectedResult;
