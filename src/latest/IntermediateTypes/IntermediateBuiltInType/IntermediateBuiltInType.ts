@@ -41,6 +41,7 @@ export type IntermediateBuiltInType =
     | "number"
     | "object"
     | "string"
+    | "symbol"
     | "undefined"
     | "unknown"
     | "void";
