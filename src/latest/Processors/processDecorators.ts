@@ -33,7 +33,8 @@
 //
 
 import { Decorator, NodeArray } from "typescript";
-import { IntermediateDecorator } from "../IntermediateTypes";
+import { IntermediateDecorator, IntermediateKind } from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
 
 type NodeWithDecorators = {
     decorators?: NodeArray<Decorator>
@@ -43,6 +44,22 @@ export function processDecorators(
     input: NodeWithDecorators
 ): IntermediateDecorator[]
 {
-    // placeholder for now
-    return [];
+    // our return value
+    const retval: IntermediateDecorator[] = [];
+
+    // do we have any decorators?
+    if (!input.decorators) {
+        return retval;
+    }
+
+    // yes we do
+    for (const member of input.decorators) {
+        retval.push(<IntermediateDecorator>{
+            kind: IntermediateKind.IntermediateDecorator,
+            expression: processExpression(member.expression),
+        });
+    }
+
+    // all done
+    return retval;
 }

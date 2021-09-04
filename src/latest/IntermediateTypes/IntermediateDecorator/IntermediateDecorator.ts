@@ -32,10 +32,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem, IntermediateKind } from "..";
+import { IntermediateExpression, IntermediateItem, IntermediateKind } from "..";
 
 export interface IntermediateDecorator
     extends IntermediateItem<IntermediateKind.IntermediateDecorator>
 {
-
+    expression: IntermediateExpression;
 }
