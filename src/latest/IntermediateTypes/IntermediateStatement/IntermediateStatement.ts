@@ -32,25 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateNamespace } from "..";
-import { IntermediateClass } from "../IntermediateClass";
-import { IntermediateExportDeclaration } from "../IntermediateExportDeclaration";
-import { IntermediateExpression } from "../IntermediateExpression";
-import { IntermediateFunction } from "../IntermediateFunction";
-import { IntermediateImportAssignment } from "../IntermediateImportAssignment";
-import { IntermediateImportDeclaration } from "../IntermediateImportDeclaration";
-import { IntermediateInterface } from "../IntermediateInterface";
-import { IntermediateTypeAliasDeclaration } from "../IntermediateTypeAliasDeclaration";
-import { IntermediateVariableDeclarations } from "../IntermediateVariableDeclarations";
+import { ValueOf } from "@safelytyped/core-types";
+import { IntermediateSupportedStatements } from "..";
 
-export type IntermediateStatement =
-    IntermediateClass
-    | IntermediateExportDeclaration
-    | IntermediateExpression
-    | IntermediateFunction
-    | IntermediateImportAssignment
-    | IntermediateImportDeclaration
-    | IntermediateInterface
-    | IntermediateNamespace
-    | IntermediateTypeAliasDeclaration
-    | IntermediateVariableDeclarations;
+export type IntermediateStatement = ValueOf<IntermediateSupportedStatements>;

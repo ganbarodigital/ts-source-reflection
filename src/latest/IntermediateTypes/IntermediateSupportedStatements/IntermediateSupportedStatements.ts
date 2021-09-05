@@ -46,22 +46,24 @@ import { IntermediateVariableDeclarations } from "../IntermediateVariableDeclara
 /**
  * `IntermediateSupportedStatements` lists all the AST node types
  *
- * a) that can appear as the immediate child of a source file, and
+ * a) that can appear as the immediate child of a source file,
+ *    namespace (or anywhere else where Statements are valid) and
  * b) that we support
  *
- * It's mostly used to power some code that tries to use the compiler
- * to prove that `processStatement()` isn't missing any
- * nodes that they should be supporting.
+ * This is used to power:
+ *
+ * - the IntermediateStatement type
+ * - the list of statement processors maintained within processStatement()
  */
 export interface IntermediateSupportedStatements {
-    ClassDeclaration?: IntermediateClass[];
-    ExportDeclaration?: IntermediateExportDeclaration[];
-    ExpressionStatement?: IntermediateExpression[];
-    FunctionDeclaration?: IntermediateFunction[];
-    ImportEqualsDeclaration?: IntermediateImportAssignment;
-    ImportDeclaration?: IntermediateImportDeclaration[];
-    InterfaceDeclaration?: IntermediateInterface[];
-    ModuleDeclaration?: IntermediateNamespace[];
-    TypeAliasDeclaration?: IntermediateTypeAliasDeclaration[];
-    VariableStatement?: IntermediateVariableDeclarations[];
+    ClassDeclaration: IntermediateClass;
+    ExportDeclaration: IntermediateExportDeclaration;
+    ExpressionStatement: IntermediateExpression;
+    FunctionDeclaration: IntermediateFunction;
+    ImportEqualsDeclaration: IntermediateImportAssignment;
+    ImportDeclaration: IntermediateImportDeclaration;
+    InterfaceDeclaration: IntermediateInterface;
+    ModuleDeclaration: IntermediateNamespace;
+    TypeAliasDeclaration: IntermediateTypeAliasDeclaration;
+    VariableStatement: IntermediateVariableDeclarations;
 }
