@@ -86,7 +86,7 @@ export enum IntermediateKind {
     IntermediateMappedType,
     IntermediateMethodDeclaration,
     IntermediateMethodSignature,
-    IntermediateModule,
+    IntermediateNamespace,
     IntermediateNamespaceImport,
     IntermediateNewExpression,
     IntermediateNumericLiteral,
