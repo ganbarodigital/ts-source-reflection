@@ -56,6 +56,7 @@ type ValidChildren = RequireAllAttributesMap<IntermediateSupportedStatements, tr
 
 const VALID_CHILDREN: ValidChildren & HashMap<true> = {
     ClassDeclaration: true,
+    EnumDeclaration: true,
     ExportDeclaration: true,
     ExpressionStatement: true,
     FunctionDeclaration: true,

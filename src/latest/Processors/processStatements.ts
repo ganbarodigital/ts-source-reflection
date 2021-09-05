@@ -39,6 +39,7 @@ import {
     IntermediateSupportedStatements
 } from "../IntermediateTypes";
 import { processClassDeclaration } from "./processClassDeclaration";
+import { processEnumDeclaration } from "./processEnumDeclaration";
 import { processExportDeclaration } from "./processExportDeclaration";
 import { processExpressionStatement } from "./processExpressionStatement";
 import { processFunctionDeclaration } from "./processFunctionDeclaration";
@@ -54,6 +55,7 @@ type StatementProcessors = RequireAllAttributesMap<IntermediateSupportedStatemen
 
 const statementProcessors: StatementProcessors = {
     ClassDeclaration: processClassDeclaration,
+    EnumDeclaration: processEnumDeclaration,
     ExpressionStatement: processExpressionStatement,
     ExportDeclaration: processExportDeclaration,
     FunctionDeclaration: processFunctionDeclaration,

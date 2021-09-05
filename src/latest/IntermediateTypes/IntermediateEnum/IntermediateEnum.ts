@@ -32,12 +32,14 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateDocumentedItem, IntermediateExportableItem, IntermediateItem, IntermediateKind } from "..";
+import { IntermediateDocumentedItem, IntermediateExportableItem, IntermediateIdentifiedItem, IntermediateItem, IntermediateKind } from "..";
+import { IntermediateEnumMember } from "../IntermediateEnumMember";
 
 export interface IntermediateEnum
     extends IntermediateItem<IntermediateKind.IntermediateEnum>,
         IntermediateDocumentedItem,
-        IntermediateExportableItem
+        IntermediateExportableItem,
+        IntermediateIdentifiedItem
 {
-
+    members: IntermediateEnumMember[];
 }

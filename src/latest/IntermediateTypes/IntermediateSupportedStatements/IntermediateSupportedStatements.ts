@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateNamespace } from "..";
+import { IntermediateEnum, IntermediateNamespace } from "..";
 import { IntermediateClass } from "../IntermediateClass";
 import { IntermediateExportDeclaration } from "../IntermediateExportDeclaration";
 import { IntermediateExpression } from "../IntermediateExpression";
@@ -57,6 +57,7 @@ import { IntermediateVariableDeclarations } from "../IntermediateVariableDeclara
  */
 export interface IntermediateSupportedStatements {
     ClassDeclaration: IntermediateClass;
+    EnumDeclaration: IntermediateEnum;
     ExportDeclaration: IntermediateExportDeclaration;
     ExpressionStatement: IntermediateExpression;
     FunctionDeclaration: IntermediateFunction;
