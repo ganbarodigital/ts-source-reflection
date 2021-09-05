@@ -62,6 +62,7 @@ const VALID_CHILDREN: ValidChildren & HashMap<true> = {
     ImportDeclaration: true,
     ImportEqualsDeclaration: true,
     InterfaceDeclaration: true,
+    ModuleDeclaration: true,
     TypeAliasDeclaration: true,
     VariableStatement: true,
 }

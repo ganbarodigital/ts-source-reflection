@@ -31,40 +31,13 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { FunctionPointerTable, RequireAllAttributesMap, searchFunctionPointerTable } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
-import { NodeArray, SourceFile, Statement, SyntaxKind } from "typescript";
-import { AST } from "../AST";
+import { SourceFile } from "typescript";
 import {
     IntermediateKind,
-    IntermediateSourceFile,
-    IntermediateSourceFileChild,
-    IntermediateSourceFileChildren
+    IntermediateSourceFile
 } from "../IntermediateTypes";
-import { processClassDeclaration } from "./processClassDeclaration";
-import { processExportDeclaration } from "./processExportDeclaration";
-import { processExpressionStatement } from "./processExpressionStatement";
-import { processFunctionDeclaration } from "./processFunctionDeclaration";
-import { processImportDeclaration } from "./processImportDeclaration";
-import { processImportEqualsDeclaration } from "./processImportEqualsDeclaration";
-import { processInterfaceDeclaration } from "./processInterfaceDeclaration";
-import { processTypeAliasDeclaration } from "./processTypeAliasDeclaration";
-import { processVariableStatement } from "./processVariableStatement";
-import { StatementProcessor } from "./StatementProcessor";
-
-type StatementProcessors = RequireAllAttributesMap<IntermediateSourceFileChildren, StatementProcessor>;
-
-const statementProcessors: StatementProcessors = {
-    ClassDeclaration: processClassDeclaration,
-    ExpressionStatement: processExpressionStatement,
-    ExportDeclaration: processExportDeclaration,
-    FunctionDeclaration: processFunctionDeclaration,
-    ImportDeclaration: processImportDeclaration,
-    ImportEqualsDeclaration: processImportEqualsDeclaration,
-    InterfaceDeclaration: processInterfaceDeclaration,
-    TypeAliasDeclaration: processTypeAliasDeclaration,
-    VariableStatement: processVariableStatement,
-}
+import { processStatements } from "./processStatements";
 
 export function processSourceFile(
     parsedSource: SourceFile
@@ -79,43 +52,4 @@ export function processSourceFile(
 
     // all done
     return retval;
-}
-
-function processStatements(
-    statements: NodeArray<Statement>
-): IntermediateSourceFileChild[]
-{
-    const result: IntermediateSourceFileChild[] = [];
-
-    for(const statement of statements) {
-        // shorthand
-        const kind = AST.getStatementKind(statement);
-
-        // did we get a statement that we support?
-        if (!kind) {
-            // tslint:disable-next-line: no-console
-            console.log("Skipping unsupported statement " + SyntaxKind[statement.kind]);
-            continue;
-        }
-
-        // tslint:disable-next-line: no-console
-        // console.log("Processing node: " + kind);
-
-        const statementProcessor = searchFunctionPointerTable(
-            statementProcessors as FunctionPointerTable<string, StatementProcessor>,
-            [kind],
-            () => { return undefined }
-        );
-
-        const processedItem = statementProcessor(
-            statement
-        );
-
-        if (processedItem) {
-            result.push(processedItem);
-        }
-    }
-
-    // all done
-    return result;
 }

@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateNamespace } from "..";
 import { IntermediateClass } from "../IntermediateClass";
 import { IntermediateExportDeclaration } from "../IntermediateExportDeclaration";
 import { IntermediateExpression } from "../IntermediateExpression";
@@ -50,5 +51,6 @@ export type IntermediateSourceFileChild =
     | IntermediateImportAssignment
     | IntermediateImportDeclaration
     | IntermediateInterface
+    | IntermediateNamespace
     | IntermediateTypeAliasDeclaration
     | IntermediateVariableDeclarations;
