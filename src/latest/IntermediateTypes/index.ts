@@ -69,6 +69,7 @@ export * from "./IntermediateDestructuredVarDeclaration";
 export * from "./IntermediateDocBlock";
 export * from "./IntermediateDocumentedItem";
 export * from "./IntermediateEntityName";
+export * from "./IntermediateEnum";
 export * from "./IntermediateExportDeclaration";
 export * from "./IntermediateExportableItem";
 export * from "./IntermediateExpression";
