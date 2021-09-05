@@ -66,6 +66,7 @@ import { mustBeCallSignatureDeclaration } from "./mustBeCallSignatureDeclaration
 import { mustBeClassDeclaration } from "./mustBeClassDeclaration";
 import { mustBeConstructorDeclaration } from "./mustBeConstructorDeclaration";
 import { mustBeConstructSignatureDeclaration } from "./mustBeConstructSignatureDeclaration";
+import { mustBeEnumDeclaration } from "./mustBeEnumDeclaration";
 import { mustBeExportDeclaration } from "./mustBeExportDeclaration";
 import { mustBeExpressionStatement } from "./mustBeExpressionStatement";
 import { mustBeFunctionDeclaration } from "./mustBeFunctionDeclaration";
@@ -115,6 +116,7 @@ export class AST
     static mustBeClassDeclaration = mustBeClassDeclaration;
     static mustBeConstructorDeclaration = mustBeConstructorDeclaration;
     static mustBeConstructSignatureDeclaration = mustBeConstructSignatureDeclaration;
+    static mustBeEnumDeclaration = mustBeEnumDeclaration;
     static mustBeExportDeclaration = mustBeExportDeclaration;
     static mustBeExpressionStatement = mustBeExpressionStatement;
     static mustBeFunctionDeclaration = mustBeFunctionDeclaration;
