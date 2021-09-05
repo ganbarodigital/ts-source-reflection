@@ -33,7 +33,7 @@
 //
 
 import { HashMap, RequireAllAttributesMap } from "@safelytyped/core-types";
-import { IntermediateSourceFileChildren } from "./IntermediateSourceFileChildren";
+import { IntermediateSupportedStatements } from "./IntermediateSupportedStatements";
 
 //
 // Let me explain what is happening here ...
@@ -52,7 +52,7 @@ import { IntermediateSourceFileChildren } from "./IntermediateSourceFileChildren
 // There is probably a neater way to do this. Patches to do so
 // are most welcome.
 //
-type ValidChildren = RequireAllAttributesMap<IntermediateSourceFileChildren, true>;
+type ValidChildren = RequireAllAttributesMap<IntermediateSupportedStatements, true>;
 
 const VALID_CHILDREN: ValidChildren & HashMap<true> = {
     ClassDeclaration: true,
@@ -67,9 +67,9 @@ const VALID_CHILDREN: ValidChildren & HashMap<true> = {
     VariableStatement: true,
 }
 
-export function isKeyOfIntermediateSourceFileChildren(
+export function isSupportedStatement(
     input: string
-): input is keyof IntermediateSourceFileChildren
+): input is keyof IntermediateSupportedStatements
 {
     return VALID_CHILDREN[input] || false;
 }

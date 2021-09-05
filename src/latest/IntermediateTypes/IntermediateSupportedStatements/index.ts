@@ -32,6 +32,5 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateSourceFileChild";
-export * from "./IntermediateSourceFileChildren";
-export * from "./isKeyOfIntermediateSourceFileChildren";
+export * from "./IntermediateSupportedStatements";
+export * from "./isSupportedStatement";

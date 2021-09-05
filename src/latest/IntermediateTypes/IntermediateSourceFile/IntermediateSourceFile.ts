@@ -35,11 +35,11 @@
 import { Filepath } from "@safelytyped/filepath";
 import { IntermediateItem } from "..";
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateSourceFileChild } from "../IntermediateSourceFileChildren";
+import { IntermediateStatement } from "../IntermediateStatement";
 
 export interface IntermediateSourceFile
     extends IntermediateItem<IntermediateKind.IntermediateSourceFile>
 {
     path?: Filepath;
-    children: IntermediateSourceFileChild[];
+    children: IntermediateStatement[];
 }

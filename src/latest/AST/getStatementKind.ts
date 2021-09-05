@@ -34,16 +34,16 @@
 
 import { HashMap } from "@safelytyped/core-types";
 import { isVariableStatement, Statement, SyntaxKind } from "typescript";
-import { IntermediateSourceFileChildren, isKeyOfIntermediateSourceFileChildren } from "../IntermediateTypes";
+import { IntermediateSupportedStatements, isSupportedStatement } from "../IntermediateTypes";
 
 type KindTransform = {
     typeguard: (x: Statement) => boolean;
-    retval: keyof IntermediateSourceFileChildren;
+    retval: keyof IntermediateSupportedStatements;
 }
 
 export function getStatementKind(
     input: Statement
-): keyof IntermediateSourceFileChildren | undefined
+): keyof IntermediateSupportedStatements | undefined
 {
     const transforms: HashMap<KindTransform> = {
         // this is a workaround for an alias in SyntaxKind
@@ -62,7 +62,7 @@ export function getStatementKind(
     }
 
     // make sure we have an acceptable value
-    if (isKeyOfIntermediateSourceFileChildren(retval)) {
+    if (isSupportedStatement(retval)) {
         // if we get here, the original SyntaxKind is just fine for us
         return retval;
     }

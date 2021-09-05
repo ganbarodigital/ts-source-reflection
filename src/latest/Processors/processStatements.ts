@@ -35,8 +35,8 @@ import { FunctionPointerTable, RequireAllAttributesMap, searchFunctionPointerTab
 import { NodeArray, Statement, SyntaxKind } from "typescript";
 import { AST } from "../AST";
 import {
-    IntermediateSourceFileChild,
-    IntermediateSourceFileChildren
+    IntermediateStatement,
+    IntermediateSupportedStatements
 } from "../IntermediateTypes";
 import { processClassDeclaration } from "./processClassDeclaration";
 import { processExportDeclaration } from "./processExportDeclaration";
@@ -50,7 +50,7 @@ import { processTypeAliasDeclaration } from "./processTypeAliasDeclaration";
 import { processVariableStatement } from "./processVariableStatement";
 import { StatementProcessor } from "./StatementProcessor";
 
-type StatementProcessors = RequireAllAttributesMap<IntermediateSourceFileChildren, StatementProcessor>;
+type StatementProcessors = RequireAllAttributesMap<IntermediateSupportedStatements, StatementProcessor>;
 
 const statementProcessors: StatementProcessors = {
     ClassDeclaration: processClassDeclaration,
@@ -67,9 +67,9 @@ const statementProcessors: StatementProcessors = {
 
 export function processStatements(
     statements: NodeArray<Statement>
-): IntermediateSourceFileChild[]
+): IntermediateStatement[]
 {
-    const result: IntermediateSourceFileChild[] = [];
+    const result: IntermediateStatement[] = [];
 
     for(const statement of statements) {
         // shorthand

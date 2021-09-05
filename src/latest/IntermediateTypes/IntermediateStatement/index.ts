@@ -32,12 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import { Statement } from "typescript";
-import {
-    IntermediateStatement
-} from "../IntermediateTypes";
-
-export type StatementProcessor = <T extends Statement>(
-    input: T
-) => Maybe<IntermediateStatement>;
+export * from "./IntermediateStatement";

@@ -43,14 +43,25 @@ import { IntermediateInterface } from "../IntermediateInterface";
 import { IntermediateTypeAliasDeclaration } from "../IntermediateTypeAliasDeclaration";
 import { IntermediateVariableDeclarations } from "../IntermediateVariableDeclarations";
 
-export type IntermediateSourceFileChild =
-    IntermediateClass
-    | IntermediateExportDeclaration
-    | IntermediateExpression
-    | IntermediateFunction
-    | IntermediateImportAssignment
-    | IntermediateImportDeclaration
-    | IntermediateInterface
-    | IntermediateNamespace
-    | IntermediateTypeAliasDeclaration
-    | IntermediateVariableDeclarations;
+/**
+ * `IntermediateSupportedStatements` lists all the AST node types
+ *
+ * a) that can appear as the immediate child of a source file, and
+ * b) that we support
+ *
+ * It's mostly used to power some code that tries to use the compiler
+ * to prove that `processStatement()` isn't missing any
+ * nodes that they should be supporting.
+ */
+export interface IntermediateSupportedStatements {
+    ClassDeclaration?: IntermediateClass[];
+    ExportDeclaration?: IntermediateExportDeclaration[];
+    ExpressionStatement?: IntermediateExpression[];
+    FunctionDeclaration?: IntermediateFunction[];
+    ImportEqualsDeclaration?: IntermediateImportAssignment;
+    ImportDeclaration?: IntermediateImportDeclaration[];
+    InterfaceDeclaration?: IntermediateInterface[];
+    ModuleDeclaration?: IntermediateNamespace[];
+    TypeAliasDeclaration?: IntermediateTypeAliasDeclaration[];
+    VariableStatement?: IntermediateVariableDeclarations[];
+}

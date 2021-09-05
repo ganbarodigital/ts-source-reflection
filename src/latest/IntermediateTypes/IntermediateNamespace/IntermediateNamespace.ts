@@ -32,7 +32,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateDeclarableItem, IntermediateDocumentedItem, IntermediateExportableItem, IntermediateIdentifiedItem, IntermediateItem, IntermediateKind, IntermediateSourceFileChild } from "..";
+import {
+    IntermediateDeclarableItem,
+    IntermediateDocumentedItem,
+    IntermediateExportableItem,
+    IntermediateIdentifiedItem,
+    IntermediateItem,
+    IntermediateKind,
+    IntermediateStatement
+} from "..";
 
 export interface IntermediateNamespace
     extends IntermediateItem<IntermediateKind.IntermediateNamespace>,
@@ -41,5 +49,5 @@ export interface IntermediateNamespace
         IntermediateExportableItem,
         IntermediateIdentifiedItem
 {
-    children: IntermediateSourceFileChild[]
+    children: IntermediateStatement[]
 }
