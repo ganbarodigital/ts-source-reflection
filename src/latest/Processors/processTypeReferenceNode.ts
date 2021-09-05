@@ -31,9 +31,10 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { TypeReferenceNode } from "typescript";
+import { isQualifiedName, TypeReferenceNode } from "typescript";
 
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
+import { processQualifiedName } from "./processQualifiedName";
 import { processTypeNode } from "./processTypeNode";
 
 
@@ -66,6 +67,11 @@ export function processTypeReferenceNode
             typeName: input.typeName.getText(),
             typeArguments,
         }
+    }
+
+    // special case - qualified name
+    if (isQualifiedName(input.typeName)) {
+        return processQualifiedName(input.typeName);
     }
 
     // we will return to this and add support for other cases
