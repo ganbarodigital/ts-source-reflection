@@ -109,6 +109,7 @@ export * from "./IntermediateMemberDeclaration";
 export * from "./IntermediateMemberSignature";
 export * from "./IntermediateMethodDeclaration";
 export * from "./IntermediateMethodSignature";
+export * from "./IntermediateModuleDeclaration";
 export * from "./IntermediateModuleReference";
 export * from "./IntermediateNamespace";
 export * from "./IntermediateNamespaceImport";
