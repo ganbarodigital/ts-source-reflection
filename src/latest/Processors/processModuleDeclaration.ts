@@ -32,11 +32,22 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
-import { isModuleBlock, ModuleDeclaration, NodeFlags, Statement } from "typescript";
+import {
+    DEFAULT_DATA_PATH,
+    getClassNames,
+    UnsupportedTypeError
+} from "@safelytyped/core-types";
+import {
+    isModuleBlock,
+    ModuleDeclaration,
+    NodeFlags,
+    Statement
+} from "typescript";
 import { AST } from "../AST";
 import {
+    IntermediateGlobalAugmentation,
     IntermediateKind,
+    IntermediateModuleDeclaration,
     IntermediateNamespace
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
@@ -45,7 +56,7 @@ import { StatementProcessor } from "./StatementProcessor";
 
 export const processModuleDeclaration: StatementProcessor = (
     input: Statement
-): IntermediateNamespace => {
+): IntermediateModuleDeclaration => {
     // make sure we have the right kind of statement
     const moduleDec = AST.mustBeModuleDeclaration(input);
 
@@ -55,12 +66,48 @@ export const processModuleDeclaration: StatementProcessor = (
         return processNamespace(moduleDec);
     }
 
+    // tslint:disable-next-line: no-bitwise
+    if (moduleDec.flags & NodeFlags.GlobalAugmentation) {
+        return processGlobalAugmentation(moduleDec);
+    }
+
     // if we get there, then this is something we have not seen before
     throw new UnsupportedTypeError({
         public: {
             dataPath: DEFAULT_DATA_PATH,
             expected: "a supported module type",
             actual: getClassNames(input)[0],
+        }
+    });
+}
+
+function processGlobalAugmentation(
+    input: ModuleDeclaration
+): IntermediateGlobalAugmentation {
+    // is this an empty augmentation?
+    if (!input.body) {
+        return {
+            kind: IntermediateKind.IntermediateGlobalAugmentation,
+            children: [],
+        }
+    }
+
+    // make sure we have the kind of body we are expecting
+    if (isModuleBlock(input.body)) {
+        return {
+            kind: IntermediateKind.IntermediateGlobalAugmentation,
+            children: processStatements(input.body!.statements),
+        }
+    }
+
+    // if we get here, we do not support this yet
+    // tslint:disable-next-line: no-console
+    console.log(getClassNames(input.body));
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: "a support ModuleDeclaration body type",
+            actual: getClassNames(input.body)[0],
         }
     });
 }

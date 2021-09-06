@@ -32,14 +32,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateEnum, IntermediateNamespace } from "..";
 import { IntermediateClass } from "../IntermediateClass";
+import { IntermediateEnum } from "../IntermediateEnum";
 import { IntermediateExportDeclaration } from "../IntermediateExportDeclaration";
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateFunction } from "../IntermediateFunction";
 import { IntermediateImportAssignment } from "../IntermediateImportAssignment";
 import { IntermediateImportDeclaration } from "../IntermediateImportDeclaration";
 import { IntermediateInterface } from "../IntermediateInterface";
+import { IntermediateModuleDeclaration } from "../IntermediateModuleDeclaration";
 import { IntermediateTypeAliasDeclaration } from "../IntermediateTypeAliasDeclaration";
 import { IntermediateVariableDeclarations } from "../IntermediateVariableDeclarations";
 
@@ -64,7 +65,7 @@ export interface IntermediateSupportedStatements {
     ImportEqualsDeclaration: IntermediateImportAssignment;
     ImportDeclaration: IntermediateImportDeclaration;
     InterfaceDeclaration: IntermediateInterface;
-    ModuleDeclaration: IntermediateNamespace;
+    ModuleDeclaration: IntermediateModuleDeclaration;
     TypeAliasDeclaration: IntermediateTypeAliasDeclaration;
     VariableStatement: IntermediateVariableDeclarations;
 }
