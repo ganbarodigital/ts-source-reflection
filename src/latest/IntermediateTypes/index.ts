@@ -86,6 +86,7 @@ export * from "./IntermediateGenericTypeArgument";
 export * from "./IntermediateGenericTypeReference";
 export * from "./IntermediateGenericable";
 export * from "./IntermediateGetter";
+export * from "./IntermediateGlobalAugmentation";
 export * from "./IntermediateIdentifiedItem";
 export * from "./IntermediateIdentifierReference";
 export * from "./IntermediateImportAssignment";
