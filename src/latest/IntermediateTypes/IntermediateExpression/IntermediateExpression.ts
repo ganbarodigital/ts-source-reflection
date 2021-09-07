@@ -38,6 +38,7 @@ import { IntermediateBigintLiteral } from "../IntermediateBigintLiteral";
 import { IntermediateBinaryExpression } from "../IntermediateBinaryExpression";
 import { IntermediateBooleanLiteral } from "../IntermediateBooleanLiteral";
 import { IntermediateCallExpression } from "../IntermediateCallExpression";
+import { IntermediateElementAccessExpression } from "../IntermediateElementAccessExpression";
 import { IntermediateFunctionExpression } from "../IntermediateFunctionExpression";
 import { IntermediateIdentifierReference } from "../IntermediateIdentifierReference";
 import { IntermediateNewExpression } from "../IntermediateNewExpression";
@@ -55,6 +56,7 @@ export type IntermediateExpression
       | IntermediateBinaryExpression
       | IntermediateBooleanLiteral
       | IntermediateCallExpression
+      | IntermediateElementAccessExpression
       | IntermediateFunctionExpression
       | IntermediateIdentifierReference
       | IntermediateNewExpression
