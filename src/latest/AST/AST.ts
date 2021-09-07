@@ -39,6 +39,7 @@ import { getRestrictableScope } from "./getRestrictableScope";
 import { getStatementKind } from "./getStatementKind";
 import { hasAbstractModifier } from "./hasAbstractModifier";
 import { hasBody } from "./hasBody";
+import { hasConstModifier } from "./hasConstModifier";
 import { hasDeclaredModifier } from "./hasDeclaredModifier";
 import { hasDefaultModifier } from "./hasDefaultModifier";
 import { hasDotDotDotToken } from "./hasDotDotDotToken";
@@ -90,6 +91,7 @@ export class AST
     static getStatementKind = getStatementKind;
     static hasAbstractModifier = hasAbstractModifier;
     static hasBody = hasBody;
+    static hasConstModifier = hasConstModifier;
     static hasDeclaredModifier = hasDeclaredModifier;
     static hasDefaultModifier = hasDefaultModifier;
     static hasDotDotDotToken = hasDotDotDotToken;
