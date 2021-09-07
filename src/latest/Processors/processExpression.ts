@@ -41,6 +41,7 @@ import {
     isBigIntLiteral,
     isBinaryExpression,
     isCallExpression,
+    isElementAccessExpression,
     isFunctionExpression,
     isIdentifier,
     isNewExpression,
@@ -60,6 +61,7 @@ import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
 import { processArrowFunction } from "./processArrowFunction";
 import { processBinaryExpression } from "./processBinaryExpression";
 import { processCallExpression } from "./processCallExpression";
+import { processElementAccessExpression } from "./processElementAccessExpression";
 import { processFunctionExpression } from "./processFunctionExpression";
 import { processIdentifier } from "./processIdentifier";
 import { processNewExpression } from "./processNewExpression";
@@ -169,6 +171,10 @@ export function processExpression(
 
     if (isBinaryExpression(input)) {
         return processBinaryExpression(input);
+    }
+
+    if (isElementAccessExpression(input)) {
+        return processElementAccessExpression(input);
     }
 
     // if we get here, we do not know how to process this variable

@@ -32,11 +32,17 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateExpression, IntermediateItem, IntermediateKind } from "..";
+import { ElementAccessExpression } from "typescript";
+import { IntermediateElementAccessExpression, IntermediateKind } from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
 
-export interface IntermediateElementAccessExpression
-    extends IntermediateItem<IntermediateKind.IntermediateElementAccessExpression>
+export function processElementAccessExpression(
+    input: ElementAccessExpression
+): IntermediateElementAccessExpression
 {
-    element: IntermediateExpression;
-    accessKey: IntermediateExpression;
+    return {
+        kind: IntermediateKind.IntermediateElementAccessExpression,
+        element: processExpression(input.expression),
+        accessKey: processExpression(input.argumentExpression),
+    }
 }
