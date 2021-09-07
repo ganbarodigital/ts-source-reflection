@@ -33,7 +33,6 @@
 //
 
 import {
-    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile
 } from "../../../../IntermediateTypes";
@@ -43,8 +42,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateEnum,
             docBlock: undefined,
-            isConstant: true,
-            isDeclared: false,
+            isConstant: false,
+            isDeclared: true,
             isDefaultExport: false,
             isExported: false,
             name: "Enum",
@@ -62,21 +61,16 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateEnumMember,
                     name: "B",
+                    initializer: undefined,
+                },
+                {
+                    kind: IntermediateKind.IntermediateEnumMember,
+                    name: "C",
                     initializer: {
-                        kind: IntermediateKind.IntermediateBinaryExpression,
-                        left: {
-                            kind: IntermediateKind.IntermediateIdentifierReference,
-                            name: "A",
-                            asType: undefined,
-                            typeAssertion: undefined,
-                        },
-                        operator: IntermediateExpressionOperator.ASTERISK,
-                        right: {
-                            kind: IntermediateKind.IntermediateNumericLiteral,
-                            value: "2",
-                            asType: undefined,
-                            typeAssertion: undefined,
-                        },
+                        kind: IntermediateKind.IntermediateNumericLiteral,
+                        value: "2",
+                        asType: undefined,
+                        typeAssertion: undefined,
                     },
                 },
             ],

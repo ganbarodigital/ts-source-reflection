@@ -55,6 +55,7 @@ export const processEnumDeclaration: StatementProcessor = (
         kind: IntermediateKind.IntermediateEnum,
         docBlock: processDocBlock(enumDec),
         isConstant: AST.hasConstModifier(enumDec.modifiers),
+        isDeclared: AST.hasDeclaredModifier(enumDec.modifiers),
         isExported: AST.hasExportModifier(enumDec.modifiers),
         isDefaultExport: AST.hasDefaultModifier(enumDec.modifiers),
         name: enumDec.name.getText(),

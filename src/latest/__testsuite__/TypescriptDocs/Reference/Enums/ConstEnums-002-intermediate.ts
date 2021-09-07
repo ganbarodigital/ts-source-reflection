@@ -43,6 +43,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateEnum,
             docBlock: undefined,
             isConstant: true,
+            isDeclared: false,
             isDefaultExport: false,
             isExported: false,
             name: "Direction",
