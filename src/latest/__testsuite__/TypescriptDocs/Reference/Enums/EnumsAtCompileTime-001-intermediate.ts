@@ -42,6 +42,7 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateEnum,
             docBlock: undefined,
+            isConstant: false,
             isDefaultExport: false,
             isExported: false,
             name: "LogLevel",

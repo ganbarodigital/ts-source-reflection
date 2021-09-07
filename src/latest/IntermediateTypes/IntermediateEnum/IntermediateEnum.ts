@@ -41,5 +41,6 @@ export interface IntermediateEnum
         IntermediateExportableItem,
         IntermediateIdentifiedItem
 {
+    isConstant: boolean;
     members: IntermediateEnumMember[];
 }

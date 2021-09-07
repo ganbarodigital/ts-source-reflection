@@ -33,7 +33,9 @@
 //
 
 import {
-    IntermediateKind, IntermediateSourceFile
+    IntermediateExpressionOperator,
+    IntermediateKind,
+    IntermediateSourceFile
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
@@ -41,14 +43,14 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateEnum,
             docBlock: undefined,
-            isConstant: false,
+            isConstant: true,
             isDefaultExport: false,
             isExported: false,
-            name: "Color",
+            name: "Enum",
             members: [
                 {
                     kind: IntermediateKind.IntermediateEnumMember,
-                    name: "red",
+                    name: "A",
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "1",
@@ -58,59 +60,24 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateEnumMember,
-                    name: "green",
+                    name: "B",
                     initializer: {
-                        kind: IntermediateKind.IntermediateNumericLiteral,
-                        value: "2",
-                        asType: undefined,
-                        typeAssertion: undefined,
-                    },
-                },
-                {
-                    kind: IntermediateKind.IntermediateEnumMember,
-                    name: "blue",
-                    initializer: {
-                        kind: IntermediateKind.IntermediateNumericLiteral,
-                        value: "4",
-                        asType: undefined,
-                        typeAssertion: undefined,
-                    },
-                },
-            ],
-        },
-        {
-            kind: IntermediateKind.IntermediateNamespace,
-            docBlock: undefined,
-            isDeclared: false,
-            isDefaultExport: false,
-            isExported: false,
-            name: "Color",
-            children: [
-                {
-                    kind: IntermediateKind.IntermediateFunction,
-                    docBlock: undefined,
-                    isDeclared: false,
-                    isDefaultExport: false,
-                    isExported: true,
-                    name: "mixColor",
-                    typeParameters: [],
-                    parameters: [
-                        {
-                            kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
-                            decorators: [],
-                            isOptional: false,
-                            isReadonly: false,
-                            name: "colorName",
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "string",
-                            },
-                            initializer: undefined,
+                        kind: IntermediateKind.IntermediateBinaryExpression,
+                        left: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "A",
+                            asType: undefined,
+                            typeAssertion: undefined,
                         },
-                    ],
-                    returnType: undefined,
-                    hasBody: true,
-                }
+                        operator: IntermediateExpressionOperator.ASTERISK,
+                        right: {
+                            kind: IntermediateKind.IntermediateNumericLiteral,
+                            value: "2",
+                            asType: undefined,
+                            typeAssertion: undefined,
+                        },
+                    },
+                },
             ],
         },
     ],
