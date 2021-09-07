@@ -50,6 +50,7 @@ import { hasReadonlyModifier } from "./hasReadonlyModifier";
 import { hasStaticModifier } from "./hasStaticModifier";
 import { isAbstractKeyword } from "./isAbstractKeyword";
 import { isAnonymousClassType } from "./isAnonymousClassType";
+import { isConstKeyword } from "./isConstKeyword";
 import { isDeclareKeyword } from "./isDeclareKeyword";
 import { isDefaultKeyword } from "./isDefaultKeyword";
 import { isExportKeyword } from "./isExportKeyword";
@@ -100,6 +101,7 @@ export class AST
     static hasStaticModifier = hasStaticModifier;
     static isAbstractKeyword = isAbstractKeyword;
     static isAnonymousClassType = isAnonymousClassType;
+    static isConstKeyword = isConstKeyword;
     static isDeclareKeyword = isDeclareKeyword;
     static isDefaultKeyword = isDefaultKeyword;
     static isExportKeyword = isExportKeyword;
