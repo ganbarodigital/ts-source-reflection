@@ -59,6 +59,7 @@ export * from "./IntermediateConstTypeCast";
 export * from "./IntermediateConstructorDeclaration";
 export * from "./IntermediateConstructorParameterDeclaration";
 export * from "./IntermediateConstructorSignature";
+export * from "./IntermediateConstructorType";
 export * from "./IntermediateDeclarableItem";
 export * from "./IntermediateDecoratableItem";
 export * from "./IntermediateDecorator";

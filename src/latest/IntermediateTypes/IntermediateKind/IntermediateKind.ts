@@ -54,6 +54,7 @@ export enum IntermediateKind {
     IntermediateConstTypeCast,
     IntermediateConstructorDeclaration,
     IntermediateConstructorSignature,
+    IntermediateConstructorType,
     IntermediateDecorator,
     IntermediateDefaultImport,
     IntermediateDestructuredConstDeclaration,
