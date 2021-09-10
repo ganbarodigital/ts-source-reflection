@@ -31,12 +31,12 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { IntermediateQualifiedName } from "..";
 import { IntermediateAnonymousClassType } from "../IntermediateAnonymousClassType";
 import { IntermediateArrayTypeReference } from "../IntermediateArrayTypeReference";
 import { IntermediateBuiltInTypeReference } from "../IntermediateBuiltInTypeReference";
 import { IntermediateConditionalType } from "../IntermediateConditionalType";
 import { IntermediateConstructorDeclaration } from "../IntermediateConstructorDeclaration";
+import { IntermediateConstructorType } from "../IntermediateConstructorType";
 import { IntermediateConstTypeCast } from "../IntermediateConstTypeCast";
 import { IntermediateFixedTypeReference } from "../IntermediateFixedTypeReference";
 import { IntermediateFunctionTypeSignature } from "../IntermediateFunctionTypeSignature";
@@ -48,6 +48,7 @@ import { IntermediateKeyofTypeReference } from "../IntermediateKeyofTypeReferenc
 import { IntermediateLiteralType } from "../IntermediateLiteralType";
 import { IntermediateMappedType } from "../IntermediateMappedType";
 import { IntermediateParenthesizedType } from "../IntermediateParenthesizedType";
+import { IntermediateQualifiedName } from "../IntermediateQualifiedName";
 import { IntermediateRestType } from "../IntermediateRestType";
 import { IntermediateTemplateLiteralType } from "../IntermediateTemplateLiteralType";
 import { IntermediateThisType } from "../IntermediateThisType";
@@ -56,7 +57,6 @@ import { IntermediateTypeofTypeReference } from "../IntermediateTypeofTypeRefere
 import { IntermediateTypePredicate } from "../IntermediateTypePredicate";
 import { IntermediateUnionType } from "../IntermediateUnionType";
 
-
 export type IntermediateTypeReference
     = IntermediateAnonymousClassType
       | IntermediateArrayTypeReference
@@ -64,6 +64,7 @@ export type IntermediateTypeReference
       | IntermediateConditionalType
       | IntermediateConstTypeCast
       | IntermediateConstructorDeclaration
+      | IntermediateConstructorType
       | IntermediateFixedTypeReference
       | IntermediateFunctionTypeSignature
       | IntermediateGenericTypeReference
