@@ -62,7 +62,7 @@ import { isBuiltInType } from "./isBuiltinType";
 import { processAnonymousClassType } from "./processAnonymousClassType";
 import { processBuiltInType } from "./processBuiltInType";
 import { processConditionalType } from "./processConditionalType";
-import { processConstructorDeclaration } from "./processConstructorDeclaration";
+import { processConstructorType } from "./processConstructorType";
 import { processFunctionType } from "./processFunctionType";
 import { processIndexedAccessType } from "./processIndexedAccessType";
 import { processInferType } from "./processInferType";
@@ -168,7 +168,7 @@ export function processTypeNode(
 
     // special case - constructor type
     if (isConstructorTypeNode(input)) {
-        return processConstructorDeclaration(input);
+        return processConstructorType(input);
     }
 
     // special case - indexed access type

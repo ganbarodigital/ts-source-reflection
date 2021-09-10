@@ -35,7 +35,6 @@ import { IntermediateAnonymousClassType } from "../IntermediateAnonymousClassTyp
 import { IntermediateArrayTypeReference } from "../IntermediateArrayTypeReference";
 import { IntermediateBuiltInTypeReference } from "../IntermediateBuiltInTypeReference";
 import { IntermediateConditionalType } from "../IntermediateConditionalType";
-import { IntermediateConstructorDeclaration } from "../IntermediateConstructorDeclaration";
 import { IntermediateConstructorType } from "../IntermediateConstructorType";
 import { IntermediateConstTypeCast } from "../IntermediateConstTypeCast";
 import { IntermediateFixedTypeReference } from "../IntermediateFixedTypeReference";
@@ -63,7 +62,6 @@ export type IntermediateTypeReference
       | IntermediateBuiltInTypeReference
       | IntermediateConditionalType
       | IntermediateConstTypeCast
-      | IntermediateConstructorDeclaration
       | IntermediateConstructorType
       | IntermediateFixedTypeReference
       | IntermediateFunctionTypeSignature

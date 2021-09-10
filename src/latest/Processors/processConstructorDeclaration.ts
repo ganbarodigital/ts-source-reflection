@@ -32,25 +32,18 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { ConstructorDeclaration, ConstructorTypeNode, NodeArray, ParameterDeclaration } from "typescript";
+import { ConstructorDeclaration } from "typescript";
 import { AST } from "../AST";
 import {
     IntermediateConstructorDeclaration,
-    IntermediateConstructorParameterDeclaration,
-    IntermediateKind,
-    IntermediateObjectBindingParameter,
-    IntermediateRestrictableScope,
-    IntermediateTypedCallableParameterDeclaration,
-    IntermediateTypedConstructorParameterDeclaration,
-    IntermediateUntypedCallableParameterDeclaration,
-    IntermediateUntypedConstructorParameterDeclaration
+    IntermediateKind
 } from "../IntermediateTypes";
+import { processConstructorParameters } from "./processConstructorParameters";
 import { processDocBlock } from "./processDocBlock";
-import { processParameterDeclaration } from "./processParameterDeclaration";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 
 export function processConstructorDeclaration(
-    input: ConstructorDeclaration | ConstructorTypeNode
+    input: ConstructorDeclaration
 ): IntermediateConstructorDeclaration {
     return {
         kind: IntermediateKind.IntermediateConstructorDeclaration,
@@ -58,105 +51,5 @@ export function processConstructorDeclaration(
         accessModifier: AST.getRestrictableScope(input),
         parameters: processConstructorParameters(input.parameters),
         returnType: processReturnTypeFromNode(input),
-    }
-}
-
-function processConstructorParameters(
-    input: NodeArray<ParameterDeclaration>
-): IntermediateConstructorParameterDeclaration[] {
-    // our return value
-    const retval: IntermediateConstructorParameterDeclaration[] = [];
-
-    // constructor parameters have unique behaviour,
-    // which is why we're handling them separately
-    // to regular function parameters
-
-    input.forEach((paramDec) => {
-        retval.push(processConstructorParameter(paramDec));
-    });
-
-    // all done
-    return retval;
-}
-
-function processConstructorParameter(
-    input: ParameterDeclaration
-): IntermediateConstructorParameterDeclaration {
-    // we can reuse the existing support for all parameters
-    // to save us repeating ourselves here
-    const retval = mapFunctionParameterToConstructorParameter(
-        processParameterDeclaration(input)
-    );
-
-    // special case - object binding parameters cannot contain
-    // parameter property definitions
-    //
-    // if this changes in a future release of Typescript, we're going
-    // to have some fun crowbaring that support in!
-    if (retval.kind === IntermediateKind.IntermediateObjectBindingParameter) {
-        return retval;
-    }
-
-    // are we looking at a property definition, hidden away
-    // as a parameter to the constructor?
-    if (AST.hasPublicModifier(input.modifiers)) {
-        retval.setsPropertyWithScope = IntermediateRestrictableScope.PUBLIC;
-    }
-    else if (AST.hasProtectedModifier(input.modifiers)) {
-        retval.setsPropertyWithScope = IntermediateRestrictableScope.PROTECTED;
-    }
-    else if (AST.hasPrivateModifier(input.modifiers)) {
-        retval.setsPropertyWithScope = IntermediateRestrictableScope.PRIVATE;
-    }
-
-    // unlike normal parameters, the 'readonly' flag actually *is* in the
-    // modifiers list for constructor parameters
-    //
-    // this means that untyped parameter properties can be 'readonly'
-    // (untyped callable parameters cannot be 'readonly')
-    if (AST.hasReadonlyModifier(input.modifiers)) {
-        retval.isReadonly = true;
-    }
-
-    // all done
-    return retval;
-
-}
-
-function mapFunctionParameterToConstructorParameter(
-    input: IntermediateTypedCallableParameterDeclaration
-        | IntermediateUntypedCallableParameterDeclaration
-        | IntermediateObjectBindingParameter
-): IntermediateConstructorParameterDeclaration {
-    switch(input.kind) {
-        case IntermediateKind.IntermediateObjectBindingParameter:
-            return input;
-
-        case IntermediateKind.IntermediateUntypedCallableParameterDeclaration:
-            return <IntermediateUntypedConstructorParameterDeclaration> {
-                ...input,
-                kind: IntermediateKind.IntermediateUntypedConstructorParameterDeclaration,
-                setsPropertyWithScope: undefined,
-                // untyped callable parameters don't have this,
-                // so let's set an explicit default value
-                isReadonly: false,
-            }
-
-        case IntermediateKind.IntermediateTypedCallableParameterDeclaration:
-            return <IntermediateTypedConstructorParameterDeclaration>{
-                ...input,
-                kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
-                setsPropertyWithScope: undefined,
-                // ignore what was there for normal parameters,
-                // because this needs to be handled differently
-                // for the constructor
-                isReadonly: false,
-            }
-
-        default:
-            // by design, this code is unreachable, and therefore
-            // impossible to include in code coverage
-            const _exhaustiveCheck: never = input;
-            return _exhaustiveCheck;
     }
 }
