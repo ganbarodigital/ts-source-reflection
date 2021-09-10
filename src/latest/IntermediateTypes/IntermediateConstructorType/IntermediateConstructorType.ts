@@ -33,7 +33,7 @@
 //
 
 import {
-    IntermediateConstructorParameterDeclaration,
+    IntermediateCallableParameterSignature,
     IntermediateItem,
     IntermediateTypeReference
 } from "..";
@@ -42,6 +42,6 @@ import { IntermediateKind } from "../IntermediateKind";
 export interface IntermediateConstructorType
     extends IntermediateItem<IntermediateKind.IntermediateConstructorType>
 {
-    parameters: IntermediateConstructorParameterDeclaration[];
+    parameters: IntermediateCallableParameterSignature[];
     returnType: IntermediateTypeReference;
 }

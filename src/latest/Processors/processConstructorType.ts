@@ -37,7 +37,7 @@ import {
     IntermediateConstructorType,
     IntermediateKind
 } from "../IntermediateTypes";
-import { processConstructorParameters } from "./processConstructorParameters";
+import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { processTypeNode } from "./processTypeNode";
 
 export function processConstructorType(
@@ -45,7 +45,7 @@ export function processConstructorType(
 ): IntermediateConstructorType {
     return {
         kind: IntermediateKind.IntermediateConstructorType,
-        parameters: processConstructorParameters(input.parameters),
+        parameters: processCallableParameterSignatures(input.parameters),
         returnType: processTypeNode(input.type),
     }
 }
