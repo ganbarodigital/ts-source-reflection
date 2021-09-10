@@ -43,5 +43,5 @@ export interface IntermediateGenericType
         IntermediateIdentifiedItem
 {
     constraint: Maybe<IntermediateTypeReference>;
-    defaultType: Maybe<string>;
+    defaultType: Maybe<IntermediateTypeReference>;
 }

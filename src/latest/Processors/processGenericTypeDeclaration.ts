@@ -45,13 +45,16 @@ export function processGenericTypeDeclaration(
     input: TypeParameterDeclaration
 ): IntermediateGenericType
 {
-    // shorthand
-    const children = input.getChildren();
-
     // do we have a constraint?
     let constraint: Maybe<IntermediateTypeReference>;
     if (input.constraint) {
         constraint = processTypeNode(input.constraint);
+    }
+
+    // do we have a default type?
+    let defaultType: Maybe<IntermediateTypeReference>;
+    if (input.default) {
+        defaultType = processTypeNode(input.default);
     }
 
     // tslint:disable-next-line: no-angle-bracket-type-assertion
@@ -59,6 +62,6 @@ export function processGenericTypeDeclaration(
         kind: IntermediateKind.IntermediateGenericType,
         name: input.name.text,
         constraint,
-        defaultType: children[4]?.getText(),
+        defaultType,
     }
 }
