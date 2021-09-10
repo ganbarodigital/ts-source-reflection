@@ -35,16 +35,29 @@ import {
     TypeLiteralNode
 } from "typescript";
 import {
-    IntermediateAnonymousClassType, IntermediateKind
+    IntermediateAnonymousClassType,
+    IntermediateEmptyObjectType,
+    IntermediateKind
 } from "../IntermediateTypes";
 import { processMemberSignatures } from "./processMemberSignatures";
 
 export function processAnonymousClassType(
     input: TypeLiteralNode
-): IntermediateAnonymousClassType {
+): IntermediateAnonymousClassType | IntermediateEmptyObjectType {
+    // what's in this anonymous class type?
+    const members = processMemberSignatures(input.members);
+
+    // special case - an empty object
+    if (members.length === 0) {
+        return {
+            kind: IntermediateKind.IntermediateEmptyObjectType,
+        }
+    }
+
+    // general case
     return {
         kind: IntermediateKind.IntermediateAnonymousClassType,
-        members: processMemberSignatures(input.members),
+        members
     }
 }
 

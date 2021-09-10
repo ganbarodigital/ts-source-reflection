@@ -74,8 +74,7 @@ const expectedResult: IntermediateSourceFile = {
                                     },
                                 ],
                                 returnType: {
-                                    kind: IntermediateKind.IntermediateAnonymousClassType,
-                                    members: [],
+                                    kind: IntermediateKind.IntermediateEmptyObjectType,
                                 },
                             },
                         ],
