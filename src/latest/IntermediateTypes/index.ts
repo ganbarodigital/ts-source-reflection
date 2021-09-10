@@ -70,6 +70,7 @@ export * from "./IntermediateDestructuredVarDeclaration";
 export * from "./IntermediateDocBlock";
 export * from "./IntermediateDocumentedItem";
 export * from "./IntermediateElementAccessExpression";
+export * from "./IntermediateEmptyObjectType";
 export * from "./IntermediateEntityName";
 export * from "./IntermediateEnum";
 export * from "./IntermediateEnumMember";
