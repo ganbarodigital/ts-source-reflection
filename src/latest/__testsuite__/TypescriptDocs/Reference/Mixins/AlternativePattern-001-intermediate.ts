@@ -221,6 +221,7 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "Sprite",
                         },
                         arguments: [],
+                        asType: undefined,
                     },
                 },
             ],

@@ -167,6 +167,7 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "Employee",
                         },
                         arguments: [],
+                        asType: undefined,
                     },
                 },
             ],

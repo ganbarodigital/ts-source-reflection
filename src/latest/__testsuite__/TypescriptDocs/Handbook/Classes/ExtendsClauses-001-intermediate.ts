@@ -133,6 +133,7 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "Dog",
                         },
                         arguments: [],
+                        asType: undefined,
                     },
                 }
             ]

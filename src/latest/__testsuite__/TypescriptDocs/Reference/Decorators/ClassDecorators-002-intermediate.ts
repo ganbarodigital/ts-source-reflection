@@ -203,6 +203,7 @@ const expectedResult: IntermediateSourceFile = {
                                 asType: undefined,
                             },
                         ],
+                        asType: undefined,
                     },
                 },
             ],

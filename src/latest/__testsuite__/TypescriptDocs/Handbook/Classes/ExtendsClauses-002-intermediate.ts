@@ -133,6 +133,7 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "Derived",
                         },
                         arguments: [],
+                        asType: undefined,
                     },
                 }
             ]

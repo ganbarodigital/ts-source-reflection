@@ -50,6 +50,8 @@ export function processNewExpression(
             typeName: input.expression.getText(),
         },
         arguments: [],
+        // asType is set in `processExpression()`
+        asType: undefined,
     }
 
     // what arguments do we have?

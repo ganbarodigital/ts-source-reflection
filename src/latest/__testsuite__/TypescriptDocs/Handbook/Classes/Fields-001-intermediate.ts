@@ -105,6 +105,7 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "Point",
                         },
                         arguments: [],
+                        asType: undefined,
                     },
                 },
             ],

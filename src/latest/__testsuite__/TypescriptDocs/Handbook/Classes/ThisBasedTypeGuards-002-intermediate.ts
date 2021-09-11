@@ -126,6 +126,7 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "Box"
                         },
                         arguments: [],
+                        asType: undefined,
                     },
                 }
             ],

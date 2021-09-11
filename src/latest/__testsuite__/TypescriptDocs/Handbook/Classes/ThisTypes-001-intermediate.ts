@@ -153,6 +153,7 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "ClearableBox",
                         },
                         arguments: [],
+                        asType: undefined,
                     },
                 },
             ],

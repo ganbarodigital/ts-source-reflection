@@ -32,13 +32,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateTypeAssertable } from "..";
 import { IntermediateArgument } from "../IntermediateArgument";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateNewExpression
-    extends IntermediateItem<IntermediateKind.IntermediateNewExpression>
+    extends IntermediateItem<IntermediateKind.IntermediateNewExpression>,
+        Omit<IntermediateTypeAssertable, "typeAssertion">
 {
     typeRef: IntermediateTypeReference;
     arguments: IntermediateArgument[];

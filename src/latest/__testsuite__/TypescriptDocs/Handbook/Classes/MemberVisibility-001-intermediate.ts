@@ -88,6 +88,7 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "Greeter",
                         },
                         arguments: [],
+                        asType: undefined,
                     },
                 },
             ],
