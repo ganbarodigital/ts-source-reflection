@@ -112,8 +112,10 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             extends: [
                 {
-                    kind: IntermediateKind.IntermediateFixedTypeArgument,
+                    kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Box",
+                    asType: undefined,
+                    typeAssertion: undefined,
                 },
             ],
             implements: [],

@@ -74,8 +74,10 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             extends: [
                 {
-                    kind: IntermediateKind.IntermediateFixedTypeArgument,
+                    kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Animal",
+                    asType: undefined,
+                    typeAssertion: undefined,
                 },
             ],
             members: [

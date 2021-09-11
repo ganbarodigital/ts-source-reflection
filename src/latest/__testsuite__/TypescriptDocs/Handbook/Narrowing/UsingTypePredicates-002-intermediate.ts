@@ -71,8 +71,10 @@ const expectedResult: IntermediateSourceFile = {
             isDeclared: false,
             extends: [
                 {
-                    kind: IntermediateKind.IntermediateFixedTypeArgument,
+                    kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Pet",
+                    asType: undefined,
+                    typeAssertion: undefined,
                 },
             ],
             typeParameters: [],
@@ -103,8 +105,10 @@ const expectedResult: IntermediateSourceFile = {
             isDeclared: false,
             extends: [
                 {
-                    kind: IntermediateKind.IntermediateFixedTypeArgument,
+                    kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Pet",
+                    asType: undefined,
+                    typeAssertion: undefined,
                 },
             ],
             typeParameters: [],

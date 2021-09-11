@@ -92,8 +92,10 @@ const expectedResult: IntermediateSourceFile = {
             name: "SpecialGreeter",
             extends: [
                 {
-                    kind: IntermediateKind.IntermediateFixedTypeArgument,
+                    kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Greeter",
+                    asType: undefined,
+                    typeAssertion: undefined,
                 },
             ],
             implements: [],

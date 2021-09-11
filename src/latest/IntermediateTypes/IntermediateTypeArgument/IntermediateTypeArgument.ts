@@ -32,6 +32,9 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateFixedTypeArgument, IntermediateGenericTypeArgument } from "..";
+import { IntermediateExpression } from "../IntermediateExpression";
+import { IntermediateGenericTypeReference } from "../IntermediateGenericTypeReference";
 
-export type IntermediateTypeArgument = IntermediateFixedTypeArgument | IntermediateGenericTypeArgument;
+export type IntermediateTypeArgument
+    = IntermediateExpression
+    | IntermediateGenericTypeReference;

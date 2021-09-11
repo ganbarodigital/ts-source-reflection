@@ -77,8 +77,10 @@ const expectedResult: IntermediateSourceFile = {
             extends: [],
             implements: [
                 {
-                    kind: IntermediateKind.IntermediateFixedTypeArgument,
+                    kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Pingable",
+                    asType: undefined,
+                    typeAssertion: undefined,
                 },
             ],
             members: [

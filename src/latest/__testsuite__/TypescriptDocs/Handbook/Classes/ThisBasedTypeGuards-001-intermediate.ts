@@ -169,8 +169,10 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             extends: [
                 {
-                    kind: IntermediateKind.IntermediateFixedTypeArgument,
+                    kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "FileSystemObject",
+                    asType: undefined,
+                    typeAssertion: undefined,
                 },
             ],
             implements: [],
@@ -223,8 +225,10 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             extends: [
                 {
-                    kind: IntermediateKind.IntermediateFixedTypeArgument,
+                    kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "FileSystemObject",
+                    asType: undefined,
+                    typeAssertion: undefined,
                 },
             ],
             implements: [],

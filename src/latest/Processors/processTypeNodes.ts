@@ -32,27 +32,19 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { ExpressionWithTypeArguments } from "typescript";
-import {
-    IntermediateGenericTypeReference,
-    IntermediateKind,
-    IntermediateTypeArgument
-} from "../IntermediateTypes";
-import { processExpression } from "./processExpression";
-import { processTypeNodes } from "./processTypeNodes";
+import { NodeArray, TypeNode } from "typescript";
+import { IntermediateTypeReference } from "../IntermediateTypes";
+import { processTypeNode } from "./processTypeNode";
 
-export function processExpressionWithTypeArguments(
-    input: ExpressionWithTypeArguments
-): IntermediateTypeArgument {
-    // do we have something simple?
-    if (!input.typeArguments) {
-        return processExpression(input.expression);
+export function processTypeNodes(
+    input: NodeArray<TypeNode>
+): IntermediateTypeReference[] {
+    const retval: IntermediateTypeReference[] = [];
+
+    for (const member of input) {
+        retval.push(processTypeNode(member));
     }
 
-    // if we get here, we're looking at a generic type
-    return <IntermediateGenericTypeReference>{
-        kind: IntermediateKind.IntermediateGenericTypeReference,
-        typeName: input.expression.getText(),
-        typeArguments: processTypeNodes(input.typeArguments)
-    }
+    // all done
+    return retval;
 }

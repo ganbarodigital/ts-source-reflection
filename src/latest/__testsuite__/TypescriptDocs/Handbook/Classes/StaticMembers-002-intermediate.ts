@@ -77,8 +77,10 @@ const expectedResult: IntermediateSourceFile = {
             name: "Derived",
             extends: [
                 {
-                    kind: IntermediateKind.IntermediateFixedTypeArgument,
+                    kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Base",
+                    asType: undefined,
+                    typeAssertion: undefined,
                 },
             ],
             implements: [],

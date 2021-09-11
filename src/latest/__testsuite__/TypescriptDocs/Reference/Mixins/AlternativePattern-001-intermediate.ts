@@ -152,12 +152,16 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             extends: [
                 {
-                    kind: IntermediateKind.IntermediateFixedTypeArgument,
+                    kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Jumpable",
+                    asType: undefined,
+                    typeAssertion: undefined,
                 },
                 {
-                    kind: IntermediateKind.IntermediateFixedTypeArgument,
+                    kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Duckable",
+                    asType: undefined,
+                    typeAssertion: undefined,
                 },
             ],
             members: [],
