@@ -131,6 +131,7 @@ export * from "./IntermediatePropertySignature";
 export * from "./IntermediateQualifiedName";
 export * from "./IntermediateReadonlyItem";
 export * from "./IntermediateReference";
+export * from "./IntermediateRegexLiteral";
 export * from "./IntermediateRestType";
 export * from "./IntermediateRestrictableScope";
 export * from "./IntermediateRestrictableScopeItem";
