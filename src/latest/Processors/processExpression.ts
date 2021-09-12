@@ -48,7 +48,7 @@ import {
     isNumericLiteral,
     isObjectLiteralExpression,
     isParenthesizedExpression,
-    isPropertyAccessExpression, isSpreadElement,
+    isPropertyAccessExpression, isRegularExpressionLiteral, isSpreadElement,
     isStringLiteral,
     isTypeAssertionExpression, SyntaxKind
 } from "typescript";
@@ -175,6 +175,16 @@ export function processExpression(
 
     if (isElementAccessExpression(input)) {
         return processElementAccessExpression(input);
+    }
+
+    // special case - regex
+    if (isRegularExpressionLiteral(input)) {
+        return {
+            kind: IntermediateKind.IntermediateRegexLiteral,
+            value: input.text,
+            asType: undefined,
+            typeAssertion: undefined,
+        }
     }
 
     // if we get here, we do not know how to process this variable
