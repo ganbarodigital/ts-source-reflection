@@ -33,25 +33,102 @@
 //
 
 import {
-    Statement
-} from "typescript";
-// import { AST } from "../AST";
+    DEFAULT_DATA_PATH,
+    getClassNames,
+    UnsupportedTypeError
+} from "@safelytyped/core-types";
 import {
-    IntermediateExportDeclaration, IntermediateKind
+    // isNamedExports,
+    NamedExportBindings,
+    NamedExports,
+    // NamespaceExport,
+    Statement,
+    SyntaxKind
+} from "typescript";
+import { AST } from "../AST";
+import {
+    IntermediateExportDeclaration,
+    IntermediateExportItem,
+    IntermediateKind
 } from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
+// import { processIdentifier } from "./processIdentifier";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processExportDeclaration: StatementProcessor = (
     input: Statement
 ): IntermediateExportDeclaration => {
     // make sure we have the right kind of statement
-    // const exportDecl = AST.mustBeExportDeclaration(input);
+    const exportDec = AST.mustBeExportDeclaration(input);
 
-    const retval: IntermediateExportDeclaration = {
-        kind: IntermediateKind.IntermediateExportDeclaration,
+    // what are we exporting?
+    if (exportDec.exportClause) {
+        return {
+            kind: IntermediateKind.IntermediateExportDeclaration,
+            items: processNamedBindings(exportDec.exportClause),
+        }
+    }
+
+    // if we get here, we've got an export declaration that
+    // we currently do not support
+    // tslint:disable-next-line: no-console
+    console.log(getClassNames(input), SyntaxKind[input.kind]);
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: "a supported export declaration",
+            actual: getClassNames(input)[0],
+        },
+    });
+}
+
+function processNamedBindings(
+    input: NamedExportBindings
+): IntermediateExportItem[]
+{
+    // if (isNamedExports(input)) {
+        return processNamedExports(input as NamedExports);
+    // }
+
+    // return processNamespaceExport(input);
+}
+
+function processNamedExports(
+    input: NamedExports
+): IntermediateExportItem[]
+{
+    // this is what we'll return to the caller
+    const retval: IntermediateExportItem[] = [];
+
+    for (const member of input.elements) {
+        // are we renaming an export?
+        if (member.propertyName) {
+            retval.push({
+                kind: IntermediateKind.IntermediateAliasedExportItem,
+                exportedName: processExpression(member.propertyName),
+                name: processExpression(member.name),
+            });
+        }
+        else {
+            retval.push({
+                kind: IntermediateKind.IntermediateNamedExportItem,
+                name: processExpression(member.name),
+            });
+        }
     }
 
     // all done
     return retval;
 }
 
+// function processNamespaceExport(
+//     input: NamespaceExport
+// ): IntermediateExportItem[]
+// {
+//     return [
+//         {
+//             kind: IntermediateKind.IntermediateNamespaceExport,
+//             name: processIdentifier(input.name),
+//         }
+//     ];
+// }

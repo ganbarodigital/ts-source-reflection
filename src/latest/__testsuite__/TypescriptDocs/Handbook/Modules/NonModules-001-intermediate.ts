@@ -41,7 +41,8 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateExportDeclaration,
-        }
+            items: [],
+        },
     ],
     kind: IntermediateKind.IntermediateSourceFile,
 }
