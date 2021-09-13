@@ -33,6 +33,7 @@
 //
 
 export * from "./IntermediateAbstractItem";
+export * from "./IntermediateAliasedExportItem";
 export * from "./IntermediateAliasedImportBinding";
 export * from "./IntermediateAnonymousCallableParameter";
 export * from "./IntermediateAnonymousClassType";

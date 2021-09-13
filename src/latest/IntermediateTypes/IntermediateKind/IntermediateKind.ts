@@ -33,6 +33,7 @@
 //
 
 export enum IntermediateKind {
+    IntermediateAliasedExportItem,
     IntermediateAliasedImportBinding,
     IntermediateAnonymousCallableParameter,
     IntermediateAnonymousClassType,
