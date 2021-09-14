@@ -63,6 +63,7 @@ export enum IntermediateKind {
     IntermediateDestructuredVarDeclaration,
     IntermediateDocBlock,
     IntermediateElementAccessExpression,
+    IntermediateEmptyExport,
     IntermediateEmptyObjectType,
     IntermediateEnum,
     IntermediateEnumMember,
