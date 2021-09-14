@@ -32,18 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateKind,
-    IntermediateSourceFile
-} from "../../../../IntermediateTypes";
+import { IntermediateExportItem } from "..";
+import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateKind } from "../IntermediateKind";
 
-const expectedResult: IntermediateSourceFile = {
-    children: [
-        {
-            kind: IntermediateKind.IntermediateEmptyExport,
-        },
-    ],
-    kind: IntermediateKind.IntermediateSourceFile,
+export interface IntermediateExportedIdentifiers
+    extends IntermediateItem<IntermediateKind.IntermediateExportedIdentifiers>
+{
+    items: IntermediateExportItem[];
 }
-
-export default expectedResult;

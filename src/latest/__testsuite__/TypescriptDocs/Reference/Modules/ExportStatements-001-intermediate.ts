@@ -131,7 +131,7 @@ const expectedResult: IntermediateSourceFile = {
             ],
         },
         {
-            kind: IntermediateKind.IntermediateExportDeclaration,
+            kind: IntermediateKind.IntermediateExportedIdentifiers,
             items: [
                 {
                     kind: IntermediateKind.IntermediateNamedExportItem,
@@ -145,7 +145,7 @@ const expectedResult: IntermediateSourceFile = {
             ],
         },
         {
-            kind: IntermediateKind.IntermediateExportDeclaration,
+            kind: IntermediateKind.IntermediateExportedIdentifiers,
             items: [
                 {
                     kind: IntermediateKind.IntermediateAliasedExportItem,

@@ -38,6 +38,7 @@ import {
     UnsupportedTypeError
 } from "@safelytyped/core-types";
 import {
+    ExportDeclaration,
     // isNamedExports,
     NamedExportBindings,
     NamedExports,
@@ -48,6 +49,7 @@ import {
 import { AST } from "../AST";
 import {
     IntermediateExportDeclaration,
+    IntermediateExportedIdentifiers,
     IntermediateExportItem,
     IntermediateKind
 } from "../IntermediateTypes";
@@ -62,11 +64,8 @@ export const processExportDeclaration: StatementProcessor = (
     const exportDec = AST.mustBeExportDeclaration(input);
 
     // what are we exporting?
-    if (exportDec.exportClause) {
-        return {
-            kind: IntermediateKind.IntermediateExportDeclaration,
-            items: processNamedBindings(exportDec.exportClause),
-        }
+    if (isExportDeclarationWithExportClause(exportDec)) {
+        return processExportClause(exportDec);
     }
 
     // if we get here, we've got an export declaration that
@@ -80,6 +79,44 @@ export const processExportDeclaration: StatementProcessor = (
             actual: getClassNames(input)[0],
         },
     });
+}
+
+type ExportDeclarationWithExportClause =
+    ExportDeclaration
+    &
+{
+    exportClause: NamedExportBindings
+}
+
+function isExportDeclarationWithExportClause(
+    input: ExportDeclaration
+): input is ExportDeclarationWithExportClause
+{
+    if (input.exportClause) {
+        return true;
+    }
+
+    return false;
+}
+
+function processExportClause(
+    input: ExportDeclarationWithExportClause
+): IntermediateExportDeclaration
+{
+    const retval: IntermediateExportedIdentifiers = {
+        kind: IntermediateKind.IntermediateExportedIdentifiers,
+        items: processNamedBindings(input.exportClause),
+    }
+
+    // special case
+    if (retval.items.length === 0) {
+        return {
+            kind: IntermediateKind.IntermediateEmptyExport
+        }
+    }
+
+    // general case
+    return retval;
 }
 
 function processNamedBindings(
