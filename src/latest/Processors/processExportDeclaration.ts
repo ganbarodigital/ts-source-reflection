@@ -39,6 +39,7 @@ import {
 } from "@safelytyped/core-types";
 import {
     ExportDeclaration,
+    Expression,
     // isNamedExports,
     NamedExportBindings,
     NamedExports,
@@ -67,6 +68,15 @@ export const processExportDeclaration: StatementProcessor = (
     // what are we exporting?
     if (isExportDeclarationWithExportClause(exportDec)) {
         return processExportClause(exportDec);
+    }
+
+    // special case - we're re-exporting everything from
+    // somewhere else
+    if (isExportDeclarationWithModuleSpecifier(exportDec)) {
+        return {
+            kind: IntermediateKind.IntermediateReExportAll,
+            source: processExpression(exportDec.moduleSpecifier)
+        }
     }
 
     // if we get here, we've got an export declaration that
@@ -168,6 +178,25 @@ function processNamedExports(
     // all done
     return retval;
 }
+
+type ExportDeclarationWithModuleSpecifier =
+    ExportDeclaration
+    &
+{
+    moduleSpecifier: Expression
+}
+
+function isExportDeclarationWithModuleSpecifier(
+    input: ExportDeclaration
+): input is ExportDeclarationWithModuleSpecifier
+{
+    if (input.moduleSpecifier) {
+        return true;
+    }
+
+    return false;
+}
+
 
 // function processNamespaceExport(
 //     input: NamespaceExport
