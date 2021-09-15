@@ -51,7 +51,8 @@ import {
     IntermediateExportDeclaration,
     IntermediateExportedIdentifiers,
     IntermediateExportItem,
-    IntermediateKind
+    IntermediateKind,
+    IntermediateReExport
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 // import { processIdentifier } from "./processIdentifier";
@@ -103,20 +104,30 @@ function processExportClause(
     input: ExportDeclarationWithExportClause
 ): IntermediateExportDeclaration
 {
-    const retval: IntermediateExportedIdentifiers = {
-        kind: IntermediateKind.IntermediateExportedIdentifiers,
-        items: processNamedBindings(input.exportClause),
-    }
+    // how many things are we exporting?
+    const items = processNamedBindings(input.exportClause);
 
     // special case
-    if (retval.items.length === 0) {
+    if (items.length === 0) {
         return {
             kind: IntermediateKind.IntermediateEmptyExport
         }
     }
 
+    // special case - we're exporting from somewhere else
+    if (input.moduleSpecifier) {
+        return <IntermediateReExport> {
+            kind: IntermediateKind.IntermediateReExport,
+            items,
+            source: processExpression(input.moduleSpecifier)
+        }
+    }
+
     // general case
-    return retval;
+    return <IntermediateExportedIdentifiers> {
+        kind: IntermediateKind.IntermediateExportedIdentifiers,
+        items,
+    }
 }
 
 function processNamedBindings(
