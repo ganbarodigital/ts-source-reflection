@@ -108,6 +108,7 @@ export enum IntermediateKind {
     IntermediatePropertyAssignment,
     IntermediateQualifiedName,
     IntermediateReExport,
+    IntermediateReExportAll,
     IntermediateReference,
     IntermediateRegexLiteral,
     IntermediateRestType,
