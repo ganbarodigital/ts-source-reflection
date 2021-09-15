@@ -53,7 +53,7 @@ import {
     IntermediateExportedIdentifiers,
     IntermediateExportItem,
     IntermediateKind,
-    IntermediateReExport
+    IntermediateReExportIdentifiers
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 // import { processIdentifier } from "./processIdentifier";
@@ -126,8 +126,8 @@ function processExportClause(
 
     // special case - we're exporting from somewhere else
     if (input.moduleSpecifier) {
-        return <IntermediateReExport> {
-            kind: IntermediateKind.IntermediateReExport,
+        return <IntermediateReExportIdentifiers> {
+            kind: IntermediateKind.IntermediateReExportIdentifiers,
             items,
             source: processExpression(input.moduleSpecifier)
         }

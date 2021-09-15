@@ -81,7 +81,7 @@ const expectedResult: IntermediateSourceFile = {
             ],
         },
         {
-            kind: IntermediateKind.IntermediateReExport,
+            kind: IntermediateKind.IntermediateReExportIdentifiers,
             items: [
                 {
                     kind: IntermediateKind.IntermediateAliasedExportItem,

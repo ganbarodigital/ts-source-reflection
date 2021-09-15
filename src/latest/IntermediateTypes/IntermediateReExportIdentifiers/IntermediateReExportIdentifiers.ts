@@ -38,10 +38,10 @@ import {
     IntermediateKind
 } from "..";
 
-export type IntermediateReExport
+export type IntermediateReExportIdentifiers
     = Omit<IntermediateExportedIdentifiers, "kind">
     &
 {
-    kind: IntermediateKind.IntermediateReExport;
+    kind: IntermediateKind.IntermediateReExportIdentifiers;
     source: IntermediateExpression;
 }
