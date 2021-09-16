@@ -40,10 +40,9 @@ import {
 import {
     ExportDeclaration,
     Expression,
-    // isNamedExports,
-    NamedExportBindings,
-    NamedExports,
-    // NamespaceExport,
+    isNamedExports,
+    isNamespaceExport, NamedExports,
+    NamespaceExport,
     Statement,
     SyntaxKind
 } from "typescript";
@@ -53,10 +52,11 @@ import {
     IntermediateExportedIdentifiers,
     IntermediateExportItem,
     IntermediateKind,
+    IntermediateNamespaceExport,
     IntermediateReExportIdentifiers
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
-// import { processIdentifier } from "./processIdentifier";
+import { processIdentifier } from "./processIdentifier";
 import { StatementProcessor } from "./StatementProcessor";
 
 export const processExportDeclaration: StatementProcessor = (
@@ -65,8 +65,15 @@ export const processExportDeclaration: StatementProcessor = (
     // make sure we have the right kind of statement
     const exportDec = AST.mustBeExportDeclaration(input);
 
-    // what are we exporting?
-    if (isExportDeclarationWithExportClause(exportDec)) {
+    // special case - we're re-exporting everything from
+    // somewhere else, as a namespace
+    if (isExportDeclarationWithNamespaceExport(exportDec)) {
+        return processNamespaceExport(exportDec);
+    }
+
+    // special case - we're exporting a list of items,
+    // possible as a re-export
+    if (isExportDeclarationWithNamedExports(exportDec)) {
         return processExportClause(exportDec);
     }
 
@@ -82,28 +89,27 @@ export const processExportDeclaration: StatementProcessor = (
     // if we get here, we've got an export declaration that
     // we currently do not support
     // tslint:disable-next-line: no-console
-    console.log(getClassNames(input), SyntaxKind[input.kind]);
+    console.log(getClassNames(input), SyntaxKind[ input.kind ]);
     throw new UnsupportedTypeError({
         public: {
             dataPath: DEFAULT_DATA_PATH,
             expected: "a supported export declaration",
-            actual: getClassNames(input)[0],
+            actual: getClassNames(input)[ 0 ],
         },
     });
 }
 
-type ExportDeclarationWithExportClause =
+type ExportDeclarationWithNamedExports =
     ExportDeclaration
     &
-{
-    exportClause: NamedExportBindings
-}
+    {
+        exportClause: NamedExports
+    }
 
-function isExportDeclarationWithExportClause(
+function isExportDeclarationWithNamedExports(
     input: ExportDeclaration
-): input is ExportDeclarationWithExportClause
-{
-    if (input.exportClause) {
+): input is ExportDeclarationWithNamedExports {
+    if (input.exportClause && isNamedExports(input.exportClause)) {
         return true;
     }
 
@@ -111,11 +117,10 @@ function isExportDeclarationWithExportClause(
 }
 
 function processExportClause(
-    input: ExportDeclarationWithExportClause
-): IntermediateExportDeclaration
-{
+    input: ExportDeclarationWithNamedExports
+): IntermediateExportDeclaration {
     // how many things are we exporting?
-    const items = processNamedBindings(input.exportClause);
+    const items = processNamedExports(input.exportClause);
 
     // special case
     if (items.length === 0) {
@@ -126,7 +131,7 @@ function processExportClause(
 
     // special case - we're exporting from somewhere else
     if (input.moduleSpecifier) {
-        return <IntermediateReExportIdentifiers> {
+        return <IntermediateReExportIdentifiers>{
             kind: IntermediateKind.IntermediateReExportIdentifiers,
             items,
             source: processExpression(input.moduleSpecifier)
@@ -134,27 +139,15 @@ function processExportClause(
     }
 
     // general case
-    return <IntermediateExportedIdentifiers> {
+    return <IntermediateExportedIdentifiers>{
         kind: IntermediateKind.IntermediateExportedIdentifiers,
         items,
     }
 }
 
-function processNamedBindings(
-    input: NamedExportBindings
-): IntermediateExportItem[]
-{
-    // if (isNamedExports(input)) {
-        return processNamedExports(input as NamedExports);
-    // }
-
-    // return processNamespaceExport(input);
-}
-
 function processNamedExports(
     input: NamedExports
-): IntermediateExportItem[]
-{
+): IntermediateExportItem[] {
     // this is what we'll return to the caller
     const retval: IntermediateExportItem[] = [];
 
@@ -182,14 +175,13 @@ function processNamedExports(
 type ExportDeclarationWithModuleSpecifier =
     ExportDeclaration
     &
-{
-    moduleSpecifier: Expression
-}
+    {
+        moduleSpecifier: Expression
+    }
 
 function isExportDeclarationWithModuleSpecifier(
     input: ExportDeclaration
-): input is ExportDeclarationWithModuleSpecifier
-{
+): input is ExportDeclarationWithModuleSpecifier {
     if (input.moduleSpecifier) {
         return true;
     }
@@ -197,15 +189,31 @@ function isExportDeclarationWithModuleSpecifier(
     return false;
 }
 
+type ExportDeclarationWithNamespaceExport =
+    ExportDeclaration
+    & ExportDeclarationWithModuleSpecifier
+    &
+    {
+        exportClause: NamespaceExport
+    }
 
-// function processNamespaceExport(
-//     input: NamespaceExport
-// ): IntermediateExportItem[]
-// {
-//     return [
-//         {
-//             kind: IntermediateKind.IntermediateNamespaceExport,
-//             name: processIdentifier(input.name),
-//         }
-//     ];
-// }
+function isExportDeclarationWithNamespaceExport(
+    input: ExportDeclaration
+): input is ExportDeclarationWithNamespaceExport {
+    if (input.exportClause && isNamespaceExport(input.exportClause)) {
+        return true;
+    }
+
+    return false;
+}
+
+function processNamespaceExport(
+    input: ExportDeclarationWithNamespaceExport
+): IntermediateNamespaceExport {
+    return {
+        kind: IntermediateKind.IntermediateNamespaceExport,
+        name: processIdentifier(input.exportClause.name),
+        source: processExpression(input.moduleSpecifier),
+    }
+
+}
