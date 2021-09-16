@@ -121,6 +121,7 @@ export * from "./IntermediateModuleReference";
 export * from "./IntermediateNamedExportItem";
 export * from "./IntermediateNamespace";
 export * from "./IntermediateNamespaceImport";
+export * from "./IntermediateNamespaceExport";
 export * from "./IntermediateNewExpression";
 export * from "./IntermediateNumericLiteral";
 export * from "./IntermediateObjectBindingElement";
