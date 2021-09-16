@@ -35,12 +35,14 @@
 import {
     IntermediateEmptyExport,
     IntermediateExportedIdentifiers,
-    IntermediateReExportIdentifiers,
-    IntermediateReExportAll
+    IntermediateNamespaceExport,
+    IntermediateReExportAll,
+    IntermediateReExportIdentifiers
 } from "..";
 
 export type IntermediateExportDeclaration
     = IntermediateEmptyExport
     | IntermediateExportedIdentifiers
+    | IntermediateNamespaceExport
     | IntermediateReExportAll
     | IntermediateReExportIdentifiers
