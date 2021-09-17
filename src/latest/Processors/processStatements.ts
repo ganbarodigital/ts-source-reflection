@@ -40,6 +40,7 @@ import {
 } from "../IntermediateTypes";
 import { processClassDeclaration } from "./processClassDeclaration";
 import { processEnumDeclaration } from "./processEnumDeclaration";
+import { processExportAssignment } from "./processExportAssignment";
 import { processExportDeclaration } from "./processExportDeclaration";
 import { processExpressionStatement } from "./processExpressionStatement";
 import { processFunctionDeclaration } from "./processFunctionDeclaration";
@@ -57,6 +58,7 @@ const statementProcessors: StatementProcessors = {
     ClassDeclaration: processClassDeclaration,
     EnumDeclaration: processEnumDeclaration,
     ExpressionStatement: processExpressionStatement,
+    ExportAssignment: processExportAssignment,
     ExportDeclaration: processExportDeclaration,
     FunctionDeclaration: processFunctionDeclaration,
     ImportDeclaration: processImportDeclaration,
