@@ -67,6 +67,7 @@ export enum IntermediateKind {
     IntermediateEmptyObjectType,
     IntermediateEnum,
     IntermediateEnumMember,
+    IntermediateExportAssignment,
     IntermediateExportedIdentifiers,
     IntermediateExternalModuleReference,
     IntermediateFixedTypeArgument,
