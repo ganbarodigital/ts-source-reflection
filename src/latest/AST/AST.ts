@@ -64,6 +64,7 @@ import { isPublicKeyword } from "./isPublicKeyword";
 import { isReadonlyKeyword } from "./isReadonlyKeyword";
 import { isStaticKeyword } from "./isStaticKeyword";
 import { isTrueKeyword } from "./isTrueKeyword";
+import { mustBeBlock } from "./mustBeBlock";
 import { mustBeCallSignatureDeclaration } from "./mustBeCallSignatureDeclaration";
 import { mustBeClassDeclaration } from "./mustBeClassDeclaration";
 import { mustBeConstructorDeclaration } from "./mustBeConstructorDeclaration";
@@ -118,6 +119,7 @@ export class AST
     static isReadonlyKeyword = isReadonlyKeyword;
     static isStaticKeyword = isStaticKeyword;
     static isTrueKeyword = isTrueKeyword;
+    static mustBeBlock = mustBeBlock;
     static mustBeCallSignatureDeclaration = mustBeCallSignatureDeclaration;
     static mustBeClassDeclaration = mustBeClassDeclaration;
     static mustBeConstructorDeclaration = mustBeConstructorDeclaration;
