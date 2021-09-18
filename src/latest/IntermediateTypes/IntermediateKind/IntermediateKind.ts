@@ -42,6 +42,7 @@ export enum IntermediateKind {
     IntermediateArrowFunction,
     IntermediateBigintLiteral,
     IntermediateBinaryExpression,
+    IntermediateBlock,
     IntermediateBooleanLiteral,
 
     // I'm not 100% sure we should treat built-in types separately
