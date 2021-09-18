@@ -31,26 +31,42 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { NodeArray, Statement } from "typescript";
+import { DispatchMap, Maybe, searchDispatchMap } from "@safelytyped/core-types";
+import { Statement, SyntaxKind } from "typescript";
+import { AST } from "../AST";
 import {
     IntermediateStatement
 } from "../IntermediateTypes";
-import { processStatement } from "./processStatement";
+import { StatementProcessor } from "./StatementProcessor";
+import { STATEMENT_PROCESSORS } from "./STATEMENT_PROCESSORS";
 
-export function processStatements(
-    statements: NodeArray<Statement>
-): IntermediateStatement[]
+export function processStatement(
+    statement: Statement
+): Maybe<IntermediateStatement>
 {
-    const result: IntermediateStatement[] = [];
+    // shorthand
+    const kind = AST.getStatementKind(statement);
 
-    for(const statement of statements) {
-        const processedItem = processStatement(statement);
-
-        if (processedItem) {
-            result.push(processedItem);
-        }
+    // did we get a statement that we support?
+    if (!kind) {
+        // tslint:disable-next-line: no-console
+        console.log("Skipping unsupported statement " + SyntaxKind[statement.kind]);
+        return undefined;
     }
 
-    // all done
-    return result;
+    // tslint:disable-next-line: no-console
+    // console.log("Processing node: " + kind);
+
+    const statementProcessor = searchDispatchMap(
+        // the `as` is necessary to allow our fallback to return
+        // an `undefined` value
+        //
+        // do not be surprised if a future version of TS
+        // stops us doing this!
+        STATEMENT_PROCESSORS as DispatchMap<string, StatementProcessor>,
+        [kind],
+        () => { return undefined }
+    );
+
+    return statementProcessor(statement);
 }
