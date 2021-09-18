@@ -32,47 +32,21 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { HashMap, RequireAllAttributesMap } from "@safelytyped/core-types";
+import { HashMap } from "@safelytyped/core-types";
+import { StatementProcessor } from "../../Processors/StatementProcessor";
+import { STATEMENT_PROCESSORS } from "../../Processors/STATEMENT_PROCESSORS";
 import { IntermediateSupportedStatements } from "./IntermediateSupportedStatements";
-
-//
-// Let me explain what is happening here ...
-//
-// I'm trying to use the compiler to make sure that VALID_CHILREN
-// *always* contains every AST node that:
-//
-// a) can appear as an immediate child of a source file, and
-// b) that we can currently support
-//
-// This way, if we ever add support for more AST nodes at the
-// source file level, the compiler should notice, and it should
-// refuse to compile this file until we remember to add in
-// the new nodes types :)
-//
-// There is probably a neater way to do this. Patches to do so
-// are most welcome.
-//
-type ValidChildren = RequireAllAttributesMap<IntermediateSupportedStatements, true>;
-
-const VALID_CHILDREN: ValidChildren & HashMap<true> = {
-    ClassDeclaration: true,
-    EnumDeclaration: true,
-    ExportAssignment: true,
-    ExportDeclaration: true,
-    ExpressionStatement: true,
-    FunctionDeclaration: true,
-    IfStatement: true,
-    ImportDeclaration: true,
-    ImportEqualsDeclaration: true,
-    InterfaceDeclaration: true,
-    ModuleDeclaration: true,
-    TypeAliasDeclaration: true,
-    VariableStatement: true,
-}
 
 export function isSupportedStatement(
     input: string
 ): input is keyof IntermediateSupportedStatements
 {
-    return VALID_CHILDREN[input] || false;
+    // this type assertion is necessary to keep the compiler happy
+    //
+    // STATEMENT_PROCESSORS is untyped, to avoid circular dependencies
+    if ((STATEMENT_PROCESSORS as HashMap<StatementProcessor>)[input]) {
+        return true;
+    }
+
+    return false;
 }
