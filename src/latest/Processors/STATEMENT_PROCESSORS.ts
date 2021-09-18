@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { processBlock } from "./processBlock";
 import { processClassDeclaration } from "./processClassDeclaration";
 import { processEnumDeclaration } from "./processEnumDeclaration";
 import { processExportAssignment } from "./processExportAssignment";
@@ -46,7 +47,9 @@ import { processModuleDeclaration } from "./processModuleDeclaration";
 import { processTypeAliasDeclaration } from "./processTypeAliasDeclaration";
 import { processVariableStatement } from "./processVariableStatement";
 
+// STATEMENT_PROCESSORS is untyped, to avoid circular dependencies
 export const STATEMENT_PROCESSORS = {
+    Block: processBlock,
     ClassDeclaration: processClassDeclaration,
     EnumDeclaration: processEnumDeclaration,
     ExpressionStatement: processExpressionStatement,
