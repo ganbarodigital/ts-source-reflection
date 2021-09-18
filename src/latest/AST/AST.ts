@@ -73,6 +73,7 @@ import { mustBeExportAssignment } from "./mustBeExportAssignment";
 import { mustBeExportDeclaration } from "./mustBeExportDeclaration";
 import { mustBeExpressionStatement } from "./mustBeExpressionStatement";
 import { mustBeFunctionDeclaration } from "./mustBeFunctionDeclaration";
+import { mustBeIfStatement } from "./mustBeIfStatement";
 import { mustBeImportClause } from "./mustBeImportClause";
 import { mustBeImportDeclaration } from "./mustBeImportDeclaration";
 import { mustBeImportEqualsDeclaration } from "./mustBeImportEqualsDeclaration";
@@ -126,6 +127,7 @@ export class AST
     static mustBeExportDeclaration = mustBeExportDeclaration;
     static mustBeExpressionStatement = mustBeExpressionStatement;
     static mustBeFunctionDeclaration = mustBeFunctionDeclaration;
+    static mustBeIfStatement = mustBeIfStatement;
     static mustBeImportClause = mustBeImportClause;
     static mustBeImportDeclaration = mustBeImportDeclaration;
     static mustBeImportEqualsDeclaration = mustBeImportEqualsDeclaration;
