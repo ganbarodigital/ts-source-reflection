@@ -97,6 +97,7 @@ export * from "./IntermediateGetter";
 export * from "./IntermediateGlobalAugmentation";
 export * from "./IntermediateIdentifiedItem";
 export * from "./IntermediateIdentifierReference";
+export * from "./IntermediateIfStatement";
 export * from "./IntermediateImportAssignment";
 export * from "./IntermediateImportBinding";
 export * from "./IntermediateImportDeclaration";

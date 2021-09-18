@@ -81,6 +81,7 @@ export enum IntermediateKind {
     IntermediateGetter,
     IntermediateGlobalAugmentation,
     IntermediateIdentifierReference,
+    IntermediateIfStatement,
     IntermediateImportAssignment,
     IntermediateImportBinding,
     IntermediateImportDeclaration,
