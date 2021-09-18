@@ -43,11 +43,11 @@ import { processDocBlock } from "./processDocBlock";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { processMemberSignatures } from "./processMemberSignatures";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
-import { StatementProcessor } from "./StatementProcessor";
 
-export const processInterfaceDeclaration: StatementProcessor = (
+export function processInterfaceDeclaration (
     input: Statement
-): IntermediateInterface => {
+): IntermediateInterface
+{
     // make sure we're dealing with an actual interface
     const interfaceDec = AST.mustBeInterfaceDeclaration(input);
 

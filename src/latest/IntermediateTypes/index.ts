@@ -150,6 +150,7 @@ export * from "./IntermediateShorthandPropertyAssignment";
 export * from "./IntermediateSourceFile";
 export * from "./IntermediateSpreadElement";
 export * from "./IntermediateStatement";
+export * from "./IntermediateStatementProcessors";
 export * from "./IntermediateStaticItem";
 export * from "./IntermediateStringLiteral";
 export * from "./IntermediateSupportedStatements";

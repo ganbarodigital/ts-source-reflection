@@ -32,17 +32,6 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Statement } from "typescript";
-import { AST } from "../AST";
-import { IntermediateExpression } from "../IntermediateTypes";
-import { processExpression } from "./processExpression";
+import { STATEMENT_PROCESSORS } from "../../Processors/STATEMENT_PROCESSORS";
 
-export function processExpressionStatement (
-    input: Statement
-): IntermediateExpression
-{
-    // make sure we have what we need
-    const expDec = AST.mustBeExpressionStatement(input);
-
-    return processExpression(expDec.expression);
-}
+export type IntermediateStatementProcessors = typeof STATEMENT_PROCESSORS;

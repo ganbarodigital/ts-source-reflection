@@ -43,11 +43,11 @@ import {
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
 import { processExpression } from "./processExpression";
-import { StatementProcessor } from "./StatementProcessor";
 
-export const processEnumDeclaration: StatementProcessor = (
+export function processEnumDeclaration (
     input: Statement
-): IntermediateEnum => {
+): IntermediateEnum
+{
     // make sure we have the right kind of statement
     const enumDec = AST.mustBeEnumDeclaration(input);
 

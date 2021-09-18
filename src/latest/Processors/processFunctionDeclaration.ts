@@ -41,11 +41,11 @@ import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
-import { StatementProcessor } from "./StatementProcessor";
 
-export const processFunctionDeclaration: StatementProcessor = (
+export function processFunctionDeclaration (
     input: Statement
-): IntermediateFunction => {
+): IntermediateFunction
+{
     // make sure we have what we need
     const funcDec = AST.mustBeFunctionDeclaration(input);
 

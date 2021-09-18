@@ -55,7 +55,6 @@ import {
 import { processDocBlock } from "./processDocBlock";
 import { processExpression } from "./processExpression";
 import { processTypeNode } from "./processTypeNode";
-import { StatementProcessor } from "./StatementProcessor";
 
 type CONTEXT_FLAGS = {
     exported: boolean;
@@ -64,9 +63,10 @@ type CONTEXT_FLAGS = {
         | IntermediateKind.IntermediateVarDeclaration;
 }
 
-export const processVariableStatement: StatementProcessor = (
+export function processVariableStatement (
     input: Statement
-): IntermediateVariableDeclarations => {
+): IntermediateVariableDeclarations
+{
     // make sure we have the right kind of statement
     const variableStmt = AST.mustBeVariableStatement(input);
 

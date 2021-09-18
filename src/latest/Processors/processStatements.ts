@@ -31,45 +31,14 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { FunctionPointerTable, RequireAllAttributesMap, searchFunctionPointerTable } from "@safelytyped/core-types";
+import { DispatchMap, searchDispatchMap } from "@safelytyped/core-types";
 import { NodeArray, Statement, SyntaxKind } from "typescript";
 import { AST } from "../AST";
 import {
-    IntermediateStatement,
-    IntermediateSupportedStatements
+    IntermediateStatement
 } from "../IntermediateTypes";
-import { processClassDeclaration } from "./processClassDeclaration";
-import { processEnumDeclaration } from "./processEnumDeclaration";
-import { processExportAssignment } from "./processExportAssignment";
-import { processExportDeclaration } from "./processExportDeclaration";
-import { processExpressionStatement } from "./processExpressionStatement";
-import { processFunctionDeclaration } from "./processFunctionDeclaration";
-import { processIfStatement } from "./processIfStatement";
-import { processImportDeclaration } from "./processImportDeclaration";
-import { processImportEqualsDeclaration } from "./processImportEqualsDeclaration";
-import { processInterfaceDeclaration } from "./processInterfaceDeclaration";
-import { processModuleDeclaration } from "./processModuleDeclaration";
-import { processTypeAliasDeclaration } from "./processTypeAliasDeclaration";
-import { processVariableStatement } from "./processVariableStatement";
 import { StatementProcessor } from "./StatementProcessor";
-
-type StatementProcessors = RequireAllAttributesMap<IntermediateSupportedStatements, StatementProcessor>;
-
-const statementProcessors: StatementProcessors = {
-    ClassDeclaration: processClassDeclaration,
-    EnumDeclaration: processEnumDeclaration,
-    ExpressionStatement: processExpressionStatement,
-    ExportAssignment: processExportAssignment,
-    ExportDeclaration: processExportDeclaration,
-    FunctionDeclaration: processFunctionDeclaration,
-    IfStatement: processIfStatement,
-    ImportDeclaration: processImportDeclaration,
-    ImportEqualsDeclaration: processImportEqualsDeclaration,
-    InterfaceDeclaration: processInterfaceDeclaration,
-    ModuleDeclaration: processModuleDeclaration,
-    TypeAliasDeclaration: processTypeAliasDeclaration,
-    VariableStatement: processVariableStatement,
-}
+import { STATEMENT_PROCESSORS } from "./STATEMENT_PROCESSORS";
 
 export function processStatements(
     statements: NodeArray<Statement>
@@ -91,8 +60,13 @@ export function processStatements(
         // tslint:disable-next-line: no-console
         // console.log("Processing node: " + kind);
 
-        const statementProcessor = searchFunctionPointerTable(
-            statementProcessors as FunctionPointerTable<string, StatementProcessor>,
+        const statementProcessor = searchDispatchMap(
+            // the `as` is necessary to allow our fallback to return
+            // an `undefined` value
+            //
+            // do not be surprised if a future version of TS
+            // stops us doing this!
+            STATEMENT_PROCESSORS as DispatchMap<string, StatementProcessor>,
             [kind],
             () => { return undefined }
         );

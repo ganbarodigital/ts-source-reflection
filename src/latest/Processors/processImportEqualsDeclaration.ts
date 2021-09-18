@@ -37,13 +37,13 @@ import { AST } from "../AST";
 import {
     IntermediateImportAssignment, IntermediateKind
 } from "../IntermediateTypes";
-import { processModuleReference } from "./processModuleReference";
 import { processIdentifier } from "./processIdentifier";
-import { StatementProcessor } from "./StatementProcessor";
+import { processModuleReference } from "./processModuleReference";
 
-export const processImportEqualsDeclaration: StatementProcessor = (
+export function processImportEqualsDeclaration (
     input: Statement
-): IntermediateImportAssignment => {
+): IntermediateImportAssignment
+{
     // make sure we have the right kind of statement
     const importDec = AST.mustBeImportEqualsDeclaration(input);
 

@@ -40,11 +40,11 @@ import {
     IntermediateExportAssignment, IntermediateKind
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
-import { StatementProcessor } from "./StatementProcessor";
 
-export const processExportAssignment: StatementProcessor = (
+export function processExportAssignment (
     input: Statement
-): IntermediateExportAssignment => {
+): IntermediateExportAssignment
+{
     // make sure we have the right kind of statement
     const exportDec = AST.mustBeExportAssignment(input);
 

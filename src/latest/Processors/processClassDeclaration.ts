@@ -44,11 +44,11 @@ import { processDocBlock } from "./processDocBlock";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { processMemberDeclarations } from "./processMethodDeclarations";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
-import { StatementProcessor } from "./StatementProcessor";
 
-export const processClassDeclaration: StatementProcessor = (
+export function processClassDeclaration (
     input: Statement
-): IntermediateClass => {
+): IntermediateClass
+{
     // make sure we have the right kind of statement
     const classDec = AST.mustBeClassDeclaration(input);
 

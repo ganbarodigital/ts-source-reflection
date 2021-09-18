@@ -57,11 +57,11 @@ import {
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 import { processIdentifier } from "./processIdentifier";
-import { StatementProcessor } from "./StatementProcessor";
 
-export const processExportDeclaration: StatementProcessor = (
+export function processExportDeclaration (
     input: Statement
-): IntermediateExportDeclaration => {
+): IntermediateExportDeclaration
+{
     // make sure we have the right kind of statement
     const exportDec = AST.mustBeExportDeclaration(input);
 

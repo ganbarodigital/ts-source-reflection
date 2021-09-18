@@ -52,11 +52,11 @@ import {
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
 import { processStatements } from "./processStatements";
-import { StatementProcessor } from "./StatementProcessor";
 
-export const processModuleDeclaration: StatementProcessor = (
+export function processModuleDeclaration (
     input: Statement
-): IntermediateModuleDeclaration => {
+): IntermediateModuleDeclaration
+{
     // make sure we have the right kind of statement
     const moduleDec = AST.mustBeModuleDeclaration(input);
 

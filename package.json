@@ -26,7 +26,7 @@
   ],
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@safelytyped/core-types": "^0.3.4",
+    "@safelytyped/core-types": "^0.3.5",
     "@safelytyped/filepath": "^0.1.1",
     "@types/file-exists": "^4.0.1",
     "scripty": "^2.0.0"

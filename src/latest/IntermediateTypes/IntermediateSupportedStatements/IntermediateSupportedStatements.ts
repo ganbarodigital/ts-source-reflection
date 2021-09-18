@@ -32,19 +32,8 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateClass } from "../IntermediateClass";
-import { IntermediateEnum } from "../IntermediateEnum";
-import { IntermediateExportAssignment } from "../IntermediateExportAssignment";
-import { IntermediateExportDeclaration } from "../IntermediateExportDeclaration";
-import { IntermediateExpression } from "../IntermediateExpression";
-import { IntermediateFunction } from "../IntermediateFunction";
-import { IntermediateIfStatement } from "../IntermediateIfStatement";
-import { IntermediateImportAssignment } from "../IntermediateImportAssignment";
-import { IntermediateImportDeclaration } from "../IntermediateImportDeclaration";
-import { IntermediateInterface } from "../IntermediateInterface";
-import { IntermediateModuleDeclaration } from "../IntermediateModuleDeclaration";
-import { IntermediateTypeAliasDeclaration } from "../IntermediateTypeAliasDeclaration";
-import { IntermediateVariableDeclarations } from "../IntermediateVariableDeclarations";
+import { DispatchMapReturnTypes } from "@safelytyped/core-types";
+import { IntermediateStatementProcessors } from "../IntermediateStatementProcessors";
 
 /**
  * `IntermediateSupportedStatements` lists all the AST node types
@@ -58,18 +47,5 @@ import { IntermediateVariableDeclarations } from "../IntermediateVariableDeclara
  * - the IntermediateStatement type
  * - the list of statement processors maintained within processStatement()
  */
-export interface IntermediateSupportedStatements {
-    ClassDeclaration: IntermediateClass;
-    EnumDeclaration: IntermediateEnum;
-    ExportAssignment: IntermediateExportAssignment;
-    ExportDeclaration: IntermediateExportDeclaration;
-    ExpressionStatement: IntermediateExpression;
-    FunctionDeclaration: IntermediateFunction;
-    IfStatement: IntermediateIfStatement;
-    ImportEqualsDeclaration: IntermediateImportAssignment;
-    ImportDeclaration: IntermediateImportDeclaration;
-    InterfaceDeclaration: IntermediateInterface;
-    ModuleDeclaration: IntermediateModuleDeclaration;
-    TypeAliasDeclaration: IntermediateTypeAliasDeclaration;
-    VariableStatement: IntermediateVariableDeclarations;
-}
+export type IntermediateSupportedStatements
+    = DispatchMapReturnTypes<IntermediateStatementProcessors>

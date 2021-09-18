@@ -42,11 +42,11 @@ import {
 import { processDocBlock } from "./processDocBlock";
 import { processTypeNode } from "./processTypeNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
-import { StatementProcessor } from "./StatementProcessor";
 
-export const processTypeAliasDeclaration: StatementProcessor = (
+export function processTypeAliasDeclaration (
     input: Statement
-): IntermediateTypeAliasDeclaration => {
+): IntermediateTypeAliasDeclaration
+{
     // make sure we have what we need
     const typeAliasDec = mustBeTypeAliasDeclaration(input);
 

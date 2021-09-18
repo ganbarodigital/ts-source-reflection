@@ -32,17 +32,32 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Statement } from "typescript";
-import { AST } from "../AST";
-import { IntermediateExpression } from "../IntermediateTypes";
-import { processExpression } from "./processExpression";
+import { processClassDeclaration } from "./processClassDeclaration";
+import { processEnumDeclaration } from "./processEnumDeclaration";
+import { processExportAssignment } from "./processExportAssignment";
+import { processExportDeclaration } from "./processExportDeclaration";
+import { processExpressionStatement } from "./processExpressionStatement";
+import { processFunctionDeclaration } from "./processFunctionDeclaration";
+import { processIfStatement } from "./processIfStatement";
+import { processImportDeclaration } from "./processImportDeclaration";
+import { processImportEqualsDeclaration } from "./processImportEqualsDeclaration";
+import { processInterfaceDeclaration } from "./processInterfaceDeclaration";
+import { processModuleDeclaration } from "./processModuleDeclaration";
+import { processTypeAliasDeclaration } from "./processTypeAliasDeclaration";
+import { processVariableStatement } from "./processVariableStatement";
 
-export function processExpressionStatement (
-    input: Statement
-): IntermediateExpression
-{
-    // make sure we have what we need
-    const expDec = AST.mustBeExpressionStatement(input);
-
-    return processExpression(expDec.expression);
+export const STATEMENT_PROCESSORS = {
+    ClassDeclaration: processClassDeclaration,
+    EnumDeclaration: processEnumDeclaration,
+    ExpressionStatement: processExpressionStatement,
+    ExportAssignment: processExportAssignment,
+    ExportDeclaration: processExportDeclaration,
+    FunctionDeclaration: processFunctionDeclaration,
+    IfStatement: processIfStatement,
+    ImportDeclaration: processImportDeclaration,
+    ImportEqualsDeclaration: processImportEqualsDeclaration,
+    InterfaceDeclaration: processInterfaceDeclaration,
+    ModuleDeclaration: processModuleDeclaration,
+    TypeAliasDeclaration: processTypeAliasDeclaration,
+    VariableStatement: processVariableStatement,
 }

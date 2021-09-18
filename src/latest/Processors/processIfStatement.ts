@@ -41,11 +41,11 @@ import {
     IntermediateKind
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
-import { StatementProcessor } from "./StatementProcessor";
 
-export const processIfStatement: StatementProcessor = (
+export function processIfStatement(
     input: Statement
-): IntermediateIfStatement => {
+): IntermediateIfStatement
+{
     // make sure we have the right kind of statement
     const ifStmt = AST.mustBeIfStatement(input);
 
