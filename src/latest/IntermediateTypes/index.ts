@@ -120,6 +120,7 @@ export * from "./IntermediateMemberSignature";
 export * from "./IntermediateMethodDeclaration";
 export * from "./IntermediateMethodSignature";
 export * from "./IntermediateModuleDeclaration";
+export * from "./IntermediateAmbientModuleDefinition";
 export * from "./IntermediateModuleReference";
 export * from "./IntermediateNamedExportItem";
 export * from "./IntermediateNamespace";

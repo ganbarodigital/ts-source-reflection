@@ -35,6 +35,7 @@
 export enum IntermediateKind {
     IntermediateAliasedExportItem,
     IntermediateAliasedImportBinding,
+    IntermediateAmbientModuleDefinition,
     IntermediateAnonymousCallableParameter,
     IntermediateAnonymousClassType,
     IntermediateArrayLiteral,
