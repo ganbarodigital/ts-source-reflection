@@ -32,10 +32,16 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem, IntermediateKind, IntermediateStatement } from "..";
+import {
+    IntermediateDeclarableItem,
+    IntermediateItem,
+    IntermediateKind,
+    IntermediateStatement
+} from "..";
 
 export interface IntermediateAmbientModuleDefinition
-    extends IntermediateItem<IntermediateKind.IntermediateAmbientModuleDefinition>
+    extends IntermediateItem<IntermediateKind.IntermediateAmbientModuleDefinition>,
+        IntermediateDeclarableItem
 {
     name: string;
     children: IntermediateStatement[];
