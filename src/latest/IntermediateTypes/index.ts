@@ -35,6 +35,7 @@
 export * from "./IntermediateAbstractItem";
 export * from "./IntermediateAliasedExportItem";
 export * from "./IntermediateAliasedImportBinding";
+export * from "./IntermediateAmbientModuleDefinition";
 export * from "./IntermediateAnonymousCallableParameter";
 export * from "./IntermediateAnonymousClassType";
 export * from "./IntermediateArgument";
@@ -120,7 +121,7 @@ export * from "./IntermediateMemberSignature";
 export * from "./IntermediateMethodDeclaration";
 export * from "./IntermediateMethodSignature";
 export * from "./IntermediateModuleDeclaration";
-export * from "./IntermediateAmbientModuleDefinition";
+export * from "./IntermediateModuleBlock";
 export * from "./IntermediateModuleReference";
 export * from "./IntermediateNamedExportItem";
 export * from "./IntermediateNamespace";
