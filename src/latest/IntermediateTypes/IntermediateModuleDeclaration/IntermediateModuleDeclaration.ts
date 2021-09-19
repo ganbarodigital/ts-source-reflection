@@ -33,10 +33,12 @@
 //
 
 import {
+    IntermediateAmbientModuleDefinition,
     IntermediateGlobalAugmentation,
     IntermediateNamespace
 } from "..";
 
 export type IntermediateModuleDeclaration
-    = IntermediateGlobalAugmentation
+    = IntermediateAmbientModuleDefinition
+    | IntermediateGlobalAugmentation
     | IntermediateNamespace
