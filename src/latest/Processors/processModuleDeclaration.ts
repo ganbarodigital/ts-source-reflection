@@ -39,18 +39,21 @@ import {
 } from "@safelytyped/core-types";
 import {
     isModuleBlock,
+    ModuleBody,
     ModuleDeclaration,
     NodeFlags,
     Statement
 } from "typescript";
 import { AST } from "../AST";
 import {
+    IntermediateAmbientModuleDefinition,
     IntermediateGlobalAugmentation,
     IntermediateKind,
     IntermediateModuleDeclaration,
     IntermediateNamespace
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
+import { processModuleBody } from "./processModuleBody";
 import { processStatements } from "./processStatements";
 
 export function processModuleDeclaration (
@@ -69,6 +72,10 @@ export function processModuleDeclaration (
     // tslint:disable-next-line: no-bitwise
     if (moduleDec.flags & NodeFlags.GlobalAugmentation) {
         return processGlobalAugmentation(moduleDec);
+    }
+
+    if (isModuleDeclarationWithBody(moduleDec)) {
+        return processModuleDefinition(moduleDec);
     }
 
     // if we get there, then this is something we have not seen before
@@ -110,6 +117,35 @@ function processGlobalAugmentation(
             actual: getClassNames(input.body)[0],
         }
     });
+}
+
+type ModuleDeclarationWithBody =
+    ModuleDeclaration
+    &
+{
+    body: ModuleBody;
+}
+
+function isModuleDeclarationWithBody(
+    input: ModuleDeclaration
+): input is ModuleDeclarationWithBody
+{
+    if (input.body) {
+        return true;
+    }
+    return false;
+}
+
+function processModuleDefinition(
+    input: ModuleDeclarationWithBody
+): IntermediateAmbientModuleDefinition
+{
+    return {
+        kind: IntermediateKind.IntermediateAmbientModuleDefinition,
+        name: input.name.getText(),
+        isDeclared: AST.hasDeclaredModifier(input.modifiers),
+        contents: processModuleBody(input.body),
+    }
 }
 
 function processNamespace(
