@@ -36,7 +36,7 @@ import {
     IntermediateDeclarableItem,
     IntermediateItem,
     IntermediateKind,
-    IntermediateStatement
+    IntermediateModuleContents
 } from "..";
 
 export interface IntermediateAmbientModuleDefinition
@@ -44,5 +44,5 @@ export interface IntermediateAmbientModuleDefinition
         IntermediateDeclarableItem
 {
     name: string;
-    children: IntermediateStatement[];
+    contents: IntermediateModuleContents;
 }
