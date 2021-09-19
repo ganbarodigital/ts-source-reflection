@@ -34,6 +34,7 @@
 
 import {
     IntermediateDeclarableItem,
+    IntermediateIdentifiedItem,
     IntermediateItem,
     IntermediateKind,
     IntermediateModuleContents
@@ -41,8 +42,8 @@ import {
 
 export interface IntermediateAmbientModuleDefinition
     extends IntermediateItem<IntermediateKind.IntermediateAmbientModuleDefinition>,
-        IntermediateDeclarableItem
+        IntermediateDeclarableItem,
+        IntermediateIdentifiedItem
 {
-    name: string;
     contents: IntermediateModuleContents;
 }
