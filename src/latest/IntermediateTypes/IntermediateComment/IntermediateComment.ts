@@ -38,5 +38,5 @@ export interface IntermediateComment
     extends IntermediateItem<IntermediateKind.IntermediateComment>
 {
     content: string;
-    startsOnNewLine: boolean;
+    startsOnOwnLine: boolean;
 }
