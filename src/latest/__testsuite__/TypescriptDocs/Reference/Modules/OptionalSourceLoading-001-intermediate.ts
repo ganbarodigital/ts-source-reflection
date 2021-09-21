@@ -206,6 +206,7 @@ const expectedResult: IntermediateSourceFile = {
             elseBlock: undefined,
         },
     ],
+    referencedFiles: [],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

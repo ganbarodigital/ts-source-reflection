@@ -211,6 +211,7 @@ const expectedResult: IntermediateSourceFile = {
             propName: "shouldFreeze",
         },
     ],
+    referencedFiles: [],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

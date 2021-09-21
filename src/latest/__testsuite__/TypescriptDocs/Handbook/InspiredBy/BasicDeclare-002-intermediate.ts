@@ -65,6 +65,7 @@ const expectedResult: IntermediateSourceFile = {
             isDefaultExport: false,
         },
     ],
+    referencedFiles: [],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

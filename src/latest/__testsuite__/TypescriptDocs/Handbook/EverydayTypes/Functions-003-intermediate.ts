@@ -113,6 +113,7 @@ const expectedResult: IntermediateSourceFile = {
             typeAssertion: undefined,
         },
     ],
+    referencedFiles: [],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

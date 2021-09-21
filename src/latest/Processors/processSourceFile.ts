@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import { Filepath } from "@safelytyped/filepath";
-import { SourceFile } from "typescript";
+import { FileReference, SourceFile } from "typescript";
 import {
     IntermediateKind,
     IntermediateSourceFile
@@ -48,6 +48,21 @@ export function processSourceFile(
         path: new Filepath(parsedSource.fileName),
         kind: IntermediateKind.IntermediateSourceFile,
         children: processStatements(parsedSource.statements),
+        referencedFiles: processFileReferences(parsedSource.referencedFiles),
+    }
+
+    // all done
+    return retval;
+}
+
+function processFileReferences(
+    input: readonly FileReference[]
+): Filepath[]
+{
+    const retval: Filepath[] = [];
+
+    for (const member of input) {
+        retval.push(new Filepath(member.fileName));
     }
 
     // all done

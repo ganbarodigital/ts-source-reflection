@@ -68,6 +68,7 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
         },
     ],
+    referencedFiles: [],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

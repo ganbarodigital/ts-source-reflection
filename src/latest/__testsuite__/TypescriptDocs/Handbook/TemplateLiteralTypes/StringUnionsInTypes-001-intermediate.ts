@@ -182,6 +182,7 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: false,
         }
     ],
+    referencedFiles: [],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

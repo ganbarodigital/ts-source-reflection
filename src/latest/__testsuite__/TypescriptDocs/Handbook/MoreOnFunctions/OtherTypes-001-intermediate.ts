@@ -52,6 +52,7 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
         },
     ],
+    referencedFiles: [],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

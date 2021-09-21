@@ -131,6 +131,7 @@ const expectedResult: IntermediateSourceFile = {
             propName: "anotherProp",
         },
     ],
+    referencedFiles: [],
     kind: IntermediateKind.IntermediateSourceFile,
 }
 
