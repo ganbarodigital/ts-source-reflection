@@ -78,6 +78,15 @@ export function processModuleDeclaration (
         return processModuleDefinition(moduleDec);
     }
 
+    // no (useful) flags, no body?
+    if (!moduleDec.body) {
+        return {
+            kind: IntermediateKind.IntermediateShorthandAmbientModuleDefinition,
+            isDeclared: true,
+            name: moduleDec.name.getText(),
+        }
+    }
+
     // if we get there, then this is something we have not seen before
     throw new UnsupportedTypeError({
         public: {
