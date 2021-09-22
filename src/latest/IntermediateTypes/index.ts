@@ -143,6 +143,7 @@ export * from "./IntermediatePropertyAssignment";
 export * from "./IntermediatePropertyDeclaration";
 export * from "./IntermediatePropertySignature";
 export * from "./IntermediateQualifiedName";
+export * from "./IntermediateQualifiedTypeReference";
 export * from "./IntermediateReExportAll";
 export * from "./IntermediateReExportIdentifiers";
 export * from "./IntermediateReadonlyItem";
