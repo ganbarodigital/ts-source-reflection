@@ -35,10 +35,12 @@
 import {
     IntermediateAmbientModuleDefinition,
     IntermediateGlobalAugmentation,
-    IntermediateNamespace
+    IntermediateNamespace,
+    IntermediateShorthandAmbientModuleDefinition
 } from "..";
 
 export type IntermediateModuleDeclaration
     = IntermediateAmbientModuleDefinition
     | IntermediateGlobalAugmentation
     | IntermediateNamespace
+    | IntermediateShorthandAmbientModuleDefinition
