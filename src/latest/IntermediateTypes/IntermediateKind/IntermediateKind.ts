@@ -120,6 +120,7 @@ export enum IntermediateKind {
     IntermediateRegexLiteral,
     IntermediateRestType,
     IntermediateSetter,
+    IntermediateShorthandAmbientModuleDefinition,
     IntermediateShorthandPropertyAssignment,
     IntermediateSourceFile,
     IntermediateSpreadOperator,
