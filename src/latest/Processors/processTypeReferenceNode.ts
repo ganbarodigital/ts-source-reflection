@@ -38,8 +38,7 @@ import { processQualifiedName } from "./processQualifiedName";
 import { processTypeNode } from "./processTypeNode";
 
 
-export function processTypeReferenceNode
-(
+export function processTypeReferenceNode(
     input: TypeReferenceNode
 ): IntermediateTypeReference
 {

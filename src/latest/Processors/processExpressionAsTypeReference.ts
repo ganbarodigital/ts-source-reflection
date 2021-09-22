@@ -32,34 +32,26 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { NewExpression } from "typescript";
-import {
-    IntermediateKind, IntermediateNewExpression
-} from "../IntermediateTypes";
-import { processExpression } from "./processExpression";
-import { processExpressionAsTypeReference } from "./processExpressionAsTypeReference";
+import { Expression, isPropertyAccessExpression, MemberName } from "typescript";
+import { IntermediateFixedTypeReference, IntermediateKind, IntermediateQualifiedTypeReference, IntermediateTypeReference } from "../IntermediateTypes";
 
-export function processNewExpression(
-    input: NewExpression
-): IntermediateNewExpression
+export function processExpressionAsTypeReference(
+    input: Expression | MemberName
+): IntermediateTypeReference
 {
-    // our return value
-    const retval: IntermediateNewExpression = {
-        kind: IntermediateKind.IntermediateNewExpression,
-        typeRef: processExpressionAsTypeReference(input.expression),
-        arguments: [],
-        // asType is set in `processExpression()`
-        asType: undefined,
+    // special case - property access
+    if (isPropertyAccessExpression(input)) {
+        return <IntermediateQualifiedTypeReference>{
+            kind: IntermediateKind.IntermediateQualifiedTypeReference,
+            left: processExpressionAsTypeReference(input.expression),
+            right: processExpressionAsTypeReference(input.name)
+        }
     }
 
-    // what arguments do we have?
-    //
-    // a parameter is what appears in a function / method signature
-    // an argument is what appears when the function / method gets called
-    for (const argument of input.arguments ?? []) {
-        retval.arguments.push(processExpression(argument));
+    // if we get here, we're looking at a MemberName, or an expression
+    // that safely collapses down to a string
+    return <IntermediateFixedTypeReference>{
+        kind: IntermediateKind.IntermediateFixedTypeReference,
+        typeName: input.getText(),
     }
-
-    // all done
-    return retval;
 }

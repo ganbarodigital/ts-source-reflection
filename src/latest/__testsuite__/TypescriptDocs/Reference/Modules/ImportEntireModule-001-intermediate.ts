@@ -76,8 +76,15 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateNewExpression,
                         typeRef: {
-                            kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "validator.ZipCodeValidator",
+                            kind: IntermediateKind.IntermediateQualifiedTypeReference,
+                            left: {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "validator",
+                            },
+                            right: {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "ZipCodeValidator",
+                            },
                         },
                         arguments: [],
                         asType: undefined,

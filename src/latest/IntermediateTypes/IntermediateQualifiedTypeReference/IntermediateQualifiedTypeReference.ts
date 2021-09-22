@@ -32,11 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem, IntermediateKind } from "..";
+import { IntermediateItem, IntermediateKind, IntermediateTypeReference } from "..";
 
 export interface IntermediateQualifiedTypeReference
     extends IntermediateItem<IntermediateKind.IntermediateQualifiedTypeReference>
 {
-    left: string;
-    right: string;
+    left: IntermediateTypeReference;
+    right: IntermediateTypeReference;
 }
