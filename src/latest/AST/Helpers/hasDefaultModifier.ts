@@ -33,7 +33,7 @@
 //
 
 import { ModifiersArray } from "typescript";
-import { AST } from "./AST";
+import { AST } from "..";
 
 export function hasDefaultModifier(
     input: ModifiersArray | undefined

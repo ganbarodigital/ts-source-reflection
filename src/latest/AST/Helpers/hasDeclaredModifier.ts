@@ -33,9 +33,9 @@
 //
 
 import { ModifiersArray } from "typescript";
-import { AST } from "./AST";
+import { AST } from "..";
 
-export function hasPublicModifier(
+export function hasDeclaredModifier(
     input: ModifiersArray | undefined
 ): boolean
 {
@@ -44,6 +44,6 @@ export function hasPublicModifier(
         return false;
     }
 
-    // do we have a PublicKeyword in the modifiers array?
-    return input.some((member) => AST.isPublicKeyword(member));
+    // do we have a DeclaredKeyword in the modifiers array?
+    return input.some((member) => AST.isDeclareKeyword(member));
 }

@@ -32,4 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./AST";
+export * as AST from "./Helpers";

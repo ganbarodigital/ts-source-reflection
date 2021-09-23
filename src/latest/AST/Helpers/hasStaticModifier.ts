@@ -32,18 +32,18 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { ModifiersArray } from "typescript";
-import { AST } from "./AST";
+import { AST } from "..";
+import { NodeWithModifiers } from "./NodeWithModifiers";
 
-export function hasReadonlyModifier(
-    input: ModifiersArray | undefined
+export function hasStaticModifier(
+    input: NodeWithModifiers
 ): boolean
 {
     // do we have any modifiers?
-    if (!input) {
+    if (!input.modifiers) {
         return false;
     }
 
-    // do we have a ReadonlyKeyword in the modifiers array?
-    return input.some((member) => AST.isReadonlyKeyword(member));
+    // do we have a StaticKeyword in the modifiers array?
+    return input.modifiers.some((member) => AST.isStaticKeyword(member));
 }

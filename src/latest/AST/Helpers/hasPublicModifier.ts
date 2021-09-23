@@ -32,28 +32,18 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import { SyntaxKind } from "typescript";
-import { IntermediateRestrictableScope } from "../IntermediateTypes";
-import { NodeWithModifiers } from "./NodeWithModifiers";
-export function getRestrictableScope(
-    input: NodeWithModifiers
-): Maybe<IntermediateRestrictableScope>
+import { ModifiersArray } from "typescript";
+import { AST } from "..";
+
+export function hasPublicModifier(
+    input: ModifiersArray | undefined
+): boolean
 {
-    // okay, so what scope do we have?
-    for (const member of input.modifiers ?? []) {
-        switch (member.kind) {
-            case SyntaxKind.PublicKeyword:
-                return IntermediateRestrictableScope.PUBLIC;
-            case SyntaxKind.ProtectedKeyword:
-                return IntermediateRestrictableScope.PROTECTED;
-            case SyntaxKind.PrivateKeyword:
-                return IntermediateRestrictableScope.PRIVATE;
-        }
+    // do we have any modifiers?
+    if (!input) {
+        return false;
     }
 
-    // if we get here, there's no scope restriction in the list
-    // of modifiers
-
-    return undefined;
+    // do we have a PublicKeyword in the modifiers array?
+    return input.some((member) => AST.isPublicKeyword(member));
 }

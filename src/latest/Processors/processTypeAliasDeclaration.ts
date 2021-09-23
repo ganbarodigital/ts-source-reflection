@@ -34,7 +34,6 @@
 
 import { Statement } from "typescript";
 import { AST } from "../AST";
-import { mustBeTypeAliasDeclaration } from "../AST/mustBeTypeAliasDeclaration";
 import {
     IntermediateKind,
     IntermediateTypeAliasDeclaration
@@ -48,7 +47,7 @@ export function processTypeAliasDeclaration (
 ): IntermediateTypeAliasDeclaration
 {
     // make sure we have what we need
-    const typeAliasDec = mustBeTypeAliasDeclaration(input);
+    const typeAliasDec = AST.mustBeTypeAliasDeclaration(input);
 
     // at this point, we *know* that we're looking at a type alias :)
 

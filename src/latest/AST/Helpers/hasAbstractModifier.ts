@@ -32,18 +32,18 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { AST } from "./AST";
-import { NodeWithModifiers } from "./NodeWithModifiers";
+import { ModifiersArray } from "typescript";
+import { AST } from "..";
 
-export function hasStaticModifier(
-    input: NodeWithModifiers
+export function hasAbstractModifier(
+    input: ModifiersArray | undefined
 ): boolean
 {
     // do we have any modifiers?
-    if (!input.modifiers) {
+    if (!input) {
         return false;
     }
 
-    // do we have a StaticKeyword in the modifiers array?
-    return input.modifiers.some((member) => AST.isStaticKeyword(member));
+    // do we have an AbstractKeyword in the modifiers array?
+    return input.some((member) => AST.isAbstractKeyword(member));
 }

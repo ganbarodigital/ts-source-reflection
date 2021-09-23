@@ -32,42 +32,18 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { HashMap } from "@safelytyped/core-types";
-import { isVariableStatement, Statement, SyntaxKind } from "typescript";
-import { IntermediateSupportedStatements, isSupportedStatement } from "../IntermediateTypes";
+import { ModifiersArray } from "typescript";
+import { AST } from "..";
 
-type KindTransform = {
-    typeguard: (x: Statement) => boolean;
-    retval: keyof IntermediateSupportedStatements;
-}
-
-export function getStatementKind(
-    input: Statement
-): keyof IntermediateSupportedStatements | undefined
+export function hasReadonlyModifier(
+    input: ModifiersArray | undefined
+): boolean
 {
-    const transforms: HashMap<KindTransform> = {
-        // this is a workaround for an alias in SyntaxKind
-        "FirstStatement": {
-            typeguard: isVariableStatement,
-            retval: "VariableStatement"
-        },
+    // do we have any modifiers?
+    if (!input) {
+        return false;
     }
 
-    // what kind do we think we have?
-    const retval = SyntaxKind[input.kind];
-
-    // do we actually have a slightly different kind?
-    if (transforms[retval] && transforms[retval].typeguard(input)) {
-        return transforms[retval].retval;
-    }
-
-    // make sure we have an acceptable value
-    if (isSupportedStatement(retval)) {
-        // if we get here, the original SyntaxKind is just fine for us
-        return retval;
-    }
-
-    // if we get here, then the statement isn't one we currently
-    // support
-    return undefined;
+    // do we have a ReadonlyKeyword in the modifiers array?
+    return input.some((member) => AST.isReadonlyKeyword(member));
 }

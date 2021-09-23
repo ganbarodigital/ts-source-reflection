@@ -33,9 +33,9 @@
 //
 
 import { ModifiersArray } from "typescript";
-import { AST } from "./AST";
+import { AST } from "..";
 
-export function hasExportModifier(
+export function hasPrivateModifier(
     input: ModifiersArray | undefined
 ): boolean
 {
@@ -44,6 +44,6 @@ export function hasExportModifier(
         return false;
     }
 
-    // do we have an ExportKeyword in the modifiers array?
-    return input.some((member) => AST.isExportKeyword(member));
+    // do we have a PrivateKeyword in the modifiers array?
+    return input.some((member) => AST.isPrivateKeyword(member));
 }
