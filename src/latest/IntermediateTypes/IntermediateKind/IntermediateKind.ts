@@ -75,6 +75,7 @@ export enum IntermediateKind {
     IntermediateExternalModuleReference,
     IntermediateFixedTypeArgument,
     IntermediateFixedTypeReference,
+    IntermediateForOfLoop,
     IntermediateFunction,
     IntermediateFunctionExpression,
     IntermediateFunctionTypeSignature,
