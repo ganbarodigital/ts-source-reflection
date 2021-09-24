@@ -37,7 +37,7 @@ import { DEFAULT_DATA_PATH, getClassNames, Maybe, UnsupportedTypeError } from "@
 import {
     isIdentifier,
     isObjectBindingPattern,
-    isTypeOperatorNode, ObjectBindingPattern, SyntaxKind,
+    isTypeOperatorNode, NodeFlags, ObjectBindingPattern, SyntaxKind,
     VariableDeclaration,
     VariableDeclarationList
 } from "typescript";
@@ -55,11 +55,23 @@ import { VariableDeclarationContextFlags } from "./VariableDeclarationContextFla
 
 export function processVariableDeclarationList (
     input: VariableDeclarationList,
-    contextFlags: VariableDeclarationContextFlags
 ): IntermediateVariableDeclaration[]
 {
-    // this will be our return valie
+    // this will be our return value
     const retval: IntermediateVariableDeclaration[] = [];
+
+    // what kind of variables are we defining?
+    const contextFlags: VariableDeclarationContextFlags = {
+        kind: IntermediateKind.IntermediateVarDeclaration,
+    }
+
+    if (input.flags & NodeFlags.Const) {
+        contextFlags.kind = IntermediateKind.IntermediateConstDeclaration;
+    }
+
+    if (input.flags & NodeFlags.Let) {
+        contextFlags.kind = IntermediateKind.IntermediateLetDeclaration;
+    }
 
     // what do we have?
     for (const member of input.declarations) {
@@ -117,8 +129,6 @@ function processVariableDeclaration(
             docBlock: processDocBlock(input),
             isDeclared: AST.hasDeclaredModifier(input.modifiers),
             isConstant: true,
-            isExported: contextFlags.exported,
-            isDefaultExport: AST.hasDefaultModifier(input.modifiers),
             isReadonly,
             name: input.name.getText(),
             initializer: initialiser,
@@ -132,8 +142,6 @@ function processVariableDeclaration(
         docBlock: processDocBlock(input),
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
         isConstant: false,
-        isExported: contextFlags.exported,
-        isDefaultExport: AST.hasDefaultModifier(input.modifiers),
         isReadonly,
         name: input.name.getText(),
         initializer: initialiser,
@@ -195,8 +203,6 @@ function processDestructuredVariableDeclaration(
                 docBlock: processDocBlock(input),
                 isDeclared: AST.hasDeclaredModifier(input.modifiers),
                 isConstant: true,
-                isExported: contextFlags.exported,
-                isDefaultExport: AST.hasDefaultModifier(input.modifiers),
                 isReadonly,
                 members: processDestructuredObjectDeclaration(input.name),
                 initializer,
@@ -208,8 +214,6 @@ function processDestructuredVariableDeclaration(
             docBlock: processDocBlock(input),
             isDeclared: AST.hasDeclaredModifier(input.modifiers),
             isConstant: false,
-            isExported: contextFlags.exported,
-            isDefaultExport: AST.hasDefaultModifier(input.modifiers),
             isReadonly,
             members: processDestructuredObjectDeclaration(input.name),
             initializer,

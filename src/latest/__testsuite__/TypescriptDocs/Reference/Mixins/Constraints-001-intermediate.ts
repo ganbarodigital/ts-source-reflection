@@ -41,14 +41,14 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     isConstant: true,
                     isDeclared: false,
-                    isDefaultExport: false,
-                    isExported: false,
                     isReadonly: false,
                     name: "Pausable",
                     typeRef: undefined,
@@ -166,14 +166,14 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     isConstant: true,
                     isDeclared: false,
-                    isDefaultExport: false,
-                    isExported: false,
                     isReadonly: false,
                     name: "playerTwo",
                     typeRef: undefined,

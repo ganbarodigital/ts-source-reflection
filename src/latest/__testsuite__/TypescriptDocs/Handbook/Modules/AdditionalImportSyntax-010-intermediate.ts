@@ -41,14 +41,14 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateDestructuredConstDeclaration,
                     docBlock: undefined,
                     isConstant: true,
                     isDeclared: false,
-                    isDefaultExport: false,
-                    isExported: false,
                     isReadonly: false,
                     members: [
                         "squareTwo",

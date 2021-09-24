@@ -36,7 +36,6 @@ import { IntermediateKind } from "../IntermediateTypes";
 
 
 export type VariableDeclarationContextFlags = {
-    exported: boolean;
     kind: IntermediateKind.IntermediateConstDeclaration
         | IntermediateKind.IntermediateLetDeclaration
         | IntermediateKind.IntermediateVarDeclaration;

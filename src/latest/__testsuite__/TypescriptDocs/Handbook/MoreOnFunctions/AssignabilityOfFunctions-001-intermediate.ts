@@ -58,14 +58,14 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isExported: false,
+            isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     name: "f1",
                     isDeclared: false,
-                    isExported: false,
-                    isDefaultExport: false,
                     isConstant: true,
                     isReadonly: false,
                     typeRef: {
@@ -84,14 +84,14 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isExported: false,
+            isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     name: "f2",
                     isDeclared: false,
-                    isExported: false,
-                    isDefaultExport: false,
                     isConstant: true,
                     isReadonly: false,
                     typeRef: {
@@ -110,14 +110,14 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isExported: false,
+            isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     name: "f3",
                     isDeclared: false,
-                    isExported: false,
-                    isDefaultExport: false,
                     isConstant: true,
                     isReadonly: false,
                     typeRef: {

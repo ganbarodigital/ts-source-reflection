@@ -117,13 +117,13 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isExported: false,
+            isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     isDeclared: false,
-                    isExported: false,
-                    isDefaultExport: false,
                     isReadonly: false,
                     isConstant: true,
                     name: "d",

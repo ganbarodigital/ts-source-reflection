@@ -207,14 +207,14 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateLetDeclaration,
                     docBlock: undefined,
                     isConstant: false,
                     isDeclared: false,
-                    isDefaultExport: false,
-                    isExported: false,
                     isReadonly: false,
                     name: "player",
                     typeRef: undefined,

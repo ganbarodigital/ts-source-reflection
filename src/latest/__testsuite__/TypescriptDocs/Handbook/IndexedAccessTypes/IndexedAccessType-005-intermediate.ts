@@ -41,14 +41,14 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isExported: false,
+            isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     isConstant: true,
                     isDeclared: false,
-                    isExported: false,
-                    isDefaultExport: false,
                     isReadonly: false,
                     name: "MyArray",
                     initializer: {

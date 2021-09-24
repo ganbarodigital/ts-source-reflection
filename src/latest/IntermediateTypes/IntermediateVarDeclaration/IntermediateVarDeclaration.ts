@@ -35,7 +35,6 @@
 import { Maybe } from "@safelytyped/core-types";
 import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
-import { IntermediateExportableItem } from "../IntermediateExportableItem";
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateItem } from "../IntermediateItem";
@@ -46,7 +45,6 @@ import { IntermediateTypeReference } from "../IntermediateTypeReference";
 export interface IntermediateVarDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateVarDeclaration>,
         IntermediateDocumentedItem,
-        IntermediateExportableItem,
         IntermediateDeclarableItem,
         IntermediateIdentifiedItem,
         IntermediateReadonlyItem

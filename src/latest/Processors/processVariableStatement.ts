@@ -33,14 +33,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { NodeFlags, Statement } from "typescript";
+import { Statement } from "typescript";
 import { AST } from "../AST";
 import {
     IntermediateKind,
     IntermediateVariableDeclarations
 } from "../IntermediateTypes";
 import { processVariableDeclarationList } from "./processVariableDeclarationList";
-import { VariableDeclarationContextFlags } from "./VariableDeclarationContextFlags";
 
 export function processVariableStatement (
     input: Statement
@@ -49,26 +48,12 @@ export function processVariableStatement (
     // make sure we have the right kind of statement
     const variableStmt = AST.mustBeVariableStatement(input);
 
-    // some information about the variables are actually stored
-    // at the list level (doh!)
-    const contextFlags: VariableDeclarationContextFlags = {
-        exported: AST.isNodeExported(input),
-        kind: IntermediateKind.IntermediateVarDeclaration
-    }
-
-    if (variableStmt.declarationList.flags & NodeFlags.Const) {
-        contextFlags.kind = IntermediateKind.IntermediateConstDeclaration;
-    }
-
-    if (variableStmt.declarationList.flags & NodeFlags.Let) {
-        contextFlags.kind = IntermediateKind.IntermediateLetDeclaration;
-    }
-
     return {
         kind: IntermediateKind.IntermediateVariableDeclarations,
+        isDefaultExport: AST.hasDefaultModifier(variableStmt.modifiers),
+        isExported: AST.isNodeExported(variableStmt),
         variables: processVariableDeclarationList(
             variableStmt.declarationList,
-            contextFlags
         ),
     }
 }

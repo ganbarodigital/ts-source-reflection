@@ -197,13 +197,13 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isExported: false,
+            isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     name: "zoo",
                     isConstant: true,
-                    isExported: false,
-                    isDefaultExport: false,
                     isDeclared: false,
                     isReadonly: false,
                     docBlock: undefined,
@@ -277,12 +277,12 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isExported: false,
+            isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
-                    isExported: false,
-                    isDefaultExport: false,
                     isDeclared: false,
                     isConstant: true,
                     isReadonly: false,
@@ -323,12 +323,12 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isExported: false,
+            isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
-                    isExported: false,
-                    isDefaultExport: false,
                     isDeclared: false,
                     isConstant: true,
                     isReadonly: false,
@@ -375,12 +375,12 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isExported: false,
+            isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
-                    isExported: false,
-                    isDefaultExport: false,
                     isDeclared: false,
                     isConstant: true,
                     isReadonly: false,

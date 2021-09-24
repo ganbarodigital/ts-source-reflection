@@ -69,6 +69,8 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isExported: false,
+            isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
@@ -76,8 +78,6 @@ const expectedResult: IntermediateSourceFile = {
                     name: "obj",
                     isReadonly: false,
                     isConstant: true,
-                    isExported: false,
-                    isDefaultExport: false,
                     isDeclared: false,
                     typeRef: undefined,
                     initializer: {

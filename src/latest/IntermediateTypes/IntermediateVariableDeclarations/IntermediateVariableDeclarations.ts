@@ -32,12 +32,14 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateExportableItem } from "..";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateVariableDeclaration } from "../IntermediateVariableDeclaration/IntermediateVariableDeclaration";
 
 export interface IntermediateVariableDeclarations
-    extends IntermediateItem<IntermediateKind.IntermediateVariableDeclarations>
+    extends IntermediateItem<IntermediateKind.IntermediateVariableDeclarations>,
+        IntermediateExportableItem
 {
     variables: IntermediateVariableDeclaration[];
 }
