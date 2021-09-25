@@ -41,6 +41,7 @@ import {
     isBigIntLiteral,
     isBinaryExpression,
     isCallExpression,
+    isConditionalExpression,
     isElementAccessExpression,
     isFunctionExpression,
     isIdentifier,
@@ -62,6 +63,7 @@ import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
 import { processArrowFunction } from "./processArrowFunction";
 import { processBinaryExpression } from "./processBinaryExpression";
 import { processCallExpression } from "./processCallExpression";
+import { processConditionalExpression } from "./processConditionalExpression";
 import { processElementAccessExpression } from "./processElementAccessExpression";
 import { processFunctionExpression } from "./processFunctionExpression";
 import { processIdentifier } from "./processIdentifier";
@@ -191,6 +193,10 @@ export function processExpression(
 
     if (isTemplateExpression(input)) {
         return processTemplateExpression(input);
+    }
+
+    if (isConditionalExpression(input)) {
+        return processConditionalExpression(input);
     }
 
     // if we get here, we do not know how to process this variable
