@@ -32,5 +32,36 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateStatement";
-export * from "./mustBeIntermediateStatement";
+import {
+    DEFAULT_DATA_PATH,
+    Maybe,
+    UnsupportedTypeError
+} from "@safelytyped/core-types";
+import { IntermediateStatement } from "./IntermediateStatement";
+
+/**
+ * mustBeIntermediateStatement() is a data guarantee. Use it to prove to
+ * the compiler that we definitely have an {@link IntermediateStatement}.
+ *
+ * @param input the value to inspect
+ * @returns `input` as an {@link IntermediateStatement}
+ *
+ * @throws UnsupportedTypeError
+ * This error is thrown if `input` is `null` or `undefined`.
+ */
+export function mustBeIntermediateStatement(
+    input: Maybe<IntermediateStatement>
+): IntermediateStatement
+{
+    if (input) {
+        return input;
+    }
+
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: "IntermediateStatement",
+            actual: "undefined",
+        }
+    });
+}
