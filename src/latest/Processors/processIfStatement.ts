@@ -33,18 +33,13 @@
 //
 
 import {
-    DEFAULT_DATA_PATH,
-    Maybe,
-    UnsupportedTypeError
-} from "@safelytyped/core-types";
-import {
     Statement
 } from "typescript";
 import { AST } from "../AST";
 import {
     IntermediateIfStatement,
     IntermediateKind,
-    IntermediateStatement
+    mustBeIntermediateStatement
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 import { processStatement } from "./processStatement";
@@ -64,21 +59,4 @@ export function processIfStatement(
         ),
         elseBlock: ifStmt.elseStatement ? processStatement(ifStmt.elseStatement) : undefined,
     }
-}
-
-function mustBeIntermediateStatement(
-    input: Maybe<IntermediateStatement>
-): IntermediateStatement
-{
-    if (input) {
-        return input;
-    }
-
-    throw new UnsupportedTypeError({
-        public: {
-            dataPath: DEFAULT_DATA_PATH,
-            expected: "IntermediateStatement",
-            actual: "undefined",
-        }
-    });
 }
