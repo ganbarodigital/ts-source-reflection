@@ -58,6 +58,7 @@ export * from "./IntermediateClass";
 export * from "./IntermediateClassAccessor";
 export * from "./IntermediateComment";
 export * from "./IntermediateCommentableItem";
+export * from "./IntermediateConditionalExpression";
 export * from "./IntermediateConditionalType";
 export * from "./IntermediateConstDeclaration";
 export * from "./IntermediateConstTypeCast";
