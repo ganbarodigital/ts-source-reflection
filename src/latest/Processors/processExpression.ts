@@ -50,6 +50,7 @@ import {
     isParenthesizedExpression,
     isPropertyAccessExpression, isRegularExpressionLiteral, isSpreadElement,
     isStringLiteral,
+    isTemplateExpression,
     isTypeAssertionExpression, SyntaxKind
 } from "typescript";
 import { AST } from "../AST";
@@ -69,6 +70,7 @@ import { processObjectLiteralExpression } from "./processObjectLiteralExpression
 import { processParenthesizedExpression } from "./processParenthesizedExpression";
 import { processPropertyAccessExpression } from "./processPropertyAccessExpression";
 import { processSpreadElement } from "./processSpreadElement";
+import { processTemplateExpression } from "./processTemplateExpression";
 import { processTypeNode } from "./processTypeNode";
 
 export function processExpression(
@@ -185,6 +187,10 @@ export function processExpression(
             asType: undefined,
             typeAssertion: undefined,
         }
+    }
+
+    if (isTemplateExpression(input)) {
+        return processTemplateExpression(input);
     }
 
     // if we get here, we do not know how to process this variable
