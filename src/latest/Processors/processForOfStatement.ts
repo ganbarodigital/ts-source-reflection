@@ -33,17 +33,31 @@
 //
 
 import {
-    IntermediateExpression,
-    IntermediateForInitializer,
-    IntermediateItem,
+    Statement
+} from "typescript";
+import { AST } from "../AST";
+import {
+    IntermediateForOfLoop,
     IntermediateKind,
-    IntermediateStatement
-} from "..";
+    mustBeIntermediateStatement
+} from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
+import { processForInitializer } from "./processForInitializer";
+import { processStatement } from "./processStatement";
 
-export interface IntermediateForOfLoop
-    extends IntermediateItem<IntermediateKind.IntermediateForOfLoop>
+export function processForOfStatement(
+    input: Statement
+): IntermediateForOfLoop
 {
-    initializer: IntermediateForInitializer;
-    loopTarget: IntermediateExpression;
-    contents: IntermediateStatement;
+    // make sure we have the right kind of statement
+    const forOfStmt = AST.mustBeForOfStatement(input);
+
+    return {
+        kind: IntermediateKind.IntermediateForOfLoop,
+        initializer: processForInitializer(forOfStmt.initializer),
+        loopTarget: processExpression(forOfStmt.expression),
+        contents: mustBeIntermediateStatement(
+            processStatement(forOfStmt.statement)
+        ),
+    }
 }

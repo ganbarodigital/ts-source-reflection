@@ -32,18 +32,23 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateExpression,
-    IntermediateForInitializer,
-    IntermediateItem,
-    IntermediateKind,
-    IntermediateStatement
-} from "..";
+import { ForInitializer, isVariableDeclarationList } from "typescript";
+import { IntermediateForInitializer, IntermediateKind } from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
+import { processVariableDeclarationList } from "./processVariableDeclarationList";
 
-export interface IntermediateForOfLoop
-    extends IntermediateItem<IntermediateKind.IntermediateForOfLoop>
+export function processForInitializer(
+    input: ForInitializer
+): IntermediateForInitializer
 {
-    initializer: IntermediateForInitializer;
-    loopTarget: IntermediateExpression;
-    contents: IntermediateStatement;
+    if (isVariableDeclarationList(input)) {
+        return {
+            kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDefaultExport: false,
+            isExported: false,
+            variables: processVariableDeclarationList(input),
+        };
+    }
+
+    return processExpression(input);
 }
