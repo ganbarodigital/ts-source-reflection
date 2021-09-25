@@ -96,12 +96,12 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isExported: false,
             isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    isDeclared: false,
                     isConstant: true,
                     isReadonly: false,
                     name: "db",
@@ -125,12 +125,12 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isExported: false,
             isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    isDeclared: false,
                     isConstant: true,
                     isReadonly: false,
                     name: "admins",

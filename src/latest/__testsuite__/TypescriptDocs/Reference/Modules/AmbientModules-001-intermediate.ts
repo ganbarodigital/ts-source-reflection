@@ -204,6 +204,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     {
                         kind: IntermediateKind.IntermediateVariableDeclarations,
+                        isDeclared: false,
                         isDefaultExport: false,
                         isExported: true,
                         variables: [
@@ -211,7 +212,6 @@ const expectedResult: IntermediateSourceFile = {
                                 kind: IntermediateKind.IntermediateVarDeclaration,
                                 docBlock: undefined,
                                 isConstant: false,
-                                isDeclared: false,
                                 isReadonly: false,
                                 name: "sep",
                                 typeRef: {

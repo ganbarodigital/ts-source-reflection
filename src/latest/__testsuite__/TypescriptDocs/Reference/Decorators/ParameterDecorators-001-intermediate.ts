@@ -51,13 +51,13 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isDefaultExport: false,
             isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     isConstant: true,
-                    isDeclared: false,
                     isReadonly: false,
                     docBlock: undefined,
                     name: "requiredMetadataKey",

@@ -59,6 +59,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isDefaultExport: false,
             isExported: false,
             variables: [
@@ -66,7 +67,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateLetDeclaration,
                     docBlock: undefined,
                     isConstant: false,
-                    isDeclared: false,
                     isReadonly: false,
                     name: "strings",
                     typeRef: undefined,
@@ -100,6 +100,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isDefaultExport: false,
             isExported: false,
             variables: [
@@ -107,7 +108,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateLetDeclaration,
                     docBlock: undefined,
                     isConstant: false,
-                    isDeclared: false,
                     isReadonly: false,
                     name: "validator",
                     typeRef: undefined,

@@ -197,6 +197,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isExported: false,
             isDefaultExport: false,
             variables: [
@@ -204,7 +205,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     name: "zoo",
                     isConstant: true,
-                    isDeclared: false,
                     isReadonly: false,
                     docBlock: undefined,
                     initializer: {
@@ -277,13 +277,13 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isExported: false,
             isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
-                    isDeclared: false,
                     isConstant: true,
                     isReadonly: false,
                     name: "underWater1",
@@ -323,13 +323,13 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isExported: false,
             isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
-                    isDeclared: false,
                     isConstant: true,
                     isReadonly: false,
                     name: "underWater2",
@@ -375,13 +375,13 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isExported: false,
             isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
-                    isDeclared: false,
                     isConstant: true,
                     isReadonly: false,
                     name: "underWater3",

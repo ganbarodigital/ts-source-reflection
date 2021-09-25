@@ -50,6 +50,7 @@ export function processVariableStatement (
 
     return {
         kind: IntermediateKind.IntermediateVariableDeclarations,
+        isDeclared: AST.hasDeclaredModifier(variableStmt.modifiers),
         isDefaultExport: AST.hasDefaultModifier(variableStmt.modifiers),
         isExported: AST.isNodeExported(variableStmt),
         variables: processVariableDeclarationList(

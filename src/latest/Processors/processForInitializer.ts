@@ -44,6 +44,7 @@ export function processForInitializer(
     if (isVariableDeclarationList(input)) {
         return {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isDefaultExport: false,
             isExported: false,
             variables: processVariableDeclarationList(input),

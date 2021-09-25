@@ -92,6 +92,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isExported: false,
             isDefaultExport: false,
             variables: [
@@ -99,7 +100,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateLetDeclaration,
                     name: "boxA",
                     isConstant: false,
-                    isDeclared: false,
                     isReadonly: false,
                     docBlock: undefined,
                     typeRef: {
@@ -134,6 +134,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isExported: false,
             isDefaultExport: false,
             variables: [
@@ -141,7 +142,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateLetDeclaration,
                     name: "boxB",
                     isConstant: false,
-                    isDeclared: false,
                     isReadonly: false,
                     docBlock: undefined,
                     typeRef: {

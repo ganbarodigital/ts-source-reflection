@@ -41,6 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isDefaultExport: false,
             isExported: true,
             variables: [
@@ -48,7 +49,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateVarDeclaration,
                     docBlock: undefined,
                     isConstant: false,
-                    isDeclared: false,
                     isReadonly: false,
                     name: "pi",
                     typeRef: undefined,
@@ -63,6 +63,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isDefaultExport: false,
             isExported: true,
             variables: [
@@ -70,7 +71,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateLetDeclaration,
                     docBlock: undefined,
                     isConstant: false,
-                    isDeclared: false,
                     isReadonly: false,
                     name: "squareTwo",
                     typeRef: undefined,
@@ -85,6 +85,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isDefaultExport: false,
             isExported: true,
             variables: [
@@ -92,7 +93,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     isConstant: true,
-                    isDeclared: false,
                     isReadonly: false,
                     name: "phi",
                     typeRef: undefined,

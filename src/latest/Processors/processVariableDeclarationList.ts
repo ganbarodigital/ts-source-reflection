@@ -33,15 +33,22 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { DEFAULT_DATA_PATH, getClassNames, Maybe, UnsupportedTypeError } from "@safelytyped/core-types";
+import {
+    DEFAULT_DATA_PATH,
+    getClassNames,
+    Maybe,
+    UnsupportedTypeError
+} from "@safelytyped/core-types";
 import {
     isIdentifier,
     isObjectBindingPattern,
-    isTypeOperatorNode, NodeFlags, ObjectBindingPattern, SyntaxKind,
+    isTypeOperatorNode,
+    NodeFlags,
+    ObjectBindingPattern,
+    SyntaxKind,
     VariableDeclaration,
     VariableDeclarationList
 } from "typescript";
-import { AST } from "../AST";
 import {
     IntermediateExpression,
     IntermediateKind,
@@ -127,7 +134,6 @@ function processVariableDeclaration(
         return {
             kind: contextFlags.kind,
             docBlock: processDocBlock(input),
-            isDeclared: AST.hasDeclaredModifier(input.modifiers),
             isConstant: true,
             isReadonly,
             name: input.name.getText(),
@@ -140,7 +146,6 @@ function processVariableDeclaration(
     return {
         kind: contextFlags.kind,
         docBlock: processDocBlock(input),
-        isDeclared: AST.hasDeclaredModifier(input.modifiers),
         isConstant: false,
         isReadonly,
         name: input.name.getText(),
@@ -201,7 +206,6 @@ function processDestructuredVariableDeclaration(
             return {
                 kind,
                 docBlock: processDocBlock(input),
-                isDeclared: AST.hasDeclaredModifier(input.modifiers),
                 isConstant: true,
                 isReadonly,
                 members: processDestructuredObjectDeclaration(input.name),
@@ -212,7 +216,6 @@ function processDestructuredVariableDeclaration(
         return {
             kind,
             docBlock: processDocBlock(input),
-            isDeclared: AST.hasDeclaredModifier(input.modifiers),
             isConstant: false,
             isReadonly,
             members: processDestructuredObjectDeclaration(input.name),

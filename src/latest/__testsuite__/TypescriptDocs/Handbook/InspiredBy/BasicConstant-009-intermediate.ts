@@ -42,13 +42,13 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             isExported: false,
+            isDeclared: false,
             isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     name: "zoo",
                     isConstant: true,
-                    isDeclared: false,
                     isReadonly: false,
                     docBlock: undefined,
                     initializer: undefined,

@@ -76,6 +76,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isExported: false,
             isDefaultExport: false,
             variables: [
@@ -83,7 +84,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateLetDeclaration,
                     docBlock: undefined,
                     isReadonly: false,
-                    isDeclared: false,
                     isConstant: false,
                     name: "myIdentity",
                     typeRef: {

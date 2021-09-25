@@ -124,6 +124,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isDefaultExport: false,
             isExported: false,
             variables: [
@@ -131,7 +132,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     isConstant: true,
-                    isDeclared: false,
                     isReadonly: false,
                     name: "todoInfo",
                     typeRef: {

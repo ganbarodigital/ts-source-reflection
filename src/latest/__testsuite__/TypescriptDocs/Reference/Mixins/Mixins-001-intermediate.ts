@@ -192,6 +192,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isDefaultExport: false,
             isExported: false,
             variables: [
@@ -199,7 +200,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     isConstant: true,
-                    isDeclared: false,
                     isReadonly: false,
                     name: "EightBitSprite",
                     typeRef: undefined,
@@ -228,6 +228,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isDefaultExport: false,
             isExported: false,
             variables: [
@@ -235,7 +236,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     docBlock: undefined,
                     isConstant: true,
-                    isDeclared: false,
                     isReadonly: false,
                     name: "flappySprite",
                     typeRef: undefined,

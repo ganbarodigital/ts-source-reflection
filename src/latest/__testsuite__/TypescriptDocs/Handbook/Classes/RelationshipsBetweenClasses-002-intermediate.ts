@@ -146,6 +146,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            isDeclared: false,
             isExported: false,
             isDefaultExport: false,
             variables: [
@@ -154,7 +155,6 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     name: "p",
                     isConstant: true,
-                    isDeclared: false,
                     isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,

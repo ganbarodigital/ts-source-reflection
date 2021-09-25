@@ -33,11 +33,16 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { IntermediateDeclarableItem, IntermediateDocumentedItem, IntermediateExpression, IntermediateItem, IntermediateKind, IntermediateReadonlyItem } from "..";
+import {
+    IntermediateDocumentedItem,
+    IntermediateExpression,
+    IntermediateItem,
+    IntermediateKind,
+    IntermediateReadonlyItem
+} from "..";
 
 export interface IntermediateDestructuredConstDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateDestructuredConstDeclaration>,
-        IntermediateDeclarableItem,
         IntermediateDocumentedItem,
         IntermediateReadonlyItem
 {
