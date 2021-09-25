@@ -73,6 +73,7 @@ export * from "./mustBeEnumDeclaration";
 export * from "./mustBeExportAssignment";
 export * from "./mustBeExportDeclaration";
 export * from "./mustBeExpressionStatement";
+export * from "./mustBeForInStatement";
 export * from "./mustBeForOfStatement";
 export * from "./mustBeFunctionDeclaration";
 export * from "./mustBeIfStatement";
