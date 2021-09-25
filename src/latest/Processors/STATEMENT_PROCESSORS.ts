@@ -38,6 +38,7 @@ import { processEnumDeclaration } from "./processEnumDeclaration";
 import { processExportAssignment } from "./processExportAssignment";
 import { processExportDeclaration } from "./processExportDeclaration";
 import { processExpressionStatement } from "./processExpressionStatement";
+import { processForOfStatement } from "./processForOfStatement";
 import { processFunctionDeclaration } from "./processFunctionDeclaration";
 import { processIfStatement } from "./processIfStatement";
 import { processImportDeclaration } from "./processImportDeclaration";
@@ -55,6 +56,7 @@ export const STATEMENT_PROCESSORS = {
     ExpressionStatement: processExpressionStatement,
     ExportAssignment: processExportAssignment,
     ExportDeclaration: processExportDeclaration,
+    ForOfStatement: processForOfStatement,
     FunctionDeclaration: processFunctionDeclaration,
     IfStatement: processIfStatement,
     ImportDeclaration: processImportDeclaration,
