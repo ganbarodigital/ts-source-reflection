@@ -90,6 +90,7 @@ export * from "./IntermediateExpressionOperator";
 export * from "./IntermediateExternalModuleReference";
 export * from "./IntermediateFixedTypeArgument";
 export * from "./IntermediateFixedTypeReference";
+export * from "./IntermediateForInLoop";
 export * from "./IntermediateForInitializer";
 export * from "./IntermediateForOfLoop";
 export * from "./IntermediateFunction";
