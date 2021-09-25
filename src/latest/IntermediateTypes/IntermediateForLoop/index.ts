@@ -32,14 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateForLoop,
-    IntermediateItem,
-    IntermediateKind
-} from "..";
-
-export interface IntermediateForInLoop
-    extends IntermediateItem<IntermediateKind.IntermediateForInLoop>,
-        IntermediateForLoop
-{
-}
+export * from "./IntermediateForLoop";
