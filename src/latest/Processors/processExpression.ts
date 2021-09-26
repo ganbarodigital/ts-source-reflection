@@ -73,6 +73,7 @@ import { processObjectLiteralExpression } from "./processObjectLiteralExpression
 import { processParenthesizedExpression } from "./processParenthesizedExpression";
 import { processPropertyAccessExpression } from "./processPropertyAccessExpression";
 import { processSpreadElement } from "./processSpreadElement";
+import { processStringLiteral } from "./processStringLiteral";
 import { processTemplateExpression } from "./processTemplateExpression";
 import { processTypeNode } from "./processTypeNode";
 
@@ -84,12 +85,7 @@ export function processExpression(
     }
 
     if (isStringLiteral(input)) {
-        return {
-            kind: IntermediateKind.IntermediateStringLiteral,
-            value: input.text,
-            asType: undefined,
-            typeAssertion: undefined,
-        }
+        return processStringLiteral(input);
     }
 
     if (isCallExpression(input)) {
