@@ -177,6 +177,7 @@ const expectedResult: IntermediateSourceFile = {
     ],
     referencedFiles: [],
     referencedLibs: [],
+    referenceNoDefaultLib: false,
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

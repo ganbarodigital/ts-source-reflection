@@ -69,6 +69,7 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [
         new Filepath("es2017.string"),
     ],
+    referenceNoDefaultLib: false,
     kind: IntermediateKind.IntermediateSourceFile,
 }
 

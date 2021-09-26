@@ -44,4 +44,5 @@ export interface IntermediateSourceFile
     children: IntermediateStatement[];
     referencedFiles: Filepath[];
     referencedLibs: Filepath[];
+    referenceNoDefaultLib: boolean;
 }

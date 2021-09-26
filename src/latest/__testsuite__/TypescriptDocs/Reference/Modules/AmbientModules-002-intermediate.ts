@@ -106,6 +106,7 @@ const expectedResult: IntermediateSourceFile = {
         new Filepath("AmbientModules-001-input.ts"),
     ],
     referencedLibs: [],
+    referenceNoDefaultLib: false,
     kind: IntermediateKind.IntermediateSourceFile,
 }
 
