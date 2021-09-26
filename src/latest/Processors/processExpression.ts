@@ -68,6 +68,7 @@ import { processElementAccessExpression } from "./processElementAccessExpression
 import { processFunctionExpression } from "./processFunctionExpression";
 import { processIdentifier } from "./processIdentifier";
 import { processNewExpression } from "./processNewExpression";
+import { processNumericLiteral } from "./processNumericLiteral";
 import { processObjectLiteralExpression } from "./processObjectLiteralExpression";
 import { processParenthesizedExpression } from "./processParenthesizedExpression";
 import { processPropertyAccessExpression } from "./processPropertyAccessExpression";
@@ -78,15 +79,10 @@ import { processTypeNode } from "./processTypeNode";
 export function processExpression(
     input: Expression
 ): IntermediateExpression {
-    // we will refactor this later on
     if (isNumericLiteral(input)) {
-        return {
-            kind: IntermediateKind.IntermediateNumericLiteral,
-            value: input.text,
-            asType: undefined,
-            typeAssertion: undefined,
-        }
+        return processNumericLiteral(input);
     }
+
     if (isStringLiteral(input)) {
         return {
             kind: IntermediateKind.IntermediateStringLiteral,
