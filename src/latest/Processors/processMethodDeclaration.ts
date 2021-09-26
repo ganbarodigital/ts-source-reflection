@@ -41,6 +41,7 @@ import {
 import { processDecorators } from "./processDecorators";
 import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
+import { processPropertyName } from "./processPropertyName";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
@@ -55,7 +56,7 @@ export function processMethodDeclaration(
         isStatic: AST.hasStaticModifier(input),
         accessModifier: AST.getRestrictableScope(input),
         isAbstract: AST.hasAbstractModifier(input.modifiers),
-        name: input.name.getText(),
+        name: processPropertyName(input.name),
         parameters: processFunctionParameters(input.parameters),
         typeParameters: processTypeParametersFromNode(input),
         returnType: processReturnTypeFromNode(input),

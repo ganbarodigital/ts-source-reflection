@@ -33,6 +33,7 @@
 //
 
 import {
+    IntermediateIdentifierName,
     IntermediateItem,
     IntermediateKind,
     IntermediateRestrictableScopeItem,
@@ -50,5 +51,5 @@ export interface IntermediateMethodSignature
         IntermediateRestrictableScopeItem,
         IntermediateStaticItem
 {
-    name: string;
+    name: IntermediateIdentifierName;
 }
