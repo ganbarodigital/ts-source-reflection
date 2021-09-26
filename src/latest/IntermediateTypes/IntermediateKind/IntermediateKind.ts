@@ -115,6 +115,7 @@ export enum IntermediateKind {
     IntermediateObjectLiteral,
     IntermediateParenthesizedExpression,
     IntermediateParenthesizedType,
+    IntermediatePrivatePropertyIdentifier,
     IntermediatePropertyAccessExpression,
     IntermediatePropertyAssignment,
     IntermediateQualifiedName,
