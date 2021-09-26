@@ -35,13 +35,14 @@
 import { PropertyAssignment } from "typescript";
 import { IntermediateKind, IntermediatePropertyAssignment } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { processPropertyName } from "./processPropertyName";
 
 export function processPropertyAssignment(
     input: PropertyAssignment
 ): IntermediatePropertyAssignment {
     return {
         kind: IntermediateKind.IntermediatePropertyAssignment,
-        propertyName: input.name.getText(),
+        propertyName: processPropertyName(input.name),
         initializer: processExpression(input.initializer),
     }
 }

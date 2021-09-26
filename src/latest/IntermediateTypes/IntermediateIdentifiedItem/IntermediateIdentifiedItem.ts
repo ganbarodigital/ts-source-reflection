@@ -32,7 +32,9 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateIdentifierName } from "..";
+
 export interface IntermediateIdentifiedItem
 {
-    name: string;
+    name: IntermediateIdentifierName;
 }

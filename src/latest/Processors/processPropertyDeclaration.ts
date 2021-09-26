@@ -42,10 +42,9 @@ import {
 import { processDecorators } from "./processDecorators";
 import { processDocBlock } from "./processDocBlock";
 import { processExpression } from "./processExpression";
+import { processPropertyName } from "./processPropertyName";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
-
-
 
 export function processPropertyDeclaration(
     input: PropertyDeclaration
@@ -62,7 +61,7 @@ export function processPropertyDeclaration(
             kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
             docBlock: processDocBlock(input),
             decorators: processDecorators(input),
-            name: input.name.getText(),
+            name: processPropertyName(input.name),
             isOptional: processQuestionToken(input.questionToken),
             isReadonly: AST.hasReadonlyModifier(input.modifiers),
             isStatic: AST.hasStaticModifier(input),
@@ -76,7 +75,7 @@ export function processPropertyDeclaration(
         kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
         docBlock: processDocBlock(input),
         decorators: processDecorators(input),
-        name: input.name.getText(),
+        name: processPropertyName(input.name),
         isOptional: processQuestionToken(input.questionToken),
         isReadonly: AST.hasReadonlyModifier(input.modifiers),
         isStatic: AST.hasStaticModifier(input),

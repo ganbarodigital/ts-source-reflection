@@ -32,9 +32,17 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateExpression } from "..";
+import {
+    IntermediateComputedPropertyName,
+    IntermediateNumericLiteral,
+    IntermediatePrivatePropertyIdentifier,
+    IntermediateStringLiteral
+} from "..";
 
 export type IntermediateIdentifierName
     = string
-    | IntermediateExpression
+    | IntermediateComputedPropertyName
+    | IntermediatePrivatePropertyIdentifier
+    | IntermediateNumericLiteral
+    | IntermediateStringLiteral
     ;

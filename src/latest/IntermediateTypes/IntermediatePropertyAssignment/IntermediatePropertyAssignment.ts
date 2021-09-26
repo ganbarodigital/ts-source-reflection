@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateIdentifierName } from "..";
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
@@ -39,6 +40,6 @@ import { IntermediateKind } from "../IntermediateKind";
 export interface IntermediatePropertyAssignment
     extends IntermediateItem<IntermediateKind.IntermediatePropertyAssignment>
 {
-    propertyName: string;
+    propertyName: IntermediateIdentifierName;
     initializer: IntermediateExpression;
 }

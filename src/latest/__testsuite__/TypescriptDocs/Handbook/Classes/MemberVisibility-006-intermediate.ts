@@ -56,7 +56,10 @@ const expectedResult: IntermediateSourceFile = {
                     docBlock: undefined,
                     decorators: [],
                     accessModifier: undefined,
-                    name: "#barkAmount",
+                    name: {
+                        kind: IntermediateKind.IntermediatePrivatePropertyIdentifier,
+                        name: "#barkAmount",
+                    },
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
