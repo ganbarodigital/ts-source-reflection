@@ -49,6 +49,7 @@ export function processSourceFile(
         kind: IntermediateKind.IntermediateSourceFile,
         children: processStatements(parsedSource.statements),
         referencedFiles: processFileReferences(parsedSource.referencedFiles),
+        referencedLibs: processFileReferences(parsedSource.libReferenceDirectives),
     }
 
     // all done
