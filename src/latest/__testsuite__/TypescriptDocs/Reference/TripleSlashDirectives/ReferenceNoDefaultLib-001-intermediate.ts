@@ -64,6 +64,7 @@ const expectedResult: IntermediateSourceFile = {
     ],
     referencedFiles: [],
     referencedLibs: [],
+    referencedTypes: [],
     referenceNoDefaultLib: true,
     kind: IntermediateKind.IntermediateSourceFile,
 }

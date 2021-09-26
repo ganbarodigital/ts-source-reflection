@@ -50,6 +50,7 @@ export function processSourceFile(
         children: processStatements(parsedSource.statements),
         referencedFiles: processFileReferences(parsedSource.referencedFiles),
         referencedLibs: processFileReferences(parsedSource.libReferenceDirectives),
+        referencedTypes: processFileReferences(parsedSource.typeReferenceDirectives),
         referenceNoDefaultLib: parsedSource.hasNoDefaultLib,
     }
 

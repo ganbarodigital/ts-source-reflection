@@ -393,6 +393,7 @@ const expectedResult: IntermediateSourceFile = {
         new Filepath("MultiFileNamespaces-001-ZipCodeValidator.ts"),
     ],
     referencedLibs: [],
+    referencedTypes: [],
     referenceNoDefaultLib: false,
     kind: IntermediateKind.IntermediateSourceFile,
 }
