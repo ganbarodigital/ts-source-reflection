@@ -75,6 +75,7 @@ export * from "./mustBeExportDeclaration";
 export * from "./mustBeExpressionStatement";
 export * from "./mustBeForInStatement";
 export * from "./mustBeForOfStatement";
+export * from "./mustBeForStatement";
 export * from "./mustBeFunctionDeclaration";
 export * from "./mustBeIfStatement";
 export * from "./mustBeImportClause";
