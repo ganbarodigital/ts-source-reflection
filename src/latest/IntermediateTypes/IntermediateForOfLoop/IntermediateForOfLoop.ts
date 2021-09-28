@@ -33,13 +33,13 @@
 //
 
 import {
-    IntermediateForLoop,
+    IntermediateForIterator,
     IntermediateItem,
     IntermediateKind
 } from "..";
 
 export interface IntermediateForOfLoop
     extends IntermediateItem<IntermediateKind.IntermediateForOfLoop>,
-        IntermediateForLoop
+        IntermediateForIterator
 {
 }

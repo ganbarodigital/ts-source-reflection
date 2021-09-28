@@ -38,7 +38,7 @@ import {
     IntermediateStatement
 } from "..";
 
-export interface IntermediateForLoop
+export interface IntermediateForIterator
 {
     initializer: IntermediateForInitializer;
     loopTarget: IntermediateExpression;
