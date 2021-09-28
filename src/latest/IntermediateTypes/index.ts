@@ -95,6 +95,7 @@ export * from "./IntermediateFixedTypeReference";
 export * from "./IntermediateForInLoop";
 export * from "./IntermediateForInitializer";
 export * from "./IntermediateForIterator";
+export * from "./IntermediateForLoop";
 export * from "./IntermediateForOfLoop";
 export * from "./IntermediateFunction";
 export * from "./IntermediateFunctionExpression";
