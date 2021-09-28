@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateConditionalExpression, IntermediateRegexLiteral, IntermediateTemplateExpression } from "..";
+import { IntermediateConditionalExpression, IntermediatePostfixUnaryExpression, IntermediateRegexLiteral, IntermediateTemplateExpression } from "..";
 import { IntermediateArrayLiteral } from "../IntermediateArrayLiteral";
 import { IntermediateArrowFunction } from "../IntermediateArrowFunction";
 import { IntermediateBigintLiteral } from "../IntermediateBigintLiteral";
@@ -65,6 +65,7 @@ export type IntermediateExpression
       | IntermediateNumericLiteral
       | IntermediateObjectLiteral
       | IntermediateParenthesizedExpression
+      | IntermediatePostfixUnaryExpression
       | IntermediatePropertyAccessExpression
       | IntermediateRegexLiteral
       | IntermediateSpreadElement
