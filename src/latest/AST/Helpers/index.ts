@@ -85,6 +85,7 @@ export * from "./mustBeInterfaceDeclaration";
 export * from "./mustBeModuleDeclaration";
 export * from "./mustBePropertyAssignment";
 export * from "./mustBePropertySignature";
+export * from "./mustBeTryStatement";
 export * from "./mustBeTypeAliasDeclaration";
 export * from "./mustBeTypeReference";
 export * from "./mustBeVariableStatement";
