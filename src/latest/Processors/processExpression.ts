@@ -49,6 +49,7 @@ import {
     isNumericLiteral,
     isObjectLiteralExpression,
     isParenthesizedExpression,
+    isPostfixUnaryExpression,
     isPropertyAccessExpression, isRegularExpressionLiteral, isSpreadElement,
     isStringLiteral,
     isTemplateExpression,
@@ -71,6 +72,7 @@ import { processNewExpression } from "./processNewExpression";
 import { processNumericLiteral } from "./processNumericLiteral";
 import { processObjectLiteralExpression } from "./processObjectLiteralExpression";
 import { processParenthesizedExpression } from "./processParenthesizedExpression";
+import { processPostfixUnaryExpression } from "./processPostfixUnaryExpression";
 import { processPropertyAccessExpression } from "./processPropertyAccessExpression";
 import { processSpreadElement } from "./processSpreadElement";
 import { processStringLiteral } from "./processStringLiteral";
@@ -189,6 +191,10 @@ export function processExpression(
 
     if (isConditionalExpression(input)) {
         return processConditionalExpression(input);
+    }
+
+    if (isPostfixUnaryExpression(input)) {
+        return processPostfixUnaryExpression(input);
     }
 
     // if we get here, we do not know how to process this variable
