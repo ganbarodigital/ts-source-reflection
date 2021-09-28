@@ -32,10 +32,19 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem, IntermediateKind } from "..";
+import {
+    IntermediateExpression,
+    IntermediateForInitializer,
+    IntermediateItem,
+    IntermediateKind,
+    IntermediateStatement
+} from "..";
 
 export interface IntermediateForLoop
     extends IntermediateItem<IntermediateKind.IntermediateForLoop>
 {
-
+    initializer?: IntermediateForInitializer;
+    condition?: IntermediateExpression;
+    incrementor?: IntermediateExpression;
+    contents: IntermediateStatement;
 }

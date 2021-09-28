@@ -33,18 +33,41 @@
 //
 
 import { Statement } from "typescript";
-// import { AST } from "../AST";
-import { IntermediateForLoop, IntermediateKind } from "../IntermediateTypes";
+import { AST } from "../AST";
+import {
+    IntermediateForLoop,
+    IntermediateKind,
+    mustBeIntermediateStatement
+} from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
+import { processForInitializer } from "./processForInitializer";
+import { processMaybe } from "./processMaybe";
+import { processStatement } from "./processStatement";
 
 export function processForStatement(
     input: Statement
 ): IntermediateForLoop
 {
     // make sure we've got the statement we expect
-    // const forStmt = AST.mustBeForStatement(input);
+    const forStmt = AST.mustBeForStatement(input);
 
     // all done
     return {
-        kind: IntermediateKind.IntermediateForLoop
+        kind: IntermediateKind.IntermediateForLoop,
+        initializer: processMaybe(
+            forStmt.initializer,
+            processForInitializer
+        ),
+        condition: processMaybe(
+            forStmt.condition,
+            processExpression
+        ),
+        incrementor: processMaybe(
+            forStmt.incrementor,
+            processExpression
+        ),
+        contents: mustBeIntermediateStatement(
+            processStatement(forStmt.statement)
+        ),
     }
 }
