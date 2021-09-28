@@ -147,6 +147,7 @@ export * from "./IntermediateOptionalItem";
 export * from "./IntermediateParenthesizedExpression";
 export * from "./IntermediateParenthesizedType";
 export * from "./IntermediatePostfixUnaryExpression";
+export * from "./IntermediatePrefixUnaryExpression";
 export * from "./IntermediatePrivatePropertyIdentifier";
 export * from "./IntermediatePropertyAccessExpression";
 export * from "./IntermediatePropertyAssignment";

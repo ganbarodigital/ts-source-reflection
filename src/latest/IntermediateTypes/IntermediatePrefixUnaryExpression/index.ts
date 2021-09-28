@@ -32,16 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateExpression,
-    IntermediateExpressionOperator,
-    IntermediateItem,
-    IntermediateKind
-} from "..";
-
-export interface IntermediatePostfixUnaryExpression
-    extends IntermediateItem<IntermediateKind.IntermediatePostfixUnaryExpression>
-{
-    target: IntermediateExpression;
-    operator: IntermediateExpressionOperator;
-}
+export * from "./IntermediatePrefixUnaryExpression";
