@@ -51,6 +51,7 @@ export enum IntermediateExpressionOperator {
     EQUALS = "=",
     EQUALS_EQUALS = "==",
     EQUALS_EQUALS_EQUALS = "===",
+    EXCLAMATION = "!",
     EXCLAMATION_EQUALS = "!=",
     EXCLAMATION_EQUALS_EQUALS = "!==",
     GREATER_THAN_EQUALS = ">=",
@@ -76,5 +77,6 @@ export enum IntermediateExpressionOperator {
     QUESTION_QUESTION_EQUALS = "??=",
     QUESTION_QUESTION="??",
     SLASH_EQUALS = "/=",
-    SLASH="/"
+    SLASH="/",
+    TILDE = "~",
 }
