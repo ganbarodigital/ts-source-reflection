@@ -33,15 +33,44 @@
 //
 
 import {
-    IntermediateExpression,
+    PrefixUnaryExpression,
+    PrefixUnaryOperator,
+    SyntaxKind
+} from "typescript";
+import {
     IntermediateExpressionOperator,
-    IntermediateItem,
-    IntermediateKind
-} from "..";
+    IntermediateKind,
+    IntermediatePrefixUnaryExpression
+} from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
 
-export interface IntermediatePrefixUnaryExpression
-    extends IntermediateItem<IntermediateKind.IntermediatePrefixUnaryExpression>
+export function processPrefixUnaryExpression(
+    input: PrefixUnaryExpression
+): IntermediatePrefixUnaryExpression
 {
-    target: IntermediateExpression;
-    operator: IntermediateExpressionOperator;
+    return {
+        kind: IntermediateKind.IntermediatePrefixUnaryExpression,
+        target: processExpression(input.operand),
+        operator: processOperator(input.operator),
+    }
+}
+
+function processOperator(
+    input: PrefixUnaryOperator
+): IntermediateExpressionOperator
+{
+    switch (input) {
+        case SyntaxKind.PlusPlusToken:
+            return IntermediateExpressionOperator.PLUS_PLUS;
+        case SyntaxKind.MinusMinusToken:
+            return IntermediateExpressionOperator.MINUS_MINUS;
+        case SyntaxKind.PlusToken:
+            return IntermediateExpressionOperator.PLUS;
+        case SyntaxKind.MinusToken:
+            return IntermediateExpressionOperator.MINUS;
+        case SyntaxKind.TildeToken:
+            return IntermediateExpressionOperator.TILDE;
+        case SyntaxKind.ExclamationToken:
+            return IntermediateExpressionOperator.EXCLAMATION;
+    }
 }
