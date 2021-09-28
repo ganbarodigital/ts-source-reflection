@@ -139,6 +139,7 @@ export enum IntermediateKind {
     IntermediateTemplateLiteralSpan,
     IntermediateTemplateLiteralType,
     IntermediateThisType,
+    IntermediateTryCatch,
     IntermediateTupleType,
     IntermediateTupleTypeElement,
     IntermediateTypeAliasDeclaration,
