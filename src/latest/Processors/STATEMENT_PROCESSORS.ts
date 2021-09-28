@@ -40,6 +40,7 @@ import { processExportDeclaration } from "./processExportDeclaration";
 import { processExpressionStatement } from "./processExpressionStatement";
 import { processForInStatement } from "./processForInStatement";
 import { processForOfStatement } from "./processForOfStatement";
+import { processForStatement } from "./processForStatement";
 import { processFunctionDeclaration } from "./processFunctionDeclaration";
 import { processIfStatement } from "./processIfStatement";
 import { processImportDeclaration } from "./processImportDeclaration";
@@ -59,6 +60,7 @@ export const STATEMENT_PROCESSORS = {
     ExportDeclaration: processExportDeclaration,
     ForInStatement: processForInStatement,
     ForOfStatement: processForOfStatement,
+    ForStatement: processForStatement,
     FunctionDeclaration: processFunctionDeclaration,
     IfStatement: processIfStatement,
     ImportDeclaration: processImportDeclaration,
