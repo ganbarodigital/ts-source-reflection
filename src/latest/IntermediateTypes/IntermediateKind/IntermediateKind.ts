@@ -38,6 +38,10 @@ export enum IntermediateKind {
     IntermediateAmbientModuleDefinition,
     IntermediateAnonymousCallableParameter,
     IntermediateAnonymousClassType,
+    IntermediateArrayBindingLetDeclaration,
+    IntermediateArrayBindingConstDeclaration,
+    IntermediateArrayBindingVarDeclaration,
+
     IntermediateArrayLiteral,
     IntermediateArrayTypeReference,
     IntermediateArrowFunction,
