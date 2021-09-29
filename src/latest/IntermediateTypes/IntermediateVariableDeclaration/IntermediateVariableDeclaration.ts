@@ -32,7 +32,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateCaughtVarDeclaration } from "..";
+import { IntermediateArrayBindingConstDeclaration } from "../IntermediateArrayBindingConstDeclaration";
+import { IntermediateArrayBindingLetDeclaration } from "../IntermediateArrayBindingLetDeclaration";
+import { IntermediateArrayBindingVarDeclaration } from "../IntermediateArrayBindingVarDeclaration";
+import { IntermediateCaughtVarDeclaration } from "../IntermediateCaughtVarDeclaration";
 import { IntermediateConstDeclaration } from "../IntermediateConstDeclaration";
 import { IntermediateDestructuredConstDeclaration } from "../IntermediateDestructuredConstDeclaration";
 import { IntermediateDestructuredLetDeclaration } from "../IntermediateDestructuredLetDeclaration";
@@ -41,7 +44,10 @@ import { IntermediateLetDeclaration } from "../IntermediateLetDeclaration";
 import { IntermediateVarDeclaration } from "../IntermediateVarDeclaration";
 
 export type IntermediateVariableDeclaration
-    = IntermediateCaughtVarDeclaration
+    = IntermediateArrayBindingConstDeclaration
+    | IntermediateArrayBindingLetDeclaration
+    | IntermediateArrayBindingVarDeclaration
+    | IntermediateCaughtVarDeclaration
     | IntermediateConstDeclaration
     | IntermediateLetDeclaration
     | IntermediateVarDeclaration
