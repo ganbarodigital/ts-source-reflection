@@ -179,6 +179,7 @@ export * from "./IntermediateTemplateExpressionSpan";
 export * from "./IntermediateTemplateLiteralType";
 export * from "./IntermediateTemplateLiteralSpan";
 export * from "./IntermediateThisType";
+export * from "./IntermediateThrow";
 export * from "./IntermediateTryCatch";
 export * from "./IntermediateTupleType";
 export * from "./IntermediateTupleTypeElement";
