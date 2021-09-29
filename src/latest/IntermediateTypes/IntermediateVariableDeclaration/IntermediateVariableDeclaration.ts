@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateCaughtVarDeclaration } from "..";
 import { IntermediateConstDeclaration } from "../IntermediateConstDeclaration";
 import { IntermediateDestructuredConstDeclaration } from "../IntermediateDestructuredConstDeclaration";
 import { IntermediateDestructuredLetDeclaration } from "../IntermediateDestructuredLetDeclaration";
@@ -40,7 +41,8 @@ import { IntermediateLetDeclaration } from "../IntermediateLetDeclaration";
 import { IntermediateVarDeclaration } from "../IntermediateVarDeclaration";
 
 export type IntermediateVariableDeclaration
-    = IntermediateConstDeclaration
+    = IntermediateCaughtVarDeclaration
+    | IntermediateConstDeclaration
     | IntermediateLetDeclaration
     | IntermediateVarDeclaration
     | IntermediateDestructuredConstDeclaration
