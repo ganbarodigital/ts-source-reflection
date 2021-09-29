@@ -32,11 +32,14 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem, IntermediateKind, IntermediateStatement } from "..";
+import { Maybe } from "@safelytyped/core-types";
+import { IntermediateItem, IntermediateKind, IntermediateStatement, IntermediateVariableDeclaration } from "..";
 
 export interface IntermediateTryCatch
     extends IntermediateItem<IntermediateKind.IntermediateTryCatch>
 {
     tryBlock: IntermediateStatement;
-    catchBlock: IntermediateStatement;
+    catchClause: Maybe<IntermediateVariableDeclaration>;
+    catchBlock: Maybe<IntermediateStatement>;
+    finallyBlock: Maybe<IntermediateStatement>;
 }
