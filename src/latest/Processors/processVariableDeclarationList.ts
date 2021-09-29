@@ -40,6 +40,8 @@ import {
     UnsupportedTypeError
 } from "@safelytyped/core-types";
 import {
+    ArrayBindingElement,
+    isArrayBindingPattern,
     isIdentifier,
     isObjectBindingPattern,
     isTypeOperatorNode,
@@ -59,6 +61,32 @@ import { processDocBlock } from "./processDocBlock";
 import { processExpression } from "./processExpression";
 import { processTypeNode } from "./processTypeNode";
 import { VariableDeclarationContextFlags } from "./VariableDeclarationContextFlags";
+
+type VariableDeclarationWithArrayBinding =
+    VariableDeclaration
+    &
+{
+    name: ArrayBindingElement;
+}
+function isVariableDeclarationWithArrayBinding(
+    input: VariableDeclaration
+): input is VariableDeclarationWithArrayBinding
+{
+    return isArrayBindingPattern(input.name);
+}
+
+type VariableDeclarationWithObjectBinding =
+    VariableDeclaration
+    &
+{
+    name: ObjectBindingPattern;
+}
+function isVariableDeclarationWithObjectBinding(
+    input: VariableDeclaration
+): input is VariableDeclarationWithObjectBinding
+{
+    return isObjectBindingPattern(input.name);
+}
 
 export function processVariableDeclarationList (
     input: VariableDeclarationList,
@@ -82,16 +110,34 @@ export function processVariableDeclarationList (
 
     // what do we have?
     for (const member of input.declarations) {
-        // are we looking at a destructured object?
+        // we can tell the type of variable apart by looking at
+        // the member's name
         if (isIdentifier(member.name)) {
             retval.push(
                 processVariableDeclaration(member, contextFlags)
             );
         }
-        else {
+        else if (isVariableDeclarationWithObjectBinding(member)) {
             retval.push(
                 processDestructuredVariableDeclaration(member, contextFlags)
             )
+        }
+        else if (isVariableDeclarationWithArrayBinding(member)) {
+            retval.push(
+                processArrayBindingVariableDeclaration(member, contextFlags)
+            )
+        }
+        else {
+            // if we get here, we're looking at an array binding pattern
+            // tslint:disable-next-line: no-console
+            console.log("unsupported var name type: ", getClassNames(member.name), SyntaxKind[member.name.kind]);
+            throw new UnsupportedTypeError({
+                public: {
+                    dataPath: DEFAULT_DATA_PATH,
+                    expected: "supported var declaration name type",
+                    actual: getClassNames(member.name)[0],
+                }
+            });
         }
     }
 
@@ -176,7 +222,7 @@ const MapKindToDestructuredObject: KindMap<ValidDestructuredObjectKinds> = {
 }
 
 function processDestructuredVariableDeclaration(
-    input: VariableDeclaration,
+    input: VariableDeclarationWithObjectBinding,
     contextFlags: VariableDeclarationContextFlags
 ): IntermediateVariableDeclaration
 {
@@ -199,43 +245,102 @@ function processDestructuredVariableDeclaration(
         initializer = processExpression(input.initializer);
     }
 
-    if (isObjectBindingPattern(input.name)) {
-        const kind = MapKindToDestructuredObject[contextFlags.kind];
+    const kind = MapKindToDestructuredObject[contextFlags.kind];
 
-        if (kind === IntermediateKind.IntermediateDestructuredConstDeclaration) {
-            return {
-                kind,
-                docBlock: processDocBlock(input),
-                isConstant: true,
-                isReadonly,
-                members: processDestructuredObjectDeclaration(input.name),
-                initializer,
-            }
-        }
-
+    if (kind === IntermediateKind.IntermediateDestructuredConstDeclaration) {
         return {
             kind,
             docBlock: processDocBlock(input),
-            isConstant: false,
+            isConstant: true,
             isReadonly,
             members: processDestructuredObjectDeclaration(input.name),
             initializer,
         }
     }
 
-    // if we get here, we're looking at an array binding pattern
-    // tslint:disable-next-line: no-console
-    console.log("unsupported var name type: ", getClassNames(input.name), SyntaxKind[input.name.kind]);
-    throw new UnsupportedTypeError({
-        public: {
-            dataPath: DEFAULT_DATA_PATH,
-            expected: "supported var declaration name type",
-            actual: getClassNames(input.name)[0],
-        }
-    });
+    return {
+        kind,
+        docBlock: processDocBlock(input),
+        isConstant: false,
+        isReadonly,
+        members: processDestructuredObjectDeclaration(input.name),
+        initializer,
+    }
 }
 
 function processDestructuredObjectDeclaration(
+    input: ObjectBindingPattern
+): string[]
+{
+    const retval: string[] = [];
+
+    for (const element of input.elements) {
+        retval.push(element.name.getText());
+    }
+
+    return retval;
+}
+
+type ValidArrayBindingObjectKinds =
+    IntermediateKind.IntermediateArrayBindingConstDeclaration
+    | IntermediateKind.IntermediateArrayBindingLetDeclaration
+    | IntermediateKind.IntermediateArrayBindingVarDeclaration;
+
+
+const MapKindToArrayBindingObject: KindMap<ValidArrayBindingObjectKinds> = {
+    [IntermediateKind.IntermediateConstDeclaration]: IntermediateKind.IntermediateArrayBindingConstDeclaration,
+    [IntermediateKind.IntermediateLetDeclaration]: IntermediateKind.IntermediateArrayBindingLetDeclaration,
+    [IntermediateKind.IntermediateVarDeclaration]: IntermediateKind.IntermediateArrayBindingVarDeclaration,
+}
+
+function processArrayBindingVariableDeclaration(
+    input: VariableDeclarationWithArrayBinding,
+    contextFlags: VariableDeclarationContextFlags
+): IntermediateVariableDeclaration
+{
+    // special case - variable is readonly
+    //
+    // instead of being a modifier, this is buried in the variable
+    // type instead
+    let isReadonly: boolean = false;
+    let varType = input.type;
+    if (varType && isTypeOperatorNode(varType)) {
+        if (varType.operator === SyntaxKind.ReadonlyKeyword) {
+            isReadonly = true;
+            varType = varType.type;
+        }
+    }
+
+    // does this variable have an initial value?
+    let initializer: Maybe<IntermediateExpression>;
+    if (input.initializer) {
+        initializer = processExpression(input.initializer);
+    }
+
+    const kind = MapKindToArrayBindingObject[contextFlags.kind];
+
+    if (kind === IntermediateKind.IntermediateArrayBindingConstDeclaration) {
+        return {
+            kind,
+            docBlock: processDocBlock(input),
+            isConstant: true,
+            isReadonly,
+            members: processArrayBindingObjectDeclaration(input.name),
+            initializer,
+        }
+    }
+
+    return {
+        kind,
+        docBlock: processDocBlock(input),
+        isConstant: false,
+        isReadonly,
+        members: processArrayBindingObjectDeclaration(input.name),
+        initializer,
+    }
+}
+
+function processArrayBindingObjectDeclaration(
     input: ObjectBindingPattern
 ): string[]
 {
