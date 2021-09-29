@@ -52,6 +52,7 @@ export enum IntermediateKind {
     IntermediateCallSignature,
     IntermediateCallExpression,
     IntermediateClass,
+    IntermediateCaughtVarDeclaration,
     IntermediateComment,
     IntermediateComputedPropertyName,
     IntermediateConditionalExpression,

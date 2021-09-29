@@ -54,6 +54,7 @@ export * from "./IntermediateCallableDeclaration";
 export * from "./IntermediateCallableParameterDeclaration";
 export * from "./IntermediateCallableParameterSignature";
 export * from "./IntermediateCallableSignature";
+export * from "./IntermediateCaughtVarDeclaration";
 export * from "./IntermediateClass";
 export * from "./IntermediateClassAccessor";
 export * from "./IntermediateComment";
