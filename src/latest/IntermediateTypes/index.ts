@@ -41,6 +41,7 @@ export * from "./IntermediateAnonymousClassType";
 export * from "./IntermediateArgument";
 export * from "./IntermediateArrayBindingConstDeclaration";
 export * from "./IntermediateArrayBindingLetDeclaration";
+export * from "./IntermediateArrayBindingPattern";
 export * from "./IntermediateArrayBindingVarDeclaration";
 export * from "./IntermediateArrayLiteral";
 export * from "./IntermediateArrayTypeReference";
