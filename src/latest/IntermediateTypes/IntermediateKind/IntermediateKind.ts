@@ -41,7 +41,7 @@ export enum IntermediateKind {
     IntermediateArrayBindingConstDeclaration,
     IntermediateArrayBindingElement,
     IntermediateArrayBindingLetDeclaration,
-    IntermediateArrayBindingPattern,
+    IntermediateArrayBindingParameter,
     IntermediateArrayBindingVarDeclaration,
 
     IntermediateArrayLiteral,

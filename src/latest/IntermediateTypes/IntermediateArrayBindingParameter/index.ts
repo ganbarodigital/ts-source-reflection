@@ -32,10 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem, IntermediateKind } from "..";
-
-export interface IntermediateArrayBindingPattern
-    extends IntermediateItem<IntermediateKind.IntermediateArrayBindingPattern>
-{
-
-}
+export * from "./IntermediateArrayBindingParameter";

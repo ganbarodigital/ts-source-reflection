@@ -42,7 +42,7 @@ export * from "./IntermediateArgument";
 export * from "./IntermediateArrayBindingConstDeclaration";
 export * from "./IntermediateArrayBindingElement";
 export * from "./IntermediateArrayBindingLetDeclaration";
-export * from "./IntermediateArrayBindingPattern";
+export * from "./IntermediateArrayBindingParameter";
 export * from "./IntermediateArrayBindingVarDeclaration";
 export * from "./IntermediateArrayLiteral";
 export * from "./IntermediateArrayTypeReference";
