@@ -40,6 +40,7 @@ export * from "./IntermediateAnonymousCallableParameter";
 export * from "./IntermediateAnonymousClassType";
 export * from "./IntermediateArgument";
 export * from "./IntermediateArrayBindingConstDeclaration";
+export * from "./IntermediateArrayBindingElement";
 export * from "./IntermediateArrayBindingLetDeclaration";
 export * from "./IntermediateArrayBindingPattern";
 export * from "./IntermediateArrayBindingVarDeclaration";
