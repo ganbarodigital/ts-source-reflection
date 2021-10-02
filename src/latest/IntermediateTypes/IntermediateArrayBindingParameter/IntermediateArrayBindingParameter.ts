@@ -32,10 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem, IntermediateKind } from "..";
+import { Maybe } from "@safelytyped/core-types";
+import { IntermediateArrayBindingElement, IntermediateItem, IntermediateKind, IntermediateTypeReference } from "..";
 
 export interface IntermediateArrayBindingParameter
     extends IntermediateItem<IntermediateKind.IntermediateArrayBindingParameter>
 {
-
+    parameters: IntermediateArrayBindingElement[];
+    typeRef: Maybe<IntermediateTypeReference>;
 }
