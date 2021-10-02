@@ -34,13 +34,15 @@
 
 import {
     IntermediateAnonymousCallableParameter,
+    IntermediateArrayBindingParameter,
     IntermediateObjectBindingParameter,
     IntermediateTypedCallableParameterDeclaration,
     IntermediateUntypedCallableParameterDeclaration
 } from "..";
 
 export type IntermediateCallableParameterDeclaration =
-    IntermediateAnonymousCallableParameter
+    IntermediateArrayBindingParameter
+    | IntermediateAnonymousCallableParameter
     | IntermediateObjectBindingParameter
     | IntermediateUntypedCallableParameterDeclaration
     | IntermediateTypedCallableParameterDeclaration;
