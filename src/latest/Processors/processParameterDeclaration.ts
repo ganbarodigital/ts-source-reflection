@@ -33,6 +33,7 @@
 //
 import { Maybe } from "@safelytyped/core-types";
 import {
+    isArrayBindingPattern,
     isObjectBindingPattern,
     isTypeOperatorNode,
     ParameterDeclaration,
@@ -40,12 +41,14 @@ import {
 } from "typescript";
 import { AST } from "../AST";
 import {
+    IntermediateArrayBindingParameter,
     IntermediateExpression,
     IntermediateKind,
     IntermediateObjectBindingParameter,
     IntermediateTypedCallableParameterDeclaration,
     IntermediateUntypedCallableParameterDeclaration
 } from "../IntermediateTypes";
+import { processArrayBindingPattern } from "./processArrayBindingPattern";
 import { processDecorators } from "./processDecorators";
 import { processExpression } from "./processExpression";
 import { processObjectBindingPattern } from "./processObjectBindingPattern";
@@ -57,6 +60,7 @@ export function processParameterDeclaration(
 ): IntermediateTypedCallableParameterDeclaration
     | IntermediateUntypedCallableParameterDeclaration
     | IntermediateObjectBindingParameter
+    | IntermediateArrayBindingParameter
 {
     // this is a placeholder for now
     //
@@ -75,6 +79,14 @@ export function processParameterDeclaration(
             param: paramDec.name,
             paramType: paramDec.type,
         });
+    }
+
+    // special case - array binding
+    if (isArrayBindingPattern(paramDec.name)) {
+        return processArrayBindingPattern({
+            param: paramDec.name,
+            paramType: paramDec.type
+        })
     }
 
     // do we have a default value for the parameter?
