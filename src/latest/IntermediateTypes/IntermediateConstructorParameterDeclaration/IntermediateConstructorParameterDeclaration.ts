@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateArrayBindingParameter } from "..";
 import { IntermediateObjectBindingParameter } from "../IntermediateObjectBindingParameter";
 import { IntermediateTypedConstructorParameterDeclaration } from "../IntermediateTypedConstructorParameterDeclaration";
 import { IntermediateUntypedConstructorParameterDeclaration } from "../IntermediateUntypedConstructorParameterDeclaration";
@@ -39,4 +40,5 @@ import { IntermediateUntypedConstructorParameterDeclaration } from "../Intermedi
 export type IntermediateConstructorParameterDeclaration
     = IntermediateTypedConstructorParameterDeclaration
     | IntermediateUntypedConstructorParameterDeclaration
-    | IntermediateObjectBindingParameter;
+    | IntermediateObjectBindingParameter
+    | IntermediateArrayBindingParameter;
