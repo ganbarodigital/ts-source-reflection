@@ -35,6 +35,7 @@
 import { NodeArray, ParameterDeclaration } from "typescript";
 import { AST } from "../AST";
 import {
+    IntermediateArrayBindingParameter,
     IntermediateConstructorParameterDeclaration,
     IntermediateKind,
     IntermediateObjectBindingParameter,
@@ -81,6 +82,10 @@ function processConstructorParameter(
     if (retval.kind === IntermediateKind.IntermediateObjectBindingParameter) {
         return retval;
     }
+    // same goes for ArrayBindingParameters
+    if (retval.kind === IntermediateKind.IntermediateArrayBindingParameter) {
+        return retval;
+    }
 
     // are we looking at a property definition, hidden away
     // as a parameter to the constructor?
@@ -112,8 +117,11 @@ function mapFunctionParameterToConstructorParameter(
     input: IntermediateTypedCallableParameterDeclaration
         | IntermediateUntypedCallableParameterDeclaration
         | IntermediateObjectBindingParameter
+        | IntermediateArrayBindingParameter
 ): IntermediateConstructorParameterDeclaration {
     switch(input.kind) {
+        case IntermediateKind.IntermediateArrayBindingParameter:
+            return input;
         case IntermediateKind.IntermediateObjectBindingParameter:
             return input;
 
