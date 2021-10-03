@@ -32,10 +32,18 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateCallableParameterDeclaration, IntermediateItem, IntermediateKind } from "..";
+import {
+    IntermediateCallableParameterDeclaration,
+    IntermediateItem,
+    IntermediateKind
+} from "..";
 
 export interface IntermediateRestCallableParameterDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateRestCallableParameterDeclaration>
 {
-    parameter: IntermediateCallableParameterDeclaration;
+    // make sure we do not support nested rest parameters!
+    parameter: Exclude<
+        IntermediateCallableParameterDeclaration,
+        IntermediateRestCallableParameterDeclaration
+    >;
 }
