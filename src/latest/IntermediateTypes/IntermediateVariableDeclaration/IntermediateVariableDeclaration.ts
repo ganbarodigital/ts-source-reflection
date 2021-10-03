@@ -41,6 +41,7 @@ import { IntermediateDestructuredConstDeclaration } from "../IntermediateDestruc
 import { IntermediateDestructuredLetDeclaration } from "../IntermediateDestructuredLetDeclaration";
 import { IntermediateDestructuredVarDeclaration } from "../IntermediateDestructuredVarDeclaration";
 import { IntermediateLetDeclaration } from "../IntermediateLetDeclaration";
+import { IntermediateRestVariableDeclaration } from "../IntermediateRestVariableDeclaration";
 import { IntermediateVarDeclaration } from "../IntermediateVarDeclaration";
 
 export type IntermediateVariableDeclaration
@@ -53,4 +54,6 @@ export type IntermediateVariableDeclaration
     | IntermediateVarDeclaration
     | IntermediateDestructuredConstDeclaration
     | IntermediateDestructuredLetDeclaration
-    | IntermediateDestructuredVarDeclaration;
+    | IntermediateDestructuredVarDeclaration
+    | IntermediateRestVariableDeclaration
+    ;
