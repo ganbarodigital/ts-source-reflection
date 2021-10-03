@@ -33,7 +33,10 @@
 //
 
 import { BindingName } from "typescript";
-import { IntermediateIdentifierName, IntermediateKind } from "../IntermediateTypes";
+import {
+    IntermediateIdentifierName,
+    IntermediateKind
+} from "../IntermediateTypes";
 
 export function processBindingName(
     input: BindingName,

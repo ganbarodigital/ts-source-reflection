@@ -1,0 +1,1 @@
+let [, second, , fourth] = [1, 2, 3, 4];

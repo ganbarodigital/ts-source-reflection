@@ -42,10 +42,11 @@ import {
 import {
     ArrayBindingElement,
     ArrayBindingPattern,
-    isArrayBindingPattern,
-    isBindingElement,
+    BindingElement,
+    isArrayBindingPattern, isBindingName,
     isIdentifier,
     isObjectBindingPattern,
+    isOmittedExpression,
     isTypeOperatorNode,
     NodeFlags,
     ObjectBindingPattern,
@@ -58,6 +59,7 @@ import {
     IntermediateExpression,
     IntermediateIdentifierName,
     IntermediateKind,
+    IntermediateOmittedExpression,
     IntermediateTypeReference,
     IntermediateVariableDeclaration
 } from "../IntermediateTypes";
@@ -275,22 +277,48 @@ function processDestructuredVariableDeclaration(
 
 function processDestructuredObjectDeclaration(
     input: ObjectBindingPattern
-): IntermediateIdentifierName[]
+): (IntermediateIdentifierName | IntermediateOmittedExpression)[]
 {
-    const retval: IntermediateIdentifierName[] = [];
+    const retval: ReturnType<typeof processDestructuredObjectDeclaration> = [];
 
     for (const element of input.elements) {
-        retval.push(
-            processBindingName(
-                element.name,
-                AST.hasDotDotDotToken(element.dotDotDotToken),
-            ),
-        );
+        retval.push(processObjectBindingElement(element));
     }
 
     return retval;
 }
 
+function processObjectBindingElement(
+    input: BindingElement
+): (IntermediateIdentifierName | IntermediateOmittedExpression)
+{
+    // special case
+    if (isOmittedExpression(input)) {
+        return {
+            kind: IntermediateKind.IntermediateOmittedExpression,
+        }
+    }
+
+    // currently the general case
+    if (isBindingName(input.name)) {
+        return processBindingName(
+            input.name,
+            AST.hasDotDotDotToken(input.dotDotDotToken)
+        )
+    }
+
+    // if we get here, we have a problem
+    // tslint:disable-next-line: no-console
+    console.log("Unsupported object BindingElement: ", getClassNames(input), SyntaxKind[input.kind]);
+
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: "a supported object BindingElement",
+            actual: getClassNames(input)[0],
+        }
+    })
+}
 type ValidArrayBindingObjectKinds =
     IntermediateKind.IntermediateArrayBindingConstDeclaration
     | IntermediateKind.IntermediateArrayBindingLetDeclaration
@@ -352,20 +380,45 @@ function processArrayBindingVariableDeclaration(
 
 function processArrayBindingDeclaration(
     input: ArrayBindingPattern
-): IntermediateIdentifierName[]
+): (IntermediateIdentifierName | IntermediateOmittedExpression)[]
 {
-    const retval: IntermediateIdentifierName[] = [];
+    const retval: ReturnType<typeof processArrayBindingDeclaration> = [];
 
     for (const element of input.elements) {
-        if (isBindingElement(element)) {
-            retval.push(
-                processBindingName(
-                    element.name,
-                    AST.hasDotDotDotToken(element.dotDotDotToken)
-                )
-            );
-        }
+        retval.push(processArrayBindingElement(element));
     }
 
     return retval;
+}
+
+function processArrayBindingElement(
+    input: ArrayBindingElement
+): (IntermediateIdentifierName | IntermediateOmittedExpression)
+{
+    // special case
+    if (isOmittedExpression(input)) {
+        return {
+            kind: IntermediateKind.IntermediateOmittedExpression,
+        }
+    }
+
+    // currently the general case
+    if (isBindingName(input.name)) {
+        return processBindingName(
+            input.name,
+            AST.hasDotDotDotToken(input.dotDotDotToken)
+        )
+    }
+
+    // if we get here, we have a problem
+    // tslint:disable-next-line: no-console
+    console.log("Unsupported ArrayBindingElement: ", getClassNames(input), SyntaxKind[input.kind]);
+
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: "a supported ArrayBindingElement",
+            actual: getClassNames(input)[0],
+        }
+    })
 }

@@ -39,6 +39,7 @@ import {
     IntermediateIdentifierName,
     IntermediateItem,
     IntermediateKind,
+    IntermediateOmittedExpression,
     IntermediateReadonlyItem
 } from "..";
 
@@ -48,6 +49,6 @@ export interface IntermediateDestructuredConstDeclaration
         IntermediateReadonlyItem
 {
     isConstant: true,
-    members: IntermediateIdentifierName[];
+    members: (IntermediateIdentifierName | IntermediateOmittedExpression)[];
     initializer: Maybe<IntermediateExpression>;
 }
