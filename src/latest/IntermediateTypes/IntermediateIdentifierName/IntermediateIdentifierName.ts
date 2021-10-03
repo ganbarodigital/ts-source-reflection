@@ -34,6 +34,7 @@
 
 import {
     IntermediateComputedPropertyName,
+    IntermediateIdentifierReference,
     IntermediateNumericLiteral,
     IntermediatePrivatePropertyIdentifier,
     IntermediateStringLiteral
@@ -42,6 +43,7 @@ import {
 export type IntermediateIdentifierName
     = string
     | IntermediateComputedPropertyName
+    | IntermediateIdentifierReference
     | IntermediatePrivatePropertyIdentifier
     | IntermediateNumericLiteral
     | IntermediateStringLiteral
