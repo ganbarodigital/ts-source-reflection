@@ -41,11 +41,9 @@ import {
 } from "typescript";
 import { AST } from "../AST";
 import {
-    IntermediateArrayBindingParameter,
+    IntermediateCallableParameterDeclaration,
     IntermediateExpression,
-    IntermediateKind,
-    IntermediateObjectBindingParameter,
-    IntermediateTypedCallableParameterDeclaration,
+    IntermediateKind, IntermediateTypedCallableParameterDeclaration,
     IntermediateUntypedCallableParameterDeclaration
 } from "../IntermediateTypes";
 import { processArrayBindingPattern } from "./processArrayBindingPattern";
@@ -57,10 +55,7 @@ import { processTypeNode } from "./processTypeNode";
 
 export function processParameterDeclaration(
     paramDec: ParameterDeclaration
-): IntermediateTypedCallableParameterDeclaration
-    | IntermediateUntypedCallableParameterDeclaration
-    | IntermediateObjectBindingParameter
-    | IntermediateArrayBindingParameter
+): IntermediateCallableParameterDeclaration
 {
     // this is a placeholder for now
     //

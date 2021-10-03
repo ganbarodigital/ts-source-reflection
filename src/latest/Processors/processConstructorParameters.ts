@@ -32,17 +32,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { DEFAULT_DATA_PATH, UnsupportedTypeError } from "@safelytyped/core-types";
 import { NodeArray, ParameterDeclaration } from "typescript";
 import { AST } from "../AST";
 import {
-    IntermediateArrayBindingParameter,
+    IntermediateCallableParameterDeclaration,
     IntermediateConstructorParameterDeclaration,
     IntermediateKind,
-    IntermediateObjectBindingParameter,
     IntermediateRestrictableScope,
-    IntermediateTypedCallableParameterDeclaration,
     IntermediateTypedConstructorParameterDeclaration,
-    IntermediateUntypedCallableParameterDeclaration,
     IntermediateUntypedConstructorParameterDeclaration
 } from "../IntermediateTypes";
 import { processParameterDeclaration } from "./processParameterDeclaration";
@@ -110,14 +108,10 @@ function processConstructorParameter(
 
     // all done
     return retval;
-
 }
 
 function mapFunctionParameterToConstructorParameter(
-    input: IntermediateTypedCallableParameterDeclaration
-        | IntermediateUntypedCallableParameterDeclaration
-        | IntermediateObjectBindingParameter
-        | IntermediateArrayBindingParameter
+    input: IntermediateCallableParameterDeclaration
 ): IntermediateConstructorParameterDeclaration {
     switch(input.kind) {
         case IntermediateKind.IntermediateArrayBindingParameter:
@@ -145,6 +139,26 @@ function mapFunctionParameterToConstructorParameter(
                 // for the constructor
                 isReadonly: false,
             }
+
+        case IntermediateKind.IntermediateAnonymousCallableParameter:
+            // this cannot happen in reality
+            throw new UnsupportedTypeError({
+                public: {
+                    dataPath: DEFAULT_DATA_PATH,
+                    expected: "a supported IntermediateConstructorParameterDeclaration",
+                    actual: "an IntermediateAnonymousCallableParameter",
+                }
+            })
+
+        case IntermediateKind.IntermediateRestCallableParameterDeclaration:
+            // @TODO add support
+            throw new UnsupportedTypeError({
+                public: {
+                    dataPath: DEFAULT_DATA_PATH,
+                    expected: "a supported IntermediateConstructorParameterDeclaration",
+                    actual: "an IntermediateRestCallableParameterDeclaration",
+                }
+            })
 
         default:
             // by design, this code is unreachable, and therefore
