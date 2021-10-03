@@ -37,6 +37,7 @@ import {
     IntermediateIdentifierReference,
     IntermediateNumericLiteral,
     IntermediatePrivatePropertyIdentifier,
+    IntermediateRestIdentifierName,
     IntermediateStringLiteral
 } from "..";
 
@@ -47,4 +48,5 @@ export type IntermediateIdentifierName
     | IntermediatePrivatePropertyIdentifier
     | IntermediateNumericLiteral
     | IntermediateStringLiteral
+    | IntermediateRestIdentifierName
     ;
