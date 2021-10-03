@@ -169,6 +169,7 @@ export * from "./IntermediateRegexLiteral";
 export * from "./IntermediateRestCallableParameterDeclaration";
 export * from "./IntermediateRestCallableParameterSignature";
 export * from "./IntermediateRestType";
+export * from "./IntermediateRestVariableDeclaration";
 export * from "./IntermediateRestrictableScope";
 export * from "./IntermediateRestrictableScopeItem";
 export * from "./IntermediateSetter";

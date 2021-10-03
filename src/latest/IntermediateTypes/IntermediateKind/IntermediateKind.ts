@@ -137,6 +137,7 @@ export enum IntermediateKind {
     IntermediateRestCallableParameterDeclaration,
     IntermediateRestCallableParameterSignature,
     IntermediateRestType,
+    IntermediateRestVariableDeclaration,
     IntermediateSetter,
     IntermediateShorthandAmbientModuleDefinition,
     IntermediateShorthandPropertyAssignment,
