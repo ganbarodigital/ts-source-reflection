@@ -42,8 +42,8 @@ export enum IntermediateKind {
     IntermediateArrayBindingElement,
     IntermediateArrayBindingLetDeclaration,
     IntermediateArrayBindingParameter,
+    IntermediateArrayBindingVarAssignment,
     IntermediateArrayBindingVarDeclaration,
-
     IntermediateArrayLiteral,
     IntermediateArrayTypeReference,
     IntermediateArrowFunction,
