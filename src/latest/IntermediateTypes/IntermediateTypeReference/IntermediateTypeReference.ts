@@ -31,13 +31,13 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { IntermediateEmptyObjectType, IntermediateQualifiedTypeReference } from "..";
 import { IntermediateAnonymousClassType } from "../IntermediateAnonymousClassType";
 import { IntermediateArrayTypeReference } from "../IntermediateArrayTypeReference";
 import { IntermediateBuiltInTypeReference } from "../IntermediateBuiltInTypeReference";
 import { IntermediateConditionalType } from "../IntermediateConditionalType";
 import { IntermediateConstructorType } from "../IntermediateConstructorType";
 import { IntermediateConstTypeCast } from "../IntermediateConstTypeCast";
+import { IntermediateEmptyObjectType } from "../IntermediateEmptyObjectType";
 import { IntermediateFixedTypeReference } from "../IntermediateFixedTypeReference";
 import { IntermediateFunctionTypeSignature } from "../IntermediateFunctionTypeSignature";
 import { IntermediateGenericTypeReference } from "../IntermediateGenericTypeReference";
@@ -49,6 +49,7 @@ import { IntermediateLiteralType } from "../IntermediateLiteralType";
 import { IntermediateMappedType } from "../IntermediateMappedType";
 import { IntermediateParenthesizedType } from "../IntermediateParenthesizedType";
 import { IntermediateQualifiedName } from "../IntermediateQualifiedName";
+import { IntermediateQualifiedTypeReference } from "../IntermediateQualifiedTypeReference";
 import { IntermediateRestType } from "../IntermediateRestType";
 import { IntermediateTemplateLiteralType } from "../IntermediateTemplateLiteralType";
 import { IntermediateThisType } from "../IntermediateThisType";
