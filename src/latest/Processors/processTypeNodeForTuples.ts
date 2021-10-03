@@ -31,18 +31,32 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import {
+    isRestTypeNode,
+    TypeNode
+} from "typescript";
+import {
+    IntermediateKind,
+    IntermediateTypeReferenceForTuples
+} from "../IntermediateTypes";
+import { processTypeNode } from "./processTypeNode";
 
-import { IntermediateTypeReferenceForTuples } from "..";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateOptionalItem } from "../IntermediateOptionalItem";
 
-export interface IntermediateTupleTypeElement
-    extends IntermediateItem<IntermediateKind.IntermediateTupleTypeElement>,
-        IntermediateOptionalItem
+
+export function processTypeNodeForTuples(
+    input: TypeNode
+): IntermediateTypeReferenceForTuples
 {
-    /**
-     * Tuples can have rest types, while the general population cannot
-     */
-    typeRef: IntermediateTypeReferenceForTuples;
+    // special case - rest type
+    //
+    // these are not allowed in the general population
+    if (isRestTypeNode(input)) {
+        return {
+            kind: IntermediateKind.IntermediateRestType,
+            typeRef: processTypeNode(input.type),
+        }
+    }
+
+    // general case
+    return processTypeNode(input);
 }

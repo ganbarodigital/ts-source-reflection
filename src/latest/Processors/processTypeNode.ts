@@ -42,7 +42,6 @@ import {
     isLiteralTypeNode,
     isMappedTypeNode,
     isParenthesizedTypeNode,
-    isRestTypeNode,
     isTemplateLiteralTypeNode,
     isThisTypeNode,
     isTupleTypeNode,
@@ -82,6 +81,13 @@ export function processTypeNode(
     input: TypeNode
 ): IntermediateTypeReference
 {
+    // NOTE:
+    //
+    // we do not support rest types here any longer
+    //
+    // if you need then (like tuples do), you'll need to define
+    // a wrapper around processTypeNote()
+
     // special case - we have a keyof type
     if (isTypeOperatorNode(input)) {
         if (input.operator === SyntaxKind.KeyOfKeyword) {
@@ -156,14 +162,6 @@ export function processTypeNode(
     // special case - tuple type
     if (isTupleTypeNode(input)) {
         return processTupleType(input);
-    }
-
-    // special case - rest type
-    if (isRestTypeNode(input)) {
-        return {
-            kind: IntermediateKind.IntermediateRestType,
-            typeRef: processTypeNode(input.type),
-        }
     }
 
     // special case - constructor type

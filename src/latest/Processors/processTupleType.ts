@@ -33,7 +33,8 @@
 //
 
 import {
-    isOptionalTypeNode, NamedTupleMember,
+    isOptionalTypeNode,
+    NamedTupleMember,
     TupleTypeNode,
     TypeNode
 } from "typescript";
@@ -42,7 +43,7 @@ import {
     IntermediateTupleType,
     IntermediateTupleTypeElement
 } from "../IntermediateTypes";
-import { processTypeNode } from "./processTypeNode";
+import { processTypeNodeForTuples } from "./processTypeNodeForTuples";
 
 export function processTupleType(
     input: TupleTypeNode
@@ -76,7 +77,7 @@ function processTupleTypeElement(
 
     return {
         kind: IntermediateKind.IntermediateTupleTypeElement,
-        typeRef: processTypeNode(elemType),
+        typeRef: processTypeNodeForTuples(elemType),
         isOptional,
     }
 }
