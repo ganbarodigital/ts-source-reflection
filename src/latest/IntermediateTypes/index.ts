@@ -80,6 +80,7 @@ export * from "./IntermediateDecorator";
 export * from "./IntermediateDefaultImport";
 export * from "./IntermediateDestructuredConstDeclaration";
 export * from "./IntermediateDestructuredLetDeclaration";
+export * from "./IntermediateDestructuredVarAssignment";
 export * from "./IntermediateDestructuredVarDeclaration";
 export * from "./IntermediateDocBlock";
 export * from "./IntermediateDocumentedItem";

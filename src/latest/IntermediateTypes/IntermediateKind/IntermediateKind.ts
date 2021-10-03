@@ -72,6 +72,7 @@ export enum IntermediateKind {
     IntermediateDefaultImport,
     IntermediateDestructuredConstDeclaration,
     IntermediateDestructuredLetDeclaration,
+    IntermediateDestructuredVarAssignment,
     IntermediateDestructuredVarDeclaration,
     IntermediateDocBlock,
     IntermediateElementAccessExpression,
