@@ -61,13 +61,13 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: undefined,
                 },
                 {
-                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
-                    decorators: [],
-                    name: "m",
-                    isOptional: false,
-                    isReadonly: false,
-                    typeRef: {
-                        kind: IntermediateKind.IntermediateRestType,
+                    kind: IntermediateKind.IntermediateRestCallableParameterDeclaration,
+                    parameter: {
+                        kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                        decorators: [],
+                        name: "m",
+                        isOptional: false,
+                        isReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateArrayTypeReference,
                             typeRef: {
@@ -75,8 +75,8 @@ const expectedResult: IntermediateSourceFile = {
                                 typeName: "number",
                             },
                         },
+                        initializer: undefined,
                     },
-                    initializer: undefined,
                 },
             ],
             returnType: undefined,

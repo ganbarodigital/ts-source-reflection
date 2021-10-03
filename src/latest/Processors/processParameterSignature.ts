@@ -41,6 +41,7 @@ import { AST } from "../AST";
 import {
     IntermediateCallableParameterSignature,
     IntermediateKind,
+    IntermediateRestCallableParameterSignature,
     IntermediateTypedCallableParameterSignature,
     IntermediateUntypedCallableParameterSignature
 } from "../IntermediateTypes";
@@ -63,6 +64,16 @@ export function processParameterSignature(
             param: paramDec.name,
             paramType: paramDec.type,
         });
+    }
+
+    // special case - rest parameter
+    if (AST.hasDotDotDotToken(paramDec.dotDotDotToken)) {
+        const paramClone = { ...paramDec };
+        paramClone.dotDotDotToken = undefined;
+        return <IntermediateRestCallableParameterSignature>{
+            kind: IntermediateKind.IntermediateRestCallableParameterSignature,
+            parameter: processParameterSignature(paramClone),
+        };
     }
 
     // special case - untyped parameter
@@ -90,19 +101,6 @@ export function processParameterSignature(
         }
     }
 
-    // special case - rest parameter
-    if (AST.hasDotDotDotToken(paramDec.dotDotDotToken)) {
-        return <IntermediateTypedCallableParameterSignature>{
-            kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-            name: paramDec.name.getText(),
-            typeRef: {
-                kind: IntermediateKind.IntermediateRestType,
-                typeRef: processTypeNode(paramType),
-            },
-            isOptional: processQuestionToken(paramDec.questionToken),
-            isReadonly,
-        };
-    }
 
     // general case - typed parameter
     return <IntermediateTypedCallableParameterSignature>{

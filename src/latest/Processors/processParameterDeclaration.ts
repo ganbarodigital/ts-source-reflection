@@ -43,7 +43,7 @@ import { AST } from "../AST";
 import {
     IntermediateCallableParameterDeclaration,
     IntermediateExpression,
-    IntermediateKind, IntermediateTypedCallableParameterDeclaration,
+    IntermediateKind, IntermediateRestCallableParameterDeclaration, IntermediateTypedCallableParameterDeclaration,
     IntermediateUntypedCallableParameterDeclaration
 } from "../IntermediateTypes";
 import { processArrayBindingPattern } from "./processArrayBindingPattern";
@@ -57,18 +57,7 @@ export function processParameterDeclaration(
     paramDec: ParameterDeclaration
 ): IntermediateCallableParameterDeclaration
 {
-    // this is a placeholder for now
-    //
-    // we will be expanding this as we add more test cases, and
-    // eventually we will have to refactor it to handle edge cases
-    // better & without introducing complexity
-
-    // NOTE: the caller has to implement support for rest parameters,
-    // to avoid infinite recursion!
-
     // special case - deconstructed object
-    //
-    // why it hides in the parameter name is beyond me!
     if (isObjectBindingPattern(paramDec.name)) {
         return processObjectBindingPattern({
             param: paramDec.name,
@@ -82,6 +71,18 @@ export function processParameterDeclaration(
             param: paramDec.name,
             paramType: paramDec.type
         })
+    }
+
+    // special case - rest parameter
+    //
+    // we convert this into a nested structure
+    if (AST.hasDotDotDotToken(paramDec.dotDotDotToken)) {
+        const paramClone = {...paramDec}
+        paramClone.dotDotDotToken = undefined;
+        return <IntermediateRestCallableParameterDeclaration>{
+            kind: IntermediateKind.IntermediateRestCallableParameterDeclaration,
+            parameter: processParameterDeclaration(paramClone)
+        };
     }
 
     // do we have a default value for the parameter?
@@ -115,22 +116,6 @@ export function processParameterDeclaration(
             isReadonly = true;
             paramType = paramType.type;
         }
-    }
-
-    // special case - rest parameter
-    if (AST.hasDotDotDotToken(paramDec.dotDotDotToken)) {
-        return <IntermediateTypedCallableParameterDeclaration>{
-            kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
-            decorators: processDecorators(paramDec),
-            name: paramDec.name.getText(),
-            typeRef: {
-                kind: IntermediateKind.IntermediateRestType,
-                typeRef: processTypeNode(paramType),
-            },
-            isOptional: processQuestionToken(paramDec.questionToken),
-            isReadonly,
-            initializer,
-        };
     }
 
     // general case - typed parameter

@@ -178,13 +178,13 @@ const expectedResult: IntermediateSourceFile = {
                         typeParameters: [],
                         parameters: [
                             {
-                                kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
-                                decorators: [],
-                                isOptional: false,
-                                isReadonly: false,
-                                name: "paths",
-                                typeRef: {
-                                    kind: IntermediateKind.IntermediateRestType,
+                                kind: IntermediateKind.IntermediateRestCallableParameterDeclaration,
+                                parameter: {
+                                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                                    decorators: [],
+                                    isOptional: false,
+                                    isReadonly: false,
+                                    name: "paths",
                                     typeRef: {
                                         kind: IntermediateKind.IntermediateArrayTypeReference,
                                         typeRef: {
@@ -192,8 +192,8 @@ const expectedResult: IntermediateSourceFile = {
                                             typeName: "any",
                                         },
                                     },
+                                    initializer: undefined,
                                 },
-                                initializer: undefined,
                             },
                         ],
                         returnType: {

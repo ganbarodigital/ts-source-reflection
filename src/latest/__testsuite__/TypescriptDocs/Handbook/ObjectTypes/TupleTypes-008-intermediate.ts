@@ -49,13 +49,13 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             parameters: [
                 {
-                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
-                    decorators: [],
-                    name: "args",
-                    isOptional: false,
-                    isReadonly: false,
-                    typeRef: {
-                        kind: IntermediateKind.IntermediateRestType,
+                    kind: IntermediateKind.IntermediateRestCallableParameterDeclaration,
+                    parameter: {
+                        kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                        decorators: [],
+                        name: "args",
+                        isOptional: false,
+                        isReadonly: false,
                         typeRef: {
                             kind: IntermediateKind.IntermediateTupleType,
                             elements: [
@@ -91,8 +91,8 @@ const expectedResult: IntermediateSourceFile = {
                                 },
                             ],
                         },
-                    },
-                    initializer: undefined,
+                        initializer: undefined,
+                    }
                 },
             ],
             returnType: undefined,

@@ -64,12 +64,12 @@ const expectedResult: IntermediateSourceFile = {
                     typeParameters: [],
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                            name: "args",
-                            isOptional: false,
-                            isReadonly: false,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateRestType,
+                            kind: IntermediateKind.IntermediateRestCallableParameterSignature,
+                            parameter: {
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
+                                name: "args",
+                                isOptional: false,
+                                isReadonly: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateArrayTypeReference,
                                     typeRef: {
@@ -77,7 +77,7 @@ const expectedResult: IntermediateSourceFile = {
                                         typeName: "never",
                                     },
                                 },
-                            },
+                            }
                         },
                     ],
                     returnType: {
