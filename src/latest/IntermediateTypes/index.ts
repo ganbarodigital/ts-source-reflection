@@ -195,6 +195,7 @@ export * from "./IntermediateTypeArgument";
 export * from "./IntermediateTypeAssertable";
 export * from "./IntermediateTypePredicate";
 export * from "./IntermediateTypeReference";
+export * from "./IntermediateTypeReferenceForTuples";
 export * from "./IntermediateTypedCallableParameterDeclaration";
 export * from "./IntermediateTypedCallableParameterSignature";
 export * from "./IntermediateTypedConstructorParameterDeclaration";
