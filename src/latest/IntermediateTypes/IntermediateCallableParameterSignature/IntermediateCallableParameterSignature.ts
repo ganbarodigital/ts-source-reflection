@@ -35,6 +35,7 @@
 import {
     IntermediateAnonymousCallableParameter,
     IntermediateObjectBindingParameter,
+    IntermediateRestCallableParameterSignature,
     IntermediateTypedCallableParameterSignature,
     IntermediateUntypedCallableParameterSignature
 } from "..";
@@ -42,5 +43,6 @@ import {
 export type IntermediateCallableParameterSignature =
     IntermediateAnonymousCallableParameter
     | IntermediateObjectBindingParameter
+    | IntermediateRestCallableParameterSignature
     | IntermediateUntypedCallableParameterSignature
     | IntermediateTypedCallableParameterSignature;
