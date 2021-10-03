@@ -166,6 +166,7 @@ export * from "./IntermediateReExportIdentifiers";
 export * from "./IntermediateReadonlyItem";
 export * from "./IntermediateReference";
 export * from "./IntermediateRegexLiteral";
+export * from "./IntermediateRestCallableParameterDeclaration";
 export * from "./IntermediateRestType";
 export * from "./IntermediateRestrictableScope";
 export * from "./IntermediateRestrictableScopeItem";
