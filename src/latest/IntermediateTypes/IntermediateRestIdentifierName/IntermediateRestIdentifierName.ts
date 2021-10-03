@@ -34,16 +34,11 @@
 
 import {
     IntermediateItem,
-    IntermediateKind,
-    IntermediateVariableDeclaration
+    IntermediateKind
 } from "..";
 
-export interface IntermediateRestVariableDeclaration
-    extends IntermediateItem<IntermediateKind.IntermediateRestVariableDeclaration>
+export interface IntermediateRestIdentifierName
+    extends IntermediateItem<IntermediateKind.IntermediateRestIdentifierName>
 {
-    // make sure we do not support nested rest variables!
-    parameter: Exclude<
-        IntermediateVariableDeclaration,
-        IntermediateRestVariableDeclaration
-    >;
+    name: string;
 }
