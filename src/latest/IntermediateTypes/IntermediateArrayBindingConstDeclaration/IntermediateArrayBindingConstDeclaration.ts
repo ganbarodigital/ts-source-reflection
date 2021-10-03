@@ -36,6 +36,7 @@ import { Maybe } from "@safelytyped/core-types";
 import {
     IntermediateDocumentedItem,
     IntermediateExpression,
+    IntermediateIdentifierName,
     IntermediateItem,
     IntermediateKind,
     IntermediateReadonlyItem
@@ -47,6 +48,6 @@ export interface IntermediateArrayBindingConstDeclaration
         IntermediateReadonlyItem
 {
     isConstant: true,
-    members: string[];
+    members: IntermediateIdentifierName[];
     initializer: Maybe<IntermediateExpression>;
 }

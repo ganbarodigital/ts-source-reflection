@@ -41,7 +41,9 @@ import {
 } from "@safelytyped/core-types";
 import {
     ArrayBindingElement,
+    ArrayBindingPattern,
     isArrayBindingPattern,
+    isBindingElement,
     isIdentifier,
     isObjectBindingPattern,
     isTypeOperatorNode,
@@ -51,12 +53,15 @@ import {
     VariableDeclaration,
     VariableDeclarationList
 } from "typescript";
+import { AST } from "../AST";
 import {
     IntermediateExpression,
+    IntermediateIdentifierName,
     IntermediateKind,
     IntermediateTypeReference,
     IntermediateVariableDeclaration
 } from "../IntermediateTypes";
+import { processBindingName } from "./processBindingName";
 import { processDocBlock } from "./processDocBlock";
 import { processExpression } from "./processExpression";
 import { processTypeNode } from "./processTypeNode";
@@ -270,12 +275,17 @@ function processDestructuredVariableDeclaration(
 
 function processDestructuredObjectDeclaration(
     input: ObjectBindingPattern
-): string[]
+): IntermediateIdentifierName[]
 {
-    const retval: string[] = [];
+    const retval: IntermediateIdentifierName[] = [];
 
     for (const element of input.elements) {
-        retval.push(element.name.getText());
+        retval.push(
+            processBindingName(
+                element.name,
+                AST.hasDotDotDotToken(element.dotDotDotToken),
+            ),
+        );
     }
 
     return retval;
@@ -325,7 +335,7 @@ function processArrayBindingVariableDeclaration(
             docBlock: processDocBlock(input),
             isConstant: true,
             isReadonly,
-            members: processArrayBindingObjectDeclaration(input.name),
+            members: processArrayBindingDeclaration(input.name),
             initializer,
         }
     }
@@ -335,19 +345,26 @@ function processArrayBindingVariableDeclaration(
         docBlock: processDocBlock(input),
         isConstant: false,
         isReadonly,
-        members: processArrayBindingObjectDeclaration(input.name),
+        members: processArrayBindingDeclaration(input.name),
         initializer,
     }
 }
 
-function processArrayBindingObjectDeclaration(
-    input: ObjectBindingPattern
-): string[]
+function processArrayBindingDeclaration(
+    input: ArrayBindingPattern
+): IntermediateIdentifierName[]
 {
-    const retval: string[] = [];
+    const retval: IntermediateIdentifierName[] = [];
 
     for (const element of input.elements) {
-        retval.push(element.name.getText());
+        if (isBindingElement(element)) {
+            retval.push(
+                processBindingName(
+                    element.name,
+                    AST.hasDotDotDotToken(element.dotDotDotToken)
+                )
+            );
+        }
     }
 
     return retval;
