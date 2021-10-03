@@ -121,6 +121,7 @@ export enum IntermediateKind {
     IntermediateObjectBindingElement,
     IntermediateObjectBindingParameter,
     IntermediateObjectLiteral,
+    IntermediateOmittedExpression,
     IntermediateParenthesizedExpression,
     IntermediateParenthesizedType,
     IntermediatePostfixUnaryExpression,

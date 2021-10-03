@@ -149,6 +149,7 @@ export * from "./IntermediateNumericLiteral";
 export * from "./IntermediateObjectBindingElement";
 export * from "./IntermediateObjectBindingParameter";
 export * from "./IntermediateObjectLiteral";
+export * from "./IntermediateOmittedExpression";
 export * from "./IntermediateOptionalItem";
 export * from "./IntermediateParenthesizedExpression";
 export * from "./IntermediateParenthesizedType";
