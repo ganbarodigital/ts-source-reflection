@@ -69,6 +69,7 @@ import { processConditionalExpression } from "./processConditionalExpression";
 import { processElementAccessExpression } from "./processElementAccessExpression";
 import { processFunctionExpression } from "./processFunctionExpression";
 import { processIdentifier } from "./processIdentifier";
+import { processIntermediateBinaryExpression } from "./processIntermediateBinaryExpression";
 import { processNewExpression } from "./processNewExpression";
 import { processNumericLiteral } from "./processNumericLiteral";
 import { processObjectLiteralExpression } from "./processObjectLiteralExpression";
@@ -170,7 +171,12 @@ export function processExpression(
     }
 
     if (isBinaryExpression(input)) {
-        return processBinaryExpression(input);
+        // a binary expression can be so many things, so we make an attempt
+        // to transform the resulting IntermediateBinaryExpression into
+        // something more specific
+        return processIntermediateBinaryExpression(
+            processBinaryExpression(input)
+        );
     }
 
     if (isElementAccessExpression(input)) {
