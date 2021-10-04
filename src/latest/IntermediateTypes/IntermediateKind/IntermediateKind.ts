@@ -171,6 +171,7 @@ export enum IntermediateKind {
     IntermediateUntypedConstructorParameterDeclaration,
     IntermediateUntypedPropertyDeclaration,
     IntermediateUntypedPropertySignature,
+    IntermediateVarAssignment,
     IntermediateVarDeclaration,
     IntermediateVariableDeclaration,
     IntermediateVariableDeclarations,

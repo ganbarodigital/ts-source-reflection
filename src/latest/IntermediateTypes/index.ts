@@ -213,6 +213,7 @@ export * from "./IntermediateUntypedCallableParameterSignature";
 export * from "./IntermediateUntypedConstructorParameterDeclaration";
 export * from "./IntermediateUntypedPropertyDeclaration";
 export * from "./IntermediateUntypedPropertySignature";
+export * from "./IntermediateVarAssignment";
 export * from "./IntermediateVarDeclaration";
 export * from "./IntermediateVariableDeclaration";
 export * from "./IntermediateVariableDeclarations";
