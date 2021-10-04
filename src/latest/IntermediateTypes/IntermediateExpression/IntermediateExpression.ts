@@ -32,13 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateConditionalExpression, IntermediatePostfixUnaryExpression, IntermediatePrefixUnaryExpression, IntermediateRegexLiteral, IntermediateTemplateExpression } from "..";
 import { IntermediateArrayLiteral } from "../IntermediateArrayLiteral";
 import { IntermediateArrowFunction } from "../IntermediateArrowFunction";
 import { IntermediateBigintLiteral } from "../IntermediateBigintLiteral";
 import { IntermediateBinaryExpression } from "../IntermediateBinaryExpression";
 import { IntermediateBooleanLiteral } from "../IntermediateBooleanLiteral";
 import { IntermediateCallExpression } from "../IntermediateCallExpression";
+import { IntermediateConditionalExpression } from "../IntermediateConditionalExpression";
 import { IntermediateElementAccessExpression } from "../IntermediateElementAccessExpression";
 import { IntermediateFunctionExpression } from "../IntermediateFunctionExpression";
 import { IntermediateIdentifierReference } from "../IntermediateIdentifierReference";
@@ -46,9 +46,14 @@ import { IntermediateNewExpression } from "../IntermediateNewExpression";
 import { IntermediateNumericLiteral } from "../IntermediateNumericLiteral";
 import { IntermediateObjectLiteral } from "../IntermediateObjectLiteral";
 import { IntermediateParenthesizedExpression } from "../IntermediateParenthesizedExpression";
+import { IntermediatePostfixUnaryExpression } from "../IntermediatePostfixUnaryExpression";
+import { IntermediatePrefixUnaryExpression } from "../IntermediatePrefixUnaryExpression";
 import { IntermediatePropertyAccessExpression } from "../IntermediatePropertyAccessExpression";
+import { IntermediateRegexLiteral } from "../IntermediateRegexLiteral";
 import { IntermediateSpreadElement } from "../IntermediateSpreadElement";
 import { IntermediateStringLiteral } from "../IntermediateStringLiteral";
+import { IntermediateTemplateExpression } from "../IntermediateTemplateExpression";
+import { IntermediateVariableAssignment } from "../IntermediateVariableAssignment";
 
 export type IntermediateExpression
     = IntermediateArrayLiteral
@@ -72,4 +77,5 @@ export type IntermediateExpression
       | IntermediateSpreadElement
       | IntermediateStringLiteral
       | IntermediateTemplateExpression
+      | IntermediateVariableAssignment
       ;
