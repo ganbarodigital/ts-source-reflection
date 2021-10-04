@@ -215,5 +215,6 @@ export * from "./IntermediateUntypedPropertyDeclaration";
 export * from "./IntermediateUntypedPropertySignature";
 export * from "./IntermediateVarAssignment";
 export * from "./IntermediateVarDeclaration";
+export * from "./IntermediateVariableAssignment";
 export * from "./IntermediateVariableDeclaration";
 export * from "./IntermediateVariableDeclarations";
