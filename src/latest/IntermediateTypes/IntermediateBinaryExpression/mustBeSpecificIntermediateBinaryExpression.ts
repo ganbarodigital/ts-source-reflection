@@ -32,5 +32,40 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateBinaryExpression";
-export * from "./mustBeSpecificIntermediateBinaryExpression";
+import { IntermediateBinaryExpression } from "./IntermediateBinaryExpression";
+import { IntermediateExpressionOperator } from "../IntermediateExpressionOperator";
+import { UnexpectedIntermediateBinaryExpressionError } from "../../Errors";
+import { DataPath, DEFAULT_DATA_PATH, OnError, THROW_THE_ERROR } from "@safelytyped/core-types";
+
+export function mustBeSpecificIntermediateBinaryExpression<
+    T extends IntermediateBinaryExpression
+>
+(
+    requiredOperators: IntermediateExpressionOperator[],
+    input: IntermediateBinaryExpression,
+    {
+        dataPath = DEFAULT_DATA_PATH,
+        onError = THROW_THE_ERROR
+    }: {
+        dataPath?: DataPath,
+        onError?: OnError
+    } = {}
+): asserts input is T
+{
+    // do we have a supported operator?
+    if (requiredOperators.indexOf(input.operator) >= 0) {
+        // yes we do
+        return;
+    }
+
+    // if we get here, we have a problem
+    const err = new UnexpectedIntermediateBinaryExpressionError({
+        public: {
+            dataPath,
+            expectedOperators: requiredOperators,
+            actualOperator: input.operator,
+        }
+    });
+
+    throw onError(err);
+}
