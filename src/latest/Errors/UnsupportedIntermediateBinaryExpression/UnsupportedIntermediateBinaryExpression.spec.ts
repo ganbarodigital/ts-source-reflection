@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2021-present Ganbaro Digital Ltd
+// Copyright (c) 2020-present Ganbaro Digital Ltd
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -31,33 +31,29 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-
+import { DEFAULT_DATA_PATH } from "@safelytyped/core-types";
+import { expect } from "chai";
+import { describe } from "mocha";
+import { IntermediateExpressionOperator } from "../../IntermediateTypes";
 import {
-    AppError,
-    AppErrorData,
-    HttpStatusCode,
-    makeStructuredProblemReport
-} from "@safelytyped/core-types";
-import { MODULE_NAME } from "../defaults/MODULE_NAME";
-import {
-    UnsupportedIntermediateBinaryExpressionData
-} from "./UnsupportedIntermediateBinaryExpressionData";
+    UnsupportedIntermediateBinaryExpressionError
+} from "./UnsupportedIntermediateBinaryExpressionError";
 
-export class UnsupportedIntermediateBinaryExpressionError
-    extends AppError<UnsupportedIntermediateBinaryExpressionData>
-{
-    constructor(params: UnsupportedIntermediateBinaryExpressionData & AppErrorData)
-    {
-        const spr = makeStructuredProblemReport<UnsupportedIntermediateBinaryExpressionData>({
-            definedBy: MODULE_NAME,
-            description: "unsupported IntermediateBinaryException received",
-            errorId: params.errorId,
-            extra: {
-                public: params.public
-            },
-            status: 422 as HttpStatusCode,
+
+describe("UnsupportedIntermediateBinaryExpressionError", () => {
+    describe(".constructor()", () => {
+        it("creates a Javascript error", () => {
+            const unit = new UnsupportedIntermediateBinaryExpressionError({
+                public: {
+                    dataPath: DEFAULT_DATA_PATH,
+                    expectedOperators: [
+                        IntermediateExpressionOperator.EQUALS_EQUALS,
+                    ],
+                    actualOperator: IntermediateExpressionOperator.EQUALS,
+                },
+            });
+
+            expect(unit).to.be.instanceOf(Error);
         });
-
-        super(spr);
-    }
-}
+    });
+});

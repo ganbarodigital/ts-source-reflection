@@ -35,7 +35,7 @@
 import { DataPath, ExtraPublicData } from "@safelytyped/core-types";
 import { IntermediateExpressionOperator } from "../../IntermediateTypes";
 
-export interface UnexpectedIntermediateBinaryExpressionData
+export interface UnsupportedIntermediateBinaryExpressionData
     extends ExtraPublicData
 {
     public: {

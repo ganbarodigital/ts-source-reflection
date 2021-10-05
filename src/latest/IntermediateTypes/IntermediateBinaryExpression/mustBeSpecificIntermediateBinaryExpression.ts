@@ -32,10 +32,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateBinaryExpression } from "./IntermediateBinaryExpression";
-import { IntermediateExpressionOperator } from "../IntermediateExpressionOperator";
-import { UnexpectedIntermediateBinaryExpressionError } from "../../Errors";
 import { DataPath, DEFAULT_DATA_PATH, OnError, THROW_THE_ERROR } from "@safelytyped/core-types";
+import { UnsupportedIntermediateBinaryExpressionError } from "../../Errors";
+import { IntermediateExpressionOperator } from "../IntermediateExpressionOperator";
+import { IntermediateBinaryExpression } from "./IntermediateBinaryExpression";
 
 export function mustBeSpecificIntermediateBinaryExpression<
     T extends IntermediateBinaryExpression
@@ -59,7 +59,7 @@ export function mustBeSpecificIntermediateBinaryExpression<
     }
 
     // if we get here, we have a problem
-    const err = new UnexpectedIntermediateBinaryExpressionError({
+    const err = new UnsupportedIntermediateBinaryExpressionError({
         public: {
             dataPath,
             expectedOperators: requiredOperators,
