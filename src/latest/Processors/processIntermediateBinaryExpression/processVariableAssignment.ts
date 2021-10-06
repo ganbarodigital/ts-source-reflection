@@ -82,14 +82,14 @@ export function processVariableAssignment(
         case IntermediateKind.IntermediateArrayLiteral:
             return {
                 kind: IntermediateKind.IntermediateArrayBindingVarAssignment,
-                elements: extractElementsFromArrayLiteral(input.left.elements),
+                targets: extractElementsFromArrayLiteral(input.left.elements),
                 initializer: input.right,
             }
 
         case IntermediateKind.IntermediateObjectLiteral:
             return {
                 kind: IntermediateKind.IntermediateDestructuredVarAssignment,
-                members: extractMembersFromObjectLiteral(input.left.properties),
+                targets: extractMembersFromObjectLiteral(input.left.properties),
                 initializer: input.right,
             }
 

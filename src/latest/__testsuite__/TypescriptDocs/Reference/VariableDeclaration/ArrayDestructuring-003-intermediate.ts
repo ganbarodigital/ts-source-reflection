@@ -41,7 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateArrayBindingVarAssignment,
-            elements: [
+            targets: [
                 "first",
                 "second",
             ],

@@ -37,6 +37,6 @@ import { IntermediateExpression, IntermediateIdentifierName, IntermediateItem, I
 export interface IntermediateArrayBindingVarAssignment
     extends IntermediateItem<IntermediateKind.IntermediateArrayBindingVarAssignment>
 {
-    elements: (IntermediateIdentifierName | IntermediateOmittedExpression)[];
+    targets: (IntermediateIdentifierName | IntermediateOmittedExpression)[];
     initializer: IntermediateExpression;
 }

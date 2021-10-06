@@ -37,6 +37,6 @@ import { IntermediateExpression, IntermediateIdentifierName, IntermediateItem, I
 export interface IntermediateDestructuredVarAssignment
     extends IntermediateItem<IntermediateKind.IntermediateDestructuredVarAssignment>
 {
-    members: IntermediateIdentifierName[];
+    targets: IntermediateIdentifierName[];
     initializer: IntermediateExpression;
 }

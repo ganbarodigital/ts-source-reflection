@@ -83,7 +83,7 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateParenthesizedExpression,
             expression: {
                 kind: IntermediateKind.IntermediateDestructuredVarAssignment,
-                members: [
+                targets: [
                     "a",
                     "b",
                 ],
