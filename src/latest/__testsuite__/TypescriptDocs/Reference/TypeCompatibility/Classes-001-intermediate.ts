@@ -33,7 +33,6 @@
 //
 
 import {
-    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile
 } from "../../../../IntermediateTypes";
@@ -196,15 +195,14 @@ const expectedResult: IntermediateSourceFile = {
             ],
         },
         {
-            kind: IntermediateKind.IntermediateBinaryExpression,
-            left: {
+            kind: IntermediateKind.IntermediateVarAssignment,
+            target: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "a",
                 asType: undefined,
                 typeAssertion: undefined,
             },
-            operator: IntermediateExpressionOperator.EQUALS,
-            right: {
+            initializer: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "s",
                 asType: undefined,
@@ -212,15 +210,14 @@ const expectedResult: IntermediateSourceFile = {
             },
         },
         {
-            kind: IntermediateKind.IntermediateBinaryExpression,
-            left: {
+            kind: IntermediateKind.IntermediateVarAssignment,
+            target: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "s",
                 asType: undefined,
                 typeAssertion: undefined,
             },
-            operator: IntermediateExpressionOperator.EQUALS,
-            right: {
+            initializer: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "a",
                 asType: undefined,

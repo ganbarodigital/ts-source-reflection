@@ -92,6 +92,15 @@ export function processVariableAssignment(
                 members: extractMembersFromObjectLiteral(input.left.properties),
                 initializer: input.right,
             }
+
+        case IntermediateKind.IntermediateIdentifierReference:
+            return {
+                kind: IntermediateKind.IntermediateVarAssignment,
+                target: input.left,
+                initializer: input.right,
+            }
+
+        // we will add any other assignment convertions here in the future
     }
 
     // if we get here, we're out of ideas
