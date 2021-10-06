@@ -40,6 +40,8 @@ import {
     IntermediateIdentifierName,
     IntermediateKind,
     IntermediateOmittedExpression,
+    IntermediatePropertyAssignment,
+    IntermediateShorthandPropertyAssignment,
     mustBeSpecificIntermediateBinaryExpression
 } from "../../IntermediateTypes";
 
@@ -83,6 +85,13 @@ export function processVariableAssignment(
                 elements: extractElementsFromArrayLiteral(input.left.elements),
                 initializer: input.right,
             }
+
+        case IntermediateKind.IntermediateObjectLiteral:
+            return {
+                kind: IntermediateKind.IntermediateDestructuredVarAssignment,
+                members: extractMembersFromObjectLiteral(input.left.properties),
+                initializer: input.right,
+            }
     }
 
     // if we get here, we're out of ideas
@@ -107,6 +116,28 @@ function extractElementsFromArrayLiteral(
                         reason: "unsupported array elements received: " + IntermediateKind[element.kind]
                     }
                 })
+        }
+    }
+
+    // all done
+    return retval;
+}
+
+function extractMembersFromObjectLiteral(
+    input: (IntermediatePropertyAssignment | IntermediateShorthandPropertyAssignment)[]
+): IntermediateIdentifierName[]
+{
+    // this will be our return value
+    const retval: ReturnType<typeof extractMembersFromObjectLiteral> = [];
+
+    for (const property of input) {
+        switch (property.kind) {
+            case IntermediateKind.IntermediateShorthandPropertyAssignment:
+                retval.push(property.name);
+                break;
+            case IntermediateKind.IntermediatePropertyAssignment:
+                retval.push(property.propertyName);
+                break;
         }
     }
 

@@ -32,10 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateIdentifierName, IntermediateItem, IntermediateKind } from "..";
+import { IntermediateExpression, IntermediateIdentifierName, IntermediateItem, IntermediateKind } from "..";
 
 export interface IntermediateDestructuredVarAssignment
     extends IntermediateItem<IntermediateKind.IntermediateDestructuredVarAssignment>
 {
     members: IntermediateIdentifierName[];
+    initializer: IntermediateExpression;
 }
