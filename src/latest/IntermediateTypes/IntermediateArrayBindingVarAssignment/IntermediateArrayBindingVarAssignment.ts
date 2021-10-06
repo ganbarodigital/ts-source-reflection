@@ -32,10 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateIdentifierName, IntermediateItem, IntermediateKind, IntermediateOmittedExpression } from "..";
+import { IntermediateExpression, IntermediateIdentifierName, IntermediateItem, IntermediateKind, IntermediateOmittedExpression } from "..";
 
 export interface IntermediateArrayBindingVarAssignment
     extends IntermediateItem<IntermediateKind.IntermediateArrayBindingVarAssignment>
 {
     elements: (IntermediateIdentifierName | IntermediateOmittedExpression)[];
+    initializer: IntermediateExpression;
 }

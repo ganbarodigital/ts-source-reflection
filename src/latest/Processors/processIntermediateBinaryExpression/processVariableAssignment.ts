@@ -32,7 +32,23 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateBinaryExpression, IntermediateExpression } from "../../IntermediateTypes";
+import { UnreachableCodeError } from "@safelytyped/core-types";
+import {
+    IntermediateBinaryExpression,
+    IntermediateExpression,
+    IntermediateExpressionOperator,
+    IntermediateIdentifierName,
+    IntermediateKind,
+    IntermediateOmittedExpression,
+    mustBeSpecificIntermediateBinaryExpression
+} from "../../IntermediateTypes";
+
+type IntermediateBinaryExpressionWithAssignment =
+    IntermediateBinaryExpression
+    &
+{
+    operator: IntermediateExpressionOperator.EQUALS;
+}
 
 /**
  * processVariableAssignment() is a post-processor for the Intermediate layer.
@@ -52,6 +68,48 @@ export function processVariableAssignment(
     input: IntermediateBinaryExpression
 ): IntermediateExpression
 {
-    // todo
+    // make sure we have the right kind of binary expression
+    mustBeSpecificIntermediateBinaryExpression<IntermediateBinaryExpressionWithAssignment>(
+        [IntermediateExpressionOperator.EQUALS],
+        input,
+    )
+
+    // we're going to convert the left-hand side of the binary expression
+    // into one of our available IntermediateVariableAssignment types
+    switch (input.left.kind) {
+        case IntermediateKind.IntermediateArrayLiteral:
+            return {
+                kind: IntermediateKind.IntermediateArrayBindingVarAssignment,
+                elements: extractElementsFromArrayLiteral(input.left.elements),
+                initializer: input.right,
+            }
+    }
+
+    // if we get here, we're out of ideas
     return input;
+}
+
+function extractElementsFromArrayLiteral(
+    input: IntermediateExpression[]
+): (IntermediateIdentifierName | IntermediateOmittedExpression)[]
+{
+    // this will be our return value
+    const retval: ReturnType<typeof extractElementsFromArrayLiteral> = [];
+
+    for (const element of input) {
+        switch (element.kind) {
+            case IntermediateKind.IntermediateIdentifierReference:
+                retval.push(element.name);
+                break;
+            default:
+                throw new UnreachableCodeError({
+                    public: {
+                        reason: "unsupported array elements received: " + IntermediateKind[element.kind]
+                    }
+                })
+        }
+    }
+
+    // all done
+    return retval;
 }
