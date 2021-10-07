@@ -139,6 +139,7 @@ export enum IntermediateKind {
     IntermediateRegexLiteral,
     IntermediateRestCallableParameterDeclaration,
     IntermediateRestCallableParameterSignature,
+    IntermediateRestIdentifierDeclaration,
     IntermediateRestIdentifierName,
     IntermediateRestType,
     IntermediateSetter,
