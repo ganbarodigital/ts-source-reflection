@@ -54,11 +54,17 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateOmittedExpression,
                         },
-                        "second",
+                        {
+                            kind: IntermediateKind.IntermediateIdentifierDeclaration,
+                            name: "second",
+                        },
                         {
                             kind: IntermediateKind.IntermediateOmittedExpression,
                         },
-                        "fourth",
+                        {
+                            kind: IntermediateKind.IntermediateIdentifierDeclaration,
+                            name: "fourth",
+                        },
                     ],
                     initializer: {
                         kind: IntermediateKind.IntermediateArrayLiteral,

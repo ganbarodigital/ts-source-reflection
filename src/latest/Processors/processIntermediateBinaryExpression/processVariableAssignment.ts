@@ -32,7 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { UnreachableCodeError } from "@safelytyped/core-types";
+import {
+    DEFAULT_DATA_PATH,
+    UnreachableCodeError,
+    UnsupportedTypeError
+} from "@safelytyped/core-types";
 import {
     IntermediateBinaryExpression,
     IntermediateExpression,
@@ -117,7 +121,7 @@ function extractElementsFromArrayLiteral(
     for (const element of input) {
         switch (element.kind) {
             case IntermediateKind.IntermediateIdentifierReference:
-                retval.push(element.name);
+                retval.push(element);
                 break;
             default:
                 throw new UnreachableCodeError({
@@ -142,14 +146,45 @@ function extractMembersFromObjectLiteral(
     for (const property of input) {
         switch (property.kind) {
             case IntermediateKind.IntermediateShorthandPropertyAssignment:
-                retval.push(property.name);
+                retval.push({
+                    kind: IntermediateKind.IntermediateIdentifierReference,
+                    name: processIntermediateIdentifierNameForAssignment(property.name),
+                    asType: undefined,
+                    typeAssertion: undefined,
+                });
                 break;
             case IntermediateKind.IntermediatePropertyAssignment:
-                retval.push(property.propertyName);
+                retval.push(processIntermediateIdentifierNameForAssignment(property.propertyName));
                 break;
         }
     }
 
     // all done
     return retval;
+}
+
+function processIntermediateIdentifierNameForAssignment(
+    input: IntermediateIdentifierName
+): string
+{
+    if (typeof input === "string") {
+        return input;
+    }
+
+    switch (input.kind) {
+        case IntermediateKind.IntermediateIdentifierReference:
+            return input.name;
+        case IntermediateKind.IntermediateNumericLiteral:
+            return input.value;
+        case IntermediateKind.IntermediateStringLiteral:
+            return input.value;
+        default:
+            throw new UnsupportedTypeError({
+                public: {
+                    dataPath: DEFAULT_DATA_PATH,
+                    expected: "a simple identifier name",
+                    actual: IntermediateKind[input.kind],
+                }
+            });
+    }
 }

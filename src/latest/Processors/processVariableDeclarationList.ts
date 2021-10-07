@@ -43,7 +43,8 @@ import {
     ArrayBindingElement,
     ArrayBindingPattern,
     BindingElement,
-    isArrayBindingPattern, isBindingName,
+    isArrayBindingPattern,
+    isBindingName,
     isIdentifier,
     isObjectBindingPattern,
     isOmittedExpression,
@@ -56,14 +57,14 @@ import {
 } from "typescript";
 import { AST } from "../AST";
 import {
+    AnyIntermediateIdentifierDeclaration,
     IntermediateExpression,
-    IntermediateIdentifierName,
     IntermediateKind,
     IntermediateOmittedExpression,
     IntermediateTypeReference,
     IntermediateVariableDeclaration
 } from "../IntermediateTypes";
-import { processBindingName } from "./processBindingName";
+import { processBindingNameForDeclarations } from "./processBindingNameForDeclarations";
 import { processDocBlock } from "./processDocBlock";
 import { processExpression } from "./processExpression";
 import { processTypeNode } from "./processTypeNode";
@@ -277,7 +278,7 @@ function processDestructuredVariableDeclaration(
 
 function processDestructuredObjectDeclaration(
     input: ObjectBindingPattern
-): (IntermediateIdentifierName | IntermediateOmittedExpression)[]
+): (AnyIntermediateIdentifierDeclaration | IntermediateOmittedExpression)[]
 {
     const retval: ReturnType<typeof processDestructuredObjectDeclaration> = [];
 
@@ -290,7 +291,7 @@ function processDestructuredObjectDeclaration(
 
 function processObjectBindingElement(
     input: BindingElement
-): (IntermediateIdentifierName | IntermediateOmittedExpression)
+): (AnyIntermediateIdentifierDeclaration | IntermediateOmittedExpression)
 {
     // special case
     if (isOmittedExpression(input)) {
@@ -301,7 +302,7 @@ function processObjectBindingElement(
 
     // currently the general case
     if (isBindingName(input.name)) {
-        return processBindingName(
+        return processBindingNameForDeclarations(
             input.name,
             AST.hasDotDotDotToken(input.dotDotDotToken)
         )
@@ -380,7 +381,7 @@ function processArrayBindingVariableDeclaration(
 
 function processArrayBindingDeclaration(
     input: ArrayBindingPattern
-): (IntermediateIdentifierName | IntermediateOmittedExpression)[]
+): (AnyIntermediateIdentifierDeclaration | IntermediateOmittedExpression)[]
 {
     const retval: ReturnType<typeof processArrayBindingDeclaration> = [];
 
@@ -393,7 +394,7 @@ function processArrayBindingDeclaration(
 
 function processArrayBindingElement(
     input: ArrayBindingElement
-): (IntermediateIdentifierName | IntermediateOmittedExpression)
+): (AnyIntermediateIdentifierDeclaration | IntermediateOmittedExpression)
 {
     // special case
     if (isOmittedExpression(input)) {
@@ -404,7 +405,7 @@ function processArrayBindingElement(
 
     // currently the general case
     if (isBindingName(input.name)) {
-        return processBindingName(
+        return processBindingNameForDeclarations(
             input.name,
             AST.hasDotDotDotToken(input.dotDotDotToken)
         )

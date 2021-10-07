@@ -51,9 +51,12 @@ const expectedResult: IntermediateSourceFile = {
                     isConstant: false,
                     isReadonly: false,
                     members: [
-                        "first",
                         {
-                            kind: IntermediateKind.IntermediateRestIdentifierName,
+                            kind: IntermediateKind.IntermediateIdentifierDeclaration,
+                            name: "first",
+                        },
+                        {
+                            kind: IntermediateKind.IntermediateRestIdentifierDeclaration,
                             name: "rest",
                         },
                     ],
@@ -104,7 +107,7 @@ const expectedResult: IntermediateSourceFile = {
                     isReadonly: false,
                     members: [
                         {
-                            kind: IntermediateKind.IntermediateRestIdentifierName,
+                            kind: IntermediateKind.IntermediateRestIdentifierDeclaration,
                             name: "second",
                         },
                     ],

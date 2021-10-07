@@ -84,8 +84,18 @@ const expectedResult: IntermediateSourceFile = {
             expression: {
                 kind: IntermediateKind.IntermediateDestructuredVarAssignment,
                 targets: [
-                    "a",
-                    "b",
+                    {
+                        kind: IntermediateKind.IntermediateIdentifierReference,
+                        name: "a",
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateIdentifierReference,
+                        name: "b",
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
                 ],
                 initializer: {
                     kind: IntermediateKind.IntermediateObjectLiteral,

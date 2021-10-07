@@ -32,23 +32,25 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
+import { BindingName } from "typescript";
 import {
-    AnyIntermediateIdentifierDeclaration,
-    IntermediateDocumentedItem,
-    IntermediateExpression,
-    IntermediateItem,
-    IntermediateKind,
-    IntermediateOmittedExpression,
-    IntermediateReadonlyItem
-} from "..";
+    IntermediateIdentifierName,
+    IntermediateKind
+} from "../IntermediateTypes";
 
-export interface IntermediateDestructuredConstDeclaration
-    extends IntermediateItem<IntermediateKind.IntermediateDestructuredConstDeclaration>,
-        IntermediateDocumentedItem,
-        IntermediateReadonlyItem
+export function processBindingNameForParameters(
+    input: BindingName,
+    hasRestParameter: boolean,
+): IntermediateIdentifierName
 {
-    isConstant: true,
-    members: (AnyIntermediateIdentifierDeclaration | IntermediateOmittedExpression)[];
-    initializer: Maybe<IntermediateExpression>;
+    // special case
+    if (hasRestParameter) {
+        return {
+            kind: IntermediateKind.IntermediateRestIdentifierName,
+            name: input.getText(),
+        }
+    }
+
+    // general case - we just return a string for now
+    return input.getText();
 }

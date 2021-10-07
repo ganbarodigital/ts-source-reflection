@@ -42,8 +42,18 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateArrayBindingVarAssignment,
             targets: [
-                "first",
-                "second",
+                {
+                    kind: IntermediateKind.IntermediateIdentifierReference,
+                    name: "first",
+                    asType: undefined,
+                    typeAssertion: undefined,
+                },
+                {
+                    kind: IntermediateKind.IntermediateIdentifierReference,
+                    name: "second",
+                    asType: undefined,
+                    typeAssertion: undefined,
+                },
             ],
             initializer: {
                 kind: IntermediateKind.IntermediateArrayLiteral,

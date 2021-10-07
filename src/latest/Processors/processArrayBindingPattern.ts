@@ -32,9 +32,27 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { DEFAULT_DATA_PATH, getClassNames, Maybe, UnsupportedTypeError } from "@safelytyped/core-types";
-import { ArrayBindingElement, ArrayBindingPattern, isBindingElement, NodeArray, SyntaxKind, TypeNode } from "typescript";
-import { IntermediateArrayBindingElement, IntermediateArrayBindingParameter, IntermediateKind } from "../IntermediateTypes";
+import {
+    DEFAULT_DATA_PATH,
+    getClassNames,
+    Maybe,
+    UnsupportedTypeError
+} from "@safelytyped/core-types";
+import {
+    ArrayBindingElement,
+    ArrayBindingPattern,
+    isBindingElement,
+    NodeArray,
+    SyntaxKind,
+    TypeNode
+} from "typescript";
+import { AST } from "../AST";
+import {
+    IntermediateArrayBindingElement,
+    IntermediateArrayBindingParameter,
+    IntermediateKind
+} from "../IntermediateTypes";
+import { processBindingNameForParameters } from "./processBindingNameForParameters";
 import { processExpression } from "./processExpression";
 import { processMaybe } from "./processMaybe";
 import { processTypeNode } from "./processTypeNode";
@@ -78,7 +96,9 @@ function processBindingElement(
     if (isBindingElement(input)) {
         return <IntermediateArrayBindingElement>{
             kind: IntermediateKind.IntermediateArrayBindingElement,
-            name: input.name.getText(),
+            name: processBindingNameForParameters(
+                input.name, AST.hasDotDotDotToken(input.dotDotDotToken)
+            ),
             initializer: processMaybe(
                 input.initializer,
                 processExpression

@@ -51,7 +51,10 @@ const expectedResult: IntermediateSourceFile = {
                     isConstant: true,
                     isReadonly: false,
                     members: [
-                        "squareTwo",
+                        {
+                            kind: IntermediateKind.IntermediateIdentifierDeclaration,
+                            name: "squareTwo",
+                        },
                     ],
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,

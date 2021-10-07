@@ -34,23 +34,27 @@
 
 import { BindingName } from "typescript";
 import {
-    IntermediateIdentifierName,
-    IntermediateKind
+    IntermediateIdentifierDeclaration,
+    IntermediateKind,
+    IntermediateRestIdentifierDeclaration
 } from "../IntermediateTypes";
 
-export function processBindingName(
+export function processBindingNameForDeclarations(
     input: BindingName,
     hasRestParameter: boolean,
-): IntermediateIdentifierName
+): IntermediateIdentifierDeclaration | IntermediateRestIdentifierDeclaration
 {
     // special case
     if (hasRestParameter) {
         return {
-            kind: IntermediateKind.IntermediateRestIdentifierName,
+            kind: IntermediateKind.IntermediateRestIdentifierDeclaration,
             name: input.getText(),
         }
     }
 
-    // general case - we just return a string for now
-    return input.getText();
+    // general case - we're returning a new identifier
+    return {
+        kind: IntermediateKind.IntermediateIdentifierDeclaration,
+        name: input.getText(),
+    }
 }
