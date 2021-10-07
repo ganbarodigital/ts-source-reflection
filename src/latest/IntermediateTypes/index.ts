@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+export * from "./AnyIntermediateIdentifierDeclaration";
 export * from "./IntermediateAbstractItem";
 export * from "./IntermediateAliasedExportItem";
 export * from "./IntermediateAliasedImportBinding";
