@@ -56,6 +56,7 @@ const expectedResult: IntermediateSourceFile = {
                             name: "squareTwo",
                         },
                     ],
+                    typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
                         typeArguments: [],

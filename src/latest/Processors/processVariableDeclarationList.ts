@@ -67,6 +67,7 @@ import {
 import { processBindingNameForDeclarations } from "./processBindingNameForDeclarations";
 import { processDocBlock } from "./processDocBlock";
 import { processExpression } from "./processExpression";
+import { processMaybe } from "./processMaybe";
 import { processTypeNode } from "./processTypeNode";
 import { VariableDeclarationContextFlags } from "./VariableDeclarationContextFlags";
 
@@ -261,6 +262,7 @@ function processDestructuredVariableDeclaration(
             docBlock: processDocBlock(input),
             isConstant: true,
             isReadonly,
+            typeRef: processMaybe(input.type, processTypeNode),
             members: processDestructuredObjectDeclaration(input.name),
             initializer,
         }
@@ -271,6 +273,7 @@ function processDestructuredVariableDeclaration(
         docBlock: processDocBlock(input),
         isConstant: false,
         isReadonly,
+        typeRef: processMaybe(input.type, processTypeNode),
         members: processDestructuredObjectDeclaration(input.name),
         initializer,
     }

@@ -114,6 +114,7 @@ const expectedResult: IntermediateSourceFile = {
                             name: "passthrough",
                         },
                     ],
+                    typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "o",

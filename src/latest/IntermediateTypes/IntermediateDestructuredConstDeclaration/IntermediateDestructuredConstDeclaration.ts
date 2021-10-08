@@ -40,7 +40,8 @@ import {
     IntermediateItem,
     IntermediateKind,
     IntermediateOmittedExpression,
-    IntermediateReadonlyItem
+    IntermediateReadonlyItem,
+    IntermediateTypeReference
 } from "..";
 
 export interface IntermediateDestructuredConstDeclaration
@@ -50,5 +51,6 @@ export interface IntermediateDestructuredConstDeclaration
 {
     isConstant: true,
     members: (AnyIntermediateIdentifierDeclaration | IntermediateOmittedExpression)[];
+    typeRef: Maybe<IntermediateTypeReference>;
     initializer: Maybe<IntermediateExpression>;
 }
