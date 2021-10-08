@@ -38,4 +38,10 @@ export interface IntermediateIdentifierDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateIdentifierDeclaration>
 {
     name: string;
+
+    /**
+     * `from` is set if we're doing property renaming inside a
+     * destructured object
+     */
+    from?: string;
 }

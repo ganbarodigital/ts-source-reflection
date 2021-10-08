@@ -300,6 +300,15 @@ function processObjectBindingElement(
         }
     }
 
+    // special case: we're renaming a property
+    if (input.propertyName) {
+        return {
+            kind: IntermediateKind.IntermediateIdentifierDeclaration,
+            name: input.name.getText(),
+            from: input.propertyName.getText(),
+        }
+    }
+
     // currently the general case
     if (isBindingName(input.name)) {
         return processBindingNameForDeclarations(
