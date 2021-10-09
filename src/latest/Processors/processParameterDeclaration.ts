@@ -62,6 +62,7 @@ export function processParameterDeclaration(
         return processObjectBindingPatternForParameters({
             param: paramDec.name,
             paramType: paramDec.type,
+            paramInitializer: paramDec.initializer,
         });
     }
 

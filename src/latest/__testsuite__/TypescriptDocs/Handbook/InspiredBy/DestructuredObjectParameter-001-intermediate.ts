@@ -64,6 +64,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     ],
                     typeRef: undefined,
+                    initializer: undefined,
                 },
             ],
             returnType: undefined,

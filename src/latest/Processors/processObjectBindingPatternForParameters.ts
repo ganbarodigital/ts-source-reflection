@@ -35,6 +35,7 @@
 import { Maybe } from "@safelytyped/core-types";
 import {
     BindingElement,
+    Expression,
     NodeArray,
     ObjectBindingPattern,
     TypeNode
@@ -43,8 +44,7 @@ import { AST } from "../AST";
 import {
     AnyIntermediateDestructuredIdentifierDeclaration,
     IntermediateDestructuredIdentifierDeclaration,
-    IntermediateDestructuredParameterDeclaration,
-    IntermediateKind,
+    IntermediateDestructuredParameterDeclaration, IntermediateKind,
     IntermediateTypeReference
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
@@ -54,9 +54,11 @@ import { processTypeNode } from "./processTypeNode";
 export function processObjectBindingPatternForParameters({
     param,
     paramType,
+    paramInitializer,
 }: {
     param: ObjectBindingPattern,
     paramType: Maybe<TypeNode>,
+    paramInitializer: Maybe<Expression>,
 }
 ): IntermediateDestructuredParameterDeclaration
 {
@@ -70,6 +72,10 @@ export function processObjectBindingPatternForParameters({
         kind: IntermediateKind.IntermediateDestructuredParameterDeclaration,
         parameters: processBindingElements(param.elements),
         typeRef,
+        initializer: processMaybe(
+            paramInitializer,
+            processExpression
+        )
     };
 }
 

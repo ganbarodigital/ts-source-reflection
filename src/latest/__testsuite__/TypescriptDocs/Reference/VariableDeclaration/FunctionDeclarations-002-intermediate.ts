@@ -45,7 +45,7 @@ const expectedResult: IntermediateSourceFile = {
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
-            name: "sum",
+            name: "f",
             typeParameters: [],
             parameters: [
                 {
@@ -54,61 +54,39 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "a",
-                            initializer: undefined,
                             from: undefined,
+                            initializer: {
+                                kind: IntermediateKind.IntermediateStringLiteral,
+                                value: "",
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            },
                         },
                         {
                             kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "b",
-                            initializer: undefined,
                             from: undefined,
-                        },
-                        {
-                            kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
-                            name: "c",
-                            initializer: undefined,
-                            from: undefined,
+                            initializer: {
+                                kind: IntermediateKind.IntermediateNumericLiteral,
+                                value: "0",
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            },
                         },
                     ],
-                    typeRef: {
-                        kind: IntermediateKind.IntermediateAnonymousClassType,
-                        members: [
-                            {
-                                kind: IntermediateKind.IntermediateTypedPropertySignature,
-                                name: "a",
-                                isOptional: false,
-                                isReadonly: false,
-                                typeRef: {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: "number",
-                                },
-                            },
-                            {
-                                kind: IntermediateKind.IntermediateTypedPropertySignature,
-                                name: "b",
-                                isOptional: false,
-                                isReadonly: false,
-                                typeRef: {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: "number",
-                                },
-                            },
-                            {
-                                kind: IntermediateKind.IntermediateTypedPropertySignature,
-                                name: "c",
-                                isOptional: false,
-                                isReadonly: false,
-                                typeRef: {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: "number",
-                                },
-                            },
-                        ],
+                    typeRef: undefined,
+                    initializer: {
+                        kind: IntermediateKind.IntermediateObjectLiteral,
+                        properties: [],
+                        asType: undefined,
+                        typeAssertion: undefined,
                     },
-                    initializer: undefined,
                 },
             ],
-            returnType: undefined,
+            returnType: {
+                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                typeName: "void",
+            },
             hasBody: true,
         },
     ],

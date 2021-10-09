@@ -33,6 +33,7 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
+import { IntermediateExpression } from "..";
 import { AnyIntermediateDestructuredIdentifierDeclaration } from "../AnyIntermediateDestructuredIdentifierDeclaration";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
@@ -43,4 +44,5 @@ export interface IntermediateDestructuredParameterDeclaration
 {
     parameters: AnyIntermediateDestructuredIdentifierDeclaration[];
     typeRef: Maybe<IntermediateTypeReference>;
+    initializer: Maybe<IntermediateExpression>;
 }

@@ -126,6 +126,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "PaintOptions",
                     },
+                    initializer: undefined,
                 },
             ],
             returnType: undefined,

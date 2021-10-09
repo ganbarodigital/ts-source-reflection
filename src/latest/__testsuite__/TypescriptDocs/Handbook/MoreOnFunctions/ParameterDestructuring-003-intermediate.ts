@@ -117,6 +117,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "ABC",
                     },
+                    initializer: undefined,
                 },
             ],
             returnType: undefined,
