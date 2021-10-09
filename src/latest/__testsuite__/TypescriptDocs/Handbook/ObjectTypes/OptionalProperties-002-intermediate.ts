@@ -97,7 +97,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
                             name: "shape",
                             initializer: undefined,
-                            receiverAlias: undefined,
+                            from: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
@@ -108,7 +108,7 @@ const expectedResult: IntermediateSourceFile = {
                                 asType: undefined,
                                 typeAssertion: undefined,
                             },
-                            receiverAlias: undefined,
+                            from: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
@@ -119,7 +119,7 @@ const expectedResult: IntermediateSourceFile = {
                                 asType: undefined,
                                 typeAssertion: undefined,
                             },
-                            receiverAlias: undefined,
+                            from: undefined,
                         },
                     ],
                     typeRef: {

@@ -109,7 +109,7 @@ function processBindingElement(
             kind: IntermediateKind.IntermediateObjectBindingElement,
             name: input.propertyName.getText(),
             initializer,
-            receiverAlias: input.name.getText(),
+            from: input.name.getText(),
         }
     }
 
@@ -117,6 +117,6 @@ function processBindingElement(
         kind: IntermediateKind.IntermediateObjectBindingElement,
         name: input.name.getText(),
         initializer,
-        receiverAlias: undefined,
+        from: undefined,
     }
 }

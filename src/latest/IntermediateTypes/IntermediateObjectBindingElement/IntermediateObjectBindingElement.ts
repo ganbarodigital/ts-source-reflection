@@ -43,5 +43,10 @@ export interface IntermediateObjectBindingElement
         IntermediateIdentifiedItem
 {
     initializer: Maybe<IntermediateExpression>;
-    receiverAlias: Maybe<string>;
+
+    /**
+     * `from` is set if we're doing property renaming inside a
+     * destructured object
+     */
+     from: Maybe<string>;
 }

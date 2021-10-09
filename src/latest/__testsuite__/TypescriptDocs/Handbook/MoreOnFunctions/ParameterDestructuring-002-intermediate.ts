@@ -55,19 +55,19 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
                             name: "a",
                             initializer: undefined,
-                            receiverAlias: undefined,
+                            from: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
                             name: "b",
                             initializer: undefined,
-                            receiverAlias: undefined,
+                            from: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,
                             name: "c",
                             initializer: undefined,
-                            receiverAlias: undefined,
+                            from: undefined,
                         },
                     ],
                     typeRef: {
