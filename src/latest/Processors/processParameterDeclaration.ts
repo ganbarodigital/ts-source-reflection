@@ -49,7 +49,7 @@ import {
 import { processArrayBindingPattern } from "./processArrayBindingPattern";
 import { processDecorators } from "./processDecorators";
 import { processExpression } from "./processExpression";
-import { processObjectBindingPattern } from "./processObjectBindingPattern";
+import { processObjectBindingPatternForParameters } from "./processObjectBindingPatternForParameters";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
 
@@ -59,7 +59,7 @@ export function processParameterDeclaration(
 {
     // special case - deconstructed object
     if (isObjectBindingPattern(paramDec.name)) {
-        return processObjectBindingPattern({
+        return processObjectBindingPatternForParameters({
             param: paramDec.name,
             paramType: paramDec.type,
         });

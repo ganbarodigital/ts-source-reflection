@@ -45,7 +45,7 @@ import {
     IntermediateTypedCallableParameterSignature,
     IntermediateUntypedCallableParameterSignature
 } from "../IntermediateTypes";
-import { processObjectBindingPattern } from "./processObjectBindingPattern";
+import { processObjectBindingPatternForParameters } from "./processObjectBindingPatternForParameters";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
 
@@ -60,7 +60,7 @@ export function processParameterSignature(
     //
     // why it hides in the parameter name is beyond me!
     if (isObjectBindingPattern(paramDec.name)) {
-        return processObjectBindingPattern({
+        return processObjectBindingPatternForParameters({
             param: paramDec.name,
             paramType: paramDec.type,
         });

@@ -49,7 +49,7 @@ import {
 import { processExpression } from "./processExpression";
 import { processTypeNode } from "./processTypeNode";
 
-export function processObjectBindingPattern({
+export function processObjectBindingPatternForParameters({
     param,
     paramType,
 }: {
