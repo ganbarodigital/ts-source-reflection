@@ -86,6 +86,7 @@ export * from "./IntermediateDestructuredIdentifierDeclaration";
 export * from "./IntermediateDestructuredIdentifierSignature";
 export * from "./IntermediateDestructuredParameterDeclaration";
 export * from "./IntermediateDestructuredRestIdentifierDeclaration";
+export * from "./IntermediateDestructuredRestIdentifierSignature";
 export * from "./IntermediateDestructuredVarAssignment";
 export * from "./IntermediateDestructuredVarDeclaration";
 export * from "./IntermediateDocBlock";

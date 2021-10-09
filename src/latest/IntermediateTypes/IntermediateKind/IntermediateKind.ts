@@ -76,6 +76,7 @@ export enum IntermediateKind {
     IntermediateDestructuredIdentifierSignature,
     IntermediateDestructuredParameterDeclaration,
     IntermediateDestructuredRestIdentifierDeclaration,
+    IntermediateDestructuredRestIdentifierSignature,
     IntermediateDestructuredVarAssignment,
     IntermediateDestructuredVarDeclaration,
     IntermediateDocBlock,
