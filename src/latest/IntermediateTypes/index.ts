@@ -187,6 +187,7 @@ export * from "./IntermediateRestrictableScopeItem";
 export * from "./IntermediateSetter";
 export * from "./IntermediateShorthandAmbientModuleDefinition";
 export * from "./IntermediateShorthandPropertyAssignment";
+export * from "./IntermediateSpreadIdentifierReference";
 export * from "./IntermediateSourceFile";
 export * from "./IntermediateSpreadElement";
 export * from "./IntermediateStatement";

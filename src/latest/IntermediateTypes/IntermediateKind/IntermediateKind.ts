@@ -150,6 +150,7 @@ export enum IntermediateKind {
     IntermediateShorthandAmbientModuleDefinition,
     IntermediateShorthandPropertyAssignment,
     IntermediateSourceFile,
+    IntermediateSpreadIdentifierReference,
     IntermediateSpreadOperator,
     IntermediateStringLiteral,
     IntermediateTemplateExpression,

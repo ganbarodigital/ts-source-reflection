@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateSpreadIdentifierReference } from "..";
 import { IntermediateArrayLiteral } from "../IntermediateArrayLiteral";
 import { IntermediateArrowFunction } from "../IntermediateArrowFunction";
 import { IntermediateBigintLiteral } from "../IntermediateBigintLiteral";
@@ -75,6 +76,7 @@ export type IntermediateExpression
       | IntermediatePropertyAccessExpression
       | IntermediateRegexLiteral
       | IntermediateSpreadElement
+      | IntermediateSpreadIdentifierReference
       | IntermediateStringLiteral
       | IntermediateTemplateExpression
       | IntermediateVariableAssignment

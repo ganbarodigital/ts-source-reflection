@@ -32,32 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { SpreadElement } from "typescript";
-import {
-    IntermediateKind,
-    IntermediateSpreadElement,
-    IntermediateSpreadIdentifierReference
-} from "../IntermediateTypes";
-import { processExpression } from "./processExpression";
+import { IntermediateItem, IntermediateKind, IntermediateTypeAssertable } from "..";
 
-export function processSpreadElement(
-    input: SpreadElement
-): IntermediateSpreadElement | IntermediateSpreadIdentifierReference
+export interface IntermediateSpreadIdentifierReference
+    extends IntermediateItem<IntermediateKind.IntermediateSpreadIdentifierReference>,
+        IntermediateTypeAssertable
 {
-    // special case
-    const target = processExpression(input.expression);
-    if (target.kind === IntermediateKind.IntermediateIdentifierReference) {
-        return {
-            kind: IntermediateKind.IntermediateSpreadIdentifierReference,
-            name: target.name,
-            asType: target.asType,
-            typeAssertion: target.typeAssertion,
-        }
-    }
-
-    // general case
-    return {
-        kind: IntermediateKind.IntermediateSpreadOperator,
-        target: processExpression(input.expression),
-    }
+    name: string;
 }
