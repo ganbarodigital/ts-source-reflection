@@ -83,6 +83,7 @@ export * from "./IntermediateDefaultImport";
 export * from "./IntermediateDestructuredConstDeclaration";
 export * from "./IntermediateDestructuredLetDeclaration";
 export * from "./IntermediateDestructuredIdentifierDeclaration";
+export * from "./IntermediateDestructuredIdentifierSignature";
 export * from "./IntermediateDestructuredParameterDeclaration";
 export * from "./IntermediateDestructuredRestIdentifierDeclaration";
 export * from "./IntermediateDestructuredVarAssignment";
