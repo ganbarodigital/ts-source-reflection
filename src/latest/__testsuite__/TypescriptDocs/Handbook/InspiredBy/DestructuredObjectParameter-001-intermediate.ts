@@ -32,15 +32,49 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import { AnyIntermediateDestructuredIdentifierDeclaration } from "../AnyIntermediateDestructuredIdentifierDeclaration";
-import { IntermediateItem } from "../IntermediateItem";
-import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import {
+    IntermediateKind,
+    IntermediateSourceFile
+} from "../../../../IntermediateTypes";
 
-export interface IntermediateDestructuredParameterDeclaration
-    extends IntermediateItem<IntermediateKind.IntermediateDestructuredParameterDeclaration>
-{
-    parameters: AnyIntermediateDestructuredIdentifierDeclaration[];
-    typeRef: Maybe<IntermediateTypeReference>;
+const expectedResult: IntermediateSourceFile = {
+    children: [
+        {
+            kind: IntermediateKind.IntermediateFunction,
+            docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "foo",
+            typeParameters: [],
+            parameters: [
+                {
+                    kind: IntermediateKind.IntermediateDestructuredParameterDeclaration,
+                    parameters: [
+                        {
+                            kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
+                            name: "albert",
+                            from: undefined,
+                            initializer: undefined,
+                        },
+                        {
+                            kind: IntermediateKind.IntermediateDestructuredRestIdentifierDeclaration,
+                            name: "alfred",
+                            initializer: undefined,
+                        },
+                    ],
+                    typeRef: undefined,
+                },
+            ],
+            returnType: undefined,
+            hasBody: true,
+        }
+    ],
+    referencedFiles: [],
+    referencedLibs: [],
+    referencedTypes: [],
+    referenceNoDefaultLib: false,
+    kind: IntermediateKind.IntermediateSourceFile,
 }
+
+export default expectedResult;

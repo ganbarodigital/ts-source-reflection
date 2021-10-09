@@ -37,6 +37,6 @@ import {
     IntermediateDestructuredRestIdentifierDeclaration
 } from "..";
 
-export type AnyIntermediateIdentifierDestructuredIdentifierDeclaration
+export type AnyIntermediateDestructuredIdentifierDeclaration
     = IntermediateDestructuredIdentifierDeclaration
     | IntermediateDestructuredRestIdentifierDeclaration

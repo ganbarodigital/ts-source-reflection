@@ -39,14 +39,16 @@ import {
     ObjectBindingPattern,
     TypeNode
 } from "typescript";
+import { AST } from "../AST";
 import {
-    IntermediateExpression,
-    IntermediateKind,
+    AnyIntermediateDestructuredIdentifierDeclaration,
     IntermediateDestructuredIdentifierDeclaration,
     IntermediateDestructuredParameterDeclaration,
+    IntermediateKind,
     IntermediateTypeReference
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { processMaybe } from "./processMaybe";
 import { processTypeNode } from "./processTypeNode";
 
 export function processObjectBindingPatternForParameters({
@@ -73,10 +75,10 @@ export function processObjectBindingPatternForParameters({
 
 function processBindingElements(
     input: NodeArray<BindingElement>
-): IntermediateDestructuredIdentifierDeclaration[]
+): AnyIntermediateDestructuredIdentifierDeclaration[]
 {
     // our return value
-    const retval: IntermediateDestructuredIdentifierDeclaration[] = [];
+    const retval: ReturnType<typeof processBindingElements> = [];
 
     input.forEach((bindingElement) => {
         retval.push(processBindingElement(bindingElement));
@@ -88,13 +90,13 @@ function processBindingElements(
 
 function processBindingElement(
     input: BindingElement
-): IntermediateDestructuredIdentifierDeclaration
+): AnyIntermediateDestructuredIdentifierDeclaration
 {
     // do we have a default value for the parameter?
-    let initializer: Maybe<IntermediateExpression>;
-    if (input.initializer) {
-        initializer = processExpression(input.initializer);
-    }
+    const initializer = processMaybe(
+        input.initializer,
+        processExpression
+    )
 
     // do we have a receiver alias set?
     //
@@ -110,6 +112,17 @@ function processBindingElement(
             name: input.propertyName.getText(),
             initializer,
             from: input.name.getText(),
+        }
+    }
+
+    // is this a rest parameter?
+    //
+    // note that REST parameters cannot have receiver aliases
+    if (AST.hasDotDotDotToken(input.dotDotDotToken)) {
+        return {
+            kind: IntermediateKind.IntermediateDestructuredRestIdentifierDeclaration,
+            name: input.name.getText(),
+            initializer
         }
     }
 
