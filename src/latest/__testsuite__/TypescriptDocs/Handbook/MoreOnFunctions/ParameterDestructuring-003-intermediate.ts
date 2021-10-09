@@ -92,7 +92,7 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             parameters: [
                 {
-                    kind: IntermediateKind.IntermediateObjectBindingParameter,
+                    kind: IntermediateKind.IntermediateDestructuredParameterDeclaration,
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateObjectBindingElement,

@@ -43,7 +43,7 @@ import {
     IntermediateExpression,
     IntermediateKind,
     IntermediateObjectBindingElement,
-    IntermediateObjectBindingParameter,
+    IntermediateDestructuredParameterDeclaration,
     IntermediateTypeReference
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
@@ -56,7 +56,7 @@ export function processObjectBindingPattern({
     param: ObjectBindingPattern,
     paramType: Maybe<TypeNode>,
 }
-): IntermediateObjectBindingParameter
+): IntermediateDestructuredParameterDeclaration
 {
     let typeRef: Maybe<IntermediateTypeReference>;
     if (paramType) {
@@ -65,7 +65,7 @@ export function processObjectBindingPattern({
 
     // all done
     return {
-        kind: IntermediateKind.IntermediateObjectBindingParameter,
+        kind: IntermediateKind.IntermediateDestructuredParameterDeclaration,
         parameters: processBindingElements(param.elements),
         typeRef,
     };

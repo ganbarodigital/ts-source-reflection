@@ -33,12 +33,12 @@
 //
 
 import { IntermediateArrayBindingParameter } from "..";
-import { IntermediateObjectBindingParameter } from "../IntermediateObjectBindingParameter";
+import { IntermediateDestructuredParameterDeclaration } from "../IntermediateDestructuredParameterDeclaration";
 import { IntermediateTypedConstructorParameterDeclaration } from "../IntermediateTypedConstructorParameterDeclaration";
 import { IntermediateUntypedConstructorParameterDeclaration } from "../IntermediateUntypedConstructorParameterDeclaration";
 
 export type IntermediateConstructorParameterDeclaration
     = IntermediateTypedConstructorParameterDeclaration
     | IntermediateUntypedConstructorParameterDeclaration
-    | IntermediateObjectBindingParameter
+    | IntermediateDestructuredParameterDeclaration
     | IntermediateArrayBindingParameter;

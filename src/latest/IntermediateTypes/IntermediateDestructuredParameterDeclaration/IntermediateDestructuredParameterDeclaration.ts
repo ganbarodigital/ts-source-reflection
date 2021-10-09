@@ -38,8 +38,8 @@ import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateObjectBindingElement } from "../IntermediateObjectBindingElement";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
-export interface IntermediateObjectBindingParameter
-    extends IntermediateItem<IntermediateKind.IntermediateObjectBindingParameter>
+export interface IntermediateDestructuredParameterDeclaration
+    extends IntermediateItem<IntermediateKind.IntermediateDestructuredParameterDeclaration>
 {
     parameters: IntermediateObjectBindingElement[];
     typeRef: Maybe<IntermediateTypeReference>;

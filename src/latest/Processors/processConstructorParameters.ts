@@ -77,7 +77,7 @@ function processConstructorParameter(
     //
     // if this changes in a future release of Typescript, we're going
     // to have some fun crowbaring that support in!
-    if (retval.kind === IntermediateKind.IntermediateObjectBindingParameter) {
+    if (retval.kind === IntermediateKind.IntermediateDestructuredParameterDeclaration) {
         return retval;
     }
     // same goes for ArrayBindingParameters
@@ -116,7 +116,7 @@ function mapFunctionParameterToConstructorParameter(
     switch(input.kind) {
         case IntermediateKind.IntermediateArrayBindingParameter:
             return input;
-        case IntermediateKind.IntermediateObjectBindingParameter:
+        case IntermediateKind.IntermediateDestructuredParameterDeclaration:
             return input;
 
         case IntermediateKind.IntermediateUntypedCallableParameterDeclaration:
