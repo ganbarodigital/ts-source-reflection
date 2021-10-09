@@ -57,6 +57,7 @@ import {
 } from "typescript";
 import { AST } from "../AST";
 import {
+    AnyIntermediateDestructuredIdentifierDeclaration,
     AnyIntermediateIdentifierDeclaration,
     IntermediateExpression,
     IntermediateKind,
@@ -281,7 +282,7 @@ function processDestructuredVariableDeclaration(
 
 function processDestructuredObjectDeclaration(
     input: ObjectBindingPattern
-): (AnyIntermediateIdentifierDeclaration | IntermediateOmittedExpression)[]
+): (AnyIntermediateDestructuredIdentifierDeclaration | IntermediateOmittedExpression)[]
 {
     const retval: ReturnType<typeof processDestructuredObjectDeclaration> = [];
 
@@ -294,7 +295,7 @@ function processDestructuredObjectDeclaration(
 
 function processObjectBindingElement(
     input: BindingElement
-): (AnyIntermediateIdentifierDeclaration | IntermediateOmittedExpression)
+): (AnyIntermediateDestructuredIdentifierDeclaration | IntermediateOmittedExpression)
 {
     // special case
     if (isOmittedExpression(input)) {
@@ -303,34 +304,37 @@ function processObjectBindingElement(
         }
     }
 
+    // do we have an initializer?
+    const initializer = processMaybe(
+        input.initializer,
+        processExpression
+    )
+
     // special case: we're renaming a property
     if (input.propertyName) {
         return {
-            kind: IntermediateKind.IntermediateIdentifierDeclaration,
+            kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
             name: input.name.getText(),
             from: input.propertyName.getText(),
+            initializer,
         }
     }
 
-    // currently the general case
-    if (isBindingName(input.name)) {
-        return processBindingNameForDeclarations(
-            input.name,
-            AST.hasDotDotDotToken(input.dotDotDotToken)
-        )
+    // special case - rest property
+    if (AST.hasDotDotDotToken(input.dotDotDotToken)) {
+        return {
+            kind: IntermediateKind.IntermediateDestructuredRestIdentifierDeclaration,
+            name: input.name.getText(),
+            initializer,
+        }
     }
 
-    // if we get here, we have a problem
-    // tslint:disable-next-line: no-console
-    console.log("Unsupported object BindingElement: ", getClassNames(input), SyntaxKind[input.kind]);
-
-    throw new UnsupportedTypeError({
-        public: {
-            dataPath: DEFAULT_DATA_PATH,
-            expected: "a supported object BindingElement",
-            actual: getClassNames(input)[0],
-        }
-    })
+    return {
+        kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
+        name: input.name.getText(),
+        initializer,
+        from: undefined,
+    }
 }
 type ValidArrayBindingObjectKinds =
     IntermediateKind.IntermediateArrayBindingConstDeclaration

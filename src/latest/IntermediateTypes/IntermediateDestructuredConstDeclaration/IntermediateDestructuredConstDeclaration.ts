@@ -34,7 +34,7 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import {
-    AnyIntermediateIdentifierDeclaration,
+    AnyIntermediateDestructuredIdentifierDeclaration,
     IntermediateDocumentedItem,
     IntermediateExpression,
     IntermediateItem,
@@ -50,7 +50,7 @@ export interface IntermediateDestructuredConstDeclaration
         IntermediateReadonlyItem
 {
     isConstant: true,
-    members: (AnyIntermediateIdentifierDeclaration | IntermediateOmittedExpression)[];
+    members: (AnyIntermediateDestructuredIdentifierDeclaration | IntermediateOmittedExpression)[];
     typeRef: Maybe<IntermediateTypeReference>;
     initializer: Maybe<IntermediateExpression>;
 }

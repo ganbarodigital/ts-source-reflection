@@ -105,14 +105,16 @@ const expectedResult: IntermediateSourceFile = {
                     isReadonly: false,
                     members: [
                         {
-                            kind: IntermediateKind.IntermediateIdentifierDeclaration,
+                            kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "newName1",
                             from: "a",
+                            initializer: undefined,
                         },
                         {
-                            kind: IntermediateKind.IntermediateIdentifierDeclaration,
+                            kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "newName2",
                             from: "b",
+                            initializer: undefined,
                         },
                     ],
                     typeRef: undefined,
