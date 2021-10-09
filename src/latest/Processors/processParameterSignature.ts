@@ -45,7 +45,7 @@ import {
     IntermediateTypedCallableParameterSignature,
     IntermediateUntypedCallableParameterSignature
 } from "../IntermediateTypes";
-import { processObjectBindingPatternForParameters } from "./processObjectBindingPatternForParameters";
+import { processObjectBindingPatternForSignatures } from "./processObjectBindingPatternForSignatures";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
 
@@ -53,17 +53,11 @@ export function processParameterSignature(
     paramDec: ParameterDeclaration
 ): IntermediateCallableParameterSignature
 {
-    // NOTE: the caller has to implement support for rest parameters,
-    // to avoid infinite recursion!
-
-    // special case - deconstructed object
-    //
-    // why it hides in the parameter name is beyond me!
+    // special case - destructured object
     if (isObjectBindingPattern(paramDec.name)) {
-        return processObjectBindingPatternForParameters({
+        return processObjectBindingPatternForSignatures({
             param: paramDec.name,
             paramType: paramDec.type,
-            paramInitializer: paramDec.initializer,
         });
     }
 
