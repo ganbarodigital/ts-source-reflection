@@ -152,6 +152,7 @@ export enum IntermediateKind {
     IntermediateSourceFile,
     IntermediateSpreadIdentifierReference,
     IntermediateSpreadOperator,
+    IntermediateSpreadPropertyAssignment,
     IntermediateStringLiteral,
     IntermediateTemplateExpression,
     IntermediateTemplateExpressionSpan,
