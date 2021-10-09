@@ -32,43 +32,35 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { isShorthandPropertyAssignment, isSpreadAssignment, ObjectLiteralExpression } from "typescript";
-import { AST } from "../AST";
-import { IntermediateKind, IntermediateObjectLiteral } from "../IntermediateTypes";
-import { processPropertyAssignment } from "./processPropertyAssignment";
-import { processShorthandPropertyAssignment } from "./processShorthandPropertyAssignment";
-import { processSpreadAssignment } from "./processSpreadAssignment";
+import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
+import { SpreadAssignment, SyntaxKind } from "typescript";
+import { IntermediateKind, IntermediateSpreadPropertyAssignment } from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
 
-export function processObjectLiteralExpression(
-    input: ObjectLiteralExpression
-): IntermediateObjectLiteral
+export function processSpreadAssignment(
+    input: SpreadAssignment
+): IntermediateSpreadPropertyAssignment
 {
-    // this will be our return value
-    const retval: IntermediateObjectLiteral = {
-        kind: IntermediateKind.IntermediateObjectLiteral,
-        properties: [],
-        asType: undefined,
-        typeAssertion: undefined,
+    // this is a bit knarly
+    const expression = processExpression(input.expression);
+    if (expression.kind === IntermediateKind.IntermediateIdentifierReference) {
+        return {
+            kind: IntermediateKind.IntermediateSpreadPropertyAssignment,
+            name: expression.name,
+            asType: expression.asType,
+            typeAssertion: expression.typeAssertion,
+        }
     }
 
-    for (const member of input.properties) {
-        // special case - spread assignment
-        if (isSpreadAssignment(member)) {
-            retval.properties.push(processSpreadAssignment(member));
-            continue;
+    // if we get here, we don't know what we're looking at
+    // tslint:disable-next-line: no-console
+    console.log("processSpreadAssignment(): unsupported input expression received ", getClassNames(input.expression), SyntaxKind[input.expression.kind])
+
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: "a supported input.expression",
+            actual: getClassNames(input.expression)[0]
         }
-
-        // special case - shorthand assignment
-        if (isShorthandPropertyAssignment(member)) {
-            retval.properties.push(processShorthandPropertyAssignment(member));
-            continue;
-        }
-
-        // general case
-        const propAssignment = AST.mustBePropertyAssignment(member);
-        retval.properties.push(processPropertyAssignment(propAssignment));
-    }
-
-    // all done
-    return retval;
+    })
 }
