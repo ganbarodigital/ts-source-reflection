@@ -35,6 +35,7 @@
 export * from "./AnyIntermediateDestructuredIdentifierDeclaration";
 export * from "./AnyIntermediateDestructuredIdentifierSignature";
 export * from "./AnyIntermediateIdentifierDeclaration";
+export * from "./AnyIntermediatePropertyAssignment";
 export * from "./IntermediateAbstractItem";
 export * from "./IntermediateAliasedExportItem";
 export * from "./IntermediateAliasedImportBinding";

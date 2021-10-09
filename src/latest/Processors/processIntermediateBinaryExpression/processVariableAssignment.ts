@@ -38,14 +38,13 @@ import {
     UnsupportedTypeError
 } from "@safelytyped/core-types";
 import {
+    AnyIntermediatePropertyAssignment,
     IntermediateBinaryExpression,
     IntermediateExpression,
     IntermediateExpressionOperator,
     IntermediateIdentifierName,
     IntermediateKind,
     IntermediateOmittedExpression,
-    IntermediatePropertyAssignment,
-    IntermediateShorthandPropertyAssignment,
     mustBeSpecificIntermediateBinaryExpression
 } from "../../IntermediateTypes";
 
@@ -137,7 +136,7 @@ function extractElementsFromArrayLiteral(
 }
 
 function extractMembersFromObjectLiteral(
-    input: (IntermediatePropertyAssignment | IntermediateShorthandPropertyAssignment)[]
+    input: AnyIntermediatePropertyAssignment[]
 ): IntermediateIdentifierName[]
 {
     // this will be our return value
