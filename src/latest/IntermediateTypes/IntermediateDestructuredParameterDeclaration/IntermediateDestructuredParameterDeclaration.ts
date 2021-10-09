@@ -35,12 +35,12 @@
 import { Maybe } from "@safelytyped/core-types";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateObjectBindingElement } from "../IntermediateObjectBindingElement";
+import { IntermediateDestructuredIdentifierDeclaration } from "../IntermediateDestructuredIdentifierDeclaration";
 import { IntermediateTypeReference } from "../IntermediateTypeReference";
 
 export interface IntermediateDestructuredParameterDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateDestructuredParameterDeclaration>
 {
-    parameters: IntermediateObjectBindingElement[];
+    parameters: IntermediateDestructuredIdentifierDeclaration[];
     typeRef: Maybe<IntermediateTypeReference>;
 }

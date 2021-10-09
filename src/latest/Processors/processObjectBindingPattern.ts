@@ -42,7 +42,7 @@ import {
 import {
     IntermediateExpression,
     IntermediateKind,
-    IntermediateObjectBindingElement,
+    IntermediateDestructuredIdentifierDeclaration,
     IntermediateDestructuredParameterDeclaration,
     IntermediateTypeReference
 } from "../IntermediateTypes";
@@ -73,10 +73,10 @@ export function processObjectBindingPattern({
 
 function processBindingElements(
     input: NodeArray<BindingElement>
-): IntermediateObjectBindingElement[]
+): IntermediateDestructuredIdentifierDeclaration[]
 {
     // our return value
-    const retval: IntermediateObjectBindingElement[] = [];
+    const retval: IntermediateDestructuredIdentifierDeclaration[] = [];
 
     input.forEach((bindingElement) => {
         retval.push(processBindingElement(bindingElement));
@@ -88,7 +88,7 @@ function processBindingElements(
 
 function processBindingElement(
     input: BindingElement
-): IntermediateObjectBindingElement
+): IntermediateDestructuredIdentifierDeclaration
 {
     // do we have a default value for the parameter?
     let initializer: Maybe<IntermediateExpression>;
@@ -105,16 +105,16 @@ function processBindingElement(
     //   `receiverAlias`
 
     if (input.propertyName) {
-        return <IntermediateObjectBindingElement>{
-            kind: IntermediateKind.IntermediateObjectBindingElement,
+        return <IntermediateDestructuredIdentifierDeclaration>{
+            kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
             name: input.propertyName.getText(),
             initializer,
             from: input.name.getText(),
         }
     }
 
-    return <IntermediateObjectBindingElement>{
-        kind: IntermediateKind.IntermediateObjectBindingElement,
+    return <IntermediateDestructuredIdentifierDeclaration>{
+        kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
         name: input.name.getText(),
         initializer,
         from: undefined,

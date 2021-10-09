@@ -52,19 +52,19 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateDestructuredParameterDeclaration,
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateObjectBindingElement,
+                            kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "a",
                             initializer: undefined,
                             from: undefined,
                         },
                         {
-                            kind: IntermediateKind.IntermediateObjectBindingElement,
+                            kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "b",
                             initializer: undefined,
                             from: undefined,
                         },
                         {
-                            kind: IntermediateKind.IntermediateObjectBindingElement,
+                            kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "c",
                             initializer: undefined,
                             from: undefined,
