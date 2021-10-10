@@ -158,6 +158,7 @@ export * from "./IntermediateNamespace";
 export * from "./IntermediateNamespaceImport";
 export * from "./IntermediateNamespaceExport";
 export * from "./IntermediateNewExpression";
+export * from "./IntermediateNullLiteral";
 export * from "./IntermediateNumericLiteral";
 export * from "./IntermediateObjectLiteral";
 export * from "./IntermediateOmittedExpression";

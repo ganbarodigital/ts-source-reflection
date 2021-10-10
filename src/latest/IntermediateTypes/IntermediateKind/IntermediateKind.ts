@@ -125,6 +125,7 @@ export enum IntermediateKind {
     IntermediateNamespaceExport,
     IntermediateNamespaceImport,
     IntermediateNewExpression,
+    IntermediateNullLiteral,
     IntermediateNumericLiteral,
     IntermediateObjectLiteral,
     IntermediateOmittedExpression,
