@@ -58,6 +58,7 @@ export * from "./isExportKeyword";
 export * from "./isFalseKeyword";
 export * from "./isIndexSignature";
 export * from "./isNodeExported";
+export * from "./isNullLiteral";
 export * from "./isPrivateKeyword";
 export * from "./isProtectedKeyword";
 export * from "./isPublicKeyword";
