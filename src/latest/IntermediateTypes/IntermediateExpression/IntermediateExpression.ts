@@ -31,8 +31,6 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-
-import { IntermediateSpreadIdentifierReference } from "..";
 import { IntermediateArrayLiteral } from "../IntermediateArrayLiteral";
 import { IntermediateArrowFunction } from "../IntermediateArrowFunction";
 import { IntermediateBigintLiteral } from "../IntermediateBigintLiteral";
@@ -44,6 +42,7 @@ import { IntermediateElementAccessExpression } from "../IntermediateElementAcces
 import { IntermediateFunctionExpression } from "../IntermediateFunctionExpression";
 import { IntermediateIdentifierReference } from "../IntermediateIdentifierReference";
 import { IntermediateNewExpression } from "../IntermediateNewExpression";
+import { IntermediateNullLiteral } from "../IntermediateNullLiteral";
 import { IntermediateNumericLiteral } from "../IntermediateNumericLiteral";
 import { IntermediateObjectLiteral } from "../IntermediateObjectLiteral";
 import { IntermediateParenthesizedExpression } from "../IntermediateParenthesizedExpression";
@@ -52,6 +51,7 @@ import { IntermediatePrefixUnaryExpression } from "../IntermediatePrefixUnaryExp
 import { IntermediatePropertyAccessExpression } from "../IntermediatePropertyAccessExpression";
 import { IntermediateRegexLiteral } from "../IntermediateRegexLiteral";
 import { IntermediateSpreadElement } from "../IntermediateSpreadElement";
+import { IntermediateSpreadIdentifierReference } from "../IntermediateSpreadIdentifierReference";
 import { IntermediateStringLiteral } from "../IntermediateStringLiteral";
 import { IntermediateTemplateExpression } from "../IntermediateTemplateExpression";
 import { IntermediateVariableAssignment } from "../IntermediateVariableAssignment";
@@ -68,6 +68,7 @@ export type IntermediateExpression
       | IntermediateFunctionExpression
       | IntermediateIdentifierReference
       | IntermediateNewExpression
+      | IntermediateNullLiteral
       | IntermediateNumericLiteral
       | IntermediateObjectLiteral
       | IntermediateParenthesizedExpression
