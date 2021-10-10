@@ -51,15 +51,19 @@ import {
     isParenthesizedExpression,
     isPostfixUnaryExpression,
     isPrefixUnaryExpression,
-    isPropertyAccessExpression, isRegularExpressionLiteral, isSpreadElement,
+    isPropertyAccessExpression,
+    isRegularExpressionLiteral,
+    isSpreadElement,
     isStringLiteral,
     isTemplateExpression,
-    isTypeAssertionExpression, SyntaxKind
+    isTypeAssertionExpression,
+    SyntaxKind
 } from "typescript";
 import { AST } from "../AST";
 import {
     IntermediateExpression,
-    IntermediateKind, IntermediateTypeAssertable
+    IntermediateKind,
+    IntermediateTypeAssertable
 } from "../IntermediateTypes";
 import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
 import { processArrowFunction } from "./processArrowFunction";
@@ -91,6 +95,12 @@ export function processExpression(
 
     if (isStringLiteral(input)) {
         return processStringLiteral(input);
+    }
+
+    if (AST.isNullLiteral(input)) {
+        return {
+            kind: IntermediateKind.IntermediateNullLiteral,
+        }
     }
 
     if (isCallExpression(input)) {
