@@ -34,15 +34,14 @@
 import { HashMap, isObject } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import { expect } from "chai";
+import * as fileExists from "file-exists";
 import * as fs from "fs";
 import * as path from "path";
-import * as ts from "typescript";
-import * as fileExists from "file-exists";
-
+import { Compiler } from "../../../../Compiler";
 import { processSourceFile } from "../../../../Processors/processSourceFile";
 
 
-type PreprocessorFn = (inputPath: string, expectedResult: any) => void;
+type PreprocessorFn = (inputPath: Filepath, expectedResult: any) => void;
 
 interface TestFile {
     sourceFile: string;
@@ -50,13 +49,13 @@ interface TestFile {
     preprocessor: PreprocessorFn;
 }
 
-function injectPathIntoExpectedResult(inputPath: string, expectedResult: any)
+function injectPathIntoExpectedResult(inputPath: Filepath, expectedResult: any)
 {
     if (!isObject(expectedResult)) {
         return;
     }
 
-    (expectedResult as HashMap<any>).path = new Filepath(inputPath);
+    (expectedResult as HashMap<any>).path = inputPath;
 }
 
 //
@@ -106,9 +105,12 @@ describe(testSuiteName + " intermediate processing", () => {
             // ----------------------------------------------------------------
             // setup your test
 
-            const inputFile = __dirname + "/" + testdata.sourceFile;
-            const sourceCode = fs.readFileSync(inputFile, 'utf-8');
-            const sourceFile = ts.createSourceFile(inputFile, sourceCode, ts.ScriptTarget.Latest, true);
+            const inputFile = new Filepath(__dirname + "/" + testdata.sourceFile);
+            const compilerOptions = Compiler.getCompilerOptions(inputFile.dirname());
+
+            // we ALWAYS want comments enabled
+            compilerOptions.removeComments = false;
+            const sourceFile = Compiler.getSourceFile(inputFile, compilerOptions);
 
             // we need may need to inject the full source file path
             // into the result
