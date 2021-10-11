@@ -33,4 +33,4 @@
 //
 
 export * from "./getCompilerOptions";
-export * from "./getSourceCode";
+export * from "./getSourceFile";

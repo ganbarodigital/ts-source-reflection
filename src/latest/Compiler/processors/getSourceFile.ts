@@ -40,23 +40,23 @@ export function getSourceFile(
     tsOptions: ts.CompilerOptions,
 ): ts.SourceFile
 {
-    const program = ts.createProgram([input.valueOf()], tsOptions);
+    const host = ts.createCompilerHost(tsOptions, true);
+    const program = ts.createProgram(
+        [input.valueOf()],
+        tsOptions,
+        host
+    );
     // const checker = program.getTypeChecker();
 
     // `sourceFiles` will include all the compiler's own files
     // (handy for another time!)
     //
     // we just want the file that we're looking to process
-    const sourceFiles = program.getSourceFiles();
-
-    for (const sourceFile of sourceFiles) {
-        if (sourceFile.fileName === input.valueOf()) {
-            // tslint:disable-next-line: no-console
-            console.log(sourceFile);
-            return sourceFile;
-        }
+    const retval = program.getSourceFile(input.valueOf());
+    if (retval) {
+        return retval;
     }
 
-    // temporary!
-    throw new Error("compiler did not return the file you seek");
+    // TEMPORARY
+    throw new Error("no source file found");
 }
