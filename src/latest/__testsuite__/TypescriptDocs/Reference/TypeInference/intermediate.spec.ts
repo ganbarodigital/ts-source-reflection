@@ -37,8 +37,8 @@ import { expect } from "chai";
 import * as fileExists from "file-exists";
 import * as fs from "fs";
 import * as path from "path";
-import { Compiler } from "../../../../Compiler";
 import { processSourceFile } from "../../../../Processors/processSourceFile";
+import { getTestCompiler } from "../../../getTestCompiler";
 
 
 type PreprocessorFn = (inputPath: Filepath, expectedResult: any) => void;
@@ -106,11 +106,8 @@ describe(testSuiteName + " intermediate processing", () => {
             // setup your test
 
             const inputFile = new Filepath(__dirname + "/" + testdata.sourceFile);
-            const compilerOptions = Compiler.getCompilerOptions(inputFile.dirname());
-
-            // we ALWAYS want comments enabled
-            compilerOptions.removeComments = false;
-            const sourceFile = Compiler.getSourceFile(inputFile, compilerOptions);
+            const compiler = getTestCompiler(inputFile);
+            const sourceFile = compiler.getAstForFile(inputFile);
 
             // we need may need to inject the full source file path
             // into the result

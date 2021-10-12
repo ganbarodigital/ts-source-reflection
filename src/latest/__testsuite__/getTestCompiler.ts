@@ -33,31 +33,16 @@
 //
 
 import { Filepath } from "@safelytyped/filepath";
-import * as ts from "typescript";
-import * as fileExists from "file-exists";
-import * as fs from "fs";
+import { Compiler, loadCompilerOptions } from "../Compiler";
 
-export function getCompilerOptions(
-    input: Filepath,
-): ts.CompilerOptions
+export function getTestCompiler(
+    input: Filepath
+): Compiler
 {
-    // where is the tsconfig.json file?
-    const configFilename = ts.findConfigFile(input.valueOf(), fileExists.sync);
-    if (configFilename === undefined) {
-        // temporary!
-        throw new Error("unable to find compiler config file");
-    }
+    const compilerOptions = loadCompilerOptions(input.dirname());
 
-    // we have to jump through some hoops, because the tsconfig.json file
-    // supports JSONC, not plain JSON
-    const configText = fs.readFileSync(configFilename, "utf-8");
-    const maybeConfig = ts.parseConfigFileTextToJson(configFilename, configText)
-    if (maybeConfig.error === undefined) {
-        return maybeConfig.config;
-    }
+    // we always want comments enabled
+    compilerOptions.removeComments = false;
 
-    // if we get here, the compiler does not like the options given
-    // tslint:disable-next-line: no-console
-    console.log("tsconfig file contains errors: ", maybeConfig.error);
-    throw new Error("tsconfig file contains errors");
+    return new Compiler([input], compilerOptions);
 }

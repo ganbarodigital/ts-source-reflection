@@ -32,4 +32,5 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * as Compiler from "./processors";
+export * from "./loadCompilerOptions";
+export * from "./Compiler";

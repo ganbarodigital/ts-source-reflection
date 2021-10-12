@@ -34,29 +34,45 @@
 
 import { Filepath } from "@safelytyped/filepath";
 import * as ts from "typescript";
+import * as fileExists from "file-exists";
+import * as fs from "fs";
 
-export function getSourceFile(
+/**
+ * loadCompilerOptions() will load your `tsconfig.json` file, and convert
+ * it into a structure that the Typescript compiler will accept
+ *
+ * @remarks
+ *
+ * If you use multiple tsconfig files in your code base (e.g. if you're using
+ * something like NestJS, and have things like `tsconfig.app.json` files),
+ * then you'll need to pass in the full path to the correct config file.
+ *
+ * @param input where to look for your tsconfig. If you're not sure, pass in
+ * the `__dirname` constant, and we'll look in parent folders for you.
+ * @returns your `tsconfig.json` file, converted into the list of options
+ * that the Typescript compiler can accept
+ */
+export function loadCompilerOptions(
     input: Filepath,
-    tsOptions: ts.CompilerOptions,
-): ts.SourceFile
+): ts.CompilerOptions
 {
-    const host = ts.createCompilerHost(tsOptions, true);
-    const program = ts.createProgram(
-        [input.valueOf()],
-        tsOptions,
-        host
-    );
-    // const checker = program.getTypeChecker();
-
-    // `sourceFiles` will include all the compiler's own files
-    // (handy for another time!)
-    //
-    // we just want the file that we're looking to process
-    const retval = program.getSourceFile(input.valueOf());
-    if (retval) {
-        return retval;
+    // where is the tsconfig.json file?
+    const configFilename = ts.findConfigFile(input.valueOf(), fileExists.sync);
+    if (configFilename === undefined) {
+        // temporary!
+        throw new Error("unable to find compiler config file");
     }
 
-    // TEMPORARY
-    throw new Error("no source file found");
+    // we have to jump through some hoops, because the tsconfig.json file
+    // supports JSONC, not plain JSON
+    const configText = fs.readFileSync(configFilename, "utf-8");
+    const maybeConfig = ts.parseConfigFileTextToJson(configFilename, configText)
+    if (maybeConfig.error === undefined) {
+        return maybeConfig.config;
+    }
+
+    // if we get here, the compiler does not like the options given
+    // tslint:disable-next-line: no-console
+    console.log("tsconfig file contains errors: ", maybeConfig.error);
+    throw new Error("tsconfig file contains errors");
 }
