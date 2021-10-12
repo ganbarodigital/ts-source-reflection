@@ -31,33 +31,12 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { HashMap, isObject } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import { expect } from "chai";
-import * as fs from "fs";
-import * as path from "path";
-import * as ts from "typescript";
-import * as fileExists from "file-exists";
-
 import { processSourceFile } from "../../../../Processors/processSourceFile";
-
-
-type PreprocessorFn = (inputPath: string, expectedResult: any) => void;
-
-interface TestFile {
-    sourceFile: string;
-    expectedResult: any;
-    preprocessor: PreprocessorFn;
-}
-
-function injectPathIntoExpectedResult(inputPath: string, expectedResult: any)
-{
-    if (!isObject(expectedResult)) {
-        return;
-    }
-
-    (expectedResult as HashMap<any>).path = new Filepath(inputPath);
-}
+import { buildTestsuiteName } from "../../../buildTestsuiteName";
+import { getTestCompiler } from "../../../getTestCompiler";
+import { loadTestFiles } from "../../../loadTestFiles";
 
 //
 // Our individual test cases are automatically loaded from files
@@ -75,30 +54,8 @@ function injectPathIntoExpectedResult(inputPath: string, expectedResult: any)
 // we'll automatically turn that into a failing test for you :)
 //
 
-const TEST_FILES: TestFile[] = [];
-const localFiles = fs.readdirSync(__dirname);
-localFiles.forEach((filename) => {
-    const expectedResultsFile = filename.replace("-input.", "-intermediate.");
-    if (filename.match(/-input\.ts/)) {
-        // if there is no corresponding intermediate results file,
-        // we want that to appear as a test failure
-        let expectedResult = {};
-        if (fileExists.sync(expectedResultsFile, {root: __dirname})) {
-            expectedResult = require("./" + expectedResultsFile).default;
-        }
-
-        // add this to our list
-        TEST_FILES.push({
-            sourceFile: filename,
-            expectedResult,
-            preprocessor: injectPathIntoExpectedResult
-        });
-    }
-});
-
-const testSuiteName = path.basename(path.dirname(__dirname))
-    + "/"
-    + path.basename(__dirname);
+const testSuiteName = buildTestsuiteName(__dirname);
+const TEST_FILES = loadTestFiles(__dirname, "-input", "-intermediate");
 
 describe(testSuiteName + " intermediate processing", () => {
     for (const testdata of TEST_FILES) {
@@ -106,9 +63,9 @@ describe(testSuiteName + " intermediate processing", () => {
             // ----------------------------------------------------------------
             // setup your test
 
-            const inputFile = __dirname + "/" + testdata.sourceFile;
-            const sourceCode = fs.readFileSync(inputFile, 'utf-8');
-            const sourceFile = ts.createSourceFile(inputFile, sourceCode, ts.ScriptTarget.Latest, true);
+            const inputFile = new Filepath(__dirname + "/" + testdata.sourceFile);
+            const compiler = getTestCompiler(inputFile);
+            const sourceFile = compiler.getAstForFile(inputFile);
 
             // we need may need to inject the full source file path
             // into the result
