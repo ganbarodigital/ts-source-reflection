@@ -60,16 +60,26 @@ export function loadTestFiles<T>(
     expectedPattern: string,
 ): TestFile<T>[]
 {
+    // this will be our return value
     const retval: TestFile<T>[] = [];
+
+    // this is the type of filename that we're looking for
+    //
+    // we'll look for the files containing input data first, and then
+    // we'll look for the corresponding results data whenever we find
+    // one of these files
+    const inputRegex = new RegExp(inputPattern + "\\.ts");
+
+    // let's search the folder for what we want
     const localFiles = fs.readdirSync(folder);
     localFiles.forEach((filename) => {
-        if (filename.match(new RegExp("/" + inputPattern + "\.ts/"))) {
+        if (filename.match(inputRegex)) {
             // if there is no corresponding intermediate results file,
             // we want that to appear as a test failure
             let expectedResult = {};
             const expectedResultsFile = filename.replace(inputPattern, expectedPattern);
-            if (fileExists.sync(expectedResultsFile, {root: __dirname})) {
-                expectedResult = require("./" + expectedResultsFile).default;
+            if (fileExists.sync(expectedResultsFile, {root: folder})) {
+                expectedResult = require(folder + "/" + expectedResultsFile).default;
             }
 
             // add this to our list
