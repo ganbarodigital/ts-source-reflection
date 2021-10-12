@@ -35,12 +35,12 @@
 import { Filepath } from "@safelytyped/filepath";
 import { Compiler, loadCompilerOptions } from "../Compiler";
 
+const compilerOptions = loadCompilerOptions(new Filepath(__dirname));
+
 export function getTestCompiler(
     input: Filepath
 ): Compiler
 {
-    const compilerOptions = loadCompilerOptions(input.dirname());
-
     // we always want comments enabled
     compilerOptions.removeComments = false;
 
