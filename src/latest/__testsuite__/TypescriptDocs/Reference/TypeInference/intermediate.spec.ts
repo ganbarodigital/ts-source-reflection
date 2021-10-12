@@ -31,32 +31,12 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { HashMap, isObject } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import { expect } from "chai";
-import * as fileExists from "file-exists";
-import * as fs from "fs";
-import * as path from "path";
 import { processSourceFile } from "../../../../Processors/processSourceFile";
+import { buildTestsuiteName } from "../../../buildTestsuiteName";
 import { getTestCompiler } from "../../../getTestCompiler";
-
-
-type PreprocessorFn = (inputPath: Filepath, expectedResult: any) => void;
-
-interface TestFile {
-    sourceFile: string;
-    expectedResult: any;
-    preprocessor: PreprocessorFn;
-}
-
-function injectPathIntoExpectedResult(inputPath: Filepath, expectedResult: any)
-{
-    if (!isObject(expectedResult)) {
-        return;
-    }
-
-    (expectedResult as HashMap<any>).path = inputPath;
-}
+import { loadTestFiles } from "../../../loadTestFiles";
 
 //
 // Our individual test cases are automatically loaded from files
@@ -74,30 +54,8 @@ function injectPathIntoExpectedResult(inputPath: Filepath, expectedResult: any)
 // we'll automatically turn that into a failing test for you :)
 //
 
-const TEST_FILES: TestFile[] = [];
-const localFiles = fs.readdirSync(__dirname);
-localFiles.forEach((filename) => {
-    const expectedResultsFile = filename.replace("-input.", "-intermediate.");
-    if (filename.match(/-input\.ts/)) {
-        // if there is no corresponding intermediate results file,
-        // we want that to appear as a test failure
-        let expectedResult = {};
-        if (fileExists.sync(expectedResultsFile, {root: __dirname})) {
-            expectedResult = require("./" + expectedResultsFile).default;
-        }
-
-        // add this to our list
-        TEST_FILES.push({
-            sourceFile: filename,
-            expectedResult,
-            preprocessor: injectPathIntoExpectedResult
-        });
-    }
-});
-
-const testSuiteName = path.basename(path.dirname(__dirname))
-    + "/"
-    + path.basename(__dirname);
+const testSuiteName = buildTestsuiteName(__dirname);
+const TEST_FILES = loadTestFiles(__dirname, "-input", "-intermediate");
 
 describe(testSuiteName + " intermediate processing", () => {
     for (const testdata of TEST_FILES) {
