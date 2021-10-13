@@ -33,6 +33,7 @@
 //
 import { Filepath } from "@safelytyped/filepath";
 import { FileReference, SourceFile } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateSourceFile
@@ -40,6 +41,7 @@ import {
 import { processStatements } from "./processStatements";
 
 export function processSourceFile(
+    compiler: Compiler,
     parsedSource: SourceFile
 ): IntermediateSourceFile
 {
