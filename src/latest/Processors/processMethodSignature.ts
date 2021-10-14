@@ -43,20 +43,22 @@ import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 import { AST } from "../AST";
 import { processPropertyName } from "./processPropertyName";
+import { Compiler } from "../Compiler";
 
 
 export function processMethodSignature(
+    compiler: Compiler,
     input: MethodSignature
 ): IntermediateMethodSignature
 {
     return {
         kind: IntermediateKind.IntermediateMethodSignature,
-        docBlock: processDocBlock(input),
+        docBlock: processDocBlock(compiler, input),
         isStatic: AST.hasStaticModifier(input),
         accessModifier: AST.getRestrictableScope(input),
-        name: processPropertyName(input.name),
-        parameters: processCallableParameterSignatures(input.parameters),
-        typeParameters: processTypeParametersFromNode(input),
-        returnType: processReturnTypeFromNode(input),
+        name: processPropertyName(compiler, input.name),
+        parameters: processCallableParameterSignatures(compiler, input.parameters),
+        typeParameters: processTypeParametersFromNode(compiler, input),
+        returnType: processReturnTypeFromNode(compiler, input),
     }
 }

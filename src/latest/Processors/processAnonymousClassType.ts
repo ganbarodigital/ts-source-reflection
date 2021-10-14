@@ -34,6 +34,7 @@
 import {
     TypeLiteralNode
 } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateAnonymousClassType,
     IntermediateEmptyObjectType,
@@ -42,10 +43,11 @@ import {
 import { processMemberSignatures } from "./processMemberSignatures";
 
 export function processAnonymousClassType(
+    compiler: Compiler,
     input: TypeLiteralNode
 ): IntermediateAnonymousClassType | IntermediateEmptyObjectType {
     // what's in this anonymous class type?
-    const members = processMemberSignatures(input.members);
+    const members = processMemberSignatures(compiler, input.members);
 
     // special case - an empty object
     if (members.length === 0) {

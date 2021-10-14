@@ -45,6 +45,7 @@ import {
     Statement
 } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateAmbientModuleDefinition,
     IntermediateGlobalAugmentation,
@@ -57,6 +58,7 @@ import { processModuleBody } from "./processModuleBody";
 import { processStatements } from "./processStatements";
 
 export function processModuleDeclaration (
+    compiler: Compiler,
     input: Statement
 ): IntermediateModuleDeclaration
 {
@@ -66,16 +68,16 @@ export function processModuleDeclaration (
     // do we have a module that we support?
     // tslint:disable-next-line: no-bitwise
     if (moduleDec.flags & NodeFlags.Namespace) {
-        return processNamespace(moduleDec);
+        return processNamespace(compiler, moduleDec);
     }
 
     // tslint:disable-next-line: no-bitwise
     if (moduleDec.flags & NodeFlags.GlobalAugmentation) {
-        return processGlobalAugmentation(moduleDec);
+        return processGlobalAugmentation(compiler, moduleDec);
     }
 
     if (isModuleDeclarationWithBody(moduleDec)) {
-        return processModuleDefinition(moduleDec);
+        return processModuleDefinition(compiler, moduleDec);
     }
 
     // no (useful) flags, no body?
@@ -98,6 +100,7 @@ export function processModuleDeclaration (
 }
 
 function processGlobalAugmentation(
+    compiler: Compiler,
     input: ModuleDeclaration
 ): IntermediateGlobalAugmentation {
     // is this an empty augmentation?
@@ -112,7 +115,7 @@ function processGlobalAugmentation(
     if (isModuleBlock(input.body)) {
         return {
             kind: IntermediateKind.IntermediateGlobalAugmentation,
-            children: processStatements(input.body!.statements),
+            children: processStatements(compiler, input.body!.statements),
         }
     }
 
@@ -146,6 +149,7 @@ function isModuleDeclarationWithBody(
 }
 
 function processModuleDefinition(
+    compiler: Compiler,
     input: ModuleDeclarationWithBody
 ): IntermediateAmbientModuleDefinition
 {
@@ -153,18 +157,19 @@ function processModuleDefinition(
         kind: IntermediateKind.IntermediateAmbientModuleDefinition,
         name: input.name.getText(),
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
-        contents: processModuleBody(input.body),
+        contents: processModuleBody(compiler, input.body),
     }
 }
 
 function processNamespace(
+    compiler: Compiler,
     input: ModuleDeclaration
 ): IntermediateNamespace {
     // is this an empty namespace?
     if (!input.body) {
         return {
             kind: IntermediateKind.IntermediateNamespace,
-            docBlock: processDocBlock(input),
+            docBlock: processDocBlock(compiler, input),
             isDeclared: AST.hasDeclaredModifier(input.modifiers),
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
@@ -177,12 +182,12 @@ function processNamespace(
     if (isModuleBlock(input.body)) {
         return {
             kind: IntermediateKind.IntermediateNamespace,
-            docBlock: processDocBlock(input),
+            docBlock: processDocBlock(compiler, input),
             isDeclared: AST.hasDeclaredModifier(input.modifiers),
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
             name: input.name.getText(),
-            children: processStatements(input.body.statements),
+            children: processStatements(compiler, input.body.statements),
         }
     }
 

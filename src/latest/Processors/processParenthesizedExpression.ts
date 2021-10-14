@@ -33,16 +33,18 @@
 //
 
 import { ParenthesizedExpression } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediateParenthesizedExpression } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 
 export function processParenthesizedExpression(
+    compiler: Compiler,
     input: ParenthesizedExpression
 ): IntermediateParenthesizedExpression
 {
     return {
         kind: IntermediateKind.IntermediateParenthesizedExpression,
-        expression: processExpression(input.expression),
+        expression: processExpression(compiler, input.expression),
         asType: undefined,
         typeAssertion: undefined,
     }

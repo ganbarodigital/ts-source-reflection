@@ -47,6 +47,7 @@ import {
     TypeNode
 } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateArrayBindingElement,
     IntermediateArrayBindingParameter,
@@ -58,6 +59,7 @@ import { processMaybe } from "./processMaybe";
 import { processTypeNode } from "./processTypeNode";
 
 export function processArrayBindingPattern(
+    compiler: Compiler,
     {
         param,
         paramType
@@ -69,12 +71,13 @@ export function processArrayBindingPattern(
 {
     return {
         kind: IntermediateKind.IntermediateArrayBindingParameter,
-        parameters: processBindingElements(param.elements),
-        typeRef: processMaybe(paramType, processTypeNode),
+        parameters: processBindingElements(compiler, param.elements),
+        typeRef: processMaybe(compiler, paramType, processTypeNode),
     }
 }
 
 function processBindingElements(
+    compiler: Compiler,
     input: NodeArray<ArrayBindingElement>
 ): IntermediateArrayBindingElement[]
 {
@@ -82,7 +85,7 @@ function processBindingElements(
     const retval: IntermediateArrayBindingElement[] = [];
 
     input.forEach((bindingElement) => {
-        retval.push(processBindingElement(bindingElement));
+        retval.push(processBindingElement(compiler, bindingElement));
     });
 
     // all done
@@ -90,6 +93,7 @@ function processBindingElements(
 }
 
 function processBindingElement(
+    compiler: Compiler,
     input: ArrayBindingElement
 ): IntermediateArrayBindingElement
 {
@@ -97,9 +101,12 @@ function processBindingElement(
         return <IntermediateArrayBindingElement>{
             kind: IntermediateKind.IntermediateArrayBindingElement,
             name: processBindingNameForParameters(
-                input.name, AST.hasDotDotDotToken(input.dotDotDotToken)
+                compiler,
+                input.name,
+                AST.hasDotDotDotToken(input.dotDotDotToken)
             ),
             initializer: processMaybe(
+                compiler,
                 input.initializer,
                 processExpression
             ),

@@ -38,6 +38,7 @@ import {
     SyntaxKind
 } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateCallableParameterSignature,
     IntermediateKind,
@@ -50,15 +51,19 @@ import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
 
 export function processParameterSignature(
+    compiler: Compiler,
     paramDec: ParameterDeclaration
 ): IntermediateCallableParameterSignature
 {
     // special case - destructured object
     if (isObjectBindingPattern(paramDec.name)) {
-        return processObjectBindingPatternForSignatures({
-            param: paramDec.name,
-            paramType: paramDec.type,
-        });
+        return processObjectBindingPatternForSignatures(
+            compiler,
+            {
+                param: paramDec.name,
+                paramType: paramDec.type,
+            }
+        );
     }
 
     // special case - rest parameter
@@ -67,7 +72,7 @@ export function processParameterSignature(
         paramClone.dotDotDotToken = undefined;
         return <IntermediateRestCallableParameterSignature>{
             kind: IntermediateKind.IntermediateRestCallableParameterSignature,
-            parameter: processParameterSignature(paramClone),
+            parameter: processParameterSignature(compiler, paramClone),
         };
     }
 
@@ -79,7 +84,7 @@ export function processParameterSignature(
         return <IntermediateUntypedCallableParameterSignature>{
             kind: IntermediateKind.IntermediateUntypedCallableParameterSignature,
             name: paramDec.name.getText(),
-            isOptional: processQuestionToken(paramDec.questionToken),
+            isOptional: processQuestionToken(compiler, paramDec.questionToken),
         };
     }
 
@@ -101,8 +106,8 @@ export function processParameterSignature(
     return <IntermediateTypedCallableParameterSignature>{
         kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
         name: paramDec.name.getText(),
-        typeRef: processTypeNode(paramType),
-        isOptional: processQuestionToken(paramDec.questionToken),
+        typeRef: processTypeNode(compiler, paramType),
+        isOptional: processQuestionToken(compiler, paramDec.questionToken),
         isReadonly,
     };
 }

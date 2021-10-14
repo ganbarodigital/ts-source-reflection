@@ -33,16 +33,18 @@
 //
 
 import { TypePredicateNode } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediateTypePredicate } from "../IntermediateTypes";
 import { processTypeNode } from "./processTypeNode";
 
 export function processTypePredicate(
+    compiler: Compiler,
     input: TypePredicateNode
 ): IntermediateTypePredicate
 {
     return {
         kind: IntermediateKind.IntermediateTypePredicate,
         parameterName: input.parameterName.getText(),
-        assertedRef: processTypeNode(input.type!)
+        assertedRef: processTypeNode(compiler, input.type!)
     }
 }

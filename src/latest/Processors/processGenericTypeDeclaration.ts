@@ -34,6 +34,7 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { TypeParameterDeclaration } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateGenericType,
     IntermediateKind,
@@ -42,19 +43,20 @@ import {
 import { processTypeNode } from "./processTypeNode";
 
 export function processGenericTypeDeclaration(
+    compiler: Compiler,
     input: TypeParameterDeclaration
 ): IntermediateGenericType
 {
     // do we have a constraint?
     let constraint: Maybe<IntermediateTypeReference>;
     if (input.constraint) {
-        constraint = processTypeNode(input.constraint);
+        constraint = processTypeNode(compiler, input.constraint);
     }
 
     // do we have a default type?
     let defaultType: Maybe<IntermediateTypeReference>;
     if (input.default) {
-        defaultType = processTypeNode(input.default);
+        defaultType = processTypeNode(compiler, input.default);
     }
 
     // tslint:disable-next-line: no-angle-bracket-type-assertion

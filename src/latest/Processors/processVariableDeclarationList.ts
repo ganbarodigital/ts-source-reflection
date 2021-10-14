@@ -56,6 +56,7 @@ import {
     VariableDeclarationList
 } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     AnyIntermediateDestructuredIdentifierDeclaration,
     AnyIntermediateIdentifierDeclaration,
@@ -99,6 +100,7 @@ function isVariableDeclarationWithObjectBinding(
 }
 
 export function processVariableDeclarationList (
+    compiler: Compiler,
     input: VariableDeclarationList,
 ): IntermediateVariableDeclaration[]
 {
@@ -124,17 +126,17 @@ export function processVariableDeclarationList (
         // the member's name
         if (isIdentifier(member.name)) {
             retval.push(
-                processVariableDeclaration(member, contextFlags)
+                processVariableDeclaration(compiler, member, contextFlags)
             );
         }
         else if (isVariableDeclarationWithObjectBinding(member)) {
             retval.push(
-                processDestructuredVariableDeclaration(member, contextFlags)
+                processDestructuredVariableDeclaration(compiler, member, contextFlags)
             )
         }
         else if (isVariableDeclarationWithArrayBinding(member)) {
             retval.push(
-                processArrayBindingVariableDeclaration(member, contextFlags)
+                processArrayBindingVariableDeclaration(compiler, member, contextFlags)
             )
         }
         else {
@@ -156,6 +158,7 @@ export function processVariableDeclarationList (
 }
 
 function processVariableDeclaration(
+    compiler: Compiler,
     input: VariableDeclaration,
     contextFlags: VariableDeclarationContextFlags,
 ): IntermediateVariableDeclaration
@@ -176,20 +179,20 @@ function processVariableDeclaration(
     // does this variable have an explicit type?
     let typeRef: Maybe<IntermediateTypeReference>;
     if (varType) {
-        typeRef = processTypeNode(varType);
+        typeRef = processTypeNode(compiler, varType);
     }
 
     // does this variable have an initial value?
     let initialiser: Maybe<IntermediateExpression>;
     if (input.initializer) {
-        initialiser = processExpression(input.initializer);
+        initialiser = processExpression(compiler, input.initializer);
     }
 
     // this is necessary to keep the compiler happy
     if (contextFlags.kind === IntermediateKind.IntermediateConstDeclaration) {
         return {
             kind: contextFlags.kind,
-            docBlock: processDocBlock(input),
+            docBlock: processDocBlock(compiler, input),
             isConstant: true,
             isReadonly,
             name: input.name.getText(),
@@ -201,7 +204,7 @@ function processVariableDeclaration(
     // all done
     return {
         kind: contextFlags.kind,
-        docBlock: processDocBlock(input),
+        docBlock: processDocBlock(compiler, input),
         isConstant: false,
         isReadonly,
         name: input.name.getText(),
@@ -232,6 +235,7 @@ const MapKindToDestructuredObject: KindMap<ValidDestructuredObjectKinds> = {
 }
 
 function processDestructuredVariableDeclaration(
+    compiler: Compiler,
     input: VariableDeclarationWithObjectBinding,
     contextFlags: VariableDeclarationContextFlags
 ): IntermediateVariableDeclaration
@@ -252,7 +256,7 @@ function processDestructuredVariableDeclaration(
     // does this variable have an initial value?
     let initializer: Maybe<IntermediateExpression>;
     if (input.initializer) {
-        initializer = processExpression(input.initializer);
+        initializer = processExpression(compiler, input.initializer);
     }
 
     const kind = MapKindToDestructuredObject[contextFlags.kind];
@@ -260,40 +264,42 @@ function processDestructuredVariableDeclaration(
     if (kind === IntermediateKind.IntermediateDestructuredConstDeclaration) {
         return {
             kind,
-            docBlock: processDocBlock(input),
+            docBlock: processDocBlock(compiler, input),
             isConstant: true,
             isReadonly,
-            typeRef: processMaybe(input.type, processTypeNode),
-            members: processDestructuredObjectDeclaration(input.name),
+            typeRef: processMaybe(compiler, input.type, processTypeNode),
+            members: processDestructuredObjectDeclaration(compiler, input.name),
             initializer,
         }
     }
 
     return {
         kind,
-        docBlock: processDocBlock(input),
+        docBlock: processDocBlock(compiler, input),
         isConstant: false,
         isReadonly,
-        typeRef: processMaybe(input.type, processTypeNode),
-        members: processDestructuredObjectDeclaration(input.name),
+        typeRef: processMaybe(compiler, input.type, processTypeNode),
+        members: processDestructuredObjectDeclaration(compiler, input.name),
         initializer,
     }
 }
 
 function processDestructuredObjectDeclaration(
+    compiler: Compiler,
     input: ObjectBindingPattern
 ): (AnyIntermediateDestructuredIdentifierDeclaration | IntermediateOmittedExpression)[]
 {
     const retval: ReturnType<typeof processDestructuredObjectDeclaration> = [];
 
     for (const element of input.elements) {
-        retval.push(processObjectBindingElement(element));
+        retval.push(processObjectBindingElement(compiler, element));
     }
 
     return retval;
 }
 
 function processObjectBindingElement(
+    compiler: Compiler,
     input: BindingElement
 ): (AnyIntermediateDestructuredIdentifierDeclaration | IntermediateOmittedExpression)
 {
@@ -306,6 +312,7 @@ function processObjectBindingElement(
 
     // do we have an initializer?
     const initializer = processMaybe(
+        compiler,
         input.initializer,
         processExpression
     )
@@ -349,6 +356,7 @@ const MapKindToArrayBindingObject: KindMap<ValidArrayBindingObjectKinds> = {
 }
 
 function processArrayBindingVariableDeclaration(
+    compiler: Compiler,
     input: VariableDeclarationWithArrayBinding,
     contextFlags: VariableDeclarationContextFlags
 ): IntermediateVariableDeclaration
@@ -369,7 +377,7 @@ function processArrayBindingVariableDeclaration(
     // does this variable have an initial value?
     let initializer: Maybe<IntermediateExpression>;
     if (input.initializer) {
-        initializer = processExpression(input.initializer);
+        initializer = processExpression(compiler, input.initializer);
     }
 
     const kind = MapKindToArrayBindingObject[contextFlags.kind];
@@ -377,38 +385,40 @@ function processArrayBindingVariableDeclaration(
     if (kind === IntermediateKind.IntermediateArrayBindingConstDeclaration) {
         return {
             kind,
-            docBlock: processDocBlock(input),
+            docBlock: processDocBlock(compiler, input),
             isConstant: true,
             isReadonly,
-            members: processArrayBindingDeclaration(input.name),
+            members: processArrayBindingDeclaration(compiler, input.name),
             initializer,
         }
     }
 
     return {
         kind,
-        docBlock: processDocBlock(input),
+        docBlock: processDocBlock(compiler, input),
         isConstant: false,
         isReadonly,
-        members: processArrayBindingDeclaration(input.name),
+        members: processArrayBindingDeclaration(compiler, input.name),
         initializer,
     }
 }
 
 function processArrayBindingDeclaration(
+    compiler: Compiler,
     input: ArrayBindingPattern
 ): (AnyIntermediateIdentifierDeclaration | IntermediateOmittedExpression)[]
 {
     const retval: ReturnType<typeof processArrayBindingDeclaration> = [];
 
     for (const element of input.elements) {
-        retval.push(processArrayBindingElement(element));
+        retval.push(processArrayBindingElement(compiler, element));
     }
 
     return retval;
 }
 
 function processArrayBindingElement(
+    compiler: Compiler,
     input: ArrayBindingElement
 ): (AnyIntermediateIdentifierDeclaration | IntermediateOmittedExpression)
 {
@@ -422,6 +432,7 @@ function processArrayBindingElement(
     // currently the general case
     if (isBindingName(input.name)) {
         return processBindingNameForDeclarations(
+            compiler,
             input.name,
             AST.hasDotDotDotToken(input.dotDotDotToken)
         )

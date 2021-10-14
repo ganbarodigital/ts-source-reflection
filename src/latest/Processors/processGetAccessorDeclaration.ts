@@ -33,6 +33,7 @@
 //
 
 import { GetAccessorDeclaration } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateGetter, IntermediateKind } from "../IntermediateTypes";
 import { processDecorators } from "./processDecorators";
 import { processDocBlock } from "./processDocBlock";
@@ -40,15 +41,16 @@ import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processGetAccessorDeclaration(
+    compiler: Compiler,
     input: GetAccessorDeclaration
 ): IntermediateGetter
 {
     return {
         kind: IntermediateKind.IntermediateGetter,
-        docBlock: processDocBlock(input),
-        decorators: processDecorators(input),
+        docBlock: processDocBlock(compiler, input),
+        decorators: processDecorators(compiler, input),
         name: input.name.getText(),
-        typeParameters: processTypeParametersFromNode(input),
-        returnType: processReturnTypeFromNode(input),
+        typeParameters: processTypeParametersFromNode(compiler, input),
+        returnType: processReturnTypeFromNode(compiler, input),
     }
 }

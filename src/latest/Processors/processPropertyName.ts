@@ -33,6 +33,7 @@
 //
 
 import { isComputedPropertyName, isIdentifier, isNumericLiteral, isStringLiteral, PropertyName } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateIdentifierName } from "../IntermediateTypes";
 import { processComputedPropertyName } from "./processComputedPropertyName";
 import { processNumericLiteral } from "./processNumericLiteral";
@@ -40,6 +41,7 @@ import { processPrivateIdentifier } from "./processPrivateIdentifier";
 import { processStringLiteral } from "./processStringLiteral";
 
 export function processPropertyName(
+    compiler: Compiler,
     input: PropertyName
 ): IntermediateIdentifierName
 {
@@ -53,17 +55,17 @@ export function processPropertyName(
     }
 
     if (isStringLiteral(input)) {
-        return processStringLiteral(input);
+        return processStringLiteral(compiler, input);
     }
 
     if (isNumericLiteral(input)) {
-        return processNumericLiteral(input);
+        return processNumericLiteral(compiler, input);
     }
 
     if (isComputedPropertyName(input)) {
-        return processComputedPropertyName(input);
+        return processComputedPropertyName(compiler, input);
     }
 
     // at this point, it must be a private identifier
-    return processPrivateIdentifier(input);
+    return processPrivateIdentifier(compiler, input);
 }

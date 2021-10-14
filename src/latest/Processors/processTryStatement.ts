@@ -35,6 +35,7 @@
 import { Maybe } from "@safelytyped/core-types";
 import { Statement, VariableDeclaration } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateStatement,
@@ -48,6 +49,7 @@ import { processStatement } from "./processStatement";
 import { processTypeNode } from "./processTypeNode";
 
 export function processTryStatement(
+    compiler: Compiler,
     input: Statement
 ): IntermediateTryCatch
 {
@@ -58,21 +60,23 @@ export function processTryStatement(
     let catchBlock: Maybe<IntermediateStatement>;
     if (tryStmt.catchClause) {
         catchClause = processMaybe(
+            compiler,
             tryStmt.catchClause.variableDeclaration,
             processCatchClauseVariableDeclaration
         );
         catchBlock = mustBeIntermediateStatement(
-            processStatement(tryStmt.catchClause.block)
+            processStatement(compiler, tryStmt.catchClause.block)
         );
     }
     return {
         kind: IntermediateKind.IntermediateTryCatch,
         tryBlock: mustBeIntermediateStatement(
-            processStatement(tryStmt.tryBlock)
+            processStatement(compiler, tryStmt.tryBlock)
         ),
         catchClause,
         catchBlock,
         finallyBlock: processMaybe(
+            compiler,
             tryStmt.finallyBlock,
             processStatement,
         ),
@@ -80,6 +84,7 @@ export function processTryStatement(
 }
 
 function processCatchClauseVariableDeclaration(
+    compiler: Compiler,
     input: VariableDeclaration
 ): IntermediateVariableDeclaration
 {
@@ -87,10 +92,12 @@ function processCatchClauseVariableDeclaration(
         kind: IntermediateKind.IntermediateCaughtVarDeclaration,
         name: input.name.getText(),
         typeRef: processMaybe(
+            compiler,
             input.type,
             processTypeNode,
         ),
         initializer: processMaybe(
+            compiler,
             input.initializer,
             processExpression,
         )

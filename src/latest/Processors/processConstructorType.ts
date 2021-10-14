@@ -33,6 +33,7 @@
 //
 
 import { ConstructorTypeNode } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateConstructorType,
     IntermediateKind
@@ -41,11 +42,12 @@ import { processCallableParameterSignatures } from "./processCallableParameterSi
 import { processTypeNode } from "./processTypeNode";
 
 export function processConstructorType(
+    compiler: Compiler,
     input: ConstructorTypeNode
 ): IntermediateConstructorType {
     return {
         kind: IntermediateKind.IntermediateConstructorType,
-        parameters: processCallableParameterSignatures(input.parameters),
-        returnType: processTypeNode(input.type),
+        parameters: processCallableParameterSignatures(compiler, input.parameters),
+        returnType: processTypeNode(compiler, input.type),
     }
 }

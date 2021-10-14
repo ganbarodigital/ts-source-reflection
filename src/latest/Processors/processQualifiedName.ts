@@ -33,17 +33,19 @@
 //
 
 import { QualifiedName } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediateQualifiedName } from "../IntermediateTypes";
 import { processEntityName } from "./processEntityName";
 import { processIdentifier } from "./processIdentifier";
 
 export function processQualifiedName(
+    compiler: Compiler,
     input: QualifiedName
 ): IntermediateQualifiedName
 {
     return {
         kind: IntermediateKind.IntermediateQualifiedName,
-        left: processEntityName(input.left),
-        right: processIdentifier(input.right),
+        left: processEntityName(compiler, input.left),
+        right: processIdentifier(compiler, input.right),
     }
 }

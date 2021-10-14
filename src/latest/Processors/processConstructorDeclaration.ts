@@ -34,6 +34,7 @@
 
 import { ConstructorDeclaration } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateConstructorDeclaration,
     IntermediateKind
@@ -43,13 +44,14 @@ import { processDocBlock } from "./processDocBlock";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 
 export function processConstructorDeclaration(
+    compiler: Compiler,
     input: ConstructorDeclaration
 ): IntermediateConstructorDeclaration {
     return {
         kind: IntermediateKind.IntermediateConstructorDeclaration,
-        docBlock: processDocBlock(input),
+        docBlock: processDocBlock(compiler, input),
         accessModifier: AST.getRestrictableScope(input),
-        parameters: processConstructorParameters(input.parameters),
-        returnType: processReturnTypeFromNode(input),
+        parameters: processConstructorParameters(compiler, input.parameters),
+        returnType: processReturnTypeFromNode(compiler, input),
     }
 }

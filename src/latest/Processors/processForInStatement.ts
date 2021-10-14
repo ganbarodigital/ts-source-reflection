@@ -36,6 +36,7 @@ import {
     Statement
 } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateForInLoop,
     IntermediateKind,
@@ -46,6 +47,7 @@ import { processForInitializer } from "./processForInitializer";
 import { processStatement } from "./processStatement";
 
 export function processForInStatement(
+    compiler: Compiler,
     input: Statement
 ): IntermediateForInLoop
 {
@@ -54,10 +56,10 @@ export function processForInStatement(
 
     return {
         kind: IntermediateKind.IntermediateForInLoop,
-        initializer: processForInitializer(forInStmt.initializer),
-        loopTarget: processExpression(forInStmt.expression),
+        initializer: processForInitializer(compiler, forInStmt.initializer),
+        loopTarget: processExpression(compiler, forInStmt.expression),
         contents: mustBeIntermediateStatement(
-            processStatement(forInStmt.statement)
+            processStatement(compiler, forInStmt.statement)
         ),
     }
 }

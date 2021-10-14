@@ -33,19 +33,21 @@
 //
 
 import { FunctionExpression } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateFunctionExpression, IntermediateKind } from "../IntermediateTypes";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processFunctionExpression(
+    compiler: Compiler,
     input: FunctionExpression
 ): IntermediateFunctionExpression
 {
     return {
         kind: IntermediateKind.IntermediateFunctionExpression,
-        typeParameters: processTypeParametersFromNode(input),
-        parameters: processFunctionParameters(input.parameters),
-        returnType: processReturnTypeFromNode(input),
+        typeParameters: processTypeParametersFromNode(compiler, input),
+        parameters: processFunctionParameters(compiler, input.parameters),
+        returnType: processReturnTypeFromNode(compiler, input),
     }
 }

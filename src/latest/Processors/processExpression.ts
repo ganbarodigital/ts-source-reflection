@@ -60,6 +60,7 @@ import {
     SyntaxKind
 } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateExpression,
     IntermediateKind,
@@ -87,14 +88,15 @@ import { processTemplateExpression } from "./processTemplateExpression";
 import { processTypeNode } from "./processTypeNode";
 
 export function processExpression(
+    compiler: Compiler,
     input: Expression
 ): IntermediateExpression {
     if (isNumericLiteral(input)) {
-        return processNumericLiteral(input);
+        return processNumericLiteral(compiler, input);
     }
 
     if (isStringLiteral(input)) {
-        return processStringLiteral(input);
+        return processStringLiteral(compiler, input);
     }
 
     if (AST.isNullLiteral(input)) {
@@ -104,22 +106,22 @@ export function processExpression(
     }
 
     if (isCallExpression(input)) {
-        return processCallExpression(input);
+        return processCallExpression(compiler, input);
     }
 
     if (isObjectLiteralExpression(input)) {
-        return processObjectLiteralExpression(input);
+        return processObjectLiteralExpression(compiler, input);
     }
 
     if (isTypeAssertionExpression(input)) {
-        const retval = processExpression(input.expression);
-        (retval as IntermediateTypeAssertable).typeAssertion = processTypeNode(input.type);
+        const retval = processExpression(compiler, input.expression);
+        (retval as IntermediateTypeAssertable).typeAssertion = processTypeNode(compiler, input.type);
         return retval;
     }
 
     if (isAsExpression(input)) {
-        const retval = processExpression(input.expression);
-        (retval as IntermediateTypeAssertable).asType = processTypeNode(input.type);
+        const retval = processExpression(compiler, input.expression);
+        (retval as IntermediateTypeAssertable).asType = processTypeNode(compiler, input.type);
         return retval;
     }
 
@@ -131,7 +133,7 @@ export function processExpression(
     }
 
     if (isArrayLiteralExpression(input)) {
-        return processArrayLiteralExpression(input);
+        return processArrayLiteralExpression(compiler, input);
     }
 
     if (AST.isTrueKeyword(input)) {
@@ -153,31 +155,31 @@ export function processExpression(
     }
 
     if (isNewExpression(input)) {
-        return processNewExpression(input);
+        return processNewExpression(compiler, input);
     }
 
     if (isFunctionExpression(input)) {
-        return processFunctionExpression(input);
+        return processFunctionExpression(compiler, input);
     }
 
     if (isIdentifier(input)) {
-        return processIdentifier(input);
+        return processIdentifier(compiler, input);
     }
 
     if (isSpreadElement(input)) {
-        return processSpreadElement(input);
+        return processSpreadElement(compiler, input);
     }
 
     if (isArrowFunction(input)) {
-        return processArrowFunction(input);
+        return processArrowFunction(compiler, input);
     }
 
     if (isPropertyAccessExpression(input)) {
-        return processPropertyAccessExpression(input);
+        return processPropertyAccessExpression(compiler, input);
     }
 
     if (isParenthesizedExpression(input)) {
-        return processParenthesizedExpression(input);
+        return processParenthesizedExpression(compiler, input);
     }
 
     if (isBinaryExpression(input)) {
@@ -185,12 +187,12 @@ export function processExpression(
         // to transform the resulting IntermediateBinaryExpression into
         // something more specific
         return processIntermediateBinaryExpression(
-            processBinaryExpression(input)
+            processBinaryExpression(compiler, input)
         );
     }
 
     if (isElementAccessExpression(input)) {
-        return processElementAccessExpression(input);
+        return processElementAccessExpression(compiler, input);
     }
 
     // special case - regex
@@ -204,19 +206,19 @@ export function processExpression(
     }
 
     if (isTemplateExpression(input)) {
-        return processTemplateExpression(input);
+        return processTemplateExpression(compiler, input);
     }
 
     if (isConditionalExpression(input)) {
-        return processConditionalExpression(input);
+        return processConditionalExpression(compiler, input);
     }
 
     if (isPostfixUnaryExpression(input)) {
-        return processPostfixUnaryExpression(input);
+        return processPostfixUnaryExpression(compiler, input);
     }
 
     if (isPrefixUnaryExpression(input)) {
-        return processPrefixUnaryExpression(input);
+        return processPrefixUnaryExpression(compiler, input);
     }
 
     // if we get here, we do not know how to process this variable

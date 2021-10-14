@@ -34,6 +34,7 @@
 
 import { InterfaceDeclaration, Statement } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateInterface,
     IntermediateKind,
@@ -45,6 +46,7 @@ import { processMemberSignatures } from "./processMemberSignatures";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processInterfaceDeclaration (
+    compiler: Compiler,
     input: Statement
 ): IntermediateInterface
 {
@@ -56,16 +58,17 @@ export function processInterfaceDeclaration (
         kind: IntermediateKind.IntermediateInterface,
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
         name: interfaceDec.name.text,
-        typeParameters: processTypeParametersFromNode(interfaceDec),
-        docBlock: processDocBlock(interfaceDec),
+        typeParameters: processTypeParametersFromNode(compiler, interfaceDec),
+        docBlock: processDocBlock(compiler, interfaceDec),
         isExported: AST.isNodeExported(interfaceDec),
         isDefaultExport: AST.hasDefaultModifier(interfaceDec.modifiers),
-        extends: getBaseInterfaceTypes(interfaceDec),
-        members: processMemberSignatures(interfaceDec.members),
+        extends: getBaseInterfaceTypes(compiler, interfaceDec),
+        members: processMemberSignatures(compiler, interfaceDec.members),
     }
 }
 
 function getBaseInterfaceTypes(
+    compiler: Compiler,
     input: InterfaceDeclaration
 ): IntermediateTypeArgument[] {
     // our return value
@@ -75,7 +78,7 @@ function getBaseInterfaceTypes(
     const heritageClauses = AST.findExtendsHeritageClauses(input);
     for (const clause of heritageClauses) {
         for (const clauseType of clause.types) {
-            retval.push(processExpressionWithTypeArguments(clauseType));
+            retval.push(processExpressionWithTypeArguments(compiler, clauseType));
         }
     }
 

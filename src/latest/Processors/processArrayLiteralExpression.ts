@@ -33,10 +33,12 @@
 //
 
 import { ArrayLiteralExpression } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateArrayLiteral, IntermediateKind } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 
 export function processArrayLiteralExpression(
+    compiler: Compiler,
     input: ArrayLiteralExpression
 ): IntermediateArrayLiteral
 {
@@ -49,7 +51,7 @@ export function processArrayLiteralExpression(
     }
 
     for(const element of input.elements) {
-        retval.elements.push(processExpression(element));
+        retval.elements.push(processExpression(compiler, element));
     }
 
     // all done

@@ -33,6 +33,7 @@
 //
 
 import { TemplateLiteralTypeNode, TemplateLiteralTypeSpan } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateTemplateLiteralSpan,
@@ -41,6 +42,7 @@ import {
 import { processTypeNode } from "./processTypeNode";
 
 export function processTemplateLiteralType(
+    compiler: Compiler,
     input: TemplateLiteralTypeNode
 ): IntermediateTemplateLiteralType
 {
@@ -61,7 +63,7 @@ export function processTemplateLiteralType(
 
     // add in the parts of the template
     for (const span of input.templateSpans) {
-        retval.spans.push(processTemplateLiteralTypeSpan(span));
+        retval.spans.push(processTemplateLiteralTypeSpan(compiler, span));
     }
 
     // all done
@@ -69,12 +71,13 @@ export function processTemplateLiteralType(
 }
 
 function processTemplateLiteralTypeSpan(
+    compiler: Compiler,
     input: TemplateLiteralTypeSpan
 ): IntermediateTemplateLiteralSpan
 {
     return {
         kind: IntermediateKind.IntermediateTemplateLiteralSpan,
-        typeRef: processTypeNode(input.type),
+        typeRef: processTypeNode(compiler, input.type),
         //
         // NOTE:
         //

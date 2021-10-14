@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import { Block } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateBlock,
     IntermediateKind
@@ -39,12 +40,13 @@ import {
 import { processStatements } from "./processStatements";
 
 export function processBlock(
+    compiler: Compiler,
     block: Block
 ): IntermediateBlock
 {
     // short and sweet!
     return {
         kind: IntermediateKind.IntermediateBlock,
-        children: processStatements(block.statements),
+        children: processStatements(compiler, block.statements),
     }
 }

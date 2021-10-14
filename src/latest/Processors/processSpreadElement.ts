@@ -33,6 +33,7 @@
 //
 
 import { SpreadElement } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateSpreadElement,
@@ -41,11 +42,12 @@ import {
 import { processExpression } from "./processExpression";
 
 export function processSpreadElement(
+    compiler: Compiler,
     input: SpreadElement
 ): IntermediateSpreadElement | IntermediateSpreadIdentifierReference
 {
     // special case
-    const target = processExpression(input.expression);
+    const target = processExpression(compiler, input.expression);
     if (target.kind === IntermediateKind.IntermediateIdentifierReference) {
         return {
             kind: IntermediateKind.IntermediateSpreadIdentifierReference,
@@ -58,6 +60,6 @@ export function processSpreadElement(
     // general case
     return {
         kind: IntermediateKind.IntermediateSpreadOperator,
-        target: processExpression(input.expression),
+        target: processExpression(compiler, input.expression),
     }
 }

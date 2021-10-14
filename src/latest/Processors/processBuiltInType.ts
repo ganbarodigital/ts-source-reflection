@@ -34,11 +34,13 @@
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
 import { isLiteralTypeNode, LiteralTypeNode, SyntaxKind, TypeNode } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateBuiltInTypeReference, IntermediateKind } from "../IntermediateTypes";
 import { BUILT_IN_TYPES } from "./BUILT_IN_TYPES";
 
 export function processBuiltInType
 (
+    compiler: Compiler,
     input: TypeNode | LiteralTypeNode
 ): IntermediateBuiltInTypeReference
 {

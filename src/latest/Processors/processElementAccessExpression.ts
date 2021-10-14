@@ -33,16 +33,18 @@
 //
 
 import { ElementAccessExpression } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateElementAccessExpression, IntermediateKind } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 
 export function processElementAccessExpression(
+    compiler: Compiler,
     input: ElementAccessExpression
 ): IntermediateElementAccessExpression
 {
     return {
         kind: IntermediateKind.IntermediateElementAccessExpression,
-        element: processExpression(input.expression),
-        accessKey: processExpression(input.argumentExpression),
+        element: processExpression(compiler, input.expression),
+        accessKey: processExpression(compiler, input.argumentExpression),
     }
 }

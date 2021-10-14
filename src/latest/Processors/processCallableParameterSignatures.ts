@@ -32,14 +32,14 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import { NodeArray, ParameterDeclaration } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateCallableParameterSignature
 } from "../IntermediateTypes";
 import { processParameterSignature } from "./processParameterSignature";
 
-
-
 export function processCallableParameterSignatures(
+    compiler: Compiler,
     input: NodeArray<ParameterDeclaration>
 ): IntermediateCallableParameterSignature[] {
     // our return value
@@ -47,7 +47,7 @@ export function processCallableParameterSignatures(
 
     input.forEach((paramDec) => {
         // general case
-        retval.push(processParameterSignature(paramDec));
+        retval.push(processParameterSignature(compiler, paramDec));
     });
 
     // all done

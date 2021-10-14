@@ -33,18 +33,20 @@
 //
 
 import { EntityName, isIdentifier } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateEntityName } from "../IntermediateTypes";
 import { processIdentifier } from "./processIdentifier";
 import { processQualifiedName } from "./processQualifiedName";
 
 export function processEntityName(
+    compiler: Compiler,
     input: EntityName
 ): IntermediateEntityName
 {
     // what are we looking at?
     if (isIdentifier(input)) {
-        return processIdentifier(input);
+        return processIdentifier(compiler, input);
     }
 
-    return processQualifiedName(input);
+    return processQualifiedName(compiler, input);
 }

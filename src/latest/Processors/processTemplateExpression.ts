@@ -33,6 +33,7 @@
 //
 
 import { TemplateExpression, TemplateSpan } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateTemplateExpression,
@@ -41,6 +42,7 @@ import {
 import { processExpression } from "./processExpression";
 
 export function processTemplateExpression(
+    compiler: Compiler,
     input: TemplateExpression
 ): IntermediateTemplateExpression
 {
@@ -61,7 +63,7 @@ export function processTemplateExpression(
 
     // add in the parts of the template
     for (const span of input.templateSpans) {
-        retval.spans.push(processTemplateExpressionSpan(span));
+        retval.spans.push(processTemplateExpressionSpan(compiler, span));
     }
 
     // all done
@@ -69,12 +71,13 @@ export function processTemplateExpression(
 }
 
 function processTemplateExpressionSpan(
+    compiler: Compiler,
     input: TemplateSpan
 ): IntermediateTemplateExpressionSpan
 {
     return {
         kind: IntermediateKind.IntermediateTemplateExpressionSpan,
-        expression: processExpression(input.expression),
+        expression: processExpression(compiler, input.expression),
         //
         // NOTE:
         //

@@ -34,6 +34,7 @@
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
 import { isModuleBlock, ModuleBlock, ModuleBody } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateModuleBlock,
@@ -42,12 +43,13 @@ import {
 import { processStatements } from "./processStatements";
 
 export function processModuleBody(
+    compiler: Compiler,
     input: ModuleBody
 ): IntermediateModuleContents
 {
     // what kind of module body do we have?
     if (isModuleBlock(input)) {
-        return processModuleBlock(input);
+        return processModuleBlock(compiler, input);
     }
 
     // add other kinds here
@@ -67,10 +69,11 @@ export function processModuleBody(
 }
 
 function processModuleBlock(
+    compiler: Compiler,
     input: ModuleBlock
 ): IntermediateModuleBlock {
     return {
         kind: IntermediateKind.IntermediateModuleBlock,
-        children: processStatements(input.statements),
+        children: processStatements(compiler, input.statements),
     }
 }

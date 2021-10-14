@@ -33,6 +33,7 @@
 //
 import { Statement } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateFunction,
     IntermediateKind
@@ -43,6 +44,7 @@ import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processFunctionDeclaration (
+    compiler: Compiler,
     input: Statement
 ): IntermediateFunction
 {
@@ -53,14 +55,14 @@ export function processFunctionDeclaration (
 
     return {
         kind: IntermediateKind.IntermediateFunction,
-        docBlock: processDocBlock(input),
+        docBlock: processDocBlock(compiler, input),
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
         isExported: AST.hasExportModifier(input.modifiers),
         isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-        typeParameters: processTypeParametersFromNode(funcDec),
+        typeParameters: processTypeParametersFromNode(compiler, funcDec),
         name: funcDec.name?.text,
-        parameters: processFunctionParameters(funcDec.parameters),
-        returnType: processReturnTypeFromNode(funcDec),
+        parameters: processFunctionParameters(compiler, funcDec.parameters),
+        returnType: processReturnTypeFromNode(compiler, funcDec),
         hasBody: AST.hasBody(funcDec.body),
     }
 }

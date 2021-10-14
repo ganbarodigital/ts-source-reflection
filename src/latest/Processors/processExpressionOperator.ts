@@ -34,6 +34,7 @@
 
 import { UnreachableCodeError } from "@safelytyped/core-types";
 import { BinaryOperatorToken, SyntaxKind } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateExpressionOperator } from "../IntermediateTypes";
 
 type TokenToEnumMapping = {
@@ -86,6 +87,7 @@ const TOKEN_TO_ENUM_MAPPING: TokenToEnumMapping = {
 }
 
 export function processExpressionOperator(
+    compiler: Compiler,
     input: BinaryOperatorToken
 ): IntermediateExpressionOperator
 {

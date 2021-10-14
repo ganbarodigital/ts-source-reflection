@@ -33,6 +33,7 @@
 //
 
 import { IndexedAccessTypeNode } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateIndexedAccessTypeReference,
     IntermediateKind
@@ -40,12 +41,13 @@ import {
 import { processTypeNode } from "./processTypeNode";
 
 export function processIndexedAccessType(
+    compiler: Compiler,
     input: IndexedAccessTypeNode
 ): IntermediateIndexedAccessTypeReference
 {
     return {
         kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
-        valueRef: processTypeNode(input.objectType),
-        indexRef: processTypeNode(input.indexType),
+        valueRef: processTypeNode(compiler, input.objectType),
+        indexRef: processTypeNode(compiler, input.indexType),
     }
 }

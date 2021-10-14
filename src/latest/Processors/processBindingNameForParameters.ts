@@ -33,12 +33,14 @@
 //
 
 import { BindingName } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateIdentifierName,
     IntermediateKind
 } from "../IntermediateTypes";
 
 export function processBindingNameForParameters(
+    compiler: Compiler,
     input: BindingName,
     hasRestParameter: boolean,
 ): IntermediateIdentifierName

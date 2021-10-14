@@ -49,7 +49,7 @@ export function processSourceFile(
     const retval: IntermediateSourceFile = {
         path: new Filepath(parsedSource.fileName),
         kind: IntermediateKind.IntermediateSourceFile,
-        children: processStatements(parsedSource.statements),
+        children: processStatements(compiler, parsedSource.statements),
         referencedFiles: processFileReferences(parsedSource.referencedFiles),
         referencedLibs: processFileReferences(parsedSource.libReferenceDirectives),
         referencedTypes: processFileReferences(parsedSource.typeReferenceDirectives),

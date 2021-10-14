@@ -38,9 +38,11 @@ import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
 import { AST } from "../AST";
 import { processPropertyName } from "./processPropertyName";
+import { Compiler } from "../Compiler";
 
 export function processPropertySignature
 (
+    compiler: Compiler,
     input: PropertySignature
 ): IntermediatePropertySignature
 {
@@ -48,8 +50,8 @@ export function processPropertySignature
     if (!input.type) {
         return {
             kind: IntermediateKind.IntermediateUntypedPropertySignature,
-            name: processPropertyName(input.name),
-            isOptional: processQuestionToken(input.questionToken),
+            name: processPropertyName(compiler, input.name),
+            isOptional: processQuestionToken(compiler, input.questionToken),
             isReadonly: AST.hasReadonlyModifier(input.modifiers),
         }
     }
@@ -57,9 +59,9 @@ export function processPropertySignature
     // general case: typed property
     return {
         kind: IntermediateKind.IntermediateTypedPropertySignature,
-        name: processPropertyName(input.name),
-        isOptional: processQuestionToken(input.questionToken),
+        name: processPropertyName(compiler, input.name),
+        isOptional: processQuestionToken(compiler, input.questionToken),
         isReadonly: AST.hasReadonlyModifier(input.modifiers),
-        typeRef: processTypeNode(input.type),
+        typeRef: processTypeNode(compiler, input.type),
     };
 }

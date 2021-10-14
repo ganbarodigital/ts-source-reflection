@@ -33,6 +33,7 @@
 //
 
 import { NodeArray, TypeParameterDeclaration } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateGenericType } from "../IntermediateTypes";
 import { processGenericTypeDeclaration } from "./processGenericTypeDeclaration";
 
@@ -41,6 +42,7 @@ type NodeWithTypeParameters = {
 }
 
 export function processTypeParametersFromNode(
+    compiler: Compiler,
     input: NodeWithTypeParameters
 ): IntermediateGenericType[]
 {
@@ -53,7 +55,7 @@ export function processTypeParametersFromNode(
 
     // general case - we have type parameters to unpack
     for (const member of input.typeParameters) {
-        retval.push(processGenericTypeDeclaration(member));
+        retval.push(processGenericTypeDeclaration(compiler, member));
     }
 
     // all done

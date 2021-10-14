@@ -33,10 +33,12 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
+import { Compiler } from "../Compiler";
 
 export function processMaybe<IN,OUT>(
+    compiler: Compiler,
     input: IN | undefined,
-    processor: (x: IN) => OUT
+    processor: (compiler: Compiler, x: IN) => OUT
 ): Maybe<OUT>
 {
     // if we've been given an undefined value, that's perfectly legal
@@ -45,5 +47,5 @@ export function processMaybe<IN,OUT>(
     }
 
     // if we get here, then we want to process the input data
-    return processor(input);
+    return processor(compiler, input);
 }

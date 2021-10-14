@@ -34,6 +34,7 @@
 
 import { ClassDeclaration, Statement } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateClass,
     IntermediateKind,
@@ -46,6 +47,7 @@ import { processMemberDeclarations } from "./processMethodDeclarations";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processClassDeclaration (
+    compiler: Compiler,
     input: Statement
 ): IntermediateClass
 {
@@ -56,19 +58,20 @@ export function processClassDeclaration (
         name: classDec.name?.text || '',
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
         kind: IntermediateKind.IntermediateClass,
-        typeParameters: processTypeParametersFromNode(classDec),
-        docBlock: processDocBlock(classDec),
-        decorators: processDecorators(classDec),
+        typeParameters: processTypeParametersFromNode(compiler, classDec),
+        docBlock: processDocBlock(compiler, classDec),
+        decorators: processDecorators(compiler, classDec),
         isExported: AST.isNodeExported(classDec),
         isDefaultExport: AST.hasDefaultModifier(classDec.modifiers),
-        extends: getBaseClassType(classDec),
+        extends: getBaseClassType(compiler, classDec),
         isAbstract: AST.hasAbstractModifier(input.modifiers),
-        implements: getBaseInterfaceTypes(classDec),
-        members: processMemberDeclarations(classDec.members),
+        implements: getBaseInterfaceTypes(compiler, classDec),
+        members: processMemberDeclarations(compiler, classDec.members),
     };
 }
 
 function getBaseClassType(
+    compiler: Compiler,
     input: ClassDeclaration
 ): IntermediateTypeArgument[]
 {
@@ -79,7 +82,7 @@ function getBaseClassType(
     const heritageClauses = AST.findExtendsHeritageClauses(input);
     for (const clause of heritageClauses) {
         for (const clauseType of clause.types) {
-            retval.push(processExpressionWithTypeArguments(clauseType));
+            retval.push(processExpressionWithTypeArguments(compiler, clauseType));
         }
     }
 
@@ -88,6 +91,7 @@ function getBaseClassType(
 }
 
 function getBaseInterfaceTypes(
+    compiler: Compiler,
     input: ClassDeclaration
 ): IntermediateTypeArgument[] {
     // our return value
@@ -97,7 +101,7 @@ function getBaseInterfaceTypes(
     const heritageClauses = AST.findImplementsHeritageClauses(input);
     for (const clause of heritageClauses) {
         for (const clauseType of clause.types) {
-            retval.push(processExpressionWithTypeArguments(clauseType));
+            retval.push(processExpressionWithTypeArguments(compiler, clauseType));
         }
     }
 

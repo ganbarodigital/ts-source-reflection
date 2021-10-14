@@ -37,6 +37,7 @@ import {
     PostfixUnaryOperator,
     SyntaxKind
 } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateExpressionOperator,
     IntermediateKind,
@@ -45,12 +46,13 @@ import {
 import { processExpression } from "./processExpression";
 
 export function processPostfixUnaryExpression(
+    compiler: Compiler,
     input: PostfixUnaryExpression
 ): IntermediatePostfixUnaryExpression
 {
     return {
         kind: IntermediateKind.IntermediatePostfixUnaryExpression,
-        target: processExpression(input.operand),
+        target: processExpression(compiler, input.operand),
         operator: processOperator(input.operator),
     }
 }

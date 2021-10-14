@@ -33,11 +33,13 @@
 //
 
 import { ForInitializer, isVariableDeclarationList } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateForInitializer, IntermediateKind } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 import { processVariableDeclarationList } from "./processVariableDeclarationList";
 
 export function processForInitializer(
+    compiler: Compiler,
     input: ForInitializer
 ): IntermediateForInitializer
 {
@@ -47,9 +49,9 @@ export function processForInitializer(
             isDeclared: false,
             isDefaultExport: false,
             isExported: false,
-            variables: processVariableDeclarationList(input),
+            variables: processVariableDeclarationList(compiler, input),
         };
     }
 
-    return processExpression(input);
+    return processExpression(compiler, input);
 }

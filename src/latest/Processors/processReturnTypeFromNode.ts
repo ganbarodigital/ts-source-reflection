@@ -34,6 +34,7 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { TypeNode } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateTypeReference } from "../IntermediateTypes";
 import { processTypeNode } from "./processTypeNode";
 
@@ -42,6 +43,7 @@ type NodeWithReturnType = {
 }
 
 export function processReturnTypeFromNode(
+    compiler: Compiler,
     input: NodeWithReturnType
 ): Maybe<IntermediateTypeReference>
 {
@@ -49,5 +51,5 @@ export function processReturnTypeFromNode(
         return undefined;
     }
 
-    return processTypeNode(input.type);
+    return processTypeNode(compiler, input.type);
 }

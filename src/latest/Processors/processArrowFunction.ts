@@ -34,6 +34,7 @@
 
 import { ArrowFunction } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateArrowFunction,
     IntermediateCallableParameterDeclaration,
@@ -44,21 +45,22 @@ import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processArrowFunction(
+    compiler: Compiler,
     input: ArrowFunction
 ): IntermediateArrowFunction
 {
     // do we have any parameters?
     const parameters: IntermediateCallableParameterDeclaration[] = [];
     for (const param of input.parameters) {
-        parameters.push(processParameterDeclaration(param));
+        parameters.push(processParameterDeclaration(compiler, param));
     }
 
     // all done!
     return {
         kind: IntermediateKind.IntermediateArrowFunction,
-        typeParameters: processTypeParametersFromNode(input),
+        typeParameters: processTypeParametersFromNode(compiler, input),
         parameters,
-        returnType: processReturnTypeFromNode(input),
+        returnType: processReturnTypeFromNode(compiler, input),
         hasBody: AST.hasBody(input.body),
     }
 }

@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import { isQualifiedName, TypeReferenceNode } from "typescript";
+import { Compiler } from "../Compiler";
 
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
 import { processQualifiedName } from "./processQualifiedName";
@@ -39,6 +40,7 @@ import { processTypeNode } from "./processTypeNode";
 
 
 export function processTypeReferenceNode(
+    compiler: Compiler,
     input: TypeReferenceNode
 ): IntermediateTypeReference
 {
@@ -58,7 +60,7 @@ export function processTypeReferenceNode(
     if (input.typeArguments) {
         const typeArguments: IntermediateTypeReference[] = [];
         input.typeArguments.forEach((member) => {
-            typeArguments.push(processTypeNode(member));
+            typeArguments.push(processTypeNode(compiler, member));
         });
 
         return {
@@ -70,7 +72,7 @@ export function processTypeReferenceNode(
 
     // special case - qualified name
     if (isQualifiedName(input.typeName)) {
-        return processQualifiedName(input.typeName);
+        return processQualifiedName(compiler, input.typeName);
     }
 
     // we will return to this and add support for other cases

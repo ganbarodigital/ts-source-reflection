@@ -34,6 +34,7 @@
 
 import { Statement } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateImportAssignment, IntermediateKind
 } from "../IntermediateTypes";
@@ -41,6 +42,7 @@ import { processIdentifier } from "./processIdentifier";
 import { processModuleReference } from "./processModuleReference";
 
 export function processImportEqualsDeclaration (
+    compiler: Compiler,
     input: Statement
 ): IntermediateImportAssignment
 {
@@ -49,8 +51,8 @@ export function processImportEqualsDeclaration (
 
     return {
         kind: IntermediateKind.IntermediateImportAssignment,
-        name: processIdentifier(importDec.name),
-        modRef: processModuleReference(importDec.moduleReference),
+        name: processIdentifier(compiler, importDec.name),
+        modRef: processModuleReference(compiler, importDec.moduleReference),
     };
 }
 

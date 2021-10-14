@@ -33,6 +33,7 @@
 //
 
 import { NewExpression } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateKind, IntermediateNewExpression
 } from "../IntermediateTypes";
@@ -40,13 +41,14 @@ import { processExpression } from "./processExpression";
 import { processExpressionAsTypeReference } from "./processExpressionAsTypeReference";
 
 export function processNewExpression(
+    compiler: Compiler,
     input: NewExpression
 ): IntermediateNewExpression
 {
     // our return value
     const retval: IntermediateNewExpression = {
         kind: IntermediateKind.IntermediateNewExpression,
-        typeRef: processExpressionAsTypeReference(input.expression),
+        typeRef: processExpressionAsTypeReference(compiler, input.expression),
         arguments: [],
         // asType is set in `processExpression()`
         asType: undefined,
@@ -57,7 +59,7 @@ export function processNewExpression(
     // a parameter is what appears in a function / method signature
     // an argument is what appears when the function / method gets called
     for (const argument of input.arguments ?? []) {
-        retval.arguments.push(processExpression(argument));
+        retval.arguments.push(processExpression(compiler, argument));
     }
 
     // all done

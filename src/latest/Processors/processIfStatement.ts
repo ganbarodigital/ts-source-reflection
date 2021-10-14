@@ -36,6 +36,7 @@ import {
     Statement
 } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateIfStatement,
     IntermediateKind,
@@ -45,6 +46,7 @@ import { processExpression } from "./processExpression";
 import { processStatement } from "./processStatement";
 
 export function processIfStatement(
+    compiler: Compiler,
     input: Statement
 ): IntermediateIfStatement
 {
@@ -53,10 +55,10 @@ export function processIfStatement(
 
     return {
         kind: IntermediateKind.IntermediateIfStatement,
-        condition: processExpression(ifStmt.expression),
+        condition: processExpression(compiler, ifStmt.expression),
         thenBlock: mustBeIntermediateStatement(
-            processStatement(ifStmt.thenStatement)
+            processStatement(compiler, ifStmt.thenStatement)
         ),
-        elseBlock: ifStmt.elseStatement ? processStatement(ifStmt.elseStatement) : undefined,
+        elseBlock: ifStmt.elseStatement ? processStatement(compiler, ifStmt.elseStatement) : undefined,
     }
 }

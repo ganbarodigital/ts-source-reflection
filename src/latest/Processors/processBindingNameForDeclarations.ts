@@ -33,6 +33,7 @@
 //
 
 import { BindingName } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateIdentifierDeclaration,
     IntermediateKind,
@@ -40,6 +41,7 @@ import {
 } from "../IntermediateTypes";
 
 export function processBindingNameForDeclarations(
+    compiler: Compiler,
     input: BindingName,
     hasRestParameter: boolean,
 ): IntermediateIdentifierDeclaration | IntermediateRestIdentifierDeclaration

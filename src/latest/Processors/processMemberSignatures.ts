@@ -47,6 +47,7 @@ import {
     TypeElement
 } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import { IntermediateMemberSignature } from "../IntermediateTypes";
 import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
 import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
@@ -55,6 +56,7 @@ import { processMethodSignature } from "./processMethodSignature";
 import { processPropertySignature } from "./processPropertySignature";
 
 export function processMemberSignatures(
+    compiler: Compiler,
     input: NodeArray<TypeElement | ClassElement>
 ): IntermediateMemberSignature[]
 {
@@ -62,27 +64,27 @@ export function processMemberSignatures(
 
     for (const member of input) {
         if (isPropertySignature(member)) {
-            retval.push(processPropertySignature(member));
+            retval.push(processPropertySignature(compiler, member));
             continue;
         }
 
         if (isCallSignatureDeclaration(member)) {
-            retval.push(processCallSignatureDeclaration(member));
+            retval.push(processCallSignatureDeclaration(compiler, member));
             continue;
         }
 
         if (isConstructSignatureDeclaration(member)) {
-            retval.push(processConstructSignatureDeclaration(member));
+            retval.push(processConstructSignatureDeclaration(compiler, member));
             continue;
         }
 
         if (isMethodSignature(member)) {
-            retval.push(processMethodSignature(member));
+            retval.push(processMethodSignature(compiler, member));
             continue;
         }
 
         if (AST.isIndexSignature(member)) {
-            retval.push(processIndexSignatureDeclaration(member));
+            retval.push(processIndexSignatureDeclaration(compiler, member));
             continue;
         }
 

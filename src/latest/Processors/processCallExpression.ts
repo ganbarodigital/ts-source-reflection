@@ -33,6 +33,7 @@
 //
 
 import { CallExpression } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateCallExpression,
     IntermediateKind
@@ -41,13 +42,14 @@ import { processExpression } from "./processExpression";
 import { processTypeNode } from "./processTypeNode";
 
 export function processCallExpression(
+    compiler: Compiler,
     input: CallExpression
 ): IntermediateCallExpression
 {
     // our return value
     const retval: IntermediateCallExpression = {
         kind: IntermediateKind.IntermediateCallExpression,
-        expression: processExpression(input.expression),
+        expression: processExpression(compiler, input.expression),
         typeArguments: [],
         arguments: [],
         asType: undefined,
@@ -57,7 +59,7 @@ export function processCallExpression(
     // do we have any type arguments?
     if (input.typeArguments) {
         for (const typeArgument of input.typeArguments) {
-            retval.typeArguments.push(processTypeNode(typeArgument));
+            retval.typeArguments.push(processTypeNode(compiler, typeArgument));
         }
     }
 
@@ -66,7 +68,7 @@ export function processCallExpression(
     // a parameter is what appears in a function / method signature
     // an argument is what appears when the function / method gets called
     for (const argument of input.arguments) {
-        retval.arguments.push(processExpression(argument));
+        retval.arguments.push(processExpression(compiler, argument));
     }
 
     // all done

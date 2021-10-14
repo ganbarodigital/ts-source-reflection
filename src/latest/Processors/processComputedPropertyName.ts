@@ -33,15 +33,17 @@
 //
 
 import { ComputedPropertyName } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateComputedPropertyName, IntermediateKind } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 
 export function processComputedPropertyName(
+    compiler: Compiler,
     input: ComputedPropertyName
 ): IntermediateComputedPropertyName
 {
     return {
         kind: IntermediateKind.IntermediateComputedPropertyName,
-        name: processExpression(input.expression),
+        name: processExpression(compiler, input.expression),
     }
 }

@@ -33,9 +33,11 @@
 //
 
 import { Identifier } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateIdentifierReference, IntermediateKind } from "../IntermediateTypes";
 
 export function processIdentifier(
+    compiler: Compiler,
     input: Identifier
 ): IntermediateIdentifierReference
 {

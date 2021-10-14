@@ -34,10 +34,12 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { Statement } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateStatement
 } from "../IntermediateTypes";
 
 export type StatementProcessor = <T extends Statement>(
+    compiler: Compiler,
     input: T
 ) => Maybe<IntermediateStatement>;

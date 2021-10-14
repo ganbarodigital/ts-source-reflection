@@ -40,6 +40,7 @@ import {
     Statement
 } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateImportDeclaration,
     IntermediateImportItem,
@@ -49,6 +50,7 @@ import { processExpression } from "./processExpression";
 import { processIdentifier } from "./processIdentifier";
 
 export function processImportDeclaration(
+    compiler: Compiler,
     input: Statement
 ): IntermediateImportDeclaration
 {
@@ -59,7 +61,7 @@ export function processImportDeclaration(
         kind: IntermediateKind.IntermediateImportDeclaration,
         isTypeOnly: false,
         items: [],
-        source: processExpression(importDec.moduleSpecifier),
+        source: processExpression(compiler, importDec.moduleSpecifier),
     };
 
     // special case - we have no import clause
@@ -80,7 +82,7 @@ export function processImportDeclaration(
     if (importClause.name) {
         retval.items.push({
             kind: IntermediateKind.IntermediateDefaultImport,
-            name: processIdentifier(importClause.name),
+            name: processIdentifier(compiler, importClause.name),
         });
     }
 
@@ -88,7 +90,7 @@ export function processImportDeclaration(
     if (importClause.namedBindings) {
         retval.items = [
             ...retval.items,
-            ...processNamedBindings(importClause.namedBindings)
+            ...processNamedBindings(compiler, importClause.namedBindings)
         ];
     }
 
@@ -98,18 +100,22 @@ export function processImportDeclaration(
 }
 
 function processNamedBindings(
+    compiler: Compiler,
     input: NamedImportBindings
 ): IntermediateImportItem[]
 {
     // what kind of named bindings do we have?
     if (isNamedImports(input)) {
-        return processNamedImports(input);
+        return processNamedImports(compiler, input);
     }
 
-    return processNamespaceImport(input);
+    return processNamespaceImport(compiler, input);
 }
 
-function processNamedImports(input: NamedImports): IntermediateImportItem[]
+function processNamedImports(
+    compiler: Compiler,
+    input: NamedImports
+): IntermediateImportItem[]
 {
     const retval: IntermediateImportItem[] = [];
 
@@ -118,13 +124,13 @@ function processNamedImports(input: NamedImports): IntermediateImportItem[]
         if (member.propertyName) {
             retval.push({
                 kind: IntermediateKind.IntermediateAliasedImportBinding,
-                exportedName: processExpression(member.propertyName),
-                name: processExpression(member.name),
+                exportedName: processExpression(compiler, member.propertyName),
+                name: processExpression(compiler, member.name),
             });
         } else {
             retval.push({
                 kind: IntermediateKind.IntermediateImportBinding,
-                name: processExpression(member.name),
+                name: processExpression(compiler, member.name),
             });
         }
     }
@@ -133,13 +139,14 @@ function processNamedImports(input: NamedImports): IntermediateImportItem[]
 }
 
 function processNamespaceImport(
+    compiler: Compiler,
     input: NamespaceImport
 ): IntermediateImportItem[]
 {
     return [
         {
             kind: IntermediateKind.IntermediateNamespaceImport,
-            name: processIdentifier(input.name),
+            name: processIdentifier(compiler, input.name),
         }
     ];
 }

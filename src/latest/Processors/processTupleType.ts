@@ -38,6 +38,7 @@ import {
     TupleTypeNode,
     TypeNode
 } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateTupleType,
@@ -46,13 +47,14 @@ import {
 import { processTypeNodeForTuples } from "./processTypeNodeForTuples";
 
 export function processTupleType(
+    compiler: Compiler,
     input: TupleTypeNode
 ): IntermediateTupleType
 {
     const elements: IntermediateTupleTypeElement[] = [];
 
     for (const member of input.elements) {
-        elements.push(processTupleTypeElement(member));
+        elements.push(processTupleTypeElement(compiler, member));
     }
 
     return {
@@ -62,6 +64,7 @@ export function processTupleType(
 }
 
 function processTupleTypeElement(
+    compiler: Compiler,
     input: TypeNode | NamedTupleMember
 ): IntermediateTupleTypeElement
 {
@@ -77,7 +80,7 @@ function processTupleTypeElement(
 
     return {
         kind: IntermediateKind.IntermediateTupleTypeElement,
-        typeRef: processTypeNodeForTuples(elemType),
+        typeRef: processTypeNodeForTuples(compiler, elemType),
         isOptional,
     }
 }

@@ -33,9 +33,11 @@
 //
 
 import { QuestionToken } from "typescript";
+import { Compiler } from "../Compiler";
 
 export function processQuestionToken
 (
+    compiler: Compiler,
     input: QuestionToken | undefined
 ): boolean
 {

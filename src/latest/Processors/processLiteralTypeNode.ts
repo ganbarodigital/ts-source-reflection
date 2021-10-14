@@ -33,6 +33,7 @@
 //
 
 import { LiteralTypeNode } from "typescript";
+import { Compiler } from "../Compiler";
 import {
     IntermediateBuiltInTypeReference,
     IntermediateKind,
@@ -42,6 +43,7 @@ import { isBuiltInType } from "./isBuiltinType";
 import { processBuiltInType } from "./processBuiltInType";
 
 export function processLiteralTypeNode(
+    compiler: Compiler,
     input: LiteralTypeNode
 ): IntermediateLiteralType | IntermediateBuiltInTypeReference
 {
@@ -49,7 +51,7 @@ export function processLiteralTypeNode(
     //
     // no idea why the TS compiler thinks `null` is a literal type
     if (isBuiltInType(input)) {
-        return processBuiltInType(input);
+        return processBuiltInType(compiler, input);
     }
 
     // general case

@@ -34,6 +34,7 @@
 
 import { MethodDeclaration } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateMethodDeclaration
@@ -46,20 +47,21 @@ import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processMethodDeclaration(
+    compiler: Compiler,
     input: MethodDeclaration
 ): IntermediateMethodDeclaration
 {
     return {
         kind: IntermediateKind.IntermediateMethodDeclaration,
-        docBlock: processDocBlock(input),
-        decorators: processDecorators(input),
+        docBlock: processDocBlock(compiler, input),
+        decorators: processDecorators(compiler, input),
         isStatic: AST.hasStaticModifier(input),
         accessModifier: AST.getRestrictableScope(input),
         isAbstract: AST.hasAbstractModifier(input.modifiers),
-        name: processPropertyName(input.name),
-        parameters: processFunctionParameters(input.parameters),
-        typeParameters: processTypeParametersFromNode(input),
-        returnType: processReturnTypeFromNode(input),
+        name: processPropertyName(compiler, input.name),
+        parameters: processFunctionParameters(compiler, input.parameters),
+        typeParameters: processTypeParametersFromNode(compiler, input),
+        returnType: processReturnTypeFromNode(compiler, input),
         hasBody: AST.hasBody(input.body),
     }
 }

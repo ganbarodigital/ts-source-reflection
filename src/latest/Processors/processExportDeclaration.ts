@@ -47,6 +47,7 @@ import {
     SyntaxKind
 } from "typescript";
 import { AST } from "../AST";
+import { Compiler } from "../Compiler";
 import {
     IntermediateExportDeclaration,
     IntermediateExportedIdentifiers,
@@ -59,6 +60,7 @@ import { processExpression } from "./processExpression";
 import { processIdentifier } from "./processIdentifier";
 
 export function processExportDeclaration (
+    compiler: Compiler,
     input: Statement
 ): IntermediateExportDeclaration
 {
@@ -68,13 +70,13 @@ export function processExportDeclaration (
     // special case - we're re-exporting everything from
     // somewhere else, as a namespace
     if (isExportDeclarationWithNamespaceExport(exportDec)) {
-        return processNamespaceExport(exportDec);
+        return processNamespaceExport(compiler, exportDec);
     }
 
     // special case - we're exporting a list of items,
     // possible as a re-export
     if (isExportDeclarationWithNamedExports(exportDec)) {
-        return processExportClause(exportDec);
+        return processExportClause(compiler, exportDec);
     }
 
     // special case - we're re-exporting everything from
@@ -82,7 +84,7 @@ export function processExportDeclaration (
     if (isExportDeclarationWithModuleSpecifier(exportDec)) {
         return {
             kind: IntermediateKind.IntermediateReExportAll,
-            source: processExpression(exportDec.moduleSpecifier)
+            source: processExpression(compiler, exportDec.moduleSpecifier)
         }
     }
 
@@ -117,10 +119,11 @@ function isExportDeclarationWithNamedExports(
 }
 
 function processExportClause(
+    compiler: Compiler,
     input: ExportDeclarationWithNamedExports
 ): IntermediateExportDeclaration {
     // how many things are we exporting?
-    const items = processNamedExports(input.exportClause);
+    const items = processNamedExports(compiler, input.exportClause);
 
     // special case
     if (items.length === 0) {
@@ -134,7 +137,7 @@ function processExportClause(
         return <IntermediateReExportIdentifiers>{
             kind: IntermediateKind.IntermediateReExportIdentifiers,
             items,
-            source: processExpression(input.moduleSpecifier)
+            source: processExpression(compiler, input.moduleSpecifier)
         }
     }
 
@@ -146,6 +149,7 @@ function processExportClause(
 }
 
 function processNamedExports(
+    compiler: Compiler,
     input: NamedExports
 ): IntermediateExportItem[] {
     // this is what we'll return to the caller
@@ -156,14 +160,14 @@ function processNamedExports(
         if (member.propertyName) {
             retval.push({
                 kind: IntermediateKind.IntermediateAliasedExportItem,
-                exportedName: processExpression(member.propertyName),
-                name: processExpression(member.name),
+                exportedName: processExpression(compiler, member.propertyName),
+                name: processExpression(compiler, member.name),
             });
         }
         else {
             retval.push({
                 kind: IntermediateKind.IntermediateNamedExportItem,
-                name: processExpression(member.name),
+                name: processExpression(compiler, member.name),
             });
         }
     }
@@ -208,12 +212,13 @@ function isExportDeclarationWithNamespaceExport(
 }
 
 function processNamespaceExport(
+    compiler: Compiler,
     input: ExportDeclarationWithNamespaceExport
 ): IntermediateNamespaceExport {
     return {
         kind: IntermediateKind.IntermediateNamespaceExport,
-        name: processIdentifier(input.exportClause.name),
-        source: processExpression(input.moduleSpecifier),
+        name: processIdentifier(compiler, input.exportClause.name),
+        source: processExpression(compiler, input.moduleSpecifier),
     }
 
 }

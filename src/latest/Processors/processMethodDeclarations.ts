@@ -55,8 +55,10 @@ import { processPropertyDeclaration } from "./processPropertyDeclaration";
 import { processSetAccessorDeclaration } from "./processSetAccessorDeclaration";
 import { AST } from "../AST";
 import { processIndexSignatureDeclaration } from "./processIndexSignatureDeclaration";
+import { Compiler } from "../Compiler";
 
 export function processMemberDeclarations(
+    compiler: Compiler,
     input: NodeArray<ClassElement>
 ): IntermediateMemberDeclaration[]
 {
@@ -64,32 +66,32 @@ export function processMemberDeclarations(
 
     for (const member of input) {
         if (isPropertyDeclaration(member)) {
-            retval.push(processPropertyDeclaration(member));
+            retval.push(processPropertyDeclaration(compiler, member));
             continue;
         }
 
         if (isConstructorDeclaration(member)) {
-            retval.push(processConstructorDeclaration(member));
+            retval.push(processConstructorDeclaration(compiler, member));
             continue;
         }
 
         if (isMethodDeclaration(member)) {
-            retval.push(processMethodDeclaration(member));
+            retval.push(processMethodDeclaration(compiler, member));
             continue;
         }
 
         if (isGetAccessorDeclaration(member)) {
-            retval.push(processGetAccessorDeclaration(member));
+            retval.push(processGetAccessorDeclaration(compiler, member));
             continue;
         }
 
         if (isSetAccessorDeclaration(member)) {
-            retval.push(processSetAccessorDeclaration(member));
+            retval.push(processSetAccessorDeclaration(compiler, member));
             continue;
         }
 
         if (AST.isIndexSignature(member)) {
-            retval.push(processIndexSignatureDeclaration(member));
+            retval.push(processIndexSignatureDeclaration(compiler, member));
             continue;
         }
 

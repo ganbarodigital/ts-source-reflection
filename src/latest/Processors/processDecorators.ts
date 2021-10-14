@@ -33,6 +33,7 @@
 //
 
 import { Decorator, NodeArray } from "typescript";
+import { Compiler } from "../Compiler";
 import { IntermediateDecorator, IntermediateKind } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 
@@ -41,6 +42,7 @@ type NodeWithDecorators = {
 }
 
 export function processDecorators(
+    compiler: Compiler,
     input: NodeWithDecorators
 ): IntermediateDecorator[]
 {
@@ -56,7 +58,7 @@ export function processDecorators(
     for (const member of input.decorators) {
         retval.push(<IntermediateDecorator>{
             kind: IntermediateKind.IntermediateDecorator,
-            expression: processExpression(member.expression),
+            expression: processExpression(compiler, member.expression),
         });
     }
 
