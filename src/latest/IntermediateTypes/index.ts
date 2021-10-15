@@ -220,6 +220,7 @@ export * from "./IntermediateTypedItem";
 export * from "./IntermediateTypedPropertyDeclaration";
 export * from "./IntermediateTypedPropertySignature";
 export * from "./IntermediateTypeofTypeReference";
+export * from "./IntermediateUndiscoverableType";
 export * from "./IntermediateUnionType";
 export * from "./IntermediateUntypedCallableParameterDeclaration";
 export * from "./IntermediateUntypedCallableParameterSignature";
