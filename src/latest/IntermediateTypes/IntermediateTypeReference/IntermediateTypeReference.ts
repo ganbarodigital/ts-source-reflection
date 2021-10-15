@@ -31,6 +31,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { IntermediateUndiscoverableType } from "..";
 import { IntermediateAnonymousClassType } from "../IntermediateAnonymousClassType";
 import { IntermediateArrayTypeReference } from "../IntermediateArrayTypeReference";
 import { IntermediateBuiltInTypeReference } from "../IntermediateBuiltInTypeReference";
@@ -82,4 +83,5 @@ export type IntermediateTypeReference
       | IntermediateTupleType
       | IntermediateTypePredicate
       | IntermediateTypeofTypeReference
+      | IntermediateUndiscoverableType
       | IntermediateUnionType;
