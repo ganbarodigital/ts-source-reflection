@@ -32,5 +32,22 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateTypeReference";
-export * from "./mustBeIntermediateTypeReference";
+import { DEFAULT_DATA_PATH, Maybe, UnsupportedTypeError } from "@safelytyped/core-types";
+import { IntermediateTypeReference } from "..";
+
+export function mustbeIntermediateTypeReference(
+    input: Maybe<IntermediateTypeReference>
+): IntermediateTypeReference
+{
+    if (input) {
+        return input;
+    }
+
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: "IntermediateTypeReference",
+            actual: "null | undefined",
+        },
+    });
+}
