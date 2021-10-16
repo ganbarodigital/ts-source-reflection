@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Value } from "@safelytyped/core-types";
+import { Maybe, Value } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import * as ts from "typescript";
 
@@ -46,6 +46,21 @@ function unpackValues<T>(input: Value<T>[]): T[] {
 
     // all done
     return retval;
+}
+
+/**
+ * NodeWithEscapedText is an admittedly nasty hack, to give us access to
+ * the type's name while avoiding Typescript runtime exceptions
+ */
+type NodeWithEscapedText = {
+    escapedText: string;
+}
+
+function mustBeNodeWithEscapedText(
+    input: unknown
+): asserts input is NodeWithEscapedText
+{
+    // do nothing
 }
 
 /**
@@ -129,5 +144,39 @@ export class Compiler
 
         // TEMPORARY
         throw new Error("source file unknown to the compiler");
+    }
+
+    public getTypeChecker()
+    {
+        return this.tsCompiler.getTypeChecker();
+    }
+
+    /**
+     * getTextForNode() is an alternative to calling `input.getText()`
+     *
+     * @remarks
+     *
+     * I've had to add this, to work around runtime errors within the
+     * Typescript library itself. We get `TypeError: cannot read property
+     * 'text' of undefined` whenever we are trying to get the text out
+     * of a node that has no parent (and therefore, no link back to its
+     * source file).
+     *
+     * @param input the node that you want the text from
+     * @returns the escaped text from that node
+     */
+    public getTextForNode(
+        input: ts.Node
+    ): Maybe<string>
+    {
+        try {
+            // this fails for nodes that have been built by the type checker,
+            // and for any nodes that do not have a parent node
+            return input.getText();
+        }
+        catch (e) {
+            mustBeNodeWithEscapedText(input);
+            return input.escapedText ?? undefined;
+        }
     }
 }
