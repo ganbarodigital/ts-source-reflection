@@ -35,6 +35,7 @@
 export * from "./findDocBlockText";
 export * from "./findExtendsHeritageClauses";
 export * from "./findImplementsHeritageClauses";
+export * from "./getInferredType";
 export * from "./getRestrictableScope";
 export * from "./getStatementKind";
 export * from "./hasAbstractModifier";

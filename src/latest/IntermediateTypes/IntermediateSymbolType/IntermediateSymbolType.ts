@@ -37,5 +37,10 @@ import { IntermediateItem, IntermediateKind } from "..";
 export interface IntermediateSymbolType
     extends IntermediateItem<IntermediateKind.IntermediateSymbolType>
 {
-    name: string;
+    /**
+     * symbols are unique (unless they're in the global Symbol registry)
+     * and their value is always tied to the identifier they were
+     * initially assigned to
+     */
+    identifierName: string;
 }
