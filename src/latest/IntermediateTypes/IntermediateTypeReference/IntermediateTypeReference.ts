@@ -31,7 +31,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { IntermediateSymbolType, IntermediateUndiscoverableType } from "..";
+import { AnyIntermediateLiteralType } from "../AnyIntermediateLiteralType";
 import { IntermediateAnonymousClassType } from "../IntermediateAnonymousClassType";
 import { IntermediateArrayTypeReference } from "../IntermediateArrayTypeReference";
 import { IntermediateBuiltInTypeReference } from "../IntermediateBuiltInTypeReference";
@@ -51,15 +51,18 @@ import { IntermediateMappedType } from "../IntermediateMappedType";
 import { IntermediateParenthesizedType } from "../IntermediateParenthesizedType";
 import { IntermediateQualifiedName } from "../IntermediateQualifiedName";
 import { IntermediateQualifiedTypeReference } from "../IntermediateQualifiedTypeReference";
+import { IntermediateSymbolType } from "../IntermediateSymbolType";
 import { IntermediateTemplateLiteralType } from "../IntermediateTemplateLiteralType";
 import { IntermediateThisType } from "../IntermediateThisType";
 import { IntermediateTupleType } from "../IntermediateTupleType";
 import { IntermediateTypeofTypeReference } from "../IntermediateTypeofTypeReference";
 import { IntermediateTypePredicate } from "../IntermediateTypePredicate";
+import { IntermediateUndiscoverableType } from "../IntermediateUndiscoverableType";
 import { IntermediateUnionType } from "../IntermediateUnionType";
 
 export type IntermediateTypeReference
-    = IntermediateAnonymousClassType
+    = AnyIntermediateLiteralType
+      | IntermediateAnonymousClassType
       | IntermediateArrayTypeReference
       | IntermediateBuiltInTypeReference
       | IntermediateConditionalType
