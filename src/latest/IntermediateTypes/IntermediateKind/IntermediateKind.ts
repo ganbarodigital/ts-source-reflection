@@ -51,6 +51,7 @@ export enum IntermediateKind {
     IntermediateBinaryExpression,
     IntermediateBlock,
     IntermediateBooleanLiteral,
+    IntermediateBooleanLiteralType,
 
     // I'm not 100% sure we should treat built-in types separately
     // so this may disappear in the future!

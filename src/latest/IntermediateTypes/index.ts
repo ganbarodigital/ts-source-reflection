@@ -57,6 +57,7 @@ export * from "./IntermediateBigintLiteral";
 export * from "./IntermediateBinaryExpression";
 export * from "./IntermediateBlock";
 export * from "./IntermediateBooleanLiteral";
+export * from "./IntermediateBooleanLiteralType";
 export * from "./IntermediateBuiltInType";
 export * from "./IntermediateBuiltInTypeReference";
 export * from "./IntermediateCallExpression";
