@@ -35,17 +35,17 @@
 import {
     IntermediateCallableSignature,
     IntermediateItem,
-    IntermediateKind
+    IntermediateKind,
+    IntermediateTypeReference
 } from "..";
 import { IntermediateGenericable } from "../IntermediateGenericable";
-import { IntermediateReturnsType } from "../IntermediateReturnsType";
 
 export type IntermediateFunctionTypeSignature
     = IntermediateItem<IntermediateKind.IntermediateFunctionTypeSignature>
     & IntermediateCallableSignature
     & IntermediateGenericable
-    & IntermediateReturnsType
     &
 {
     kind: IntermediateKind.IntermediateFunctionTypeSignature
+    returnType: IntermediateTypeReference;
 }

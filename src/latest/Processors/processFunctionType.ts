@@ -33,11 +33,11 @@
 //
 
 import { FunctionTypeNode } from "typescript";
-import { AST } from "../AST";
 import { Compiler } from "../Compiler";
 import {
     IntermediateFunctionTypeSignature,
-    IntermediateKind
+    IntermediateKind,
+    mustbeIntermediateTypeReference
 } from "../IntermediateTypes";
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
@@ -48,33 +48,12 @@ export function processFunctionType(
     input: FunctionTypeNode
 ): IntermediateFunctionTypeSignature
 {
-    // do we have a returnType?
-    const returnType = processReturnTypeFromNode(compiler, input);
-    if (returnType) {
-        return {
-            kind: IntermediateKind.IntermediateFunctionTypeSignature,
-            typeParameters: processTypeParametersFromNode(compiler, input),
-            parameters: processCallableParameterSignatures(compiler, input.parameters),
-            returnType,
-        }
-    }
-
-    // can we work out what the return type is?
-    const inferredReturnType = AST.getInferredReturnType(compiler, input);
-    if (!inferredReturnType) {
-        return {
-            kind: IntermediateKind.IntermediateFunctionTypeSignature,
-            typeParameters: processTypeParametersFromNode(compiler, input),
-            parameters: processCallableParameterSignatures(compiler, input.parameters),
-            returnType,
-        }
-    }
-
     return {
         kind: IntermediateKind.IntermediateFunctionTypeSignature,
         typeParameters: processTypeParametersFromNode(compiler, input),
         parameters: processCallableParameterSignatures(compiler, input.parameters),
-        returnType,
-        inferredReturnType,
+        returnType: mustbeIntermediateTypeReference(
+            processReturnTypeFromNode(compiler, input)
+        ),
     }
 }
