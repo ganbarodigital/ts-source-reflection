@@ -32,4 +32,14 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateInferableReturnType";
+import { IntermediateTypeReference } from "..";
+
+export type IntermediateReturnsType =
+    {
+        returnType: IntermediateTypeReference;
+    }
+    |
+    {
+        returnType: undefined;
+        inferredReturnType?: IntermediateTypeReference;
+    }

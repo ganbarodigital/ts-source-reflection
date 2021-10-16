@@ -42,19 +42,19 @@ import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateExportableItem } from "../IntermediateExportableItem";
 import { IntermediateGenericable } from "../IntermediateGenericable";
-import { IntermediateInferableReturnType } from "../IntermediateInferableReturnType";
+import { IntermediateReturnsType } from "../IntermediateReturnsType";
 
-export interface IntermediateFunction
-    extends IntermediateItem<IntermediateKind.IntermediateFunction>,
-        IntermediateCallableDeclaration,
-        IntermediateDocumentedItem,
-        IntermediateDeclarableItem,
-        IntermediateExportableItem,
-        IntermediateGenericable,
-        IntermediateInferableReturnType
+export type IntermediateFunction
+    = IntermediateItem<IntermediateKind.IntermediateFunction>
+    & Omit<IntermediateCallableDeclaration, "returnType">
+    & IntermediateDocumentedItem
+    & IntermediateDeclarableItem
+    & IntermediateExportableItem
+    & IntermediateGenericable
+    & IntermediateReturnsType
+    &
 {
     kind: IntermediateKind.IntermediateFunction;
     name: Maybe<string>;
     hasBody: boolean;
-
 }
