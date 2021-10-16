@@ -32,5 +32,16 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateTypeofTypeReference";
-export * from "./isIntermediateTypeofTypeReference";
+import { IntermediateTypeofTypeReference } from ".";
+import { IntermediateItem, IntermediateKind } from "..";
+
+export function isIntermediateTypeofTypeReference(
+    input: IntermediateItem<any>
+): input is IntermediateTypeofTypeReference
+{
+    if (input.kind === IntermediateKind.IntermediateTypeofTypeReference) {
+        return true;
+    }
+
+    return false;
+}
