@@ -59,7 +59,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     typeRef: undefined,
                     inferredType: {
-                        kind: IntermediateKind.IntermediateLiteralType,
+                        kind: IntermediateKind.IntermediateStringLiteralType,
                         typeName: "Hello World",
                     },
                 },

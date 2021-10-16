@@ -60,7 +60,7 @@ const expectedResult: IntermediateSourceFile = {
                         typeAssertion: undefined,
                     },
                     inferredType: {
-                        kind: IntermediateKind.IntermediateLiteralType,
+                        kind: IntermediateKind.IntermediateNumericLiteralType,
                         typeName: "9",
                     },
                 },

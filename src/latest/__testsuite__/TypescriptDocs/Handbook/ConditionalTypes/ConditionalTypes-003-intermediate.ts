@@ -81,8 +81,8 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "T",
                     },
                     indexRef: {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '"message"',
+                        kind: IntermediateKind.IntermediateStringLiteralType,
+                        typeName: "message",
                     },
                 },
                 falseTypeRef: {

@@ -77,16 +77,16 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateUnionType,
                 typeRefs: [
                     {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '-1',
+                        kind: IntermediateKind.IntermediateNumericLiteralType,
+                        typeName: "-1",
                     },
                     {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '0',
+                        kind: IntermediateKind.IntermediateNumericLiteralType,
+                        typeName: "0",
                     },
                     {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '1',
+                        kind: IntermediateKind.IntermediateNumericLiteralType,
+                        typeName: "1",
                     },
                 ],
             },

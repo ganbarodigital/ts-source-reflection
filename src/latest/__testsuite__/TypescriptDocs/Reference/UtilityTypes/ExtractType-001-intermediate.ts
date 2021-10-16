@@ -54,16 +54,16 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
                             {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"a"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "a",
                             },
                             {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"b"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "b",
                             },
                             {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"c"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "c",
                             },
                         ],
                     },
@@ -71,12 +71,12 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
                             {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"a"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "a",
                             },
                             {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"f"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "f",
                             },
                         ],
                     },

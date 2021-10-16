@@ -93,18 +93,18 @@ const expectedResult: IntermediateSourceFile = {
                                     isOptional: false,
                                     isReadonly: false,
                                     typeRef: {
-                                        kind: IntermediateKind.IntermediateLiteralType,
+                                        kind: IntermediateKind.IntermediateBooleanLiteralType,
                                         typeName: "true",
                                     },
                                 },
                             ],
                         },
                         trueTypeRef: {
-                            kind: IntermediateKind.IntermediateLiteralType,
+                            kind: IntermediateKind.IntermediateBooleanLiteralType,
                             typeName: "true",
                         },
                         falseTypeRef: {
-                            kind: IntermediateKind.IntermediateLiteralType,
+                            kind: IntermediateKind.IntermediateBooleanLiteralType,
                             typeName: "false",
                         },
                     },
@@ -135,8 +135,8 @@ const expectedResult: IntermediateSourceFile = {
                                     isOptional: false,
                                     isReadonly: false,
                                     typeRef: {
-                                        kind: IntermediateKind.IntermediateLiteralType,
-                                        typeName: '"incrementing"',
+                                        kind: IntermediateKind.IntermediateStringLiteralType,
+                                        typeName: "incrementing",
                                     },
                                 },
                             ],
@@ -166,7 +166,7 @@ const expectedResult: IntermediateSourceFile = {
                                     isOptional: false,
                                     isReadonly: false,
                                     typeRef: {
-                                        kind: IntermediateKind.IntermediateLiteralType,
+                                        kind: IntermediateKind.IntermediateBooleanLiteralType,
                                         typeName: "true",
                                     },
                                 }

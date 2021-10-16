@@ -141,7 +141,7 @@ const expectedResult: IntermediateSourceFile = {
                                 isReadonly: true,
                                 name: "Up",
                                 typeRef: {
-                                    kind: IntermediateKind.IntermediateLiteralType,
+                                    kind: IntermediateKind.IntermediateNumericLiteralType,
                                     typeName: "0",
                                 },
                             },
@@ -151,7 +151,7 @@ const expectedResult: IntermediateSourceFile = {
                                 isReadonly: true,
                                 name: "Down",
                                 typeRef: {
-                                    kind: IntermediateKind.IntermediateLiteralType,
+                                    kind: IntermediateKind.IntermediateNumericLiteralType,
                                     typeName: "1"
                                 },
                             },
@@ -161,7 +161,7 @@ const expectedResult: IntermediateSourceFile = {
                                 isReadonly: true,
                                 name: "Left",
                                 typeRef: {
-                                    kind: IntermediateKind.IntermediateLiteralType,
+                                    kind: IntermediateKind.IntermediateNumericLiteralType,
                                     typeName: "2",
                                 },
                             },
@@ -171,7 +171,7 @@ const expectedResult: IntermediateSourceFile = {
                                 isReadonly: true,
                                 name: "Right",
                                 typeRef: {
-                                    kind: IntermediateKind.IntermediateLiteralType,
+                                    kind: IntermediateKind.IntermediateNumericLiteralType,
                                     typeName: "3",
                                 },
                             },

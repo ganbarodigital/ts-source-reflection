@@ -82,8 +82,8 @@ const expectedResult: IntermediateSourceFile = {
                                 typeName: 'Options',
                             },
                             {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"auto"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "auto",
                             },
                         ],
                     },

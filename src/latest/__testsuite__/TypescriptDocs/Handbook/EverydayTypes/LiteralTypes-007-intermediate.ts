@@ -91,7 +91,7 @@ const expectedResult: IntermediateSourceFile = {
                                 isReadonly: true,
                                 name: "url",
                                 typeRef: {
-                                    kind: IntermediateKind.IntermediateLiteralType,
+                                    kind: IntermediateKind.IntermediateStringLiteralType,
                                     typeName: "https://example.com",
                                 },
                             },
@@ -101,7 +101,7 @@ const expectedResult: IntermediateSourceFile = {
                                 isReadonly: true,
                                 name: "method",
                                 typeRef: {
-                                    kind: IntermediateKind.IntermediateLiteralType,
+                                    kind: IntermediateKind.IntermediateStringLiteralType,
                                     typeName: "GET",
                                 },
                             },

@@ -110,12 +110,12 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
                             {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"completed"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "completed",
                             },
                             {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"createdAt"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "createdAt",
                             },
                         ],
                     },

@@ -58,12 +58,12 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
                             {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"circle"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "circle",
                             },
                             {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"square"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "square",
                             },
                         ],
                     },

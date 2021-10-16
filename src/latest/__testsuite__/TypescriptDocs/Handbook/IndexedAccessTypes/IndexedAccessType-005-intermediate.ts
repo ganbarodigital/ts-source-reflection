@@ -211,8 +211,8 @@ const expectedResult: IntermediateSourceFile = {
                     }
                 },
                 indexRef: {
-                    kind: IntermediateKind.IntermediateLiteralType,
-                    typeName: '"age"',
+                    kind: IntermediateKind.IntermediateStringLiteralType,
+                    typeName: "age",
                 },
             },
         },
@@ -230,8 +230,8 @@ const expectedResult: IntermediateSourceFile = {
                     typeName: "Person",
                 },
                 indexRef: {
-                    kind: IntermediateKind.IntermediateLiteralType,
-                    typeName: '"age"',
+                    kind: IntermediateKind.IntermediateStringLiteralType,
+                    typeName: "age",
                 },
             },
         },

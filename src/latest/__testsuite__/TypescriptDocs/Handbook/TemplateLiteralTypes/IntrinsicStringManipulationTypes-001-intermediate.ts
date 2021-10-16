@@ -47,8 +47,8 @@ const expectedResult: IntermediateSourceFile = {
             name: "Greeting",
             typeParameters: [],
             typeRef: {
-                kind: IntermediateKind.IntermediateLiteralType,
-                typeName: '"Hello, world"',
+                kind: IntermediateKind.IntermediateStringLiteralType,
+                typeName: "Hello, world",
             },
         },
         {
@@ -119,8 +119,8 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "ASCIICacheKey",
                 typeArguments: [
                     {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '"my_app"',
+                        kind: IntermediateKind.IntermediateStringLiteralType,
+                        typeName: "my_app",
                     },
                 ],
             },

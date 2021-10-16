@@ -68,16 +68,16 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
                             {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"left"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "left",
                             },
                             {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"right"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "right",
                             },
                             {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"center"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "center",
                             },
                         ],
                     },

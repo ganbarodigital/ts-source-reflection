@@ -58,8 +58,8 @@ const expectedResult: IntermediateSourceFile = {
                         typeAssertion: undefined,
                     },
                     typeRef: {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '"hello"',
+                        kind: IntermediateKind.IntermediateStringLiteralType,
+                        typeName: "hello",
                     },
                 },
             ],

@@ -50,12 +50,12 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateUnionType,
                 typeRefs: [
                     {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '"welcome_email"',
+                        kind: IntermediateKind.IntermediateStringLiteralType,
+                        typeName: "welcome_email",
                     },
                     {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '"email_heading"',
+                        kind: IntermediateKind.IntermediateStringLiteralType,
+                        typeName: "email_heading",
                     },
                 ],
             },
@@ -71,12 +71,12 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateUnionType,
                 typeRefs: [
                     {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '"footer_title"',
+                        kind: IntermediateKind.IntermediateStringLiteralType,
+                        typeName: "footer_title",
                     },
                     {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '"footer_sendoff"',
+                        kind: IntermediateKind.IntermediateStringLiteralType,
+                        typeName: "footer_sendoff",
                     },
                 ],
             },
@@ -123,16 +123,16 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateUnionType,
                 typeRefs: [
                     {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '"en"',
+                        kind: IntermediateKind.IntermediateStringLiteralType,
+                        typeName: "en",
                     },
                     {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '"ja"',
+                        kind: IntermediateKind.IntermediateStringLiteralType,
+                        typeName: "ja",
                     },
                     {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '"pt"',
+                        kind: IntermediateKind.IntermediateStringLiteralType,
+                        typeName: "pt",
                     },
                 ],
             },

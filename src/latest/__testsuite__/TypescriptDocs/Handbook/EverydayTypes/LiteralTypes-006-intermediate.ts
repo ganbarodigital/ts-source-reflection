@@ -71,8 +71,8 @@ const expectedResult: IntermediateSourceFile = {
                                     kind: IntermediateKind.IntermediateStringLiteral,
                                     value: "GET",
                                     asType: {
-                                        kind: IntermediateKind.IntermediateLiteralType,
-                                        typeName: '"GET"',
+                                        kind: IntermediateKind.IntermediateStringLiteralType,
+                                        typeName: "GET",
                                     },
                                     typeAssertion: undefined,
                                 },
@@ -101,7 +101,7 @@ const expectedResult: IntermediateSourceFile = {
                                 isReadonly: false,
                                 name: "method",
                                 typeRef: {
-                                    kind: IntermediateKind.IntermediateLiteralType,
+                                    kind: IntermediateKind.IntermediateStringLiteralType,
                                     typeName: "GET",
                                 },
                             },

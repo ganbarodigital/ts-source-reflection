@@ -98,8 +98,8 @@ const expectedResult: IntermediateSourceFile = {
                             isReadonly: false,
                             name: "tagName",
                             typeRef: {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"div"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "div",
                             },
                         },
                     ],
@@ -122,8 +122,8 @@ const expectedResult: IntermediateSourceFile = {
                             isReadonly: false,
                             name: "tagName",
                             typeRef: {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"span"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "span",
                             },
                         },
                     ],
@@ -182,8 +182,8 @@ const expectedResult: IntermediateSourceFile = {
                             isReadonly: false,
                             name: "tagName",
                             typeRef: {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"canvas"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "canvas",
                             },
                         },
                     ],

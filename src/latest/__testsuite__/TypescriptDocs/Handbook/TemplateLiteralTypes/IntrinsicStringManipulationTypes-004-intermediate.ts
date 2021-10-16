@@ -47,8 +47,8 @@ const expectedResult: IntermediateSourceFile = {
             name: "UppercaseGreeting",
             typeParameters: [],
             typeRef: {
-                kind: IntermediateKind.IntermediateLiteralType,
-                typeName: '"HELLO WORLD"',
+                kind: IntermediateKind.IntermediateStringLiteralType,
+                typeName: "HELLO WORLD",
             },
         },
         {

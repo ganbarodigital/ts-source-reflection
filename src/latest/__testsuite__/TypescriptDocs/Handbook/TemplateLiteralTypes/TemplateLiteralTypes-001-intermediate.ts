@@ -47,8 +47,8 @@ const expectedResult: IntermediateSourceFile = {
             name: "World",
             typeParameters: [],
             typeRef: {
-                kind: IntermediateKind.IntermediateLiteralType,
-                typeName: '"world"',
+                kind: IntermediateKind.IntermediateStringLiteralType,
+                typeName: "world",
             },
         },
         {

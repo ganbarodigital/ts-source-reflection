@@ -107,8 +107,8 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "Todo",
                     },
                     {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '"description"',
+                        kind: IntermediateKind.IntermediateStringLiteralType,
+                        typeName: "description",
                     },
                 ],
             },

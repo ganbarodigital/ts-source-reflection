@@ -32,12 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { LiteralTypeNode } from "typescript";
+import { isNumericLiteral, isPrefixUnaryExpression, isStringLiteral, LiteralTypeNode } from "typescript";
+import { AST } from "../AST";
 import { Compiler } from "../Compiler";
 import {
+    AnyIntermediateLiteralType,
     IntermediateBuiltInTypeReference,
     IntermediateKind,
-    IntermediateLiteralType,
     IntermediateUndiscoverableType
 } from "../IntermediateTypes";
 import { isBuiltInType } from "./isBuiltinType";
@@ -46,7 +47,7 @@ import { processBuiltInType } from "./processBuiltInType";
 export function processLiteralTypeNode(
     compiler: Compiler,
     input: LiteralTypeNode
-): IntermediateLiteralType | IntermediateBuiltInTypeReference | IntermediateUndiscoverableType
+): AnyIntermediateLiteralType | IntermediateBuiltInTypeReference | IntermediateUndiscoverableType
 {
     // special case
     //
@@ -66,6 +67,44 @@ export function processLiteralTypeNode(
         console.log(input.literal);
         return {
             kind: IntermediateKind.IntermediateUndiscoverableType,
+        }
+    }
+
+    // alright, what kind of literal are we dealing with?
+    const literal = input.literal;
+
+    // special case - surprisingly, the compiler represents negative
+    // numbers as PrefixUnaryExpressions ?!?
+    if (isPrefixUnaryExpression(literal)) {
+        return {
+            kind: IntermediateKind.IntermediateNumericLiteralType,
+            typeName,
+        }
+    }
+
+    if (isStringLiteral(literal)) {
+        return {
+            kind: IntermediateKind.IntermediateStringLiteralType,
+            typeName: literal.text,
+        }
+    }
+    if (isNumericLiteral(literal)) {
+        return {
+            kind: IntermediateKind.IntermediateNumericLiteralType,
+            typeName: literal.text,
+        };
+    }
+    if (AST.isTrueKeyword(literal)) {
+        return {
+            kind: IntermediateKind.IntermediateBooleanLiteralType,
+            typeName: "true",
+        }
+    }
+
+    if (AST.isFalseKeyword(literal)) {
+        return {
+            kind: IntermediateKind.IntermediateBooleanLiteralType,
+            typeName: "false",
         }
     }
 

@@ -77,8 +77,8 @@ const expectedResult: IntermediateSourceFile = {
                                 typeName: "Property",
                             },
                             {
-                                kind: IntermediateKind.IntermediateLiteralType,
-                                typeName: '"kind"',
+                                kind: IntermediateKind.IntermediateStringLiteralType,
+                                typeName: "kind",
                             },
                         ],
                     },
@@ -114,8 +114,8 @@ const expectedResult: IntermediateSourceFile = {
                     isOptional: false,
                     isReadonly: false,
                     typeRef: {
-                        kind: IntermediateKind.IntermediateLiteralType,
-                        typeName: '"circle"',
+                        kind: IntermediateKind.IntermediateStringLiteralType,
+                        typeName: "circle",
                     },
                 },
                 {
