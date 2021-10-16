@@ -44,17 +44,20 @@ import { IntermediateAbstractItem } from "../IntermediateAbstractItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateGenericable } from "../IntermediateGenericable";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
+import { IntermediateReturnsType } from "../IntermediateReturnsType";
 
-export interface IntermediateMethodDeclaration
-    extends IntermediateItem<IntermediateKind.IntermediateMethodDeclaration>,
-        IntermediateAbstractItem,
-        IntermediateCallableDeclaration,
-        IntermediateDecoratableItem,
-        IntermediateDocumentedItem,
-        IntermediateGenericable,
-        IntermediateIdentifiedItem,
-        IntermediateRestrictableScopeItem,
-        IntermediateStaticItem
+export type IntermediateMethodDeclaration
+    = IntermediateItem<IntermediateKind.IntermediateMethodDeclaration>
+    & IntermediateAbstractItem
+    & IntermediateCallableDeclaration
+    & IntermediateDecoratableItem
+    & IntermediateDocumentedItem
+    & IntermediateGenericable
+    & IntermediateIdentifiedItem
+    & IntermediateRestrictableScopeItem
+    & IntermediateReturnsType
+    & IntermediateStaticItem
+    &
 {
     hasBody: boolean;
 }

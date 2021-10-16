@@ -51,6 +51,40 @@ export function processMethodDeclaration(
     input: MethodDeclaration
 ): IntermediateMethodDeclaration
 {
+    const returnType = processReturnTypeFromNode(compiler, input);
+    if (returnType) {
+        return {
+            kind: IntermediateKind.IntermediateMethodDeclaration,
+            docBlock: processDocBlock(compiler, input),
+            decorators: processDecorators(compiler, input),
+            isStatic: AST.hasStaticModifier(input),
+            accessModifier: AST.getRestrictableScope(input),
+            isAbstract: AST.hasAbstractModifier(input.modifiers),
+            name: processPropertyName(compiler, input.name),
+            parameters: processFunctionParameters(compiler, input.parameters),
+            typeParameters: processTypeParametersFromNode(compiler, input),
+            returnType,
+            hasBody: AST.hasBody(input.body),
+        }
+    }
+
+    const inferredReturnType = AST.getInferredReturnType(compiler, input);
+    if (!inferredReturnType) {
+        return {
+            kind: IntermediateKind.IntermediateMethodDeclaration,
+            docBlock: processDocBlock(compiler, input),
+            decorators: processDecorators(compiler, input),
+            isStatic: AST.hasStaticModifier(input),
+            accessModifier: AST.getRestrictableScope(input),
+            isAbstract: AST.hasAbstractModifier(input.modifiers),
+            name: processPropertyName(compiler, input.name),
+            parameters: processFunctionParameters(compiler, input.parameters),
+            typeParameters: processTypeParametersFromNode(compiler, input),
+            returnType,
+            hasBody: AST.hasBody(input.body),
+        }
+    }
+
     return {
         kind: IntermediateKind.IntermediateMethodDeclaration,
         docBlock: processDocBlock(compiler, input),
@@ -61,7 +95,8 @@ export function processMethodDeclaration(
         name: processPropertyName(compiler, input.name),
         parameters: processFunctionParameters(compiler, input.parameters),
         typeParameters: processTypeParametersFromNode(compiler, input),
-        returnType: processReturnTypeFromNode(compiler, input),
+        returnType,
+        inferredReturnType,
         hasBody: AST.hasBody(input.body),
     }
 }

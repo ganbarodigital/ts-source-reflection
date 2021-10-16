@@ -188,6 +188,10 @@ const expectedResult: IntermediateSourceFile = {
                     typeParameters: [],
                     parameters: [],
                     returnType: undefined,
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
+                    },
                     hasBody: true,
                 },
             ],
