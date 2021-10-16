@@ -42,6 +42,7 @@ import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateExportableItem } from "../IntermediateExportableItem";
 import { IntermediateGenericable } from "../IntermediateGenericable";
+import { IntermediateInferableReturnType } from "../IntermediateInferableReturnType";
 
 export interface IntermediateFunction
     extends IntermediateItem<IntermediateKind.IntermediateFunction>,
@@ -49,7 +50,8 @@ export interface IntermediateFunction
         IntermediateDocumentedItem,
         IntermediateDeclarableItem,
         IntermediateExportableItem,
-        IntermediateGenericable
+        IntermediateGenericable,
+        IntermediateInferableReturnType
 {
     kind: IntermediateKind.IntermediateFunction;
     name: Maybe<string>;
