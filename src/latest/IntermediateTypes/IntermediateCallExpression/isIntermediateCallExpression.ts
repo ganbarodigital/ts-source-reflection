@@ -32,5 +32,16 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateCallExpression";
-export * from "./isIntermediateCallExpression";
+import { IntermediateCallExpression } from ".";
+import { IntermediateItem, IntermediateKind } from "..";
+
+export function isIntermediateCallExpression(
+    input: IntermediateItem<any>
+): input is IntermediateCallExpression
+{
+    if (input.kind === IntermediateKind.IntermediateCallExpression) {
+        return true;
+    }
+
+    return false;
+}
