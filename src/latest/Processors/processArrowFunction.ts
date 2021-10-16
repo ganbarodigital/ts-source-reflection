@@ -55,12 +55,34 @@ export function processArrowFunction(
         parameters.push(processParameterDeclaration(compiler, param));
     }
 
-    // all done!
+    const returnType = processReturnTypeFromNode(compiler, input);
+    if (returnType) {
+        return {
+            kind: IntermediateKind.IntermediateArrowFunction,
+            typeParameters: processTypeParametersFromNode(compiler, input),
+            parameters,
+            returnType,
+            hasBody: AST.hasBody(input.body),
+        }
+    }
+
+    const inferredReturnType = AST.getInferredReturnType(compiler, input);
+    if (!inferredReturnType) {
+        return {
+            kind: IntermediateKind.IntermediateArrowFunction,
+            typeParameters: processTypeParametersFromNode(compiler, input),
+            parameters,
+            returnType,
+            hasBody: AST.hasBody(input.body),
+        }
+    }
+
     return {
         kind: IntermediateKind.IntermediateArrowFunction,
         typeParameters: processTypeParametersFromNode(compiler, input),
         parameters,
-        returnType: processReturnTypeFromNode(compiler, input),
+        returnType,
+        inferredReturnType,
         hasBody: AST.hasBody(input.body),
     }
 }

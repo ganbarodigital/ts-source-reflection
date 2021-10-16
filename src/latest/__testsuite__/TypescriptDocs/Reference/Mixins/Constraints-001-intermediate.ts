@@ -70,6 +70,10 @@ const expectedResult: IntermediateSourceFile = {
                             },
                         ],
                         returnType: undefined,
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateTypeofTypeReference,
+                            entityName: "Pausable",
+                        },
                         hasBody: true,
                     },
                     inferredType: {

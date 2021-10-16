@@ -37,10 +37,8 @@ import { IntermediateGenericable } from "../IntermediateGenericable";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 
-export interface IntermediateArrowFunction
-    extends IntermediateItem<IntermediateKind.IntermediateArrowFunction>,
-        IntermediateCallableDeclaration,
-        IntermediateGenericable
-{
-    hasBody: boolean;
-}
+export type IntermediateArrowFunction
+    = IntermediateItem<IntermediateKind.IntermediateArrowFunction>
+    & IntermediateCallableDeclaration
+    & IntermediateGenericable
+    ;

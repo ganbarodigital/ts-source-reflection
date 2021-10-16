@@ -32,12 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import { IntermediateCallableParameterDeclaration } from "..";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { IntermediateCallableParameterDeclaration } from "../IntermediateCallableParameterDeclaration";
+import { IntermediateReturnsType } from "../IntermediateReturnsType";
 
-export interface IntermediateCallableDeclaration
+export type IntermediateCallableDeclaration =
 {
     parameters: IntermediateCallableParameterDeclaration[];
-    returnType: Maybe<IntermediateTypeReference>;
+    hasBody: boolean;
 }
+    & IntermediateReturnsType
+    ;

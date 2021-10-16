@@ -44,7 +44,6 @@ import { IntermediateAbstractItem } from "../IntermediateAbstractItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateGenericable } from "../IntermediateGenericable";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
-import { IntermediateReturnsType } from "../IntermediateReturnsType";
 
 export type IntermediateMethodDeclaration
     = IntermediateItem<IntermediateKind.IntermediateMethodDeclaration>
@@ -55,7 +54,6 @@ export type IntermediateMethodDeclaration
     & IntermediateGenericable
     & IntermediateIdentifiedItem
     & IntermediateRestrictableScopeItem
-    & IntermediateReturnsType
     & IntermediateStaticItem
     &
 {

@@ -42,19 +42,16 @@ import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateExportableItem } from "../IntermediateExportableItem";
 import { IntermediateGenericable } from "../IntermediateGenericable";
-import { IntermediateReturnsType } from "../IntermediateReturnsType";
 
 export type IntermediateFunction
     = IntermediateItem<IntermediateKind.IntermediateFunction>
-    & Omit<IntermediateCallableDeclaration, "returnType">
+    & IntermediateCallableDeclaration
     & IntermediateDocumentedItem
     & IntermediateDeclarableItem
     & IntermediateExportableItem
     & IntermediateGenericable
-    & IntermediateReturnsType
     &
 {
     kind: IntermediateKind.IntermediateFunction;
     name: Maybe<string>;
-    hasBody: boolean;
 }
