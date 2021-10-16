@@ -63,6 +63,46 @@ const expectedResult: IntermediateSourceFile = {
                 },
             ],
             returnType: undefined,
+            inferredReturnType: {
+                kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                typeParameters: [],
+                parameters: [
+                    {
+                        kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
+                        isOptional: false,
+                        isReadonly: false,
+                        name: "target",
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "any",
+                        },
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
+                        isOptional: false,
+                        isReadonly: false,
+                        name: "propertyKey",
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "string",
+                        },
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
+                        isOptional: false,
+                        isReadonly: false,
+                        name: "descriptor",
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "PropertyDescriptor",
+                        },
+                    },
+                ],
+                returnType: {
+                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                    typeName: "void",
+                },
+            },
             hasBody: true,
         },
         {

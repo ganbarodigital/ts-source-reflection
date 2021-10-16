@@ -72,6 +72,10 @@ const expectedResult: IntermediateSourceFile = {
                 },
             ],
             returnType: undefined,
+            inferredReturnType: {
+                kind: IntermediateKind.IntermediateFixedTypeReference,
+                typeName: "Type",
+            },
             hasBody: true,
         },
         {
@@ -110,6 +114,10 @@ const expectedResult: IntermediateSourceFile = {
                 },
             ],
             returnType: undefined,
+            inferredReturnType: {
+                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                typeName: "any",
+            },
             hasBody: true,
         },
         {

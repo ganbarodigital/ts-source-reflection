@@ -270,7 +270,6 @@ const expectedResult: IntermediateSourceFile = {
                 ],
             },
         },
-
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
@@ -338,7 +337,55 @@ const expectedResult: IntermediateSourceFile = {
                 },
             ],
             returnType: undefined,
-            hasBody: true,
+            inferredReturnType: {
+                kind: IntermediateKind.IntermediateIntersectionType,
+                typeRefs: [
+                    {
+                        kind: IntermediateKind.IntermediateAnonymousClassType,
+                        members: [
+                            {
+                                kind: IntermediateKind.IntermediateConstructorSignature,
+                                parameters: [
+                                    {
+                                        kind: IntermediateKind.IntermediateRestCallableParameterSignature,
+                                        parameter: {
+                                            kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
+                                            isOptional: false,
+                                            isReadonly: false,
+                                            name: "args",
+                                            typeRef: {
+                                                kind: IntermediateKind.IntermediateArrayTypeReference,
+                                                typeRef: {
+                                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                    typeName: "any",
+                                                },
+                                            },
+                                        },
+                                    },
+                                ],
+                                returnType: {
+                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                    typeName: "Jumpable",
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: "prototype",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateUndiscoverableType,
+                                },
+                            },
+                        ],
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "TBase",
+                    },
+                ],
+            },
+    hasBody: true,
         },
     ],
     referencedFiles: [],

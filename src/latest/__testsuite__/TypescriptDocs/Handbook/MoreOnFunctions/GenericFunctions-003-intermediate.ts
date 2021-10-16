@@ -95,6 +95,10 @@ const expectedResult: IntermediateSourceFile =  {
                 },
             ],
             returnType: undefined,
+            inferredReturnType: {
+                kind: IntermediateKind.IntermediateFixedTypeReference,
+                typeName: "Type",
+            },
             hasBody: true,
         },
     ],

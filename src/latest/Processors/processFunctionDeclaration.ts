@@ -53,6 +53,43 @@ export function processFunctionDeclaration (
 
     // at this point, we *know* that we're looking at a function :)
 
+    const returnType = processReturnTypeFromNode(compiler, funcDec);
+    if (returnType) {
+        return {
+            kind: IntermediateKind.IntermediateFunction,
+            docBlock: processDocBlock(compiler, input),
+            isDeclared: AST.hasDeclaredModifier(input.modifiers),
+            isExported: AST.hasExportModifier(input.modifiers),
+            isDefaultExport: AST.hasDefaultModifier(input.modifiers),
+            typeParameters: processTypeParametersFromNode(compiler, funcDec),
+            name: funcDec.name?.text,
+            parameters: processFunctionParameters(compiler, funcDec.parameters),
+            returnType,
+            hasBody: AST.hasBody(funcDec.body),
+        }
+    }
+
+    // do we have anything useful?
+    if (funcDec.name) {
+        const inferredReturnType = AST.getInferredReturnType(compiler, funcDec);
+        if (inferredReturnType) {
+            return {
+                kind: IntermediateKind.IntermediateFunction,
+                docBlock: processDocBlock(compiler, input),
+                isDeclared: AST.hasDeclaredModifier(input.modifiers),
+                isExported: AST.hasExportModifier(input.modifiers),
+                isDefaultExport: AST.hasDefaultModifier(input.modifiers),
+                typeParameters: processTypeParametersFromNode(compiler, funcDec),
+                name: funcDec.name?.text,
+                parameters: processFunctionParameters(compiler, funcDec.parameters),
+                returnType,
+                inferredReturnType,
+                hasBody: AST.hasBody(funcDec.body),
+            }
+        }
+    }
+
+    // if we get here, we have no inferred type information
     return {
         kind: IntermediateKind.IntermediateFunction,
         docBlock: processDocBlock(compiler, input),
@@ -62,7 +99,7 @@ export function processFunctionDeclaration (
         typeParameters: processTypeParametersFromNode(compiler, funcDec),
         name: funcDec.name?.text,
         parameters: processFunctionParameters(compiler, funcDec.parameters),
-        returnType: processReturnTypeFromNode(compiler, funcDec),
+        returnType,
         hasBody: AST.hasBody(funcDec.body),
     }
 }

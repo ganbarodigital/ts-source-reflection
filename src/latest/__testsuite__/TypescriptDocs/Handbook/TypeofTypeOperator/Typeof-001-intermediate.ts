@@ -49,6 +49,31 @@ const expectedResult: IntermediateSourceFile = {
             typeParameters: [],
             parameters: [],
             returnType: undefined,
+            inferredReturnType: {
+                kind: IntermediateKind.IntermediateAnonymousClassType,
+                members: [
+                    {
+                        kind: IntermediateKind.IntermediateTypedPropertySignature,
+                        isOptional: false,
+                        isReadonly: false,
+                        name: "x",
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
+                        },
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateTypedPropertySignature,
+                        isOptional: false,
+                        isReadonly: false,
+                        name: "y",
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
+                        },
+                    },
+                ],
+            },
             hasBody: true,
         },
         {
