@@ -100,6 +100,10 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     ],
                     returnType: undefined,
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Animal",
+                    },
                 },
             ],
         },
@@ -151,6 +155,10 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     ],
                     returnType: undefined,
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Size",
+                    },
                 },
             ],
         },

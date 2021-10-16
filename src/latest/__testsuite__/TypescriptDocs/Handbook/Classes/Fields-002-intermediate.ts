@@ -73,6 +73,10 @@ const expectedResult: IntermediateSourceFile = {
                     accessModifier: undefined,
                     parameters: [],
                     returnType: undefined,
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "GoodGreeter",
+                    },
                 },
             ],
         },

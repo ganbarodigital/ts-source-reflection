@@ -47,11 +47,34 @@ export function processConstructorDeclaration(
     compiler: Compiler,
     input: ConstructorDeclaration
 ): IntermediateConstructorDeclaration {
+    const returnType = processReturnTypeFromNode(compiler, input);
+    if (returnType) {
+        return {
+            kind: IntermediateKind.IntermediateConstructorDeclaration,
+            docBlock: processDocBlock(compiler, input),
+            accessModifier: AST.getRestrictableScope(input),
+            parameters: processConstructorParameters(compiler, input.parameters),
+            returnType,
+        }
+    }
+
+    const inferredReturnType = AST.getInferredReturnType(compiler, input);
+    if (!inferredReturnType) {
+        return {
+            kind: IntermediateKind.IntermediateConstructorDeclaration,
+            docBlock: processDocBlock(compiler, input),
+            accessModifier: AST.getRestrictableScope(input),
+            parameters: processConstructorParameters(compiler, input.parameters),
+            returnType,
+        }
+    }
+
     return {
         kind: IntermediateKind.IntermediateConstructorDeclaration,
         docBlock: processDocBlock(compiler, input),
         accessModifier: AST.getRestrictableScope(input),
         parameters: processConstructorParameters(compiler, input.parameters),
-        returnType: processReturnTypeFromNode(compiler, input),
+        returnType,
+        inferredReturnType,
     }
 }

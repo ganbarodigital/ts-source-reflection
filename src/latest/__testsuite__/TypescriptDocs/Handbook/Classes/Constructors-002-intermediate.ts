@@ -85,6 +85,10 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     ],
                     returnType: undefined,
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Point",
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateConstructorDeclaration,
@@ -106,6 +110,10 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     ],
                     returnType: undefined,
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Point",
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateConstructorDeclaration,
@@ -140,6 +148,10 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     ],
                     returnType: undefined,
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Point",
+                    },
                 },
             ],
         },

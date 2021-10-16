@@ -154,7 +154,11 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     ],
                     returnType: undefined,
-                }
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "FileSystemObject",
+                    },
+                },
             ],
         },
         {
@@ -210,7 +214,11 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     ],
                     returnType: undefined,
-                }
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "FileRep",
+                    },
+                },
             ],
         },
         {

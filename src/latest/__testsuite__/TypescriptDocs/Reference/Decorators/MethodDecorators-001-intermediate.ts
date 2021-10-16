@@ -152,6 +152,10 @@ const expectedResult: IntermediateSourceFile = {
                         }
                     ],
                     returnType: undefined,
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Greeter",
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
