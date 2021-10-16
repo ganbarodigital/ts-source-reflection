@@ -35,6 +35,7 @@
 export * from "./AnyIntermediateDestructuredIdentifierDeclaration";
 export * from "./AnyIntermediateDestructuredIdentifierSignature";
 export * from "./AnyIntermediateIdentifierDeclaration";
+export * from "./AnyIntermediateLiteralType";
 export * from "./AnyIntermediatePropertyAssignment";
 export * from "./IntermediateAbstractItem";
 export * from "./IntermediateAliasedExportItem";
@@ -160,6 +161,7 @@ export * from "./IntermediateNamespaceExport";
 export * from "./IntermediateNewExpression";
 export * from "./IntermediateNullLiteral";
 export * from "./IntermediateNumericLiteral";
+export * from "./IntermediateNumericLiteralType";
 export * from "./IntermediateObjectLiteral";
 export * from "./IntermediateOmittedExpression";
 export * from "./IntermediateOptionalItem";

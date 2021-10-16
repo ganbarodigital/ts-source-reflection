@@ -127,6 +127,7 @@ export enum IntermediateKind {
     IntermediateNewExpression,
     IntermediateNullLiteral,
     IntermediateNumericLiteral,
+    IntermediateNumericLiteralType,
     IntermediateObjectLiteral,
     IntermediateOmittedExpression,
     IntermediateParenthesizedExpression,
