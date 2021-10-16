@@ -155,6 +155,7 @@ export enum IntermediateKind {
     IntermediateSpreadOperator,
     IntermediateSpreadPropertyAssignment,
     IntermediateStringLiteral,
+    IntermediateSymbolType,
     IntermediateTemplateExpression,
     IntermediateTemplateExpressionSpan,
     IntermediateTemplateLiteralSpan,

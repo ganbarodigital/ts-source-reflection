@@ -198,6 +198,7 @@ export * from "./IntermediateStatementProcessors";
 export * from "./IntermediateStaticItem";
 export * from "./IntermediateStringLiteral";
 export * from "./IntermediateSupportedStatements";
+export * from "./IntermediateSymbolType";
 export * from "./IntermediateTemplateExpression";
 export * from "./IntermediateTemplateExpressionSpan";
 export * from "./IntermediateTemplateLiteralType";
