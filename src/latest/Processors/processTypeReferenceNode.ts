@@ -31,6 +31,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { mustBeString } from "@safelytyped/core-types";
 import { isQualifiedName, TypeReferenceNode } from "typescript";
 import { Compiler } from "../Compiler";
 
@@ -38,14 +39,27 @@ import { IntermediateKind, IntermediateTypeReference } from "../IntermediateType
 import { processQualifiedName } from "./processQualifiedName";
 import { processTypeNode } from "./processTypeNode";
 
-
 export function processTypeReferenceNode(
     compiler: Compiler,
     input: TypeReferenceNode
 ): IntermediateTypeReference
 {
-    // what type name are we looking at?
-    const typeName = input.typeName.getText();
+    // this is necessary to avoid runtime exceptions being thrown
+    // by Typescript
+    let typeName: string;
+    try {
+        typeName = mustBeString(
+            compiler.getTextForNode(input.typeName)
+        );
+    } catch (e) {
+        // if this happens, we've no idea what we are looking at
+        // and are currently out of options
+        // tslint:disable-next-line: no-console
+        // console.log(input);
+        return {
+            kind: IntermediateKind.IntermediateUndiscoverableType,
+        }
+    }
 
     // special case - found in the "as const" suffix
     // this tells the compiler to convert all the values to also be
@@ -65,7 +79,7 @@ export function processTypeReferenceNode(
 
         return {
             kind: IntermediateKind.IntermediateGenericTypeReference,
-            typeName: input.typeName.getText(),
+            typeName,
             typeArguments,
         }
     }
@@ -79,6 +93,6 @@ export function processTypeReferenceNode(
     // as our test suite grows!
     return {
         kind: IntermediateKind.IntermediateFixedTypeReference,
-        typeName: input.typeName.getText(),
+        typeName,
     }
 }

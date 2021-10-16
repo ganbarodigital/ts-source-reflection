@@ -59,6 +59,26 @@ const expectedResult: IntermediateSourceFile = {
                         returnType: undefined,
                         hasBody: true,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        typeParameters: [],
+                        parameters: [],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateAnonymousClassType,
+                            members: [
+                                {
+                                    kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                    isOptional: false,
+                                    isReadonly: false,
+                                    name: "name",
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "string",
+                                    },
+                                },
+                            ],
+                        },
+                    },
                 },
             ],
         },
@@ -81,6 +101,36 @@ const expectedResult: IntermediateSourceFile = {
                         parameters: [],
                         returnType: undefined,
                         hasBody: true,
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        typeParameters: [],
+                        parameters: [],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateAnonymousClassType,
+                            members: [
+                                {
+                                    kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                    isOptional: false,
+                                    isReadonly: false,
+                                    name: "name",
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "string",
+                                    },
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                    isOptional: false,
+                                    isReadonly: false,
+                                    name: "location",
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "string",
+                                    },
+                                },
+                            ],
+                        },
                     },
                 },
             ],

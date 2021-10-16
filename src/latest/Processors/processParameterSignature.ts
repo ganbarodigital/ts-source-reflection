@@ -76,6 +76,10 @@ export function processParameterSignature(
         };
     }
 
+    // before we go any further, we need to get the parameter name in a way
+    // that doesn't cause the Typescript library to throw runtime errors
+    const name = compiler.getTextForNode(paramDec.name);
+
     // special case - untyped parameter
     //
     // NOTE: untyped parameters cannot be `readonly`
@@ -83,7 +87,7 @@ export function processParameterSignature(
         // tslint:disable-next-line: no-angle-bracket-type-assertion
         return <IntermediateUntypedCallableParameterSignature>{
             kind: IntermediateKind.IntermediateUntypedCallableParameterSignature,
-            name: paramDec.name.getText(),
+            name,
             isOptional: processQuestionToken(compiler, paramDec.questionToken),
         };
     }
@@ -105,7 +109,7 @@ export function processParameterSignature(
     // general case - typed parameter
     return <IntermediateTypedCallableParameterSignature>{
         kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-        name: paramDec.name.getText(),
+        name,
         typeRef: processTypeNode(compiler, paramType),
         isOptional: processQuestionToken(compiler, paramDec.questionToken),
         isReadonly,

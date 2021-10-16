@@ -56,11 +56,27 @@ type NodeWithEscapedText = {
     escapedText: string;
 }
 
-function mustBeNodeWithEscapedText(
+function isNodeWithEscapedText(
     input: unknown
-): asserts input is NodeWithEscapedText
+): input is NodeWithEscapedText
 {
-    // do nothing
+    if ((input as NodeWithEscapedText).escapedText) {
+        return true;
+    }
+
+    return false;
+}
+
+type NodeWithText = {
+    text: string;
+}
+
+function isNodeWithText(input: object): input is NodeWithText {
+    if ((input as NodeWithText).text) {
+        return true;
+    }
+
+    return false;
 }
 
 /**
@@ -175,8 +191,19 @@ export class Compiler
             return input.getText();
         }
         catch (e) {
-            mustBeNodeWithEscapedText(input);
-            return input.escapedText ?? undefined;
+            // our first fallback - is there a text property that we can
+            // grab the contents of?
+            if (isNodeWithText(input)) {
+                return input.text;
+            }
+
+            // our final fallback - is there
+            if (isNodeWithEscapedText(input)) {
+                return input.escapedText;
+            }
+
+            // if we get here, we have run out of ideas
+            return undefined;
         }
     }
 }

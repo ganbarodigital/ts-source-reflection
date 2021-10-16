@@ -91,6 +91,10 @@ const expectedResult: IntermediateSourceFile = {
                         arguments: [],
                         asType: undefined,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "SomeType",
+                    },
                 },
             ],
         },
@@ -119,6 +123,10 @@ const expectedResult: IntermediateSourceFile = {
                         arguments: [],
                         typeAssertion: undefined,
                         asType: undefined,
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "void",
                     },
                 },
             ],

@@ -65,6 +65,10 @@ const expectedResult: IntermediateSourceFile = {
                         asType: undefined,
                         typeAssertion: undefined,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateSymbolType,
+                        identifierName: "getClassNameSymbol",
+                    },
                 },
             ],
         },
@@ -126,6 +130,10 @@ const expectedResult: IntermediateSourceFile = {
                         arguments: [],
                         asType: undefined,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "C",
+                    },
                 },
             ],
         },
@@ -163,6 +171,10 @@ const expectedResult: IntermediateSourceFile = {
                         arguments: [],
                         asType: undefined,
                         typeAssertion: undefined,
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
                     },
                 },
             ],

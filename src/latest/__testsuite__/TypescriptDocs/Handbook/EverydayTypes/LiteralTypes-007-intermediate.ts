@@ -82,6 +82,31 @@ const expectedResult: IntermediateSourceFile = {
                         typeAssertion: undefined,
                     },
                     typeRef: undefined,
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateAnonymousClassType,
+                        members: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: true,
+                                name: "url",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateLiteralType,
+                                    typeName: "https://example.com",
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: true,
+                                name: "method",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateLiteralType,
+                                    typeName: "GET",
+                                },
+                            },
+                        ],
+                    },
                 },
             ],
         },

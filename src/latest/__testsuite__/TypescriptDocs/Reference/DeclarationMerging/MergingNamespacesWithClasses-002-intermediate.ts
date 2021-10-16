@@ -93,6 +93,10 @@ const expectedResult: IntermediateSourceFile = {
                                 asType: undefined,
                                 typeAssertion: undefined,
                             },
+                            inferredType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "string",
+                            },
                         },
                     ],
                 },
@@ -114,6 +118,10 @@ const expectedResult: IntermediateSourceFile = {
                                 value: "Hello, ",
                                 asType: undefined,
                                 typeAssertion: undefined,
+                            },
+                            inferredType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "string",
                             },
                         },
                     ],

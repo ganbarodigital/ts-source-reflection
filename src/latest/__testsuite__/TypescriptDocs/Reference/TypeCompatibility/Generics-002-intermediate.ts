@@ -81,6 +81,33 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "T",
                         },
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        typeParameters: [
+                            {
+                                kind: IntermediateKind.IntermediateGenericType,
+                                name: "T",
+                                constraint: undefined,
+                                defaultType: undefined,
+                            },
+                        ],
+                        parameters: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: "x",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                    typeName: "T",
+                                },
+                            },
+                        ],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "T",
+                        },
+                    },
                 },
             ],
         },
@@ -119,6 +146,33 @@ const expectedResult: IntermediateSourceFile = {
                                     typeName: "U",
                                 },
                                 initializer: undefined,
+                            },
+                        ],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "U",
+                        },
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        typeParameters: [
+                            {
+                                kind: IntermediateKind.IntermediateGenericType,
+                                name: "U",
+                                constraint: undefined,
+                                defaultType: undefined,
+                            },
+                        ],
+                        parameters: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: "y",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                    typeName: "U",
+                                },
                             },
                         ],
                         returnType: {

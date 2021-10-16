@@ -78,6 +78,10 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         propName: "A",
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Enum",
+                    },
                 },
             ],
         },
@@ -109,10 +113,13 @@ const expectedResult: IntermediateSourceFile = {
                             typeAssertion: undefined,
                         },
                     },
-
-                }
-            ]
-        }
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
+                    },
+                },
+            ],
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],

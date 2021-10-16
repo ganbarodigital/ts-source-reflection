@@ -58,9 +58,13 @@ const expectedResult: IntermediateSourceFile = {
                         typeAssertion: undefined,
                     },
                     typeRef: undefined,
-                }
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
+                    },
+                },
             ],
-        }
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],

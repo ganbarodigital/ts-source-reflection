@@ -205,6 +205,10 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                         asType: undefined,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "BugReport",
+                    },
                 },
             ],
         },

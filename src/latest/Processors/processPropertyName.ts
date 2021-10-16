@@ -51,7 +51,7 @@ export function processPropertyName(
     // we may reverse this decision when we write the code for the
     // other layers
     if (isIdentifier(input)) {
-        return input.getText();
+        return input.text;
     }
 
     if (isStringLiteral(input)) {

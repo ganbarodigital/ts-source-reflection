@@ -89,6 +89,41 @@ const expectedResult: IntermediateSourceFile = {
                         asType: undefined,
                         typeAssertion: undefined,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateAnonymousClassType,
+                        members: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: "food",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "string",
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: "price",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "string",
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: "ambiance",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "string",
+                                },
+                            },
+                        ],
+                    },
                 },
             ],
         },
@@ -127,6 +162,41 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                         asType: undefined,
                         typeAssertion: undefined,
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateAnonymousClassType,
+                        members: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: "food",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "string",
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: "price",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "string",
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: "ambiance",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "string",
+                                },
+                            },
+                        ],
                     },
                 },
             ],

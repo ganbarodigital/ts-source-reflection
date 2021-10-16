@@ -71,10 +71,14 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                         asType: undefined,
                         typeAssertion: undefined,
-                    }
-                }
-            ]
-        }
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "any",
+                    },
+                },
+            ],
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],

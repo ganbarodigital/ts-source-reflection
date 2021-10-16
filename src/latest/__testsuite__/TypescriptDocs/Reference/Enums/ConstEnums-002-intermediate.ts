@@ -130,6 +130,13 @@ const expectedResult: IntermediateSourceFile = {
                         asType: undefined,
                         typeAssertion: undefined,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateArrayTypeReference,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "Direction",
+                        },
+                    },
                 },
             ]
         }

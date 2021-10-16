@@ -128,7 +128,17 @@ const expectedResult: IntermediateSourceFile = {
                         arguments: [],
                         asType: undefined,
                     },
-                }
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateGenericTypeReference,
+                        typeArguments: [
+                            {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "unknown",
+                            },
+                        ],
+                        typeName: "Box",
+                    },
+                },
             ],
         },
     ],

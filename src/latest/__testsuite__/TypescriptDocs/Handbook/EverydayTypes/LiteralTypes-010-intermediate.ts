@@ -69,6 +69,21 @@ const expectedResult: IntermediateSourceFile = {
                         typeAssertion: undefined,
                     },
                     typeRef: undefined,
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateAnonymousClassType,
+                        members: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: "counter",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                },
+                            },
+                        ],
+                    },
                 },
             ],
         }

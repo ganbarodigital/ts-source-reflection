@@ -65,6 +65,10 @@ const expectedResult: IntermediateSourceFile = {
                         asType: undefined,
                         typeAssertion: undefined,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateSymbolType,
+                        identifierName: "sym",
+                    },
                 },
             ],
         },
@@ -105,6 +109,29 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                         typeAssertion: undefined,
                         asType: undefined,
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateAnonymousClassType,
+                        members: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: {
+                                    kind: IntermediateKind.IntermediateComputedPropertyName,
+                                    name: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "sym",
+                                        asType: undefined,
+                                        typeAssertion: undefined,
+                                    },
+                                },
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "string",
+                                },
+                            },
+                        ],
                     },
                 },
             ],

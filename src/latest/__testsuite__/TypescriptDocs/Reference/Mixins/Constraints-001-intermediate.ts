@@ -72,6 +72,26 @@ const expectedResult: IntermediateSourceFile = {
                         returnType: undefined,
                         hasBody: true,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        typeParameters: [],
+                        parameters: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: "target",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateTypeofTypeReference,
+                                    entityName: "Player",
+                                },
+                            },
+                        ],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateTypeofTypeReference,
+                            entityName: "Pausable",
+                        },
+                    }
                 },
             ],
         },
@@ -196,6 +216,10 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "FreezablePlayer",
                         },
                         typeAssertion: undefined,
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "FreezablePlayer",
                     },
                 },
             ],

@@ -223,6 +223,53 @@ const expectedResult: IntermediateSourceFile = {
                         asType: undefined,
                         typeAssertion: undefined,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateIntersectionType,
+                        typeRefs: [
+                            {
+                                kind: IntermediateKind.IntermediateAnonymousClassType,
+                                members: [
+                                    {
+                                        kind: IntermediateKind.IntermediateConstructorSignature,
+                                        parameters: [
+                                            {
+                                                kind: IntermediateKind.IntermediateRestCallableParameterSignature,
+                                                parameter: {
+                                                    kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
+                                                    isOptional: false,
+                                                    isReadonly: false,
+                                                    name: "args",
+                                                    typeRef: {
+                                                        kind: IntermediateKind.IntermediateArrayTypeReference,
+                                                        typeRef: {
+                                                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                            typeName: "any",
+                                                        },
+                                                    },
+                                                },
+                                            },
+                                        ],
+                                        returnType: {
+                                            kind: IntermediateKind.IntermediateUndiscoverableType,
+                                        },
+                                    },
+                                    {
+                                        kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                        isOptional: false,
+                                        isReadonly: false,
+                                        name: "prototype",
+                                        typeRef: {
+                                            kind: IntermediateKind.IntermediateUndiscoverableType,
+                                        },
+                                    },
+                                ],
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypeofTypeReference,
+                                entityName: "Sprite",
+                            },
+                        ],
+                    },
                 },
             ],
         },
@@ -254,6 +301,18 @@ const expectedResult: IntermediateSourceFile = {
                             },
                         ],
                         asType: undefined,
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateIntersectionType,
+                        typeRefs: [
+                            {
+                                kind: IntermediateKind.IntermediateUndiscoverableType,
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "Sprite",
+                            },
+                        ],
                     },
                 },
             ],

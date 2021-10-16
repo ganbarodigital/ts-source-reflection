@@ -227,6 +227,10 @@ const expectedResult: IntermediateSourceFile = {
                         arguments: [],
                         asType: undefined,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "Sprite",
+                    },
                 },
             ],
         },

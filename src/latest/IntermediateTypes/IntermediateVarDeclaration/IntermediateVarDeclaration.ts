@@ -50,4 +50,5 @@ export interface IntermediateVarDeclaration
     isConstant: false;
     typeRef: Maybe<IntermediateTypeReference>;
     initializer: Maybe<IntermediateExpression>;
+    inferredType?: Maybe<IntermediateTypeReference>;
 }

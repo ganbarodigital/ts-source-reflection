@@ -31,6 +31,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { mustBeString } from "@safelytyped/core-types";
 import {
     isArrayTypeNode,
     isConditionalTypeNode,
@@ -106,7 +107,9 @@ export function processTypeNode(
     if (isTypeQueryNode(input)) {
         return {
             kind: IntermediateKind.IntermediateTypeofTypeReference,
-            entityName: input.exprName.getText(),
+            entityName: mustBeString(
+                compiler.getTextForNode(input.exprName)
+            ),
         }
     }
 

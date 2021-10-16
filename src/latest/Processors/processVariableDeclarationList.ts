@@ -188,8 +188,27 @@ function processVariableDeclaration(
         initialiser = processExpression(compiler, input.initializer);
     }
 
+    // can we infer a value?
+    let inferredType: Maybe<IntermediateTypeReference>;
+    if (!typeRef) {
+        inferredType = AST.getInferredType(compiler, input, initialiser);
+    }
+
     // this is necessary to keep the compiler happy
     if (contextFlags.kind === IntermediateKind.IntermediateConstDeclaration) {
+        if (inferredType) {
+            return {
+                kind: contextFlags.kind,
+                docBlock: processDocBlock(compiler, input),
+                isConstant: true,
+                isReadonly,
+                name: input.name.getText(),
+                initializer: initialiser,
+                typeRef,
+                inferredType,
+            }
+        }
+
         return {
             kind: contextFlags.kind,
             docBlock: processDocBlock(compiler, input),
@@ -202,6 +221,19 @@ function processVariableDeclaration(
     }
 
     // all done
+    if (inferredType) {
+        return {
+            kind: contextFlags.kind,
+            docBlock: processDocBlock(compiler, input),
+            isConstant: false,
+            isReadonly,
+            name: input.name.getText(),
+            initializer: initialiser,
+            typeRef,
+            inferredType,
+        }
+    }
+
     return {
         kind: contextFlags.kind,
         docBlock: processDocBlock(compiler, input),

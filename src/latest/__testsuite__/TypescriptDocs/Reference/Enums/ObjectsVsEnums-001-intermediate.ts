@@ -132,9 +132,54 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         typeAssertion: undefined,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateAnonymousClassType,
+                        members: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: true,
+                                name: "Up",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateLiteralType,
+                                    typeName: "0",
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: true,
+                                name: "Down",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateLiteralType,
+                                    typeName: "1"
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: true,
+                                name: "Left",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateLiteralType,
+                                    typeName: "2",
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                isOptional: false,
+                                isReadonly: true,
+                                name: "Right",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateLiteralType,
+                                    typeName: "3",
+                                },
+                            },
+                        ],
+                    },
                 },
-            ]
-        }
+            ],
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],

@@ -72,7 +72,11 @@ const expectedResult: IntermediateSourceFile = {
                         asType: undefined,
                     },
                     typeRef: undefined,
-                }
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateSymbolType,
+                        identifierName: "firstName",
+                    },
+                },
             ],
         },
         {
@@ -108,6 +112,10 @@ const expectedResult: IntermediateSourceFile = {
                         asType: undefined,
                     },
                     typeRef: undefined,
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateSymbolType,
+                        identifierName: "secondName",
+                    },
                 }
             ],
         },

@@ -71,6 +71,13 @@ const expectedResult: IntermediateSourceFile = {
                         asType: undefined,
                         typeAssertion: undefined,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateArrayTypeReference,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
+                        },
+                    }
                 },
             ],
         },
@@ -102,6 +109,10 @@ const expectedResult: IntermediateSourceFile = {
                             typeAssertion: undefined,
                         },
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
+                    },
                 },
             ],
         },
@@ -132,6 +143,10 @@ const expectedResult: IntermediateSourceFile = {
                             asType: undefined,
                             typeAssertion: undefined,
                         },
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
                     },
                 },
             ],

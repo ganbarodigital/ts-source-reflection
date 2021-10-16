@@ -79,6 +79,10 @@ const expectedResult: IntermediateSourceFile = {
                         asType: undefined,
                     },
                     typeRef: undefined,
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "HTMLCanvasElement",
+                    },
                 },
             ],
         },

@@ -103,6 +103,10 @@ const expectedResult: IntermediateSourceFile = {
                                 asType: undefined,
                                 typeAssertion: undefined,
                             },
+                            inferredType: {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "RegExp",
+                            },
                         },
                     ],
                 },
@@ -124,6 +128,10 @@ const expectedResult: IntermediateSourceFile = {
                                 value: "/^[0-9]+$/",
                                 asType: undefined,
                                 typeAssertion: undefined,
+                            },
+                            inferredType: {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "RegExp",
                             },
                         },
                     ],
@@ -263,6 +271,13 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                         asType: undefined,
                         typeAssertion: undefined,
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateArrayTypeReference,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "string",
+                        },
                     },
                 },
             ],
@@ -407,6 +422,10 @@ const expectedResult: IntermediateSourceFile = {
                         name: "s",
                         typeRef: undefined,
                         initializer: undefined,
+                        inferredType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "string",
+                        },
                     },
                 ],
             },
@@ -435,6 +454,10 @@ const expectedResult: IntermediateSourceFile = {
                                     name: "name",
                                     typeRef: undefined,
                                     initializer: undefined,
+                                    inferredType: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "string",
+                                    },
                                 },
                             ],
                         },
@@ -492,6 +515,10 @@ const expectedResult: IntermediateSourceFile = {
                                                 ],
                                                 asType: undefined,
                                                 typeAssertion: undefined,
+                                            },
+                                            inferredType: {
+                                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                typeName: "boolean",
                                             },
                                         },
                                     ],

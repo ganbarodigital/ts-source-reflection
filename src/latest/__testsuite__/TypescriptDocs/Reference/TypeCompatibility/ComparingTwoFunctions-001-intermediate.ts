@@ -72,6 +72,26 @@ const expectedResult: IntermediateSourceFile = {
                         returnType: undefined,
                         hasBody: true,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        typeParameters: [],
+                        parameters: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: "a",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                },
+                            },
+                        ],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
+                        },
+                    },
                 },
             ],
         },
@@ -119,6 +139,36 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                         returnType: undefined,
                         hasBody: true,
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        typeParameters: [],
+                        parameters: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: "b",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
+                                isOptional: false,
+                                isReadonly: false,
+                                name: "s",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "string",
+                                },
+                            },
+                        ],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
+                        },
                     },
                 },
             ],

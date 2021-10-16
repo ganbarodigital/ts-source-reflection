@@ -37,7 +37,8 @@ import { Compiler } from "../Compiler";
 import {
     IntermediateBuiltInTypeReference,
     IntermediateKind,
-    IntermediateLiteralType
+    IntermediateLiteralType,
+    IntermediateUndiscoverableType
 } from "../IntermediateTypes";
 import { isBuiltInType } from "./isBuiltinType";
 import { processBuiltInType } from "./processBuiltInType";
@@ -45,7 +46,7 @@ import { processBuiltInType } from "./processBuiltInType";
 export function processLiteralTypeNode(
     compiler: Compiler,
     input: LiteralTypeNode
-): IntermediateLiteralType | IntermediateBuiltInTypeReference
+): IntermediateLiteralType | IntermediateBuiltInTypeReference | IntermediateUndiscoverableType
 {
     // special case
     //
@@ -54,9 +55,23 @@ export function processLiteralTypeNode(
         return processBuiltInType(compiler, input);
     }
 
+    // this is a necessary hack to avoid the Typescript library throwing
+    // runtime errors
+    const typeName = compiler.getTextForNode(input.literal);
+
+    // special case - a literal type that does not have a typeName
+    // is normally down to assignment to a constant
+    if (!typeName) {
+        // tslint:disable-next-line: no-console
+        console.log(input.literal);
+        return {
+            kind: IntermediateKind.IntermediateUndiscoverableType,
+        }
+    }
+
     // general case
     return {
         kind: IntermediateKind.IntermediateLiteralType,
-        typeName: input.literal.getText()
+        typeName,
     }
 }
