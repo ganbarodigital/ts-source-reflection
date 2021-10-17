@@ -35,6 +35,7 @@
 export * from "./findDocBlockText";
 export * from "./findExtendsHeritageClauses";
 export * from "./findImplementsHeritageClauses";
+export * from "./getInferredCallSignatureReturnType";
 export * from "./getInferredReturnType";
 export * from "./getInferredType";
 export * from "./getRestrictableScope";
