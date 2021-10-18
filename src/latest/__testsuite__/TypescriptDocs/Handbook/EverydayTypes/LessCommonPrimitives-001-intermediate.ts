@@ -68,6 +68,10 @@ const expectedResult: IntermediateSourceFile = {
                                 typeAssertion: undefined,
                             }
                         ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "bigint",
+                        },
                         typeAssertion: undefined,
                         asType: undefined,
                     },

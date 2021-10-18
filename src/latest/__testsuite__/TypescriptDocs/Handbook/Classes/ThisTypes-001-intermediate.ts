@@ -205,6 +205,10 @@ const expectedResult: IntermediateSourceFile = {
                                 asType: undefined,
                             },
                         ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "ClearableBox",
+                        },
                         asType: undefined,
                         typeAssertion: undefined,
                     },

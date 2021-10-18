@@ -111,6 +111,10 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     ],
                     arguments: [],
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateTypeofTypeReference,
+                        entityName: "Derived",
+                    },
                     asType: undefined,
                     typeAssertion: undefined,
                 },

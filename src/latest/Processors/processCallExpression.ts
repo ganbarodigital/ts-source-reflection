@@ -33,6 +33,7 @@
 //
 
 import { CallExpression } from "typescript";
+import { AST } from "../AST";
 import { Compiler } from "../Compiler";
 import {
     IntermediateCallExpression,
@@ -46,6 +47,9 @@ export function processCallExpression(
     input: CallExpression
 ): IntermediateCallExpression
 {
+    // what type of data comes out of this call expression, if any?
+    const inferredReturnType = AST.getInferredCallSignatureReturnType(compiler, input);
+
     // our return value
     const retval: IntermediateCallExpression = {
         kind: IntermediateKind.IntermediateCallExpression,
@@ -54,6 +58,7 @@ export function processCallExpression(
         arguments: [],
         asType: undefined,
         typeAssertion: undefined,
+        inferredReturnType,
     }
 
     // do we have any type arguments?

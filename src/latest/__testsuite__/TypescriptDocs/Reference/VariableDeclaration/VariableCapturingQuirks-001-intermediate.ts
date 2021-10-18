@@ -132,6 +132,9 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                         asType: undefined,
                         typeAssertion: undefined,
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateUndiscoverableType,
+                        },
                     },
                 ],
             },

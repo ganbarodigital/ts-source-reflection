@@ -134,10 +134,18 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     typeArguments: [],
                     arguments: [],
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
+                    },
                     typeAssertion: undefined,
                     asType: undefined,
                 },
             ],
+            inferredReturnType: {
+                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                typeName: "void",
+            },
             typeAssertion: undefined,
             asType: undefined,
         }

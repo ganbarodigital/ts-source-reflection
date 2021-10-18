@@ -80,6 +80,10 @@ const expectedResult: IntermediateSourceFile = {
                             typeAssertion: undefined,
                         },
                     ],
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "any",
+                    },
                     asType: undefined,
                     typeAssertion: undefined,
                     typeArguments: [],
@@ -95,6 +99,10 @@ const expectedResult: IntermediateSourceFile = {
                     typeAssertion: undefined,
                 },
             ],
+            inferredReturnType: {
+                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                typeName: "any",
+            },
             asType: undefined,
             typeAssertion: undefined,
         },

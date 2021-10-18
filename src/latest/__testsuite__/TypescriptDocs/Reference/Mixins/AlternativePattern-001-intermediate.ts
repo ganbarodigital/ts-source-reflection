@@ -210,6 +210,10 @@ const expectedResult: IntermediateSourceFile = {
                     typeAssertion: undefined,
                 },
             ],
+            inferredReturnType: {
+                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                typeName: "void",
+            },
             asType: undefined,
             typeAssertion: undefined,
         },
@@ -256,6 +260,10 @@ const expectedResult: IntermediateSourceFile = {
                 propName: "jump",
             },
             arguments: [],
+            inferredReturnType: {
+                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                typeName: "void",
+            },
             asType: undefined,
             typeAssertion: undefined,
         },

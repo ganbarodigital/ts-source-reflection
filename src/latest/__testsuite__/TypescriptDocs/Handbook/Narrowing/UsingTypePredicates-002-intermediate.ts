@@ -220,6 +220,19 @@ const expectedResult: IntermediateSourceFile = {
                                 },
                                 typeArguments: [],
                                 arguments: [],
+                                inferredReturnType: {
+                                    kind: IntermediateKind.IntermediateUnionType,
+                                    typeRefs: [
+                                        {
+                                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                                            typeName: "Fish",
+                                        },
+                                        {
+                                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                                            typeName: "Bird",
+                                        },
+                                    ],
+                                },
                                 typeAssertion: undefined,
                                 asType: undefined,
                             },
@@ -233,6 +246,19 @@ const expectedResult: IntermediateSourceFile = {
                                 },
                                 typeArguments: [],
                                 arguments: [],
+                                inferredReturnType: {
+                                    kind: IntermediateKind.IntermediateUnionType,
+                                    typeRefs: [
+                                        {
+                                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                                            typeName: "Fish",
+                                        },
+                                        {
+                                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                                            typeName: "Bird",
+                                        },
+                                    ],
+                                },
                                 typeAssertion: undefined,
                                 asType: undefined,
                             },
@@ -246,6 +272,19 @@ const expectedResult: IntermediateSourceFile = {
                                 },
                                 typeArguments: [],
                                 arguments: [],
+                                inferredReturnType: {
+                                    kind: IntermediateKind.IntermediateUnionType,
+                                    typeRefs: [
+                                        {
+                                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                                            typeName: "Fish",
+                                        },
+                                        {
+                                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                                            typeName: "Bird",
+                                        },
+                                    ],
+                                },
                                 typeAssertion: undefined,
                                 asType: undefined,
                             },
@@ -315,6 +354,13 @@ const expectedResult: IntermediateSourceFile = {
                                 typeAssertion: undefined,
                             },
                         ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateArrayTypeReference,
+                            typeRef: {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "Fish",
+                            },
+                        },
                         typeAssertion: undefined,
                         asType: undefined,
                     },
@@ -361,6 +407,13 @@ const expectedResult: IntermediateSourceFile = {
                                 typeAssertion: undefined,
                             },
                         ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateArrayTypeReference,
+                            typeRef: {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "Fish",
+                            },
+                        },
                         typeAssertion: undefined,
                         asType: {
                             kind: IntermediateKind.IntermediateArrayTypeReference,
@@ -429,6 +482,13 @@ const expectedResult: IntermediateSourceFile = {
                                 hasBody: true,
                             },
                         ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateArrayTypeReference,
+                            typeRef: {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "Fish",
+                            },
+                        },
                         typeAssertion: undefined,
                         asType: undefined,
                     },

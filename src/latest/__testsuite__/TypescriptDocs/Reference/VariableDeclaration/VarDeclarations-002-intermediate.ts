@@ -85,6 +85,15 @@ const expectedResult: IntermediateSourceFile = {
                         arguments: [],
                         typeAssertion: undefined,
                         asType: undefined,
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                            typeParameters: [],
+                            parameters: [],
+                            returnType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "number",
+                            },
+                        },
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateFunctionTypeSignature,
@@ -110,6 +119,10 @@ const expectedResult: IntermediateSourceFile = {
             arguments: [],
             typeAssertion: undefined,
             asType: undefined,
+            inferredReturnType: {
+                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                typeName: "number",
+            },
         },
     ],
     referencedFiles: [],

@@ -171,6 +171,25 @@ const expectedResult: IntermediateSourceFile = {
                                 typeAssertion: undefined,
                             },
                         ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateArrayTypeReference,
+                            typeRef: {
+                                kind: IntermediateKind.IntermediateParenthesizedType,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateUnionType,
+                                    typeRefs: [
+                                        {
+                                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                            typeName: "string",
+                                        },
+                                        {
+                                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                            typeName: "number",
+                                        },
+                                    ],
+                                },
+                            },
+                        },
                         asType: undefined,
                         typeAssertion: undefined,
                     },

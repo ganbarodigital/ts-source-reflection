@@ -521,6 +521,10 @@ const expectedResult: IntermediateSourceFile = {
                                                         typeAssertion: undefined,
                                                     },
                                                 ],
+                                                inferredReturnType: {
+                                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                    typeName: "boolean",
+                                                },
                                                 asType: undefined,
                                                 typeAssertion: undefined,
                                             },
@@ -597,6 +601,10 @@ const expectedResult: IntermediateSourceFile = {
                                             ],
                                         },
                                     ],
+                                    inferredReturnType: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "void",
+                                    },
                                     asType: undefined,
                                     typeAssertion: undefined,
                                 },

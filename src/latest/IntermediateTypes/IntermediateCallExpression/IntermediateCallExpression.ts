@@ -47,4 +47,5 @@ export interface IntermediateCallExpression
     expression: IntermediateExpression;
     typeArguments: IntermediateTypeReference[];
     arguments: IntermediateArgument[];
+    inferredReturnType?: IntermediateTypeReference;
 }

@@ -62,6 +62,10 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         typeArguments: [],
                         arguments: [],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "symbol",
+                        },
                         asType: undefined,
                         typeAssertion: undefined,
                     },
@@ -173,6 +177,10 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         typeArguments: [],
                         arguments: [],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "string",
+                        },
                         asType: undefined,
                         typeAssertion: undefined,
                     },

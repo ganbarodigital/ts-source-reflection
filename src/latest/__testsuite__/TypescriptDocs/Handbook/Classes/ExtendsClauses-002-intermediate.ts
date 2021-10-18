@@ -168,6 +168,10 @@ const expectedResult: IntermediateSourceFile = {
                 propName: "greet",
             },
             arguments: [],
+            inferredReturnType: {
+                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                typeName: "void",
+            },
         },
         {
             kind: IntermediateKind.IntermediateCallExpression,
@@ -192,6 +196,10 @@ const expectedResult: IntermediateSourceFile = {
                     typeAssertion: undefined,
                 },
             ],
+            inferredReturnType: {
+                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                typeName: "void",
+            },
         },
     ],
     referencedFiles: [],
