@@ -135,6 +135,7 @@ export * from "./IntermediateImportAssignment";
 export * from "./IntermediateImportBinding";
 export * from "./IntermediateImportDeclaration";
 export * from "./IntermediateImportItem";
+export * from "./IntermediateImportedType";
 export * from "./IntermediateIndexSignature";
 export * from "./IntermediateIndexedAccessTypeReference";
 export * from "./IntermediateInferType";

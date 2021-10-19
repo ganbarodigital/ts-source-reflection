@@ -114,6 +114,7 @@ export enum IntermediateKind {
     IntermediateInferType,
     IntermediateInterface,
     IntermediateIntersectionType,
+    IntermediateImportedType,
     IntermediateLetDeclaration,
     IntermediateLiteralType,
     IntermediateKeyofTypeReference,
