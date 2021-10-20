@@ -42,6 +42,7 @@ import { IntermediateEmptyObjectType } from "../IntermediateEmptyObjectType";
 import { IntermediateFixedTypeReference } from "../IntermediateFixedTypeReference";
 import { IntermediateFunctionTypeSignature } from "../IntermediateFunctionTypeSignature";
 import { IntermediateGenericTypeReference } from "../IntermediateGenericTypeReference";
+import { IntermediateImportedType } from "../IntermediateImportedType";
 import { IntermediateIndexedAccessTypeReference } from "../IntermediateIndexedAccessTypeReference";
 import { IntermediateInferType } from "../IntermediateInferType";
 import { IntermediateIntersectionType } from "../IntermediateIntersectionType";
@@ -72,6 +73,7 @@ export type IntermediateTypeReference
       | IntermediateFixedTypeReference
       | IntermediateFunctionTypeSignature
       | IntermediateGenericTypeReference
+      | IntermediateImportedType
       | IntermediateIndexedAccessTypeReference
       | IntermediateInferType
       | IntermediateIntersectionType
