@@ -35,7 +35,7 @@
 import { Maybe } from "@safelytyped/core-types";
 import { SignatureDeclaration } from "typescript";
 import { Compiler } from "../../Compiler";
-import { IntermediateExpression, IntermediateTypeReference } from "../../IntermediateTypes";
+import { IntermediateExpression, IntermediateKind, IntermediateTypeReference } from "../../IntermediateTypes";
 import { processTypeNode } from "../../Processors/processTypeNode";
 import { translateInferredType } from "./translateInferredType";
 
@@ -75,14 +75,24 @@ export function getInferredReturnType(
     //
     // not all of these typeNodes will process successfully atm.
     // workarounds / alternative approaches are most welcome!
-    const inferredType = processTypeNode(compiler, typeNode);
+    try {
+        const inferredType = processTypeNode(compiler, typeNode);
 
-    // sometimes, the inferred type needs a little bit of help
-    // from us
-    return translateInferredType(
-        compiler,
-        input,
-        inferredType,
-        initializer
-    );
+        // sometimes, the inferred type needs a little bit of help
+        // from us
+        return translateInferredType(
+            compiler,
+            input,
+            inferredType,
+            initializer
+        );
+    }
+    catch (e) {
+        // despite our best efforts, sometimes we can't successfully
+        // process the synthetic type node that's been built by
+        // the type checker
+        return {
+            kind: IntermediateKind.IntermediateUndiscoverableType,
+        }
+    }
 }

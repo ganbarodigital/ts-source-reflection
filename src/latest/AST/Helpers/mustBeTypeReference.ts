@@ -44,7 +44,7 @@ export function mustBeTypeReference(input: TypeNode): TypeReferenceNode
 
     // if we get here, we're not happy
     // tslint:disable-next-line: no-console
-    console.log(getClassNames(input), SyntaxKind[input.kind]);
+    console.log(getClassNames(input), SyntaxKind[input.kind], input);
     throw new UnsupportedTypeError({
         public: {
             dataPath: DEFAULT_DATA_PATH,
