@@ -37,6 +37,7 @@ import {
     isConditionalTypeNode,
     isConstructorTypeNode,
     isFunctionTypeNode,
+    isImportTypeNode,
     isIndexedAccessTypeNode,
     isInferTypeNode,
     isIntersectionTypeNode,
@@ -65,6 +66,7 @@ import { processBuiltInType } from "./processBuiltInType";
 import { processConditionalType } from "./processConditionalType";
 import { processConstructorType } from "./processConstructorType";
 import { processFunctionType } from "./processFunctionType";
+import { processImportTypeNodeDuringTypeProcessing } from "./processImportTypeNodeDuringTypeProcessing";
 import { processIndexedAccessType } from "./processIndexedAccessType";
 import { processInferType } from "./processInferType";
 import { processIntersectionNode } from "./processIntersectionNode";
@@ -202,6 +204,14 @@ export function processTypeNode(
         return {
             kind: IntermediateKind.IntermediateThisType
         }
+    }
+
+    // special case - an 'import type' node
+    //
+    // we've only seen these when working with type nodes created by
+    // the type checker
+    if (isImportTypeNode(input)) {
+        return processImportTypeNodeDuringTypeProcessing(compiler, input);
     }
 
     // generic case

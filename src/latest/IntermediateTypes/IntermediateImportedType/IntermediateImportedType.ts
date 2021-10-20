@@ -32,10 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { Filepath } from "@safelytyped/filepath";
 import { IntermediateEntityName, IntermediateItem, IntermediateKind } from "..";
 
 export interface IntermediateImportedType
     extends IntermediateItem<IntermediateKind.IntermediateImportedType>
 {
+    importPath: Filepath,
     entityName: IntermediateEntityName;
 }
