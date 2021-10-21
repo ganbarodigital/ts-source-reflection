@@ -34,17 +34,17 @@
 
 import { DEFAULT_DATA_PATH, getClassNames, UnsupportedTypeError } from "@safelytyped/core-types";
 import { SpreadAssignment, SyntaxKind } from "typescript";
-import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediateSpreadPropertyAssignment } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processSpreadAssignment(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: SpreadAssignment
 ): IntermediateSpreadPropertyAssignment
 {
     // this is a bit knarly
-    const expression = processExpression(compiler, input.expression);
+    const expression = processExpression(processCtx, input.expression);
     if (expression.kind === IntermediateKind.IntermediateIdentifierReference) {
         return {
             kind: IntermediateKind.IntermediateSpreadPropertyAssignment,

@@ -33,22 +33,22 @@
 //
 
 import { isExternalModuleReference, ModuleReference } from "typescript";
-import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediateModuleReference } from "../IntermediateTypes";
 import { processEntityName } from "./processEntityName";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processModuleReference(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ModuleReference
 ): IntermediateModuleReference
 {
     if (isExternalModuleReference(input)) {
         return {
             kind: IntermediateKind.IntermediateExternalModuleReference,
-            source: processExpression(compiler, input.expression),
+            source: processExpression(processCtx, input.expression),
         }
     }
 
-    return processEntityName(compiler, input);
+    return processEntityName(processCtx, input);
 }

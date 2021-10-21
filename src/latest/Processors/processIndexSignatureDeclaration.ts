@@ -33,13 +33,13 @@
 //
 
 import { IndexSignatureDeclaration } from "typescript";
-import { IntermediateIndexSignature, IntermediateKind } from "../IntermediateTypes";
-import { processTypeNode } from "./processTypeNode";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
+import { IntermediateIndexSignature, IntermediateKind } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
+import { processTypeNode } from "./processTypeNode";
 
 export function processIndexSignatureDeclaration(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: IndexSignatureDeclaration
 ): IntermediateIndexSignature
 {
@@ -53,10 +53,10 @@ export function processIndexSignatureDeclaration(
         kind: IntermediateKind.IntermediateIndexSignature,
         index: {
             indexName: input.parameters[0].name.getText(),
-            indexTypeRef: processTypeNode(compiler, input.parameters[0].type!),
+            indexTypeRef: processTypeNode(processCtx, input.parameters[0].type!),
         },
         value: {
-            valueTypeRef: processTypeNode(compiler, input.type),
+            valueTypeRef: processTypeNode(processCtx, input.type),
         },
         sigIsReadonly: AST.hasReadonlyModifier(input.modifiers),
     }

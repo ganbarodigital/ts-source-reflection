@@ -34,12 +34,12 @@
 
 import { Statement } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediateThrow } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processThrowStatement(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: Statement
 ): IntermediateThrow
 {
@@ -48,6 +48,6 @@ export function processThrowStatement(
 
     return {
         kind: IntermediateKind.IntermediateThrow,
-        expression: processExpression(compiler, throwStmt.expression),
+        expression: processExpression(processCtx, throwStmt.expression),
     }
 }

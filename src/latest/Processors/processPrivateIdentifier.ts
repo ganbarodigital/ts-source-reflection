@@ -33,11 +33,11 @@
 //
 
 import { PrivateIdentifier } from "typescript";
-import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediatePrivatePropertyIdentifier } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processPrivateIdentifier(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: PrivateIdentifier
 ): IntermediatePrivatePropertyIdentifier
 {

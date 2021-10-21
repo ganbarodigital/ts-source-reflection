@@ -35,7 +35,6 @@
 import { Maybe } from "@safelytyped/core-types";
 import { EnumMember, NodeArray, Statement } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateEnum,
     IntermediateEnumMember,
@@ -44,9 +43,10 @@ import {
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processEnumDeclaration (
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: Statement
 ): IntermediateEnum
 {
@@ -55,18 +55,18 @@ export function processEnumDeclaration (
 
     return {
         kind: IntermediateKind.IntermediateEnum,
-        docBlock: processDocBlock(compiler, enumDec),
+        docBlock: processDocBlock(processCtx, enumDec),
         isConstant: AST.hasConstModifier(enumDec.modifiers),
         isDeclared: AST.hasDeclaredModifier(enumDec.modifiers),
         isExported: AST.hasExportModifier(enumDec.modifiers),
         isDefaultExport: AST.hasDefaultModifier(enumDec.modifiers),
         name: enumDec.name.getText(),
-        members: processEnumMembers(compiler, enumDec.members),
+        members: processEnumMembers(processCtx, enumDec.members),
     }
 }
 
 function processEnumMembers(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: NodeArray<EnumMember>
 ): IntermediateEnumMember[]
 {
@@ -77,7 +77,7 @@ function processEnumMembers(
         // does this enum member have a value?
         let initializer: Maybe<IntermediateExpression>;
         if (member.initializer) {
-            initializer = processExpression(compiler, member.initializer);
+            initializer = processExpression(processCtx, member.initializer);
         }
 
         retval.push(

@@ -38,15 +38,15 @@ import {
     getTrailingCommentRanges,
     Node
 } from "typescript";
-import { Compiler } from "../Compiler";
 import {
     IntermediateComment,
     IntermediateCommentableItem,
     IntermediateKind
 } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processComments(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: Node
 ): IntermediateCommentableItem
 {

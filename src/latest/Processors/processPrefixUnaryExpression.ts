@@ -34,25 +34,24 @@
 
 import {
     PrefixUnaryExpression,
-    PrefixUnaryOperator,
-    SyntaxKind
+    PrefixUnaryOperator, SyntaxKind
 } from "typescript";
-import { Compiler } from "../Compiler";
 import {
     IntermediateExpressionOperator,
     IntermediateKind,
     IntermediatePrefixUnaryExpression
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processPrefixUnaryExpression(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: PrefixUnaryExpression
 ): IntermediatePrefixUnaryExpression
 {
     return {
         kind: IntermediateKind.IntermediatePrefixUnaryExpression,
-        target: processExpression(compiler, input.operand),
+        target: processExpression(processCtx, input.operand),
         operator: processOperator(input.operator),
     }
 }

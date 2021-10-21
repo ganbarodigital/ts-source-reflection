@@ -74,7 +74,7 @@ describe(testSuiteName + " intermediate processing", () => {
             // ----------------------------------------------------------------
             // perform the change
 
-            const actualResult = processSourceFile(compiler, sourceFile);
+            const actualResult = processSourceFile({ compiler, sourceFile });
 
             // ----------------------------------------------------------------
             // test the results

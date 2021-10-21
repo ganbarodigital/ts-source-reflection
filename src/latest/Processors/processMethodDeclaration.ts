@@ -34,7 +34,6 @@
 
 import { MethodDeclaration } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateMethodDeclaration
@@ -42,44 +41,45 @@ import {
 import { processDecorators } from "./processDecorators";
 import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
+import { ProcessingContext } from "./ProcessingContext";
 import { processPropertyName } from "./processPropertyName";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processMethodDeclaration(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: MethodDeclaration
 ): IntermediateMethodDeclaration
 {
-    const returnType = processReturnTypeFromNode(compiler, input);
+    const returnType = processReturnTypeFromNode(processCtx, input);
     if (returnType) {
         return {
             kind: IntermediateKind.IntermediateMethodDeclaration,
-            docBlock: processDocBlock(compiler, input),
-            decorators: processDecorators(compiler, input),
+            docBlock: processDocBlock(processCtx, input),
+            decorators: processDecorators(processCtx, input),
             isStatic: AST.hasStaticModifier(input),
             accessModifier: AST.getRestrictableScope(input),
             isAbstract: AST.hasAbstractModifier(input.modifiers),
-            name: processPropertyName(compiler, input.name),
-            parameters: processFunctionParameters(compiler, input.parameters),
-            typeParameters: processTypeParametersFromNode(compiler, input),
+            name: processPropertyName(processCtx, input.name),
+            parameters: processFunctionParameters(processCtx, input.parameters),
+            typeParameters: processTypeParametersFromNode(processCtx, input),
             returnType,
             hasBody: AST.hasBody(input.body),
         }
     }
 
-    const inferredReturnType = AST.getInferredReturnType(compiler, input);
+    const inferredReturnType = AST.getInferredReturnType(processCtx, input);
     if (!inferredReturnType) {
         return {
             kind: IntermediateKind.IntermediateMethodDeclaration,
-            docBlock: processDocBlock(compiler, input),
-            decorators: processDecorators(compiler, input),
+            docBlock: processDocBlock(processCtx, input),
+            decorators: processDecorators(processCtx, input),
             isStatic: AST.hasStaticModifier(input),
             accessModifier: AST.getRestrictableScope(input),
             isAbstract: AST.hasAbstractModifier(input.modifiers),
-            name: processPropertyName(compiler, input.name),
-            parameters: processFunctionParameters(compiler, input.parameters),
-            typeParameters: processTypeParametersFromNode(compiler, input),
+            name: processPropertyName(processCtx, input.name),
+            parameters: processFunctionParameters(processCtx, input.parameters),
+            typeParameters: processTypeParametersFromNode(processCtx, input),
             returnType,
             hasBody: AST.hasBody(input.body),
         }
@@ -87,14 +87,14 @@ export function processMethodDeclaration(
 
     return {
         kind: IntermediateKind.IntermediateMethodDeclaration,
-        docBlock: processDocBlock(compiler, input),
-        decorators: processDecorators(compiler, input),
+        docBlock: processDocBlock(processCtx, input),
+        decorators: processDecorators(processCtx, input),
         isStatic: AST.hasStaticModifier(input),
         accessModifier: AST.getRestrictableScope(input),
         isAbstract: AST.hasAbstractModifier(input.modifiers),
-        name: processPropertyName(compiler, input.name),
-        parameters: processFunctionParameters(compiler, input.parameters),
-        typeParameters: processTypeParametersFromNode(compiler, input),
+        name: processPropertyName(processCtx, input.name),
+        parameters: processFunctionParameters(processCtx, input.parameters),
+        typeParameters: processTypeParametersFromNode(processCtx, input),
         returnType,
         inferredReturnType,
         hasBody: AST.hasBody(input.body),

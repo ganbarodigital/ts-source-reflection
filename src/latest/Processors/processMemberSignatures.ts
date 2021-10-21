@@ -40,23 +40,23 @@ import {
 import {
     ClassElement,
     isCallSignatureDeclaration,
-    isConstructSignatureDeclaration, isMethodSignature,
+    isConstructSignatureDeclaration,
+    isMethodSignature,
     isPropertySignature,
-    NodeArray,
-    SyntaxKind,
+    NodeArray, SyntaxKind,
     TypeElement
 } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import { IntermediateMemberSignature } from "../IntermediateTypes";
 import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
 import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
 import { processIndexSignatureDeclaration } from "./processIndexSignatureDeclaration";
+import { ProcessingContext } from "./ProcessingContext";
 import { processMethodSignature } from "./processMethodSignature";
 import { processPropertySignature } from "./processPropertySignature";
 
 export function processMemberSignatures(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: NodeArray<TypeElement | ClassElement>
 ): IntermediateMemberSignature[]
 {
@@ -64,27 +64,27 @@ export function processMemberSignatures(
 
     for (const member of input) {
         if (isPropertySignature(member)) {
-            retval.push(processPropertySignature(compiler, member));
+            retval.push(processPropertySignature(processCtx, member));
             continue;
         }
 
         if (isCallSignatureDeclaration(member)) {
-            retval.push(processCallSignatureDeclaration(compiler, member));
+            retval.push(processCallSignatureDeclaration(processCtx, member));
             continue;
         }
 
         if (isConstructSignatureDeclaration(member)) {
-            retval.push(processConstructSignatureDeclaration(compiler, member));
+            retval.push(processConstructSignatureDeclaration(processCtx, member));
             continue;
         }
 
         if (isMethodSignature(member)) {
-            retval.push(processMethodSignature(compiler, member));
+            retval.push(processMethodSignature(processCtx, member));
             continue;
         }
 
         if (AST.isIndexSignature(member)) {
-            retval.push(processIndexSignatureDeclaration(compiler, member));
+            retval.push(processIndexSignatureDeclaration(processCtx, member));
             continue;
         }
 

@@ -34,7 +34,6 @@
 
 import { Statement } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateForLoop,
     IntermediateKind,
@@ -42,11 +41,12 @@ import {
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 import { processForInitializer } from "./processForInitializer";
+import { ProcessingContext } from "./ProcessingContext";
 import { processMaybe } from "./processMaybe";
 import { processStatement } from "./processStatement";
 
 export function processForStatement(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: Statement
 ): IntermediateForLoop
 {
@@ -57,22 +57,22 @@ export function processForStatement(
     return {
         kind: IntermediateKind.IntermediateForLoop,
         initializer: processMaybe(
-            compiler,
+            processCtx,
             forStmt.initializer,
             processForInitializer
         ),
         condition: processMaybe(
-            compiler,
+            processCtx,
             forStmt.condition,
             processExpression
         ),
         incrementor: processMaybe(
-            compiler,
+            processCtx,
             forStmt.incrementor,
             processExpression
         ),
         contents: mustBeIntermediateStatement(
-            processStatement(compiler, forStmt.statement)
+            processStatement(processCtx, forStmt.statement)
         ),
     }
 }

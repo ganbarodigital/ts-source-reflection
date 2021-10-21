@@ -34,17 +34,17 @@
 
 import { Statement } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import { IntermediateExpression } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processExpressionStatement (
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: Statement
 ): IntermediateExpression
 {
     // make sure we have what we need
     const expDec = AST.mustBeExpressionStatement(input);
 
-    return processExpression(compiler, expDec.expression);
+    return processExpression(processCtx, expDec.expression);
 }

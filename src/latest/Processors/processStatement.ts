@@ -34,15 +34,15 @@
 import { DispatchMap, Maybe, searchDispatchMap } from "@safelytyped/core-types";
 import { Statement, SyntaxKind } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateStatement
 } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 import { StatementProcessor } from "./StatementProcessor";
 import { STATEMENT_PROCESSORS } from "./STATEMENT_PROCESSORS";
 
 export function processStatement(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     statement: Statement
 ): Maybe<IntermediateStatement>
 {
@@ -70,5 +70,5 @@ export function processStatement(
         () => { return undefined }
     );
 
-    return statementProcessor(compiler, statement);
+    return statementProcessor(processCtx, statement);
 }

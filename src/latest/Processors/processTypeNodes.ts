@@ -33,18 +33,18 @@
 //
 
 import { NodeArray, TypeNode } from "typescript";
-import { Compiler } from "../Compiler";
 import { IntermediateTypeReference } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processTypeNodes(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: NodeArray<TypeNode>
 ): IntermediateTypeReference[] {
     const retval: IntermediateTypeReference[] = [];
 
     for (const member of input) {
-        retval.push(processTypeNode(compiler, member));
+        retval.push(processTypeNode(processCtx, member));
     }
 
     // all done

@@ -35,22 +35,21 @@
 import { Maybe } from "@safelytyped/core-types";
 import {
     BindingElement, NodeArray,
-    ObjectBindingPattern,
-    TypeNode
+    ObjectBindingPattern, TypeNode
 } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     AnyIntermediateDestructuredIdentifierSignature,
     IntermediateDestructuredIdentifierSignature,
     IntermediateDestructuredParameterSignature,
     IntermediateKind
 } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 import { processMaybe } from "./processMaybe";
 import { processTypeNode } from "./processTypeNode";
 
 export function processObjectBindingPatternForSignatures(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     {
         param,
         paramType,
@@ -61,7 +60,7 @@ export function processObjectBindingPatternForSignatures(
 ): IntermediateDestructuredParameterSignature
 {
     const typeRef = processMaybe(
-        compiler,
+        processCtx,
         paramType,
         processTypeNode
     )
@@ -69,13 +68,13 @@ export function processObjectBindingPatternForSignatures(
     // all done
     return {
         kind: IntermediateKind.IntermediateDestructuredParameterSignature,
-        parameters: processBindingElements(compiler, param.elements),
+        parameters: processBindingElements(processCtx, param.elements),
         typeRef,
     };
 }
 
 function processBindingElements(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: NodeArray<BindingElement>
 ): AnyIntermediateDestructuredIdentifierSignature[]
 {

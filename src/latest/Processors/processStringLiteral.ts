@@ -33,11 +33,11 @@
 //
 
 import { StringLiteral } from "typescript";
-import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediateStringLiteral } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processStringLiteral(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: StringLiteral
 ): IntermediateStringLiteral
 {

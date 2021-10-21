@@ -41,37 +41,40 @@ import {
     ReadonlyToken,
     SyntaxKind
 } from "typescript";
-import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateMappedType,
     IntermediateMappingModifier,
     IntermediateTypeReference
 } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processMappedType(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: MappedTypeNode
 ): IntermediateMappedType
 {
     // the definition of the index is hidden away in
     // the node's typeParameter field ...
     const indexName = input.typeParameter.name.text;
-    const constraint = processTypeNode(compiler, input.typeParameter.constraint!);
+    const constraint = processTypeNode(
+        processCtx,
+        input.typeParameter.constraint!
+    );
 
     // does the mapped type's value have a type?
     //
     // according to the AST, not always ...
     let valueTypeRef: Maybe<IntermediateTypeReference>;
     if (input.type) {
-        valueTypeRef = processTypeNode(compiler, input.type);
+        valueTypeRef = processTypeNode(processCtx, input.type);
     }
 
     // are we rewriting the key, while we're at it?
     let nameMap: Maybe<IntermediateTypeReference>;
     if (input.nameType) {
-        nameMap = processTypeNode(compiler, input.nameType);
+        nameMap = processTypeNode(processCtx, input.nameType);
     }
 
     return {

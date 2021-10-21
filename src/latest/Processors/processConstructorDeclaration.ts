@@ -34,46 +34,46 @@
 
 import { ConstructorDeclaration } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateConstructorDeclaration,
     IntermediateKind
 } from "../IntermediateTypes";
 import { processConstructorParameters } from "./processConstructorParameters";
 import { processDocBlock } from "./processDocBlock";
+import { ProcessingContext } from "./ProcessingContext";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 
 export function processConstructorDeclaration(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ConstructorDeclaration
 ): IntermediateConstructorDeclaration {
-    const returnType = processReturnTypeFromNode(compiler, input);
+    const returnType = processReturnTypeFromNode(processCtx, input);
     if (returnType) {
         return {
             kind: IntermediateKind.IntermediateConstructorDeclaration,
-            docBlock: processDocBlock(compiler, input),
+            docBlock: processDocBlock(processCtx, input),
             accessModifier: AST.getRestrictableScope(input),
-            parameters: processConstructorParameters(compiler, input.parameters),
+            parameters: processConstructorParameters(processCtx, input.parameters),
             returnType,
         }
     }
 
-    const inferredReturnType = AST.getInferredReturnType(compiler, input);
+    const inferredReturnType = AST.getInferredReturnType(processCtx, input);
     if (!inferredReturnType) {
         return {
             kind: IntermediateKind.IntermediateConstructorDeclaration,
-            docBlock: processDocBlock(compiler, input),
+            docBlock: processDocBlock(processCtx, input),
             accessModifier: AST.getRestrictableScope(input),
-            parameters: processConstructorParameters(compiler, input.parameters),
+            parameters: processConstructorParameters(processCtx, input.parameters),
             returnType,
         }
     }
 
     return {
         kind: IntermediateKind.IntermediateConstructorDeclaration,
-        docBlock: processDocBlock(compiler, input),
+        docBlock: processDocBlock(processCtx, input),
         accessModifier: AST.getRestrictableScope(input),
-        parameters: processConstructorParameters(compiler, input.parameters),
+        parameters: processConstructorParameters(processCtx, input.parameters),
         returnType,
         inferredReturnType,
     }

@@ -33,11 +33,16 @@
 //
 
 import { Expression, isPropertyAccessExpression, MemberName } from "typescript";
-import { Compiler } from "../Compiler";
-import { IntermediateFixedTypeReference, IntermediateKind, IntermediateQualifiedTypeReference, IntermediateTypeReference } from "../IntermediateTypes";
+import {
+    IntermediateFixedTypeReference,
+    IntermediateKind,
+    IntermediateQualifiedTypeReference,
+    IntermediateTypeReference
+} from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processExpressionAsTypeReference(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: Expression | MemberName
 ): IntermediateTypeReference
 {
@@ -45,8 +50,8 @@ export function processExpressionAsTypeReference(
     if (isPropertyAccessExpression(input)) {
         return <IntermediateQualifiedTypeReference>{
             kind: IntermediateKind.IntermediateQualifiedTypeReference,
-            left: processExpressionAsTypeReference(compiler, input.expression),
-            right: processExpressionAsTypeReference(compiler, input.name)
+            left: processExpressionAsTypeReference(processCtx, input.expression),
+            right: processExpressionAsTypeReference(processCtx, input.name)
         }
     }
 

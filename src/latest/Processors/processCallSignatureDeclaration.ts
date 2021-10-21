@@ -33,23 +33,23 @@
 //
 
 import { CallSignatureDeclaration } from "typescript";
-import { Compiler } from "../Compiler";
 import {
     IntermediateCallSignature,
     IntermediateKind
 } from "../IntermediateTypes";
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
+import { ProcessingContext } from "./ProcessingContext";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processCallSignatureDeclaration(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: CallSignatureDeclaration
 ): IntermediateCallSignature {
     return {
         kind: IntermediateKind.IntermediateCallSignature,
-        typeParameters: processTypeParametersFromNode(compiler, input),
-        parameters: processCallableParameterSignatures(compiler, input.parameters),
-        returnType: processReturnTypeFromNode(compiler, input),
+        typeParameters: processTypeParametersFromNode(processCtx, input),
+        parameters: processCallableParameterSignatures(processCtx, input.parameters),
+        returnType: processReturnTypeFromNode(processCtx, input),
     }
 }

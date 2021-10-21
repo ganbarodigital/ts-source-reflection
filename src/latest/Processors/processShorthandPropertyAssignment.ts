@@ -33,11 +33,11 @@
 //
 
 import { ShorthandPropertyAssignment } from "typescript";
-import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediateShorthandPropertyAssignment } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processShorthandPropertyAssignment(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ShorthandPropertyAssignment
 ): IntermediateShorthandPropertyAssignment
 {

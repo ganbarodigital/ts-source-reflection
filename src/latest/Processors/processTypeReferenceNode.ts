@@ -33,17 +33,20 @@
 //
 import { mustBeString } from "@safelytyped/core-types";
 import { isQualifiedName, TypeReferenceNode } from "typescript";
-import { Compiler } from "../Compiler";
-
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 import { processQualifiedName } from "./processQualifiedName";
 import { processTypeNode } from "./processTypeNode";
 
+
 export function processTypeReferenceNode(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: TypeReferenceNode
 ): IntermediateTypeReference
 {
+    // shorthand
+    const compiler = processCtx.compiler;
+
     // this is necessary to avoid runtime exceptions being thrown
     // by Typescript
     let typeName: string;
@@ -74,7 +77,7 @@ export function processTypeReferenceNode(
     if (input.typeArguments) {
         const typeArguments: IntermediateTypeReference[] = [];
         input.typeArguments.forEach((member) => {
-            typeArguments.push(processTypeNode(compiler, member));
+            typeArguments.push(processTypeNode(processCtx, member));
         });
 
         return {
@@ -86,7 +89,7 @@ export function processTypeReferenceNode(
 
     // special case - qualified name
     if (isQualifiedName(input.typeName)) {
-        return processQualifiedName(compiler, input.typeName);
+        return processQualifiedName(processCtx, input.typeName);
     }
 
     // we will return to this and add support for other cases

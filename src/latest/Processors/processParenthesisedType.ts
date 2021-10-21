@@ -33,17 +33,17 @@
 //
 
 import { ParenthesizedTypeNode } from "typescript";
-import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediateParenthesizedType } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processParenthesizedType(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ParenthesizedTypeNode
 ): IntermediateParenthesizedType
 {
     return {
         kind: IntermediateKind.IntermediateParenthesizedType,
-        typeRef: processTypeNode(compiler, input.type),
+        typeRef: processTypeNode(processCtx, input.type),
     }
 }

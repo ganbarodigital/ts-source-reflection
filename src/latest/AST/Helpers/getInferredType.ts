@@ -34,8 +34,8 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { BindingName, Node } from "typescript";
-import { Compiler } from "../../Compiler";
 import { IntermediateExpression, IntermediateTypeReference } from "../../IntermediateTypes";
+import { ProcessingContext } from "../../Processors/ProcessingContext";
 import { processTypeNode } from "../../Processors/processTypeNode";
 import { translateInferredType } from "./translateInferredType";
 
@@ -47,11 +47,14 @@ type NodeWithName =
 }
 
 export function getInferredType(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: NodeWithName,
     initializer?: IntermediateExpression,
 ): Maybe<IntermediateTypeReference>
 {
+    // shorthand
+    const compiler = processCtx.compiler;
+
     // what does the compiler think is happening?
     const typeChecker = compiler.getTypeChecker();
     const tsType = typeChecker.getTypeOfSymbolAtLocation(
@@ -81,7 +84,10 @@ export function getInferredType(
     //
     // not all of these typeNodes will process successfully atm.
     // workarounds / alternative approaches are most welcome!
-    const inferredType = processTypeNode(compiler, typeNode);
+    const inferredType = processTypeNode(
+        processCtx,
+        typeNode
+    );
 
     // sometimes, the inferred type needs a little bit of help
     // from us

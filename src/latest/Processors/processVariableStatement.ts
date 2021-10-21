@@ -35,15 +35,15 @@
 
 import { Statement } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateVariableDeclarations
 } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 import { processVariableDeclarationList } from "./processVariableDeclarationList";
 
 export function processVariableStatement (
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: Statement
 ): IntermediateVariableDeclarations
 {
@@ -56,7 +56,7 @@ export function processVariableStatement (
         isDefaultExport: AST.hasDefaultModifier(variableStmt.modifiers),
         isExported: AST.isNodeExported(variableStmt),
         variables: processVariableDeclarationList(
-            compiler,
+            processCtx,
             variableStmt.declarationList,
         ),
     }

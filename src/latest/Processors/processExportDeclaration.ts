@@ -42,12 +42,10 @@ import {
     Expression,
     isNamedExports,
     isNamespaceExport, NamedExports,
-    NamespaceExport,
-    Statement,
+    NamespaceExport, Statement,
     SyntaxKind
 } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateExportDeclaration,
     IntermediateExportedIdentifiers,
@@ -58,9 +56,10 @@ import {
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
 import { processIdentifier } from "./processIdentifier";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processExportDeclaration (
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: Statement
 ): IntermediateExportDeclaration
 {
@@ -70,13 +69,13 @@ export function processExportDeclaration (
     // special case - we're re-exporting everything from
     // somewhere else, as a namespace
     if (isExportDeclarationWithNamespaceExport(exportDec)) {
-        return processNamespaceExport(compiler, exportDec);
+        return processNamespaceExport(processCtx, exportDec);
     }
 
     // special case - we're exporting a list of items,
     // possible as a re-export
     if (isExportDeclarationWithNamedExports(exportDec)) {
-        return processExportClause(compiler, exportDec);
+        return processExportClause(processCtx, exportDec);
     }
 
     // special case - we're re-exporting everything from
@@ -84,7 +83,7 @@ export function processExportDeclaration (
     if (isExportDeclarationWithModuleSpecifier(exportDec)) {
         return {
             kind: IntermediateKind.IntermediateReExportAll,
-            source: processExpression(compiler, exportDec.moduleSpecifier)
+            source: processExpression(processCtx, exportDec.moduleSpecifier)
         }
     }
 
@@ -119,11 +118,11 @@ function isExportDeclarationWithNamedExports(
 }
 
 function processExportClause(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ExportDeclarationWithNamedExports
 ): IntermediateExportDeclaration {
     // how many things are we exporting?
-    const items = processNamedExports(compiler, input.exportClause);
+    const items = processNamedExports(processCtx, input.exportClause);
 
     // special case
     if (items.length === 0) {
@@ -137,7 +136,7 @@ function processExportClause(
         return <IntermediateReExportIdentifiers>{
             kind: IntermediateKind.IntermediateReExportIdentifiers,
             items,
-            source: processExpression(compiler, input.moduleSpecifier)
+            source: processExpression(processCtx, input.moduleSpecifier)
         }
     }
 
@@ -149,7 +148,7 @@ function processExportClause(
 }
 
 function processNamedExports(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: NamedExports
 ): IntermediateExportItem[] {
     // this is what we'll return to the caller
@@ -160,14 +159,14 @@ function processNamedExports(
         if (member.propertyName) {
             retval.push({
                 kind: IntermediateKind.IntermediateAliasedExportItem,
-                exportedName: processExpression(compiler, member.propertyName),
-                name: processExpression(compiler, member.name),
+                exportedName: processExpression(processCtx, member.propertyName),
+                name: processExpression(processCtx, member.name),
             });
         }
         else {
             retval.push({
                 kind: IntermediateKind.IntermediateNamedExportItem,
-                name: processExpression(compiler, member.name),
+                name: processExpression(processCtx, member.name),
             });
         }
     }
@@ -212,13 +211,13 @@ function isExportDeclarationWithNamespaceExport(
 }
 
 function processNamespaceExport(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ExportDeclarationWithNamespaceExport
 ): IntermediateNamespaceExport {
     return {
         kind: IntermediateKind.IntermediateNamespaceExport,
-        name: processIdentifier(compiler, input.exportClause.name),
-        source: processExpression(compiler, input.moduleSpecifier),
+        name: processIdentifier(processCtx, input.exportClause.name),
+        source: processExpression(processCtx, input.moduleSpecifier),
     }
 
 }

@@ -33,16 +33,16 @@
 //
 
 import { ConstructSignatureDeclaration } from "typescript";
-import { Compiler } from "../Compiler";
 import {
     IntermediateConstructorSignature,
     IntermediateKind
 } from "../IntermediateTypes";
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
+import { ProcessingContext } from "./ProcessingContext";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 
 export function processConstructSignatureDeclaration(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ConstructSignatureDeclaration
 ): IntermediateConstructorSignature
 {
@@ -50,7 +50,7 @@ export function processConstructSignatureDeclaration(
 
     return {
         kind: IntermediateKind.IntermediateConstructorSignature,
-        parameters: processCallableParameterSignatures(compiler, input.parameters),
-        returnType: processReturnTypeFromNode(compiler, input),
+        parameters: processCallableParameterSignatures(processCtx, input.parameters),
+        returnType: processReturnTypeFromNode(processCtx, input),
     }
 }

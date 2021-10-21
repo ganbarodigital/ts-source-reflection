@@ -37,11 +37,9 @@ import {
     BindingElement,
     Expression,
     NodeArray,
-    ObjectBindingPattern,
-    TypeNode
+    ObjectBindingPattern, TypeNode
 } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     AnyIntermediateDestructuredIdentifierDeclaration,
     IntermediateDestructuredIdentifierDeclaration,
@@ -49,11 +47,12 @@ import {
     IntermediateTypeReference
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 import { processMaybe } from "./processMaybe";
 import { processTypeNode } from "./processTypeNode";
 
 export function processObjectBindingPatternForParameters(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     {
         param,
         paramType,
@@ -67,16 +66,16 @@ export function processObjectBindingPatternForParameters(
 {
     let typeRef: Maybe<IntermediateTypeReference>;
     if (paramType) {
-        typeRef = processTypeNode(compiler, paramType);
+        typeRef = processTypeNode(processCtx, paramType);
     }
 
     // all done
     return {
         kind: IntermediateKind.IntermediateDestructuredParameterDeclaration,
-        parameters: processBindingElements(compiler, param.elements),
+        parameters: processBindingElements(processCtx, param.elements),
         typeRef,
         initializer: processMaybe(
-            compiler,
+            processCtx,
             paramInitializer,
             processExpression
         )
@@ -84,7 +83,7 @@ export function processObjectBindingPatternForParameters(
 }
 
 function processBindingElements(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: NodeArray<BindingElement>
 ): AnyIntermediateDestructuredIdentifierDeclaration[]
 {
@@ -92,7 +91,7 @@ function processBindingElements(
     const retval: ReturnType<typeof processBindingElements> = [];
 
     input.forEach((bindingElement) => {
-        retval.push(processBindingElement(compiler, bindingElement));
+        retval.push(processBindingElement(processCtx, bindingElement));
     });
 
     // all done
@@ -100,13 +99,13 @@ function processBindingElements(
 }
 
 function processBindingElement(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: BindingElement
 ): AnyIntermediateDestructuredIdentifierDeclaration
 {
     // do we have a default value for the parameter?
     const initializer = processMaybe(
-        compiler,
+        processCtx,
         input.initializer,
         processExpression
     )

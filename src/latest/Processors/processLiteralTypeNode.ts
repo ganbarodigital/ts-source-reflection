@@ -34,7 +34,6 @@
 
 import { isNumericLiteral, isPrefixUnaryExpression, isStringLiteral, LiteralTypeNode } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     AnyIntermediateLiteralType,
     IntermediateBuiltInTypeReference,
@@ -43,9 +42,10 @@ import {
 } from "../IntermediateTypes";
 import { isBuiltInType } from "./isBuiltinType";
 import { processBuiltInType } from "./processBuiltInType";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processLiteralTypeNode(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: LiteralTypeNode
 ): AnyIntermediateLiteralType | IntermediateBuiltInTypeReference | IntermediateUndiscoverableType
 {
@@ -53,8 +53,11 @@ export function processLiteralTypeNode(
     //
     // no idea why the TS compiler thinks `null` is a literal type
     if (isBuiltInType(input)) {
-        return processBuiltInType(compiler, input);
+        return processBuiltInType(processCtx, input);
     }
+
+    // shorthand
+    const compiler = processCtx.compiler;
 
     // this is a necessary hack to avoid the Typescript library throwing
     // runtime errors

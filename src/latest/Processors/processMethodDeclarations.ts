@@ -44,21 +44,20 @@ import {
     isMethodDeclaration,
     isPropertyDeclaration,
     isSetAccessorDeclaration,
-    NodeArray,
-    SyntaxKind
+    NodeArray, SyntaxKind
 } from "typescript";
+import { AST } from "../AST";
 import { IntermediateMemberDeclaration } from "../IntermediateTypes";
 import { processConstructorDeclaration } from "./processConstructorDeclaration";
 import { processGetAccessorDeclaration } from "./processGetAccessorDeclaration";
+import { processIndexSignatureDeclaration } from "./processIndexSignatureDeclaration";
+import { ProcessingContext } from "./ProcessingContext";
 import { processMethodDeclaration } from "./processMethodDeclaration";
 import { processPropertyDeclaration } from "./processPropertyDeclaration";
 import { processSetAccessorDeclaration } from "./processSetAccessorDeclaration";
-import { AST } from "../AST";
-import { processIndexSignatureDeclaration } from "./processIndexSignatureDeclaration";
-import { Compiler } from "../Compiler";
 
 export function processMemberDeclarations(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: NodeArray<ClassElement>
 ): IntermediateMemberDeclaration[]
 {
@@ -66,32 +65,32 @@ export function processMemberDeclarations(
 
     for (const member of input) {
         if (isPropertyDeclaration(member)) {
-            retval.push(processPropertyDeclaration(compiler, member));
+            retval.push(processPropertyDeclaration(processCtx, member));
             continue;
         }
 
         if (isConstructorDeclaration(member)) {
-            retval.push(processConstructorDeclaration(compiler, member));
+            retval.push(processConstructorDeclaration(processCtx, member));
             continue;
         }
 
         if (isMethodDeclaration(member)) {
-            retval.push(processMethodDeclaration(compiler, member));
+            retval.push(processMethodDeclaration(processCtx, member));
             continue;
         }
 
         if (isGetAccessorDeclaration(member)) {
-            retval.push(processGetAccessorDeclaration(compiler, member));
+            retval.push(processGetAccessorDeclaration(processCtx, member));
             continue;
         }
 
         if (isSetAccessorDeclaration(member)) {
-            retval.push(processSetAccessorDeclaration(compiler, member));
+            retval.push(processSetAccessorDeclaration(processCtx, member));
             continue;
         }
 
         if (AST.isIndexSignature(member)) {
-            retval.push(processIndexSignatureDeclaration(compiler, member));
+            retval.push(processIndexSignatureDeclaration(processCtx, member));
             continue;
         }
 

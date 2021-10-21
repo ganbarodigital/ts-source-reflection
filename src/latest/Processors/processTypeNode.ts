@@ -55,7 +55,6 @@ import {
     TypeNode
 } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateTypeReference
@@ -69,6 +68,7 @@ import { processFunctionType } from "./processFunctionType";
 import { processImportTypeNodeDuringTypeProcessing } from "./processImportTypeNodeDuringTypeProcessing";
 import { processIndexedAccessType } from "./processIndexedAccessType";
 import { processInferType } from "./processInferType";
+import { ProcessingContext } from "./ProcessingContext";
 import { processIntersectionNode } from "./processIntersectionNode";
 import { processLiteralTypeNode } from "./processLiteralTypeNode";
 import { processMappedType } from "./processMappedType";
@@ -80,7 +80,7 @@ import { processTypeReferenceNode } from "./processTypeReferenceNode";
 import { processUnionType } from "./processUnionType";
 
 export function processTypeNode(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: TypeNode
 ): IntermediateTypeReference
 {
@@ -91,12 +91,15 @@ export function processTypeNode(
     // if you need then (like tuples do), you'll need to define
     // a wrapper around processTypeNote()
 
+    // shorthand
+    const compiler = processCtx.compiler;
+
     // special case - we have a keyof type
     if (isTypeOperatorNode(input)) {
         if (input.operator === SyntaxKind.KeyOfKeyword) {
             return {
                 kind: IntermediateKind.IntermediateKeyofTypeReference,
-                typeRef: processTypeNode(compiler, input.type),
+                typeRef: processTypeNode(processCtx, input.type),
             }
         }
     }
@@ -119,84 +122,84 @@ export function processTypeNode(
     if (isArrayTypeNode(input)) {
         return {
             kind: IntermediateKind.IntermediateArrayTypeReference,
-            typeRef: processTypeNode(compiler, input.elementType),
+            typeRef: processTypeNode(processCtx, input.elementType),
         }
     }
 
     // special case - anonymous class
     if (AST.isAnonymousClassType(input)) {
         // what's in the class?
-        return processAnonymousClassType(compiler, input);
+        return processAnonymousClassType(processCtx, input);
     }
 
     // special case - literal type
     if (isLiteralTypeNode(input)) {
-        return processLiteralTypeNode(compiler, input);
+        return processLiteralTypeNode(processCtx, input);
     }
 
     // special case - union parameter
     if (isUnionTypeNode(input)) {
-        return processUnionType(compiler, input);
+        return processUnionType(processCtx, input);
     }
 
     // special case - type intersection
     if (isIntersectionTypeNode(input)) {
-        return processIntersectionNode(compiler, input);
+        return processIntersectionNode(processCtx, input);
     }
 
     // special case - we may have a built-in type
     if (isBuiltInType(input)) {
-        return processBuiltInType(compiler, input);
+        return processBuiltInType(processCtx, input);
     }
 
     // special case - function type signature
     if (isFunctionTypeNode(input)) {
-        return processFunctionType(compiler, input);
+        return processFunctionType(processCtx, input);
     }
 
     // special case - type predicate
     if (isTypePredicateNode(input)) {
-        return processTypePredicate(compiler, input);
+        return processTypePredicate(processCtx, input);
     }
 
     // special case - types in parenthesis
     if (isParenthesizedTypeNode(input)) {
-        return processParenthesizedType(compiler, input);
+        return processParenthesizedType(processCtx, input);
     }
 
     // special case - tuple type
     if (isTupleTypeNode(input)) {
-        return processTupleType(compiler, input);
+        return processTupleType(processCtx, input);
     }
 
     // special case - constructor type
     if (isConstructorTypeNode(input)) {
-        return processConstructorType(compiler, input);
+        return processConstructorType(processCtx, input);
     }
 
     // special case - indexed access type
     if (isIndexedAccessTypeNode(input)) {
-        return processIndexedAccessType(compiler, input);
+        return processIndexedAccessType(processCtx, input);
     }
 
     // special case - conditional type
     if (isConditionalTypeNode(input)) {
-        return processConditionalType(compiler, input);
+        return processConditionalType(processCtx, input);
     }
 
     // special case - infer type
     if (isInferTypeNode(input)) {
-        return processInferType(compiler, input);
+        return processInferType(processCtx, input);
     }
 
     // special case - mapped type
     if (isMappedTypeNode(input)) {
-        return processMappedType(compiler, input);
+        return processMappedType(processCtx, input);
     }
 
     // special case - template literal
     if (isTemplateLiteralTypeNode(input)) {
-        return processTemplateLiteralType(compiler, input);
+        return processTemplateLiteralType(processCtx, input);
     }
 
     // special case - `this` as a type
@@ -211,12 +214,12 @@ export function processTypeNode(
     // we've only seen these when working with type nodes created by
     // the type checker
     if (isImportTypeNode(input)) {
-        return processImportTypeNodeDuringTypeProcessing(compiler, input);
+        return processImportTypeNodeDuringTypeProcessing(processCtx, input);
     }
 
     // generic case
     //
     // use a type guarantee to keep the compiler happy!
     const typeRef = AST.mustBeTypeReference(input);
-    return processTypeReferenceNode(compiler, typeRef);
+    return processTypeReferenceNode(processCtx, typeRef);
 }

@@ -36,14 +36,14 @@ import {
     Statement
 } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateExportAssignment, IntermediateKind
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processExportAssignment (
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: Statement
 ): IntermediateExportAssignment
 {
@@ -52,7 +52,7 @@ export function processExportAssignment (
 
     return {
         kind: IntermediateKind.IntermediateExportAssignment,
-        name: processExpression(compiler, exportDec.expression),
+        name: processExpression(processCtx, exportDec.expression),
     }
 }
 

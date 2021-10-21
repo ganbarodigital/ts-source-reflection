@@ -34,7 +34,6 @@
 
 import { InterfaceDeclaration, Statement } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateInterface,
     IntermediateKind,
@@ -42,11 +41,12 @@ import {
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
+import { ProcessingContext } from "./ProcessingContext";
 import { processMemberSignatures } from "./processMemberSignatures";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processInterfaceDeclaration (
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: Statement
 ): IntermediateInterface
 {
@@ -58,17 +58,17 @@ export function processInterfaceDeclaration (
         kind: IntermediateKind.IntermediateInterface,
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
         name: interfaceDec.name.text,
-        typeParameters: processTypeParametersFromNode(compiler, interfaceDec),
-        docBlock: processDocBlock(compiler, interfaceDec),
+        typeParameters: processTypeParametersFromNode(processCtx, interfaceDec),
+        docBlock: processDocBlock(processCtx, interfaceDec),
         isExported: AST.isNodeExported(interfaceDec),
         isDefaultExport: AST.hasDefaultModifier(interfaceDec.modifiers),
-        extends: getBaseInterfaceTypes(compiler, interfaceDec),
-        members: processMemberSignatures(compiler, interfaceDec.members),
+        extends: getBaseInterfaceTypes(processCtx, interfaceDec),
+        members: processMemberSignatures(processCtx, interfaceDec.members),
     }
 }
 
 function getBaseInterfaceTypes(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: InterfaceDeclaration
 ): IntermediateTypeArgument[] {
     // our return value
@@ -78,7 +78,7 @@ function getBaseInterfaceTypes(
     const heritageClauses = AST.findExtendsHeritageClauses(input);
     for (const clause of heritageClauses) {
         for (const clauseType of clause.types) {
-            retval.push(processExpressionWithTypeArguments(compiler, clauseType));
+            retval.push(processExpressionWithTypeArguments(processCtx, clauseType));
         }
     }
 

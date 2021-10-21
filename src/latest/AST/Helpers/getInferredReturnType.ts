@@ -34,17 +34,20 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { SignatureDeclaration } from "typescript";
-import { Compiler } from "../../Compiler";
 import { IntermediateExpression, IntermediateKind, IntermediateTypeReference } from "../../IntermediateTypes";
+import { ProcessingContext } from "../../Processors/ProcessingContext";
 import { processTypeNode } from "../../Processors/processTypeNode";
 import { translateInferredType } from "./translateInferredType";
 
 export function getInferredReturnType(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: SignatureDeclaration,
     initializer?: IntermediateExpression,
 ): Maybe<IntermediateTypeReference>
 {
+    // shorthand
+    const compiler = processCtx.compiler;
+
     // what does the compiler think is happening?
     const typeChecker = compiler.getTypeChecker();
     const tsSignature = typeChecker.getSignatureFromDeclaration(input);
@@ -76,7 +79,10 @@ export function getInferredReturnType(
     // not all of these typeNodes will process successfully atm.
     // workarounds / alternative approaches are most welcome!
     try {
-        const inferredType = processTypeNode(compiler, typeNode);
+        const inferredType = processTypeNode(
+            processCtx,
+            typeNode
+        );
 
         // sometimes, the inferred type needs a little bit of help
         // from us

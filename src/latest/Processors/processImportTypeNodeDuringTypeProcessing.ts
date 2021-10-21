@@ -36,13 +36,13 @@ import { Maybe, mustBeString } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import path from "path";
 import { ImportTypeNode } from "typescript";
-import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
 import { processEntityName } from "./processEntityName";
+import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processImportTypeNodeDuringTypeProcessing(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ImportTypeNode,
 ): IntermediateTypeReference
 {
@@ -67,28 +67,32 @@ export function processImportTypeNodeDuringTypeProcessing(
     // That makes it impossible for us to resolve this type in the
     // Intermediate layer.
 
+    // shorthand
+    const sourceFile = processCtx.sourceFile;
+
     // we are working with a synthetic type node here. This can and will
     // go wrong from time to time.
     try {
         // we need to convert the import path into a relative path
         const pathNode = processTypeNode(
-            compiler,
+            processCtx,
             input.argument
         );
-        const importPath = mustBeString(
+        let importPath = mustBeString(
             getTypeNameFromTypeReference(pathNode)
         );
 
         if (path.isAbsolute(importPath)) {
             // convert it to a relative path, relative to the source file
             // that is being processed
+            importPath = path.relative(sourceFile.fileName, importPath);
         }
 
         if (input.qualifier) {
             return {
                 kind: IntermediateKind.IntermediateImportedType,
                 importPath: new Filepath(importPath),
-                entityName: processEntityName(compiler, input.qualifier),
+                entityName: processEntityName(processCtx, input.qualifier),
             }
         }
 

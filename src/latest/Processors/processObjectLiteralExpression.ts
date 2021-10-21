@@ -34,14 +34,14 @@
 
 import { isShorthandPropertyAssignment, isSpreadAssignment, ObjectLiteralExpression } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediateObjectLiteral } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 import { processPropertyAssignment } from "./processPropertyAssignment";
 import { processShorthandPropertyAssignment } from "./processShorthandPropertyAssignment";
 import { processSpreadAssignment } from "./processSpreadAssignment";
 
 export function processObjectLiteralExpression(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ObjectLiteralExpression
 ): IntermediateObjectLiteral
 {
@@ -56,19 +56,19 @@ export function processObjectLiteralExpression(
     for (const member of input.properties) {
         // special case - spread assignment
         if (isSpreadAssignment(member)) {
-            retval.properties.push(processSpreadAssignment(compiler, member));
+            retval.properties.push(processSpreadAssignment(processCtx, member));
             continue;
         }
 
         // special case - shorthand assignment
         if (isShorthandPropertyAssignment(member)) {
-            retval.properties.push(processShorthandPropertyAssignment(compiler, member));
+            retval.properties.push(processShorthandPropertyAssignment(processCtx, member));
             continue;
         }
 
         // general case
         const propAssignment = AST.mustBePropertyAssignment(member);
-        retval.properties.push(processPropertyAssignment(compiler, propAssignment));
+        retval.properties.push(processPropertyAssignment(processCtx, propAssignment));
     }
 
     // all done

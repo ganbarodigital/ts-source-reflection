@@ -33,18 +33,18 @@
 //
 
 import { PropertyAccessExpression } from "typescript";
-import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediatePropertyAccessExpression } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processPropertyAccessExpression(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: PropertyAccessExpression
 ): IntermediatePropertyAccessExpression
 {
     return {
         kind: IntermediateKind.IntermediatePropertyAccessExpression,
-        target: processExpression(compiler, input.expression),
+        target: processExpression(processCtx, input.expression),
         propName: input.name.text,
     }
 }

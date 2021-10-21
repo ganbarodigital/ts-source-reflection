@@ -40,29 +40,31 @@ import {
     SyntaxKind
 } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateCallableParameterDeclaration,
     IntermediateExpression,
-    IntermediateKind, IntermediateRestCallableParameterDeclaration, IntermediateTypedCallableParameterDeclaration,
+    IntermediateKind,
+    IntermediateRestCallableParameterDeclaration,
+    IntermediateTypedCallableParameterDeclaration,
     IntermediateUntypedCallableParameterDeclaration
 } from "../IntermediateTypes";
 import { processArrayBindingPattern } from "./processArrayBindingPattern";
 import { processDecorators } from "./processDecorators";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 import { processObjectBindingPatternForParameters } from "./processObjectBindingPatternForParameters";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
 
 export function processParameterDeclaration(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     paramDec: ParameterDeclaration
 ): IntermediateCallableParameterDeclaration
 {
     // special case - deconstructed object
     if (isObjectBindingPattern(paramDec.name)) {
         return processObjectBindingPatternForParameters(
-            compiler,
+            processCtx,
             {
                 param: paramDec.name,
                 paramType: paramDec.type,
@@ -74,7 +76,7 @@ export function processParameterDeclaration(
     // special case - array binding
     if (isArrayBindingPattern(paramDec.name)) {
         return processArrayBindingPattern(
-            compiler,
+            processCtx,
             {
                 param: paramDec.name,
                 paramType: paramDec.type
@@ -90,14 +92,14 @@ export function processParameterDeclaration(
         paramClone.dotDotDotToken = undefined;
         return <IntermediateRestCallableParameterDeclaration>{
             kind: IntermediateKind.IntermediateRestCallableParameterDeclaration,
-            parameter: processParameterDeclaration(compiler, paramClone)
+            parameter: processParameterDeclaration(processCtx, paramClone)
         };
     }
 
     // do we have a default value for the parameter?
     let initializer: Maybe<IntermediateExpression>;
     if (paramDec.initializer) {
-        initializer = processExpression(compiler, paramDec.initializer);
+        initializer = processExpression(processCtx, paramDec.initializer);
     }
 
     // special case - untyped parameter
@@ -107,10 +109,10 @@ export function processParameterDeclaration(
         // tslint:disable-next-line: no-angle-bracket-type-assertion
         return <IntermediateUntypedCallableParameterDeclaration>{
             kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
-            decorators: processDecorators(compiler, paramDec),
+            decorators: processDecorators(processCtx, paramDec),
             name: paramDec.name.getText(),
             initializer,
-            isOptional: processQuestionToken(compiler, paramDec.questionToken),
+            isOptional: processQuestionToken(processCtx, paramDec.questionToken),
         };
     }
 
@@ -130,10 +132,10 @@ export function processParameterDeclaration(
     // general case - typed parameter
     return <IntermediateTypedCallableParameterDeclaration>{
         kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
-        decorators: processDecorators(compiler, paramDec),
+        decorators: processDecorators(processCtx, paramDec),
         name: paramDec.name.getText(),
-        typeRef: processTypeNode(compiler, paramType),
-        isOptional: processQuestionToken(compiler, paramDec.questionToken),
+        typeRef: processTypeNode(processCtx, paramType),
+        isOptional: processQuestionToken(processCtx, paramDec.questionToken),
         isReadonly,
         initializer,
     };

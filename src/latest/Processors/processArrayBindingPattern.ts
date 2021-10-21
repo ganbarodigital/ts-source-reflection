@@ -42,12 +42,10 @@ import {
     ArrayBindingElement,
     ArrayBindingPattern,
     isBindingElement,
-    NodeArray,
-    SyntaxKind,
+    NodeArray, SyntaxKind,
     TypeNode
 } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateArrayBindingElement,
     IntermediateArrayBindingParameter,
@@ -55,11 +53,12 @@ import {
 } from "../IntermediateTypes";
 import { processBindingNameForParameters } from "./processBindingNameForParameters";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 import { processMaybe } from "./processMaybe";
 import { processTypeNode } from "./processTypeNode";
 
 export function processArrayBindingPattern(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     {
         param,
         paramType
@@ -71,13 +70,17 @@ export function processArrayBindingPattern(
 {
     return {
         kind: IntermediateKind.IntermediateArrayBindingParameter,
-        parameters: processBindingElements(compiler, param.elements),
-        typeRef: processMaybe(compiler, paramType, processTypeNode),
+        parameters: processBindingElements(processCtx, param.elements),
+        typeRef: processMaybe(
+            processCtx,
+            paramType,
+            processTypeNode
+        ),
     }
 }
 
 function processBindingElements(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: NodeArray<ArrayBindingElement>
 ): IntermediateArrayBindingElement[]
 {
@@ -85,7 +88,9 @@ function processBindingElements(
     const retval: IntermediateArrayBindingElement[] = [];
 
     input.forEach((bindingElement) => {
-        retval.push(processBindingElement(compiler, bindingElement));
+        retval.push(
+            processBindingElement(processCtx, bindingElement)
+        );
     });
 
     // all done
@@ -93,7 +98,7 @@ function processBindingElements(
 }
 
 function processBindingElement(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ArrayBindingElement
 ): IntermediateArrayBindingElement
 {
@@ -101,12 +106,12 @@ function processBindingElement(
         return <IntermediateArrayBindingElement>{
             kind: IntermediateKind.IntermediateArrayBindingElement,
             name: processBindingNameForParameters(
-                compiler,
+                processCtx,
                 input.name,
                 AST.hasDotDotDotToken(input.dotDotDotToken)
             ),
             initializer: processMaybe(
-                compiler,
+                processCtx,
                 input.initializer,
                 processExpression
             ),

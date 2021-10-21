@@ -34,12 +34,12 @@
 
 import { isCallSignatureDeclaration, NodeArray, TypeElement } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import { IntermediateCallSignature } from "../IntermediateTypes";
 import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processCallSignatures(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: NodeArray<TypeElement>
 ): IntermediateCallSignature[]
 {
@@ -54,7 +54,7 @@ export function processCallSignatures(
         // keep the compiler happy
         const callSig = AST.mustBeCallSignatureDeclaration(member);
 
-        retval.push(processCallSignatureDeclaration(compiler, callSig));
+        retval.push(processCallSignatureDeclaration(processCtx, callSig));
     }
 
     // all done

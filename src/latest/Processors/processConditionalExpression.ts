@@ -33,19 +33,19 @@
 //
 
 import { ConditionalExpression } from "typescript";
-import { Compiler } from "../Compiler";
 import { IntermediateConditionalExpression, IntermediateKind } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processConditionalExpression(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ConditionalExpression
 ): IntermediateConditionalExpression
 {
     return {
         kind: IntermediateKind.IntermediateConditionalExpression,
-        condition: processExpression(compiler, input.condition),
-        whenTrue: processExpression(compiler, input.whenTrue),
-        whenFalse: processExpression(compiler, input.whenFalse),
+        condition: processExpression(processCtx, input.condition),
+        whenTrue: processExpression(processCtx, input.whenTrue),
+        whenFalse: processExpression(processCtx, input.whenFalse),
     }
 }

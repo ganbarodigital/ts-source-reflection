@@ -33,11 +33,11 @@
 //
 
 import { NumericLiteral } from "typescript";
-import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediateNumericLiteral } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processNumericLiteral(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: NumericLiteral
 ): IntermediateNumericLiteral
 {

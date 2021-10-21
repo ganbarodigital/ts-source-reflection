@@ -33,24 +33,24 @@
 //
 
 import { SetAccessorDeclaration } from "typescript";
-import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediateSetter } from "../IntermediateTypes";
 import { processDecorators } from "./processDecorators";
 import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
+import { ProcessingContext } from "./ProcessingContext";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processSetAccessorDeclaration(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: SetAccessorDeclaration
 ): IntermediateSetter
 {
     return {
         kind: IntermediateKind.IntermediateSetter,
-        docBlock: processDocBlock(compiler, input),
-        decorators: processDecorators(compiler, input),
+        docBlock: processDocBlock(processCtx, input),
+        decorators: processDecorators(processCtx, input),
         name: input.name.getText(),
-        typeParameters: processTypeParametersFromNode(compiler, input),
-        parameters: processFunctionParameters(compiler, input.parameters),
+        typeParameters: processTypeParametersFromNode(processCtx, input),
+        parameters: processFunctionParameters(processCtx, input.parameters),
     }
 }

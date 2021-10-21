@@ -38,7 +38,6 @@ import {
     SyntaxKind
 } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateCallableParameterSignature,
     IntermediateKind,
@@ -46,19 +45,20 @@ import {
     IntermediateTypedCallableParameterSignature,
     IntermediateUntypedCallableParameterSignature
 } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 import { processObjectBindingPatternForSignatures } from "./processObjectBindingPatternForSignatures";
 import { processQuestionToken } from "./processQuestionToken";
 import { processTypeNode } from "./processTypeNode";
 
 export function processParameterSignature(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     paramDec: ParameterDeclaration
 ): IntermediateCallableParameterSignature
 {
     // special case - destructured object
     if (isObjectBindingPattern(paramDec.name)) {
         return processObjectBindingPatternForSignatures(
-            compiler,
+            processCtx,
             {
                 param: paramDec.name,
                 paramType: paramDec.type,
@@ -72,9 +72,12 @@ export function processParameterSignature(
         paramClone.dotDotDotToken = undefined;
         return <IntermediateRestCallableParameterSignature>{
             kind: IntermediateKind.IntermediateRestCallableParameterSignature,
-            parameter: processParameterSignature(compiler, paramClone),
+            parameter: processParameterSignature(processCtx, paramClone),
         };
     }
+
+    // shorthand
+    const compiler = processCtx.compiler;
 
     // before we go any further, we need to get the parameter name in a way
     // that doesn't cause the Typescript library to throw runtime errors
@@ -88,7 +91,7 @@ export function processParameterSignature(
         return <IntermediateUntypedCallableParameterSignature>{
             kind: IntermediateKind.IntermediateUntypedCallableParameterSignature,
             name,
-            isOptional: processQuestionToken(compiler, paramDec.questionToken),
+            isOptional: processQuestionToken(processCtx, paramDec.questionToken),
         };
     }
 
@@ -110,8 +113,8 @@ export function processParameterSignature(
     return <IntermediateTypedCallableParameterSignature>{
         kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
         name,
-        typeRef: processTypeNode(compiler, paramType),
-        isOptional: processQuestionToken(compiler, paramDec.questionToken),
+        typeRef: processTypeNode(processCtx, paramType),
+        isOptional: processQuestionToken(processCtx, paramDec.questionToken),
         isReadonly,
     };
 }

@@ -32,33 +32,33 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import { MethodSignature } from "typescript";
+import { AST } from "../AST";
 import {
     IntermediateKind,
     IntermediateMethodSignature
 } from "../IntermediateTypes";
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { processDocBlock } from "./processDocBlock";
+import { ProcessingContext } from "./ProcessingContext";
+import { processPropertyName } from "./processPropertyName";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
-import { AST } from "../AST";
-import { processPropertyName } from "./processPropertyName";
-import { Compiler } from "../Compiler";
 
 
 export function processMethodSignature(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: MethodSignature
 ): IntermediateMethodSignature
 {
     return {
         kind: IntermediateKind.IntermediateMethodSignature,
-        docBlock: processDocBlock(compiler, input),
+        docBlock: processDocBlock(processCtx, input),
         isStatic: AST.hasStaticModifier(input),
         accessModifier: AST.getRestrictableScope(input),
-        name: processPropertyName(compiler, input.name),
-        parameters: processCallableParameterSignatures(compiler, input.parameters),
-        typeParameters: processTypeParametersFromNode(compiler, input),
-        returnType: processReturnTypeFromNode(compiler, input),
+        name: processPropertyName(processCtx, input.name),
+        parameters: processCallableParameterSignatures(processCtx, input.parameters),
+        typeParameters: processTypeParametersFromNode(processCtx, input),
+        returnType: processReturnTypeFromNode(processCtx, input),
     }
 }

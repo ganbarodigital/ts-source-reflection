@@ -34,17 +34,17 @@
 
 import { Statement } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateTypeAliasDeclaration
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
+import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processTypeAliasDeclaration (
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: Statement
 ): IntermediateTypeAliasDeclaration
 {
@@ -55,11 +55,11 @@ export function processTypeAliasDeclaration (
 
     return {
         kind: IntermediateKind.IntermediateTypeAliasDeclaration,
-        docBlock: processDocBlock(compiler, typeAliasDec),
+        docBlock: processDocBlock(processCtx, typeAliasDec),
         name: typeAliasDec.name.text,
         isExported: AST.hasExportModifier(input.modifiers),
         isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-        typeRef: processTypeNode(compiler, typeAliasDec.type),
-        typeParameters: processTypeParametersFromNode(compiler, typeAliasDec),
+        typeRef: processTypeNode(processCtx, typeAliasDec.type),
+        typeParameters: processTypeParametersFromNode(processCtx, typeAliasDec),
     }
 }

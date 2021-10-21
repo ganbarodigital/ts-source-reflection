@@ -32,24 +32,26 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import { Filepath } from "@safelytyped/filepath";
-import { FileReference, SourceFile } from "typescript";
-import { Compiler } from "../Compiler";
+import { FileReference } from "typescript";
 import {
     IntermediateKind,
     IntermediateSourceFile
 } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 import { processStatements } from "./processStatements";
 
 export function processSourceFile(
-    compiler: Compiler,
-    parsedSource: SourceFile
+    processCtx: ProcessingContext
 ): IntermediateSourceFile
 {
+    // shorthand
+    const parsedSource = processCtx.sourceFile;
+
     // we need this, to help our process functions
     const retval: IntermediateSourceFile = {
         path: new Filepath(parsedSource.fileName),
         kind: IntermediateKind.IntermediateSourceFile,
-        children: processStatements(compiler, parsedSource.statements),
+        children: processStatements(processCtx, parsedSource.statements),
         referencedFiles: processFileReferences(parsedSource.referencedFiles),
         referencedLibs: processFileReferences(parsedSource.libReferenceDirectives),
         referencedTypes: processFileReferences(parsedSource.typeReferenceDirectives),

@@ -35,7 +35,6 @@
 import { DEFAULT_DATA_PATH, UnsupportedTypeError } from "@safelytyped/core-types";
 import { NodeArray, ParameterDeclaration } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateCallableParameterDeclaration,
     IntermediateConstructorParameterDeclaration,
@@ -44,10 +43,11 @@ import {
     IntermediateTypedConstructorParameterDeclaration,
     IntermediateUntypedConstructorParameterDeclaration
 } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 import { processParameterDeclaration } from "./processParameterDeclaration";
 
 export function processConstructorParameters(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: NodeArray<ParameterDeclaration>
 ): IntermediateConstructorParameterDeclaration[] {
     // our return value
@@ -58,7 +58,7 @@ export function processConstructorParameters(
     // to regular function parameters
 
     input.forEach((paramDec) => {
-        retval.push(processConstructorParameter(compiler, paramDec));
+        retval.push(processConstructorParameter(processCtx, paramDec));
     });
 
     // all done
@@ -66,14 +66,13 @@ export function processConstructorParameters(
 }
 
 function processConstructorParameter(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ParameterDeclaration
 ): IntermediateConstructorParameterDeclaration {
     // we can reuse the existing support for all parameters
     // to save us repeating ourselves here
     const retval = mapFunctionParameterToConstructorParameter(
-        compiler,
-        processParameterDeclaration(compiler, input)
+        processParameterDeclaration(processCtx, input)
     );
 
     // special case - object binding parameters cannot contain
@@ -115,7 +114,6 @@ function processConstructorParameter(
 }
 
 function mapFunctionParameterToConstructorParameter(
-    compiler: Compiler,
     input: IntermediateCallableParameterDeclaration
 ): IntermediateConstructorParameterDeclaration {
     switch(input.kind) {

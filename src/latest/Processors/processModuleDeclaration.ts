@@ -41,11 +41,9 @@ import {
     isModuleBlock,
     ModuleBody,
     ModuleDeclaration,
-    NodeFlags,
-    Statement
+    NodeFlags, Statement
 } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateAmbientModuleDefinition,
     IntermediateGlobalAugmentation,
@@ -54,11 +52,12 @@ import {
     IntermediateNamespace
 } from "../IntermediateTypes";
 import { processDocBlock } from "./processDocBlock";
+import { ProcessingContext } from "./ProcessingContext";
 import { processModuleBody } from "./processModuleBody";
 import { processStatements } from "./processStatements";
 
 export function processModuleDeclaration (
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: Statement
 ): IntermediateModuleDeclaration
 {
@@ -68,16 +67,16 @@ export function processModuleDeclaration (
     // do we have a module that we support?
     // tslint:disable-next-line: no-bitwise
     if (moduleDec.flags & NodeFlags.Namespace) {
-        return processNamespace(compiler, moduleDec);
+        return processNamespace(processCtx, moduleDec);
     }
 
     // tslint:disable-next-line: no-bitwise
     if (moduleDec.flags & NodeFlags.GlobalAugmentation) {
-        return processGlobalAugmentation(compiler, moduleDec);
+        return processGlobalAugmentation(processCtx, moduleDec);
     }
 
     if (isModuleDeclarationWithBody(moduleDec)) {
-        return processModuleDefinition(compiler, moduleDec);
+        return processModuleDefinition(processCtx, moduleDec);
     }
 
     // no (useful) flags, no body?
@@ -100,7 +99,7 @@ export function processModuleDeclaration (
 }
 
 function processGlobalAugmentation(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ModuleDeclaration
 ): IntermediateGlobalAugmentation {
     // is this an empty augmentation?
@@ -115,7 +114,7 @@ function processGlobalAugmentation(
     if (isModuleBlock(input.body)) {
         return {
             kind: IntermediateKind.IntermediateGlobalAugmentation,
-            children: processStatements(compiler, input.body!.statements),
+            children: processStatements(processCtx, input.body!.statements),
         }
     }
 
@@ -149,7 +148,7 @@ function isModuleDeclarationWithBody(
 }
 
 function processModuleDefinition(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ModuleDeclarationWithBody
 ): IntermediateAmbientModuleDefinition
 {
@@ -157,19 +156,19 @@ function processModuleDefinition(
         kind: IntermediateKind.IntermediateAmbientModuleDefinition,
         name: input.name.getText(),
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
-        contents: processModuleBody(compiler, input.body),
+        contents: processModuleBody(processCtx, input.body),
     }
 }
 
 function processNamespace(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ModuleDeclaration
 ): IntermediateNamespace {
     // is this an empty namespace?
     if (!input.body) {
         return {
             kind: IntermediateKind.IntermediateNamespace,
-            docBlock: processDocBlock(compiler, input),
+            docBlock: processDocBlock(processCtx, input),
             isDeclared: AST.hasDeclaredModifier(input.modifiers),
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
@@ -182,12 +181,12 @@ function processNamespace(
     if (isModuleBlock(input.body)) {
         return {
             kind: IntermediateKind.IntermediateNamespace,
-            docBlock: processDocBlock(compiler, input),
+            docBlock: processDocBlock(processCtx, input),
             isDeclared: AST.hasDeclaredModifier(input.modifiers),
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
             name: input.name.getText(),
-            children: processStatements(compiler, input.body.statements),
+            children: processStatements(processCtx, input.body.statements),
         }
     }
 

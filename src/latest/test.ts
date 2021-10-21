@@ -9,6 +9,6 @@ const inputFile = new Filepath(
 const compiler = getTestCompiler(inputFile);
 const sourceFile = compiler.getAstForFile(inputFile);
 
-const refFile = processSourceFile(compiler, sourceFile);
+const refFile = processSourceFile({compiler, sourceFile});
 // tslint:disable-next-line: no-console
 console.log(JSON.stringify(refFile, null, 4));

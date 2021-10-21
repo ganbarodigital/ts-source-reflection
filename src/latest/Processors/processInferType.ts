@@ -33,17 +33,17 @@
 //
 
 import { InferTypeNode } from "typescript";
-import { Compiler } from "../Compiler";
 import { IntermediateInferType, IntermediateKind } from "../IntermediateTypes";
 import { processGenericTypeDeclaration } from "./processGenericTypeDeclaration";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processInferType(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: InferTypeNode
 ): IntermediateInferType
 {
     return {
         kind: IntermediateKind.IntermediateInferType,
-        typeParameter: processGenericTypeDeclaration(compiler, input.typeParameter),
+        typeParameter: processGenericTypeDeclaration(processCtx, input.typeParameter),
     }
 }

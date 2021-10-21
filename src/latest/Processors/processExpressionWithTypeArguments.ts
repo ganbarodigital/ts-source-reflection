@@ -33,28 +33,28 @@
 //
 
 import { ExpressionWithTypeArguments } from "typescript";
-import { Compiler } from "../Compiler";
 import {
     IntermediateGenericTypeReference,
     IntermediateKind,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNodes } from "./processTypeNodes";
 
 export function processExpressionWithTypeArguments(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: ExpressionWithTypeArguments
 ): IntermediateTypeArgument {
     // do we have something simple?
     if (!input.typeArguments) {
-        return processExpression(compiler, input.expression);
+        return processExpression(processCtx, input.expression);
     }
 
     // if we get here, we're looking at a generic type
     return <IntermediateGenericTypeReference>{
         kind: IntermediateKind.IntermediateGenericTypeReference,
         typeName: input.expression.getText(),
-        typeArguments: processTypeNodes(compiler, input.typeArguments)
+        typeArguments: processTypeNodes(processCtx, input.typeArguments)
     }
 }

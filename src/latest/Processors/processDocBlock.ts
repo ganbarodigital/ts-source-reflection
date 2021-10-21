@@ -33,14 +33,14 @@
 //
 import { Maybe } from "@safelytyped/core-types";
 import { Node } from "typescript";
-
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import { IntermediateDocBlock, IntermediateKind } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
+
 
 
 export function processDocBlock(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: Node
 ): Maybe<IntermediateDocBlock>
 {

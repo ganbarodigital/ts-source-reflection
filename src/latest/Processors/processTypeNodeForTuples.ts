@@ -35,15 +35,15 @@ import {
     isRestTypeNode,
     TypeNode
 } from "typescript";
-import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateTypeReferenceForTuples
 } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processTypeNodeForTuples(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: TypeNode
 ): IntermediateTypeReferenceForTuples
 {
@@ -53,10 +53,10 @@ export function processTypeNodeForTuples(
     if (isRestTypeNode(input)) {
         return {
             kind: IntermediateKind.IntermediateRestType,
-            typeRef: processTypeNode(compiler, input.type),
+            typeRef: processTypeNode(processCtx, input.type),
         }
     }
 
     // general case
-    return processTypeNode(compiler, input);
+    return processTypeNode(processCtx, input);
 }

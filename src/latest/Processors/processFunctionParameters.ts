@@ -32,13 +32,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import { NodeArray, ParameterDeclaration } from "typescript";
-import { Compiler } from "../Compiler";
 import {
     IntermediateCallableParameterDeclaration
 } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 import { processParameterDeclaration } from "./processParameterDeclaration";
 export function processFunctionParameters(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: NodeArray<ParameterDeclaration>
 ): IntermediateCallableParameterDeclaration[] {
     // our return value
@@ -46,7 +46,7 @@ export function processFunctionParameters(
 
     input.forEach((paramDec) => {
         // general case
-        retval.push(processParameterDeclaration(compiler, paramDec));
+        retval.push(processParameterDeclaration(processCtx, paramDec));
     });
 
     // all done

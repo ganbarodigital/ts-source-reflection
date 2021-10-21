@@ -33,11 +33,11 @@
 //
 
 import { QuestionToken } from "typescript";
-import { Compiler } from "../Compiler";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processQuestionToken
 (
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: QuestionToken | undefined
 ): boolean
 {

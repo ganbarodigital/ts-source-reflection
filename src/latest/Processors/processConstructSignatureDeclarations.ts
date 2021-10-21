@@ -34,12 +34,12 @@
 
 import { isConstructSignatureDeclaration, NodeArray, TypeElement } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import { IntermediateConstructorSignature } from "../IntermediateTypes";
 import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
+import { ProcessingContext } from "./ProcessingContext";
 
 export function processConstructSignatureDeclarations(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: NodeArray<TypeElement>
 ): IntermediateConstructorSignature[]
 {
@@ -49,12 +49,12 @@ export function processConstructSignatureDeclarations(
     // find and process all the call signatures in this anonymous
     // class
     for (const member of input.filter(
-        (candidate) => { return isConstructSignatureDeclaration(candidate)}
+        (candidate) => { return isConstructSignatureDeclaration(candidate) }
     )) {
         // keep the compiler happy
         const callSig = AST.mustBeConstructSignatureDeclaration(member);
 
-        retval.push(processConstructSignatureDeclaration(compiler, callSig));
+        retval.push(processConstructSignatureDeclaration(processCtx, callSig));
     }
 
     // all done

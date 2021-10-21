@@ -35,7 +35,6 @@
 import { Maybe } from "@safelytyped/core-types";
 import { Statement, VariableDeclaration } from "typescript";
 import { AST } from "../AST";
-import { Compiler } from "../Compiler";
 import {
     IntermediateKind,
     IntermediateStatement,
@@ -44,12 +43,13 @@ import {
     mustBeIntermediateStatement
 } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 import { processMaybe } from "./processMaybe";
 import { processStatement } from "./processStatement";
 import { processTypeNode } from "./processTypeNode";
 
 export function processTryStatement(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: Statement
 ): IntermediateTryCatch
 {
@@ -60,23 +60,23 @@ export function processTryStatement(
     let catchBlock: Maybe<IntermediateStatement>;
     if (tryStmt.catchClause) {
         catchClause = processMaybe(
-            compiler,
+            processCtx,
             tryStmt.catchClause.variableDeclaration,
             processCatchClauseVariableDeclaration
         );
         catchBlock = mustBeIntermediateStatement(
-            processStatement(compiler, tryStmt.catchClause.block)
+            processStatement(processCtx, tryStmt.catchClause.block)
         );
     }
     return {
         kind: IntermediateKind.IntermediateTryCatch,
         tryBlock: mustBeIntermediateStatement(
-            processStatement(compiler, tryStmt.tryBlock)
+            processStatement(processCtx, tryStmt.tryBlock)
         ),
         catchClause,
         catchBlock,
         finallyBlock: processMaybe(
-            compiler,
+            processCtx,
             tryStmt.finallyBlock,
             processStatement,
         ),
@@ -84,7 +84,7 @@ export function processTryStatement(
 }
 
 function processCatchClauseVariableDeclaration(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: VariableDeclaration
 ): IntermediateVariableDeclaration
 {
@@ -92,12 +92,12 @@ function processCatchClauseVariableDeclaration(
         kind: IntermediateKind.IntermediateCaughtVarDeclaration,
         name: input.name.getText(),
         typeRef: processMaybe(
-            compiler,
+            processCtx,
             input.type,
             processTypeNode,
         ),
         initializer: processMaybe(
-            compiler,
+            processCtx,
             input.initializer,
             processExpression,
         )

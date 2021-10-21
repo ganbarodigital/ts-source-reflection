@@ -32,21 +32,21 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 import { NodeArray, Statement } from "typescript";
-import { Compiler } from "../Compiler";
 import {
     IntermediateStatement
 } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 import { processStatement } from "./processStatement";
 
 export function processStatements(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     statements: NodeArray<Statement>
 ): IntermediateStatement[]
 {
     const result: IntermediateStatement[] = [];
 
     for(const statement of statements) {
-        const processedItem = processStatement(compiler, statement);
+        const processedItem = processStatement(processCtx, statement);
 
         if (processedItem) {
             result.push(processedItem);

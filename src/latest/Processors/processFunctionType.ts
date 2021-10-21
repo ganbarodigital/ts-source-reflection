@@ -33,27 +33,27 @@
 //
 
 import { FunctionTypeNode } from "typescript";
-import { Compiler } from "../Compiler";
 import {
     IntermediateFunctionTypeSignature,
     IntermediateKind,
     mustbeIntermediateTypeReference
 } from "../IntermediateTypes";
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
+import { ProcessingContext } from "./ProcessingContext";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processFunctionType(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: FunctionTypeNode
 ): IntermediateFunctionTypeSignature
 {
     return {
         kind: IntermediateKind.IntermediateFunctionTypeSignature,
-        typeParameters: processTypeParametersFromNode(compiler, input),
-        parameters: processCallableParameterSignatures(compiler, input.parameters),
+        typeParameters: processTypeParametersFromNode(processCtx, input),
+        parameters: processCallableParameterSignatures(processCtx, input.parameters),
         returnType: mustbeIntermediateTypeReference(
-            processReturnTypeFromNode(compiler, input)
+            processReturnTypeFromNode(processCtx, input)
         ),
     }
 }

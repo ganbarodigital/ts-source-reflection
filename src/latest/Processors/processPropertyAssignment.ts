@@ -33,18 +33,18 @@
 //
 
 import { PropertyAssignment } from "typescript";
-import { Compiler } from "../Compiler";
 import { IntermediateKind, IntermediatePropertyAssignment } from "../IntermediateTypes";
 import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
 import { processPropertyName } from "./processPropertyName";
 
 export function processPropertyAssignment(
-    compiler: Compiler,
+    processCtx: ProcessingContext,
     input: PropertyAssignment
 ): IntermediatePropertyAssignment {
     return {
         kind: IntermediateKind.IntermediatePropertyAssignment,
-        propertyName: processPropertyName(compiler, input.name),
-        initializer: processExpression(compiler, input.initializer),
+        propertyName: processPropertyName(processCtx, input.name),
+        initializer: processExpression(processCtx, input.initializer),
     }
 }
