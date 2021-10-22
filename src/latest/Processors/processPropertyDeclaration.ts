@@ -59,6 +59,9 @@ export function processPropertyDeclaration(
 
     // special case: untyped property
     if (!input.type) {
+        // what can the compiler tell us about this property?
+        const inferredType = AST.getInferredType(processCtx, input);
+
         return {
             kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
             docBlock: processDocBlock(processCtx, input),
@@ -69,6 +72,7 @@ export function processPropertyDeclaration(
             isStatic: AST.hasStaticModifier(input),
             accessModifier: AST.getRestrictableScope(input),
             initializer,
+            inferredType,
         }
     }
 

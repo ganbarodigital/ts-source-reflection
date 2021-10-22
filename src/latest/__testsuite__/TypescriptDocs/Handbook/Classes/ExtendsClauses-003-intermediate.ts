@@ -67,6 +67,10 @@ const expectedResult: IntermediateSourceFile = {
                         typeAssertion: undefined,
                         asType: undefined,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateConstructorDeclaration,
@@ -115,6 +119,10 @@ const expectedResult: IntermediateSourceFile = {
                         value: "derived",
                         typeAssertion: undefined,
                         asType: undefined,
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
                     },
                 },
             ],

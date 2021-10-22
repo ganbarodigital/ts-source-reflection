@@ -67,6 +67,10 @@ const expectedResult: IntermediateSourceFile = {
                         asType: undefined,
                         typeAssertion: undefined,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
@@ -87,6 +91,15 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "string",
                         },
                         hasBody: true,
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateFunctionTypeSignature,
+                        typeParameters: [],
+                        parameters: [],
+                        returnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "string",
+                        },
                     },
                 },
             ],

@@ -33,7 +33,7 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { IntermediateDecoratableItem, IntermediateDocumentedItem } from "..";
+import { IntermediateDecoratableItem, IntermediateDocumentedItem, IntermediateTypeReference } from "..";
 import { IntermediateExpression } from "../IntermediateExpression";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateItem } from "../IntermediateItem";
@@ -54,4 +54,5 @@ export interface IntermediateUntypedPropertyDeclaration
         IntermediateStaticItem
 {
     initializer: Maybe<IntermediateExpression>;
+    inferredType?: Maybe<IntermediateTypeReference>;
 }

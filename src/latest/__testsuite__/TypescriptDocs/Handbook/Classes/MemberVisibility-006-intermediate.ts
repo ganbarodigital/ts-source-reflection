@@ -69,6 +69,10 @@ const expectedResult: IntermediateSourceFile = {
                         typeAssertion: undefined,
                         asType: undefined,
                     },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
@@ -84,6 +88,10 @@ const expectedResult: IntermediateSourceFile = {
                         value: "happy",
                         typeAssertion: undefined,
                         asType: undefined,
+                    },
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
                     },
                 },
                 {

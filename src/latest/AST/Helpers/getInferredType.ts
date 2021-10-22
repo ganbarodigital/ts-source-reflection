@@ -33,7 +33,7 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { BindingName, Node } from "typescript";
+import { BindingName, Node, PropertyName } from "typescript";
 import { IntermediateExpression, IntermediateTypeReference } from "../../IntermediateTypes";
 import { ProcessingContext } from "../../Processors/ProcessingContext";
 import { processTypeNode } from "../../Processors/processTypeNode";
@@ -43,7 +43,7 @@ type NodeWithName =
     Node
     &
 {
-    name: BindingName
+    name: BindingName | PropertyName
 }
 
 export function getInferredType(
