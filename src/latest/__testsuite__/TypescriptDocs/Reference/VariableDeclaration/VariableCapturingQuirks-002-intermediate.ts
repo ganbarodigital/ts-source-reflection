@@ -111,6 +111,10 @@ const expectedResult: IntermediateSourceFile = {
                                         isOptional: false,
                                         name: "i",
                                         initializer: undefined,
+                                        inferredType: {
+                                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                            typeName: "number",
+                                        },
                                     },
                                 ],
                                 returnType: undefined,

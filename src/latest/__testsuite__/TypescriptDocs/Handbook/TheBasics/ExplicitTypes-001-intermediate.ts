@@ -54,6 +54,10 @@ const expectedResult: IntermediateSourceFile = {
                     name: "person",
                     initializer: undefined,
                     isOptional: false,
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "any",
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
@@ -61,6 +65,10 @@ const expectedResult: IntermediateSourceFile = {
                     name: "date",
                     initializer: undefined,
                     isOptional: false,
+                    inferredType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "any",
+                    },
                 },
             ],
             returnType: undefined,

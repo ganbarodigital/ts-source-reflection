@@ -144,6 +144,10 @@ const expectedResult: IntermediateSourceFile = {
                             isOptional: false,
                             name: "x",
                             initializer: undefined,
+                            inferredType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "any",
+                            },
                         },
                         {
                             kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
@@ -151,6 +155,10 @@ const expectedResult: IntermediateSourceFile = {
                             isOptional: false,
                             name: "y",
                             initializer: undefined,
+                            inferredType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "any",
+                            },
                         },
                     ],
                     returnType: undefined,
@@ -207,6 +215,10 @@ const expectedResult: IntermediateSourceFile = {
                             isOptional: true,
                             name: "x",
                             initializer: undefined,
+                            inferredType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "any",
+                            },
                         },
                         {
                             kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
@@ -214,6 +226,10 @@ const expectedResult: IntermediateSourceFile = {
                             isOptional: true,
                             name: "y",
                             initializer: undefined,
+                            inferredType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "any",
+                            },
                         },
                     ],
                     returnType: undefined,

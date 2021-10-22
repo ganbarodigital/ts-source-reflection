@@ -111,6 +111,10 @@ const expectedResult: IntermediateSourceFile = {
                             isOptional: false,
                             name: "item",
                             initializer: undefined,
+                            inferredType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "number",
+                            },
                         },
                         {
                             kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
@@ -118,6 +122,10 @@ const expectedResult: IntermediateSourceFile = {
                             isOptional: false,
                             name: "index",
                             initializer: undefined,
+                            inferredType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "number",
+                            },
                         },
                         {
                             kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
@@ -125,6 +133,13 @@ const expectedResult: IntermediateSourceFile = {
                             isOptional: false,
                             name: "array",
                             initializer: undefined,
+                            inferredType: {
+                                kind: IntermediateKind.IntermediateArrayTypeReference,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                },
+                            },
                         },
                     ],
                     returnType: undefined,
@@ -166,6 +181,10 @@ const expectedResult: IntermediateSourceFile = {
                             isOptional: false,
                             name: "item",
                             initializer: undefined,
+                            inferredType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "number",
+                            },
                         },
                     ],
                     returnType: undefined,

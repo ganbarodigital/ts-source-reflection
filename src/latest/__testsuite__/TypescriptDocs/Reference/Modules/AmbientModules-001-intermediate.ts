@@ -115,6 +115,10 @@ const expectedResult: IntermediateSourceFile = {
                                 isOptional: true,
                                 name: "parseQueryString",
                                 initializer: undefined,
+                                inferredType: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "any",
+                                },
                             },
                             {
                                 kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
@@ -122,6 +126,10 @@ const expectedResult: IntermediateSourceFile = {
                                 isOptional: true,
                                 name: "slashesDenoteHost",
                                 initializer: undefined,
+                                inferredType: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "any",
+                                },
                             },
                         ],
                         returnType: {

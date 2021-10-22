@@ -106,6 +106,8 @@ export function processParameterDeclaration(
     //
     // NOTE: untyped parameters cannot be `readonly`
     if (!paramDec.type) {
+        const inferredType = AST.getInferredType(processCtx, paramDec);
+
         // tslint:disable-next-line: no-angle-bracket-type-assertion
         return <IntermediateUntypedCallableParameterDeclaration>{
             kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
@@ -113,6 +115,7 @@ export function processParameterDeclaration(
             name: paramDec.name.getText(),
             initializer,
             isOptional: processQuestionToken(processCtx, paramDec.questionToken),
+            inferredType,
         };
     }
 

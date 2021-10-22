@@ -469,6 +469,19 @@ const expectedResult: IntermediateSourceFile = {
                                         name: "pet",
                                         isOptional: false,
                                         initializer: undefined,
+                                        inferredType: {
+                                            kind: IntermediateKind.IntermediateUnionType,
+                                            typeRefs: [
+                                                {
+                                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                                    typeName: "Fish",
+                                                },
+                                                {
+                                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                                    typeName: "Bird",
+                                                },
+                                            ],
+                                        },
                                     },
                                 ],
                                 returnType: {
