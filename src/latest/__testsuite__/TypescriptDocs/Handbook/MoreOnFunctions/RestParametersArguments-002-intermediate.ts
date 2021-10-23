@@ -41,13 +41,13 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            docBlock: undefined,
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    docBlock: undefined,
                     name: "arr1",
                     isConstant: true,
                     isReadonly: false,
@@ -89,13 +89,13 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            docBlock: undefined,
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    docBlock: undefined,
                     name: "arr2",
                     isConstant: true,
                     isReadonly: false,

@@ -94,6 +94,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            docBlock: undefined,
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
@@ -103,7 +104,6 @@ const expectedResult: IntermediateSourceFile = {
                     name: "boxA",
                     isConstant: false,
                     isReadonly: false,
-                    docBlock: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateGenericTypeReference,
                         typeName: "Box",
@@ -136,6 +136,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            docBlock: undefined,
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
@@ -145,7 +146,6 @@ const expectedResult: IntermediateSourceFile = {
                     name: "boxB",
                     isConstant: false,
                     isReadonly: false,
-                    docBlock: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "StringBox",

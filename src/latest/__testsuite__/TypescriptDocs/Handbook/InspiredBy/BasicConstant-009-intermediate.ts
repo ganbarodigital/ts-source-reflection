@@ -41,6 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            docBlock: undefined,
             isExported: false,
             isDeclared: false,
             isDefaultExport: false,
@@ -50,7 +51,6 @@ const expectedResult: IntermediateSourceFile = {
                     name: "zoo",
                     isConstant: true,
                     isReadonly: false,
-                    docBlock: undefined,
                     initializer: undefined,
                     typeRef: {
                         kind: IntermediateKind.IntermediateParenthesizedType,

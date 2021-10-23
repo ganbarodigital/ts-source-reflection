@@ -41,6 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            docBlock: undefined,
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
@@ -49,9 +50,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     name: "req",
                     isConstant: true,
-
                     isReadonly: false,
-                    docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateObjectLiteral,
                         properties: [

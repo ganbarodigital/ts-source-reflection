@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateDeclarableItem, IntermediateExportableItem } from "..";
+import { IntermediateDeclarableItem, IntermediateDocumentedItem, IntermediateExportableItem } from "..";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateVariableDeclaration } from "../IntermediateVariableDeclaration/IntermediateVariableDeclaration";
@@ -40,6 +40,7 @@ import { IntermediateVariableDeclaration } from "../IntermediateVariableDeclarat
 export interface IntermediateVariableDeclarations
     extends IntermediateItem<IntermediateKind.IntermediateVariableDeclarations>,
         IntermediateDeclarableItem,
+        IntermediateDocumentedItem,
         IntermediateExportableItem
 {
     variables: IntermediateVariableDeclaration[];

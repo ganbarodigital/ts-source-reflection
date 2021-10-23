@@ -199,7 +199,6 @@ function processVariableDeclaration(
         if (inferredType) {
             return {
                 kind: contextFlags.kind,
-                docBlock: processDocBlock(processCtx, input),
                 isConstant: true,
                 isReadonly,
                 name: input.name.getText(),
@@ -211,7 +210,6 @@ function processVariableDeclaration(
 
         return {
             kind: contextFlags.kind,
-            docBlock: processDocBlock(processCtx, input),
             isConstant: true,
             isReadonly,
             name: input.name.getText(),
@@ -224,7 +222,6 @@ function processVariableDeclaration(
     if (inferredType) {
         return {
             kind: contextFlags.kind,
-            docBlock: processDocBlock(processCtx, input),
             isConstant: false,
             isReadonly,
             name: input.name.getText(),
@@ -236,7 +233,6 @@ function processVariableDeclaration(
 
     return {
         kind: contextFlags.kind,
-        docBlock: processDocBlock(processCtx, input),
         isConstant: false,
         isReadonly,
         name: input.name.getText(),

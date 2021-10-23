@@ -41,6 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            docBlock: undefined,
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
@@ -50,7 +51,6 @@ const expectedResult: IntermediateSourceFile = {
                     name: "myCanvas3",
                     isConstant: true,
                     isReadonly: false,
-                    docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
                         expression: {

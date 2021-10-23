@@ -39,6 +39,7 @@ import {
     IntermediateKind,
     IntermediateVariableDeclarations
 } from "../IntermediateTypes";
+import { processDocBlock } from "./processDocBlock";
 import { ProcessingContext } from "./ProcessingContext";
 import { processVariableDeclarationList } from "./processVariableDeclarationList";
 
@@ -52,6 +53,7 @@ export function processVariableStatement (
 
     return {
         kind: IntermediateKind.IntermediateVariableDeclarations,
+        docBlock: processDocBlock(processCtx, input),
         isDeclared: AST.hasDeclaredModifier(variableStmt.modifiers),
         isDefaultExport: AST.hasDefaultModifier(variableStmt.modifiers),
         isExported: AST.isNodeExported(variableStmt),

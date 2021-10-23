@@ -95,6 +95,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            docBlock: undefined,
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
@@ -104,7 +105,6 @@ const expectedResult: IntermediateSourceFile = {
                     isConstant: true,
                     isReadonly: false,
                     name: "db",
-                    docBlock: undefined,
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
@@ -132,6 +132,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            docBlock: undefined,
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
@@ -141,7 +142,6 @@ const expectedResult: IntermediateSourceFile = {
                     isConstant: true,
                     isReadonly: false,
                     name: "admins",
-                    docBlock: undefined,
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,

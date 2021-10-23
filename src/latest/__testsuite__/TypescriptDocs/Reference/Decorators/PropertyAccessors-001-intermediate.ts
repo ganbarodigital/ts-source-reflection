@@ -51,6 +51,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            docBlock: undefined,
             isDeclared: false,
             isDefaultExport: false,
             isExported: false,
@@ -59,7 +60,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     isConstant: true,
                     isReadonly: false,
-                    docBlock: undefined,
                     name: "formatMetadataKey",
                     typeRef: undefined,
                     initializer: {

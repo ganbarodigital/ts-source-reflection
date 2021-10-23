@@ -41,6 +41,7 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            docBlock: undefined,
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
@@ -50,7 +51,6 @@ const expectedResult: IntermediateSourceFile = {
                     name: "firstName",
                     isConstant: true,
                     isReadonly: false,
-                    docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
                         expression: {
@@ -85,6 +85,7 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
+            docBlock: undefined,
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,
@@ -94,7 +95,6 @@ const expectedResult: IntermediateSourceFile = {
                     name: "secondName",
                     isConstant: true,
                     isReadonly: false,
-                    docBlock: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
                         expression: {
