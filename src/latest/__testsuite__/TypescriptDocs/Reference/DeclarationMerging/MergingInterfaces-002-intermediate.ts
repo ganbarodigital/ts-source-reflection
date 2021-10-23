@@ -52,7 +52,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
                     isStatic: false,
-                    accessModifier: undefined,
                     name: "clone",
                     typeParameters: [],
                     parameters: [
@@ -88,7 +87,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
                     isStatic: false,
-                    accessModifier: undefined,
                     name: "clone",
                     typeParameters: [],
                     parameters: [
@@ -124,7 +122,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
                     isStatic: false,
-                    accessModifier: undefined,
                     name: "clone",
                     typeParameters: [],
                     parameters: [
@@ -148,7 +145,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
                     isStatic: false,
-                    accessModifier: undefined,
                     name: "clone",
                     typeParameters: [],
                     parameters: [

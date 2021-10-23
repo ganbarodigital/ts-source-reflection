@@ -52,7 +52,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
                     isStatic: false,
-                    accessModifier: undefined,
                     name: "createElement",
                     typeParameters: [],
                     parameters: [
@@ -88,7 +87,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
                     isStatic: false,
-                    accessModifier: undefined,
                     name: "createElement",
                     typeParameters: [],
                     parameters: [
@@ -112,7 +110,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
                     isStatic: false,
-                    accessModifier: undefined,
                     name: "createElement",
                     typeParameters: [],
                     parameters: [
@@ -148,7 +145,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
                     isStatic: false,
-                    accessModifier: undefined,
                     name: "createElement",
                     typeParameters: [],
                     parameters: [
@@ -172,7 +168,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
                     isStatic: false,
-                    accessModifier: undefined,
                     name: "createElement",
                     typeParameters: [],
                     parameters: [

@@ -53,7 +53,6 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
                     isStatic:false,
-                    accessModifier: undefined,
                     name: "filterUsers",
                     parameters: [
                         {

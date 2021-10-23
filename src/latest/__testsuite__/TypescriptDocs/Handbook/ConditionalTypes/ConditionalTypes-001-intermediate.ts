@@ -52,7 +52,6 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
-                    accessModifier: undefined,
                     isStatic:false,
                     name: "live",
                     typeParameters: [],
@@ -84,7 +83,6 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
-                    accessModifier: undefined,
                     isStatic:false,
                     name: "woof",
                     typeParameters: [],

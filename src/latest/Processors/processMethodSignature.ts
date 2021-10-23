@@ -55,7 +55,6 @@ export function processMethodSignature(
         kind: IntermediateKind.IntermediateMethodSignature,
         docBlock: processDocBlock(processCtx, input),
         isStatic: AST.hasStaticModifier(input),
-        accessModifier: AST.getRestrictableScope(input),
         name: processPropertyName(processCtx, input.name),
         parameters: processCallableParameterSignatures(processCtx, input.parameters),
         typeParameters: processTypeParametersFromNode(processCtx, input),
