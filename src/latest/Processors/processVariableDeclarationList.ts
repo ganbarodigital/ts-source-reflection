@@ -413,7 +413,6 @@ function processArrayBindingVariableDeclaration(
     if (kind === IntermediateKind.IntermediateArrayBindingConstDeclaration) {
         return {
             kind,
-            docBlock: processDocBlock(processCtx, input),
             isConstant: true,
             isReadonly,
             members: processArrayBindingDeclaration(processCtx, input.name),
@@ -423,7 +422,6 @@ function processArrayBindingVariableDeclaration(
 
     return {
         kind,
-        docBlock: processDocBlock(processCtx, input),
         isConstant: false,
         isReadonly,
         members: processArrayBindingDeclaration(processCtx, input.name),

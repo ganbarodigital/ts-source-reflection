@@ -117,7 +117,6 @@ const expectedResult: IntermediateSourceFile = {
             variables: [
                 {
                     kind: IntermediateKind.IntermediateArrayBindingLetDeclaration,
-                    docBlock: undefined,
                     isConstant: false,
                     isReadonly: false,
                     members: [

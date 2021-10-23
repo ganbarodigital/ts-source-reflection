@@ -35,7 +35,6 @@
 import { Maybe } from "@safelytyped/core-types";
 import {
     AnyIntermediateIdentifierDeclaration,
-    IntermediateDocumentedItem,
     IntermediateExpression,
     IntermediateItem,
     IntermediateKind,
@@ -45,7 +44,6 @@ import {
 
 export interface IntermediateArrayBindingConstDeclaration
     extends IntermediateItem<IntermediateKind.IntermediateArrayBindingConstDeclaration>,
-        IntermediateDocumentedItem,
         IntermediateReadonlyItem
 {
     isConstant: true,
