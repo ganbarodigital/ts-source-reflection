@@ -46,6 +46,41 @@ export function processGetAccessorDeclaration(
     input: GetAccessorDeclaration
 ): IntermediateGetter
 {
+    // what we return depends on whether or not we have an explicit
+    // type signature
+    const returnType = processReturnTypeFromNode(processCtx, input);
+
+    if (!returnType) {
+        // fallback: can the compiler work out what type we return, instead?
+        const inferredReturnType = AST.getInferredReturnType(processCtx, input);
+
+        if (inferredReturnType) {
+            // yes it can!
+            return {
+                kind: IntermediateKind.IntermediateGetter,
+                docBlock: processDocBlock(processCtx, input),
+                decorators: processDecorators(processCtx, input),
+                accessModifier: AST.getRestrictableScope(input),
+                name: input.name.getText(),
+                typeParameters: processTypeParametersFromNode(processCtx, input),
+                returnType,
+                inferredReturnType,
+            }
+        }
+
+        // no, it can't, so we leave the inferredReturnType out entirely
+        return {
+            kind: IntermediateKind.IntermediateGetter,
+            docBlock: processDocBlock(processCtx, input),
+            decorators: processDecorators(processCtx, input),
+            accessModifier: AST.getRestrictableScope(input),
+            name: input.name.getText(),
+            typeParameters: processTypeParametersFromNode(processCtx, input),
+            returnType,
+        }
+    }
+
+    // if we get here, then yes, we have an explicit return type
     return {
         kind: IntermediateKind.IntermediateGetter,
         docBlock: processDocBlock(processCtx, input),
@@ -53,6 +88,6 @@ export function processGetAccessorDeclaration(
         accessModifier: AST.getRestrictableScope(input),
         name: input.name.getText(),
         typeParameters: processTypeParametersFromNode(processCtx, input),
-        returnType: processReturnTypeFromNode(processCtx, input),
+        returnType,
     }
 }

@@ -80,6 +80,10 @@ const expectedResult: IntermediateSourceFile = {
                     typeParameters: [],
                     name: "length",
                     returnType: undefined,
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateSetter,

@@ -32,15 +32,16 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
 import { IntermediateClassAccessor } from "../IntermediateClassAccessor";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { IntermediateReturnsType } from "../IntermediateReturnsType";
 
-export interface IntermediateGetter
-    extends IntermediateItem<IntermediateKind.IntermediateGetter>,
-        IntermediateClassAccessor
+export type IntermediateGetter
+    = IntermediateItem<IntermediateKind.IntermediateGetter>
+    & IntermediateClassAccessor
+    & IntermediateReturnsType
+    &
 {
-    returnType: Maybe<IntermediateTypeReference>;
+    // no additional members at this time
 }

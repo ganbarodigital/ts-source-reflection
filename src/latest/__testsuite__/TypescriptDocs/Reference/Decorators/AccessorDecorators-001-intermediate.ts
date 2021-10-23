@@ -258,6 +258,10 @@ const expectedResult: IntermediateSourceFile = {
                     name: "x",
                     typeParameters: [],
                     returnType: undefined,
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateGetter,
@@ -331,6 +335,10 @@ const expectedResult: IntermediateSourceFile = {
                     name: "y",
                     typeParameters: [],
                     returnType: undefined,
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
+                    },
                 },
             ],
         },
