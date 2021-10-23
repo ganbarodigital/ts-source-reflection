@@ -94,6 +94,7 @@ const expectedResult: IntermediateSourceFile = {
                         members: [
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                docBlock: undefined,
                                 isOptional: false,
                                 isReadonly: false,
                                 name: "food",
@@ -104,6 +105,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                docBlock: undefined,
                                 isOptional: false,
                                 isReadonly: false,
                                 name: "price",
@@ -114,6 +116,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                docBlock: undefined,
                                 isOptional: false,
                                 isReadonly: false,
                                 name: "ambiance",
@@ -168,6 +171,7 @@ const expectedResult: IntermediateSourceFile = {
                         members: [
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                docBlock: undefined,
                                 isOptional: false,
                                 isReadonly: false,
                                 name: "food",
@@ -178,6 +182,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                docBlock: undefined,
                                 isOptional: false,
                                 isReadonly: false,
                                 name: "price",
@@ -188,6 +193,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                docBlock: undefined,
                                 isOptional: false,
                                 isReadonly: false,
                                 name: "ambiance",

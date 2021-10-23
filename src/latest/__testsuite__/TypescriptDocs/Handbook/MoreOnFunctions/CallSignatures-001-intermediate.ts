@@ -50,6 +50,7 @@ const expectedResult: IntermediateSourceFile = {
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
+                        docBlock: undefined,
                         name: "description",
                         isOptional: false,
                         isReadonly: false,

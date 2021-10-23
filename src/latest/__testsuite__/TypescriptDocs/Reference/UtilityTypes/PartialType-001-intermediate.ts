@@ -51,6 +51,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
+                    docBlock: undefined,
                     name: "title",
                     isOptional: false,
                     isReadonly: false,
@@ -61,6 +62,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
+                    docBlock: undefined,
                     name: "description",
                     isOptional: false,
                     isReadonly: false,
@@ -117,6 +119,7 @@ const expectedResult: IntermediateSourceFile = {
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
+                        docBlock: undefined,
                         isOptional: false,
                         isReadonly: false,
                         name: "title",
@@ -127,6 +130,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
+                        docBlock: undefined,
                         isOptional: false,
                         isReadonly: false,
                         name: "description",
@@ -184,6 +188,7 @@ const expectedResult: IntermediateSourceFile = {
                         members: [
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                docBlock: undefined,
                                 isOptional: false,
                                 isReadonly: false,
                                 name: "title",
@@ -194,6 +199,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                docBlock: undefined,
                                 isOptional: false,
                                 isReadonly: false,
                                 name: "description",
@@ -261,6 +267,7 @@ const expectedResult: IntermediateSourceFile = {
                             members: [
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                    docBlock: undefined,
                                     isOptional: false,
                                     isReadonly: false,
                                     name: "title",
@@ -271,6 +278,7 @@ const expectedResult: IntermediateSourceFile = {
                                 },
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                    docBlock: undefined,
                                     isOptional: false,
                                     isReadonly: false,
                                     name: "description",
@@ -287,6 +295,7 @@ const expectedResult: IntermediateSourceFile = {
                         members: [
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                docBlock: undefined,
                                 isOptional: false,
                                 isReadonly: false,
                                 name: "title",
@@ -297,6 +306,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                docBlock: undefined,
                                 isOptional: false,
                                 isReadonly: false,
                                 name: "description",

@@ -72,6 +72,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
+                    docBlock: undefined,
                     isOptional: false,
                     isReadonly: false,
                     name: "kind",
@@ -93,6 +94,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
+                    docBlock: undefined,
                     isOptional: false,
                     isReadonly: false,
                     name: "radius",
@@ -115,6 +117,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
+                    docBlock: undefined,
                     isOptional: false,
                     isReadonly: false,
                     name: "kind",
@@ -136,6 +139,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
+                    docBlock: undefined,
                     isOptional: false,
                     isReadonly: false,
                     name: "sideLength",

@@ -58,6 +58,7 @@ const expectedResult: IntermediateSourceFile = {
                         members: [
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                docBlock: undefined,
                                 isOptional: true,
                                 isReadonly: false,
                                 name: "protocol",
@@ -68,6 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                docBlock: undefined,
                                 isOptional: true,
                                 isReadonly: false,
                                 name: "hostname",
@@ -78,6 +80,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                docBlock: undefined,
                                 isOptional: true,
                                 isReadonly: false,
                                 name: "pathname",

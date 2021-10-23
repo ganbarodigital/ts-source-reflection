@@ -51,6 +51,7 @@ const expectedResult: IntermediateSourceFile = {
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
+                        docBlock: undefined,
                         name: "breed",
                         isOptional: false,
                         isReadonly: false,
@@ -61,6 +62,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
+                        docBlock: undefined,
                         name: "yearOfBirth",
                         isOptional: false,
                         isReadonly: false,
@@ -84,6 +86,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
+                    docBlock: undefined,
                     name: "breeds",
                     isOptional: false,
                     isReadonly: false,
@@ -97,6 +100,7 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
+                    docBlock: undefined,
                     name: "yearOfBirth",
                     isOptional: false,
                     isReadonly: false,

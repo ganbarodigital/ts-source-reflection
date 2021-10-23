@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { IntermediateDocumentedItem } from "..";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
@@ -41,6 +42,7 @@ import { IntermediateTypedItem } from "../IntermediateTypedItem";
 
 export interface IntermediateTypedPropertySignature
     extends IntermediateItem<IntermediateKind.IntermediateTypedPropertySignature>,
+        IntermediateDocumentedItem,
         IntermediateIdentifiedItem,
         IntermediateOptionalItem,
         IntermediateReadonlyItem,

@@ -59,6 +59,7 @@ const expectedResult: IntermediateSourceFile = {
                     members: [
                         {
                             kind: IntermediateKind.IntermediateTypedPropertySignature,
+                            docBlock: undefined,
                             isOptional: false,
                             isReadonly: false,
                             name: "select",
@@ -122,6 +123,7 @@ const expectedResult: IntermediateSourceFile = {
                     members: [
                         {
                             kind: IntermediateKind.IntermediateTypedPropertySignature,
+                            docBlock: undefined,
                             isOptional: false,
                             isReadonly: false,
                             name: "x",
@@ -132,6 +134,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         {
                             kind: IntermediateKind.IntermediateTypedPropertySignature,
+                            docBlock: undefined,
                             isOptional: false,
                             isReadonly: false,
                             name: "y",
@@ -161,6 +164,7 @@ const expectedResult: IntermediateSourceFile = {
                     members: [
                         {
                             kind: IntermediateKind.IntermediateTypedPropertySignature,
+                            docBlock: undefined,
                             isOptional: false,
                             isReadonly: false,
                             name: "event",

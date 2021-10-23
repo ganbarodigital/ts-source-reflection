@@ -35,6 +35,7 @@
 import { PropertySignature } from "typescript";
 import { AST } from "../AST";
 import { IntermediateKind, IntermediatePropertySignature } from "../IntermediateTypes";
+import { processDocBlock } from "./processDocBlock";
 import { ProcessingContext } from "./ProcessingContext";
 import { processPropertyName } from "./processPropertyName";
 import { processQuestionToken } from "./processQuestionToken";
@@ -59,6 +60,7 @@ export function processPropertySignature
     // general case: typed property
     return {
         kind: IntermediateKind.IntermediateTypedPropertySignature,
+        docBlock: processDocBlock(processCtx, input),
         name: processPropertyName(processCtx, input.name),
         isOptional: processQuestionToken(processCtx, input.questionToken),
         isReadonly: AST.hasReadonlyModifier(input.modifiers),

@@ -89,6 +89,7 @@ const expectedResult: IntermediateSourceFile = {
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
+                        docBlock: undefined,
                         name: "darkMode",
                         isOptional: false,
                         isReadonly: false,
@@ -104,6 +105,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
+                        docBlock: undefined,
                         name: "newUserProfile",
                         isOptional: false,
                         isReadonly: false,

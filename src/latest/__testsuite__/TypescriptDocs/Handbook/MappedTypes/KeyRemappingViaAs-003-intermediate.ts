@@ -89,6 +89,7 @@ const expectedResult: IntermediateSourceFile = {
                             members: [
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                    docBlock: undefined,
                                     name: "pii",
                                     isOptional: false,
                                     isReadonly: false,
@@ -123,6 +124,7 @@ const expectedResult: IntermediateSourceFile = {
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
+                        docBlock: undefined,
                         name: "id",
                         isOptional: false,
                         isReadonly: false,
@@ -131,6 +133,7 @@ const expectedResult: IntermediateSourceFile = {
                             members: [
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                    docBlock: undefined,
                                     name: "format",
                                     isOptional: false,
                                     isReadonly: false,
@@ -144,6 +147,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
+                        docBlock: undefined,
                         name: "name",
                         isOptional: false,
                         isReadonly: false,
@@ -152,6 +156,7 @@ const expectedResult: IntermediateSourceFile = {
                             members: [
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                    docBlock: undefined,
                                     name: "type",
                                     isOptional: false,
                                     isReadonly: false,
@@ -162,6 +167,7 @@ const expectedResult: IntermediateSourceFile = {
                                 },
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
+                                    docBlock: undefined,
                                     name: "pii",
                                     isOptional: false,
                                     isReadonly: false,
