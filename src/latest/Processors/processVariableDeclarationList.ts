@@ -66,7 +66,6 @@ import {
     IntermediateVariableDeclaration
 } from "../IntermediateTypes";
 import { processBindingNameForDeclarations } from "./processBindingNameForDeclarations";
-import { processDocBlock } from "./processDocBlock";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 import { processMaybe } from "./processMaybe";
@@ -292,7 +291,6 @@ function processDestructuredVariableDeclaration(
     if (kind === IntermediateKind.IntermediateDestructuredConstDeclaration) {
         return {
             kind,
-            docBlock: processDocBlock(processCtx, input),
             isConstant: true,
             isReadonly,
             typeRef: processMaybe(processCtx, input.type, processTypeNode),
@@ -303,7 +301,6 @@ function processDestructuredVariableDeclaration(
 
     return {
         kind,
-        docBlock: processDocBlock(processCtx, input),
         isConstant: false,
         isReadonly,
         typeRef: processMaybe(processCtx, input.type, processTypeNode),

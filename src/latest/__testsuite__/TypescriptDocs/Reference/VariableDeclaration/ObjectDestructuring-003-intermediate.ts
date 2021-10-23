@@ -140,7 +140,6 @@ const expectedResult: IntermediateSourceFile = {
             variables: [
                 {
                     kind: IntermediateKind.IntermediateDestructuredLetDeclaration,
-                    docBlock: undefined,
                     isConstant: false,
                     isReadonly: false,
                     members: [

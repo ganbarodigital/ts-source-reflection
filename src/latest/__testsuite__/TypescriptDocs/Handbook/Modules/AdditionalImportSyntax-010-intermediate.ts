@@ -48,7 +48,6 @@ const expectedResult: IntermediateSourceFile = {
             variables: [
                 {
                     kind: IntermediateKind.IntermediateDestructuredConstDeclaration,
-                    docBlock: undefined,
                     isConstant: true,
                     isReadonly: false,
                     members: [
