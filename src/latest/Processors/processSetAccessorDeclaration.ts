@@ -33,6 +33,7 @@
 //
 
 import { SetAccessorDeclaration } from "typescript";
+import { AST } from "../AST";
 import { IntermediateKind, IntermediateSetter } from "../IntermediateTypes";
 import { processDecorators } from "./processDecorators";
 import { processDocBlock } from "./processDocBlock";
@@ -49,6 +50,7 @@ export function processSetAccessorDeclaration(
         kind: IntermediateKind.IntermediateSetter,
         docBlock: processDocBlock(processCtx, input),
         decorators: processDecorators(processCtx, input),
+        accessModifier: AST.getRestrictableScope(input),
         name: input.name.getText(),
         typeParameters: processTypeParametersFromNode(processCtx, input),
         parameters: processFunctionParameters(processCtx, input.parameters),
