@@ -51,6 +51,7 @@ export function processPropertySignature
     if (!input.type) {
         return {
             kind: IntermediateKind.IntermediateUntypedPropertySignature,
+            docBlock: processDocBlock(processCtx, input),
             name: processPropertyName(processCtx, input.name),
             isOptional: processQuestionToken(processCtx, input.questionToken),
             isReadonly: AST.hasReadonlyModifier(input.modifiers),

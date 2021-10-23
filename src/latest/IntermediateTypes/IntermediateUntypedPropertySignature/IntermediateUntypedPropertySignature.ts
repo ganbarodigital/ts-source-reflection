@@ -31,6 +31,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { IntermediateDocumentedItem } from "..";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateItem } from "../IntermediateItem";
 import { IntermediateKind } from "../IntermediateKind";
@@ -39,6 +40,7 @@ import { IntermediateReadonlyItem } from "../IntermediateReadonlyItem";
 
 export interface IntermediateUntypedPropertySignature
     extends IntermediateItem<IntermediateKind.IntermediateUntypedPropertySignature>,
+        IntermediateDocumentedItem,
         IntermediateIdentifiedItem,
         IntermediateOptionalItem,
         IntermediateReadonlyItem
