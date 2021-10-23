@@ -44,15 +44,25 @@ export function processDocBlock(
     input: Node
 ): Maybe<IntermediateDocBlock>
 {
-    // do we have a docblock?
-    const text = AST.findDocBlockText(input);
-    if (text) {
-        return {
-            kind: IntermediateKind.IntermediateDocBlock,
-            text,
+    // if we are working with inferred type nodes, this process is
+    // most likely going to error out
+    //
+    // we have to catch the error here, to prevent us losing the entire
+    // inferred type data
+    try {
+        // do we have a docblock?
+        const text = AST.findDocBlockText(input);
+        if (text) {
+            return {
+                kind: IntermediateKind.IntermediateDocBlock,
+                text,
+            }
         }
-    }
 
-    // no, we do not
-    return undefined;
+        // no, we do not
+        return undefined;
+    }
+    catch (e) {
+        return undefined;
+    }
 }

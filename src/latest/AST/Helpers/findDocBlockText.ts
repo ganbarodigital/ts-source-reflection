@@ -46,6 +46,10 @@ import { Node, SyntaxKind } from "typescript";
  */
 export function findDocBlockText(input: Node): Maybe<string>
 {
+    // TODO: can we rebuild this to use forEachChild instead,
+    // to avoid getChildren() erroring out when working with
+    // inferred type nodes?
+
     // if there is a docblock it will be an immediate child
     // of the given node
     for(const member of input.getChildren()) {
