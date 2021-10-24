@@ -32,17 +32,49 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { Maybe } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
-import { Compiler, loadCompilerOptions, PureCompiler } from "../Compiler";
+import * as ts from "typescript";
 
-const compilerOptions = loadCompilerOptions(new Filepath(__dirname));
-
-export function getTestCompiler(
-    input: Filepath
-): Compiler
+/**
+ * Compiler is how we access the Typescript compiler itself.
+ */
+export interface Compiler
 {
-    // we always want comments enabled
-    compilerOptions.removeComments = false;
+    /**
+     * getAstForFile() returns the Typescript abstract syntax tree (AST)
+     * for the given filepath.
+     *
+     * NOTE: `input` must either be one of the filepaths you passed into
+     * the constructor, OR it must be a file that the Typescript compiler
+     * would have pulled in (e.g. via an import).
+     *
+     * @param input the path to the file that you want
+     * @returns the compiled Typescript, as an abstract syntax tree
+     */
+    getAstForFile(input: Filepath): ts.SourceFile;
 
-    return new PureCompiler([input], compilerOptions);
+    /**
+     * getTypeChecker() returns the underlying compiler's TypeChecker
+     * object
+     */
+    getTypeChecker(): ts.TypeChecker;
+
+    /**
+     * getTextForNode() is an alternative to calling `input.getText()`
+     *
+     * @remarks
+     *
+     * I've had to add this, to work around runtime errors within the
+     * Typescript library itself. We get `TypeError: cannot read property
+     * 'text' of undefined` whenever we are trying to get the text out
+     * of a node that has no parent (and therefore, no link back to its
+     * source file).
+     *
+     * @param input the node that you want the text from
+     * @returns the escaped text from that node
+     */
+    getTextForNode(
+        input: ts.Node
+    ): Maybe<string>;
 }

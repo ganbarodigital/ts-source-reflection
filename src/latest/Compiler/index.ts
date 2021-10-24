@@ -33,5 +33,6 @@
 //
 
 export * from "./loadCompilerOptions";
+export * from "./Compiler";
 // export { DummyCompiler as Compiler } from "./DummyCompiler";
-export { PureCompiler as Compiler } from "./PureCompiler";
+export * from "./PureCompiler";
