@@ -73,6 +73,7 @@ export * from "./mustBeCallSignatureDeclaration";
 export * from "./mustBeClassDeclaration";
 export * from "./mustBeConstructSignatureDeclaration";
 export * from "./mustBeConstructorDeclaration";
+export * from "./mustBeEmptyStatement";
 export * from "./mustBeEnumDeclaration";
 export * from "./mustBeExportAssignment";
 export * from "./mustBeExportDeclaration";
