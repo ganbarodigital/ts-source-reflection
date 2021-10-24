@@ -57,6 +57,8 @@ export interface Compiler
     /**
      * getTypeChecker() returns the underlying compiler's TypeChecker
      * object
+     *
+     * @deprecated
      */
     getTypeChecker(): ts.TypeChecker;
 
