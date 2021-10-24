@@ -35,6 +35,11 @@
 import { Maybe, Value } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import * as ts from "typescript";
+import { Compiler, NodeWithName } from ".";
+import { AST } from "../AST";
+import { IntermediateExpression, IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
+import { ProcessingContext } from "../Processors/ProcessingContext";
+import { processTypeNode } from "../Processors/processTypeNode";
 
 // TODO: move this over to core-types!
 function unpackValues<T>(input: Value<T>[]): T[] {
@@ -82,7 +87,7 @@ function isNodeWithText(input: object): input is NodeWithText {
 /**
  * Compiler is how we access the Typescript compiler itself.
  */
-export class PureCompiler
+export class PureCompiler implements Compiler
 {
     /**
      * tsHost is a services provider to the main Typescript compiler
@@ -205,5 +210,176 @@ export class PureCompiler
             // if we get here, we have run out of ideas
             return undefined;
         }
+    }
+
+    public getInferredCallSignatureReturnType(
+        processCtx: ProcessingContext,
+        input: ts.CallLikeExpression,
+        initializer?: IntermediateExpression,
+    ): Maybe<IntermediateTypeReference>
+    {
+        // shorthand
+        const compiler = processCtx.compiler;
+
+        // what does the compiler think is happening?
+        const typeChecker = compiler.getTypeChecker();
+        const tsSignature = typeChecker.getResolvedSignature(input);
+        if (!tsSignature) {
+            return undefined;
+        }
+
+        const tsType = typeChecker.getReturnTypeOfSignature(tsSignature);
+        if (!tsType) {
+            // the compiler has no idea, so let's bail
+            return undefined;
+        }
+
+        // if we get here, we *might* have something, but it's currently
+        // in a format that we can't work with
+        //
+        // let's see if the typeChecker can convert it for us
+        const typeNode = typeChecker.typeToTypeNode(tsType, input, undefined);
+        if (!typeNode) {
+            // no, it can't, so bail
+            //
+            // should we actually return an IntermediateUndiscoverableType here
+            // instead?
+            return undefined;
+        }
+
+        // at this point, we have something that we can *try* to work with
+        //
+        // not all of these typeNodes will process successfully atm.
+        // workarounds / alternative approaches are most welcome!
+        const inferredType = processTypeNode(
+            processCtx,
+            typeNode
+        );
+
+        // sometimes, the inferred type needs a little bit of help
+        // from us
+        return AST.translateInferredType(
+            compiler,
+            input,
+            inferredType,
+            initializer
+        );
+    }
+
+    public getInferredReturnType(
+        processCtx: ProcessingContext,
+        input: ts.SignatureDeclaration,
+        initializer?: IntermediateExpression,
+    ): Maybe<IntermediateTypeReference>
+    {
+        // shorthand
+        const compiler = processCtx.compiler;
+
+        // what does the compiler think is happening?
+        const typeChecker = compiler.getTypeChecker();
+        const tsSignature = typeChecker.getSignatureFromDeclaration(input);
+        if (!tsSignature) {
+            return undefined;
+        }
+
+        const tsType = typeChecker.getReturnTypeOfSignature(tsSignature);
+        if (!tsType) {
+            // the compiler has no idea, so let's bail
+            return undefined;
+        }
+
+        // if we get here, we *might* have something, but it's currently
+        // in a format that we can't work with
+        //
+        // let's see if the typeChecker can convert it for us
+        const typeNode = typeChecker.typeToTypeNode(tsType, input, undefined);
+        if (!typeNode) {
+            // no, it can't, so bail
+            //
+            // should we actually return an IntermediateUndiscoverableType here
+            // instead?
+            return undefined;
+        }
+
+        // at this point, we have something that we can *try* to work with
+        //
+        // not all of these typeNodes will process successfully atm.
+        // workarounds / alternative approaches are most welcome!
+        try {
+            const inferredType = processTypeNode(
+                processCtx,
+                typeNode
+            );
+
+            // sometimes, the inferred type needs a little bit of help
+            // from us
+            return AST.translateInferredType(
+                compiler,
+                input,
+                inferredType,
+                initializer
+            );
+        }
+        catch (e) {
+            // despite our best efforts, sometimes we can't successfully
+            // process the synthetic type node that's been built by
+            // the type checker
+            return {
+                kind: IntermediateKind.IntermediateUndiscoverableType,
+            }
+        }
+    }
+
+    public getInferredType(
+        processCtx: ProcessingContext,
+        input: NodeWithName,
+        initializer?: IntermediateExpression,
+    ): Maybe<IntermediateTypeReference>
+    {
+        // shorthand
+        const compiler = processCtx.compiler;
+
+        // what does the compiler think is happening?
+        const typeChecker = compiler.getTypeChecker();
+        const tsType = typeChecker.getTypeOfSymbolAtLocation(
+            typeChecker.getSymbolAtLocation(input.name)!,
+            input
+        );
+
+        if (!tsType) {
+            // the compiler has no idea, so let's bail
+            return undefined;
+        }
+
+        // if we get here, we *might* have something, but it's currently
+        // in a format that we can't work with
+        //
+        // let's see if the typeChecker can convert it for us
+        const typeNode = typeChecker.typeToTypeNode(tsType, input, undefined);
+        if (!typeNode) {
+            // no, it can't, so bail
+            //
+            // should we actually return an IntermediateUndiscoverableType here
+            // instead?
+            return undefined;
+        }
+
+        // at this point, we have something that we can *try* to work with
+        //
+        // not all of these typeNodes will process successfully atm.
+        // workarounds / alternative approaches are most welcome!
+        const inferredType = processTypeNode(
+            processCtx,
+            typeNode
+        );
+
+        // sometimes, the inferred type needs a little bit of help
+        // from us
+        return AST.translateInferredType(
+            compiler,
+            input,
+            inferredType,
+            initializer
+        );
     }
 }

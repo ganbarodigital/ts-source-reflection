@@ -35,6 +35,8 @@
 import { Maybe } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import * as ts from "typescript";
+import { IntermediateExpression, IntermediateTypeReference } from "../IntermediateTypes";
+import { ProcessingContext } from "../Processors/ProcessingContext";
 
 /**
  * Compiler is how we access the Typescript compiler itself.
@@ -79,4 +81,53 @@ export interface Compiler
     getTextForNode(
         input: ts.Node
     ): Maybe<string>;
+
+    // ================================================================
+    //
+    // TYPE INFERENCE SUPPORT
+    //
+    // ----------------------------------------------------------------
+
+    /**
+     * getInferredType() attempts to work out what type `input` is.
+     *
+     * @param processCtx
+     * @param input
+     * @param initializer
+     */
+    getInferredType(
+        processCtx: ProcessingContext,
+        input: NodeWithName,
+        initializer?: IntermediateExpression,
+    ): Maybe<IntermediateTypeReference>;
+
+    /**
+     * getInferredCallSignatureReturnType attempts to work out what type
+     * the given expression returns.
+     *
+     * @param processCtx
+     * @param input
+     * @param initializer
+     */
+    getInferredCallSignatureReturnType(
+        processCtx: ProcessingContext,
+        input: ts.CallLikeExpression,
+        initializer?: IntermediateExpression
+    ): Maybe<IntermediateTypeReference>;
+
+    /**
+     * getInferredReturnType attempts to work out what type the given
+     * callable returns
+     *
+     * @param processCtx
+     * @param input
+     * @param initializer
+     */
+    getInferredReturnType(
+        processCtx: ProcessingContext,
+        input: ts.SignatureDeclaration,
+        initializer?: IntermediateExpression
+    ): Maybe<IntermediateTypeReference>
 }
+
+export type NodeWithName = ts.Node & { name: ts.BindingName | ts.PropertyName }

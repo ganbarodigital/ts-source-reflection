@@ -34,71 +34,22 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import { SignatureDeclaration } from "typescript";
-import { IntermediateExpression, IntermediateKind, IntermediateTypeReference } from "../../IntermediateTypes";
+import { IntermediateExpression, IntermediateTypeReference } from "../../IntermediateTypes";
 import { ProcessingContext } from "../../Processors/ProcessingContext";
-import { processTypeNode } from "../../Processors/processTypeNode";
-import { translateInferredType } from "./translateInferredType";
 
+/**
+ * @deprecated
+ */
 export function getInferredReturnType(
     processCtx: ProcessingContext,
     input: SignatureDeclaration,
     initializer?: IntermediateExpression,
 ): Maybe<IntermediateTypeReference>
 {
-    // shorthand
-    const compiler = processCtx.compiler;
-
-    // what does the compiler think is happening?
-    const typeChecker = compiler.getTypeChecker();
-    const tsSignature = typeChecker.getSignatureFromDeclaration(input);
-    if (!tsSignature) {
-        return undefined;
-    }
-
-    const tsType = typeChecker.getReturnTypeOfSignature(tsSignature);
-    if (!tsType) {
-        // the compiler has no idea, so let's bail
-        return undefined;
-    }
-
-    // if we get here, we *might* have something, but it's currently
-    // in a format that we can't work with
-    //
-    // let's see if the typeChecker can convert it for us
-    const typeNode = typeChecker.typeToTypeNode(tsType, input, undefined);
-    if (!typeNode) {
-        // no, it can't, so bail
-        //
-        // should we actually return an IntermediateUndiscoverableType here
-        // instead?
-        return undefined;
-    }
-
-    // at this point, we have something that we can *try* to work with
-    //
-    // not all of these typeNodes will process successfully atm.
-    // workarounds / alternative approaches are most welcome!
-    try {
-        const inferredType = processTypeNode(
-            processCtx,
-            typeNode
-        );
-
-        // sometimes, the inferred type needs a little bit of help
-        // from us
-        return translateInferredType(
-            compiler,
-            input,
-            inferredType,
-            initializer
-        );
-    }
-    catch (e) {
-        // despite our best efforts, sometimes we can't successfully
-        // process the synthetic type node that's been built by
-        // the type checker
-        return {
-            kind: IntermediateKind.IntermediateUndiscoverableType,
-        }
-    }
+    // this has moved to the compiler
+    return processCtx.compiler.getInferredReturnType(
+        processCtx,
+        input,
+        initializer
+    )
 }
