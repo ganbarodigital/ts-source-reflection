@@ -32,48 +32,20 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateKind,
-    IntermediateSourceFile
-} from "../../../../IntermediateTypes";
+import { Statement } from "typescript";
+import { AST } from "../AST";
+import { IntermediateEmptyStatement, IntermediateKind } from "../IntermediateTypes";
+import { ProcessingContext } from "./ProcessingContext";
 
-const expectedResult: IntermediateSourceFile = {
-    children: [
-        {
-            kind: IntermediateKind.IntermediateInterface,
-            isDeclared: true,
-            name: "I",
-            members: [
-                {
-                    kind: IntermediateKind.IntermediateTypedPropertySignature,
-                    docBlock: undefined,
-                    name: "x",
-                    isOptional: false,
-                    isReadonly: false,
-                    typeRef: {
-                        kind: IntermediateKind.IntermediateArrayTypeReference,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "number",
-                        }
-                    },
-                }
-            ],
-            typeParameters: [],
-            extends: [],
-            docBlock: undefined,
-            isExported: false,
-            isDefaultExport: false,
-        },
-        {
-            kind: IntermediateKind.IntermediateEmptyStatement,
-        },
-    ],
-    referencedFiles: [],
-    referencedLibs: [],
-    referencedTypes: [],
-    referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
+export function processEmptyStatement(
+    processCtx: ProcessingContext,
+    input: Statement
+): IntermediateEmptyStatement
+{
+    // make sure we've got the statement we expect
+    AST.mustBeEmptyStatement(input);
+
+    return {
+        kind: IntermediateKind.IntermediateEmptyStatement,
+    }
 }
-
-export default expectedResult;

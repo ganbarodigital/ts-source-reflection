@@ -99,6 +99,9 @@ const expectedResult: IntermediateSourceFile = {
             ],
         },
         {
+            kind: IntermediateKind.IntermediateEmptyStatement,
+        },
+        {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             name: "Bird",
@@ -132,6 +135,9 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 },
             ],
+        },
+        {
+            kind: IntermediateKind.IntermediateEmptyStatement,
         },
         {
             kind: IntermediateKind.IntermediateFunction,

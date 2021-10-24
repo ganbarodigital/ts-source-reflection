@@ -34,6 +34,7 @@
 
 import { processBlock } from "./processBlock";
 import { processClassDeclaration } from "./processClassDeclaration";
+import { processEmptyStatement } from "./processEmptyStatement";
 import { processEnumDeclaration } from "./processEnumDeclaration";
 import { processExportAssignment } from "./processExportAssignment";
 import { processExportDeclaration } from "./processExportDeclaration";
@@ -56,6 +57,7 @@ import { processVariableStatement } from "./processVariableStatement";
 export const STATEMENT_PROCESSORS = {
     Block: processBlock,
     ClassDeclaration: processClassDeclaration,
+    EmptyStatement: processEmptyStatement,
     EnumDeclaration: processEnumDeclaration,
     ExpressionStatement: processExpressionStatement,
     ExportAssignment: processExportAssignment,
