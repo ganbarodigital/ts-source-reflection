@@ -99,6 +99,7 @@ export * from "./IntermediateDocumentedItem";
 export * from "./IntermediateElementAccessExpression";
 export * from "./IntermediateEmptyExport";
 export * from "./IntermediateEmptyObjectType";
+export * from "./IntermediateEmptyStatement";
 export * from "./IntermediateEntityName";
 export * from "./IntermediateEnum";
 export * from "./IntermediateEnumMember";

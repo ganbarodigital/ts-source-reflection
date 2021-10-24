@@ -85,6 +85,7 @@ export enum IntermediateKind {
     IntermediateElementAccessExpression,
     IntermediateEmptyExport,
     IntermediateEmptyObjectType,
+    IntermediateEmptyStatement,
     IntermediateEnum,
     IntermediateEnumMember,
     IntermediateExportAssignment,
