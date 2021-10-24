@@ -82,7 +82,7 @@ function isNodeWithText(input: object): input is NodeWithText {
 /**
  * Compiler is how we access the Typescript compiler itself.
  */
-export class Compiler
+export class PureCompiler
 {
     /**
      * tsHost is a services provider to the main Typescript compiler
