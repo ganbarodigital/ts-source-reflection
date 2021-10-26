@@ -151,6 +151,7 @@ export enum IntermediateKind {
     IntermediateRestIdentifierDeclaration,
     IntermediateRestIdentifierName,
     IntermediateRestType,
+    IntermediateReturnStatement,
     IntermediateSetter,
     IntermediateShorthandAmbientModuleDefinition,
     IntermediateShorthandPropertyAssignment,

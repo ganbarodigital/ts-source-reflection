@@ -32,28 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import {
-    IntermediateBlock,
-    IntermediateCallableDeclaration,
-    IntermediateItem,
-    IntermediateKind
-} from "..";
-import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
-import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
-import { IntermediateExportableItem } from "../IntermediateExportableItem";
-import { IntermediateGenericable } from "../IntermediateGenericable";
-
-export type IntermediateFunction
-    = IntermediateItem<IntermediateKind.IntermediateFunction>
-    & IntermediateCallableDeclaration
-    & IntermediateDocumentedItem
-    & IntermediateDeclarableItem
-    & IntermediateExportableItem
-    & IntermediateGenericable
-    &
-{
-    kind: IntermediateKind.IntermediateFunction;
-    name: Maybe<string>;
-    body?: IntermediateBlock;
-}
+export * from "./IntermediateReturnStatement";

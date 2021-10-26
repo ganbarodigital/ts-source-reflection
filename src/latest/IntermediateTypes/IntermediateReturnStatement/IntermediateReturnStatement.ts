@@ -33,27 +33,10 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import {
-    IntermediateBlock,
-    IntermediateCallableDeclaration,
-    IntermediateItem,
-    IntermediateKind
-} from "..";
-import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
-import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
-import { IntermediateExportableItem } from "../IntermediateExportableItem";
-import { IntermediateGenericable } from "../IntermediateGenericable";
+import { IntermediateExpression, IntermediateItem, IntermediateKind } from "..";
 
-export type IntermediateFunction
-    = IntermediateItem<IntermediateKind.IntermediateFunction>
-    & IntermediateCallableDeclaration
-    & IntermediateDocumentedItem
-    & IntermediateDeclarableItem
-    & IntermediateExportableItem
-    & IntermediateGenericable
-    &
+export interface IntermediateReturnStatement
+    extends IntermediateItem<IntermediateKind.IntermediateReturnStatement>
 {
-    kind: IntermediateKind.IntermediateFunction;
-    name: Maybe<string>;
-    body?: IntermediateBlock;
+    expression: Maybe<IntermediateExpression>;
 }
