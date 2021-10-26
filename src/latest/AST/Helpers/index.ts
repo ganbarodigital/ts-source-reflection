@@ -91,6 +91,7 @@ export * from "./mustBeInterfaceDeclaration";
 export * from "./mustBeModuleDeclaration";
 export * from "./mustBePropertyAssignment";
 export * from "./mustBePropertySignature";
+export * from "./mustBeReturnStatement";
 export * from "./mustBeSourceFile";
 export * from "./mustBeThrowStatement";
 export * from "./mustBeTryStatement";
