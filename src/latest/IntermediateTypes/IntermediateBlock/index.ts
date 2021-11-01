@@ -33,3 +33,4 @@
 //
 
 export * from "./IntermediateBlock";
+export * from "./mustBeIntermediateBlock";

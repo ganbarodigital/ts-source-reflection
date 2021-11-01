@@ -68,6 +68,10 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "number",
             },
             hasBody: true,
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
         },
         {
             kind: IntermediateKind.IntermediateBinaryExpression,

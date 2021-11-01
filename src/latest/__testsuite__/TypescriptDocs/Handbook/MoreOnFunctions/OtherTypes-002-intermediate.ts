@@ -66,6 +66,10 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "unknown",
             },
             hasBody: true,
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,

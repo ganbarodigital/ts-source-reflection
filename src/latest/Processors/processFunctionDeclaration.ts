@@ -31,12 +31,18 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { Statement } from "typescript";
+import { FunctionDeclaration, Statement } from "typescript";
 import { AST } from "../AST";
 import {
+    IntermediateAmbientFunction,
+    IntermediateBlock,
     IntermediateFunction,
-    IntermediateKind
+    IntermediateFunctionOverload,
+    IntermediateFunctionImplementation,
+    IntermediateKind,
+    // mustBeIntermediateBlock
 } from "../IntermediateTypes";
+// import { processBlock } from "./processBlock";
 import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { ProcessingContext } from "./ProcessingContext";
@@ -51,12 +57,43 @@ export function processFunctionDeclaration (
     // make sure we have what we need
     const funcDec = AST.mustBeFunctionDeclaration(input);
 
-    // at this point, we *know* that we're looking at a function :)
+    // at this point, we *know* that we're looking at a function
+    //
+    // we just need to work out which kind
+    const isDeclared = AST.hasDeclaredModifier(input.modifiers);
+    if (isDeclared) {
+        return processAmbientFunction(processCtx, funcDec);
+    }
+
+    const hasBody = AST.hasBody(funcDec.body);
+    if (hasBody) {
+        return processFunctionWithBody(processCtx, funcDec);
+    }
+
+    return processFunctionOverload(processCtx, funcDec);
+}
+
+function processFunctionWithBody(
+    processCtx: ProcessingContext,
+    input: FunctionDeclaration
+): IntermediateFunctionImplementation
+{
+    // // make sure we have a body!
+    // const body = mustBeIntermediateBlock(
+    //     input.body ? processBlock(processCtx, input.body) : undefined
+    // );
+
+    // temporary, while we do the refactoring
+    const body: IntermediateBlock = {
+        kind: IntermediateKind.IntermediateBlock,
+        children: [],
+    };
 
     const returnType = processReturnTypeFromNode(
         processCtx,
-        funcDec
+        input
     );
+
     if (returnType) {
         return {
             kind: IntermediateKind.IntermediateFunction,
@@ -64,31 +101,31 @@ export function processFunctionDeclaration (
             isDeclared: AST.hasDeclaredModifier(input.modifiers),
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-            typeParameters: processTypeParametersFromNode(processCtx, funcDec),
-            name: funcDec.name?.text,
-            parameters: processFunctionParameters(processCtx, funcDec.parameters),
+            typeParameters: processTypeParametersFromNode(processCtx, input),
+            name: input.name?.text,
+            parameters: processFunctionParameters(processCtx, input.parameters),
             returnType,
-            hasBody: AST.hasBody(funcDec.body),
+            hasBody: true,
+            body,
         }
     }
 
     // do we have anything useful?
-    if (funcDec.name) {
-        const inferredReturnType = AST.getInferredReturnType(processCtx, funcDec);
-        if (inferredReturnType) {
-            return {
-                kind: IntermediateKind.IntermediateFunction,
-                docBlock: processDocBlock(processCtx, input),
-                isDeclared: AST.hasDeclaredModifier(input.modifiers),
-                isExported: AST.hasExportModifier(input.modifiers),
-                isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-                typeParameters: processTypeParametersFromNode(processCtx, funcDec),
-                name: funcDec.name?.text,
-                parameters: processFunctionParameters(processCtx, funcDec.parameters),
-                returnType,
-                inferredReturnType,
-                hasBody: AST.hasBody(funcDec.body),
-            }
+    const inferredReturnType = AST.getInferredReturnType(processCtx, input);
+    if (inferredReturnType) {
+        return {
+            kind: IntermediateKind.IntermediateFunction,
+            docBlock: processDocBlock(processCtx, input),
+            isDeclared: AST.hasDeclaredModifier(input.modifiers),
+            isExported: AST.hasExportModifier(input.modifiers),
+            isDefaultExport: AST.hasDefaultModifier(input.modifiers),
+            typeParameters: processTypeParametersFromNode(processCtx, input),
+            name: input.name?.text,
+            parameters: processFunctionParameters(processCtx, input.parameters),
+            returnType,
+            inferredReturnType,
+            hasBody: true,
+            body,
         }
     }
 
@@ -99,10 +136,131 @@ export function processFunctionDeclaration (
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
         isExported: AST.hasExportModifier(input.modifiers),
         isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-        typeParameters: processTypeParametersFromNode(processCtx, funcDec),
-        name: funcDec.name?.text,
-        parameters: processFunctionParameters(processCtx, funcDec.parameters),
+        typeParameters: processTypeParametersFromNode(processCtx, input),
+        name: input.name?.text,
+        parameters: processFunctionParameters(processCtx, input.parameters),
         returnType,
-        hasBody: AST.hasBody(funcDec.body),
+        hasBody: true,
+        body,
+    }
+}
+
+function processFunctionOverload(
+    processCtx: ProcessingContext,
+    input: FunctionDeclaration
+): IntermediateFunctionOverload
+{
+    const returnType = processReturnTypeFromNode(
+        processCtx,
+        input
+    );
+
+    if (returnType) {
+        return {
+            kind: IntermediateKind.IntermediateFunction,
+            docBlock: processDocBlock(processCtx, input),
+            isDeclared: AST.hasDeclaredModifier(input.modifiers),
+            isExported: AST.hasExportModifier(input.modifiers),
+            isDefaultExport: AST.hasDefaultModifier(input.modifiers),
+            typeParameters: processTypeParametersFromNode(processCtx, input),
+            name: input.name?.text,
+            parameters: processFunctionParameters(processCtx, input.parameters),
+            returnType,
+            hasBody: false,
+        }
+    }
+
+    // do we have anything useful?
+    const inferredReturnType = AST.getInferredReturnType(processCtx, input);
+    if (inferredReturnType) {
+        return {
+            kind: IntermediateKind.IntermediateFunction,
+            docBlock: processDocBlock(processCtx, input),
+            isDeclared: AST.hasDeclaredModifier(input.modifiers),
+            isExported: AST.hasExportModifier(input.modifiers),
+            isDefaultExport: AST.hasDefaultModifier(input.modifiers),
+            typeParameters: processTypeParametersFromNode(processCtx, input),
+            name: input.name?.text,
+            parameters: processFunctionParameters(processCtx, input.parameters),
+            returnType,
+            inferredReturnType,
+            hasBody: false,
+        }
+    }
+
+    // if we get here, we have no inferred type information
+    return {
+        kind: IntermediateKind.IntermediateFunction,
+        docBlock: processDocBlock(processCtx, input),
+        isDeclared: AST.hasDeclaredModifier(input.modifiers),
+        isExported: AST.hasExportModifier(input.modifiers),
+        isDefaultExport: AST.hasDefaultModifier(input.modifiers),
+        typeParameters: processTypeParametersFromNode(processCtx, input),
+        name: input.name?.text,
+        parameters: processFunctionParameters(processCtx, input.parameters),
+        returnType,
+        hasBody: false,
+    }
+}
+
+function processAmbientFunction(
+    processCtx: ProcessingContext,
+    input: FunctionDeclaration
+): IntermediateAmbientFunction
+{
+    // shorthand
+    const compiler = processCtx.compiler;
+
+    // do we have a return type?
+    const returnType = processReturnTypeFromNode(
+        processCtx,
+        input
+    );
+
+    if (!returnType) {
+        // okay, can the compiler work out what the return type is instead,
+        // then?
+        const inferredReturnType = compiler.getInferredReturnType(processCtx, input);
+        if (inferredReturnType) {
+            return {
+                kind: IntermediateKind.IntermediateFunction,
+                docBlock: processDocBlock(processCtx, input),
+                isDeclared: true,
+                isExported: AST.hasExportModifier(input.modifiers),
+                isDefaultExport: AST.hasDefaultModifier(input.modifiers),
+                typeParameters: processTypeParametersFromNode(processCtx, input),
+                name: input.name?.text,
+                parameters: processFunctionParameters(processCtx, input.parameters),
+                returnType,
+                inferredReturnType,
+                hasBody: false,
+            }
+        }
+
+        return {
+            kind: IntermediateKind.IntermediateFunction,
+            docBlock: processDocBlock(processCtx, input),
+            isDeclared: true,
+            isExported: AST.hasExportModifier(input.modifiers),
+            isDefaultExport: AST.hasDefaultModifier(input.modifiers),
+            typeParameters: processTypeParametersFromNode(processCtx, input),
+            name: input.name?.text,
+            parameters: processFunctionParameters(processCtx, input.parameters),
+            returnType,
+            hasBody: false,
+        }
+    }
+
+    return {
+        kind: IntermediateKind.IntermediateFunction,
+        docBlock: processDocBlock(processCtx, input),
+        isDeclared: true,
+        isExported: AST.hasExportModifier(input.modifiers),
+        isDefaultExport: AST.hasDefaultModifier(input.modifiers),
+        typeParameters: processTypeParametersFromNode(processCtx, input),
+        name: input.name?.text,
+        parameters: processFunctionParameters(processCtx, input.parameters),
+        returnType,
+        hasBody: false,
     }
 }

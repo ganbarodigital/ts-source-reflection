@@ -61,6 +61,10 @@ const expectedResult: IntermediateSourceFile = {
                 entityName: "Base",
             },
             hasBody: true,
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
         },
         {
             kind: IntermediateKind.IntermediateFunction,
@@ -84,6 +88,10 @@ const expectedResult: IntermediateSourceFile = {
                 entityName: "Derived",
             },
             hasBody: true,
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
         },
         {
             kind: IntermediateKind.IntermediateClass,

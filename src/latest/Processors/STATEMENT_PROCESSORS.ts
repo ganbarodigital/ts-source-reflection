@@ -48,6 +48,7 @@ import { processImportDeclaration } from "./processImportDeclaration";
 import { processImportEqualsDeclaration } from "./processImportEqualsDeclaration";
 import { processInterfaceDeclaration } from "./processInterfaceDeclaration";
 import { processModuleDeclaration } from "./processModuleDeclaration";
+import { processReturnStatement } from "./processReturnStatement";
 import { processThrowStatement } from "./processThrowStatement";
 import { processTryStatement } from "./processTryStatement";
 import { processTypeAliasDeclaration } from "./processTypeAliasDeclaration";
@@ -71,6 +72,7 @@ export const STATEMENT_PROCESSORS = {
     ImportEqualsDeclaration: processImportEqualsDeclaration,
     InterfaceDeclaration: processInterfaceDeclaration,
     ModuleDeclaration: processModuleDeclaration,
+    ReturnStatement: processReturnStatement,
     ThrowStatement: processThrowStatement,
     TryStatement: processTryStatement,
     TypeAliasDeclaration: processTypeAliasDeclaration,

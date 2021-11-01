@@ -66,6 +66,10 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "never",
             },
             hasBody: true,
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
         },
     ],
     referencedFiles: [],

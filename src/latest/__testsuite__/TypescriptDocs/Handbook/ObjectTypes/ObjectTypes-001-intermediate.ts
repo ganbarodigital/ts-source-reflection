@@ -90,6 +90,10 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "string",
             },
             hasBody: true,
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
         },
     ],
     referencedFiles: [],

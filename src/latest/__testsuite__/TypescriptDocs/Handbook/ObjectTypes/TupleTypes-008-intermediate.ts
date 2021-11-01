@@ -92,7 +92,7 @@ const expectedResult: IntermediateSourceFile = {
                             ],
                         },
                         initializer: undefined,
-                    }
+                    },
                 },
             ],
             returnType: undefined,
@@ -101,7 +101,11 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "void",
             },
             hasBody: true,
-        }
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],

@@ -77,6 +77,10 @@ const expectedResult: IntermediateSourceFile = {
                 ],
             },
             hasBody: true,
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,

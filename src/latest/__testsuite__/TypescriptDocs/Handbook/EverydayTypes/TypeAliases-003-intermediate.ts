@@ -78,6 +78,10 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "UserInputSanitizedString",
             },
             hasBody: true,
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
         },
     ],
     referencedFiles: [],

@@ -121,6 +121,10 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "any",
             },
             hasBody: true,
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
         },
         {
             kind: IntermediateKind.IntermediateFunction,
@@ -162,6 +166,10 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "any",
             },
             hasBody: true,
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
         },
         {
             kind: IntermediateKind.IntermediateClass,

@@ -154,6 +154,10 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "void",
             },
             hasBody: true,
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
         },
         {
             kind: IntermediateKind.IntermediateFunction,
@@ -213,6 +217,10 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "void",
             },
             hasBody: true,
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
         },
         {
             kind: IntermediateKind.IntermediateClass,

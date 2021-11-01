@@ -170,6 +170,10 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "Date",
             },
             hasBody: true,
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
         },
     ],
     referencedFiles: [],

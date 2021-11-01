@@ -276,7 +276,11 @@ const expectedResult: IntermediateSourceFile = {
                 typeName: "A",
             },
             hasBody: true,
-        }
+            body: {
+                kind: IntermediateKind.IntermediateBlock,
+                children: [],
+            },
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],

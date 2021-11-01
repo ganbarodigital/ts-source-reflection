@@ -44,7 +44,21 @@ import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateExportableItem } from "../IntermediateExportableItem";
 import { IntermediateGenericable } from "../IntermediateGenericable";
 
-export type IntermediateFunction
+export type IntermediateAmbientFunction =
+    IntermediateItem<IntermediateKind.IntermediateFunction>
+    & IntermediateCallableDeclaration
+    & IntermediateDocumentedItem
+    & {
+        isDeclared: true;
+    }
+    & IntermediateExportableItem
+    & IntermediateGenericable
+    & {
+        name: Maybe<string>;
+        hasBody: false;
+    }
+
+export type IntermediateFunctionImplementation
     = IntermediateItem<IntermediateKind.IntermediateFunction>
     & IntermediateCallableDeclaration
     & IntermediateDocumentedItem
@@ -53,7 +67,23 @@ export type IntermediateFunction
     & IntermediateGenericable
     &
 {
-    kind: IntermediateKind.IntermediateFunction;
     name: Maybe<string>;
-    body?: IntermediateBlock;
+    hasBody: true;
+    body: IntermediateBlock;
 }
+
+export type IntermediateFunctionOverload
+    = IntermediateItem<IntermediateKind.IntermediateFunction>
+    & IntermediateCallableDeclaration
+    & IntermediateDocumentedItem
+    & IntermediateDeclarableItem
+    & IntermediateExportableItem
+    & IntermediateGenericable
+    &
+{
+    name: Maybe<string>;
+    hasBody: false;
+}
+
+export type IntermediateFunction =
+    IntermediateAmbientFunction | IntermediateFunctionImplementation | IntermediateFunctionOverload;
