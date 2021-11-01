@@ -57,19 +57,16 @@ export function processForStatement(
     return {
         kind: IntermediateKind.IntermediateForLoop,
         initializer: processMaybe(
-            processCtx,
             forStmt.initializer,
-            processForInitializer
+            (value) => processForInitializer(processCtx, value),
         ),
         condition: processMaybe(
-            processCtx,
             forStmt.condition,
-            processExpression
+            (value) => processExpression(processCtx, value),
         ),
         incrementor: processMaybe(
-            processCtx,
             forStmt.incrementor,
-            processExpression
+            (value) => processExpression(processCtx, value),
         ),
         contents: mustBeIntermediateStatement(
             processStatement(processCtx, forStmt.statement)

@@ -60,9 +60,8 @@ export function processObjectBindingPatternForSignatures(
 ): IntermediateDestructuredParameterSignature
 {
     const typeRef = processMaybe(
-        processCtx,
         paramType,
-        processTypeNode
+        (value) => processTypeNode(processCtx, value),
     )
 
     // all done

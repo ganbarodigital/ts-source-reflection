@@ -75,9 +75,8 @@ export function processObjectBindingPatternForParameters(
         parameters: processBindingElements(processCtx, param.elements),
         typeRef,
         initializer: processMaybe(
-            processCtx,
             paramInitializer,
-            processExpression
+            (value) => processExpression(processCtx, value),
         )
     };
 }
@@ -105,9 +104,8 @@ function processBindingElement(
 {
     // do we have a default value for the parameter?
     const initializer = processMaybe(
-        processCtx,
         input.initializer,
-        processExpression
+        (value) => processExpression(processCtx, value),
     )
 
     // do we have a receiver alias set?

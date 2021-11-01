@@ -293,7 +293,7 @@ function processDestructuredVariableDeclaration(
             kind,
             isConstant: true,
             isReadonly,
-            typeRef: processMaybe(processCtx, input.type, processTypeNode),
+            typeRef: processMaybe(input.type, (value) => processTypeNode(processCtx, value)),
             members: processDestructuredObjectDeclaration(processCtx, input.name),
             initializer,
         }
@@ -303,7 +303,7 @@ function processDestructuredVariableDeclaration(
         kind,
         isConstant: false,
         isReadonly,
-        typeRef: processMaybe(processCtx, input.type, processTypeNode),
+        typeRef: processMaybe(input.type, (value) => processTypeNode(processCtx, value)),
         members: processDestructuredObjectDeclaration(processCtx, input.name),
         initializer,
     }
@@ -337,9 +337,8 @@ function processObjectBindingElement(
 
     // do we have an initializer?
     const initializer = processMaybe(
-        processCtx,
         input.initializer,
-        processExpression
+        (value) => processExpression(processCtx, value),
     )
 
     // special case: we're renaming a property

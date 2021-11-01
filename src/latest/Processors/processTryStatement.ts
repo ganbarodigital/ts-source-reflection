@@ -60,9 +60,8 @@ export function processTryStatement(
     let catchBlock: Maybe<IntermediateStatement>;
     if (tryStmt.catchClause) {
         catchClause = processMaybe(
-            processCtx,
             tryStmt.catchClause.variableDeclaration,
-            processCatchClauseVariableDeclaration
+            (value) => processCatchClauseVariableDeclaration(processCtx, value),
         );
         catchBlock = mustBeIntermediateStatement(
             processStatement(processCtx, tryStmt.catchClause.block)
@@ -76,9 +75,8 @@ export function processTryStatement(
         catchClause,
         catchBlock,
         finallyBlock: processMaybe(
-            processCtx,
             tryStmt.finallyBlock,
-            processStatement,
+            (value) => processStatement(processCtx, value),
         ),
     }
 }
@@ -92,14 +90,12 @@ function processCatchClauseVariableDeclaration(
         kind: IntermediateKind.IntermediateCaughtVarDeclaration,
         name: input.name.getText(),
         typeRef: processMaybe(
-            processCtx,
             input.type,
-            processTypeNode,
+            (value) => processTypeNode(processCtx, value),
         ),
         initializer: processMaybe(
-            processCtx,
             input.initializer,
-            processExpression,
+            (value) => processExpression(processCtx, value),
         )
     }
 }

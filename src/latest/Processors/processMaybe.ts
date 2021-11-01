@@ -33,12 +33,10 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
-import { ProcessingContext } from "./ProcessingContext";
 
 export function processMaybe<IN,OUT>(
-    processCtx: ProcessingContext,
     input: IN | undefined,
-    processor: (processCtx: ProcessingContext, x: IN) => OUT
+    processor: (x: IN) => OUT
 ): Maybe<OUT>
 {
     // if we've been given an undefined value, that's perfectly legal
@@ -47,5 +45,5 @@ export function processMaybe<IN,OUT>(
     }
 
     // if we get here, then we want to process the input data
-    return processor(processCtx, input);
+    return processor(input);
 }

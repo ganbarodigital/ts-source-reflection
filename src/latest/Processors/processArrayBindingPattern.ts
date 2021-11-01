@@ -72,9 +72,8 @@ export function processArrayBindingPattern(
         kind: IntermediateKind.IntermediateArrayBindingParameter,
         parameters: processBindingElements(processCtx, param.elements),
         typeRef: processMaybe(
-            processCtx,
             paramType,
-            processTypeNode
+            (value) => processTypeNode(processCtx, value),
         ),
     }
 }
@@ -111,9 +110,8 @@ function processBindingElement(
                 AST.hasDotDotDotToken(input.dotDotDotToken)
             ),
             initializer: processMaybe(
-                processCtx,
                 input.initializer,
-                processExpression
+                (value) => processExpression(processCtx, value),
             ),
         }
     }
