@@ -32,35 +32,18 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    Statement
-} from "typescript";
-import { AST } from "../AST";
-import {
-    IntermediateIfStatement,
-    IntermediateKind,
-    mustBeIntermediateStatement
-} from "../IntermediateTypes";
-import { ParentContext } from "./ParentContext";
-import { processExpression } from "./processExpression";
-import { ProcessingContext } from "./ProcessingContext";
-import { processStatement } from "./processStatement";
-
-export function processIfStatement(
-    processCtx: ProcessingContext,
-    parentCtx: ParentContext,
-    input: Statement
-): IntermediateIfStatement
-{
-    // make sure we have the right kind of statement
-    const ifStmt = AST.mustBeIfStatement(input);
-
-    return {
-        kind: IntermediateKind.IntermediateIfStatement,
-        condition: processExpression(processCtx, ifStmt.expression),
-        thenBlock: mustBeIntermediateStatement(
-            processStatement(processCtx, ParentContext.IF_THEN, ifStmt.thenStatement)
-        ),
-        elseBlock: ifStmt.elseStatement ? processStatement(processCtx, ParentContext.IF_ELSE, ifStmt.elseStatement) : undefined,
-    }
+export enum ParentContext {
+    MODULE_DECLARATION = 1,
+    SOURCEFILE,
+    FOR_IN,
+    FOR_OF,
+    FOR,
+    IF_THEN,
+    IF_ELSE,
+    MODULE,
+    NAMESPACE,
+    GLOBAL_AUGMENTATION,
+    TRY,
+    CATCH,
+    FINALLY,
 }

@@ -35,11 +35,13 @@
 import { Statement } from "typescript";
 import { AST } from "../AST";
 import { IntermediateKind, IntermediateThrow } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processThrowStatement(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateThrow
 {

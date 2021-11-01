@@ -37,9 +37,11 @@ import { Statement } from "typescript";
 import {
     IntermediateStatement
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 
 export type StatementProcessor = <T extends Statement>(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: T
 ) => Maybe<IntermediateStatement>;

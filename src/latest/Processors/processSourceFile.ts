@@ -37,6 +37,7 @@ import {
     IntermediateKind,
     IntermediateSourceFile
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processStatements } from "./processStatements";
 
@@ -51,7 +52,7 @@ export function processSourceFile(
     const retval: IntermediateSourceFile = {
         path: new Filepath(parsedSource.fileName),
         kind: IntermediateKind.IntermediateSourceFile,
-        children: processStatements(processCtx, parsedSource.statements),
+        children: processStatements(processCtx, ParentContext.SOURCEFILE, parsedSource.statements),
         referencedFiles: processFileReferences(parsedSource.referencedFiles),
         referencedLibs: processFileReferences(parsedSource.libReferenceDirectives),
         referencedTypes: processFileReferences(parsedSource.typeReferenceDirectives),

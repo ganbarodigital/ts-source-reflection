@@ -38,6 +38,7 @@ import {
     IntermediateKind,
     IntermediateTypeAliasDeclaration
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processDocBlock } from "./processDocBlock";
 import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
@@ -45,6 +46,7 @@ import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processTypeAliasDeclaration (
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateTypeAliasDeclaration
 {

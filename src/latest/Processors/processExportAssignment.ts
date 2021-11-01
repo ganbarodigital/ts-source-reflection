@@ -39,11 +39,13 @@ import { AST } from "../AST";
 import {
     IntermediateExportAssignment, IntermediateKind
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processExportAssignment (
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateExportAssignment
 {

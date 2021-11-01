@@ -41,6 +41,7 @@ import {
     IntermediateKind,
     mustBeIntermediateStatement
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { processForInitializer } from "./processForInitializer";
 import { ProcessingContext } from "./ProcessingContext";
@@ -48,6 +49,7 @@ import { processStatement } from "./processStatement";
 
 export function processForInStatement(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateForInLoop
 {
@@ -59,7 +61,7 @@ export function processForInStatement(
         initializer: processForInitializer(processCtx, forInStmt.initializer),
         loopTarget: processExpression(processCtx, forInStmt.expression),
         contents: mustBeIntermediateStatement(
-            processStatement(processCtx, forInStmt.statement)
+            processStatement(processCtx, ParentContext.FOR_IN, forInStmt.statement)
         ),
     }
 }

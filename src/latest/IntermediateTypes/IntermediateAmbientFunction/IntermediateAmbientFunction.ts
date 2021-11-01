@@ -33,6 +33,7 @@
 //
 
 import { Maybe } from "@safelytyped/core-types";
+import { IntermediateDeclarableItem } from "..";
 import { IntermediateCallableDeclaration } from "../IntermediateCallableDeclaration";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateExportableItem } from "../IntermediateExportableItem";
@@ -43,10 +44,8 @@ import { IntermediateKind } from "../IntermediateKind";
 export type IntermediateAmbientFunction =
     IntermediateItem<IntermediateKind.IntermediateAmbientFunction>
     & IntermediateCallableDeclaration
+    & IntermediateDeclarableItem
     & IntermediateDocumentedItem
-    & {
-        isDeclared: true;
-    }
     & IntermediateExportableItem
     & IntermediateGenericable
     & {

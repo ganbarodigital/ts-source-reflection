@@ -41,12 +41,14 @@ import {
     IntermediateExpression,
     IntermediateKind
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processDocBlock } from "./processDocBlock";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processEnumDeclaration (
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateEnum
 {

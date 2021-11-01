@@ -36,17 +36,19 @@ import {
     IntermediateBlock,
     IntermediateKind
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processStatements } from "./processStatements";
 
 export function processBlock(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     block: Block
 ): IntermediateBlock
 {
     // short and sweet!
     return {
         kind: IntermediateKind.IntermediateBlock,
-        children: processStatements(processCtx, block.statements),
+        children: processStatements(processCtx, parentCtx, block.statements),
     }
 }

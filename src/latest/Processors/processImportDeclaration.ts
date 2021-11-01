@@ -44,12 +44,14 @@ import {
     IntermediateImportItem,
     IntermediateKind
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { processIdentifier } from "./processIdentifier";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processImportDeclaration(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateImportDeclaration
 {

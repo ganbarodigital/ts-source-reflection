@@ -35,11 +35,13 @@
 import { Statement } from "typescript";
 import { AST } from "../AST";
 import { IntermediateExpression } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processExpressionStatement (
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateExpression
 {

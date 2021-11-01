@@ -35,18 +35,20 @@ import { NodeArray, Statement } from "typescript";
 import {
     IntermediateStatement
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processStatement } from "./processStatement";
 
 export function processStatements(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     statements: NodeArray<Statement>
 ): IntermediateStatement[]
 {
     const result: IntermediateStatement[] = [];
 
     for(const statement of statements) {
-        const processedItem = processStatement(processCtx, statement);
+        const processedItem = processStatement(processCtx, parentCtx, statement);
 
         if (processedItem) {
             result.push(processedItem);

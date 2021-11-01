@@ -37,6 +37,7 @@ import {
     IntermediateAmbientFunction,
     IntermediateBlock,
     IntermediateCallableDeclaration,
+    IntermediateFunctionOverload,
     IntermediateItem,
     IntermediateKind
 } from "..";
@@ -60,19 +61,6 @@ export type IntermediateFunctionImplementation
     body: IntermediateBlock;
 }
 
-export type IntermediateFunctionOverload
-    = IntermediateItem<IntermediateKind.IntermediateFunction>
-    & IntermediateCallableDeclaration
-    & IntermediateDocumentedItem
-    & IntermediateDeclarableItem
-    & IntermediateExportableItem
-    & IntermediateGenericable
-    &
-{
-    isDeclared: false;
-    name: Maybe<string>;
-    hasBody: false;
-}
 
 export type IntermediateFunction =
     IntermediateAmbientFunction | IntermediateFunctionImplementation | IntermediateFunctionOverload;

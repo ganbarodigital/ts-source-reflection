@@ -39,6 +39,7 @@ import {
     IntermediateModuleBlock,
     IntermediateModuleContents
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processStatements } from "./processStatements";
 
@@ -74,6 +75,6 @@ function processModuleBlock(
 ): IntermediateModuleBlock {
     return {
         kind: IntermediateKind.IntermediateModuleBlock,
-        children: processStatements(processCtx, input.statements),
+        children: processStatements(processCtx, ParentContext.MODULE, input.statements),
     }
 }

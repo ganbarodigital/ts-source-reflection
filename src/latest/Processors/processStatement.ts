@@ -37,12 +37,14 @@ import { AST } from "../AST";
 import {
     IntermediateStatement
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { StatementProcessor } from "./StatementProcessor";
 import { STATEMENT_PROCESSORS } from "./STATEMENT_PROCESSORS";
 
 export function processStatement(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     statement: Statement
 ): Maybe<IntermediateStatement>
 {
@@ -70,5 +72,5 @@ export function processStatement(
         () => { return undefined }
     );
 
-    return statementProcessor(processCtx, statement);
+    return statementProcessor(processCtx, parentCtx, statement);
 }

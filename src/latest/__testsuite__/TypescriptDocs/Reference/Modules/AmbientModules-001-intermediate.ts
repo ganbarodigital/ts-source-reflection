@@ -92,7 +92,7 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                     },
                     {
-                        kind: IntermediateKind.IntermediateFunction,
+                        kind: IntermediateKind.IntermediateAmbientFunction,
                         docBlock: undefined,
                         isDeclared: false,
                         isDefaultExport: false,
@@ -152,7 +152,7 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateModuleBlock,
                 children: [
                     {
-                        kind: IntermediateKind.IntermediateFunction,
+                        kind: IntermediateKind.IntermediateAmbientFunction,
                         docBlock: undefined,
                         isDeclared: false,
                         isDefaultExport: false,
@@ -180,7 +180,7 @@ const expectedResult: IntermediateSourceFile = {
                         hasBody: false,
                     },
                     {
-                        kind: IntermediateKind.IntermediateFunction,
+                        kind: IntermediateKind.IntermediateAmbientFunction,
                         docBlock: undefined,
                         isDeclared: false,
                         isDefaultExport: false,

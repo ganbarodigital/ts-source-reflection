@@ -39,12 +39,14 @@ import {
     IntermediateKind,
     IntermediateVariableDeclarations
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processDocBlock } from "./processDocBlock";
 import { ProcessingContext } from "./ProcessingContext";
 import { processVariableDeclarationList } from "./processVariableDeclarationList";
 
 export function processVariableStatement (
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateVariableDeclarations
 {

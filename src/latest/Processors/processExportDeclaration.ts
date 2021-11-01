@@ -54,12 +54,14 @@ import {
     IntermediateNamespaceExport,
     IntermediateReExportIdentifiers
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { processIdentifier } from "./processIdentifier";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processExportDeclaration (
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateExportDeclaration
 {

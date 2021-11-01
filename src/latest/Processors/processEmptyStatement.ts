@@ -35,10 +35,12 @@
 import { Statement } from "typescript";
 import { AST } from "../AST";
 import { IntermediateEmptyStatement, IntermediateKind } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processEmptyStatement(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateEmptyStatement
 {

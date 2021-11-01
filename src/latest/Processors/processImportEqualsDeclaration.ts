@@ -37,12 +37,14 @@ import { AST } from "../AST";
 import {
     IntermediateImportAssignment, IntermediateKind
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processIdentifier } from "./processIdentifier";
 import { ProcessingContext } from "./ProcessingContext";
 import { processModuleReference } from "./processModuleReference";
 
 export function processImportEqualsDeclaration (
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateImportAssignment
 {

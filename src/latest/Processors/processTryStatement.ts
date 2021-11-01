@@ -42,6 +42,7 @@ import {
     IntermediateVariableDeclaration,
     mustBeIntermediateStatement
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 import { processMaybe } from "./processMaybe";
@@ -50,6 +51,7 @@ import { processTypeNode } from "./processTypeNode";
 
 export function processTryStatement(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateTryCatch
 {
@@ -64,19 +66,19 @@ export function processTryStatement(
             (value) => processCatchClauseVariableDeclaration(processCtx, value),
         );
         catchBlock = mustBeIntermediateStatement(
-            processStatement(processCtx, tryStmt.catchClause.block)
+            processStatement(processCtx, ParentContext.CATCH, tryStmt.catchClause.block)
         );
     }
     return {
         kind: IntermediateKind.IntermediateTryCatch,
         tryBlock: mustBeIntermediateStatement(
-            processStatement(processCtx, tryStmt.tryBlock)
+            processStatement(processCtx, ParentContext.TRY, tryStmt.tryBlock)
         ),
         catchClause,
         catchBlock,
         finallyBlock: processMaybe(
             tryStmt.finallyBlock,
-            (value) => processStatement(processCtx, value),
+            (value) => processStatement(processCtx, parentCtx, value),
         ),
     }
 }

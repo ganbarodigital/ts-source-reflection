@@ -42,6 +42,7 @@ import {
     IntermediateKind,
     // mustBeIntermediateBlock
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 // import { processBlock } from "./processBlock";
 import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
@@ -51,6 +52,7 @@ import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processFunctionDeclaration (
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateFunction
 {
@@ -59,21 +61,25 @@ export function processFunctionDeclaration (
 
     // at this point, we *know* that we're looking at a function
     //
-    // we just need to work out which kind
-    const isDeclared = AST.hasDeclaredModifier(input.modifiers);
-    if (isDeclared) {
+    // we just need to work out which kind ... and this is the original
+    // reason we started passing the parentCtx around
+    const isDeclared = AST.hasDeclaredModifier(funcDec.modifiers);
+    if (parentCtx === ParentContext.MODULE || isDeclared) {
         return processAmbientFunction(processCtx, funcDec);
     }
 
+    // if we get here, then we know that we're looking at an actual
+    // function. Question is: are we looking at the function's implementation,
+    // or one of its overloaded declarations?
     const hasBody = AST.hasBody(funcDec.body);
     if (hasBody) {
-        return processFunctionWithBody(processCtx, funcDec);
+        return processFunctionImplementation(processCtx, funcDec);
     }
 
     return processFunctionOverload(processCtx, funcDec);
 }
 
-function processFunctionWithBody(
+function processFunctionImplementation(
     processCtx: ProcessingContext,
     input: FunctionDeclaration
 ): IntermediateFunctionImplementation
@@ -157,7 +163,7 @@ function processFunctionOverload(
 
     if (returnType) {
         return {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateFunctionOverload,
             docBlock: processDocBlock(processCtx, input),
             isDeclared: false,
             isExported: AST.hasExportModifier(input.modifiers),
@@ -174,7 +180,7 @@ function processFunctionOverload(
     const inferredReturnType = AST.getInferredReturnType(processCtx, input);
     if (inferredReturnType) {
         return {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateFunctionOverload,
             docBlock: processDocBlock(processCtx, input),
             isDeclared: false,
             isExported: AST.hasExportModifier(input.modifiers),
@@ -190,7 +196,7 @@ function processFunctionOverload(
 
     // if we get here, we have no inferred type information
     return {
-        kind: IntermediateKind.IntermediateFunction,
+        kind: IntermediateKind.IntermediateFunctionOverload,
         docBlock: processDocBlock(processCtx, input),
         isDeclared: false,
         isExported: AST.hasExportModifier(input.modifiers),
@@ -225,7 +231,7 @@ function processAmbientFunction(
             return {
                 kind: IntermediateKind.IntermediateAmbientFunction,
                 docBlock: processDocBlock(processCtx, input),
-                isDeclared: true,
+                isDeclared: AST.hasDeclaredModifier(input.modifiers),
                 isExported: AST.hasExportModifier(input.modifiers),
                 isDefaultExport: AST.hasDefaultModifier(input.modifiers),
                 typeParameters: processTypeParametersFromNode(processCtx, input),
@@ -240,7 +246,7 @@ function processAmbientFunction(
         return {
             kind: IntermediateKind.IntermediateAmbientFunction,
             docBlock: processDocBlock(processCtx, input),
-            isDeclared: true,
+            isDeclared: AST.hasDeclaredModifier(input.modifiers),
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
             typeParameters: processTypeParametersFromNode(processCtx, input),
@@ -254,7 +260,7 @@ function processAmbientFunction(
     return {
         kind: IntermediateKind.IntermediateAmbientFunction,
         docBlock: processDocBlock(processCtx, input),
-        isDeclared: true,
+        isDeclared: AST.hasDeclaredModifier(input.modifiers),
         isExported: AST.hasExportModifier(input.modifiers),
         isDefaultExport: AST.hasDefaultModifier(input.modifiers),
         typeParameters: processTypeParametersFromNode(processCtx, input),

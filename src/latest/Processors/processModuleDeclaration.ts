@@ -51,6 +51,7 @@ import {
     IntermediateModuleDeclaration,
     IntermediateNamespace
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processDocBlock } from "./processDocBlock";
 import { ProcessingContext } from "./ProcessingContext";
 import { processModuleBody } from "./processModuleBody";
@@ -58,6 +59,7 @@ import { processStatements } from "./processStatements";
 
 export function processModuleDeclaration (
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateModuleDeclaration
 {
@@ -67,7 +69,7 @@ export function processModuleDeclaration (
     // do we have a module that we support?
     // tslint:disable-next-line: no-bitwise
     if (moduleDec.flags & NodeFlags.Namespace) {
-        return processNamespace(processCtx, moduleDec);
+        return processNamespace(processCtx, parentCtx, moduleDec);
     }
 
     // tslint:disable-next-line: no-bitwise
@@ -114,7 +116,7 @@ function processGlobalAugmentation(
     if (isModuleBlock(input.body)) {
         return {
             kind: IntermediateKind.IntermediateGlobalAugmentation,
-            children: processStatements(processCtx, input.body!.statements),
+            children: processStatements(processCtx, ParentContext.GLOBAL_AUGMENTATION, input.body!.statements),
         }
     }
 
@@ -162,6 +164,7 @@ function processModuleDefinition(
 
 function processNamespace(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ModuleDeclaration
 ): IntermediateNamespace {
     // is this an empty namespace?
@@ -186,7 +189,7 @@ function processNamespace(
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
             name: input.name.getText(),
-            children: processStatements(processCtx, input.body.statements),
+            children: processStatements(processCtx, ParentContext.NAMESPACE, input.body.statements),
         }
     }
 

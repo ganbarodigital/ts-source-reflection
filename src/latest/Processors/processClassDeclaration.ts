@@ -39,6 +39,7 @@ import {
     IntermediateKind,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processDecorators } from "./processDecorators";
 import { processDocBlock } from "./processDocBlock";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
@@ -48,6 +49,7 @@ import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processClassDeclaration (
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Statement
 ): IntermediateClass
 {

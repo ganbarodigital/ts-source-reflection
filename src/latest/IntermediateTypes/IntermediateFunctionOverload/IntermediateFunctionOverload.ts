@@ -32,35 +32,23 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    Statement
-} from "typescript";
-import { AST } from "../AST";
-import {
-    IntermediateIfStatement,
-    IntermediateKind,
-    mustBeIntermediateStatement
-} from "../IntermediateTypes";
-import { ParentContext } from "./ParentContext";
-import { processExpression } from "./processExpression";
-import { ProcessingContext } from "./ProcessingContext";
-import { processStatement } from "./processStatement";
+import { Maybe } from "@safelytyped/core-types";
+import { IntermediateDeclarableItem } from "..";
+import { IntermediateCallableDeclaration } from "../IntermediateCallableDeclaration";
+import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
+import { IntermediateExportableItem } from "../IntermediateExportableItem";
+import { IntermediateGenericable } from "../IntermediateGenericable";
+import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateKind } from "../IntermediateKind";
 
-export function processIfStatement(
-    processCtx: ProcessingContext,
-    parentCtx: ParentContext,
-    input: Statement
-): IntermediateIfStatement
-{
-    // make sure we have the right kind of statement
-    const ifStmt = AST.mustBeIfStatement(input);
-
-    return {
-        kind: IntermediateKind.IntermediateIfStatement,
-        condition: processExpression(processCtx, ifStmt.expression),
-        thenBlock: mustBeIntermediateStatement(
-            processStatement(processCtx, ParentContext.IF_THEN, ifStmt.thenStatement)
-        ),
-        elseBlock: ifStmt.elseStatement ? processStatement(processCtx, ParentContext.IF_ELSE, ifStmt.elseStatement) : undefined,
+export type IntermediateFunctionOverload =
+    IntermediateItem<IntermediateKind.IntermediateFunctionOverload>
+    & IntermediateCallableDeclaration
+    & IntermediateDeclarableItem
+    & IntermediateDocumentedItem
+    & IntermediateExportableItem
+    & IntermediateGenericable
+    & {
+        name: Maybe<string>;
+        hasBody: false;
     }
-}

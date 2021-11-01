@@ -42,7 +42,8 @@ import {
     ArrayBindingElement,
     ArrayBindingPattern,
     isBindingElement,
-    NodeArray, SyntaxKind,
+    NodeArray,
+    SyntaxKind,
     TypeNode
 } from "typescript";
 import { AST } from "../AST";
@@ -111,7 +112,7 @@ function processBindingElement(
             ),
             initializer: processMaybe(
                 input.initializer,
-                (value) => processExpression(processCtx, value),
+                (value) => processExpression(processCtx, value)
             ),
         }
     }
