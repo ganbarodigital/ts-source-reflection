@@ -40,7 +40,7 @@ import {
 const expectedResult: IntermediateSourceFile = {
     children: [
         {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateAmbientFunction,
             docBlock: undefined,
             isDeclared: true,
             isExported: false,
@@ -68,7 +68,7 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: false,
         },
         {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateAmbientFunction,
             docBlock: undefined,
             isDeclared: true,
             isExported: false,
@@ -96,7 +96,7 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: false,
         },
         {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateAmbientFunction,
             docBlock: undefined,
             isDeclared: true,
             isExported: false,

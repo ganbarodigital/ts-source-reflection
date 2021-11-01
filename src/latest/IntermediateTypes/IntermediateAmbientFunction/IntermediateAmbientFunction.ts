@@ -32,47 +32,24 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateKind,
-    IntermediateSourceFile
-} from "../../../../IntermediateTypes";
+import { Maybe } from "@safelytyped/core-types";
+import { IntermediateCallableDeclaration } from "../IntermediateCallableDeclaration";
+import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
+import { IntermediateExportableItem } from "../IntermediateExportableItem";
+import { IntermediateGenericable } from "../IntermediateGenericable";
+import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateKind } from "../IntermediateKind";
 
-const expectedResult: IntermediateSourceFile = {
-    children: [
-        {
-            kind: IntermediateKind.IntermediateAmbientFunction,
-            docBlock: undefined,
-            isDeclared: true,
-            isExported: false,
-            isDefaultExport: false,
-            name: "f",
-            typeParameters: [],
-            parameters: [
-                {
-                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
-                    decorators: [],
-                    name: "x",
-                    isOptional: true,
-                    isReadonly: false,
-                    typeRef: {
-                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                        typeName: "number",
-                    },
-                    initializer: undefined,
-                },
-            ],
-            returnType: {
-                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                typeName: "void",
-            },
-            hasBody: false,
-        },
-    ],
-    referencedFiles: [],
-    referencedLibs: [],
-    referencedTypes: [],
-    referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
-}
-
-export default expectedResult;
+export type IntermediateAmbientFunction =
+    IntermediateItem<IntermediateKind.IntermediateAmbientFunction>
+    & IntermediateCallableDeclaration
+    & IntermediateDocumentedItem
+    & {
+        isDeclared: true;
+    }
+    & IntermediateExportableItem
+    & IntermediateGenericable
+    & {
+        name: Maybe<string>;
+        hasBody: false;
+    }

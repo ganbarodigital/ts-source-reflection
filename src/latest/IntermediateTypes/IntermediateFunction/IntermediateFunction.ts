@@ -34,6 +34,7 @@
 
 import { Maybe } from "@safelytyped/core-types";
 import {
+    IntermediateAmbientFunction,
     IntermediateBlock,
     IntermediateCallableDeclaration,
     IntermediateItem,
@@ -44,20 +45,6 @@ import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateExportableItem } from "../IntermediateExportableItem";
 import { IntermediateGenericable } from "../IntermediateGenericable";
 
-export type IntermediateAmbientFunction =
-    IntermediateItem<IntermediateKind.IntermediateFunction>
-    & IntermediateCallableDeclaration
-    & IntermediateDocumentedItem
-    & {
-        isDeclared: true;
-    }
-    & IntermediateExportableItem
-    & IntermediateGenericable
-    & {
-        name: Maybe<string>;
-        hasBody: false;
-    }
-
 export type IntermediateFunctionImplementation
     = IntermediateItem<IntermediateKind.IntermediateFunction>
     & IntermediateCallableDeclaration
@@ -67,6 +54,7 @@ export type IntermediateFunctionImplementation
     & IntermediateGenericable
     &
 {
+    isDeclared: false;
     name: Maybe<string>;
     hasBody: true;
     body: IntermediateBlock;
@@ -81,6 +69,7 @@ export type IntermediateFunctionOverload
     & IntermediateGenericable
     &
 {
+    isDeclared: false;
     name: Maybe<string>;
     hasBody: false;
 }

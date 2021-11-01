@@ -98,7 +98,7 @@ function processFunctionWithBody(
         return {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: processDocBlock(processCtx, input),
-            isDeclared: AST.hasDeclaredModifier(input.modifiers),
+            isDeclared: false,
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
             typeParameters: processTypeParametersFromNode(processCtx, input),
@@ -116,7 +116,7 @@ function processFunctionWithBody(
         return {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: processDocBlock(processCtx, input),
-            isDeclared: AST.hasDeclaredModifier(input.modifiers),
+            isDeclared: false,
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
             typeParameters: processTypeParametersFromNode(processCtx, input),
@@ -133,7 +133,7 @@ function processFunctionWithBody(
     return {
         kind: IntermediateKind.IntermediateFunction,
         docBlock: processDocBlock(processCtx, input),
-        isDeclared: AST.hasDeclaredModifier(input.modifiers),
+        isDeclared: false,
         isExported: AST.hasExportModifier(input.modifiers),
         isDefaultExport: AST.hasDefaultModifier(input.modifiers),
         typeParameters: processTypeParametersFromNode(processCtx, input),
@@ -159,7 +159,7 @@ function processFunctionOverload(
         return {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: processDocBlock(processCtx, input),
-            isDeclared: AST.hasDeclaredModifier(input.modifiers),
+            isDeclared: false,
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
             typeParameters: processTypeParametersFromNode(processCtx, input),
@@ -176,7 +176,7 @@ function processFunctionOverload(
         return {
             kind: IntermediateKind.IntermediateFunction,
             docBlock: processDocBlock(processCtx, input),
-            isDeclared: AST.hasDeclaredModifier(input.modifiers),
+            isDeclared: false,
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
             typeParameters: processTypeParametersFromNode(processCtx, input),
@@ -192,7 +192,7 @@ function processFunctionOverload(
     return {
         kind: IntermediateKind.IntermediateFunction,
         docBlock: processDocBlock(processCtx, input),
-        isDeclared: AST.hasDeclaredModifier(input.modifiers),
+        isDeclared: false,
         isExported: AST.hasExportModifier(input.modifiers),
         isDefaultExport: AST.hasDefaultModifier(input.modifiers),
         typeParameters: processTypeParametersFromNode(processCtx, input),
@@ -223,7 +223,7 @@ function processAmbientFunction(
         const inferredReturnType = compiler.getInferredReturnType(processCtx, input);
         if (inferredReturnType) {
             return {
-                kind: IntermediateKind.IntermediateFunction,
+                kind: IntermediateKind.IntermediateAmbientFunction,
                 docBlock: processDocBlock(processCtx, input),
                 isDeclared: true,
                 isExported: AST.hasExportModifier(input.modifiers),
@@ -238,7 +238,7 @@ function processAmbientFunction(
         }
 
         return {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateAmbientFunction,
             docBlock: processDocBlock(processCtx, input),
             isDeclared: true,
             isExported: AST.hasExportModifier(input.modifiers),
@@ -252,7 +252,7 @@ function processAmbientFunction(
     }
 
     return {
-        kind: IntermediateKind.IntermediateFunction,
+        kind: IntermediateKind.IntermediateAmbientFunction,
         docBlock: processDocBlock(processCtx, input),
         isDeclared: true,
         isExported: AST.hasExportModifier(input.modifiers),

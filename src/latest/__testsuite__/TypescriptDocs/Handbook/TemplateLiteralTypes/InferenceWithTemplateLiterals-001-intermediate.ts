@@ -148,7 +148,7 @@ const expectedResult: IntermediateSourceFile = {
             },
         },
         {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateAmbientFunction,
             docBlock: undefined,
             isDeclared: true,
             isExported: false,

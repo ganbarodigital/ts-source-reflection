@@ -40,6 +40,7 @@ export * from "./AnyIntermediatePropertyAssignment";
 export * from "./IntermediateAbstractItem";
 export * from "./IntermediateAliasedExportItem";
 export * from "./IntermediateAliasedImportBinding";
+export * from "./IntermediateAmbientFunction";
 export * from "./IntermediateAmbientModuleDefinition";
 export * from "./IntermediateAnonymousCallableParameter";
 export * from "./IntermediateAnonymousClassType";

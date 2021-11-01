@@ -40,7 +40,7 @@ import {
 const expectedResult: IntermediateSourceFile = {
     children: [
         {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateAmbientFunction,
             isDeclared: true,
             isDefaultExport: false,
             isExported: false,

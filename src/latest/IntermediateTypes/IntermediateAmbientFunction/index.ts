@@ -32,47 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateKind,
-    IntermediateSourceFile
-} from "../../../../IntermediateTypes";
-
-const expectedResult: IntermediateSourceFile = {
-    children: [
-        {
-            kind: IntermediateKind.IntermediateAmbientFunction,
-            docBlock: undefined,
-            isDeclared: true,
-            isExported: false,
-            isDefaultExport: false,
-            name: "f",
-            typeParameters: [],
-            parameters: [
-                {
-                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
-                    decorators: [],
-                    name: "x",
-                    isOptional: true,
-                    isReadonly: false,
-                    typeRef: {
-                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                        typeName: "number",
-                    },
-                    initializer: undefined,
-                },
-            ],
-            returnType: {
-                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                typeName: "void",
-            },
-            hasBody: false,
-        },
-    ],
-    referencedFiles: [],
-    referencedLibs: [],
-    referencedTypes: [],
-    referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
-}
-
-export default expectedResult;
+export * from "./IntermediateAmbientFunction";
