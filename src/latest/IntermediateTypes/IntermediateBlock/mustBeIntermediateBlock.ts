@@ -32,5 +32,22 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./IntermediateBlock";
-export * from "./mustBeIntermediateBlock";
+import { DEFAULT_DATA_PATH, Maybe, UnsupportedTypeError } from "@safelytyped/core-types";
+import { IntermediateBlock } from "./IntermediateBlock";
+
+export function mustBeIntermediateBlock(
+    input: Maybe<IntermediateBlock>
+): IntermediateBlock
+{
+    if (input) {
+        return input;
+    }
+
+    throw new UnsupportedTypeError({
+        public: {
+            dataPath: DEFAULT_DATA_PATH,
+            expected: "IntermediateBlock",
+            actual: "undefined",
+        }
+    });
+}
