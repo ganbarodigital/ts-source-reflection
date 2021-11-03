@@ -58,7 +58,7 @@ import {
     isSpreadElement,
     isStringLiteral,
     isTemplateExpression,
-    isTypeAssertionExpression, SyntaxKind
+    isTypeAssertionExpression, isTypeOfExpression, SyntaxKind
 } from "typescript";
 import { AST } from "../AST";
 import {
@@ -89,6 +89,7 @@ import { processSpreadElement } from "./processSpreadElement";
 import { processStringLiteral } from "./processStringLiteral";
 import { processTemplateExpression } from "./processTemplateExpression";
 import { processTypeNode } from "./processTypeNode";
+import { processTypeOfExpression } from "./processTypeOfExpression";
 
 export function processExpression(
     processCtx: ProcessingContext,
@@ -230,6 +231,10 @@ export function processExpression(
 
     if (isClassExpression(input)) {
         return processClassExpression(processCtx, input);
+    }
+
+    if (isTypeOfExpression(input)) {
+        return processTypeOfExpression(processCtx, input);
     }
 
     // if we get here, we do not know how to process this variable
