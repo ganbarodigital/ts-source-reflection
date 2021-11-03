@@ -237,6 +237,13 @@ export function processExpression(
         return processTypeOfExpression(processCtx, input);
     }
 
+    if (AST.isThisExpression(input)) {
+        return {
+            kind: IntermediateKind.IntermediateThisIdentifier,
+            name: "this",
+        }
+    }
+
     // if we get here, we do not know how to process this variable
     // tslint:disable-next-line: no-console
     console.log(getClassNames(input), SyntaxKind[ input.kind ]);
