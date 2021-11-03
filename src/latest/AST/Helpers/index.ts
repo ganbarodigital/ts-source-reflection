@@ -40,6 +40,7 @@ export * from "./getInferredReturnType";
 export * from "./getInferredType";
 export * from "./getRestrictableScope";
 export * from "./getStatementKind";
+export * from "./getTextForNode";
 export * from "./hasAbstractModifier";
 export * from "./hasBody";
 export * from "./hasConstModifier";
