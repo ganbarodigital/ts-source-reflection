@@ -70,6 +70,7 @@ export * from "./IntermediateCallableSignature";
 export * from "./IntermediateCaughtVarDeclaration";
 export * from "./IntermediateClass";
 export * from "./IntermediateClassAccessor";
+export * from "./IntermediateClassExpression";
 export * from "./IntermediateComment";
 export * from "./IntermediateCommentableItem";
 export * from "./IntermediateComputedPropertyName";
