@@ -54,37 +54,6 @@ function unpackValues<T>(input: Value<T>[]): T[] {
 }
 
 /**
- * NodeWithEscapedText is an admittedly nasty hack, to give us access to
- * the type's name while avoiding Typescript runtime exceptions
- */
-type NodeWithEscapedText = {
-    escapedText: string;
-}
-
-function isNodeWithEscapedText(
-    input: unknown
-): input is NodeWithEscapedText
-{
-    if ((input as NodeWithEscapedText).escapedText) {
-        return true;
-    }
-
-    return false;
-}
-
-type NodeWithText = {
-    text: string;
-}
-
-function isNodeWithText(input: object): input is NodeWithText {
-    if ((input as NodeWithText).text) {
-        return true;
-    }
-
-    return false;
-}
-
-/**
  * Compiler is how we access the Typescript compiler itself.
  */
 export class PureCompiler implements Compiler
@@ -185,31 +154,14 @@ export class PureCompiler implements Compiler
      *
      * @param input the node that you want the text from
      * @returns the escaped text from that node
+     *
+     * @deprecated use {@link AST.getTextForNode} instead
      */
     public getTextForNode(
         input: ts.Node
     ): Maybe<string>
     {
-        try {
-            // this fails for nodes that have been built by the type checker,
-            // and for any nodes that do not have a parent node
-            return input.getText();
-        }
-        catch (e) {
-            // our first fallback - is there a text property that we can
-            // grab the contents of?
-            if (isNodeWithText(input)) {
-                return input.text;
-            }
-
-            // our final fallback - is there
-            if (isNodeWithEscapedText(input)) {
-                return input.escapedText;
-            }
-
-            // if we get here, we have run out of ideas
-            return undefined;
-        }
+        return AST.getTextForNode(input);
     }
 
     public getInferredCallSignatureReturnType(

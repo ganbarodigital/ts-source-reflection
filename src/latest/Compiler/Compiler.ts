@@ -77,6 +77,8 @@ export interface Compiler
      *
      * @param input the node that you want the text from
      * @returns the escaped text from that node
+     *
+     * @deprecated use {@link AST.getTextForNode} instead
      */
     getTextForNode(
         input: ts.Node
