@@ -32,10 +32,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem, IntermediateKind } from "..";
+import { IntermediateExpression, IntermediateItem, IntermediateKind } from "..";
 
 export interface IntermediateNonNullExpression
     extends IntermediateItem<IntermediateKind.IntermediateNonNullExpression>
 {
-    // TBD
+    expression: IntermediateExpression;
 }

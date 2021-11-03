@@ -35,15 +35,15 @@ import { FunctionDeclaration, Statement } from "typescript";
 import { AST } from "../AST";
 import {
     IntermediateAmbientFunction,
-    IntermediateBlock,
+    // IntermediateBlock,
     IntermediateFunction,
     IntermediateFunctionOverload,
     IntermediateFunctionImplementation,
     IntermediateKind,
-    // mustBeIntermediateBlock
+    mustBeIntermediateBlock
 } from "../IntermediateTypes";
 import { ParentContext } from "./ParentContext";
-// import { processBlock } from "./processBlock";
+import { processBlock } from "./processBlock";
 import { processDocBlock } from "./processDocBlock";
 import { processFunctionParameters } from "./processFunctionParameters";
 import { ProcessingContext } from "./ProcessingContext";
@@ -84,16 +84,16 @@ function processFunctionImplementation(
     input: FunctionDeclaration
 ): IntermediateFunctionImplementation
 {
-    // // make sure we have a body!
-    // const body = mustBeIntermediateBlock(
-    //     input.body ? processBlock(processCtx, input.body) : undefined
-    // );
+    // make sure we have a body!
+    const body = mustBeIntermediateBlock(
+        input.body ? processBlock(processCtx, ParentContext.FUNCTION, input.body) : undefined
+    );
 
-    // temporary, while we do the refactoring
-    const body: IntermediateBlock = {
-        kind: IntermediateKind.IntermediateBlock,
-        children: [],
-    };
+    // // temporary, while we do the refactoring
+    // const body: IntermediateBlock = {
+    //     kind: IntermediateKind.IntermediateBlock,
+    //     children: [],
+    // };
 
     const returnType = processReturnTypeFromNode(
         processCtx,

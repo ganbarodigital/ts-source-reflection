@@ -32,19 +32,18 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export enum ParentContext {
-    MODULE_DECLARATION = 1,
-    SOURCEFILE,
-    FOR_IN,
-    FOR_OF,
-    FOR,
-    IF_THEN,
-    IF_ELSE,
-    MODULE,
-    NAMESPACE,
-    GLOBAL_AUGMENTATION,
-    TRY,
-    CATCH,
-    FINALLY,
-    FUNCTION,
+import { NonNullExpression } from "typescript";
+import { IntermediateKind, IntermediateNonNullExpression } from "../IntermediateTypes";
+import { processExpression } from "./processExpression";
+import { ProcessingContext } from "./ProcessingContext";
+
+export function processNonNullExpression(
+    processCtx: ProcessingContext,
+    input: NonNullExpression
+): IntermediateNonNullExpression
+{
+    return {
+        kind: IntermediateKind.IntermediateNonNullExpression,
+        expression: processExpression(processCtx, input.expression),
+    }
 }

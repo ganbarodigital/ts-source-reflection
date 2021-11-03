@@ -46,6 +46,7 @@ import {
     isFunctionExpression,
     isIdentifier,
     isNewExpression,
+    isNonNullExpression,
     isNumericLiteral,
     isObjectLiteralExpression,
     isParenthesizedExpression,
@@ -75,6 +76,7 @@ import { processIdentifier } from "./processIdentifier";
 import { ProcessingContext } from "./ProcessingContext";
 import { processIntermediateBinaryExpression } from "./processIntermediateBinaryExpression";
 import { processNewExpression } from "./processNewExpression";
+import { processNonNullExpression } from "./processNonNullExpression";
 import { processNumericLiteral } from "./processNumericLiteral";
 import { processObjectLiteralExpression } from "./processObjectLiteralExpression";
 import { processParenthesizedExpression } from "./processParenthesizedExpression";
@@ -218,6 +220,10 @@ export function processExpression(
 
     if (isPrefixUnaryExpression(input)) {
         return processPrefixUnaryExpression(processCtx, input);
+    }
+
+    if (isNonNullExpression(input)) {
+        return processNonNullExpression(processCtx, input);
     }
 
     // if we get here, we do not know how to process this variable
