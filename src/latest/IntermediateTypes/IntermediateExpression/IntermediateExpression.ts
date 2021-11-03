@@ -56,6 +56,7 @@ import { IntermediateSpreadElement } from "../IntermediateSpreadElement";
 import { IntermediateSpreadIdentifierReference } from "../IntermediateSpreadIdentifierReference";
 import { IntermediateStringLiteral } from "../IntermediateStringLiteral";
 import { IntermediateTemplateExpression } from "../IntermediateTemplateExpression";
+import { IntermediateTypeOfExpression } from "../IntermediateTypeOfExpression";
 import { IntermediateVariableAssignment } from "../IntermediateVariableAssignment";
 
 export type IntermediateExpression
@@ -84,5 +85,6 @@ export type IntermediateExpression
       | IntermediateSpreadIdentifierReference
       | IntermediateStringLiteral
       | IntermediateTemplateExpression
+      | IntermediateTypeOfExpression
       | IntermediateVariableAssignment
       ;
