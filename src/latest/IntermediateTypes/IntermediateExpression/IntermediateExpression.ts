@@ -42,6 +42,7 @@ import { IntermediateElementAccessExpression } from "../IntermediateElementAcces
 import { IntermediateFunctionExpression } from "../IntermediateFunctionExpression";
 import { IntermediateIdentifierReference } from "../IntermediateIdentifierReference";
 import { IntermediateNewExpression } from "../IntermediateNewExpression";
+import { IntermediateNonNullExpression } from "../IntermediateNonNullExpression";
 import { IntermediateNullLiteral } from "../IntermediateNullLiteral";
 import { IntermediateNumericLiteral } from "../IntermediateNumericLiteral";
 import { IntermediateObjectLiteral } from "../IntermediateObjectLiteral";
@@ -68,6 +69,7 @@ export type IntermediateExpression
       | IntermediateFunctionExpression
       | IntermediateIdentifierReference
       | IntermediateNewExpression
+      | IntermediateNonNullExpression
       | IntermediateNullLiteral
       | IntermediateNumericLiteral
       | IntermediateObjectLiteral
