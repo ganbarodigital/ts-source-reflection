@@ -223,6 +223,7 @@ export * from "./IntermediateTupleTypeElement";
 export * from "./IntermediateTypeAliasDeclaration";
 export * from "./IntermediateTypeArgument";
 export * from "./IntermediateTypeAssertable";
+export * from "./IntermediateTypeOfExpression";
 export * from "./IntermediateTypePredicate";
 export * from "./IntermediateTypeReference";
 export * from "./IntermediateTypeReferenceForTuples";

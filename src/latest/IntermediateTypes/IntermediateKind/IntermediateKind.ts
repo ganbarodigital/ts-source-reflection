@@ -178,6 +178,7 @@ export enum IntermediateKind {
     IntermediateTypeAliasDeclaration,
     IntermediateTypeArgument,
     IntermediateTypeDeclaration,
+    IntermediateTypeOfExpression,
     IntermediateTypePredicate,
     IntermediateTypedCallableParameterDeclaration,
     IntermediateTypedCallableParameterSignature,
