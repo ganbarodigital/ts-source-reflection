@@ -32,39 +32,29 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { Maybe } from "@safelytyped/core-types";
 import {
-    IntermediateKind,
-    IntermediateSourceFile
-} from "../../../../IntermediateTypes";
+    IntermediateBlock,
+    IntermediateCallableDeclaration,
+    IntermediateItem,
+    IntermediateKind
+} from "..";
+import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
+import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
+import { IntermediateExportableItem } from "../IntermediateExportableItem";
+import { IntermediateGenericable } from "../IntermediateGenericable";
 
-const expectedResult: IntermediateSourceFile = {
-    children: [
-        {
-            kind: IntermediateKind.IntermediateFunctionImplementation,
-            docBlock: undefined,
-            isExported: true,
-            isDeclared: false,
-            isDefaultExport: true,
-            name: "helloWorld",
-            typeParameters: [],
-            parameters: [],
-            returnType: undefined,
-            inferredReturnType: {
-                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                typeName: "void",
-            },
-            hasBody: true,
-            body: {
-                kind: IntermediateKind.IntermediateBlock,
-                children: [],
-            },
-        },
-    ],
-    referencedFiles: [],
-    referencedLibs: [],
-    referencedTypes: [],
-    referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
+export type IntermediateFunctionImplementation
+    = IntermediateItem<IntermediateKind.IntermediateFunctionImplementation>
+    & IntermediateCallableDeclaration
+    & IntermediateDocumentedItem
+    & IntermediateDeclarableItem
+    & IntermediateExportableItem
+    & IntermediateGenericable
+    &
+{
+    isDeclared: false;
+    name: Maybe<string>;
+    hasBody: true;
+    body: IntermediateBlock;
 }
-
-export default expectedResult;

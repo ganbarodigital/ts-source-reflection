@@ -132,7 +132,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [],
         },
         {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isExported: true,
             isDeclared: false,

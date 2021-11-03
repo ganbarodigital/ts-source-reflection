@@ -97,7 +97,7 @@ export enum IntermediateKind {
     IntermediateForInLoop,
     IntermediateForLoop,
     IntermediateForOfLoop,
-    IntermediateFunction,
+    IntermediateFunctionImplementation,
     IntermediateFunctionOverload,
     IntermediateFunctionExpression,
     IntermediateFunctionTypeSignature,

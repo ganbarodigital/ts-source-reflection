@@ -54,7 +54,7 @@ const expectedResult: IntermediateSourceFile = {
             members: [],
         },
         {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
             isExported: false,

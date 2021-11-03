@@ -276,7 +276,7 @@ const expectedResult: IntermediateSourceFile = {
             typeAssertion: undefined,
         },
         {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
             isDefaultExport: false,

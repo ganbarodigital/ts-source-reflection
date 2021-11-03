@@ -79,7 +79,7 @@ const expectedResult: IntermediateSourceFile = {
             ]
         },
         {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateFunctionImplementation,
             isDeclared: false,
             isExported: false,
             isDefaultExport: false,

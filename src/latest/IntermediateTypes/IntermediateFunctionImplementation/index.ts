@@ -32,39 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateKind,
-    IntermediateSourceFile
-} from "../../../../IntermediateTypes";
-
-const expectedResult: IntermediateSourceFile = {
-    children: [
-        {
-            kind: IntermediateKind.IntermediateFunctionImplementation,
-            docBlock: undefined,
-            isExported: true,
-            isDeclared: false,
-            isDefaultExport: true,
-            name: "helloWorld",
-            typeParameters: [],
-            parameters: [],
-            returnType: undefined,
-            inferredReturnType: {
-                kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                typeName: "void",
-            },
-            hasBody: true,
-            body: {
-                kind: IntermediateKind.IntermediateBlock,
-                children: [],
-            },
-        },
-    ],
-    referencedFiles: [],
-    referencedLibs: [],
-    referencedTypes: [],
-    referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
-}
-
-export default expectedResult;
+export * from "./IntermediateFunctionImplementation";

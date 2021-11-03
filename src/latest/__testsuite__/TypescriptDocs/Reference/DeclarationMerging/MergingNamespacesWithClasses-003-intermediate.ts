@@ -88,7 +88,7 @@ const expectedResult: IntermediateSourceFile = {
             name: "Color",
             children: [
                 {
-                    kind: IntermediateKind.IntermediateFunction,
+                    kind: IntermediateKind.IntermediateFunctionImplementation,
                     docBlock: undefined,
                     isDeclared: false,
                     isDefaultExport: false,

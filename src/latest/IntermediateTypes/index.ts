@@ -121,6 +121,7 @@ export * from "./IntermediateForLoop";
 export * from "./IntermediateForOfLoop";
 export * from "./IntermediateFunction";
 export * from "./IntermediateFunctionExpression";
+export * from "./IntermediateFunctionImplementation";
 export * from "./IntermediateFunctionOverload";
 export * from "./IntermediateFunctionTypeSignature";
 export * from "./IntermediateGenericType";

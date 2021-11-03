@@ -102,7 +102,7 @@ function processFunctionImplementation(
 
     if (returnType) {
         return {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: processDocBlock(processCtx, input),
             isDeclared: false,
             isExported: AST.hasExportModifier(input.modifiers),
@@ -120,7 +120,7 @@ function processFunctionImplementation(
     const inferredReturnType = AST.getInferredReturnType(processCtx, input);
     if (inferredReturnType) {
         return {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: processDocBlock(processCtx, input),
             isDeclared: false,
             isExported: AST.hasExportModifier(input.modifiers),
@@ -137,7 +137,7 @@ function processFunctionImplementation(
 
     // if we get here, we have no inferred type information
     return {
-        kind: IntermediateKind.IntermediateFunction,
+        kind: IntermediateKind.IntermediateFunctionImplementation,
         docBlock: processDocBlock(processCtx, input),
         isDeclared: false,
         isExported: AST.hasExportModifier(input.modifiers),

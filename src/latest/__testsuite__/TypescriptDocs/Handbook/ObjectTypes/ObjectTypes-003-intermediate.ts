@@ -75,7 +75,7 @@ const expectedResult: IntermediateSourceFile = {
             },
         },
         {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateFunctionImplementation,
             isDeclared: false,
             docBlock: undefined,
             isExported: false,

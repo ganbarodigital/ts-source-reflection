@@ -40,7 +40,7 @@ import {
 const expectedResult: IntermediateSourceFile =  {
     children: [
         {
-            kind: IntermediateKind.IntermediateFunction,
+            kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
             isExported: false,
