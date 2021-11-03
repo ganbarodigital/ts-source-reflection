@@ -31,13 +31,13 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { IntermediateClassExpression } from "../IntermediateClassExpression";
 import { IntermediateArrayLiteral } from "../IntermediateArrayLiteral";
 import { IntermediateArrowFunction } from "../IntermediateArrowFunction";
 import { IntermediateBigintLiteral } from "../IntermediateBigintLiteral";
 import { IntermediateBinaryExpression } from "../IntermediateBinaryExpression";
 import { IntermediateBooleanLiteral } from "../IntermediateBooleanLiteral";
 import { IntermediateCallExpression } from "../IntermediateCallExpression";
+import { IntermediateClassExpression } from "../IntermediateClassExpression";
 import { IntermediateConditionalExpression } from "../IntermediateConditionalExpression";
 import { IntermediateElementAccessExpression } from "../IntermediateElementAccessExpression";
 import { IntermediateFunctionExpression } from "../IntermediateFunctionExpression";
