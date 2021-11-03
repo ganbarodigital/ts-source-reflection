@@ -144,7 +144,30 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateObjectLiteral,
+                            properties: [
+                                {
+                                    kind: IntermediateKind.IntermediateSpreadPropertyAssignment,
+                                    name: "todo",
+                                    asType: undefined,
+                                    typeAssertion: undefined,
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediateSpreadPropertyAssignment,
+                                    name: "fieldsToUpdate",
+                                    asType: undefined,
+                                    typeAssertion: undefined,
+                                },
+                            ],
+                            typeAssertion: undefined,
+                            asType: undefined,
+                        },
+                    },
+                ],
             },
         },
         {
