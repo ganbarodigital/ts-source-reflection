@@ -31,6 +31,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { IntermediateClassExpression } from "../IntermediateClassExpression";
 import { IntermediateArrayLiteral } from "../IntermediateArrayLiteral";
 import { IntermediateArrowFunction } from "../IntermediateArrowFunction";
 import { IntermediateBigintLiteral } from "../IntermediateBigintLiteral";
@@ -64,6 +65,7 @@ export type IntermediateExpression
       | IntermediateBinaryExpression
       | IntermediateBooleanLiteral
       | IntermediateCallExpression
+      | IntermediateClassExpression
       | IntermediateConditionalExpression
       | IntermediateElementAccessExpression
       | IntermediateFunctionExpression
