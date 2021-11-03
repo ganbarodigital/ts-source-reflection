@@ -121,9 +121,19 @@ const expectedResult: IntermediateSourceFile = {
             operator: IntermediateExpressionOperator.EQUALS,
             right: {
                 kind: IntermediateKind.IntermediateFunctionExpression,
+                name: undefined,
                 typeParameters: [],
                 parameters: [],
                 returnType: undefined,
+                inferredReturnType: {
+                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                    typeName: "void",
+                },
+                hasBody: true,
+                body: {
+                    kind: IntermediateKind.IntermediateBlock,
+                    children: [],
+                },
             },
         },
     ],

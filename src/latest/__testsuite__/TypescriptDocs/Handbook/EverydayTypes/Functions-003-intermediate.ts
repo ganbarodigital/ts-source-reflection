@@ -103,6 +103,7 @@ const expectedResult: IntermediateSourceFile = {
             arguments: [
                 {
                     kind: IntermediateKind.IntermediateFunctionExpression,
+                    name: undefined,
                     typeParameters: [],
                     parameters: [
                         {
@@ -118,6 +119,17 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     ],
                     returnType: undefined,
+                    inferredReturnType: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "string",
+                    },
+                    hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [
+
+                        ],
+                    },
                 },
             ],
             inferredReturnType: {

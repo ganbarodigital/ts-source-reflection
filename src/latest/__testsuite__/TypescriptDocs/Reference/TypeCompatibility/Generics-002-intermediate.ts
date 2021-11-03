@@ -54,6 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateFunctionExpression,
+                        name: undefined,
                         typeParameters: [
                             {
                                 kind: IntermediateKind.IntermediateGenericType,
@@ -79,6 +80,11 @@ const expectedResult: IntermediateSourceFile = {
                         returnType: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             typeName: "T",
+                        },
+                        hasBody: true,
+                        body: {
+                            kind: IntermediateKind.IntermediateBlock,
+                            children: [],
                         },
                     },
                     inferredType: {
@@ -126,6 +132,7 @@ const expectedResult: IntermediateSourceFile = {
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateFunctionExpression,
+                        name: undefined,
                         typeParameters: [
                             {
                                 kind: IntermediateKind.IntermediateGenericType,
@@ -151,6 +158,11 @@ const expectedResult: IntermediateSourceFile = {
                         returnType: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             typeName: "U",
+                        },
+                        hasBody: true,
+                        body: {
+                            kind: IntermediateKind.IntermediateBlock,
+                            children: [],
                         },
                     },
                     inferredType: {

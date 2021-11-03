@@ -32,17 +32,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { Maybe } from "@safelytyped/core-types";
-import { IntermediateCallableParameterDeclaration } from "../IntermediateCallableParameterDeclaration";
-import { IntermediateGenericType } from "../IntermediateGenericType";
-import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateFunctionImplementation } from "../IntermediateFunctionImplementation";
 import { IntermediateKind } from "../IntermediateKind";
-import { IntermediateTypeReference } from "../IntermediateTypeReference";
+import { IntermediateReturnsType } from "../IntermediateReturnsType";
 
-export interface IntermediateFunctionExpression
-    extends IntermediateItem<IntermediateKind.IntermediateFunctionExpression>
+export type IntermediateFunctionExpression
+    = Omit<IntermediateFunctionImplementation, "kind" | "docBlock" | "isDeclared" | "isExported" | "isDefaultExport">
+    // Omit<> is not picking this up for us
+    & IntermediateReturnsType
+    &
 {
-    typeParameters: IntermediateGenericType[];
-    parameters: IntermediateCallableParameterDeclaration[];
-    returnType: Maybe<IntermediateTypeReference>;
+    kind: IntermediateKind.IntermediateFunctionExpression;
 }

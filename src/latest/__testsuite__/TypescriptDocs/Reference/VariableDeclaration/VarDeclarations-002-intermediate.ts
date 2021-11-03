@@ -61,7 +61,55 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateVariableDeclarations,
+                        docBlock: undefined,
+                        isDeclared: false,
+                        isDefaultExport: false,
+                        isExported: false,
+                        variables: [
+                            {
+                                kind: IntermediateKind.IntermediateVarDeclaration,
+                                isConstant: false,
+                                isReadonly: false,
+                                name: "a",
+                                typeRef: undefined,
+                                inferredType: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                },
+                                initializer: {
+                                    kind: IntermediateKind.IntermediateNumericLiteral,
+                                    value: "10",
+                                    asType: undefined,
+                                    typeAssertion: undefined,
+                                },
+                            },
+                        ],
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateFunctionExpression,
+                            name: "g",
+                            typeParameters: [],
+                            parameters: [],
+                            returnType: undefined,
+                            inferredReturnType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "number",
+                            },
+                            hasBody: true,
+                            body: {
+                                kind: IntermediateKind.IntermediateBlock,
+                                children: [
+
+                                ]
+                            }
+                        }
+                    }
+                ],
             },
         },
         {

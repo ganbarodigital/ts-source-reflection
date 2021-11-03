@@ -159,6 +159,7 @@ const expectedResult: IntermediateSourceFile = {
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateFunctionExpression,
+                                name: undefined,
                                 typeParameters: [],
                                 parameters: [
                                     {
@@ -175,6 +176,29 @@ const expectedResult: IntermediateSourceFile = {
                                     },
                                 ],
                                 returnType: undefined,
+                                inferredReturnType: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "any",
+                                },
+                                hasBody: true,
+                                body: {
+                                    kind: IntermediateKind.IntermediateBlock,
+                                    children: [
+                                        {
+                                            kind: IntermediateKind.IntermediateReturnStatement,
+                                            expression: {
+                                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                target: {
+                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                    name: "this",
+                                                    asType: undefined,
+                                                    typeAssertion: undefined,
+                                                },
+                                                propName: "admin",
+                                            },
+                                        },
+                                    ],
+                                },
                             },
                         ],
                         inferredReturnType: {

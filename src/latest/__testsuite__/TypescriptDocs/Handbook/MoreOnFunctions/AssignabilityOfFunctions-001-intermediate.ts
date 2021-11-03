@@ -134,9 +134,29 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: {
                         kind: IntermediateKind.IntermediateFunctionExpression,
+                        name: undefined,
                         typeParameters: [],
                         parameters: [],
                         returnType: undefined,
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "boolean",
+                        },
+                        hasBody: true,
+                        body: {
+                            kind: IntermediateKind.IntermediateBlock,
+                            children: [
+                                {
+                                    kind: IntermediateKind.IntermediateReturnStatement,
+                                    expression: {
+                                        kind: IntermediateKind.IntermediateBooleanLiteral,
+                                        value: "true",
+                                        asType: undefined,
+                                        typeAssertion: undefined,
+                                    },
+                                },
+                            ],
+                        },
                     },
                 },
             ],
