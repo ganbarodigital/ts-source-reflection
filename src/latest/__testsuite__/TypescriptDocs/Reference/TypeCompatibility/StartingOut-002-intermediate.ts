@@ -33,6 +33,7 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile
 } from "../../../../IntermediateTypes";
@@ -162,7 +163,50 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateCallExpression,
+                        expression: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "console",
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            },
+                            propName: "log",
+                        },
+                        typeArguments: [],
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                left: {
+                                    kind: IntermediateKind.IntermediateStringLiteral,
+                                    value: "Hello, ",
+                                    asType: undefined,
+                                    typeAssertion: undefined,
+                                },
+                                operator: IntermediateExpressionOperator.PLUS,
+                                right: {
+                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                    target: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "pet",
+                                        asType: undefined,
+                                        typeAssertion: undefined,
+                                    },
+                                    propName: "name",
+                                },
+                            },
+                        ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "void",
+                        },
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                ],
             },
         },
         {
