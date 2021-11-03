@@ -68,6 +68,7 @@ export * from "./isProtectedKeyword";
 export * from "./isPublicKeyword";
 export * from "./isReadonlyKeyword";
 export * from "./isStaticKeyword";
+export * from "./isThisExpression";
 export * from "./isTrueKeyword";
 export * from "./translateInferredType";
 export * from "./mustBeBlock";
