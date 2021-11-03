@@ -33,6 +33,7 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile
 } from "../../../../IntermediateTypes";
@@ -75,7 +76,234 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateVariableDeclarations,
+                        docBlock: undefined,
+                        isDeclared: false,
+                        isDefaultExport: false,
+                        isExported: false,
+                        variables: [
+                            {
+                                kind: IntermediateKind.IntermediateVarDeclaration,
+                                isConstant: false,
+                                isReadonly: false,
+                                name: "sum",
+                                typeRef: undefined,
+                                inferredType: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                },
+                                initializer: {
+                                    kind: IntermediateKind.IntermediateNumericLiteral,
+                                    value: "0",
+                                    asType: undefined,
+                                    typeAssertion: undefined,
+                                },
+                            },
+                        ],
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateForLoop,
+                        initializer: {
+                            kind: IntermediateKind.IntermediateVariableDeclarations,
+                            docBlock: undefined,
+                            isDeclared: false,
+                            isDefaultExport: false,
+                            isExported: false,
+                            variables: [
+                                {
+                                    kind: IntermediateKind.IntermediateVarDeclaration,
+                                    isConstant: false,
+                                    isReadonly: false,
+                                    name: "i",
+                                    typeRef: undefined,
+                                    inferredType: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "number",
+                                    },
+                                    initializer: {
+                                        kind: IntermediateKind.IntermediateNumericLiteral,
+                                        value: "0",
+                                        asType: undefined,
+                                        typeAssertion: undefined,
+                                    },
+                                },
+                            ],
+                        },
+                        condition: {
+                            kind: IntermediateKind.IntermediateBinaryExpression,
+                            left: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "i",
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            },
+                            operator: IntermediateExpressionOperator.LESS_THAN,
+                            right: {
+                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                target: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "matrix",
+                                    asType: undefined,
+                                    typeAssertion: undefined,
+                                },
+                                propName: "length",
+                            },
+                        },
+                        incrementor: {
+                            kind: IntermediateKind.IntermediatePostfixUnaryExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "i",
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            },
+                            operator: IntermediateExpressionOperator.PLUS_PLUS,
+                        },
+                        contents: {
+                            kind: IntermediateKind.IntermediateBlock,
+                            children: [
+                                {
+                                    kind: IntermediateKind.IntermediateVariableDeclarations,
+                                    docBlock: undefined,
+                                    isDeclared: false,
+                                    isDefaultExport: false,
+                                    isExported: false,
+                                    variables: [
+                                        {
+                                            kind: IntermediateKind.IntermediateVarDeclaration,
+                                            isConstant: false,
+                                            isReadonly: false,
+                                            name: "currentRow",
+                                            typeRef: undefined,
+                                            inferredType: {
+                                                kind: IntermediateKind.IntermediateArrayTypeReference,
+                                                typeRef: {
+                                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                    typeName: "number",
+                                                },
+                                            },
+                                            initializer: {
+                                                kind: IntermediateKind.IntermediateElementAccessExpression,
+                                                element: {
+                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                    name: "matrix",
+                                                    asType: undefined,
+                                                    typeAssertion: undefined,
+                                                },
+                                                accessKey: {
+                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                    name: "i",
+                                                    asType: undefined,
+                                                    typeAssertion: undefined,
+                                                },
+                                            },
+                                        },
+                                    ]
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediateForLoop,
+                                    initializer: {
+                                        kind: IntermediateKind.IntermediateVariableDeclarations,
+                                        docBlock: undefined,
+                                        isDeclared: false,
+                                        isDefaultExport: false,
+                                        isExported: false,
+                                        variables: [
+                                            {
+                                                kind: IntermediateKind.IntermediateVarDeclaration,
+                                                isConstant: false,
+                                                isReadonly: false,
+                                                name: "i",
+                                                typeRef: undefined,
+                                                inferredType: {
+                                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                    typeName: "number",
+                                                },
+                                                initializer: {
+                                                    kind: IntermediateKind.IntermediateNumericLiteral,
+                                                    value: "0",
+                                                    asType: undefined,
+                                                    typeAssertion: undefined,
+                                                },
+                                            },
+                                        ],
+                                    },
+                                    condition: {
+                                        kind: IntermediateKind.IntermediateBinaryExpression,
+                                        left: {
+                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                            name: "i",
+                                            asType: undefined,
+                                            typeAssertion: undefined,
+                                        },
+                                        operator: IntermediateExpressionOperator.LESS_THAN,
+                                        right: {
+                                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                            target: {
+                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                name: "currentRow",
+                                                asType: undefined,
+                                                typeAssertion: undefined,
+                                            },
+                                            propName: "length",
+                                        },
+                                    },
+                                    incrementor: {
+                                        kind: IntermediateKind.IntermediatePostfixUnaryExpression,
+                                        target: {
+                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                            name: "i",
+                                            asType: undefined,
+                                            typeAssertion: undefined,
+                                        },
+                                        operator: IntermediateExpressionOperator.PLUS_PLUS,
+                                    },
+                                    contents: {
+                                        kind: IntermediateKind.IntermediateBlock,
+                                        children: [
+                                            {
+                                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                                left: {
+                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                    name: "sum",
+                                                    asType: undefined,
+                                                    typeAssertion: undefined,
+                                                },
+                                                operator: IntermediateExpressionOperator.PLUS_EQUALS,
+                                                right: {
+                                                    kind: IntermediateKind.IntermediateElementAccessExpression,
+                                                    element: {
+                                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                                        name: "currentRow",
+                                                        asType: undefined,
+                                                        typeAssertion: undefined,
+                                                    },
+                                                    accessKey: {
+                                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                                        name: "i",
+                                                        asType: undefined,
+                                                        typeAssertion: undefined,
+                                                    },
+                                                },
+                                            },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "sum",
+                            asType: undefined,
+                            typeAssertion: undefined,
+                        },
+                    },
+                ],
             },
         },
     ],

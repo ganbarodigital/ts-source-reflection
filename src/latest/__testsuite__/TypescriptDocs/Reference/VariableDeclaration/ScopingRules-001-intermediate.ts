@@ -69,7 +69,58 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateIfStatement,
+                        condition: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "shouldInitialize",
+                            asType: undefined,
+                            typeAssertion: undefined,
+                        },
+                        thenBlock: {
+                            kind: IntermediateKind.IntermediateBlock,
+                            children: [
+                                {
+                                    kind: IntermediateKind.IntermediateVariableDeclarations,
+                                    docBlock: undefined,
+                                    isDeclared: false,
+                                    isDefaultExport: false,
+                                    isExported: false,
+                                    variables: [
+                                        {
+                                            kind: IntermediateKind.IntermediateVarDeclaration,
+                                            isConstant: false,
+                                            isReadonly: false,
+                                            name: "x",
+                                            typeRef: undefined,
+                                            inferredType: {
+                                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                typeName: "number",
+                                            },
+                                            initializer: {
+                                                kind: IntermediateKind.IntermediateNumericLiteral,
+                                                value: "10",
+                                                asType: undefined,
+                                                typeAssertion: undefined,
+                                            },
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                        elseBlock: undefined,
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "x",
+                            asType: undefined,
+                            typeAssertion: undefined,
+                        },
+                    },
+                ],
             },
         },
         {

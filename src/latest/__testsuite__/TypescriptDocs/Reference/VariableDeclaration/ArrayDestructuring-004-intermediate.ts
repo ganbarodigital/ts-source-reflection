@@ -93,7 +93,64 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateCallExpression,
+                        expression: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "console",
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            },
+                            propName: "log",
+                        },
+                        typeArguments: [],
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "first",
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            },
+                        ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "void",
+                        },
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateCallExpression,
+                        expression: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "console",
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            },
+                            propName: "log",
+                        },
+                        typeArguments: [],
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "second",
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            },
+                        ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "void",
+                        },
+                        asType: undefined,
+                        typeAssertion: undefined,
+                    },
+                ],
             },
         },
         {

@@ -33,6 +33,7 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile
 } from "../../../../IntermediateTypes";
@@ -104,11 +105,55 @@ const expectedResult: IntermediateSourceFile = {
                             body: {
                                 kind: IntermediateKind.IntermediateBlock,
                                 children: [
-
-                                ]
-                            }
-                        }
-                    }
+                                    {
+                                        kind: IntermediateKind.IntermediateVariableDeclarations,
+                                        docBlock: undefined,
+                                        isDeclared: false,
+                                        isDefaultExport: false,
+                                        isExported: false,
+                                        variables: [
+                                            {
+                                                kind: IntermediateKind.IntermediateVarDeclaration,
+                                                isConstant: false,
+                                                isReadonly: false,
+                                                name: "b",
+                                                typeRef: undefined,
+                                                inferredType: {
+                                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                    typeName: "number",
+                                                },
+                                                initializer: {
+                                                    kind: IntermediateKind.IntermediateBinaryExpression,
+                                                    left: {
+                                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                                        name: "a",
+                                                        asType: undefined,
+                                                        typeAssertion: undefined,
+                                                    },
+                                                    operator: IntermediateExpressionOperator.PLUS,
+                                                    right: {
+                                                        kind: IntermediateKind.IntermediateNumericLiteral,
+                                                        value: "1",
+                                                        asType: undefined,
+                                                        typeAssertion: undefined,
+                                                    },
+                                                },
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        kind: IntermediateKind.IntermediateReturnStatement,
+                                        expression: {
+                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                            name: "b",
+                                            asType: undefined,
+                                            typeAssertion: undefined,
+                                        },
+                                    },
+                                ],
+                            },
+                        },
+                    },
                 ],
             },
         },
