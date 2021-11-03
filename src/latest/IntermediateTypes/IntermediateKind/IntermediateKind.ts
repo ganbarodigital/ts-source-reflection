@@ -170,6 +170,7 @@ export enum IntermediateKind {
     IntermediateTemplateExpressionSpan,
     IntermediateTemplateLiteralSpan,
     IntermediateTemplateLiteralType,
+    IntermediateThisIdentifier,
     IntermediateThisType,
     IntermediateThrow,
     IntermediateTryCatch,

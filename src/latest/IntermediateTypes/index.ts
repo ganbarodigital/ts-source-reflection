@@ -215,6 +215,7 @@ export * from "./IntermediateTemplateExpression";
 export * from "./IntermediateTemplateExpressionSpan";
 export * from "./IntermediateTemplateLiteralType";
 export * from "./IntermediateTemplateLiteralSpan";
+export * from "./IntermediateThisIdentifier";
 export * from "./IntermediateThisType";
 export * from "./IntermediateThrow";
 export * from "./IntermediateTryCatch";
