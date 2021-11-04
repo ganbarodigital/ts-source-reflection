@@ -35,12 +35,12 @@ import {
     IntermediateDecoratableItem,
     IntermediateDocumentedItem,
     IntermediateExportableItem,
+    IntermediateGenericable,
     IntermediateItem,
     IntermediateTypeArgument
 } from "..";
 import { IntermediateAbstractItem } from "../IntermediateAbstractItem";
 import { IntermediateDeclarableItem } from "../IntermediateDeclarableItem";
-import { IntermediateGenericType } from "../IntermediateGenericType";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
 import { IntermediateKind } from "../IntermediateKind";
 import { IntermediateMemberDeclaration } from "../IntermediateMemberDeclaration";
@@ -53,9 +53,9 @@ export interface IntermediateClass
         IntermediateDecoratableItem,
         IntermediateDocumentedItem,
         IntermediateExportableItem,
+        IntermediateGenericable,
         IntermediateIdentifiedItem
 {
-    typeParameters: IntermediateGenericType[];
     extends: IntermediateTypeArgument[];
     implements: IntermediateTypeArgument[];
     members: IntermediateMemberDeclaration[];

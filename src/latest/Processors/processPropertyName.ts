@@ -32,7 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { isComputedPropertyName, isIdentifier, isNumericLiteral, isStringLiteral, PropertyName } from "typescript";
+import { isComputedPropertyName, isNumericLiteral, isPrivateIdentifier, isStringLiteral, PropertyName } from "typescript";
 import { IntermediateIdentifierName } from "../IntermediateTypes";
 import { processComputedPropertyName } from "./processComputedPropertyName";
 import { ProcessingContext } from "./ProcessingContext";
@@ -45,13 +45,8 @@ export function processPropertyName(
     input: PropertyName
 ): IntermediateIdentifierName
 {
-    // special case - an identifier
-    //
-    // for now, we've decided to represent these as simple strings
-    // we may reverse this decision when we write the code for the
-    // other layers
-    if (isIdentifier(input)) {
-        return input.text;
+    if (isPrivateIdentifier(input)) {
+        return processPrivateIdentifier(processCtx, input);
     }
 
     if (isStringLiteral(input)) {
@@ -66,6 +61,10 @@ export function processPropertyName(
         return processComputedPropertyName(processCtx, input);
     }
 
-    // at this point, it must be a private identifier
-    return processPrivateIdentifier(processCtx, input);
+    // general case - a regular identifier
+    //
+    // for now, we've decided to represent these as simple strings
+    // we may reverse this decision when we write the code for the
+    // other layers
+    return input.text;
 }

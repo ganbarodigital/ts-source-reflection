@@ -33,8 +33,12 @@
 //
 
 import { ClassExpression } from "typescript";
-import { IntermediateClassExpression, IntermediateKind } from "../IntermediateTypes";
+import { AST } from "../AST";
+import { IntermediateClassExpression, IntermediateKind, IntermediateTypeArgument } from "../IntermediateTypes";
+import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { ProcessingContext } from "./ProcessingContext";
+import { processMemberDeclarations } from "./processMethodDeclarations";
+import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processClassExpression(
     processCtx: ProcessingContext,
@@ -43,5 +47,49 @@ export function processClassExpression(
 {
     return {
         kind: IntermediateKind.IntermediateClassExpression,
+        name: input.name?.text,
+        typeParameters: processTypeParametersFromNode(processCtx, input),
+        extends: getBaseClassType(processCtx, input),
+        implements: getBaseInterfaceTypes(processCtx, input),
+        members: processMemberDeclarations(processCtx, input.members),
+    };
+}
+
+function getBaseClassType(
+    processCtx: ProcessingContext,
+    input: ClassExpression
+): IntermediateTypeArgument[]
+{
+    // our return value
+    const retval: IntermediateTypeArgument[] = [];
+
+    // find the 'extend' clauses
+    const heritageClauses = AST.findExtendsHeritageClauses(input);
+    for (const clause of heritageClauses) {
+        for (const clauseType of clause.types) {
+            retval.push(processExpressionWithTypeArguments(processCtx, clauseType));
+        }
     }
+
+    // all done
+    return retval;
+}
+
+function getBaseInterfaceTypes(
+    processCtx: ProcessingContext,
+    input: ClassExpression
+): IntermediateTypeArgument[] {
+    // our return value
+    const retval: IntermediateTypeArgument[] = [];
+
+    // find the implement clauses (if any)
+    const heritageClauses = AST.findImplementsHeritageClauses(input);
+    for (const clause of heritageClauses) {
+        for (const clauseType of clause.types) {
+            retval.push(processExpressionWithTypeArguments(processCtx, clauseType));
+        }
+    }
+
+    // all done
+    return retval;
 }

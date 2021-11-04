@@ -32,10 +32,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateItem, IntermediateKind } from "..";
+import { Maybe } from "@safelytyped/core-types";
+import { IntermediateGenericable, IntermediateItem, IntermediateKind, IntermediateMemberDeclaration, IntermediateTypeArgument } from "..";
 
 export interface IntermediateClassExpression
-    extends IntermediateItem<IntermediateKind.IntermediateClassExpression>
+    extends IntermediateItem<IntermediateKind.IntermediateClassExpression>,
+        IntermediateGenericable
 {
-    // TBD
+    name: Maybe<string>;
+    extends: IntermediateTypeArgument[];
+    implements: IntermediateTypeArgument[];
+    members: IntermediateMemberDeclaration[];
 }
