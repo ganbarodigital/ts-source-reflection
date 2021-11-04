@@ -33,10 +33,12 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind, IntermediateSourceFile
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateEnum,
@@ -53,8 +55,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "1",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
                 {
@@ -63,8 +65,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "2",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
                 {
@@ -73,8 +75,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "4",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
             ],
@@ -117,7 +119,227 @@ const expectedResult: IntermediateSourceFile = {
                     hasBody: true,
                     body: {
                         kind: IntermediateKind.IntermediateBlock,
-                        children: [],
+                        children: [
+                            {
+                                kind: IntermediateKind.IntermediateIfStatement,
+                                condition: {
+                                    kind: IntermediateKind.IntermediateBinaryExpression,
+                                    left: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "colorName",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                    operator: IntermediateExpressionOperator.EQUALS_EQUALS,
+                                    right: {
+                                        kind: IntermediateKind.IntermediateStringLiteral,
+                                        value: "yellow",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                },
+                                thenBlock: {
+                                    kind: IntermediateKind.IntermediateBlock,
+                                    children: [
+                                        {
+                                            kind: IntermediateKind.IntermediateReturnStatement,
+                                            expression: {
+                                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                                left: {
+                                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                    target: {
+                                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                                        name: "Color",
+                                                        typeAssertion: undefined,
+                                                        asType: undefined,
+                                                    },
+                                                    propName: "red",
+                                                },
+                                                operator: IntermediateExpressionOperator.PLUS,
+                                                right: {
+                                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                    target: {
+                                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                                        name: "Color",
+                                                        typeAssertion: undefined,
+                                                        asType: undefined,
+                                                    },
+                                                    propName: "green",
+                                                },
+                                            },
+                                        },
+                                    ],
+                                },
+                                elseBlock: {
+                                    kind: IntermediateKind.IntermediateIfStatement,
+                                    condition: {
+                                        kind: IntermediateKind.IntermediateBinaryExpression,
+                                        left: {
+                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                            name: "colorName",
+                                            typeAssertion: undefined,
+                                            asType: undefined,
+                                        },
+                                        operator: IntermediateExpressionOperator.EQUALS_EQUALS,
+                                        right: {
+                                            kind: IntermediateKind.IntermediateStringLiteral,
+                                            value: "white",
+                                            typeAssertion: undefined,
+                                            asType: undefined,
+                                        },
+                                    },
+                                    thenBlock: {
+                                        kind: IntermediateKind.IntermediateBlock,
+                                        children: [
+                                            {
+                                                kind: IntermediateKind.IntermediateReturnStatement,
+                                                expression: {
+                                                    kind: IntermediateKind.IntermediateBinaryExpression,
+                                                    left: {
+                                                        kind: IntermediateKind.IntermediateBinaryExpression,
+                                                        left: {
+                                                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                            target: {
+                                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                                name: "Color",
+                                                                typeAssertion: undefined,
+                                                                asType: undefined,
+                                                            },
+                                                            propName: "red",
+                                                        },
+                                                        operator: IntermediateExpressionOperator.PLUS,
+                                                        right: {
+                                                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                            target: {
+                                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                                name: "Color",
+                                                                typeAssertion: undefined,
+                                                                asType: undefined,
+                                                            },
+                                                            propName: "green",
+                                                        },
+                                                    },
+                                                    operator: IntermediateExpressionOperator.PLUS,
+                                                    right: {
+                                                        kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                        target: {
+                                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                                            name: "Color",
+                                                            typeAssertion: undefined,
+                                                            asType: undefined,
+                                                        },
+                                                        propName: "blue",
+                                                    },
+                                                },
+                                            },
+                                        ],
+                                    },
+                                    elseBlock: {
+                                        kind: IntermediateKind.IntermediateIfStatement,
+                                        condition: {
+                                            kind: IntermediateKind.IntermediateBinaryExpression,
+                                            left: {
+                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                name: "colorName",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                            operator: IntermediateExpressionOperator.EQUALS_EQUALS,
+                                            right: {
+                                                kind: IntermediateKind.IntermediateStringLiteral,
+                                                value: "magenta",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                        },
+                                        thenBlock: {
+                                            kind: IntermediateKind.IntermediateBlock,
+                                            children: [
+                                                {
+                                                    kind: IntermediateKind.IntermediateReturnStatement,
+                                                    expression: {
+                                                        kind: IntermediateKind.IntermediateBinaryExpression,
+                                                        left: {
+                                                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                            target: {
+                                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                                name: "Color",
+                                                                typeAssertion: undefined,
+                                                                asType: undefined,
+                                                            },
+                                                            propName: "red",
+                                                        },
+                                                        operator: IntermediateExpressionOperator.PLUS,
+                                                        right: {
+                                                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                            target: {
+                                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                                name: "Color",
+                                                                typeAssertion: undefined,
+                                                                asType: undefined,
+                                                            },
+                                                            propName: "blue",
+                                                        },
+                                                    },
+                                                },
+                                            ],
+                                        },
+                                        elseBlock: {
+                                            kind: IntermediateKind.IntermediateIfStatement,
+                                            condition: {
+                                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                                left: {
+                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                    name: "colorName",
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                                operator: IntermediateExpressionOperator.EQUALS_EQUALS,
+                                                right: {
+                                                    kind: IntermediateKind.IntermediateStringLiteral,
+                                                    value: "cyan",
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                            },
+                                            thenBlock: {
+                                                kind: IntermediateKind.IntermediateBlock,
+                                                children: [
+                                                    {
+                                                        kind: IntermediateKind.IntermediateReturnStatement,
+                                                        expression: {
+                                                            kind: IntermediateKind.IntermediateBinaryExpression,
+                                                            left: {
+                                                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                                target: {
+                                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                                    name: "Color",
+                                                                    typeAssertion: undefined,
+                                                                    asType: undefined,
+                                                                },
+                                                                propName: "green",
+                                                            },
+                                                            operator: IntermediateExpressionOperator.PLUS,
+                                                            right: {
+                                                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                                target: {
+                                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                                    name: "Color",
+                                                                    typeAssertion: undefined,
+                                                                    asType: undefined,
+                                                                },
+                                                                propName: "blue",
+                                                            },
+                                                        },
+                                                    },
+                                                ],
+                                            },
+                                            elseBlock: undefined,
+                                        },
+                                    },
+                                },
+                            },
+                        ],
                     },
                 },
             ],
@@ -127,7 +349,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

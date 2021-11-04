@@ -33,10 +33,12 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind, IntermediateSourceFile
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
@@ -67,7 +69,45 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateBinaryExpression,
+                            left: {
+                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                left: {
+                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                    target: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "buildLabel",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                    propName: "prefix",
+                                },
+                                operator: IntermediateExpressionOperator.PLUS,
+                                right: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "name",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
+                            operator: IntermediateExpressionOperator.PLUS,
+                            right: {
+                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                target: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "buildLabel",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                propName: "suffix",
+                            },
+                        },
+                    },
+                ],
             },
         },
         {
@@ -94,8 +134,8 @@ const expectedResult: IntermediateSourceFile = {
                             initializer: {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             inferredType: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -120,8 +160,8 @@ const expectedResult: IntermediateSourceFile = {
                             initializer: {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "Hello, ",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             inferredType: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -137,7 +177,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;
