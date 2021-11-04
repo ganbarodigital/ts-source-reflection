@@ -33,3 +33,4 @@
 //
 
 export * from "./IntermediateExpressionOperator";
+export * from "./mapStringToIntermediateExpressionOperator";
