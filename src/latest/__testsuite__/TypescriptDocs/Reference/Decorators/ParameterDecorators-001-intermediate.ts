@@ -33,20 +33,22 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind, IntermediateSourceFile
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateImportDeclaration,
-            isTypeOnly: false,
             items: [],
+            isTypeOnly: false,
             source: {
                 kind: IntermediateKind.IntermediateStringLiteral,
                 value: "reflect-metadata",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
         },
         {
@@ -67,24 +69,24 @@ const expectedResult: IntermediateSourceFile = {
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Symbol",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         typeArguments: [],
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "required",
-                                asType: undefined,
                                 typeAssertion: undefined,
-                            }
+                                asType: undefined,
+                            },
                         ],
                         inferredReturnType: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "symbol",
                         },
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateSymbolType,
@@ -121,7 +123,6 @@ const expectedResult: IntermediateSourceFile = {
                     isReadonly: false,
                     name: "propertyKey",
                     typeRef: {
-                        kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
                             {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -132,6 +133,7 @@ const expectedResult: IntermediateSourceFile = {
                                 typeName: "symbol",
                             },
                         ],
+                        kind: IntermediateKind.IntermediateUnionType,
                     },
                     initializer: undefined,
                 },
@@ -156,7 +158,154 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateVariableDeclarations,
+                        docBlock: undefined,
+                        isDeclared: false,
+                        isDefaultExport: false,
+                        isExported: false,
+                        variables: [
+                            {
+                                kind: IntermediateKind.IntermediateLetDeclaration,
+                                isConstant: false,
+                                isReadonly: false,
+                                name: "existingRequiredParameters",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateArrayTypeReference,
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "number",
+                                    },
+                                },
+                                initializer: {
+                                    kind: IntermediateKind.IntermediateBinaryExpression,
+                                    left: {
+                                        kind: IntermediateKind.IntermediateCallExpression,
+                                        expression: {
+                                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                            target: {
+                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                name: "Reflect",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                            propName: "getOwnMetadata",
+                                        },
+                                        typeArguments: [],
+                                        arguments: [
+                                            {
+                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                name: "requiredMetadataKey",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                            {
+                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                name: "target",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                            {
+                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                name: "propertyKey",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                        ],
+                                        inferredReturnType: {
+                                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                            typeName: "any",
+                                        },
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                    operator: IntermediateExpressionOperator.BAR_BAR,
+                                    right: {
+                                        kind: IntermediateKind.IntermediateArrayLiteral,
+                                        elements: [],
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                },
+                            },
+                        ],
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateCallExpression,
+                        expression: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "existingRequiredParameters",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            propName: "push",
+                        },
+                        typeArguments: [],
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "parameterIndex",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                        ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "number",
+                        },
+                        typeAssertion: undefined,
+                        asType: undefined,
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateCallExpression,
+                        expression: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "Reflect",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            propName: "defineMetadata",
+                        },
+                        typeArguments: [],
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "requiredMetadataKey",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "existingRequiredParameters",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "target",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "propertyKey",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                        ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "any",
+                        },
+                        typeAssertion: undefined,
+                        asType: undefined,
+                    },
+                ],
             },
         },
         {
@@ -219,7 +368,296 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateVariableDeclarations,
+                        docBlock: undefined,
+                        isDeclared: false,
+                        isDefaultExport: false,
+                        isExported: false,
+                        variables: [
+                            {
+                                kind: IntermediateKind.IntermediateLetDeclaration,
+                                isConstant: false,
+                                isReadonly: false,
+                                name: "method",
+                                typeRef: undefined,
+                                initializer: {
+                                    kind: IntermediateKind.IntermediateNonNullExpression,
+                                    expression: {
+                                        kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                        target: {
+                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                            name: "descriptor",
+                                            typeAssertion: undefined,
+                                            asType: undefined,
+                                        },
+                                        propName: "value",
+                                    },
+                                },
+                                inferredType: {
+                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                    typeName: "Function",
+                                },
+                            },
+                        ],
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateBinaryExpression,
+                        left: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "descriptor",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            propName: "value",
+                        },
+                        operator: IntermediateExpressionOperator.EQUALS,
+                        right: {
+                            kind: IntermediateKind.IntermediateFunctionExpression,
+                            name: undefined,
+                            typeParameters: [],
+                            parameters: [],
+                            returnType: undefined,
+                            inferredReturnType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "any",
+                            },
+                            hasBody: true,
+                            body: {
+                                kind: IntermediateKind.IntermediateBlock,
+                                children: [
+                                    {
+                                        kind: IntermediateKind.IntermediateVariableDeclarations,
+                                        docBlock: undefined,
+                                        isDeclared: false,
+                                        isDefaultExport: false,
+                                        isExported: false,
+                                        variables: [
+                                            {
+                                                kind: IntermediateKind.IntermediateLetDeclaration,
+                                                isConstant: false,
+                                                isReadonly: false,
+                                                name: "requiredParameters",
+                                                typeRef: {
+                                                    kind: IntermediateKind.IntermediateArrayTypeReference,
+                                                    typeRef: {
+                                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                        typeName: "number",
+                                                    },
+                                                },
+                                                initializer: {
+                                                    kind: IntermediateKind.IntermediateCallExpression,
+                                                    expression: {
+                                                        kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                        target: {
+                                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                                            name: "Reflect",
+                                                            typeAssertion: undefined,
+                                                            asType: undefined,
+                                                        },
+                                                        propName: "getOwnMetadata",
+                                                    },
+                                                    typeArguments: [],
+                                                    arguments: [
+                                                        {
+                                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                                            name: "requiredMetadataKey",
+                                                            typeAssertion: undefined,
+                                                            asType: undefined,
+                                                        },
+                                                        {
+                                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                                            name: "target",
+                                                            typeAssertion: undefined,
+                                                            asType: undefined,
+                                                        },
+                                                        {
+                                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                                            name: "propertyName",
+                                                            typeAssertion: undefined,
+                                                            asType: undefined,
+                                                        },
+                                                    ],
+                                                    inferredReturnType: {
+                                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                        typeName: "any",
+                                                    },
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        kind: IntermediateKind.IntermediateIfStatement,
+                                        condition: {
+                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                            name: "requiredParameters",
+                                            typeAssertion: undefined,
+                                            asType: undefined,
+                                        },
+                                        thenBlock: {
+                                            kind: IntermediateKind.IntermediateBlock,
+                                            children: [
+                                                {
+                                                    kind: IntermediateKind.IntermediateForOfLoop,
+                                                    initializer: {
+                                                        kind: IntermediateKind.IntermediateVariableDeclarations,
+                                                        docBlock: undefined,
+                                                        isDeclared: false,
+                                                        isDefaultExport: false,
+                                                        isExported: false,
+                                                        variables: [
+                                                            {
+                                                                kind: IntermediateKind.IntermediateLetDeclaration,
+                                                                isConstant: false,
+                                                                isReadonly: false,
+                                                                name: "parameterIndex",
+                                                                typeRef: undefined,
+                                                                initializer: undefined,
+                                                                inferredType: {
+                                                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                                    typeName: "number",
+                                                                },
+                                                            },
+                                                        ],
+                                                    },
+                                                    loopTarget: {
+                                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                                        name: "requiredParameters",
+                                                        typeAssertion: undefined,
+                                                        asType: undefined,
+                                                    },
+                                                    contents: {
+                                                        kind: IntermediateKind.IntermediateBlock,
+                                                        children: [
+                                                            {
+                                                                kind: IntermediateKind.IntermediateIfStatement,
+                                                                condition: {
+                                                                    kind: IntermediateKind.IntermediateBinaryExpression,
+                                                                    left: {
+                                                                        kind: IntermediateKind.IntermediateBinaryExpression,
+                                                                        left: {
+                                                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                                                            name: "parameterIndex",
+                                                                            typeAssertion: undefined,
+                                                                            asType: undefined,
+                                                                        },
+                                                                        operator: IntermediateExpressionOperator.GREATER_THAN_EQUALS,
+                                                                        right: {
+                                                                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                                            target: {
+                                                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                                                name: "arguments",
+                                                                                typeAssertion: undefined,
+                                                                                asType: undefined,
+                                                                            },
+                                                                            propName: "length",
+                                                                        },
+                                                                    },
+                                                                    operator: IntermediateExpressionOperator.BAR_BAR,
+                                                                    right: {
+                                                                        kind: IntermediateKind.IntermediateBinaryExpression,
+                                                                        left: {
+                                                                            kind: IntermediateKind.IntermediateElementAccessExpression,
+                                                                            element: {
+                                                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                                                name: "arguments",
+                                                                                typeAssertion: undefined,
+                                                                                asType: undefined,
+                                                                            },
+                                                                            accessKey: {
+                                                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                                                name: "parameterIndex",
+                                                                                typeAssertion: undefined,
+                                                                                asType: undefined,
+                                                                            },
+                                                                        },
+                                                                        operator: IntermediateExpressionOperator.EQUALS_EQUALS_EQUALS,
+                                                                        right: {
+                                                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                                                            name: "undefined",
+                                                                            typeAssertion: undefined,
+                                                                            asType: undefined,
+                                                                        },
+                                                                    },
+                                                                },
+                                                                thenBlock: {
+                                                                    kind: IntermediateKind.IntermediateBlock,
+                                                                    children: [
+                                                                        {
+                                                                            kind: IntermediateKind.IntermediateThrow,
+                                                                            expression: {
+                                                                                kind: IntermediateKind.IntermediateNewExpression,
+                                                                                typeRef: {
+                                                                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                                                                    typeName: "Error",
+                                                                                },
+                                                                                arguments: [
+                                                                                    {
+                                                                                        kind: IntermediateKind.IntermediateStringLiteral,
+                                                                                        value: "Missing required argument.",
+                                                                                        typeAssertion: undefined,
+                                                                                        asType: undefined,
+                                                                                    },
+                                                                                ],
+                                                                                asType: undefined,
+                                                                            },
+                                                                        },
+                                                                    ],
+                                                                },
+                                                                elseBlock: undefined,
+                                                            },
+                                                        ],
+                                                    },
+                                                },
+                                            ],
+                                        },
+                                        elseBlock: undefined,
+                                    },
+                                    {
+                                        kind: IntermediateKind.IntermediateReturnStatement,
+                                        expression: {
+                                            kind: IntermediateKind.IntermediateCallExpression,
+                                            expression: {
+                                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                target: {
+                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                    name: "method",
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                                propName: "apply",
+                                            },
+                                            typeArguments: [],
+                                            arguments: [
+                                                {
+                                                    kind: IntermediateKind.IntermediateThisIdentifier,
+                                                    name: "this",
+                                                },
+                                                {
+                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                    name: "arguments",
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                            ],
+                                            inferredReturnType: {
+                                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                typeName: "any",
+                                            },
+                                            typeAssertion: undefined,
+                                            asType: undefined,
+                                        },
+                                    },
+                                ],
+                            },
+                        },
+                    },
+                ],
             },
         },
         {
@@ -247,8 +685,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateStringLiteral,
                         value: "report",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -287,7 +725,7 @@ const expectedResult: IntermediateSourceFile = {
                                 typeName: "string",
                             },
                             initializer: undefined,
-                        }
+                        },
                     ],
                     returnType: undefined,
                     inferredReturnType: {
@@ -304,8 +742,8 @@ const expectedResult: IntermediateSourceFile = {
                             expression: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "validate",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         },
                     ],
@@ -323,8 +761,8 @@ const expectedResult: IntermediateSourceFile = {
                                     expression: {
                                         kind: IntermediateKind.IntermediateIdentifierReference,
                                         name: "required",
-                                        asType: undefined,
                                         typeAssertion: undefined,
+                                        asType: undefined,
                                     },
                                 },
                             ],
@@ -352,7 +790,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

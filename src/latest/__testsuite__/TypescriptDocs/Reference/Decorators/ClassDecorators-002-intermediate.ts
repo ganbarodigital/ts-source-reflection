@@ -38,6 +38,7 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
@@ -48,8 +49,6 @@ const expectedResult: IntermediateSourceFile = {
             name: "reportableClassDecorator",
             typeParameters: [
                 {
-                    kind: IntermediateKind.IntermediateGenericType,
-                    name: "T",
                     constraint: {
                         kind: IntermediateKind.IntermediateAnonymousClassType,
                         members: [
@@ -57,7 +56,6 @@ const expectedResult: IntermediateSourceFile = {
                                 kind: IntermediateKind.IntermediateConstructorSignature,
                                 parameters: [
                                     {
-                                        kind: IntermediateKind.IntermediateRestCallableParameterSignature,
                                         parameter: {
                                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                             isOptional: false,
@@ -71,6 +69,7 @@ const expectedResult: IntermediateSourceFile = {
                                                 },
                                             },
                                         },
+                                        kind: IntermediateKind.IntermediateRestCallableParameterSignature,
                                     },
                                 ],
                                 returnType: {
@@ -80,6 +79,8 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                     },
                     defaultType: undefined,
+                    kind: IntermediateKind.IntermediateGenericType,
+                    name: "T",
                 },
             ],
             parameters: [
@@ -100,7 +101,47 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateClassExpression,
+                            name: undefined,
+                            typeParameters: [],
+                            extends: [
+                                {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "constructor",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            ],
+                            implements: [],
+                            members: [
+                                {
+                                    kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
+                                    docBlock: undefined,
+                                    decorators: [],
+                                    isOptional: false,
+                                    isReadonly: false,
+                                    isStatic: false,
+                                    accessModifier: undefined,
+                                    name: "reportingURL",
+                                    initializer: {
+                                        kind: IntermediateKind.IntermediateStringLiteral,
+                                        value: "http://www...",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                    inferredType: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "string",
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
             },
         },
         {
@@ -112,8 +153,8 @@ const expectedResult: IntermediateSourceFile = {
                     expression: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "reportableClassDecorator",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
             ],
@@ -138,8 +179,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateStringLiteral,
                         value: "report",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -178,7 +219,7 @@ const expectedResult: IntermediateSourceFile = {
                                 typeName: "string",
                             },
                             initializer: undefined,
-                        }
+                        },
                     ],
                     returnType: undefined,
                     inferredReturnType: {
@@ -229,7 +270,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

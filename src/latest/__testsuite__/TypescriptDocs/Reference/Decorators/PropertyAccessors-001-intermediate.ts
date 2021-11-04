@@ -37,16 +37,17 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateImportDeclaration,
-            isTypeOnly: false,
             items: [],
+            isTypeOnly: false,
             source: {
                 kind: IntermediateKind.IntermediateStringLiteral,
                 value: "reflect-metadata",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
         },
         {
@@ -67,24 +68,24 @@ const expectedResult: IntermediateSourceFile = {
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Symbol",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         typeArguments: [],
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "format",
-                                asType: undefined,
                                 typeAssertion: undefined,
-                            }
+                                asType: undefined,
+                            },
                         ],
                         inferredReturnType: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "symbol",
                         },
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateSymbolType,
@@ -123,7 +124,45 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateCallExpression,
+                            expression: {
+                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                target: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "Reflect",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                propName: "metadata",
+                            },
+                            typeArguments: [],
+                            arguments: [
+                                {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "formatMetadataKey",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "formatString",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            ],
+                            inferredReturnType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "any",
+                            },
+                            typeAssertion: undefined,
+                            asType: undefined,
+                        },
+                    },
+                ],
             },
         },
         {
@@ -168,7 +207,51 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateCallExpression,
+                            expression: {
+                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                target: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "Reflect",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                propName: "getMetadata",
+                            },
+                            typeArguments: [],
+                            arguments: [
+                                {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "formatMetadataKey",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "target",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "propertyKey",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            ],
+                            inferredReturnType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "any",
+                            },
+                            typeAssertion: undefined,
+                            asType: undefined,
+                        },
+                    },
+                ],
             },
         },
         {
@@ -195,24 +278,24 @@ const expectedResult: IntermediateSourceFile = {
                                 expression: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "format",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                                 typeArguments: [],
                                 arguments: [
                                     {
                                         kind: IntermediateKind.IntermediateStringLiteral,
                                         value: "Hello, %s",
-                                        asType: undefined,
                                         typeAssertion: undefined,
+                                        asType: undefined,
                                     },
                                 ],
                                 inferredReturnType: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "any",
                                 },
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         },
                     ],
@@ -276,7 +359,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

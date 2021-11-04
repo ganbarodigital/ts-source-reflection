@@ -38,6 +38,7 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
@@ -92,7 +93,121 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateCallExpression,
+                        expression: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "console",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            propName: "log",
+                        },
+                        typeArguments: [],
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateStringLiteral,
+                                value: "first(): factory evaluated",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                        ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "void",
+                        },
+                        typeAssertion: undefined,
+                        asType: undefined,
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateFunctionExpression,
+                            name: undefined,
+                            typeParameters: [],
+                            parameters: [
+                                {
+                                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                                    decorators: [],
+                                    isOptional: false,
+                                    isReadonly: false,
+                                    name: "target",
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "any",
+                                    },
+                                    initializer: undefined,
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                                    decorators: [],
+                                    isOptional: false,
+                                    isReadonly: false,
+                                    name: "propertyKey",
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "string",
+                                    },
+                                    initializer: undefined,
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                                    decorators: [],
+                                    isOptional: false,
+                                    isReadonly: false,
+                                    name: "descriptor",
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                                        typeName: "PropertyDescriptor",
+                                    },
+                                    initializer: undefined,
+                                },
+                            ],
+                            returnType: undefined,
+                            inferredReturnType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "void",
+                            },
+                            hasBody: true,
+                            body: {
+                                kind: IntermediateKind.IntermediateBlock,
+                                children: [
+                                    {
+                                        kind: IntermediateKind.IntermediateCallExpression,
+                                        expression: {
+                                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                            target: {
+                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                name: "console",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                            propName: "log",
+                                        },
+                                        typeArguments: [],
+                                        arguments: [
+                                            {
+                                                kind: IntermediateKind.IntermediateStringLiteral,
+                                                value: "first(): called",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                        ],
+                                        inferredReturnType: {
+                                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                            typeName: "void",
+                                        },
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                ],
+                            },
+                        },
+                    },
+                ],
             },
         },
         {
@@ -148,7 +263,121 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateCallExpression,
+                        expression: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "console",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            propName: "log",
+                        },
+                        typeArguments: [],
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateStringLiteral,
+                                value: "second(): factory evaluated",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                        ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "void",
+                        },
+                        typeAssertion: undefined,
+                        asType: undefined,
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateFunctionExpression,
+                            name: undefined,
+                            typeParameters: [],
+                            parameters: [
+                                {
+                                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                                    decorators: [],
+                                    isOptional: false,
+                                    isReadonly: false,
+                                    name: "target",
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "any",
+                                    },
+                                    initializer: undefined,
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                                    decorators: [],
+                                    isOptional: false,
+                                    isReadonly: false,
+                                    name: "propertyKey",
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "string",
+                                    },
+                                    initializer: undefined,
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                                    decorators: [],
+                                    isOptional: false,
+                                    isReadonly: false,
+                                    name: "descriptor",
+                                    typeRef: {
+                                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                                        typeName: "PropertyDescriptor",
+                                    },
+                                    initializer: undefined,
+                                },
+                            ],
+                            returnType: undefined,
+                            inferredReturnType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "void",
+                            },
+                            hasBody: true,
+                            body: {
+                                kind: IntermediateKind.IntermediateBlock,
+                                children: [
+                                    {
+                                        kind: IntermediateKind.IntermediateCallExpression,
+                                        expression: {
+                                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                            target: {
+                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                name: "console",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                            propName: "log",
+                                        },
+                                        typeArguments: [],
+                                        arguments: [
+                                            {
+                                                kind: IntermediateKind.IntermediateStringLiteral,
+                                                value: "second(): called",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                        ],
+                                        inferredReturnType: {
+                                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                            typeName: "void",
+                                        },
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                ],
+                            },
+                        },
+                    },
+                ],
             },
         },
         {
@@ -178,8 +407,8 @@ const expectedResult: IntermediateSourceFile = {
                                     typeAssertion: undefined,
                                     asType: undefined,
                                 },
-                                arguments: [],
                                 typeArguments: [],
+                                arguments: [],
                                 inferredReturnType: {
                                     kind: IntermediateKind.IntermediateFunctionTypeSignature,
                                     typeParameters: [],
@@ -234,8 +463,8 @@ const expectedResult: IntermediateSourceFile = {
                                     typeAssertion: undefined,
                                     asType: undefined,
                                 },
-                                arguments: [],
                                 typeArguments: [],
+                                arguments: [],
                                 inferredReturnType: {
                                     kind: IntermediateKind.IntermediateFunctionTypeSignature,
                                     typeParameters: [],
@@ -301,7 +530,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;
