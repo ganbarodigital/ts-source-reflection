@@ -38,6 +38,7 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
@@ -128,8 +129,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -148,8 +149,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -170,14 +171,14 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Jumpable",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Duckable",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             members: [],
@@ -187,16 +188,16 @@ const expectedResult: IntermediateSourceFile = {
             expression: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "applyMixins",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             typeArguments: [],
             arguments: [
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Sprite",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
                 {
                     kind: IntermediateKind.IntermediateArrayLiteral,
@@ -204,26 +205,26 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Jumpable",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Duckable",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     ],
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             inferredReturnType: {
                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                 typeName: "void",
             },
-            asType: undefined,
             typeAssertion: undefined,
+            asType: undefined,
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
@@ -256,24 +257,24 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateCallExpression,
-            typeArguments: [],
             expression: {
                 kind: IntermediateKind.IntermediatePropertyAccessExpression,
                 target: {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "player",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
                 propName: "jump",
             },
+            typeArguments: [],
             arguments: [],
             inferredReturnType: {
                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                 typeName: "void",
             },
-            asType: undefined,
             typeAssertion: undefined,
+            asType: undefined,
         },
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
@@ -320,7 +321,53 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateCallExpression,
+                        expression: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "constructors",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            propName: "forEach",
+                        },
+                        typeArguments: [],
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateArrowFunction,
+                                typeParameters: [],
+                                parameters: [
+                                    {
+                                        kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
+                                        decorators: [],
+                                        isOptional: false,
+                                        name: "baseCtor",
+                                        initializer: undefined,
+                                        inferredType: {
+                                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                            typeName: "any",
+                                        },
+                                    },
+                                ],
+                                returnType: undefined,
+                                inferredReturnType: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "void",
+                                },
+                                hasBody: true,
+                            },
+                        ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "void",
+                        },
+                        typeAssertion: undefined,
+                        asType: undefined,
+                    },
+                ],
             },
         },
     ],
@@ -328,7 +375,7 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
+
 
 export default expectedResult;

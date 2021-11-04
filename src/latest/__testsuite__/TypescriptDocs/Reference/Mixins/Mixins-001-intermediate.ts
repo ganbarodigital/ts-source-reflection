@@ -256,7 +256,92 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateClassExpression,
+                            name: "Scaling",
+                            typeParameters: [],
+                            extends: [
+                                {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "Base",
+                                    asType: undefined,
+                                    typeAssertion: undefined,
+                                },
+                            ],
+                            implements: [],
+                            members: [
+                                {
+                                    kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
+                                    docBlock: undefined,
+                                    decorators: [],
+                                    isOptional: false,
+                                    isReadonly: false,
+                                    accessModifier: undefined,
+                                    isStatic: false,
+                                    name: {
+                                        kind: IntermediateKind.IntermediatePrivatePropertyIdentifier,
+                                        name: "#scale",
+                                    },
+                                    inferredType: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "number",
+                                    },
+                                    initializer: {
+                                        kind: IntermediateKind.IntermediateNumericLiteral,
+                                        value: "1",
+                                        asType: undefined,
+                                        typeAssertion: undefined,
+                                    },
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                                    docBlock: undefined,
+                                    decorators: [],
+                                    isAbstract: false,
+                                    isStatic: false,
+                                    accessModifier: undefined,
+                                    name: "setScale",
+                                    typeParameters: [],
+                                    parameters: [
+                                        {
+                                            kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
+                                            decorators: [],
+                                            isOptional: false,
+                                            isReadonly: false,
+                                            name: "scale",
+                                            typeRef: {
+                                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                typeName: "number",
+                                            },
+                                            initializer: undefined,
+                                        },
+                                    ],
+                                    returnType: undefined,
+                                    inferredReturnType: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "void",
+                                    },
+                                    hasBody: true,
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediateGetter,
+                                    docBlock: undefined,
+                                    decorators: [],
+                                    accessModifier: undefined,
+                                    name: "scale",
+                                    typeParameters: [],
+                                    returnType: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "number",
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
             },
         },
         {

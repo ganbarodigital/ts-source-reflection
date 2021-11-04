@@ -407,7 +407,44 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateClassExpression,
+                            name: "Jumpable",
+                            typeParameters: [],
+                            extends: [
+                                {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "Base",
+                                    asType: undefined,
+                                    typeAssertion: undefined,
+                                },
+                            ],
+                            implements: [],
+                            members: [
+                                {
+                                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                                    docBlock: undefined,
+                                    decorators: [],
+                                    isAbstract: false,
+                                    isStatic: false,
+                                    accessModifier: undefined,
+                                    name: "jump",
+                                    typeParameters: [],
+                                    parameters: [],
+                                    returnType: undefined,
+                                    inferredReturnType: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "void",
+                                    },
+                                    hasBody: true,
+                                },
+                            ],
+                        },
+                    },
+                ],
             },
         },
     ],

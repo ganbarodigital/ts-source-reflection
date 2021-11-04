@@ -63,7 +63,47 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateClass,
+                        docBlock: undefined,
+                        decorators: [],
+                        isAbstract: false,
+                        isDeclared: false,
+                        isDefaultExport: false,
+                        isExported: false,
+                        name: "Base",
+                        typeParameters: [],
+                        extends: [],
+                        implements: [],
+                        members: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                                docBlock: undefined,
+                                decorators: [],
+                                isOptional: false,
+                                isReadonly: false,
+                                isStatic: true,
+                                accessModifier: undefined,
+                                name: "prop",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                    typeName: "T",
+                                },
+                                initializer: undefined,
+                            },
+                        ],
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "Base",
+                            asType: undefined,
+                            typeAssertion: undefined,
+                        },
+                    },
+                ],
             },
         },
         {
@@ -90,7 +130,70 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateClass,
+                        docBlock: undefined,
+                        decorators: [],
+                        isAbstract: false,
+                        isDeclared: false,
+                        isDefaultExport: false,
+                        isExported: false,
+                        name: "Derived",
+                        typeParameters: [],
+                        extends: [
+                            {
+                                kind: IntermediateKind.IntermediateCallExpression,
+                                expression: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "base",
+                                    asType: undefined,
+                                    typeAssertion: undefined,
+                                },
+                                typeArguments: [
+                                    {
+                                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                                        typeName: "T",
+                                    },
+                                ],
+                                arguments: [],
+                                inferredReturnType: {
+                                    kind: IntermediateKind.IntermediateTypeofTypeReference,
+                                    entityName: "Base",
+                                },
+                                asType: undefined,
+                                typeAssertion: undefined,
+                            },
+                        ],
+                        implements: [],
+                        members: [
+                            {
+                                kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
+                                docBlock: undefined,
+                                decorators: [],
+                                isOptional: false,
+                                isReadonly: false,
+                                isStatic: true,
+                                accessModifier: undefined,
+                                name: "anotherProp",
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                                    typeName: "T",
+                                },
+                                initializer: undefined,
+                            },
+                        ],
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "Derived",
+                            asType: undefined,
+                            typeAssertion: undefined,
+                        }
+                    }
+                ],
             },
         },
         {
