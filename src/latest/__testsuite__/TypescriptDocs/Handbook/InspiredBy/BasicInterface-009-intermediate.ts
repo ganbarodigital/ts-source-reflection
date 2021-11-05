@@ -34,34 +34,34 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
-const expectedResult: IntermediateSourceFile = {
+const expectedResult: IntermediateSourceFile = {    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            isDeclared: false,
-            name: "mondayExample",
-            isExported: false,
-            isDefaultExport: false,
             docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "mondayExample",
             typeParameters: [],
             extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertySignature,
                     docBlock: undefined,
-                    name: "a",
                     isOptional: false,
                     isReadonly: true,
+                    name: "a",
                 },
                 {
                     kind: IntermediateKind.IntermediateUntypedPropertySignature,
                     docBlock: undefined,
-                    name: "b",
                     isOptional: false,
                     isReadonly: false,
+                    name: "b",
                 },
             ],
         },
@@ -70,7 +70,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

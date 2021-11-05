@@ -99,7 +99,18 @@ const sourceFile = compiler.getAstForFile(inputFile);
 
 const refFile = processSourceFile({compiler, sourceFile});
 
-pp(`//
+const importTypes: string[] = [
+    "IntermediateKind",
+    "IntermediateSourceFile"
+];
+
+ppObject(refFile, 4);
+pp(`}
+
+export default expectedResult;
+`, 0);
+
+const preBuf: string[] = [`//
 // Copyright (c) 2021-present Ganbaro Digital Ltd
 // All rights reserved.
 //
@@ -133,20 +144,16 @@ pp(`//
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateKind,
-    IntermediateSourceFile
-} from "../../../../IntermediateTypes";
+import {`];
+for (const entry of new Set(importTypes)) {
+    preBuf.push(`    ${entry},`);
+}
 
-const expectedResult: IntermediateSourceFile = {`, 0);
+preBuf.push(`} from "${inputFile.dirname().relative(new Filepath("src/latest/IntermediateTypes"))}";
 
-ppObject(refFile, 4);
-pp(`}
+const expectedResult: IntermediateSourceFile = {`);
 
-export default expectedResult;
-`, 0);
-
-fs.writeFileSync(outputFile.valueOf(), outBuf.join("\n"));
+fs.writeFileSync(outputFile.valueOf(), preBuf.join("\n") + outBuf.join("\n"));
 
 function sortKeys(a: string, b: string) {
     const ia = KEYS_ORDER.indexOf(a);
@@ -184,6 +191,7 @@ function ppObject(
         if (key === 'accessModifier') {
             if (value !== undefined) {
                 value = "IntermediateRestrictableScope." + IntermediateRestrictableScope[value];
+                importTypes.push("IntermediateRestrictableScope");
             }
             pp(`${key}: ${value},`, indent);
             continue;
@@ -191,12 +199,14 @@ function ppObject(
         if (key === 'setsPropertyWithScope') {
             if (value !== undefined) {
                 value = "IntermediateRestrictableScope." + IntermediateRestrictableScope[value];
+                importTypes.push("IntermediateRestrictableScope");
             }
             pp(`${key}: ${value},`, indent);
             continue;
         }
         if (key === 'operator') {
             pp(`${key}: ${mapStringToIntermediateExpressionOperator(value)},`, indent);
+            importTypes.push("IntermediateExpressionOperator");
             continue;
         }
 

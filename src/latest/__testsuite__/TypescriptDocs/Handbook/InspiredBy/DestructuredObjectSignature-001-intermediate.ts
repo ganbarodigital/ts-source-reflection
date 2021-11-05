@@ -34,10 +34,10 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
-const expectedResult: IntermediateSourceFile = {
+const expectedResult: IntermediateSourceFile = {    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
@@ -65,7 +65,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                         ],
                         typeRef: undefined,
-                    }
+                    },
                 ],
                 returnType: {
                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -78,7 +78,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;
