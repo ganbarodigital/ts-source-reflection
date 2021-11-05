@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
@@ -57,8 +58,8 @@ const expectedResult: IntermediateSourceFile = {
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Symbol",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         typeArguments: [],
                         arguments: [],
@@ -66,8 +67,8 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "symbol",
                         },
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateSymbolType,
@@ -101,8 +102,8 @@ const expectedResult: IntermediateSourceFile = {
                         name: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "getClassNameSymbol",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     },
                     typeParameters: [],
@@ -165,14 +166,14 @@ const expectedResult: IntermediateSourceFile = {
                             element: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "c",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             accessKey: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "getClassNameSymbol",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         },
                         typeArguments: [],
@@ -181,8 +182,8 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "string",
                         },
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -196,7 +197,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

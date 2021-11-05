@@ -34,17 +34,18 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "f",
             typeParameters: [],
             parameters: [
@@ -64,8 +65,8 @@ const expectedResult: IntermediateSourceFile = {
                             initializer: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "0",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         },
                     ],
@@ -79,13 +80,13 @@ const expectedResult: IntermediateSourceFile = {
                                 initializer: {
                                     kind: IntermediateKind.IntermediateStringLiteral,
                                     value: "",
-                                    asType: undefined,
                                     typeAssertion: undefined,
-                                }
-                            }
+                                    asType: undefined,
+                                },
+                            },
                         ],
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
             ],
@@ -104,7 +105,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

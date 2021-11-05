@@ -33,42 +33,44 @@
 //
 
 import {
-    IntermediateKind, IntermediateSourceFile
+    IntermediateKind,
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateImportDeclaration,
+            isTypeOnly: false,
             items: [
                 {
                     kind: IntermediateKind.IntermediateImportBinding,
                     name: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "Observable",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
-                }
+                },
             ],
             source: {
                 kind: IntermediateKind.IntermediateStringLiteral,
                 value: "./ModuleAugmentation-001-observable",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
-            isTypeOnly: false,
         },
         {
             kind: IntermediateKind.IntermediateImportDeclaration,
+            isTypeOnly: false,
             items: [],
             source: {
                 kind: IntermediateKind.IntermediateStringLiteral,
                 value: "./ModuleAugmentation-001-map",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
-            isTypeOnly: false,
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
@@ -93,7 +95,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

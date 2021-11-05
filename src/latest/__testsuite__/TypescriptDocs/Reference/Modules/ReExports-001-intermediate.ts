@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
@@ -92,22 +93,22 @@ const expectedResult: IntermediateSourceFile = {
                     name: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "RegExpBasedZipCodeValidator",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     exportedName: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "ZipCodeValidator",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
             ],
             source: {
                 kind: IntermediateKind.IntermediateStringLiteral,
                 value: "./ExportStatements-001-input",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
         },
     ],
@@ -115,7 +116,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

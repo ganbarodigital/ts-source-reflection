@@ -34,16 +34,17 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "RemoveKindField",
             typeParameters: [
                 {
@@ -100,20 +101,20 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateInterface,
+            docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Circle",
             typeParameters: [],
-            isExported: false,
-            isDefaultExport: false,
-            isDeclared: false,
-            docBlock: undefined,
             extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "kind",
                     isOptional: false,
                     isReadonly: false,
+                    name: "kind",
                     typeRef: {
                         kind: IntermediateKind.IntermediateStringLiteralType,
                         typeName: "circle",
@@ -122,9 +123,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "radius",
                     isOptional: false,
                     isReadonly: false,
+                    name: "radius",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -135,8 +136,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "KindlessCircle",
             typeParameters: [],
             typeRef: {
@@ -155,7 +156,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

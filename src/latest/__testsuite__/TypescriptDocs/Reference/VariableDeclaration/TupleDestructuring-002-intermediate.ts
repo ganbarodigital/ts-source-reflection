@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
@@ -56,27 +57,27 @@ const expectedResult: IntermediateSourceFile = {
                         elements: [
                             {
                                 kind: IntermediateKind.IntermediateTupleTypeElement,
+                                isOptional: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "number",
                                 },
-                                isOptional: false,
                             },
                             {
                                 kind: IntermediateKind.IntermediateTupleTypeElement,
+                                isOptional: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "string",
                                 },
-                                isOptional: false,
                             },
                             {
                                 kind: IntermediateKind.IntermediateTupleTypeElement,
+                                isOptional: false,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "boolean",
                                 },
-                                isOptional: false,
                             },
                         ],
                     },
@@ -86,24 +87,24 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "7",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "hello",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             {
                                 kind: IntermediateKind.IntermediateBooleanLiteral,
                                 value: "true",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         ],
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
             ],
@@ -132,8 +133,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "tuple",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
             ],
@@ -143,7 +144,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

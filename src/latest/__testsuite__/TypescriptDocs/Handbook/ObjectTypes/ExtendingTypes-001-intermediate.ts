@@ -34,27 +34,28 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            isDeclared: false,
-            name: "BasicAddress",
-            isExported: false,
-            isDefaultExport: false,
             docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "BasicAddress",
             typeParameters: [],
             extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "name",
                     isOptional: true,
                     isReadonly: false,
+                    name: "name",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -63,9 +64,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
+                    isOptional: false,
+                    isReadonly: false,
                     name: "street",
-                    isOptional: false,
-                    isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -74,9 +75,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
+                    isOptional: false,
+                    isReadonly: false,
                     name: "city",
-                    isOptional: false,
-                    isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -85,9 +86,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
+                    isOptional: false,
+                    isReadonly: false,
                     name: "country",
-                    isOptional: false,
-                    isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -96,9 +97,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "postalCode",
                     isOptional: false,
                     isReadonly: false,
+                    name: "postalCode",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -108,27 +109,27 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateInterface,
-            isDeclared: false,
-            name: "AddressWithUnit",
-            isExported: false,
-            isDefaultExport: false,
             docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "AddressWithUnit",
             typeParameters: [],
             extends: [
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "BasicAddress",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "unit",
                     isOptional: false,
                     isReadonly: false,
+                    name: "unit",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -141,7 +142,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

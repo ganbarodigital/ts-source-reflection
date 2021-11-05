@@ -34,24 +34,25 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            name: "Flatten",
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "Flatten",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
                     name: "T",
                     constraint: undefined,
                     defaultType: undefined,
-                }
+                },
             ],
             typeRef: {
                 kind: IntermediateKind.IntermediateConditionalType,
@@ -68,13 +69,13 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 trueTypeRef: {
                     kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
-                    valueRef: {
-                        kind: IntermediateKind.IntermediateFixedTypeReference,
-                        typeName: "T",
-                    },
                     indexRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
+                    },
+                    valueRef: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "T",
                     },
                 },
                 falseTypeRef: {
@@ -86,9 +87,9 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            name: "Str",
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "Str",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -107,9 +108,9 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            name: "Num",
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "Num",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -127,7 +128,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

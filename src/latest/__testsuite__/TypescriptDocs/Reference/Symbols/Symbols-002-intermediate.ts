@@ -35,10 +35,11 @@
 import {
     IntermediateExpressionOperator,
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
@@ -58,24 +59,24 @@ const expectedResult: IntermediateSourceFile = {
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Symbol",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         typeArguments: [],
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "key",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         ],
                         inferredReturnType: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "symbol",
                         },
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -102,24 +103,24 @@ const expectedResult: IntermediateSourceFile = {
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Symbol",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         typeArguments: [],
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "key",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         ],
                         inferredReturnType: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "symbol",
                         },
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -133,15 +134,15 @@ const expectedResult: IntermediateSourceFile = {
             left: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "sym2",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             operator: IntermediateExpressionOperator.EQUALS_EQUALS_EQUALS,
             right: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "sym3",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
         },
     ],
@@ -149,7 +150,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

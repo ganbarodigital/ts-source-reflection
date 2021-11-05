@@ -34,7 +34,7 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
@@ -99,21 +99,21 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateDestructuredParameterDeclaration,
                     parameters: [
                         {
-                            from: undefined,
                             kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "a",
+                            from: undefined,
                             initializer: undefined,
                         },
                         {
-                            from: undefined,
                             kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "b",
+                            from: undefined,
                             initializer: undefined,
                         },
                         {
-                            from: undefined,
                             kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "c",
+                            from: undefined,
                             initializer: undefined,
                         },
                     ],

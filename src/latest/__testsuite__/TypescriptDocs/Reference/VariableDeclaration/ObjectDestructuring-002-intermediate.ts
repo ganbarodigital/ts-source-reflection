@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
@@ -82,21 +83,21 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateParenthesizedExpression,
             expression: {
-                kind: IntermediateKind.IntermediateDestructuredVarAssignment,
                 targets: [
                     {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "a",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "b",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 ],
+                kind: IntermediateKind.IntermediateDestructuredVarAssignment,
                 initializer: {
                     kind: IntermediateKind.IntermediateObjectLiteral,
                     properties: [
@@ -106,8 +107,8 @@ const expectedResult: IntermediateSourceFile = {
                             initializer: {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "baz",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         },
                         {
@@ -116,24 +117,23 @@ const expectedResult: IntermediateSourceFile = {
                             initializer: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "101",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         },
                     ],
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             },
-            asType: undefined,
             typeAssertion: undefined,
+            asType: undefined,
         },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

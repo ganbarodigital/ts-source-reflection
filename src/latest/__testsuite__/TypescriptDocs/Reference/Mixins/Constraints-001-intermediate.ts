@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
@@ -95,7 +96,7 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateTypeofTypeReference,
                             entityName: "Pausable",
                         },
-                    }
+                    },
                 },
             ],
         },
@@ -108,8 +109,8 @@ const expectedResult: IntermediateSourceFile = {
                     expression: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "Pausable",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
             ],
@@ -134,8 +135,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -154,8 +155,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -224,11 +225,11 @@ const expectedResult: IntermediateSourceFile = {
                                 typeName: "unknown",
                             },
                         },
+                        typeAssertion: undefined,
                         asType: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             typeName: "FreezablePlayer",
                         },
-                        typeAssertion: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
@@ -242,8 +243,8 @@ const expectedResult: IntermediateSourceFile = {
             target: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "playerTwo",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             propName: "shouldFreeze",
         },
@@ -252,7 +253,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

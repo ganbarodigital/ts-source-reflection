@@ -33,10 +33,12 @@
 //
 
 import {
-    IntermediateKind, IntermediateSourceFile
+    IntermediateKind,
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
@@ -65,14 +67,14 @@ const expectedResult: IntermediateSourceFile = {
                         left: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Album",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         right: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "AlbumLabel",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     },
                     initializer: undefined,
@@ -108,7 +110,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

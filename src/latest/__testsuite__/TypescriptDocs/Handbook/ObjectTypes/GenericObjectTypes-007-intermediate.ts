@@ -34,16 +34,17 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Box",
             typeParameters: [
                 {
@@ -59,9 +60,9 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         docBlock: undefined,
-                        name: "contents",
                         isOptional: false,
                         isReadonly: false,
+                        name: "contents",
                         typeRef: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             typeName: "Type",
@@ -75,7 +76,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

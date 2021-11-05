@@ -34,10 +34,12 @@
 
 import {
     IntermediateExpressionOperator,
-    IntermediateKind, IntermediateSourceFile
+    IntermediateKind,
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
@@ -111,8 +113,8 @@ const expectedResult: IntermediateSourceFile = {
                     target: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "Array",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     propName: "prototype",
                 },
@@ -141,7 +143,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

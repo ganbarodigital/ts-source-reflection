@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
@@ -51,9 +52,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "this",
                     isOptional: false,
                     isReadonly: false,
+                    name: "this",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Number",
@@ -87,8 +88,8 @@ const expectedResult: IntermediateSourceFile = {
                                 {
                                     kind: IntermediateKind.IntermediateNumericLiteral,
                                     value: "16",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                             ],
                             inferredReturnType: {
@@ -126,23 +127,23 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
-                        typeArguments: [],
                         expression: {
                             kind: IntermediateKind.IntermediatePropertyAccessExpression,
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "toHex",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             propName: "bind",
                         },
+                        typeArguments: [],
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "5",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         ],
                         inferredReturnType: {
@@ -151,7 +152,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         typeAssertion: undefined,
                         asType: undefined,
-                    }
+                    },
                 },
             ],
         },
@@ -160,7 +161,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

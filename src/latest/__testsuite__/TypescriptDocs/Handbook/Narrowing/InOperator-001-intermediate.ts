@@ -34,46 +34,46 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Fish",
+            typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         docBlock: undefined,
-                        name: "swim",
                         isOptional: false,
                         isReadonly: false,
+                        name: "swim",
                         typeRef: {
                             kind: IntermediateKind.IntermediateFunctionTypeSignature,
                             typeParameters: [],
                             parameters: [],
                             returnType: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "void"
+                                typeName: "void",
                             },
                         },
                     },
                 ],
             },
-            typeParameters: [],
         },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

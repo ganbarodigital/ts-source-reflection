@@ -35,10 +35,11 @@
 import {
     IntermediateExpressionOperator,
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
@@ -62,8 +63,8 @@ const expectedResult: IntermediateSourceFile = {
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "number",
-                            }
-                        }
+                            },
+                        },
                     },
                     initializer: undefined,
                 },
@@ -90,15 +91,15 @@ const expectedResult: IntermediateSourceFile = {
                                 isReadonly: false,
                                 name: "sum",
                                 typeRef: undefined,
-                                inferredType: {
-                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: "number",
-                                },
                                 initializer: {
                                     kind: IntermediateKind.IntermediateNumericLiteral,
                                     value: "0",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                inferredType: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
                                 },
                             },
                         ],
@@ -118,15 +119,15 @@ const expectedResult: IntermediateSourceFile = {
                                     isReadonly: false,
                                     name: "i",
                                     typeRef: undefined,
-                                    inferredType: {
-                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                        typeName: "number",
-                                    },
                                     initializer: {
                                         kind: IntermediateKind.IntermediateNumericLiteral,
                                         value: "0",
-                                        asType: undefined,
                                         typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                    inferredType: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "number",
                                     },
                                 },
                             ],
@@ -136,8 +137,8 @@ const expectedResult: IntermediateSourceFile = {
                             left: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "i",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             operator: IntermediateExpressionOperator.LESS_THAN,
                             right: {
@@ -145,8 +146,8 @@ const expectedResult: IntermediateSourceFile = {
                                 target: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "matrix",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                                 propName: "length",
                             },
@@ -156,8 +157,8 @@ const expectedResult: IntermediateSourceFile = {
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "i",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             operator: IntermediateExpressionOperator.PLUS_PLUS,
                         },
@@ -177,6 +178,21 @@ const expectedResult: IntermediateSourceFile = {
                                             isReadonly: false,
                                             name: "currentRow",
                                             typeRef: undefined,
+                                            initializer: {
+                                                kind: IntermediateKind.IntermediateElementAccessExpression,
+                                                element: {
+                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                    name: "matrix",
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                                accessKey: {
+                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                    name: "i",
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                            },
                                             inferredType: {
                                                 kind: IntermediateKind.IntermediateArrayTypeReference,
                                                 typeRef: {
@@ -184,23 +200,8 @@ const expectedResult: IntermediateSourceFile = {
                                                     typeName: "number",
                                                 },
                                             },
-                                            initializer: {
-                                                kind: IntermediateKind.IntermediateElementAccessExpression,
-                                                element: {
-                                                    kind: IntermediateKind.IntermediateIdentifierReference,
-                                                    name: "matrix",
-                                                    asType: undefined,
-                                                    typeAssertion: undefined,
-                                                },
-                                                accessKey: {
-                                                    kind: IntermediateKind.IntermediateIdentifierReference,
-                                                    name: "i",
-                                                    asType: undefined,
-                                                    typeAssertion: undefined,
-                                                },
-                                            },
                                         },
-                                    ]
+                                    ],
                                 },
                                 {
                                     kind: IntermediateKind.IntermediateForLoop,
@@ -217,15 +218,15 @@ const expectedResult: IntermediateSourceFile = {
                                                 isReadonly: false,
                                                 name: "i",
                                                 typeRef: undefined,
-                                                inferredType: {
-                                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                                    typeName: "number",
-                                                },
                                                 initializer: {
                                                     kind: IntermediateKind.IntermediateNumericLiteral,
                                                     value: "0",
-                                                    asType: undefined,
                                                     typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                                inferredType: {
+                                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                    typeName: "number",
                                                 },
                                             },
                                         ],
@@ -235,8 +236,8 @@ const expectedResult: IntermediateSourceFile = {
                                         left: {
                                             kind: IntermediateKind.IntermediateIdentifierReference,
                                             name: "i",
-                                            asType: undefined,
                                             typeAssertion: undefined,
+                                            asType: undefined,
                                         },
                                         operator: IntermediateExpressionOperator.LESS_THAN,
                                         right: {
@@ -244,8 +245,8 @@ const expectedResult: IntermediateSourceFile = {
                                             target: {
                                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                                 name: "currentRow",
-                                                asType: undefined,
                                                 typeAssertion: undefined,
+                                                asType: undefined,
                                             },
                                             propName: "length",
                                         },
@@ -255,8 +256,8 @@ const expectedResult: IntermediateSourceFile = {
                                         target: {
                                             kind: IntermediateKind.IntermediateIdentifierReference,
                                             name: "i",
-                                            asType: undefined,
                                             typeAssertion: undefined,
+                                            asType: undefined,
                                         },
                                         operator: IntermediateExpressionOperator.PLUS_PLUS,
                                     },
@@ -268,8 +269,8 @@ const expectedResult: IntermediateSourceFile = {
                                                 left: {
                                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                                     name: "sum",
-                                                    asType: undefined,
                                                     typeAssertion: undefined,
+                                                    asType: undefined,
                                                 },
                                                 operator: IntermediateExpressionOperator.PLUS_EQUALS,
                                                 right: {
@@ -277,14 +278,14 @@ const expectedResult: IntermediateSourceFile = {
                                                     element: {
                                                         kind: IntermediateKind.IntermediateIdentifierReference,
                                                         name: "currentRow",
-                                                        asType: undefined,
                                                         typeAssertion: undefined,
+                                                        asType: undefined,
                                                     },
                                                     accessKey: {
                                                         kind: IntermediateKind.IntermediateIdentifierReference,
                                                         name: "i",
-                                                        asType: undefined,
                                                         typeAssertion: undefined,
+                                                        asType: undefined,
                                                     },
                                                 },
                                             },
@@ -299,8 +300,8 @@ const expectedResult: IntermediateSourceFile = {
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "sum",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     },
                 ],
@@ -311,7 +312,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

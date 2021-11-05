@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateImportDeclaration,
@@ -59,25 +60,25 @@ const expectedResult: IntermediateSourceFile = {
                     name: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "x",
-                        asType: undefined,
                         typeAssertion: undefined,
-                    }
+                        asType: undefined,
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateImportBinding,
                     name: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "y",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
             ],
             source: {
                 kind: IntermediateKind.IntermediateStringLiteral,
                 value: "hot-new-module",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
         },
         {
@@ -85,31 +86,30 @@ const expectedResult: IntermediateSourceFile = {
             expression: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "x",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             typeArguments: [],
             arguments: [
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "y",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             inferredReturnType: {
                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                 typeName: "any",
             },
-            asType: undefined,
             typeAssertion: undefined,
+            asType: undefined,
         },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

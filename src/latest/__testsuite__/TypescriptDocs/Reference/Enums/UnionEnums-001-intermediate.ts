@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateEnum,
@@ -81,14 +82,14 @@ const expectedResult: IntermediateSourceFile = {
                         left: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "ShapeKind",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         right: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Circle",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     },
                 },
@@ -126,14 +127,14 @@ const expectedResult: IntermediateSourceFile = {
                         left: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "ShapeKind",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         right: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Square",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     },
                 },
@@ -155,7 +156,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

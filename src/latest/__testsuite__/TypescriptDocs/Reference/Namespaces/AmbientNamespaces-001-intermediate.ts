@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateNamespace,
@@ -194,14 +195,14 @@ const expectedResult: IntermediateSourceFile = {
                         left: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "D3",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         right: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Base",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     },
                     initializer: undefined,
@@ -213,7 +214,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

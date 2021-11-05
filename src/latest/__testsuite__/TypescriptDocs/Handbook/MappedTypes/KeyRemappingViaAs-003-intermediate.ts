@@ -34,16 +34,17 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "ExtractPII",
             typeParameters: [
                 {
@@ -90,9 +91,9 @@ const expectedResult: IntermediateSourceFile = {
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                                     docBlock: undefined,
-                                    name: "pii",
                                     isOptional: false,
                                     isReadonly: false,
+                                    name: "pii",
                                     typeRef: {
                                         kind: IntermediateKind.IntermediateBooleanLiteralType,
                                         typeName: "true",
@@ -115,8 +116,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "DBFields",
             typeParameters: [],
             typeRef: {
@@ -125,18 +126,18 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         docBlock: undefined,
-                        name: "id",
                         isOptional: false,
                         isReadonly: false,
+                        name: "id",
                         typeRef: {
                             kind: IntermediateKind.IntermediateAnonymousClassType,
                             members: [
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                                     docBlock: undefined,
-                                    name: "format",
                                     isOptional: false,
                                     isReadonly: false,
+                                    name: "format",
                                     typeRef: {
                                         kind: IntermediateKind.IntermediateStringLiteralType,
                                         typeName: "incrementing",
@@ -148,18 +149,18 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         docBlock: undefined,
-                        name: "name",
                         isOptional: false,
                         isReadonly: false,
+                        name: "name",
                         typeRef: {
                             kind: IntermediateKind.IntermediateAnonymousClassType,
                             members: [
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                                     docBlock: undefined,
-                                    name: "type",
                                     isOptional: false,
                                     isReadonly: false,
+                                    name: "type",
                                     typeRef: {
                                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                         typeName: "string",
@@ -168,14 +169,14 @@ const expectedResult: IntermediateSourceFile = {
                                 {
                                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                                     docBlock: undefined,
-                                    name: "pii",
                                     isOptional: false,
                                     isReadonly: false,
+                                    name: "pii",
                                     typeRef: {
                                         kind: IntermediateKind.IntermediateBooleanLiteralType,
                                         typeName: "true",
                                     },
-                                }
+                                },
                             ],
                         },
                     },
@@ -185,8 +186,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "ObjectsNeedingGDPRDeletion",
             typeParameters: [],
             typeRef: {
@@ -205,7 +206,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

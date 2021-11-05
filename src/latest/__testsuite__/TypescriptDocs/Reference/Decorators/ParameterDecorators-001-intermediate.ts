@@ -34,7 +34,8 @@
 
 import {
     IntermediateExpressionOperator,
-    IntermediateKind, IntermediateSourceFile
+    IntermediateKind,
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
@@ -42,8 +43,8 @@ const expectedResult: IntermediateSourceFile = {
     children: [
         {
             kind: IntermediateKind.IntermediateImportDeclaration,
-            items: [],
             isTypeOnly: false,
+            items: [],
             source: {
                 kind: IntermediateKind.IntermediateStringLiteral,
                 value: "reflect-metadata",
@@ -123,6 +124,7 @@ const expectedResult: IntermediateSourceFile = {
                     isReadonly: false,
                     name: "propertyKey",
                     typeRef: {
+                        kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
                             {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -133,7 +135,6 @@ const expectedResult: IntermediateSourceFile = {
                                 typeName: "symbol",
                             },
                         ],
-                        kind: IntermediateKind.IntermediateUnionType,
                     },
                     initializer: undefined,
                 },

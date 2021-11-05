@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateEnum,
@@ -73,8 +74,8 @@ const expectedResult: IntermediateSourceFile = {
                         target: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Enum",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         propName: "A",
                     },
@@ -103,14 +104,14 @@ const expectedResult: IntermediateSourceFile = {
                         element: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Enum",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         accessKey: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "a",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     },
                     inferredType: {
@@ -125,7 +126,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

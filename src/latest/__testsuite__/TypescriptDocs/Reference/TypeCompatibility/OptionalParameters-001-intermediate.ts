@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
@@ -114,8 +115,8 @@ const expectedResult: IntermediateSourceFile = {
             expression: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "invokeLater",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             typeArguments: [],
             arguments: [
@@ -125,18 +126,18 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateNumericLiteral,
                             value: "1",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateNumericLiteral,
                             value: "2",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     ],
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
                 {
                     kind: IntermediateKind.IntermediateArrowFunction,
@@ -177,16 +178,16 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                 typeName: "void",
             },
-            asType: undefined,
             typeAssertion: undefined,
+            asType: undefined,
         },
         {
             kind: IntermediateKind.IntermediateCallExpression,
             expression: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "invokeLater",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             typeArguments: [],
             arguments: [
@@ -196,18 +197,18 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateNumericLiteral,
                             value: "1",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateNumericLiteral,
                             value: "2",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     ],
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
                 {
                     kind: IntermediateKind.IntermediateArrowFunction,
@@ -248,15 +249,14 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                 typeName: "void",
             },
-            asType: undefined,
             typeAssertion: undefined,
+            asType: undefined,
         },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

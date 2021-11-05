@@ -34,28 +34,28 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "readButtonInput",
             typeParameters: [],
             parameters: [
                 {
-                    kind: IntermediateKind.IntermediateRestCallableParameterDeclaration,
                     parameter: {
                         kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                         decorators: [],
-                        name: "args",
                         isOptional: false,
                         isReadonly: false,
+                        name: "args",
                         typeRef: {
                             kind: IntermediateKind.IntermediateTupleType,
                             elements: [
@@ -93,6 +93,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         initializer: undefined,
                     },
+                    kind: IntermediateKind.IntermediateRestCallableParameterDeclaration,
                 },
             ],
             returnType: undefined,
@@ -111,7 +112,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

@@ -34,18 +34,19 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            isDeclared: false,
-            name: "NumberOrStringDictionary",
-            isExported: false,
-            isDefaultExport: false,
             docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "NumberOrStringDictionary",
             typeParameters: [],
             extends: [],
             members: [
@@ -59,8 +60,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     },
                     value: {
-                        valueTypeRef:
-                        {
+                        valueTypeRef: {
                             kind: IntermediateKind.IntermediateUnionType,
                             typeRefs: [
                                 {
@@ -79,9 +79,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "length",
                     isOptional: false,
                     isReadonly: false,
+                    name: "length",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -90,9 +90,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "name",
                     isOptional: false,
                     isReadonly: false,
+                    name: "name",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -105,7 +105,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
@@ -64,8 +65,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateStringLiteral,
                         value: "",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -84,8 +85,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -104,8 +105,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -129,7 +130,7 @@ const expectedResult: IntermediateSourceFile = {
                                 typeName: "string",
                             },
                             initializer: undefined,
-                        }
+                        },
                     ],
                     returnType: undefined,
                     inferredReturnType: {
@@ -267,8 +268,8 @@ const expectedResult: IntermediateSourceFile = {
                                 {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "Base",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                             ],
                             implements: [],
@@ -279,21 +280,21 @@ const expectedResult: IntermediateSourceFile = {
                                     decorators: [],
                                     isOptional: false,
                                     isReadonly: false,
-                                    accessModifier: undefined,
                                     isStatic: false,
+                                    accessModifier: undefined,
                                     name: {
                                         kind: IntermediateKind.IntermediatePrivatePropertyIdentifier,
                                         name: "#scale",
                                     },
-                                    inferredType: {
-                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                        typeName: "number",
-                                    },
                                     initializer: {
                                         kind: IntermediateKind.IntermediateNumericLiteral,
                                         value: "1",
-                                        asType: undefined,
                                         typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                    inferredType: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "number",
                                     },
                                 },
                                 {
@@ -362,16 +363,16 @@ const expectedResult: IntermediateSourceFile = {
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Scale",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         typeArguments: [],
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "Sprite",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         ],
                         inferredReturnType: {
@@ -422,8 +423,8 @@ const expectedResult: IntermediateSourceFile = {
                                 },
                             ],
                         },
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateIntersectionType,
@@ -499,8 +500,8 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "Bird",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         ],
                         asType: undefined,
@@ -527,8 +528,8 @@ const expectedResult: IntermediateSourceFile = {
                 target: {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "flappySprite",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
                 propName: "setScale",
             },
@@ -537,23 +538,22 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateNumericLiteral,
                     value: "0.8",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             inferredReturnType: {
                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                 typeName: "void",
             },
-            asType: undefined,
             typeAssertion: undefined,
+            asType: undefined,
         },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

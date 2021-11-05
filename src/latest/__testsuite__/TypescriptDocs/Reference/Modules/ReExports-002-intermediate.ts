@@ -34,18 +34,19 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateReExportAll,
             source: {
                 kind: IntermediateKind.IntermediateStringLiteral,
                 value: "./ExportingDeclaration-001-StringValidator",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
         },
         {
@@ -53,8 +54,8 @@ const expectedResult: IntermediateSourceFile = {
             source: {
                 kind: IntermediateKind.IntermediateStringLiteral,
                 value: "./ExportStatements-001-intermediate",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
         },
         {
@@ -62,8 +63,8 @@ const expectedResult: IntermediateSourceFile = {
             source: {
                 kind: IntermediateKind.IntermediateStringLiteral,
                 value: "./ReExports-001-intermediate",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
         },
     ],
@@ -71,7 +72,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

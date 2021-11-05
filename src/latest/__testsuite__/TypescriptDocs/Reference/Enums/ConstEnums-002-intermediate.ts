@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateEnum,
@@ -76,7 +77,7 @@ const expectedResult: IntermediateSourceFile = {
             isDeclared: false,
             isDefaultExport: false,
             isExported: false,
-            variables:[
+            variables: [
                 {
                     kind: IntermediateKind.IntermediateLetDeclaration,
                     isConstant: false,
@@ -91,8 +92,8 @@ const expectedResult: IntermediateSourceFile = {
                                 target: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "Direction",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                                 propName: "Up",
                             },
@@ -101,8 +102,8 @@ const expectedResult: IntermediateSourceFile = {
                                 target: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "Direction",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                                 propName: "Down",
                             },
@@ -111,8 +112,8 @@ const expectedResult: IntermediateSourceFile = {
                                 target: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "Direction",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                                 propName: "Left",
                             },
@@ -121,14 +122,14 @@ const expectedResult: IntermediateSourceFile = {
                                 target: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "Direction",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                                 propName: "Right",
                             },
                         ],
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
@@ -138,14 +139,13 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     },
                 },
-            ]
-        }
+            ],
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

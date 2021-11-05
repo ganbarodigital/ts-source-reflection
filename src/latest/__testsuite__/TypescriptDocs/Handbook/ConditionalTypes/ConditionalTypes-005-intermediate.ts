@@ -34,24 +34,25 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            name: "Flatten",
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "Flatten",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
                     name: "Type",
                     constraint: undefined,
                     defaultType: undefined,
-                }
+                },
             ],
             typeRef: {
                 kind: IntermediateKind.IntermediateConditionalType,
@@ -64,13 +65,13 @@ const expectedResult: IntermediateSourceFile = {
                     typeName: "Array",
                     typeArguments: [
                         {
-                            kind: IntermediateKind.IntermediateInferType,
                             typeParameter: {
                                 kind: IntermediateKind.IntermediateGenericType,
                                 name: "Item",
                                 constraint: undefined,
                                 defaultType: undefined,
                             },
+                            kind: IntermediateKind.IntermediateInferType,
                         },
                     ],
                 },
@@ -89,7 +90,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

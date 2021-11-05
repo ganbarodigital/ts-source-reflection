@@ -34,7 +34,7 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
@@ -49,6 +49,8 @@ const expectedResult: IntermediateSourceFile = {
             name: "reportableClassDecorator",
             typeParameters: [
                 {
+                    kind: IntermediateKind.IntermediateGenericType,
+                    name: "T",
                     constraint: {
                         kind: IntermediateKind.IntermediateAnonymousClassType,
                         members: [
@@ -56,6 +58,7 @@ const expectedResult: IntermediateSourceFile = {
                                 kind: IntermediateKind.IntermediateConstructorSignature,
                                 parameters: [
                                     {
+                                        kind: IntermediateKind.IntermediateRestCallableParameterSignature,
                                         parameter: {
                                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
                                             isOptional: false,
@@ -69,7 +72,6 @@ const expectedResult: IntermediateSourceFile = {
                                                 },
                                             },
                                         },
-                                        kind: IntermediateKind.IntermediateRestCallableParameterSignature,
                                     },
                                 ],
                                 returnType: {
@@ -79,8 +81,6 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                     },
                     defaultType: undefined,
-                    kind: IntermediateKind.IntermediateGenericType,
-                    name: "T",
                 },
             ],
             parameters: [

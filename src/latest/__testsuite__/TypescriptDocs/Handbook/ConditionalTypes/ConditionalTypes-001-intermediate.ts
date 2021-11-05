@@ -34,17 +34,18 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Animal",
             typeParameters: [],
             extends: [],
@@ -52,7 +53,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
-                    isStatic:false,
+                    isStatic: false,
                     name: "live",
                     typeParameters: [],
                     parameters: [],
@@ -67,23 +68,23 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Dog",
             typeParameters: [],
             extends: [
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Animal",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             members: [
                 {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
-                    isStatic:false,
+                    isStatic: false,
                     name: "woof",
                     typeParameters: [],
                     parameters: [],
@@ -97,9 +98,9 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            name: "Example1",
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "Example1",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateConditionalType,
@@ -124,9 +125,9 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            name: "Example2",
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "Example2",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateConditionalType,
@@ -153,7 +154,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

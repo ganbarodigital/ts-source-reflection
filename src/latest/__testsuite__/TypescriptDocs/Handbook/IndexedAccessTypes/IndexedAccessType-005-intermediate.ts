@@ -34,23 +34,25 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
                     isConstant: true,
                     isReadonly: false,
                     name: "MyArray",
+                    typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateArrayLiteral,
                         elements: [
@@ -63,9 +65,9 @@ const expectedResult: IntermediateSourceFile = {
                                         initializer: {
                                             kind: IntermediateKind.IntermediateStringLiteral,
                                             value: "Alice",
-                                            asType: undefined,
                                             typeAssertion: undefined,
-                                        }
+                                            asType: undefined,
+                                        },
                                     },
                                     {
                                         kind: IntermediateKind.IntermediatePropertyAssignment,
@@ -73,8 +75,8 @@ const expectedResult: IntermediateSourceFile = {
                                         initializer: {
                                             kind: IntermediateKind.IntermediateNumericLiteral,
                                             value: "15",
-                                            asType: undefined,
                                             typeAssertion: undefined,
+                                            asType: undefined,
                                         },
                                     },
                                 ],
@@ -90,9 +92,9 @@ const expectedResult: IntermediateSourceFile = {
                                         initializer: {
                                             kind: IntermediateKind.IntermediateStringLiteral,
                                             value: "Bob",
-                                            asType: undefined,
                                             typeAssertion: undefined,
-                                        }
+                                            asType: undefined,
+                                        },
                                     },
                                     {
                                         kind: IntermediateKind.IntermediatePropertyAssignment,
@@ -100,8 +102,8 @@ const expectedResult: IntermediateSourceFile = {
                                         initializer: {
                                             kind: IntermediateKind.IntermediateNumericLiteral,
                                             value: "23",
-                                            asType: undefined,
                                             typeAssertion: undefined,
+                                            asType: undefined,
                                         },
                                     },
                                 ],
@@ -117,9 +119,9 @@ const expectedResult: IntermediateSourceFile = {
                                         initializer: {
                                             kind: IntermediateKind.IntermediateStringLiteral,
                                             value: "Eve",
-                                            asType: undefined,
                                             typeAssertion: undefined,
-                                        }
+                                            asType: undefined,
+                                        },
                                     },
                                     {
                                         kind: IntermediateKind.IntermediatePropertyAssignment,
@@ -127,8 +129,8 @@ const expectedResult: IntermediateSourceFile = {
                                         initializer: {
                                             kind: IntermediateKind.IntermediateNumericLiteral,
                                             value: "38",
-                                            asType: undefined,
                                             typeAssertion: undefined,
+                                            asType: undefined,
                                         },
                                     },
                                 ],
@@ -136,10 +138,9 @@ const expectedResult: IntermediateSourceFile = {
                                 asType: undefined,
                             },
                         ],
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
-                    typeRef: undefined,
                     inferredType: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
@@ -176,64 +177,64 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Person",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
-                valueRef: {
-                    kind: IntermediateKind.IntermediateTypeofTypeReference,
-                    entityName: "MyArray",
-                },
                 indexRef: {
                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                     typeName: "number",
                 },
+                valueRef: {
+                    kind: IntermediateKind.IntermediateTypeofTypeReference,
+                    entityName: "MyArray",
+                },
             },
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Age",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
+                indexRef: {
+                    kind: IntermediateKind.IntermediateStringLiteralType,
+                    typeName: "age",
+                },
                 valueRef: {
                     kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
+                    indexRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "number",
+                    },
                     valueRef: {
                         kind: IntermediateKind.IntermediateTypeofTypeReference,
                         entityName: "MyArray",
                     },
-                    indexRef: {
-                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                        typeName: "number",
-                    }
-                },
-                indexRef: {
-                    kind: IntermediateKind.IntermediateStringLiteralType,
-                    typeName: "age",
                 },
             },
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Age2",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
-                valueRef: {
-                    kind: IntermediateKind.IntermediateFixedTypeReference,
-                    typeName: "Person",
-                },
                 indexRef: {
                     kind: IntermediateKind.IntermediateStringLiteralType,
                     typeName: "age",
+                },
+                valueRef: {
+                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                    typeName: "Person",
                 },
             },
         },
@@ -242,7 +243,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

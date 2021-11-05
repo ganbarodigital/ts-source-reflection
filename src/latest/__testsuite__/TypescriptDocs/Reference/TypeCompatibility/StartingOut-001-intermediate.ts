@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
@@ -104,8 +105,8 @@ const expectedResult: IntermediateSourceFile = {
                                 initializer: {
                                     kind: IntermediateKind.IntermediateStringLiteral,
                                     value: "Lassie",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                             },
                             {
@@ -114,8 +115,8 @@ const expectedResult: IntermediateSourceFile = {
                                 initializer: {
                                     kind: IntermediateKind.IntermediateStringLiteral,
                                     value: "Rudd Weatherwax",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                             },
                         ],
@@ -157,14 +158,14 @@ const expectedResult: IntermediateSourceFile = {
             target: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "pet",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             initializer: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "dog",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
         },
     ],
@@ -172,7 +173,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

@@ -33,16 +33,18 @@
 //
 
 import {
-    IntermediateKind, IntermediateSourceFile
+    IntermediateKind,
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "OptionsFlags",
             typeParameters: [
                 {
@@ -80,8 +82,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "FeatureFlags",
             typeParameters: [],
             typeRef: {
@@ -90,9 +92,9 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         docBlock: undefined,
-                        name: "darkMode",
                         isOptional: false,
                         isReadonly: false,
+                        name: "darkMode",
                         typeRef: {
                             kind: IntermediateKind.IntermediateFunctionTypeSignature,
                             typeParameters: [],
@@ -106,9 +108,9 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         docBlock: undefined,
-                        name: "newUserProfile",
                         isOptional: false,
                         isReadonly: false,
+                        name: "newUserProfile",
                         typeRef: {
                             kind: IntermediateKind.IntermediateFunctionTypeSignature,
                             typeParameters: [],
@@ -125,8 +127,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "FeatureOptions",
             typeParameters: [],
             typeRef: {
@@ -145,7 +147,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

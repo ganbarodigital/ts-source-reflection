@@ -37,7 +37,8 @@ import {
     IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
-const expectedResult: IntermediateSourceFile = {    kind: IntermediateKind.IntermediateSourceFile,
+const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,

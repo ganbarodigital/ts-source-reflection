@@ -34,16 +34,17 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "PropEventSource",
             typeParameters: [
                 {
@@ -59,15 +60,15 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateMethodSignature,
                         docBlock: undefined,
-                        isStatic:false,
-                        typeParameters: [],
+                        isStatic: false,
                         name: "on",
+                        typeParameters: [],
                         parameters: [
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                name: "eventName",
-                                isReadonly: false,
                                 isOptional: false,
+                                isReadonly: false,
+                                name: "eventName",
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateTemplateLiteralType,
                                     head: "",
@@ -84,7 +85,7 @@ const expectedResult: IntermediateSourceFile = {
                                                     {
                                                         kind: IntermediateKind.IntermediateKeyofTypeReference,
                                                         typeRef: {
-                                                            kind : IntermediateKind.IntermediateFixedTypeReference,
+                                                            kind: IntermediateKind.IntermediateFixedTypeReference,
                                                             typeName: "Type",
                                                         },
                                                     },
@@ -97,18 +98,18 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                name: "callback",
-                                isReadonly: false,
                                 isOptional: false,
+                                isReadonly: false,
+                                name: "callback",
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateFunctionTypeSignature,
                                     typeParameters: [],
                                     parameters: [
                                         {
                                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                            name: "newValue",
-                                            isReadonly: false,
                                             isOptional: false,
+                                            isReadonly: false,
+                                            name: "newValue",
                                             typeRef: {
                                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                                 typeName: "any",
@@ -118,9 +119,9 @@ const expectedResult: IntermediateSourceFile = {
                                     returnType: {
                                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                         typeName: "void",
-                                    }
+                                    },
                                 },
-                            }
+                            },
                         ],
                         returnType: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -134,8 +135,8 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateAmbientFunction,
             docBlock: undefined,
             isDeclared: true,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "makeWatchedObject",
             typeParameters: [
                 {
@@ -149,15 +150,15 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "obj",
-                    isReadonly: false,
                     isOptional: false,
+                    isReadonly: false,
+                    name: "obj",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Type",
                     },
                     initializer: undefined,
-                }
+                },
             ],
             returnType: {
                 kind: IntermediateKind.IntermediateIntersectionType,
@@ -179,13 +180,12 @@ const expectedResult: IntermediateSourceFile = {
                 ],
             },
             hasBody: false,
-        }
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

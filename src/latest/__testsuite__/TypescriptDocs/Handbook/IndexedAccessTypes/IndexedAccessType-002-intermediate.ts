@@ -34,16 +34,17 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Person",
             typeParameters: [],
             typeRef: {
@@ -52,9 +53,9 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         docBlock: undefined,
-                        name: "age",
                         isOptional: false,
                         isReadonly: false,
+                        name: "age",
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "number",
@@ -63,9 +64,9 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         docBlock: undefined,
-                        name: "name",
                         isOptional: false,
                         isReadonly: false,
+                        name: "name",
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "string",
@@ -74,9 +75,9 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         docBlock: undefined,
-                        name: "alive",
                         isOptional: false,
                         isReadonly: false,
+                        name: "alive",
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "boolean",
@@ -88,16 +89,12 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "I1",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
-                valueRef: {
-                    kind: IntermediateKind.IntermediateFixedTypeReference,
-                    typeName: "Person",
-                },
                 indexRef: {
                     kind: IntermediateKind.IntermediateUnionType,
                     typeRefs: [
@@ -111,6 +108,10 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     ],
                 },
+                valueRef: {
+                    kind: IntermediateKind.IntermediateFixedTypeReference,
+                    typeName: "Person",
+                },
             },
         },
     ],
@@ -118,7 +119,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

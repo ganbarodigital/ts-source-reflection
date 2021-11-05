@@ -34,27 +34,28 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            isDeclared: false,
-            name: "Shape",
-            isExported: false,
-            isDefaultExport: false,
             docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "Shape",
             typeParameters: [],
             extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "kind",
                     isOptional: false,
                     isReadonly: false,
+                    name: "kind",
                     typeRef: {
                         kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
@@ -72,23 +73,23 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "radius",
                     isOptional: true,
                     isReadonly: false,
+                    name: "radius",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                        typeName: 'number',
+                        typeName: "number",
                     },
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "sideLength",
                     isOptional: true,
                     isReadonly: false,
+                    name: "sideLength",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                        typeName: 'number',
+                        typeName: "number",
                     },
                 },
             ],
@@ -98,7 +99,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

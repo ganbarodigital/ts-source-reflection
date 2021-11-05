@@ -54,6 +54,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
+                    kind: IntermediateKind.IntermediateIndexSignature,
                     index: {
                         indexName: "s",
                         indexTypeRef: {
@@ -61,8 +62,6 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "string",
                         },
                     },
-                    sigIsReadonly: false,
-                    kind: IntermediateKind.IntermediateIndexSignature,
                     value: {
                         valueTypeRef: {
                             kind: IntermediateKind.IntermediateUnionType,
@@ -97,6 +96,7 @@ const expectedResult: IntermediateSourceFile = {
                             ],
                         },
                     },
+                    sigIsReadonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateMethodDeclaration,

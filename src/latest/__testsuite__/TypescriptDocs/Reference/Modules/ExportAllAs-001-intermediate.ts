@@ -34,24 +34,25 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateNamespaceExport,
             name: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "utilities",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             source: {
                 kind: IntermediateKind.IntermediateStringLiteral,
                 value: "./ReExports-002-input",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
         },
     ],
@@ -59,7 +60,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

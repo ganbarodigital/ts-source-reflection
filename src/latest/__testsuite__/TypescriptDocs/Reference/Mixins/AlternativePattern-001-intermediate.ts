@@ -34,7 +34,7 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
@@ -376,6 +376,5 @@ const expectedResult: IntermediateSourceFile = {
     referencedTypes: [],
     referenceNoDefaultLib: false,
 }
-
 
 export default expectedResult;

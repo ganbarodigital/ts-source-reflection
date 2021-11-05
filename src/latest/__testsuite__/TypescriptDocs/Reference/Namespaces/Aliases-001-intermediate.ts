@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateNamespace,
@@ -92,22 +93,22 @@ const expectedResult: IntermediateSourceFile = {
             name: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "polygons",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             modRef: {
                 kind: IntermediateKind.IntermediateQualifiedName,
                 left: {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Shapes",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
                 right: {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Polygons",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             },
         },
@@ -134,7 +135,7 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             right: {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: "Square"
+                                typeName: "Square",
                             },
                         },
                         arguments: [],
@@ -142,7 +143,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateUndiscoverableType,
-                    }
+                    },
                 },
             ],
         },
@@ -151,7 +152,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

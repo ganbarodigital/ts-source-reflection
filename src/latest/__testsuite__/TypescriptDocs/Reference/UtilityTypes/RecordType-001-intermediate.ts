@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
@@ -52,9 +53,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "age",
                     isOptional: false,
                     isReadonly: false,
+                    name: "age",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -63,9 +64,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "breed",
                     isOptional: false,
                     isReadonly: false,
+                    name: "breed",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -86,7 +87,6 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateStringLiteralType,
                         typeName: "miffy",
-
                     },
                     {
                         kind: IntermediateKind.IntermediateStringLiteralType,
@@ -140,8 +140,8 @@ const expectedResult: IntermediateSourceFile = {
                                             initializer: {
                                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                                 value: "10",
-                                                asType: undefined,
                                                 typeAssertion: undefined,
+                                                asType: undefined,
                                             },
                                         },
                                         {
@@ -150,13 +150,13 @@ const expectedResult: IntermediateSourceFile = {
                                             initializer: {
                                                 kind: IntermediateKind.IntermediateStringLiteral,
                                                 value: "Persian",
-                                                asType: undefined,
                                                 typeAssertion: undefined,
+                                                asType: undefined,
                                             },
                                         },
                                     ],
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                             },
                             {
@@ -171,8 +171,8 @@ const expectedResult: IntermediateSourceFile = {
                                             initializer: {
                                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                                 value: "5",
-                                                asType: undefined,
                                                 typeAssertion: undefined,
+                                                asType: undefined,
                                             },
                                         },
                                         {
@@ -181,13 +181,13 @@ const expectedResult: IntermediateSourceFile = {
                                             initializer: {
                                                 kind: IntermediateKind.IntermediateStringLiteral,
                                                 value: "Maine Coon",
-                                                asType: undefined,
                                                 typeAssertion: undefined,
+                                                asType: undefined,
                                             },
                                         },
                                     ],
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                             },
                             {
@@ -202,8 +202,8 @@ const expectedResult: IntermediateSourceFile = {
                                             initializer: {
                                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                                 value: "16",
-                                                asType: undefined,
                                                 typeAssertion: undefined,
+                                                asType: undefined,
                                             },
                                         },
                                         {
@@ -212,13 +212,13 @@ const expectedResult: IntermediateSourceFile = {
                                             initializer: {
                                                 kind: IntermediateKind.IntermediateStringLiteral,
                                                 value: "British Shorthair",
-                                                asType: undefined,
                                                 typeAssertion: undefined,
+                                                asType: undefined,
                                             },
                                         },
                                     ],
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                             },
                         ],
@@ -233,7 +233,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

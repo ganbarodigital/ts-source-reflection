@@ -34,24 +34,25 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            name: "MessageOf",
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "MessageOf",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
                     name: "T",
                     constraint: undefined,
                     defaultType: undefined,
-                }
+                },
             ],
             typeRef: {
                 kind: IntermediateKind.IntermediateConditionalType,
@@ -65,9 +66,9 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedPropertySignature,
                             docBlock: undefined,
-                            name: "message",
                             isOptional: false,
                             isReadonly: false,
+                            name: "message",
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "unknown",
@@ -77,13 +78,13 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 trueTypeRef: {
                     kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
-                    valueRef: {
-                        kind: IntermediateKind.IntermediateFixedTypeReference,
-                        typeName: "T",
-                    },
                     indexRef: {
                         kind: IntermediateKind.IntermediateStringLiteralType,
                         typeName: "message",
+                    },
+                    valueRef: {
+                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                        typeName: "T",
                     },
                 },
                 falseTypeRef: {
@@ -96,8 +97,8 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Email",
             typeParameters: [],
             extends: [],
@@ -105,9 +106,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "message",
                     isOptional: false,
                     isReadonly: false,
+                    name: "message",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -119,8 +120,8 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Dog",
             typeParameters: [],
             extends: [],
@@ -128,7 +129,7 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
-                    isStatic:false,
+                    isStatic: false,
                     name: "bark",
                     typeParameters: [],
                     parameters: [],
@@ -142,9 +143,9 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            name: "EmailMessageContents",
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "EmailMessageContents",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -160,9 +161,9 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            name: "DogMessageContents",
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "DogMessageContents",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -180,7 +181,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

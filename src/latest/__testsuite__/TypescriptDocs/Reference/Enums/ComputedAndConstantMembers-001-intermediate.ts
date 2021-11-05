@@ -35,10 +35,11 @@
 import {
     IntermediateExpressionOperator,
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateEnum,
@@ -62,15 +63,15 @@ const expectedResult: IntermediateSourceFile = {
                         left: {
                             kind: IntermediateKind.IntermediateNumericLiteral,
                             value: "1",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         operator: IntermediateExpressionOperator.LESS_THAN_LESS_THAN,
                         right: {
                             kind: IntermediateKind.IntermediateNumericLiteral,
                             value: "1",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     },
                 },
@@ -82,15 +83,15 @@ const expectedResult: IntermediateSourceFile = {
                         left: {
                             kind: IntermediateKind.IntermediateNumericLiteral,
                             value: "1",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         operator: IntermediateExpressionOperator.LESS_THAN_LESS_THAN,
                         right: {
                             kind: IntermediateKind.IntermediateNumericLiteral,
                             value: "2",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     },
                 },
@@ -102,15 +103,15 @@ const expectedResult: IntermediateSourceFile = {
                         left: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Read",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         operator: IntermediateExpressionOperator.BAR,
                         right: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Write",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     },
                 },
@@ -122,8 +123,8 @@ const expectedResult: IntermediateSourceFile = {
                         target: {
                             kind: IntermediateKind.IntermediateStringLiteral,
                             value: "123",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         propName: "length",
                     },
@@ -135,7 +136,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

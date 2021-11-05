@@ -34,27 +34,28 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            isDeclared: false,
-            name: "Circle",
-            isExported: false,
-            isDefaultExport: false,
             docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "Circle",
             typeParameters: [],
             extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "kind",
                     isOptional: false,
                     isReadonly: false,
+                    name: "kind",
                     typeRef: {
                         kind: IntermediateKind.IntermediateStringLiteralType,
                         typeName: "circle",
@@ -63,32 +64,32 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "radius",
                     isOptional: false,
                     isReadonly: false,
+                    name: "radius",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                        typeName: 'number',
+                        typeName: "number",
                     },
                 },
             ],
         },
         {
             kind: IntermediateKind.IntermediateInterface,
-            isDeclared: false,
-            name: "Square",
-            isExported: false,
-            isDefaultExport: false,
             docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "Square",
             typeParameters: [],
             extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "kind",
                     isOptional: false,
                     isReadonly: false,
+                    name: "kind",
                     typeRef: {
                         kind: IntermediateKind.IntermediateStringLiteralType,
                         typeName: "square",
@@ -97,12 +98,12 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "sideLength",
                     isOptional: false,
                     isReadonly: false,
+                    name: "sideLength",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                        typeName: 'number',
+                        typeName: "number",
                     },
                 },
             ],
@@ -110,8 +111,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Shape",
             typeParameters: [],
             typeRef: {
@@ -133,7 +134,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

@@ -34,16 +34,17 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "OrNull",
             typeParameters: [
                 {
@@ -70,8 +71,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "OneOrMany",
             typeParameters: [
                 {
@@ -91,8 +92,8 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
-                                kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: "Type",
+                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                            typeName: "Type",
                         },
                     },
                 ],
@@ -101,8 +102,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "OneOrManyOrNull",
             typeParameters: [
                 {
@@ -132,8 +133,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "OneOrManyOrNullStrings",
             typeParameters: [],
             typeRef: {
@@ -142,7 +143,7 @@ const expectedResult: IntermediateSourceFile = {
                 typeArguments: [
                     {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: "string",
+                        typeName: "string",
                     },
                 ],
             },
@@ -152,7 +153,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

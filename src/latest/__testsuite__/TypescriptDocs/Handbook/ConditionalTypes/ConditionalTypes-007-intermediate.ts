@@ -34,26 +34,27 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateAmbientFunction,
             docBlock: undefined,
             isDeclared: true,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "stringOrNum",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "x",
                     isOptional: false,
                     isReadonly: false,
+                    name: "x",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -71,17 +72,17 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateAmbientFunction,
             docBlock: undefined,
             isDeclared: true,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "stringOrNum",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "x",
                     isOptional: false,
                     isReadonly: false,
+                    name: "x",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -99,17 +100,17 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateAmbientFunction,
             docBlock: undefined,
             isDeclared: true,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "stringOrNum",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "x",
                     isOptional: false,
                     isReadonly: false,
+                    name: "x",
                     typeRef: {
                         kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
@@ -144,9 +145,9 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            name: "T1",
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "T1",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -164,7 +165,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

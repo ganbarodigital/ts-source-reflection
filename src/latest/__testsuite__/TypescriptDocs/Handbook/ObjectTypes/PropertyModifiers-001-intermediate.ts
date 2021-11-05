@@ -34,17 +34,18 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "draw",
             typeParameters: [],
             parameters: [
@@ -54,19 +55,19 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "shape",
-                            initializer: undefined,
                             from: "Shape",
+                            initializer: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "xPos",
+                            from: "number",
                             initializer: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "100",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
-                            from: "number",
                         },
                     ],
                     typeRef: undefined,
@@ -89,7 +90,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

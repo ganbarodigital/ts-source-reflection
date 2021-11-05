@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateImportDeclaration,
@@ -48,8 +49,8 @@ const expectedResult: IntermediateSourceFile = {
                     name: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "t",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
             ],
@@ -69,8 +70,8 @@ const expectedResult: IntermediateSourceFile = {
                     name: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "f",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
             ],
@@ -117,8 +118,8 @@ const expectedResult: IntermediateSourceFile = {
                 target: {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "console",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
                 propName: "log",
             },
@@ -129,8 +130,8 @@ const expectedResult: IntermediateSourceFile = {
                     expression: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "f",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     typeArguments: [],
                     arguments: [],
@@ -148,13 +149,12 @@ const expectedResult: IntermediateSourceFile = {
             },
             typeAssertion: undefined,
             asType: undefined,
-        }
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

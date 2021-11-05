@@ -34,17 +34,18 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateAmbientFunction,
+            docBlock: undefined,
             isDeclared: true,
             isDefaultExport: false,
             isExported: false,
-            docBlock: undefined,
             name: "f1",
             typeParameters: [],
             parameters: [
@@ -60,9 +61,9 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
                                 docBlock: undefined,
-                                name: "a",
                                 isOptional: false,
                                 isReadonly: false,
+                                name: "a",
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "number",
@@ -71,15 +72,15 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
                                 docBlock: undefined,
-                                name: "b",
                                 isOptional: false,
                                 isReadonly: false,
+                                name: "b",
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "string",
                                 },
                             },
-                        ]
+                        ],
                     },
                     initializer: undefined,
                 },
@@ -88,7 +89,7 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                 typeName: "void",
             },
-            hasBody: false
+            hasBody: false,
         },
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
@@ -113,7 +114,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

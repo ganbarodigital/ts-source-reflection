@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
@@ -117,8 +118,8 @@ const expectedResult: IntermediateSourceFile = {
             target: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "pet",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             initializer: {
                 kind: IntermediateKind.IntermediateNewExpression,
@@ -128,14 +129,13 @@ const expectedResult: IntermediateSourceFile = {
                 },
                 arguments: [],
                 asType: undefined,
-            }
-        }
+            },
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

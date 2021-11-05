@@ -34,27 +34,28 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            isDeclared: false,
-            name: "PaintOptions",
-            isExported: false,
-            isDefaultExport: false,
             docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "PaintOptions",
             typeParameters: [],
             extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "shape",
                     isOptional: false,
                     isReadonly: false,
+                    name: "shape",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Shape",
@@ -63,9 +64,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "xPos",
                     isOptional: true,
                     isReadonly: false,
+                    name: "xPos",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -74,9 +75,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "yPos",
                     isOptional: true,
                     isReadonly: false,
+                    name: "yPos",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -88,8 +89,8 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "paintShape",
             typeParameters: [],
             parameters: [
@@ -99,30 +100,30 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "shape",
-                            initializer: undefined,
                             from: undefined,
+                            initializer: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "xPos",
+                            from: undefined,
                             initializer: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "0",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
-                            from: undefined,
                         },
                         {
                             kind: IntermediateKind.IntermediateDestructuredIdentifierDeclaration,
                             name: "yPos",
+                            from: undefined,
                             initializer: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "0",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
-                            from: undefined,
                         },
                     ],
                     typeRef: {
@@ -148,7 +149,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

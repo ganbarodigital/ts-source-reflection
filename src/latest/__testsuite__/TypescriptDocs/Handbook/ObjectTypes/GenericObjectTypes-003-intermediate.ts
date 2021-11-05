@@ -34,19 +34,19 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Box",
-            extends: [],
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -55,13 +55,14 @@ const expectedResult: IntermediateSourceFile = {
                     defaultType: undefined,
                 },
             ],
+            extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "contents",
                     isOptional: false,
                     isReadonly: false,
+                    name: "contents",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Type",
@@ -73,14 +74,14 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateLetDeclaration,
-                    name: "box",
                     isConstant: false,
                     isReadonly: false,
+                    name: "box",
                     typeRef: {
                         kind: IntermediateKind.IntermediateGenericTypeReference,
                         typeName: "Box",
@@ -100,7 +101,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

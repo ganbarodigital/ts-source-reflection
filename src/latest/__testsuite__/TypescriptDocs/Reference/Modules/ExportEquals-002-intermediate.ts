@@ -34,26 +34,27 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateImportAssignment,
             name: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "zip",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             modRef: {
                 kind: IntermediateKind.IntermediateExternalModuleReference,
                 source: {
                     kind: IntermediateKind.IntermediateStringLiteral,
                     value: "./ExportEquals-001-input",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             },
         },
@@ -76,24 +77,24 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "Hello",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "98052",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "101",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         ],
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
@@ -141,8 +142,8 @@ const expectedResult: IntermediateSourceFile = {
                 target: {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "strings",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
                 propName: "forEach",
             },
@@ -176,15 +177,14 @@ const expectedResult: IntermediateSourceFile = {
                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                 typeName: "void",
             },
-            asType: undefined,
             typeAssertion: undefined,
+            asType: undefined,
         },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

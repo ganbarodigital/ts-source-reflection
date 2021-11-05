@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateImportDeclaration,
@@ -48,52 +49,51 @@ const expectedResult: IntermediateSourceFile = {
                     name: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "num",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
             ],
             source: {
                 kind: IntermediateKind.IntermediateStringLiteral,
                 value: "./DefaultExports-003-module",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
         },
         {
             kind: IntermediateKind.IntermediateCallExpression,
-            typeArguments: [],
             expression: {
                 kind: IntermediateKind.IntermediatePropertyAccessExpression,
                 target: {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "console",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
                 propName: "log",
             },
+            typeArguments: [],
             arguments: [
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "num",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             inferredReturnType: {
                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                 typeName: "void",
             },
-            asType: undefined,
             typeAssertion: undefined,
+            asType: undefined,
         },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
@@ -55,8 +56,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateRegexLiteral,
                         value: "/^[0-9]+$/",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
@@ -107,16 +108,16 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "boolean",
                     },
                     hasBody: true,
-                }
-            ]
+                },
+            ],
         },
         {
             kind: IntermediateKind.IntermediateExportAssignment,
             name: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "ZipCodeValidator",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
         },
     ],
@@ -124,7 +125,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

@@ -34,16 +34,17 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Getters",
             typeParameters: [
                 {
@@ -90,8 +91,8 @@ const expectedResult: IntermediateSourceFile = {
                                                     typeName: "Property",
                                                 },
                                             ],
-                                        }
-                                    ]
+                                        },
+                                    ],
                                 },
                                 tail: "",
                             },
@@ -120,20 +121,20 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateInterface,
+            docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Person",
             typeParameters: [],
-            isExported: false,
-            isDefaultExport: false,
-            isDeclared: false,
-            docBlock: undefined,
             extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "name",
                     isOptional: false,
                     isReadonly: false,
+                    name: "name",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -142,9 +143,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "age",
                     isOptional: false,
                     isReadonly: false,
+                    name: "age",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -153,9 +154,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "location",
                     isOptional: false,
                     isReadonly: false,
+                    name: "location",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -166,8 +167,8 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "LazyPerson",
             typeParameters: [],
             typeRef: {
@@ -186,7 +187,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

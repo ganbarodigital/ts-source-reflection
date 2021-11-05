@@ -34,24 +34,25 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            name: "GetReturnType",
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "GetReturnType",
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
                     name: "Type",
                     constraint: undefined,
                     defaultType: undefined,
-                }
+                },
             ],
             typeRef: {
                 kind: IntermediateKind.IntermediateConditionalType,
@@ -64,12 +65,11 @@ const expectedResult: IntermediateSourceFile = {
                     typeParameters: [],
                     parameters: [
                         {
-                            kind: IntermediateKind.IntermediateRestCallableParameterSignature,
                             parameter: {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                name: "args",
                                 isOptional: false,
                                 isReadonly: false,
+                                name: "args",
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateArrayTypeReference,
                                     typeRef: {
@@ -77,17 +77,18 @@ const expectedResult: IntermediateSourceFile = {
                                         typeName: "never",
                                     },
                                 },
-                            }
+                            },
+                            kind: IntermediateKind.IntermediateRestCallableParameterSignature,
                         },
                     ],
                     returnType: {
-                        kind: IntermediateKind.IntermediateInferType,
                         typeParameter: {
                             kind: IntermediateKind.IntermediateGenericType,
                             name: "Return",
                             constraint: undefined,
                             defaultType: undefined,
                         },
+                        kind: IntermediateKind.IntermediateInferType,
                     },
                 },
                 trueTypeRef: {
@@ -103,9 +104,9 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            name: "Num",
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "Num",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -126,9 +127,9 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            name: "Str",
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "Str",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -140,9 +141,9 @@ const expectedResult: IntermediateSourceFile = {
                         parameters: [
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                name: "x",
                                 isOptional: false,
                                 isReadonly: false,
+                                name: "x",
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "string",
@@ -160,9 +161,9 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            name: "Bools",
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "Bools",
             typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -174,9 +175,9 @@ const expectedResult: IntermediateSourceFile = {
                         parameters: [
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                name: "a",
                                 isOptional: false,
                                 isReadonly: false,
+                                name: "a",
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "boolean",
@@ -184,9 +185,9 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                name: "b",
                                 isOptional: false,
                                 isReadonly: false,
+                                name: "b",
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "boolean",
@@ -209,7 +210,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

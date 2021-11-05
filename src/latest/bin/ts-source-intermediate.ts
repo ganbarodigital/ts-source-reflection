@@ -1,7 +1,7 @@
 // tslint:disable: no-string-literal
 import { getTypeNames, isArray, isObject } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
-import { IntermediateItem, IntermediateKind, IntermediateRestrictableScope, mapStringToIntermediateExpressionOperator } from "../IntermediateTypes";
+import { IntermediateItem, IntermediateKind, IntermediateMappingModifier, IntermediateRestrictableScope, mapStringToIntermediateExpressionOperator } from "../IntermediateTypes";
 import { processSourceFile } from "../Processors/processSourceFile";
 import { getTestCompiler } from "../__testsuite__/getTestCompiler";
 import * as fs from "fs";
@@ -27,7 +27,12 @@ const KEYS_ORDER = [
     'parameterName',
     'exportedName',
     'from',
+    'indexName',
+    'indexTypeRef',
     'constraint',
+    'parameter',
+    'mappingModifiers',
+    'nameMap',
     'defaultType',
     'typeParameters',
     'extends',
@@ -46,12 +51,18 @@ const KEYS_ORDER = [
     'propName',
     'element',
     'accessKey',
+    'index',
     'indexRef',
     'valueRef',
     'text',
     'value',
+    'sigIsReadonly',
     'typeRef',
     'typeRefs',
+    'checkTypeRef',
+    'extendsTypeRef',
+    'trueTypeRef',
+    'falseTypeRef',
     'arguments',
     'assertedRef',
     'returnType',
@@ -61,6 +72,8 @@ const KEYS_ORDER = [
     'condition',
     'thenBlock',
     'elseBlock',
+    'whenTrue',
+    'whenFalse',
     'incrementor',
     'loopTarget',
     'hasBody',
@@ -80,6 +93,8 @@ const KEYS_ORDER = [
     'head',
     'spans',
     'tail',
+    'readonly',
+    'optional',
     'referencedFiles',
     'referencedLibs',
     'referencedTypes',
@@ -101,10 +116,17 @@ const sourceFile = compiler.getAstForFile(inputFile);
 
 const refFile = processSourceFile({compiler, sourceFile});
 
-const importTypes: string[] = [
+type ImportGroups = {
+    [module:string]: string[];
+}
+const intermediateTypesGroup = inputFile.dirname().relative(new Filepath("src/latest/IntermediateTypes"));
+
+const importGroups: ImportGroups = {}
+importGroups[intermediateTypesGroup] = [
     "IntermediateKind",
     "IntermediateSourceFile"
 ];
+importGroups["@safelytyped/filepath"] = [];
 
 ppObject(refFile, 4);
 pp(`}
@@ -144,18 +166,46 @@ const preBuf: string[] = [`//
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+`]
 
-import {`];
-for (const entry of new Set(importTypes.sort())) {
-    preBuf.push(`    ${entry},`);
+// tslint:disable-next-line: forin
+for (const importGroup of Object.keys(importGroups).sort(sortImportGroups)) {
+    // shorthand
+    const currentGroup = importGroups[importGroup];
+
+    // skip empty groups
+    if (currentGroup.length === 0) {
+        continue;
+    }
+    if (currentGroup.length === 1) {
+        preBuf.push(`import { ${currentGroup[0]} } from "${importGroup}";`);
+    }
+    else {
+        preBuf.push(`import {`);
+        for (const entry of new Set(currentGroup.sort())) {
+            preBuf.push(`    ${entry},`);
+        }
+        preBuf.push(`} from "${importGroup}";`);
+    }
 }
 
-preBuf.push(`} from "${inputFile.dirname().relative(new Filepath("src/latest/IntermediateTypes"))}";
-
+preBuf.push(`
 const expectedResult: IntermediateSourceFile = {
 `);
 
 fs.writeFileSync(outputFile.valueOf(), preBuf.join("\n") + outBuf.join("\n"));
+
+function sortImportGroups(a: string, b: string) {
+    // special case
+    if (a[0] === '@' && b[0] !== "@") {
+        return -1;
+    }
+    if (a[0] !== '@' && b[0] === "@") {
+        return 1;
+    }
+
+    return a.localeCompare(b);
+}
 
 function sortKeys(a: string, b: string) {
     const ia = KEYS_ORDER.indexOf(a);
@@ -193,7 +243,7 @@ function ppObject(
         if (key === 'accessModifier') {
             if (value !== undefined) {
                 value = "IntermediateRestrictableScope." + IntermediateRestrictableScope[value];
-                importTypes.push("IntermediateRestrictableScope");
+                importGroups[intermediateTypesGroup].push("IntermediateRestrictableScope");
             }
             pp(`${key}: ${value},`, indent);
             continue;
@@ -201,14 +251,30 @@ function ppObject(
         if (key === 'setsPropertyWithScope') {
             if (value !== undefined) {
                 value = "IntermediateRestrictableScope." + IntermediateRestrictableScope[value];
-                importTypes.push("IntermediateRestrictableScope");
+                importGroups[intermediateTypesGroup].push("IntermediateRestrictableScope");
             }
             pp(`${key}: ${value},`, indent);
             continue;
         }
         if (key === 'operator') {
             pp(`${key}: ${mapStringToIntermediateExpressionOperator(value)},`, indent);
-            importTypes.push("IntermediateExpressionOperator");
+            importGroups[intermediateTypesGroup].push("IntermediateExpressionOperator");
+            continue;
+        }
+        if (key === 'readonly') {
+            if (value !== undefined) {
+                value = "IntermediateMappingModifier." + IntermediateMappingModifier[value];
+                importGroups[intermediateTypesGroup].push("IntermediateMappingModifier");
+            }
+            pp(`${key}: ${value},`, indent);
+            continue;
+        }
+        if (key === 'optional') {
+            if (value !== undefined) {
+                value = "IntermediateMappingModifier." + IntermediateMappingModifier[value];
+                importGroups[intermediateTypesGroup].push("IntermediateMappingModifier");
+            }
+            pp(`${key}: ${value},`, indent);
             continue;
         }
 
@@ -219,7 +285,7 @@ function ppObject(
                 pp(`${key}: ${value ? 'true' : 'false'},`, indent);
                 break;
             case 'string':
-                pp(`${key}: "${(value as string).replace(/\n/g, "\\n")}",`, indent);
+                pp(`${key}: ${formatString(value)},`, indent);
                 break;
             case 'number':
                 pp(`${key}: ${value},`, indent);
@@ -229,6 +295,10 @@ function ppObject(
                 break;
             case 'undefined':
                 pp(`${key}: undefined,`, indent);
+                break;
+            case 'Filepath':
+                pp(`${key}: new Filepath("${value}"),`, indent);
+                importGroups['@safelytyped/filepath'].push("Filepath");
                 break;
             default:
                 if (isArray(value)) {
@@ -251,6 +321,21 @@ function ppObject(
     }
 }
 
+function formatString(
+    input: string,
+) {
+    const firstChar = input.charAt(0);
+
+    const unwrapped = input.replace(/\n/g, "\\n");
+
+    switch(firstChar) {
+        case '"':
+            return `'${unwrapped}'`;
+        default:
+            return `"${unwrapped}"`;
+    }
+}
+
 function ppArray(
     input: any[],
     indent: number
@@ -265,7 +350,7 @@ function ppArray(
                 pp(`${value ? 'true' : 'false'},`, indent);
                 break;
             case 'string':
-                pp(`"${value}",`, indent);
+                pp(`${formatString(value)},`, indent);
                 break;
             case 'number':
                 pp(`${value},`, indent);
@@ -275,6 +360,10 @@ function ppArray(
                 break;
             case 'undefined':
                 pp(`undefined,`, indent);
+                break;
+            case 'Filepath':
+                pp(`new Filepath("${value}"),`, indent);
+                importGroups['@safelytyped/filepath'].push("Filepath");
                 break;
             default:
                 if (isArray(value)) {

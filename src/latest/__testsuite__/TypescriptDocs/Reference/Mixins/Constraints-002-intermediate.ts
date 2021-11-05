@@ -34,10 +34,11 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
@@ -99,8 +100,8 @@ const expectedResult: IntermediateSourceFile = {
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Base",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     },
                 ],
@@ -147,8 +148,8 @@ const expectedResult: IntermediateSourceFile = {
                                 expression: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "base",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                                 typeArguments: [
                                     {
@@ -161,8 +162,8 @@ const expectedResult: IntermediateSourceFile = {
                                     kind: IntermediateKind.IntermediateTypeofTypeReference,
                                     entityName: "Base",
                                 },
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         ],
                         implements: [],
@@ -189,10 +190,10 @@ const expectedResult: IntermediateSourceFile = {
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Derived",
-                            asType: undefined,
                             typeAssertion: undefined,
-                        }
-                    }
+                            asType: undefined,
+                        },
+                    },
                 ],
             },
         },
@@ -212,8 +213,8 @@ const expectedResult: IntermediateSourceFile = {
                     expression: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "derived",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     typeArguments: [
                         {
@@ -226,8 +227,8 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateTypeofTypeReference,
                         entityName: "Derived",
                     },
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             implements: [],
@@ -238,8 +239,8 @@ const expectedResult: IntermediateSourceFile = {
             target: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "Spec",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             propName: "prop",
         },
@@ -248,8 +249,8 @@ const expectedResult: IntermediateSourceFile = {
             target: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "Spec",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             propName: "anotherProp",
         },
@@ -258,7 +259,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;
