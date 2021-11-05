@@ -34,11 +34,13 @@
 
 import { UnionTypeNode } from "typescript";
 import { IntermediateKind, IntermediateUnionType } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processUnionType(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: UnionTypeNode
 ): IntermediateUnionType
 {
@@ -50,7 +52,7 @@ export function processUnionType(
 
     // what types do we have?
     for (const singleType of input.types) {
-        retval.typeRefs.push((processTypeNode(processCtx, singleType)));
+        retval.typeRefs.push((processTypeNode(processCtx, parentCtx, singleType)));
     }
 
     // all done

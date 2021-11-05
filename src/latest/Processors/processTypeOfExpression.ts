@@ -34,16 +34,18 @@
 
 import { TypeOfExpression } from "typescript";
 import { IntermediateKind, IntermediateTypeOfExpression } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processTypeOfExpression(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: TypeOfExpression
 ): IntermediateTypeOfExpression
 {
     return {
         kind: IntermediateKind.IntermediateTypeOfExpression,
-        expression: processExpression(processCtx, input.expression),
+        expression: processExpression(processCtx, parentCtx, input.expression),
     }
 }

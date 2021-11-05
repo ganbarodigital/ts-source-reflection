@@ -93,11 +93,11 @@ function processCatchClauseVariableDeclaration(
         name: input.name.getText(),
         typeRef: processMaybe(
             input.type,
-            (value) => processTypeNode(processCtx, value),
+            (value) => processTypeNode(processCtx, ParentContext.CATCH, value),
         ),
         initializer: processMaybe(
             input.initializer,
-            (value) => processExpression(processCtx, value),
+            (value) => processExpression(processCtx, ParentContext.CATCH, value),
         )
     }
 }

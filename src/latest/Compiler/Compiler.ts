@@ -36,6 +36,7 @@ import { Maybe } from "@safelytyped/core-types";
 import { Filepath } from "@safelytyped/filepath";
 import * as ts from "typescript";
 import { IntermediateExpression, IntermediateTypeReference } from "../IntermediateTypes";
+import { ParentContext } from "../Processors/ParentContext";
 import { ProcessingContext } from "../Processors/ProcessingContext";
 
 /**
@@ -99,6 +100,7 @@ export interface Compiler
      */
     getInferredType(
         processCtx: ProcessingContext,
+        parentCtx: ParentContext,
         input: NodeWithName,
         initializer?: IntermediateExpression,
     ): Maybe<IntermediateTypeReference>;
@@ -113,6 +115,7 @@ export interface Compiler
      */
     getInferredCallSignatureReturnType(
         processCtx: ProcessingContext,
+        parentCtx: ParentContext,
         input: ts.CallLikeExpression,
         initializer?: IntermediateExpression
     ): Maybe<IntermediateTypeReference>;
@@ -127,6 +130,7 @@ export interface Compiler
      */
     getInferredReturnType(
         processCtx: ProcessingContext,
+        parentCtx: ParentContext,
         input: ts.SignatureDeclaration,
         initializer?: IntermediateExpression
     ): Maybe<IntermediateTypeReference>

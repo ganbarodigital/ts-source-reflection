@@ -35,11 +35,13 @@
 import { isConstructSignatureDeclaration, NodeArray, TypeElement } from "typescript";
 import { AST } from "../AST";
 import { IntermediateConstructorSignature } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processConstructSignatureDeclarations(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NodeArray<TypeElement>
 ): IntermediateConstructorSignature[]
 {
@@ -54,7 +56,7 @@ export function processConstructSignatureDeclarations(
         // keep the compiler happy
         const callSig = AST.mustBeConstructSignatureDeclaration(member);
 
-        retval.push(processConstructSignatureDeclaration(processCtx, callSig));
+        retval.push(processConstructSignatureDeclaration(processCtx, parentCtx, callSig));
     }
 
     // all done

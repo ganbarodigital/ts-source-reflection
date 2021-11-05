@@ -38,11 +38,13 @@ import {
     IntermediateTemplateLiteralSpan,
     IntermediateTemplateLiteralType
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processTemplateLiteralType(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: TemplateLiteralTypeNode
 ): IntermediateTemplateLiteralType
 {
@@ -63,7 +65,7 @@ export function processTemplateLiteralType(
 
     // add in the parts of the template
     for (const span of input.templateSpans) {
-        retval.spans.push(processTemplateLiteralTypeSpan(processCtx, span));
+        retval.spans.push(processTemplateLiteralTypeSpan(processCtx, parentCtx, span));
     }
 
     // all done
@@ -72,12 +74,13 @@ export function processTemplateLiteralType(
 
 function processTemplateLiteralTypeSpan(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: TemplateLiteralTypeSpan
 ): IntermediateTemplateLiteralSpan
 {
     return {
         kind: IntermediateKind.IntermediateTemplateLiteralSpan,
-        typeRef: processTypeNode(processCtx, input.type),
+        typeRef: processTypeNode(processCtx, parentCtx, input.type),
         //
         // NOTE:
         //

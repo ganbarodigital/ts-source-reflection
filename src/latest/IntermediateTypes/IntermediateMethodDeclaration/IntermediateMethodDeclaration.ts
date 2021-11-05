@@ -32,21 +32,43 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import {
-    IntermediateCallableDeclaration,
-    IntermediateDecoratableItem,
-    IntermediateItem,
-    IntermediateKind,
-    IntermediateRestrictableScopeItem,
-    IntermediateStaticItem
-} from "..";
+import { IntermediateBlock } from "..";
 import { IntermediateAbstractItem } from "../IntermediateAbstractItem";
+import { IntermediateCallableDeclaration } from "../IntermediateCallableDeclaration";
+import { IntermediateDecoratableItem } from "../IntermediateDecoratableItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
 import { IntermediateGenericable } from "../IntermediateGenericable";
 import { IntermediateIdentifiedItem } from "../IntermediateIdentifiedItem";
+import { IntermediateItem } from "../IntermediateItem";
+import { IntermediateKind } from "../IntermediateKind";
+import { IntermediateRestrictableScopeItem } from "../IntermediateRestrictableScopeItem";
+import { IntermediateStaticItem } from "../IntermediateStaticItem";
 
 export type IntermediateMethodDeclaration
-    = IntermediateItem<IntermediateKind.IntermediateMethodDeclaration>
+    = IntermediateAmbientMethod
+    | IntermediateMethodImplementation
+    | IntermediateMethodOverload
+    | IntermediateTmpMethod
+    ;
+
+type IntermediateTmpMethod
+= IntermediateItem<IntermediateKind.IntermediateMethodDeclaration>
+& IntermediateAbstractItem
+& IntermediateCallableDeclaration
+& IntermediateDecoratableItem
+& IntermediateDocumentedItem
+& IntermediateGenericable
+& IntermediateIdentifiedItem
+& IntermediateRestrictableScopeItem
+& IntermediateStaticItem
+&
+{
+    hasBody: boolean;
+    body?: IntermediateBlock;
+}
+
+export type IntermediateMethodImplementation
+    = IntermediateItem<IntermediateKind.IntermediateMethodImplementation>
     & IntermediateAbstractItem
     & IntermediateCallableDeclaration
     & IntermediateDecoratableItem
@@ -56,6 +78,35 @@ export type IntermediateMethodDeclaration
     & IntermediateRestrictableScopeItem
     & IntermediateStaticItem
     &
-{
-    hasBody: boolean;
-}
+    {
+        hasBody: true;
+        body: IntermediateBlock;
+    }
+
+export type IntermediateMethodOverload
+    = IntermediateItem<IntermediateKind.IntermediateMethodOverload>
+    & IntermediateAbstractItem
+    & IntermediateCallableDeclaration
+    & IntermediateDocumentedItem
+    & IntermediateGenericable
+    & IntermediateIdentifiedItem
+    & IntermediateRestrictableScopeItem
+    & IntermediateStaticItem
+    &
+    {
+        hasBody: false;
+    }
+
+export type IntermediateAmbientMethod
+    = IntermediateItem<IntermediateKind.IntermediateAmbientMethod>
+    & IntermediateAbstractItem
+    & IntermediateCallableDeclaration
+    & IntermediateDocumentedItem
+    & IntermediateGenericable
+    & IntermediateIdentifiedItem
+    & IntermediateRestrictableScopeItem
+    & IntermediateStaticItem
+    &
+    {
+        hasBody: false;
+    }

@@ -34,17 +34,19 @@
 
 import { PropertyAccessExpression } from "typescript";
 import { IntermediateKind, IntermediatePropertyAccessExpression } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processPropertyAccessExpression(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: PropertyAccessExpression
 ): IntermediatePropertyAccessExpression
 {
     return {
         kind: IntermediateKind.IntermediatePropertyAccessExpression,
-        target: processExpression(processCtx, input.expression),
+        target: processExpression(processCtx, parentCtx, input.expression),
         propName: input.name.text,
     }
 }

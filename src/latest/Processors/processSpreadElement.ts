@@ -38,16 +38,18 @@ import {
     IntermediateSpreadElement,
     IntermediateSpreadIdentifierReference
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processSpreadElement(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: SpreadElement
 ): IntermediateSpreadElement | IntermediateSpreadIdentifierReference
 {
     // special case
-    const target = processExpression(processCtx, input.expression);
+    const target = processExpression(processCtx, parentCtx, input.expression);
     if (target.kind === IntermediateKind.IntermediateIdentifierReference) {
         return {
             kind: IntermediateKind.IntermediateSpreadIdentifierReference,
@@ -60,6 +62,6 @@ export function processSpreadElement(
     // general case
     return {
         kind: IntermediateKind.IntermediateSpreadOperator,
-        target: processExpression(processCtx, input.expression),
+        target: processExpression(processCtx, parentCtx, input.expression),
     }
 }

@@ -34,17 +34,19 @@
 
 import { ParenthesizedExpression } from "typescript";
 import { IntermediateKind, IntermediateParenthesizedExpression } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processParenthesizedExpression(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ParenthesizedExpression
 ): IntermediateParenthesizedExpression
 {
     return {
         kind: IntermediateKind.IntermediateParenthesizedExpression,
-        expression: processExpression(processCtx, input.expression),
+        expression: processExpression(processCtx, parentCtx, input.expression),
         asType: undefined,
         typeAssertion: undefined,
     }

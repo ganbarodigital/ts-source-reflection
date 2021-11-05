@@ -47,11 +47,13 @@ import {
     IntermediateMappingModifier,
     IntermediateTypeReference
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processMappedType(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: MappedTypeNode
 ): IntermediateMappedType
 {
@@ -60,6 +62,7 @@ export function processMappedType(
     const indexName = input.typeParameter.name.text;
     const constraint = processTypeNode(
         processCtx,
+        parentCtx,
         input.typeParameter.constraint!
     );
 
@@ -68,13 +71,13 @@ export function processMappedType(
     // according to the AST, not always ...
     let valueTypeRef: Maybe<IntermediateTypeReference>;
     if (input.type) {
-        valueTypeRef = processTypeNode(processCtx, input.type);
+        valueTypeRef = processTypeNode(processCtx, parentCtx, input.type);
     }
 
     // are we rewriting the key, while we're at it?
     let nameMap: Maybe<IntermediateTypeReference>;
     if (input.nameType) {
-        nameMap = processTypeNode(processCtx, input.nameType);
+        nameMap = processTypeNode(processCtx, parentCtx, input.nameType);
     }
 
     return {

@@ -38,6 +38,7 @@ import {
     IntermediateKind,
     mustbeIntermediateTypeReference
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { ProcessingContext } from "./ProcessingContext";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
@@ -45,15 +46,16 @@ import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processFunctionType(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: FunctionTypeNode
 ): IntermediateFunctionTypeSignature
 {
     return {
         kind: IntermediateKind.IntermediateFunctionTypeSignature,
-        typeParameters: processTypeParametersFromNode(processCtx, input),
-        parameters: processCallableParameterSignatures(processCtx, input.parameters),
+        typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
+        parameters: processCallableParameterSignatures(processCtx, parentCtx, input.parameters),
         returnType: mustbeIntermediateTypeReference(
-            processReturnTypeFromNode(processCtx, input)
+            processReturnTypeFromNode(processCtx, parentCtx, input)
         ),
     }
 }

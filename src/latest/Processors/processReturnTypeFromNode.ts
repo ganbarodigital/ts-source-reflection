@@ -35,6 +35,7 @@
 import { Maybe } from "@safelytyped/core-types";
 import { TypeNode } from "typescript";
 import { IntermediateTypeReference } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
@@ -44,6 +45,7 @@ type NodeWithReturnType = {
 
 export function processReturnTypeFromNode(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NodeWithReturnType
 ): Maybe<IntermediateTypeReference>
 {
@@ -51,5 +53,5 @@ export function processReturnTypeFromNode(
         return undefined;
     }
 
-    return processTypeNode(processCtx, input.type);
+    return processTypeNode(processCtx, parentCtx, input.type);
 }

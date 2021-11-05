@@ -34,19 +34,21 @@
 
 import { ConditionalTypeNode } from "typescript";
 import { IntermediateConditionalType, IntermediateKind } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processConditionalType(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ConditionalTypeNode
 ): IntermediateConditionalType
 {
     return {
         kind: IntermediateKind.IntermediateConditionalType,
-        checkTypeRef: processTypeNode(processCtx, input.checkType),
-        extendsTypeRef: processTypeNode(processCtx, input.extendsType),
-        trueTypeRef: processTypeNode(processCtx, input.trueType),
-        falseTypeRef: processTypeNode(processCtx, input.falseType),
+        checkTypeRef: processTypeNode(processCtx, parentCtx, input.checkType),
+        extendsTypeRef: processTypeNode(processCtx, parentCtx, input.extendsType),
+        trueTypeRef: processTypeNode(processCtx, parentCtx, input.trueType),
+        falseTypeRef: processTypeNode(processCtx, parentCtx, input.falseType),
     }
 }

@@ -35,6 +35,7 @@
 import { PropertySignature } from "typescript";
 import { AST } from "../AST";
 import { IntermediateKind, IntermediatePropertySignature } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processDocBlock } from "./processDocBlock";
 import { ProcessingContext } from "./ProcessingContext";
 import { processPropertyName } from "./processPropertyName";
@@ -44,6 +45,7 @@ import { processTypeNode } from "./processTypeNode";
 export function processPropertySignature
 (
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: PropertySignature
 ): IntermediatePropertySignature
 {
@@ -52,7 +54,7 @@ export function processPropertySignature
         return {
             kind: IntermediateKind.IntermediateUntypedPropertySignature,
             docBlock: processDocBlock(processCtx, input),
-            name: processPropertyName(processCtx, input.name),
+            name: processPropertyName(processCtx, parentCtx, input.name),
             isOptional: processQuestionToken(processCtx, input.questionToken),
             isReadonly: AST.hasReadonlyModifier(input.modifiers),
         }
@@ -62,9 +64,9 @@ export function processPropertySignature
     return {
         kind: IntermediateKind.IntermediateTypedPropertySignature,
         docBlock: processDocBlock(processCtx, input),
-        name: processPropertyName(processCtx, input.name),
+        name: processPropertyName(processCtx, parentCtx, input.name),
         isOptional: processQuestionToken(processCtx, input.questionToken),
         isReadonly: AST.hasReadonlyModifier(input.modifiers),
-        typeRef: processTypeNode(processCtx, input.type),
+        typeRef: processTypeNode(processCtx, parentCtx, input.type),
     };
 }

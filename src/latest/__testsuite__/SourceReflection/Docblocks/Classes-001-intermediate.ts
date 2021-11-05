@@ -232,6 +232,10 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "void",
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [],
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
@@ -252,6 +256,10 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "void",
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [],
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
@@ -272,6 +280,10 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "void",
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [],
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
@@ -292,6 +304,10 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "void",
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [],
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateGetter,

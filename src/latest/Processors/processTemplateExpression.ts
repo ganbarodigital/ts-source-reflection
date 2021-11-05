@@ -38,11 +38,13 @@ import {
     IntermediateTemplateExpression,
     IntermediateTemplateExpressionSpan
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processTemplateExpression(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: TemplateExpression
 ): IntermediateTemplateExpression
 {
@@ -63,7 +65,7 @@ export function processTemplateExpression(
 
     // add in the parts of the template
     for (const span of input.templateSpans) {
-        retval.spans.push(processTemplateExpressionSpan(processCtx, span));
+        retval.spans.push(processTemplateExpressionSpan(processCtx, parentCtx, span));
     }
 
     // all done
@@ -72,12 +74,13 @@ export function processTemplateExpression(
 
 function processTemplateExpressionSpan(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: TemplateSpan
 ): IntermediateTemplateExpressionSpan
 {
     return {
         kind: IntermediateKind.IntermediateTemplateExpressionSpan,
-        expression: processExpression(processCtx, input.expression),
+        expression: processExpression(processCtx, parentCtx, input.expression),
         //
         // NOTE:
         //

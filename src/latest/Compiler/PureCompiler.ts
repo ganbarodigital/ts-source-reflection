@@ -38,6 +38,7 @@ import * as ts from "typescript";
 import { Compiler, NodeWithName } from ".";
 import { AST } from "../AST";
 import { IntermediateExpression, IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
+import { ParentContext } from "../Processors/ParentContext";
 import { ProcessingContext } from "../Processors/ProcessingContext";
 import { processTypeNode } from "../Processors/processTypeNode";
 
@@ -166,6 +167,7 @@ export class PureCompiler implements Compiler
 
     public getInferredCallSignatureReturnType(
         processCtx: ProcessingContext,
+        parentCtx: ParentContext,
         input: ts.CallLikeExpression,
         initializer?: IntermediateExpression,
     ): Maybe<IntermediateTypeReference>
@@ -205,6 +207,7 @@ export class PureCompiler implements Compiler
         // workarounds / alternative approaches are most welcome!
         const inferredType = processTypeNode(
             processCtx,
+            parentCtx,
             typeNode
         );
 
@@ -220,6 +223,7 @@ export class PureCompiler implements Compiler
 
     public getInferredReturnType(
         processCtx: ProcessingContext,
+        parentCtx: ParentContext,
         input: ts.SignatureDeclaration,
         initializer?: IntermediateExpression,
     ): Maybe<IntermediateTypeReference>
@@ -260,6 +264,7 @@ export class PureCompiler implements Compiler
         try {
             const inferredType = processTypeNode(
                 processCtx,
+                parentCtx,
                 typeNode
             );
 
@@ -284,6 +289,7 @@ export class PureCompiler implements Compiler
 
     public getInferredType(
         processCtx: ProcessingContext,
+        parentCtx: ParentContext,
         input: NodeWithName,
         initializer?: IntermediateExpression,
     ): Maybe<IntermediateTypeReference>
@@ -322,6 +328,7 @@ export class PureCompiler implements Compiler
         // workarounds / alternative approaches are most welcome!
         const inferredType = processTypeNode(
             processCtx,
+            parentCtx,
             typeNode
         );
 

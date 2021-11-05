@@ -37,12 +37,14 @@ import { Filepath } from "@safelytyped/filepath";
 import path from "path";
 import { ImportTypeNode } from "typescript";
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processEntityName } from "./processEntityName";
 import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processImportTypeNodeDuringTypeProcessing(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ImportTypeNode,
 ): IntermediateTypeReference
 {
@@ -76,6 +78,7 @@ export function processImportTypeNodeDuringTypeProcessing(
         // we need to convert the import path into a relative path
         const pathNode = processTypeNode(
             processCtx,
+            parentCtx,
             input.argument
         );
         let importPath = mustBeString(

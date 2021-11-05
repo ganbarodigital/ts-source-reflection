@@ -33,7 +33,6 @@
 //
 
 import { FunctionExpression } from "typescript";
-import { AST } from "../AST";
 import { IntermediateFunctionExpression, IntermediateKind, mustBeIntermediateBlock } from "../IntermediateTypes";
 import { ParentContext } from "./ParentContext";
 import { processBlock } from "./processBlock";
@@ -60,15 +59,16 @@ export function processFunctionExpression(
 
     const returnType = processReturnTypeFromNode(
         processCtx,
+        ParentContext.FUNCTION,
         input
     );
 
     if (returnType) {
         return {
             kind: IntermediateKind.IntermediateFunctionExpression,
-            typeParameters: processTypeParametersFromNode(processCtx, input),
+            typeParameters: processTypeParametersFromNode(processCtx, ParentContext.FUNCTION, input),
             name: input.name?.text,
-            parameters: processFunctionParameters(processCtx, input.parameters),
+            parameters: processFunctionParameters(processCtx, ParentContext.FUNCTION, input.parameters),
             returnType,
             hasBody: true,
             body,
@@ -76,13 +76,13 @@ export function processFunctionExpression(
     }
 
     // do we have anything useful?
-    const inferredReturnType = AST.getInferredReturnType(processCtx, input);
+    const inferredReturnType = processCtx.compiler.getInferredReturnType(processCtx, ParentContext.FUNCTION, input);
     if (inferredReturnType) {
         return {
             kind: IntermediateKind.IntermediateFunctionExpression,
-            typeParameters: processTypeParametersFromNode(processCtx, input),
+            typeParameters: processTypeParametersFromNode(processCtx, ParentContext.FUNCTION, input),
             name: input.name?.text,
-            parameters: processFunctionParameters(processCtx, input.parameters),
+            parameters: processFunctionParameters(processCtx, ParentContext.FUNCTION, input.parameters),
             returnType,
             inferredReturnType,
             hasBody: true,
@@ -93,9 +93,9 @@ export function processFunctionExpression(
     // if we get here, we have no inferred type information
     return {
         kind: IntermediateKind.IntermediateFunctionExpression,
-        typeParameters: processTypeParametersFromNode(processCtx, input),
+        typeParameters: processTypeParametersFromNode(processCtx, ParentContext.FUNCTION, input),
         name: input.name?.text,
-        parameters: processFunctionParameters(processCtx, input.parameters),
+        parameters: processFunctionParameters(processCtx, ParentContext.FUNCTION, input.parameters),
         returnType,
         hasBody: true,
         body,

@@ -37,12 +37,14 @@ import {
     IntermediateKind,
     IntermediateNewExpression
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { processExpressionAsTypeReference } from "./processExpressionAsTypeReference";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processNewExpression(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NewExpression
 ): IntermediateNewExpression
 {
@@ -60,7 +62,7 @@ export function processNewExpression(
     // a parameter is what appears in a function / method signature
     // an argument is what appears when the function / method gets called
     for (const argument of input.arguments ?? []) {
-        retval.arguments.push(processExpression(processCtx, argument));
+        retval.arguments.push(processExpression(processCtx, parentCtx, argument));
     }
 
     // all done

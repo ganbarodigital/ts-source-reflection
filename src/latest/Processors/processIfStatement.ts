@@ -57,7 +57,7 @@ export function processIfStatement(
 
     return {
         kind: IntermediateKind.IntermediateIfStatement,
-        condition: processExpression(processCtx, ifStmt.expression),
+        condition: processExpression(processCtx, ParentContext.IF_CONDITION, ifStmt.expression),
         thenBlock: mustBeIntermediateStatement(
             processStatement(processCtx, ParentContext.IF_THEN, ifStmt.thenStatement)
         ),

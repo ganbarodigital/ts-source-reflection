@@ -62,7 +62,7 @@ export function processImportDeclaration(
         kind: IntermediateKind.IntermediateImportDeclaration,
         isTypeOnly: false,
         items: [],
-        source: processExpression(processCtx, importDec.moduleSpecifier),
+        source: processExpression(processCtx, parentCtx, importDec.moduleSpecifier),
     };
 
     // special case - we have no import clause
@@ -91,7 +91,7 @@ export function processImportDeclaration(
     if (importClause.namedBindings) {
         retval.items = [
             ...retval.items,
-            ...processNamedBindings(processCtx, importClause.namedBindings)
+            ...processNamedBindings(processCtx, parentCtx, importClause.namedBindings)
         ];
     }
 
@@ -102,12 +102,13 @@ export function processImportDeclaration(
 
 function processNamedBindings(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NamedImportBindings
 ): IntermediateImportItem[]
 {
     // what kind of named bindings do we have?
     if (isNamedImports(input)) {
-        return processNamedImports(processCtx, input);
+        return processNamedImports(processCtx, parentCtx, input);
     }
 
     return processNamespaceImport(processCtx, input);
@@ -115,6 +116,7 @@ function processNamedBindings(
 
 function processNamedImports(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NamedImports
 ): IntermediateImportItem[]
 {
@@ -125,13 +127,13 @@ function processNamedImports(
         if (member.propertyName) {
             retval.push({
                 kind: IntermediateKind.IntermediateAliasedImportBinding,
-                exportedName: processExpression(processCtx, member.propertyName),
-                name: processExpression(processCtx, member.name),
+                exportedName: processExpression(processCtx, parentCtx, member.propertyName),
+                name: processExpression(processCtx, parentCtx, member.name),
             });
         } else {
             retval.push({
                 kind: IntermediateKind.IntermediateImportBinding,
-                name: processExpression(processCtx, member.name),
+                name: processExpression(processCtx, parentCtx, member.name),
             });
         }
     }

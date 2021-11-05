@@ -35,10 +35,12 @@ import { NodeArray, ParameterDeclaration } from "typescript";
 import {
     IntermediateCallableParameterDeclaration
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processParameterDeclaration } from "./processParameterDeclaration";
 export function processFunctionParameters(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NodeArray<ParameterDeclaration>
 ): IntermediateCallableParameterDeclaration[] {
     // our return value
@@ -46,7 +48,7 @@ export function processFunctionParameters(
 
     input.forEach((paramDec) => {
         // general case
-        retval.push(processParameterDeclaration(processCtx, paramDec));
+        retval.push(processParameterDeclaration(processCtx, parentCtx, paramDec));
     });
 
     // all done

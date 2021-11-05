@@ -45,6 +45,7 @@ import {
     IntermediateTypedCallableParameterSignature,
     IntermediateUntypedCallableParameterSignature
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processObjectBindingPatternForSignatures } from "./processObjectBindingPatternForSignatures";
 import { processQuestionToken } from "./processQuestionToken";
@@ -52,6 +53,7 @@ import { processTypeNode } from "./processTypeNode";
 
 export function processParameterSignature(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     paramDec: ParameterDeclaration
 ): IntermediateCallableParameterSignature
 {
@@ -59,6 +61,7 @@ export function processParameterSignature(
     if (isObjectBindingPattern(paramDec.name)) {
         return processObjectBindingPatternForSignatures(
             processCtx,
+            parentCtx,
             {
                 param: paramDec.name,
                 paramType: paramDec.type,
@@ -72,7 +75,7 @@ export function processParameterSignature(
         paramClone.dotDotDotToken = undefined;
         return <IntermediateRestCallableParameterSignature>{
             kind: IntermediateKind.IntermediateRestCallableParameterSignature,
-            parameter: processParameterSignature(processCtx, paramClone),
+            parameter: processParameterSignature(processCtx, parentCtx, paramClone),
         };
     }
 
@@ -113,7 +116,7 @@ export function processParameterSignature(
     return <IntermediateTypedCallableParameterSignature>{
         kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
         name,
-        typeRef: processTypeNode(processCtx, paramType),
+        typeRef: processTypeNode(processCtx, parentCtx, paramType),
         isOptional: processQuestionToken(processCtx, paramDec.questionToken),
         isReadonly,
     };

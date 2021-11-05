@@ -34,11 +34,13 @@
 
 import { IntersectionTypeNode } from "typescript";
 import { IntermediateIntersectionType, IntermediateKind } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processIntersectionNode(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: IntersectionTypeNode
 ): IntermediateIntersectionType
 {
@@ -51,7 +53,7 @@ export function processIntersectionNode(
     // work our way through all the different types
     // that intersect together
     for (const member of input.types) {
-        retval.typeRefs.push(processTypeNode(processCtx, member));
+        retval.typeRefs.push(processTypeNode(processCtx, parentCtx, member));
     }
 
     // all done

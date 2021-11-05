@@ -34,6 +34,7 @@
 
 import { ArrayLiteralExpression } from "typescript";
 import { IntermediateArrayLiteral, IntermediateKind } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 
@@ -52,7 +53,7 @@ export function processArrayLiteralExpression(
 
     for(const element of input.elements) {
         retval.elements.push(
-            processExpression(processCtx, element)
+            processExpression(processCtx, ParentContext.ARRAY_LITERAL_EXPRESSION, element)
         );
     }
 

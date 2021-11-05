@@ -38,23 +38,25 @@ import {
     IntermediateKind,
     IntermediateTypeArgument
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNodes } from "./processTypeNodes";
 
 export function processExpressionWithTypeArguments(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ExpressionWithTypeArguments
 ): IntermediateTypeArgument {
     // do we have something simple?
     if (!input.typeArguments) {
-        return processExpression(processCtx, input.expression);
+        return processExpression(processCtx, parentCtx, input.expression);
     }
 
     // if we get here, we're looking at a generic type
     return <IntermediateGenericTypeReference>{
         kind: IntermediateKind.IntermediateGenericTypeReference,
         typeName: input.expression.getText(),
-        typeArguments: processTypeNodes(processCtx, input.typeArguments)
+        typeArguments: processTypeNodes(processCtx, parentCtx, input.typeArguments)
     }
 }

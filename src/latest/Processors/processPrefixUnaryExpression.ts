@@ -41,17 +41,19 @@ import {
     IntermediateKind,
     IntermediatePrefixUnaryExpression
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processPrefixUnaryExpression(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: PrefixUnaryExpression
 ): IntermediatePrefixUnaryExpression
 {
     return {
         kind: IntermediateKind.IntermediatePrefixUnaryExpression,
-        target: processExpression(processCtx, input.operand),
+        target: processExpression(processCtx, parentCtx, input.operand),
         operator: processOperator(input.operator),
     }
 }

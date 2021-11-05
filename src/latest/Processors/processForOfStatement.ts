@@ -59,7 +59,7 @@ export function processForOfStatement(
     return {
         kind: IntermediateKind.IntermediateForOfLoop,
         initializer: processForInitializer(processCtx, forOfStmt.initializer),
-        loopTarget: processExpression(processCtx, forOfStmt.expression),
+        loopTarget: processExpression(processCtx, ParentContext.FOR_OF, forOfStmt.expression),
         contents: mustBeIntermediateStatement(
             processStatement(processCtx, ParentContext.FOR_OF, forOfStmt.statement)
         ),

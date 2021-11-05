@@ -33,27 +33,28 @@
 //
 
 import { CallExpression } from "typescript";
-import { AST } from "../AST";
 import {
     IntermediateCallExpression,
     IntermediateKind
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processCallExpression(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: CallExpression
 ): IntermediateCallExpression
 {
     // what type of data comes out of this call expression, if any?
-    const inferredReturnType = AST.getInferredCallSignatureReturnType(processCtx, input);
+    const inferredReturnType = processCtx.compiler.getInferredCallSignatureReturnType(processCtx, parentCtx, input);
 
     // our return value
     const retval: IntermediateCallExpression = {
         kind: IntermediateKind.IntermediateCallExpression,
-        expression: processExpression(processCtx, input.expression),
+        expression: processExpression(processCtx, ParentContext.CALL_EXPRESSION, input.expression),
         typeArguments: [],
         arguments: [],
         asType: undefined,
@@ -64,7 +65,7 @@ export function processCallExpression(
     // do we have any type arguments?
     if (input.typeArguments) {
         for (const typeArgument of input.typeArguments) {
-            retval.typeArguments.push(processTypeNode(processCtx, typeArgument));
+            retval.typeArguments.push(processTypeNode(processCtx, parentCtx, typeArgument));
         }
     }
 
@@ -73,7 +74,7 @@ export function processCallExpression(
     // a parameter is what appears in a function / method signature
     // an argument is what appears when the function / method gets called
     for (const argument of input.arguments) {
-        retval.arguments.push(processExpression(processCtx, argument));
+        retval.arguments.push(processExpression(processCtx, ParentContext.CALL_EXPRESSION, argument));
     }
 
     // all done

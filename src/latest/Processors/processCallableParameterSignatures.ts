@@ -35,11 +35,13 @@ import { NodeArray, ParameterDeclaration } from "typescript";
 import {
     IntermediateCallableParameterSignature
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processParameterSignature } from "./processParameterSignature";
 
 export function processCallableParameterSignatures(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NodeArray<ParameterDeclaration>
 ): IntermediateCallableParameterSignature[] {
     // our return value
@@ -47,7 +49,7 @@ export function processCallableParameterSignatures(
 
     input.forEach((paramDec) => {
         // general case
-        retval.push(processParameterSignature(processCtx, paramDec));
+        retval.push(processParameterSignature(processCtx, parentCtx, paramDec));
     });
 
     // all done

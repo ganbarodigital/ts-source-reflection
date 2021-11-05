@@ -37,17 +37,19 @@ import {
     IntermediateIndexedAccessTypeReference,
     IntermediateKind
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processIndexedAccessType(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: IndexedAccessTypeNode
 ): IntermediateIndexedAccessTypeReference
 {
     return {
         kind: IntermediateKind.IntermediateIndexedAccessTypeReference,
-        valueRef: processTypeNode(processCtx, input.objectType),
-        indexRef: processTypeNode(processCtx, input.indexType),
+        valueRef: processTypeNode(processCtx, parentCtx, input.objectType),
+        indexRef: processTypeNode(processCtx, parentCtx, input.indexType),
     }
 }

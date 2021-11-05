@@ -39,6 +39,7 @@ import {
     IntermediateCallableParameterDeclaration,
     IntermediateKind
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processParameterDeclaration } from "./processParameterDeclaration";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
@@ -46,31 +47,32 @@ import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processArrowFunction(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ArrowFunction
 ): IntermediateArrowFunction
 {
     // do we have any parameters?
     const parameters: IntermediateCallableParameterDeclaration[] = [];
     for (const param of input.parameters) {
-        parameters.push(processParameterDeclaration(processCtx, param));
+        parameters.push(processParameterDeclaration(processCtx, parentCtx, param));
     }
 
-    const returnType = processReturnTypeFromNode(processCtx, input);
+    const returnType = processReturnTypeFromNode(processCtx, parentCtx, input);
     if (returnType) {
         return {
             kind: IntermediateKind.IntermediateArrowFunction,
-            typeParameters: processTypeParametersFromNode(processCtx, input),
+            typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
             parameters,
             returnType,
             hasBody: AST.hasBody(input.body),
         }
     }
 
-    const inferredReturnType = AST.getInferredReturnType(processCtx, input);
+    const inferredReturnType = processCtx.compiler.getInferredReturnType(processCtx, parentCtx, input);
     if (!inferredReturnType) {
         return {
             kind: IntermediateKind.IntermediateArrowFunction,
-            typeParameters: processTypeParametersFromNode(processCtx, input),
+            typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
             parameters,
             returnType,
             hasBody: AST.hasBody(input.body),
@@ -79,7 +81,7 @@ export function processArrowFunction(
 
     return {
         kind: IntermediateKind.IntermediateArrowFunction,
-        typeParameters: processTypeParametersFromNode(processCtx, input),
+        typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
         parameters,
         returnType,
         inferredReturnType,

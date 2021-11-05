@@ -34,6 +34,7 @@
 
 import { isComputedPropertyName, isNumericLiteral, isPrivateIdentifier, isStringLiteral, PropertyName } from "typescript";
 import { IntermediateIdentifierName } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processComputedPropertyName } from "./processComputedPropertyName";
 import { ProcessingContext } from "./ProcessingContext";
 import { processNumericLiteral } from "./processNumericLiteral";
@@ -42,6 +43,7 @@ import { processStringLiteral } from "./processStringLiteral";
 
 export function processPropertyName(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: PropertyName
 ): IntermediateIdentifierName
 {
@@ -58,7 +60,7 @@ export function processPropertyName(
     }
 
     if (isComputedPropertyName(input)) {
-        return processComputedPropertyName(processCtx, input);
+        return processComputedPropertyName(processCtx, parentCtx, input);
     }
 
     // general case - a regular identifier

@@ -37,6 +37,7 @@ import {
     IntermediateKind,
     IntermediateMethodSignature
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { processDocBlock } from "./processDocBlock";
 import { ProcessingContext } from "./ProcessingContext";
@@ -48,6 +49,7 @@ import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processMethodSignature(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: MethodSignature
 ): IntermediateMethodSignature
 {
@@ -55,9 +57,9 @@ export function processMethodSignature(
         kind: IntermediateKind.IntermediateMethodSignature,
         docBlock: processDocBlock(processCtx, input),
         isStatic: AST.hasStaticModifier(input),
-        name: processPropertyName(processCtx, input.name),
-        parameters: processCallableParameterSignatures(processCtx, input.parameters),
-        typeParameters: processTypeParametersFromNode(processCtx, input),
-        returnType: processReturnTypeFromNode(processCtx, input),
+        name: processPropertyName(processCtx, parentCtx, input.name),
+        parameters: processCallableParameterSignatures(processCtx, parentCtx, input.parameters),
+        typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
+        returnType: processReturnTypeFromNode(processCtx, parentCtx, input),
     }
 }

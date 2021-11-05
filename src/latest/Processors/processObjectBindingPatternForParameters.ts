@@ -46,6 +46,7 @@ import {
     IntermediateDestructuredParameterDeclaration, IntermediateKind,
     IntermediateTypeReference
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 import { processMaybe } from "./processMaybe";
@@ -53,6 +54,7 @@ import { processTypeNode } from "./processTypeNode";
 
 export function processObjectBindingPatternForParameters(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     {
         param,
         paramType,
@@ -66,23 +68,24 @@ export function processObjectBindingPatternForParameters(
 {
     let typeRef: Maybe<IntermediateTypeReference>;
     if (paramType) {
-        typeRef = processTypeNode(processCtx, paramType);
+        typeRef = processTypeNode(processCtx, parentCtx, paramType);
     }
 
     // all done
     return {
         kind: IntermediateKind.IntermediateDestructuredParameterDeclaration,
-        parameters: processBindingElements(processCtx, param.elements),
+        parameters: processBindingElements(processCtx, parentCtx, param.elements),
         typeRef,
         initializer: processMaybe(
             paramInitializer,
-            (value) => processExpression(processCtx, value),
+            (value) => processExpression(processCtx, parentCtx, value),
         )
     };
 }
 
 function processBindingElements(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NodeArray<BindingElement>
 ): AnyIntermediateDestructuredIdentifierDeclaration[]
 {
@@ -90,7 +93,7 @@ function processBindingElements(
     const retval: ReturnType<typeof processBindingElements> = [];
 
     input.forEach((bindingElement) => {
-        retval.push(processBindingElement(processCtx, bindingElement));
+        retval.push(processBindingElement(processCtx, parentCtx, bindingElement));
     });
 
     // all done
@@ -99,13 +102,14 @@ function processBindingElements(
 
 function processBindingElement(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: BindingElement
 ): AnyIntermediateDestructuredIdentifierDeclaration
 {
     // do we have a default value for the parameter?
     const initializer = processMaybe(
         input.initializer,
-        (value) => processExpression(processCtx, value),
+        (value) => processExpression(processCtx, parentCtx, value),
     )
 
     // do we have a receiver alias set?

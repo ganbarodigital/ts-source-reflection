@@ -34,6 +34,7 @@
 import { mustBeString } from "@safelytyped/core-types";
 import { isQualifiedName, TypeReferenceNode } from "typescript";
 import { IntermediateKind, IntermediateTypeReference } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processQualifiedName } from "./processQualifiedName";
 import { processTypeNode } from "./processTypeNode";
@@ -41,6 +42,7 @@ import { processTypeNode } from "./processTypeNode";
 
 export function processTypeReferenceNode(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: TypeReferenceNode
 ): IntermediateTypeReference
 {
@@ -77,7 +79,7 @@ export function processTypeReferenceNode(
     if (input.typeArguments) {
         const typeArguments: IntermediateTypeReference[] = [];
         input.typeArguments.forEach((member) => {
-            typeArguments.push(processTypeNode(processCtx, member));
+            typeArguments.push(processTypeNode(processCtx, parentCtx, member));
         });
 
         return {

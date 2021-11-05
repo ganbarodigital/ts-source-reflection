@@ -43,18 +43,20 @@ import {
     IntermediateTupleType,
     IntermediateTupleTypeElement
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNodeForTuples } from "./processTypeNodeForTuples";
 
 export function processTupleType(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: TupleTypeNode
 ): IntermediateTupleType
 {
     const elements: IntermediateTupleTypeElement[] = [];
 
     for (const member of input.elements) {
-        elements.push(processTupleTypeElement(processCtx, member));
+        elements.push(processTupleTypeElement(processCtx, parentCtx, member));
     }
 
     return {
@@ -65,6 +67,7 @@ export function processTupleType(
 
 function processTupleTypeElement(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: TypeNode | NamedTupleMember
 ): IntermediateTupleTypeElement
 {
@@ -80,7 +83,7 @@ function processTupleTypeElement(
 
     return {
         kind: IntermediateKind.IntermediateTupleTypeElement,
-        typeRef: processTypeNodeForTuples(processCtx, elemType),
+        typeRef: processTypeNodeForTuples(processCtx, parentCtx, elemType),
         isOptional,
     }
 }

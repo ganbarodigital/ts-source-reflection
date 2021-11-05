@@ -35,6 +35,7 @@
 import { ClassExpression } from "typescript";
 import { AST } from "../AST";
 import { IntermediateClassExpression, IntermediateKind, IntermediateTypeArgument } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpressionWithTypeArguments } from "./processExpressionWithTypeArguments";
 import { ProcessingContext } from "./ProcessingContext";
 import { processMemberDeclarations } from "./processMethodDeclarations";
@@ -42,21 +43,23 @@ import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processClassExpression(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ClassExpression
 ): IntermediateClassExpression
 {
     return {
         kind: IntermediateKind.IntermediateClassExpression,
         name: input.name?.text,
-        typeParameters: processTypeParametersFromNode(processCtx, input),
-        extends: getBaseClassType(processCtx, input),
-        implements: getBaseInterfaceTypes(processCtx, input),
-        members: processMemberDeclarations(processCtx, input.members),
+        typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
+        extends: getBaseClassType(processCtx, parentCtx, input),
+        implements: getBaseInterfaceTypes(processCtx, parentCtx, input),
+        members: processMemberDeclarations(processCtx, parentCtx, input.members),
     };
 }
 
 function getBaseClassType(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ClassExpression
 ): IntermediateTypeArgument[]
 {
@@ -67,7 +70,7 @@ function getBaseClassType(
     const heritageClauses = AST.findExtendsHeritageClauses(input);
     for (const clause of heritageClauses) {
         for (const clauseType of clause.types) {
-            retval.push(processExpressionWithTypeArguments(processCtx, clauseType));
+            retval.push(processExpressionWithTypeArguments(processCtx, parentCtx, clauseType));
         }
     }
 
@@ -77,6 +80,7 @@ function getBaseClassType(
 
 function getBaseInterfaceTypes(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ClassExpression
 ): IntermediateTypeArgument[] {
     // our return value
@@ -86,7 +90,7 @@ function getBaseInterfaceTypes(
     const heritageClauses = AST.findImplementsHeritageClauses(input);
     for (const clause of heritageClauses) {
         for (const clauseType of clause.types) {
-            retval.push(processExpressionWithTypeArguments(processCtx, clauseType));
+            retval.push(processExpressionWithTypeArguments(processCtx, parentCtx, clauseType));
         }
     }
 

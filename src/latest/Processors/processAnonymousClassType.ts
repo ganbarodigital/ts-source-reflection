@@ -39,16 +39,19 @@ import {
     IntermediateEmptyObjectType,
     IntermediateKind
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processMemberSignatures } from "./processMemberSignatures";
 
 export function processAnonymousClassType(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: TypeLiteralNode
 ): IntermediateAnonymousClassType | IntermediateEmptyObjectType {
     // what's in this anonymous class type?
     const members = processMemberSignatures(
         processCtx,
+        parentCtx,
         input.members
     );
 

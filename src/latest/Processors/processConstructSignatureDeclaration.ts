@@ -37,12 +37,14 @@ import {
     IntermediateConstructorSignature,
     IntermediateKind
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { ProcessingContext } from "./ProcessingContext";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
 
 export function processConstructSignatureDeclaration(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ConstructSignatureDeclaration
 ): IntermediateConstructorSignature
 {
@@ -50,7 +52,7 @@ export function processConstructSignatureDeclaration(
 
     return {
         kind: IntermediateKind.IntermediateConstructorSignature,
-        parameters: processCallableParameterSignatures(processCtx, input.parameters),
-        returnType: processReturnTypeFromNode(processCtx, input),
+        parameters: processCallableParameterSignatures(processCtx, parentCtx, input.parameters),
+        returnType: processReturnTypeFromNode(processCtx, parentCtx, input),
     }
 }

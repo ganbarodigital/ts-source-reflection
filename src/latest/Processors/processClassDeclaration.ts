@@ -60,20 +60,21 @@ export function processClassDeclaration (
         name: classDec.name?.text || '',
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
         kind: IntermediateKind.IntermediateClass,
-        typeParameters: processTypeParametersFromNode(processCtx, classDec),
+        typeParameters: processTypeParametersFromNode(processCtx, parentCtx, classDec),
         docBlock: processDocBlock(processCtx, classDec),
         decorators: processDecorators(processCtx, classDec),
         isExported: AST.isNodeExported(classDec),
         isDefaultExport: AST.hasDefaultModifier(classDec.modifiers),
-        extends: getBaseClassType(processCtx, classDec),
+        extends: getBaseClassType(processCtx, parentCtx, classDec),
         isAbstract: AST.hasAbstractModifier(input.modifiers),
-        implements: getBaseInterfaceTypes(processCtx, classDec),
-        members: processMemberDeclarations(processCtx, classDec.members),
+        implements: getBaseInterfaceTypes(processCtx, parentCtx, classDec),
+        members: processMemberDeclarations(processCtx, parentCtx, classDec.members),
     };
 }
 
 function getBaseClassType(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ClassDeclaration
 ): IntermediateTypeArgument[]
 {
@@ -84,7 +85,7 @@ function getBaseClassType(
     const heritageClauses = AST.findExtendsHeritageClauses(input);
     for (const clause of heritageClauses) {
         for (const clauseType of clause.types) {
-            retval.push(processExpressionWithTypeArguments(processCtx, clauseType));
+            retval.push(processExpressionWithTypeArguments(processCtx, parentCtx, clauseType));
         }
     }
 
@@ -94,6 +95,7 @@ function getBaseClassType(
 
 function getBaseInterfaceTypes(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ClassDeclaration
 ): IntermediateTypeArgument[] {
     // our return value
@@ -103,7 +105,7 @@ function getBaseInterfaceTypes(
     const heritageClauses = AST.findImplementsHeritageClauses(input);
     for (const clause of heritageClauses) {
         for (const clauseType of clause.types) {
-            retval.push(processExpressionWithTypeArguments(processCtx, clauseType));
+            retval.push(processExpressionWithTypeArguments(processCtx, parentCtx, clauseType));
         }
     }
 

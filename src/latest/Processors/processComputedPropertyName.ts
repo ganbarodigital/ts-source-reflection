@@ -34,16 +34,18 @@
 
 import { ComputedPropertyName } from "typescript";
 import { IntermediateComputedPropertyName, IntermediateKind } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processComputedPropertyName(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ComputedPropertyName
 ): IntermediateComputedPropertyName
 {
     return {
         kind: IntermediateKind.IntermediateComputedPropertyName,
-        name: processExpression(processCtx, input.expression),
+        name: processExpression(processCtx, parentCtx, input.expression),
     }
 }

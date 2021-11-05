@@ -50,6 +50,6 @@ export function processThrowStatement(
 
     return {
         kind: IntermediateKind.IntermediateThrow,
-        expression: processExpression(processCtx, throwStmt.expression),
+        expression: processExpression(processCtx, parentCtx, throwStmt.expression),
     }
 }

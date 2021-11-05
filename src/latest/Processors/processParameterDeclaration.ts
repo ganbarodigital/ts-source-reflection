@@ -48,6 +48,7 @@ import {
     IntermediateTypedCallableParameterDeclaration,
     IntermediateUntypedCallableParameterDeclaration
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processArrayBindingPattern } from "./processArrayBindingPattern";
 import { processDecorators } from "./processDecorators";
 import { processExpression } from "./processExpression";
@@ -58,6 +59,7 @@ import { processTypeNode } from "./processTypeNode";
 
 export function processParameterDeclaration(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     paramDec: ParameterDeclaration
 ): IntermediateCallableParameterDeclaration
 {
@@ -65,6 +67,7 @@ export function processParameterDeclaration(
     if (isObjectBindingPattern(paramDec.name)) {
         return processObjectBindingPatternForParameters(
             processCtx,
+            parentCtx,
             {
                 param: paramDec.name,
                 paramType: paramDec.type,
@@ -77,6 +80,7 @@ export function processParameterDeclaration(
     if (isArrayBindingPattern(paramDec.name)) {
         return processArrayBindingPattern(
             processCtx,
+            parentCtx,
             {
                 param: paramDec.name,
                 paramType: paramDec.type
@@ -92,21 +96,21 @@ export function processParameterDeclaration(
         paramClone.dotDotDotToken = undefined;
         return <IntermediateRestCallableParameterDeclaration>{
             kind: IntermediateKind.IntermediateRestCallableParameterDeclaration,
-            parameter: processParameterDeclaration(processCtx, paramClone)
+            parameter: processParameterDeclaration(processCtx, parentCtx, paramClone)
         };
     }
 
     // do we have a default value for the parameter?
     let initializer: Maybe<IntermediateExpression>;
     if (paramDec.initializer) {
-        initializer = processExpression(processCtx, paramDec.initializer);
+        initializer = processExpression(processCtx, parentCtx, paramDec.initializer);
     }
 
     // special case - untyped parameter
     //
     // NOTE: untyped parameters cannot be `readonly`
     if (!paramDec.type) {
-        const inferredType = AST.getInferredType(processCtx, paramDec);
+        const inferredType = processCtx.compiler.getInferredType(processCtx, parentCtx, paramDec);
 
         // tslint:disable-next-line: no-angle-bracket-type-assertion
         return <IntermediateUntypedCallableParameterDeclaration>{
@@ -137,7 +141,7 @@ export function processParameterDeclaration(
         kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
         decorators: processDecorators(processCtx, paramDec),
         name: paramDec.name.getText(),
-        typeRef: processTypeNode(processCtx, paramType),
+        typeRef: processTypeNode(processCtx, parentCtx, paramType),
         isOptional: processQuestionToken(processCtx, paramDec.questionToken),
         isReadonly,
         initializer,

@@ -32,7 +32,9 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
+import { mustBeString } from "@safelytyped/core-types";
 import { PrivateIdentifier } from "typescript";
+import { AST } from "../AST";
 import { IntermediateKind, IntermediatePrivatePropertyIdentifier } from "../IntermediateTypes";
 import { ProcessingContext } from "./ProcessingContext";
 
@@ -43,6 +45,6 @@ export function processPrivateIdentifier(
 {
     return {
         kind: IntermediateKind.IntermediatePrivatePropertyIdentifier,
-        name: input.escapedText.toString(),
+        name: mustBeString(AST.getTextForNode(input)),
     }
 }

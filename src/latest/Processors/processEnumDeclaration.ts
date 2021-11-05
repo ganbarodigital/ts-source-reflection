@@ -63,12 +63,13 @@ export function processEnumDeclaration (
         isExported: AST.hasExportModifier(enumDec.modifiers),
         isDefaultExport: AST.hasDefaultModifier(enumDec.modifiers),
         name: enumDec.name.getText(),
-        members: processEnumMembers(processCtx, enumDec.members),
+        members: processEnumMembers(processCtx, parentCtx, enumDec.members),
     }
 }
 
 function processEnumMembers(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NodeArray<EnumMember>
 ): IntermediateEnumMember[]
 {
@@ -79,7 +80,7 @@ function processEnumMembers(
         // does this enum member have a value?
         let initializer: Maybe<IntermediateExpression>;
         if (member.initializer) {
-            initializer = processExpression(processCtx, member.initializer);
+            initializer = processExpression(processCtx, parentCtx, member.initializer);
         }
 
         retval.push(

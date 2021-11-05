@@ -39,24 +39,26 @@ import {
     IntermediateKind,
     IntermediateTypeReference
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processGenericTypeDeclaration(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: TypeParameterDeclaration
 ): IntermediateGenericType
 {
     // do we have a constraint?
     let constraint: Maybe<IntermediateTypeReference>;
     if (input.constraint) {
-        constraint = processTypeNode(processCtx, input.constraint);
+        constraint = processTypeNode(processCtx, parentCtx, input.constraint);
     }
 
     // do we have a default type?
     let defaultType: Maybe<IntermediateTypeReference>;
     if (input.default) {
-        defaultType = processTypeNode(processCtx, input.default);
+        defaultType = processTypeNode(processCtx, parentCtx, input.default);
     }
 
     // tslint:disable-next-line: no-angle-bracket-type-assertion

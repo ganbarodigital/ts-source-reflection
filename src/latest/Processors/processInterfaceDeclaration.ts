@@ -60,17 +60,18 @@ export function processInterfaceDeclaration (
         kind: IntermediateKind.IntermediateInterface,
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
         name: interfaceDec.name.text,
-        typeParameters: processTypeParametersFromNode(processCtx, interfaceDec),
+        typeParameters: processTypeParametersFromNode(processCtx, parentCtx, interfaceDec),
         docBlock: processDocBlock(processCtx, interfaceDec),
         isExported: AST.isNodeExported(interfaceDec),
         isDefaultExport: AST.hasDefaultModifier(interfaceDec.modifiers),
-        extends: getBaseInterfaceTypes(processCtx, interfaceDec),
-        members: processMemberSignatures(processCtx, interfaceDec.members),
+        extends: getBaseInterfaceTypes(processCtx, parentCtx, interfaceDec),
+        members: processMemberSignatures(processCtx, parentCtx, interfaceDec.members),
     }
 }
 
 function getBaseInterfaceTypes(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: InterfaceDeclaration
 ): IntermediateTypeArgument[] {
     // our return value
@@ -80,7 +81,7 @@ function getBaseInterfaceTypes(
     const heritageClauses = AST.findExtendsHeritageClauses(input);
     for (const clause of heritageClauses) {
         for (const clauseType of clause.types) {
-            retval.push(processExpressionWithTypeArguments(processCtx, clauseType));
+            retval.push(processExpressionWithTypeArguments(processCtx, parentCtx, clauseType));
         }
     }
 

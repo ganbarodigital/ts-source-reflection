@@ -35,6 +35,7 @@
 import { GetAccessorDeclaration } from "typescript";
 import { AST } from "../AST";
 import { IntermediateGetter, IntermediateKind } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processDecorators } from "./processDecorators";
 import { processDocBlock } from "./processDocBlock";
 import { ProcessingContext } from "./ProcessingContext";
@@ -43,16 +44,17 @@ import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processGetAccessorDeclaration(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: GetAccessorDeclaration
 ): IntermediateGetter
 {
     // what we return depends on whether or not we have an explicit
     // type signature
-    const returnType = processReturnTypeFromNode(processCtx, input);
+    const returnType = processReturnTypeFromNode(processCtx, parentCtx, input);
 
     if (!returnType) {
         // fallback: can the compiler work out what type we return, instead?
-        const inferredReturnType = AST.getInferredReturnType(processCtx, input);
+        const inferredReturnType = processCtx.compiler.getInferredReturnType(processCtx, parentCtx, input);
 
         if (inferredReturnType) {
             // yes it can!
@@ -62,7 +64,7 @@ export function processGetAccessorDeclaration(
                 decorators: processDecorators(processCtx, input),
                 accessModifier: AST.getRestrictableScope(input),
                 name: input.name.getText(),
-                typeParameters: processTypeParametersFromNode(processCtx, input),
+                typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
                 returnType,
                 inferredReturnType,
             }
@@ -75,7 +77,7 @@ export function processGetAccessorDeclaration(
             decorators: processDecorators(processCtx, input),
             accessModifier: AST.getRestrictableScope(input),
             name: input.name.getText(),
-            typeParameters: processTypeParametersFromNode(processCtx, input),
+            typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
             returnType,
         }
     }
@@ -87,7 +89,7 @@ export function processGetAccessorDeclaration(
         decorators: processDecorators(processCtx, input),
         accessModifier: AST.getRestrictableScope(input),
         name: input.name.getText(),
-        typeParameters: processTypeParametersFromNode(processCtx, input),
+        typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
         returnType,
     }
 }

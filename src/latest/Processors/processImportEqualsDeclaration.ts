@@ -54,7 +54,7 @@ export function processImportEqualsDeclaration (
     return {
         kind: IntermediateKind.IntermediateImportAssignment,
         name: processIdentifier(processCtx, importDec.name),
-        modRef: processModuleReference(processCtx, importDec.moduleReference),
+        modRef: processModuleReference(processCtx, parentCtx, importDec.moduleReference),
     };
 }
 

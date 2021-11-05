@@ -52,6 +52,7 @@ import {
     IntermediateArrayBindingParameter,
     IntermediateKind
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processBindingNameForParameters } from "./processBindingNameForParameters";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
@@ -60,6 +61,7 @@ import { processTypeNode } from "./processTypeNode";
 
 export function processArrayBindingPattern(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     {
         param,
         paramType
@@ -71,16 +73,17 @@ export function processArrayBindingPattern(
 {
     return {
         kind: IntermediateKind.IntermediateArrayBindingParameter,
-        parameters: processBindingElements(processCtx, param.elements),
+        parameters: processBindingElements(processCtx, ParentContext.ARRAY_BINDING_PATTERN, param.elements),
         typeRef: processMaybe(
             paramType,
-            (value) => processTypeNode(processCtx, value),
+            (value) => processTypeNode(processCtx, parentCtx, value),
         ),
     }
 }
 
 function processBindingElements(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NodeArray<ArrayBindingElement>
 ): IntermediateArrayBindingElement[]
 {
@@ -89,7 +92,7 @@ function processBindingElements(
 
     input.forEach((bindingElement) => {
         retval.push(
-            processBindingElement(processCtx, bindingElement)
+            processBindingElement(processCtx, parentCtx, bindingElement)
         );
     });
 
@@ -99,6 +102,7 @@ function processBindingElements(
 
 function processBindingElement(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ArrayBindingElement
 ): IntermediateArrayBindingElement
 {
@@ -112,7 +116,7 @@ function processBindingElement(
             ),
             initializer: processMaybe(
                 input.initializer,
-                (value) => processExpression(processCtx, value)
+                (value) => processExpression(processCtx, parentCtx, value)
             ),
         }
     }

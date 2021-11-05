@@ -61,7 +61,7 @@ export function processTypeAliasDeclaration (
         name: typeAliasDec.name.text,
         isExported: AST.hasExportModifier(input.modifiers),
         isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-        typeRef: processTypeNode(processCtx, typeAliasDec.type),
-        typeParameters: processTypeParametersFromNode(processCtx, typeAliasDec),
+        typeRef: processTypeNode(processCtx, parentCtx, typeAliasDec.type),
+        typeParameters: processTypeParametersFromNode(processCtx, parentCtx, typeAliasDec),
     }
 }

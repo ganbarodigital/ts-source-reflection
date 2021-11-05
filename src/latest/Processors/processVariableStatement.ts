@@ -61,6 +61,7 @@ export function processVariableStatement (
         isExported: AST.isNodeExported(variableStmt),
         variables: processVariableDeclarationList(
             processCtx,
+            parentCtx,
             variableStmt.declarationList,
         ),
     }

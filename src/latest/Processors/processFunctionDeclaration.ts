@@ -65,7 +65,7 @@ export function processFunctionDeclaration (
     // reason we started passing the parentCtx around
     const isDeclared = AST.hasDeclaredModifier(funcDec.modifiers);
     if (parentCtx === ParentContext.MODULE || isDeclared) {
-        return processAmbientFunction(processCtx, funcDec);
+        return processAmbientFunction(processCtx, parentCtx, funcDec);
     }
 
     // if we get here, then we know that we're looking at an actual
@@ -73,14 +73,15 @@ export function processFunctionDeclaration (
     // or one of its overloaded declarations?
     const hasBody = AST.hasBody(funcDec.body);
     if (hasBody) {
-        return processFunctionImplementation(processCtx, funcDec);
+        return processFunctionImplementation(processCtx, parentCtx, funcDec);
     }
 
-    return processFunctionOverload(processCtx, funcDec);
+    return processFunctionOverload(processCtx, parentCtx, funcDec);
 }
 
 function processFunctionImplementation(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: FunctionDeclaration
 ): IntermediateFunctionImplementation
 {
@@ -97,6 +98,7 @@ function processFunctionImplementation(
 
     const returnType = processReturnTypeFromNode(
         processCtx,
+        parentCtx,
         input
     );
 
@@ -107,9 +109,9 @@ function processFunctionImplementation(
             isDeclared: false,
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-            typeParameters: processTypeParametersFromNode(processCtx, input),
+            typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
             name: input.name?.text,
-            parameters: processFunctionParameters(processCtx, input.parameters),
+            parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
             returnType,
             hasBody: true,
             body,
@@ -117,7 +119,7 @@ function processFunctionImplementation(
     }
 
     // do we have anything useful?
-    const inferredReturnType = AST.getInferredReturnType(processCtx, input);
+    const inferredReturnType = processCtx.compiler.getInferredReturnType(processCtx, parentCtx, input);
     if (inferredReturnType) {
         return {
             kind: IntermediateKind.IntermediateFunctionImplementation,
@@ -125,9 +127,9 @@ function processFunctionImplementation(
             isDeclared: false,
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-            typeParameters: processTypeParametersFromNode(processCtx, input),
+            typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
             name: input.name?.text,
-            parameters: processFunctionParameters(processCtx, input.parameters),
+            parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
             returnType,
             inferredReturnType,
             hasBody: true,
@@ -142,9 +144,9 @@ function processFunctionImplementation(
         isDeclared: false,
         isExported: AST.hasExportModifier(input.modifiers),
         isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-        typeParameters: processTypeParametersFromNode(processCtx, input),
+        typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
         name: input.name?.text,
-        parameters: processFunctionParameters(processCtx, input.parameters),
+        parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
         returnType,
         hasBody: true,
         body,
@@ -153,11 +155,13 @@ function processFunctionImplementation(
 
 function processFunctionOverload(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: FunctionDeclaration
 ): IntermediateFunctionOverload
 {
     const returnType = processReturnTypeFromNode(
         processCtx,
+        parentCtx,
         input
     );
 
@@ -168,16 +172,16 @@ function processFunctionOverload(
             isDeclared: false,
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-            typeParameters: processTypeParametersFromNode(processCtx, input),
+            typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
             name: input.name?.text,
-            parameters: processFunctionParameters(processCtx, input.parameters),
+            parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
             returnType,
             hasBody: false,
         }
     }
 
     // do we have anything useful?
-    const inferredReturnType = AST.getInferredReturnType(processCtx, input);
+    const inferredReturnType = processCtx.compiler.getInferredReturnType(processCtx, parentCtx, input);
     if (inferredReturnType) {
         return {
             kind: IntermediateKind.IntermediateFunctionOverload,
@@ -185,9 +189,9 @@ function processFunctionOverload(
             isDeclared: false,
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-            typeParameters: processTypeParametersFromNode(processCtx, input),
+            typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
             name: input.name?.text,
-            parameters: processFunctionParameters(processCtx, input.parameters),
+            parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
             returnType,
             inferredReturnType,
             hasBody: false,
@@ -201,9 +205,9 @@ function processFunctionOverload(
         isDeclared: false,
         isExported: AST.hasExportModifier(input.modifiers),
         isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-        typeParameters: processTypeParametersFromNode(processCtx, input),
+        typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
         name: input.name?.text,
-        parameters: processFunctionParameters(processCtx, input.parameters),
+        parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
         returnType,
         hasBody: false,
     }
@@ -211,6 +215,7 @@ function processFunctionOverload(
 
 function processAmbientFunction(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: FunctionDeclaration
 ): IntermediateAmbientFunction
 {
@@ -220,13 +225,14 @@ function processAmbientFunction(
     // do we have a return type?
     const returnType = processReturnTypeFromNode(
         processCtx,
+        parentCtx,
         input
     );
 
     if (!returnType) {
         // okay, can the compiler work out what the return type is instead,
         // then?
-        const inferredReturnType = compiler.getInferredReturnType(processCtx, input);
+        const inferredReturnType = compiler.getInferredReturnType(processCtx, parentCtx, input);
         if (inferredReturnType) {
             return {
                 kind: IntermediateKind.IntermediateAmbientFunction,
@@ -234,9 +240,9 @@ function processAmbientFunction(
                 isDeclared: AST.hasDeclaredModifier(input.modifiers),
                 isExported: AST.hasExportModifier(input.modifiers),
                 isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-                typeParameters: processTypeParametersFromNode(processCtx, input),
+                typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
                 name: input.name?.text,
-                parameters: processFunctionParameters(processCtx, input.parameters),
+                parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
                 returnType,
                 inferredReturnType,
                 hasBody: false,
@@ -249,9 +255,9 @@ function processAmbientFunction(
             isDeclared: AST.hasDeclaredModifier(input.modifiers),
             isExported: AST.hasExportModifier(input.modifiers),
             isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-            typeParameters: processTypeParametersFromNode(processCtx, input),
+            typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
             name: input.name?.text,
-            parameters: processFunctionParameters(processCtx, input.parameters),
+            parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
             returnType,
             hasBody: false,
         }
@@ -263,9 +269,9 @@ function processAmbientFunction(
         isDeclared: AST.hasDeclaredModifier(input.modifiers),
         isExported: AST.hasExportModifier(input.modifiers),
         isDefaultExport: AST.hasDefaultModifier(input.modifiers),
-        typeParameters: processTypeParametersFromNode(processCtx, input),
+        typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
         name: input.name?.text,
-        parameters: processFunctionParameters(processCtx, input.parameters),
+        parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
         returnType,
         hasBody: false,
     }

@@ -66,6 +66,7 @@ import {
     IntermediateKind,
     IntermediateTypeAssertable
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processArrayLiteralExpression } from "./processArrayLiteralExpression";
 import { processArrowFunction } from "./processArrowFunction";
 import { processBinaryExpression } from "./processBinaryExpression";
@@ -93,6 +94,7 @@ import { processTypeOfExpression } from "./processTypeOfExpression";
 
 export function processExpression(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: Expression
 ): IntermediateExpression {
     if (isNumericLiteral(input)) {
@@ -110,22 +112,22 @@ export function processExpression(
     }
 
     if (isCallExpression(input)) {
-        return processCallExpression(processCtx, input);
+        return processCallExpression(processCtx, parentCtx, input);
     }
 
     if (isObjectLiteralExpression(input)) {
-        return processObjectLiteralExpression(processCtx, input);
+        return processObjectLiteralExpression(processCtx, parentCtx, input);
     }
 
     if (isTypeAssertionExpression(input)) {
-        const retval = processExpression(processCtx, input.expression);
-        (retval as IntermediateTypeAssertable).typeAssertion = processTypeNode(processCtx, input.type);
+        const retval = processExpression(processCtx, parentCtx, input.expression);
+        (retval as IntermediateTypeAssertable).typeAssertion = processTypeNode(processCtx, parentCtx, input.type);
         return retval;
     }
 
     if (isAsExpression(input)) {
-        const retval = processExpression(processCtx, input.expression);
-        (retval as IntermediateTypeAssertable).asType = processTypeNode(processCtx, input.type);
+        const retval = processExpression(processCtx, parentCtx, input.expression);
+        (retval as IntermediateTypeAssertable).asType = processTypeNode(processCtx, parentCtx, input.type);
         return retval;
     }
 
@@ -159,7 +161,7 @@ export function processExpression(
     }
 
     if (isNewExpression(input)) {
-        return processNewExpression(processCtx, input);
+        return processNewExpression(processCtx, parentCtx, input);
     }
 
     if (isFunctionExpression(input)) {
@@ -171,19 +173,19 @@ export function processExpression(
     }
 
     if (isSpreadElement(input)) {
-        return processSpreadElement(processCtx, input);
+        return processSpreadElement(processCtx, parentCtx, input);
     }
 
     if (isArrowFunction(input)) {
-        return processArrowFunction(processCtx, input);
+        return processArrowFunction(processCtx, parentCtx, input);
     }
 
     if (isPropertyAccessExpression(input)) {
-        return processPropertyAccessExpression(processCtx, input);
+        return processPropertyAccessExpression(processCtx, parentCtx, input);
     }
 
     if (isParenthesizedExpression(input)) {
-        return processParenthesizedExpression(processCtx, input);
+        return processParenthesizedExpression(processCtx, parentCtx, input);
     }
 
     if (isBinaryExpression(input)) {
@@ -196,7 +198,7 @@ export function processExpression(
     }
 
     if (isElementAccessExpression(input)) {
-        return processElementAccessExpression(processCtx, input);
+        return processElementAccessExpression(processCtx, parentCtx, input);
     }
 
     // special case - regex
@@ -210,7 +212,7 @@ export function processExpression(
     }
 
     if (isTemplateExpression(input)) {
-        return processTemplateExpression(processCtx, input);
+        return processTemplateExpression(processCtx, parentCtx, input);
     }
 
     if (isConditionalExpression(input)) {
@@ -218,23 +220,23 @@ export function processExpression(
     }
 
     if (isPostfixUnaryExpression(input)) {
-        return processPostfixUnaryExpression(processCtx, input);
+        return processPostfixUnaryExpression(processCtx, parentCtx, input);
     }
 
     if (isPrefixUnaryExpression(input)) {
-        return processPrefixUnaryExpression(processCtx, input);
+        return processPrefixUnaryExpression(processCtx, parentCtx, input);
     }
 
     if (isNonNullExpression(input)) {
-        return processNonNullExpression(processCtx, input);
+        return processNonNullExpression(processCtx, parentCtx, input);
     }
 
     if (isClassExpression(input)) {
-        return processClassExpression(processCtx, input);
+        return processClassExpression(processCtx, parentCtx, input);
     }
 
     if (isTypeOfExpression(input)) {
-        return processTypeOfExpression(processCtx, input);
+        return processTypeOfExpression(processCtx, parentCtx, input);
     }
 
     if (AST.isThisExpression(input)) {

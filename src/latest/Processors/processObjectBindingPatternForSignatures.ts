@@ -44,12 +44,14 @@ import {
     IntermediateDestructuredParameterSignature,
     IntermediateKind
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processMaybe } from "./processMaybe";
 import { processTypeNode } from "./processTypeNode";
 
 export function processObjectBindingPatternForSignatures(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     {
         param,
         paramType,
@@ -61,7 +63,7 @@ export function processObjectBindingPatternForSignatures(
 {
     const typeRef = processMaybe(
         paramType,
-        (value) => processTypeNode(processCtx, value),
+        (value) => processTypeNode(processCtx, parentCtx, value),
     )
 
     // all done

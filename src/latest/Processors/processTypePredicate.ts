@@ -34,17 +34,19 @@
 
 import { TypePredicateNode } from "typescript";
 import { IntermediateKind, IntermediateTypePredicate } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processTypeNode } from "./processTypeNode";
 
 export function processTypePredicate(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: TypePredicateNode
 ): IntermediateTypePredicate
 {
     return {
         kind: IntermediateKind.IntermediateTypePredicate,
         parameterName: input.parameterName.getText(),
-        assertedRef: processTypeNode(processCtx, input.type!)
+        assertedRef: processTypeNode(processCtx, parentCtx, input.type!)
     }
 }

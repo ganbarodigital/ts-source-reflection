@@ -39,6 +39,7 @@ import {
     IntermediateKind,
     IntermediatePropertyDeclaration
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processDecorators } from "./processDecorators";
 import { processDocBlock } from "./processDocBlock";
 import { processExpression } from "./processExpression";
@@ -49,24 +50,25 @@ import { processTypeNode } from "./processTypeNode";
 
 export function processPropertyDeclaration(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: PropertyDeclaration
 ): IntermediatePropertyDeclaration
 {
     let initializer: Maybe<IntermediateExpression>;
     if (input.initializer) {
-        initializer = processExpression(processCtx, input.initializer);
+        initializer = processExpression(processCtx, parentCtx, input.initializer);
     }
 
     // special case: untyped property
     if (!input.type) {
         // what can the compiler tell us about this property?
-        const inferredType = AST.getInferredType(processCtx, input);
+        const inferredType = processCtx.compiler.getInferredType(processCtx, parentCtx, input);
 
         return {
             kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
             docBlock: processDocBlock(processCtx, input),
             decorators: processDecorators(processCtx, input),
-            name: processPropertyName(processCtx, input.name),
+            name: processPropertyName(processCtx, parentCtx, input.name),
             isOptional: processQuestionToken(processCtx, input.questionToken),
             isReadonly: AST.hasReadonlyModifier(input.modifiers),
             isStatic: AST.hasStaticModifier(input),
@@ -81,11 +83,11 @@ export function processPropertyDeclaration(
         kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
         docBlock: processDocBlock(processCtx, input),
         decorators: processDecorators(processCtx, input),
-        name: processPropertyName(processCtx, input.name),
+        name: processPropertyName(processCtx, parentCtx, input.name),
         isOptional: processQuestionToken(processCtx, input.questionToken),
         isReadonly: AST.hasReadonlyModifier(input.modifiers),
         isStatic: AST.hasStaticModifier(input),
-        typeRef: processTypeNode(processCtx, input.type),
+        typeRef: processTypeNode(processCtx, parentCtx, input.type),
         accessModifier: AST.getRestrictableScope(input),
         initializer,
     }

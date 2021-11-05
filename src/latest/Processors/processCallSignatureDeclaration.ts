@@ -37,6 +37,7 @@ import {
     IntermediateCallSignature,
     IntermediateKind
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processCallableParameterSignatures } from "./processCallableParameterSignatures";
 import { ProcessingContext } from "./ProcessingContext";
 import { processReturnTypeFromNode } from "./processReturnTypeFromNode";
@@ -44,12 +45,13 @@ import { processTypeParametersFromNode } from "./processTypeParametersFromNode";
 
 export function processCallSignatureDeclaration(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: CallSignatureDeclaration
 ): IntermediateCallSignature {
     return {
         kind: IntermediateKind.IntermediateCallSignature,
-        typeParameters: processTypeParametersFromNode(processCtx, input),
-        parameters: processCallableParameterSignatures(processCtx, input.parameters),
-        returnType: processReturnTypeFromNode(processCtx, input),
+        typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
+        parameters: processCallableParameterSignatures(processCtx, parentCtx, input.parameters),
+        returnType: processReturnTypeFromNode(processCtx, parentCtx, input),
     }
 }

@@ -65,6 +65,7 @@ import {
     IntermediateTypeReference,
     IntermediateVariableDeclaration
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processBindingNameForDeclarations } from "./processBindingNameForDeclarations";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
@@ -100,6 +101,7 @@ function isVariableDeclarationWithObjectBinding(
 
 export function processVariableDeclarationList (
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: VariableDeclarationList,
 ): IntermediateVariableDeclaration[]
 {
@@ -125,17 +127,17 @@ export function processVariableDeclarationList (
         // the member's name
         if (isIdentifier(member.name)) {
             retval.push(
-                processVariableDeclaration(processCtx, member, contextFlags)
+                processVariableDeclaration(processCtx, parentCtx, member, contextFlags)
             );
         }
         else if (isVariableDeclarationWithObjectBinding(member)) {
             retval.push(
-                processDestructuredVariableDeclaration(processCtx, member, contextFlags)
+                processDestructuredVariableDeclaration(processCtx, parentCtx, member, contextFlags)
             )
         }
         else if (isVariableDeclarationWithArrayBinding(member)) {
             retval.push(
-                processArrayBindingVariableDeclaration(processCtx, member, contextFlags)
+                processArrayBindingVariableDeclaration(processCtx, parentCtx, member, contextFlags)
             )
         }
         else {
@@ -158,6 +160,7 @@ export function processVariableDeclarationList (
 
 function processVariableDeclaration(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: VariableDeclaration,
     contextFlags: VariableDeclarationContextFlags,
 ): IntermediateVariableDeclaration
@@ -178,19 +181,19 @@ function processVariableDeclaration(
     // does this variable have an explicit type?
     let typeRef: Maybe<IntermediateTypeReference>;
     if (varType) {
-        typeRef = processTypeNode(processCtx, varType);
+        typeRef = processTypeNode(processCtx, parentCtx, varType);
     }
 
     // does this variable have an initial value?
     let initialiser: Maybe<IntermediateExpression>;
     if (input.initializer) {
-        initialiser = processExpression(processCtx, input.initializer);
+        initialiser = processExpression(processCtx, parentCtx, input.initializer);
     }
 
     // can we infer a value?
     let inferredType: Maybe<IntermediateTypeReference>;
     if (!typeRef) {
-        inferredType = AST.getInferredType(processCtx, input, initialiser);
+        inferredType = processCtx.compiler.getInferredType(processCtx, parentCtx, input, initialiser);
     }
 
     // this is necessary to keep the compiler happy
@@ -263,6 +266,7 @@ const MapKindToDestructuredObject: KindMap<ValidDestructuredObjectKinds> = {
 
 function processDestructuredVariableDeclaration(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: VariableDeclarationWithObjectBinding,
     contextFlags: VariableDeclarationContextFlags
 ): IntermediateVariableDeclaration
@@ -283,7 +287,7 @@ function processDestructuredVariableDeclaration(
     // does this variable have an initial value?
     let initializer: Maybe<IntermediateExpression>;
     if (input.initializer) {
-        initializer = processExpression(processCtx, input.initializer);
+        initializer = processExpression(processCtx, parentCtx, input.initializer);
     }
 
     const kind = MapKindToDestructuredObject[contextFlags.kind];
@@ -293,8 +297,8 @@ function processDestructuredVariableDeclaration(
             kind,
             isConstant: true,
             isReadonly,
-            typeRef: processMaybe(input.type, (value) => processTypeNode(processCtx, value)),
-            members: processDestructuredObjectDeclaration(processCtx, input.name),
+            typeRef: processMaybe(input.type, (value) => processTypeNode(processCtx, parentCtx, value)),
+            members: processDestructuredObjectDeclaration(processCtx, parentCtx, input.name),
             initializer,
         }
     }
@@ -303,21 +307,22 @@ function processDestructuredVariableDeclaration(
         kind,
         isConstant: false,
         isReadonly,
-        typeRef: processMaybe(input.type, (value) => processTypeNode(processCtx, value)),
-        members: processDestructuredObjectDeclaration(processCtx, input.name),
+        typeRef: processMaybe(input.type, (value) => processTypeNode(processCtx, parentCtx, value)),
+        members: processDestructuredObjectDeclaration(processCtx, parentCtx, input.name),
         initializer,
     }
 }
 
 function processDestructuredObjectDeclaration(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ObjectBindingPattern
 ): (AnyIntermediateDestructuredIdentifierDeclaration | IntermediateOmittedExpression)[]
 {
     const retval: ReturnType<typeof processDestructuredObjectDeclaration> = [];
 
     for (const element of input.elements) {
-        retval.push(processObjectBindingElement(processCtx, element));
+        retval.push(processObjectBindingElement(processCtx, parentCtx, element));
     }
 
     return retval;
@@ -325,6 +330,7 @@ function processDestructuredObjectDeclaration(
 
 function processObjectBindingElement(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: BindingElement
 ): (AnyIntermediateDestructuredIdentifierDeclaration | IntermediateOmittedExpression)
 {
@@ -338,7 +344,7 @@ function processObjectBindingElement(
     // do we have an initializer?
     const initializer = processMaybe(
         input.initializer,
-        (value) => processExpression(processCtx, value),
+        (value) => processExpression(processCtx, parentCtx, value),
     )
 
     // special case: we're renaming a property
@@ -381,6 +387,7 @@ const MapKindToArrayBindingObject: KindMap<ValidArrayBindingObjectKinds> = {
 
 function processArrayBindingVariableDeclaration(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: VariableDeclarationWithArrayBinding,
     contextFlags: VariableDeclarationContextFlags
 ): IntermediateVariableDeclaration
@@ -401,7 +408,7 @@ function processArrayBindingVariableDeclaration(
     // does this variable have an initial value?
     let initializer: Maybe<IntermediateExpression>;
     if (input.initializer) {
-        initializer = processExpression(processCtx, input.initializer);
+        initializer = processExpression(processCtx, parentCtx, input.initializer);
     }
 
     const kind = MapKindToArrayBindingObject[contextFlags.kind];

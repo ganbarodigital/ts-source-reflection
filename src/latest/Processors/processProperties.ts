@@ -35,11 +35,13 @@
 import { isPropertySignature, NodeArray, TypeElement } from "typescript";
 import { AST } from "../AST";
 import { IntermediatePropertySignature } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processPropertySignature } from "./processPropertySignature";
 
 export function processProperties(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NodeArray<TypeElement>
 ): IntermediatePropertySignature[]
 {
@@ -59,7 +61,7 @@ export function processProperties(
 
         // when we get into parsing classes properly, we will return
         // and refactor this
-        retval.push(processPropertySignature(processCtx, propSig));
+        retval.push(processPropertySignature(processCtx, parentCtx, propSig));
     }
 
     // all done

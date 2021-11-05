@@ -48,5 +48,5 @@ export function processExpressionStatement (
     // make sure we have what we need
     const expDec = AST.mustBeExpressionStatement(input);
 
-    return processExpression(processCtx, expDec.expression);
+    return processExpression(processCtx, parentCtx, expDec.expression);
 }

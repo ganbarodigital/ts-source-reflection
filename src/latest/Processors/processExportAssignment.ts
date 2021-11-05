@@ -54,7 +54,7 @@ export function processExportAssignment (
 
     return {
         kind: IntermediateKind.IntermediateExportAssignment,
-        name: processExpression(processCtx, exportDec.expression),
+        name: processExpression(processCtx, parentCtx, exportDec.expression),
     }
 }
 

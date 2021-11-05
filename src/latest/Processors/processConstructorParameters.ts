@@ -43,11 +43,13 @@ import {
     IntermediateTypedConstructorParameterDeclaration,
     IntermediateUntypedConstructorParameterDeclaration
 } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { ProcessingContext } from "./ProcessingContext";
 import { processParameterDeclaration } from "./processParameterDeclaration";
 
 export function processConstructorParameters(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NodeArray<ParameterDeclaration>
 ): IntermediateConstructorParameterDeclaration[] {
     // our return value
@@ -58,7 +60,7 @@ export function processConstructorParameters(
     // to regular function parameters
 
     input.forEach((paramDec) => {
-        retval.push(processConstructorParameter(processCtx, paramDec));
+        retval.push(processConstructorParameter(processCtx, parentCtx, paramDec));
     });
 
     // all done
@@ -67,12 +69,13 @@ export function processConstructorParameters(
 
 function processConstructorParameter(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: ParameterDeclaration
 ): IntermediateConstructorParameterDeclaration {
     // we can reuse the existing support for all parameters
     // to save us repeating ourselves here
     const retval = mapFunctionParameterToConstructorParameter(
-        processParameterDeclaration(processCtx, input)
+        processParameterDeclaration(processCtx, parentCtx, input)
     );
 
     // special case - object binding parameters cannot contain

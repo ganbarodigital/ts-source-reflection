@@ -53,7 +53,7 @@ export function processReturnStatement(
         kind: IntermediateKind.IntermediateReturnStatement,
         expression: processMaybe(
             returnStmt.expression,
-            (value) => processExpression(processCtx, value),
+            (value) => processExpression(processCtx, parentCtx, value),
         )
     }
 }

@@ -34,6 +34,7 @@
 
 import { BinaryExpression } from "typescript";
 import { IntermediateBinaryExpression, IntermediateKind } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { processExpressionOperator } from "./processExpressionOperator";
 import { ProcessingContext } from "./ProcessingContext";
@@ -45,8 +46,8 @@ export function processBinaryExpression(
 {
     return {
         kind: IntermediateKind.IntermediateBinaryExpression,
-        left: processExpression(processCtx, input.left),
+        left: processExpression(processCtx, ParentContext.BINARY_EXPRESSION, input.left),
         operator: processExpressionOperator(processCtx, input.operatorToken),
-        right: processExpression(processCtx, input.right),
+        right: processExpression(processCtx, ParentContext.BINARY_EXPRESSION, input.right),
     }
 }

@@ -48,6 +48,7 @@ import {
 } from "typescript";
 import { AST } from "../AST";
 import { IntermediateMemberDeclaration } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processConstructorDeclaration } from "./processConstructorDeclaration";
 import { processGetAccessorDeclaration } from "./processGetAccessorDeclaration";
 import { processIndexSignatureDeclaration } from "./processIndexSignatureDeclaration";
@@ -58,6 +59,7 @@ import { processSetAccessorDeclaration } from "./processSetAccessorDeclaration";
 
 export function processMemberDeclarations(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NodeArray<ClassElement>
 ): IntermediateMemberDeclaration[]
 {
@@ -65,32 +67,32 @@ export function processMemberDeclarations(
 
     for (const member of input) {
         if (isPropertyDeclaration(member)) {
-            retval.push(processPropertyDeclaration(processCtx, member));
+            retval.push(processPropertyDeclaration(processCtx, parentCtx, member));
             continue;
         }
 
         if (isConstructorDeclaration(member)) {
-            retval.push(processConstructorDeclaration(processCtx, member));
+            retval.push(processConstructorDeclaration(processCtx, parentCtx, member));
             continue;
         }
 
         if (isMethodDeclaration(member)) {
-            retval.push(processMethodDeclaration(processCtx, member));
+            retval.push(processMethodDeclaration(processCtx, parentCtx, member));
             continue;
         }
 
         if (isGetAccessorDeclaration(member)) {
-            retval.push(processGetAccessorDeclaration(processCtx, member));
+            retval.push(processGetAccessorDeclaration(processCtx, parentCtx, member));
             continue;
         }
 
         if (isSetAccessorDeclaration(member)) {
-            retval.push(processSetAccessorDeclaration(processCtx, member));
+            retval.push(processSetAccessorDeclaration(processCtx, parentCtx, member));
             continue;
         }
 
         if (AST.isIndexSignature(member)) {
-            retval.push(processIndexSignatureDeclaration(processCtx, member));
+            retval.push(processIndexSignatureDeclaration(processCtx, parentCtx, member));
             continue;
         }
 

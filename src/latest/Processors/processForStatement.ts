@@ -64,11 +64,11 @@ export function processForStatement(
         ),
         condition: processMaybe(
             forStmt.condition,
-            (value) => processExpression(processCtx, value),
+            (value) => processExpression(processCtx, ParentContext.FOR, value),
         ),
         incrementor: processMaybe(
             forStmt.incrementor,
-            (value) => processExpression(processCtx, value),
+            (value) => processExpression(processCtx, ParentContext.FOR, value),
         ),
         contents: mustBeIntermediateStatement(
             processStatement(processCtx, ParentContext.FOR, forStmt.statement)

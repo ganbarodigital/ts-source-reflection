@@ -34,16 +34,18 @@
 
 import { NonNullExpression } from "typescript";
 import { IntermediateKind, IntermediateNonNullExpression } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processExpression } from "./processExpression";
 import { ProcessingContext } from "./ProcessingContext";
 
 export function processNonNullExpression(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NonNullExpression
 ): IntermediateNonNullExpression
 {
     return {
         kind: IntermediateKind.IntermediateNonNullExpression,
-        expression: processExpression(processCtx, input.expression),
+        expression: processExpression(processCtx, parentCtx, input.expression),
     }
 }

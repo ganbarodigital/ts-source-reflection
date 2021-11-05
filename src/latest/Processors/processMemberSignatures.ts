@@ -48,6 +48,7 @@ import {
 } from "typescript";
 import { AST } from "../AST";
 import { IntermediateMemberSignature } from "../IntermediateTypes";
+import { ParentContext } from "./ParentContext";
 import { processCallSignatureDeclaration } from "./processCallSignatureDeclaration";
 import { processConstructSignatureDeclaration } from "./processConstructSignatureDeclaration";
 import { processIndexSignatureDeclaration } from "./processIndexSignatureDeclaration";
@@ -57,6 +58,7 @@ import { processPropertySignature } from "./processPropertySignature";
 
 export function processMemberSignatures(
     processCtx: ProcessingContext,
+    parentCtx: ParentContext,
     input: NodeArray<TypeElement | ClassElement>
 ): IntermediateMemberSignature[]
 {
@@ -64,27 +66,27 @@ export function processMemberSignatures(
 
     for (const member of input) {
         if (isPropertySignature(member)) {
-            retval.push(processPropertySignature(processCtx, member));
+            retval.push(processPropertySignature(processCtx, parentCtx, member));
             continue;
         }
 
         if (isCallSignatureDeclaration(member)) {
-            retval.push(processCallSignatureDeclaration(processCtx, member));
+            retval.push(processCallSignatureDeclaration(processCtx, parentCtx, member));
             continue;
         }
 
         if (isConstructSignatureDeclaration(member)) {
-            retval.push(processConstructSignatureDeclaration(processCtx, member));
+            retval.push(processConstructSignatureDeclaration(processCtx, parentCtx, member));
             continue;
         }
 
         if (isMethodSignature(member)) {
-            retval.push(processMethodSignature(processCtx, member));
+            retval.push(processMethodSignature(processCtx, parentCtx, member));
             continue;
         }
 
         if (AST.isIndexSignature(member)) {
-            retval.push(processIndexSignatureDeclaration(processCtx, member));
+            retval.push(processIndexSignatureDeclaration(processCtx, parentCtx, member));
             continue;
         }
 
