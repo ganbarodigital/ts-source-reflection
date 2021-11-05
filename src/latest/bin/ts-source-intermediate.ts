@@ -109,8 +109,7 @@ const importTypes: string[] = [
 ppObject(refFile, 4);
 pp(`}
 
-export default expectedResult;
-`, 0);
+export default expectedResult;`, 0);
 
 const preBuf: string[] = [`//
 // Copyright (c) 2021-present Ganbaro Digital Ltd
@@ -147,13 +146,14 @@ const preBuf: string[] = [`//
 //
 
 import {`];
-for (const entry of new Set(importTypes)) {
+for (const entry of new Set(importTypes.sort())) {
     preBuf.push(`    ${entry},`);
 }
 
 preBuf.push(`} from "${inputFile.dirname().relative(new Filepath("src/latest/IntermediateTypes"))}";
 
-const expectedResult: IntermediateSourceFile = {`);
+const expectedResult: IntermediateSourceFile = {
+`);
 
 fs.writeFileSync(outputFile.valueOf(), preBuf.join("\n") + outBuf.join("\n"));
 

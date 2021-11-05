@@ -34,23 +34,24 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateLetDeclaration,
-                    name: "obj",
-                    isReadonly: false,
                     isConstant: false,
+                    isReadonly: false,
+                    name: "obj",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "any",
@@ -64,8 +65,8 @@ const expectedResult: IntermediateSourceFile = {
                                 initializer: {
                                     kind: IntermediateKind.IntermediateNumericLiteral,
                                     value: "0",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                             },
                         ],
@@ -80,7 +81,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

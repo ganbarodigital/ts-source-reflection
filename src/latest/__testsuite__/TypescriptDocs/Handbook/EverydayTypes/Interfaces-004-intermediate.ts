@@ -32,26 +32,30 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateKind, IntermediateSourceFile } from "../../../../IntermediateTypes";
+import {
+    IntermediateKind,
+    IntermediateSourceFile,
+} from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            isDeclared: false,
-            name: "Window",
-            isExported: false,
-            isDefaultExport: false,
             docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "Window",
             typeParameters: [],
             extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "title",
                     isOptional: false,
                     isReadonly: false,
+                    name: "title",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -61,20 +65,20 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateInterface,
-            isDeclared: false,
-            name: "Window",
-            isExported: false,
-            isDefaultExport: false,
             docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "Window",
             typeParameters: [],
             extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "ts",
                     isOptional: false,
                     isReadonly: false,
+                    name: "ts",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "TypeScriptAPI",
@@ -87,7 +91,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

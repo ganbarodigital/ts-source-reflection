@@ -34,27 +34,28 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            isDeclared: false,
-            name: "Options",
-            isExported: false,
-            isDefaultExport: false,
             docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "Options",
             typeParameters: [],
             extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "width",
                     isOptional: false,
                     isReadonly: false,
+                    name: "width",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -66,21 +67,23 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "configure",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "x",
                     typeRef: {
                         kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
                             {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: 'Options',
+                                typeName: "Options",
                             },
                             {
                                 kind: IntermediateKind.IntermediateStringLiteralType,
@@ -88,8 +91,6 @@ const expectedResult: IntermediateSourceFile = {
                             },
                         ],
                     },
-                    isOptional: false,
-                    isReadonly: false,
                     initializer: undefined,
                 },
             ],
@@ -109,7 +110,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

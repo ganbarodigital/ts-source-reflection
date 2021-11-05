@@ -34,17 +34,18 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "getFavoriteNumber",
             typeParameters: [],
             parameters: [],
@@ -55,7 +56,17 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateNumericLiteral,
+                            value: "26",
+                            typeAssertion: undefined,
+                            asType: undefined,
+                        },
+                    },
+                ],
             },
         },
     ],
@@ -63,7 +74,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

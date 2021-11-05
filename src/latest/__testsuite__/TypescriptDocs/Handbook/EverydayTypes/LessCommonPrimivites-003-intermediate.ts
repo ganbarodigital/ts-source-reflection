@@ -34,39 +34,41 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    name: "firstName",
                     isConstant: true,
                     isReadonly: false,
+                    name: "firstName",
+                    typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Symbol",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         typeArguments: [],
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "name",
-                                asType: undefined,
                                 typeAssertion: undefined,
-                            }
+                                asType: undefined,
+                            },
                         ],
                         inferredReturnType: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -75,7 +77,6 @@ const expectedResult: IntermediateSourceFile = {
                         typeAssertion: undefined,
                         asType: undefined,
                     },
-                    typeRef: undefined,
                     inferredType: {
                         kind: IntermediateKind.IntermediateSymbolType,
                         identifierName: "firstName",
@@ -87,30 +88,31 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    name: "secondName",
                     isConstant: true,
                     isReadonly: false,
+                    name: "secondName",
+                    typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "Symbol",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         typeArguments: [],
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "name",
-                                asType: undefined,
                                 typeAssertion: undefined,
-                            }
+                                asType: undefined,
+                            },
                         ],
                         inferredReturnType: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -119,12 +121,11 @@ const expectedResult: IntermediateSourceFile = {
                         typeAssertion: undefined,
                         asType: undefined,
                     },
-                    typeRef: undefined,
                     inferredType: {
                         kind: IntermediateKind.IntermediateSymbolType,
                         identifierName: "secondName",
                     },
-                }
+                },
             ],
         },
     ],
@@ -132,7 +133,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

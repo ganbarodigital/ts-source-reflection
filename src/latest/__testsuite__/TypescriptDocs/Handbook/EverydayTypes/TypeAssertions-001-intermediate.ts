@@ -34,23 +34,25 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    name: "myCanvas",
                     isConstant: true,
                     isReadonly: false,
+                    name: "myCanvas",
+                    typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
                         expression: {
@@ -58,8 +60,8 @@ const expectedResult: IntermediateSourceFile = {
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "document",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             propName: "getElementById",
                         },
@@ -68,9 +70,9 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "main_canvas",
-                                asType: undefined,
                                 typeAssertion: undefined,
-                            }
+                                asType: undefined,
+                            },
                         ],
                         inferredReturnType: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
@@ -82,7 +84,6 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "HTMLCanvasElement",
                         },
                     },
-                    typeRef: undefined,
                     inferredType: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "HTMLCanvasElement",
@@ -95,7 +96,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

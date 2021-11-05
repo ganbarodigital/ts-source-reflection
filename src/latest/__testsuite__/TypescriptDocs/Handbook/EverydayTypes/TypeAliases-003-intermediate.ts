@@ -34,42 +34,43 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "UserInputSanitizedString",
+            typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                 typeName: "string",
             },
-            typeParameters: [],
         },
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "sanitizeInput",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "str",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
                     },
-                    isOptional: false,
-                    isReadonly: false,
                     initializer: undefined,
                 },
             ],
@@ -80,7 +81,35 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateCallExpression,
+                            expression: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "sanitize",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            typeArguments: [],
+                            arguments: [
+                                {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "str",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            ],
+                            inferredReturnType: {
+                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                typeName: "any",
+                            },
+                            typeAssertion: undefined,
+                            asType: undefined,
+                        },
+                    },
+                ],
             },
         },
     ],
@@ -88,7 +117,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

@@ -34,27 +34,28 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            isDeclared: false,
-            name: "Animal",
-            isExported: false,
-            isDefaultExport: false,
             docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "Animal",
             typeParameters: [],
             extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "name",
                     isOptional: false,
                     isReadonly: false,
+                    name: "name",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -64,27 +65,27 @@ const expectedResult: IntermediateSourceFile = {
         },
         {
             kind: IntermediateKind.IntermediateInterface,
-            isDeclared: false,
-            name: "Bear",
-            isExported: false,
-            isDefaultExport: false,
             docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "Bear",
             typeParameters: [],
             extends: [
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Animal",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "honey",
                     isOptional: false,
                     isReadonly: false,
+                    name: "honey",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "boolean",
@@ -97,7 +98,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

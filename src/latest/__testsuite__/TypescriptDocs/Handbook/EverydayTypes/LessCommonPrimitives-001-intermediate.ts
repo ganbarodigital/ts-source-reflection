@@ -34,39 +34,44 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    name: "oneHundred",
                     isConstant: true,
                     isReadonly: false,
+                    name: "oneHundred",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                        typeName: "bigint",
+                    },
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "BigInt",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         typeArguments: [],
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
-                                value: '100',
-                                asType: undefined,
+                                value: "100",
                                 typeAssertion: undefined,
-                            }
+                                asType: undefined,
+                            },
                         ],
                         inferredReturnType: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -75,19 +80,14 @@ const expectedResult: IntermediateSourceFile = {
                         typeAssertion: undefined,
                         asType: undefined,
                     },
-                    typeRef: {
-                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                        typeName: "bigint",
-                    },
-                }
+                },
             ],
-        }
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

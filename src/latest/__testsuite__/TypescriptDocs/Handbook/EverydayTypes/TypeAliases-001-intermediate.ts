@@ -33,27 +33,30 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Point",
+            typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         docBlock: undefined,
-                        name: "x",
                         isOptional: false,
                         isReadonly: false,
+                        name: "x",
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "number",
@@ -62,9 +65,9 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         docBlock: undefined,
-                        name: "y",
                         isOptional: false,
                         isReadonly: false,
+                        name: "y",
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "number",
@@ -72,27 +75,26 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 ],
             },
-            typeParameters: [],
         },
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "printCoord",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "pt",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Point",
                     },
-                    isOptional: false,
-                    isReadonly: false,
                     initializer: undefined,
                 },
             ],
@@ -104,7 +106,92 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateCallExpression,
+                        expression: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "console",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            propName: "log",
+                        },
+                        typeArguments: [],
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                left: {
+                                    kind: IntermediateKind.IntermediateStringLiteral,
+                                    value: "The coordinate's x value is ",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                operator: IntermediateExpressionOperator.PLUS,
+                                right: {
+                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                    target: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "pt",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                    propName: "x",
+                                },
+                            },
+                        ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "void",
+                        },
+                        typeAssertion: undefined,
+                        asType: undefined,
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateCallExpression,
+                        expression: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "console",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            propName: "log",
+                        },
+                        typeArguments: [],
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                left: {
+                                    kind: IntermediateKind.IntermediateStringLiteral,
+                                    value: "The coordinate's y value is ",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                operator: IntermediateExpressionOperator.PLUS,
+                                right: {
+                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                    target: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "pt",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                    propName: "y",
+                                },
+                            },
+                        ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "void",
+                        },
+                        typeAssertion: undefined,
+                        asType: undefined,
+                    },
+                ],
             },
         },
     ],
@@ -112,7 +199,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

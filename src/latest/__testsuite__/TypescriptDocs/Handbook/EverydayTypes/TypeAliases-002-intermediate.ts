@@ -34,17 +34,19 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "ID",
+            typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateUnionType,
                 typeRefs: [
@@ -58,14 +60,12 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 ],
             },
-            typeParameters: [],
         },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

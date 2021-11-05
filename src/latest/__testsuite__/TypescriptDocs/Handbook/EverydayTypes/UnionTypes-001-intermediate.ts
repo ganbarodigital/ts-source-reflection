@@ -33,24 +33,28 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "printId",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "id",
                     typeRef: {
                         kind: IntermediateKind.IntermediateUnionType,
@@ -65,8 +69,6 @@ const expectedResult: IntermediateSourceFile = {
                             },
                         ],
                     },
-                    isOptional: false,
-                    isReadonly: false,
                     initializer: undefined,
                 },
             ],
@@ -78,7 +80,46 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateCallExpression,
+                        expression: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "console",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            propName: "log",
+                        },
+                        typeArguments: [],
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                left: {
+                                    kind: IntermediateKind.IntermediateStringLiteral,
+                                    value: "Your ID is: ",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                operator: IntermediateExpressionOperator.PLUS,
+                                right: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "id",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
+                        ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "void",
+                        },
+                        typeAssertion: undefined,
+                        asType: undefined,
+                    },
+                ],
             },
         },
     ],
@@ -86,7 +127,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

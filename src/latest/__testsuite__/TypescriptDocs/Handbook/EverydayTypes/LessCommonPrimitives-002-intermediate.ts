@@ -34,40 +34,40 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    name: "anotherHundred",
                     isConstant: true,
                     isReadonly: false,
-                    initializer: {
-                        kind: IntermediateKind.IntermediateBigintLiteral,
-                        value: '100n',
-                    },
+                    name: "anotherHundred",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "bigint",
                     },
-                }
+                    initializer: {
+                        kind: IntermediateKind.IntermediateBigintLiteral,
+                        value: "100n",
+                    },
+                },
             ],
-        }
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

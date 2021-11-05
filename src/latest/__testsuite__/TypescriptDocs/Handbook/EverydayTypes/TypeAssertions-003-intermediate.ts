@@ -34,30 +34,31 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    name: "expr",
                     isConstant: true,
                     isReadonly: false,
+                    name: "expr",
+                    typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateStringLiteral,
                         value: "hello",
                         typeAssertion: undefined,
                         asType: undefined,
                     },
-                    typeRef: undefined,
                     inferredType: {
                         kind: IntermediateKind.IntermediateStringLiteralType,
                         typeName: "hello",
@@ -69,32 +70,32 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    name: "a",
                     isConstant: true,
                     isReadonly: false,
+                    name: "a",
+                    typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateParenthesizedExpression,
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "expr",
+                            typeAssertion: undefined,
                             asType: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "any",
                             },
-                            typeAssertion: undefined,
                         },
+                        typeAssertion: undefined,
                         asType: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "number",
                         },
-                        typeAssertion: undefined,
                     },
-                    typeRef: undefined,
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -107,7 +108,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

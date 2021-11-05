@@ -33,43 +33,45 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "compare",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "a",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
                     },
-                    isOptional: false,
-                    isReadonly: false,
                     initializer: undefined,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "b",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
                     },
-                    isOptional: false,
-                    isReadonly: false,
                     initializer: undefined,
                 },
             ],
@@ -93,7 +95,71 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            whenTrue: {
+                                kind: IntermediateKind.IntermediateNumericLiteral,
+                                value: "0",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            whenFalse: {
+                                whenTrue: {
+                                    kind: IntermediateKind.IntermediateNumericLiteral,
+                                    value: "1",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                whenFalse: {
+                                    kind: IntermediateKind.IntermediatePrefixUnaryExpression,
+                                    target: {
+                                        kind: IntermediateKind.IntermediateNumericLiteral,
+                                        value: "1",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                    operator: IntermediateExpressionOperator.MINUS,
+                                },
+                                kind: IntermediateKind.IntermediateConditionalExpression,
+                                condition: {
+                                    kind: IntermediateKind.IntermediateBinaryExpression,
+                                    left: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "a",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                    operator: IntermediateExpressionOperator.GREATER_THAN,
+                                    right: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "b",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                },
+                            },
+                            kind: IntermediateKind.IntermediateConditionalExpression,
+                            condition: {
+                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                left: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "a",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                operator: IntermediateExpressionOperator.EQUALS_EQUALS_EQUALS,
+                                right: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "b",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
+                        },
+                    },
+                ],
             },
         },
     ],
@@ -101,7 +167,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;
