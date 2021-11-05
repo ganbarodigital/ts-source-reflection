@@ -39,6 +39,7 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
@@ -52,9 +53,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "num",
                     isOptional: false,
                     isReadonly: false,
+                    name: "num",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -70,7 +71,60 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateIfStatement,
+                        condition: {
+                            kind: IntermediateKind.IntermediateBinaryExpression,
+                            left: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "num",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            operator: IntermediateExpressionOperator.LESS_THAN,
+                            right: {
+                                kind: IntermediateKind.IntermediateNumericLiteral,
+                                value: "0",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                        },
+                        thenBlock: {
+                            kind: IntermediateKind.IntermediateReturnStatement,
+                            expression: {
+                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                left: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "num",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                operator: IntermediateExpressionOperator.ASTERISK,
+                                right: {
+                                    kind: IntermediateKind.IntermediatePrefixUnaryExpression,
+                                    target: {
+                                        kind: IntermediateKind.IntermediateNumericLiteral,
+                                        value: "1",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                    operator: IntermediateExpressionOperator.MINUS,
+                                },
+                            },
+                        },
+                        elseBlock: undefined,
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "num",
+                            typeAssertion: undefined,
+                            asType: undefined,
+                        },
+                    },
+                ],
             },
         },
         {
@@ -80,8 +134,8 @@ const expectedResult: IntermediateSourceFile = {
                 target: {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "module",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
                 propName: "exports",
             },
@@ -95,8 +149,8 @@ const expectedResult: IntermediateSourceFile = {
                         initializer: {
                             kind: IntermediateKind.IntermediateNumericLiteral,
                             value: "3.14",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     },
                     {
@@ -105,8 +159,8 @@ const expectedResult: IntermediateSourceFile = {
                         initializer: {
                             kind: IntermediateKind.IntermediateNumericLiteral,
                             value: "1.41",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     },
                     {
@@ -115,8 +169,8 @@ const expectedResult: IntermediateSourceFile = {
                         initializer: {
                             kind: IntermediateKind.IntermediateNumericLiteral,
                             value: "1.61",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                     },
                     {
@@ -124,16 +178,15 @@ const expectedResult: IntermediateSourceFile = {
                         name: "absolute",
                     },
                 ],
-                asType: undefined,
                 typeAssertion: undefined,
-            }
-        }
+                asType: undefined,
+            },
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

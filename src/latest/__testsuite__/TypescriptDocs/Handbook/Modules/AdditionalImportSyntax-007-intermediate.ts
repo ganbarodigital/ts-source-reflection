@@ -38,6 +38,7 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateImportAssignment,
@@ -52,8 +53,8 @@ const expectedResult: IntermediateSourceFile = {
                 source: {
                     kind: IntermediateKind.IntermediateStringLiteral,
                     value: "fs",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             },
         },
@@ -62,7 +63,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

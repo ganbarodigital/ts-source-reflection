@@ -38,6 +38,7 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
@@ -61,37 +62,36 @@ const expectedResult: IntermediateSourceFile = {
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateCallExpression,
-                        typeArguments: [],
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "require",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
+                        typeArguments: [],
                         arguments: [
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "maths",
-                                asType: undefined,
                                 typeAssertion: undefined,
-                            }
+                                asType: undefined,
+                            },
                         ],
                         inferredReturnType: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "any",
                         },
-                        asType: undefined,
                         typeAssertion: undefined,
-                    }
-                }
-            ]
-        }
+                        asType: undefined,
+                    },
+                },
+            ],
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;
