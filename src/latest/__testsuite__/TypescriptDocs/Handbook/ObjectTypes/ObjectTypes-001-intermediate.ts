@@ -33,36 +33,38 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
-            isDeclared: false,
             docBlock: undefined,
-            isExported: false,
+            isDeclared: false,
             isDefaultExport: false,
+            isExported: false,
             name: "greet",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "person",
                     isOptional: false,
                     isReadonly: false,
+                    name: "person",
                     typeRef: {
                         kind: IntermediateKind.IntermediateAnonymousClassType,
                         members: [
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
                                 docBlock: undefined,
-                                name: "name",
                                 isOptional: false,
                                 isReadonly: false,
+                                name: "name",
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "string",
@@ -71,9 +73,9 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateTypedPropertySignature,
                                 docBlock: undefined,
-                                name: "age",
                                 isOptional: false,
                                 isReadonly: false,
+                                name: "age",
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "number",
@@ -92,7 +94,31 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateBinaryExpression,
+                            left: {
+                                kind: IntermediateKind.IntermediateStringLiteral,
+                                value: "Hello ",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            operator: IntermediateExpressionOperator.PLUS,
+                            right: {
+                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                target: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "person",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                propName: "name",
+                            },
+                        },
+                    },
+                ],
             },
         },
     ],
@@ -100,7 +126,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;
