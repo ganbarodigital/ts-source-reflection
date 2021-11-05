@@ -38,22 +38,23 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "doSomething",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "f",
                     isOptional: false,
                     isReadonly: false,
+                    name: "f",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Function",
@@ -69,7 +70,44 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateCallExpression,
+                        expression: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "f",
+                            typeAssertion: undefined,
+                            asType: undefined,
+                        },
+                        typeArguments: [],
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateNumericLiteral,
+                                value: "1",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateNumericLiteral,
+                                value: "2",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateNumericLiteral,
+                                value: "3",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                        ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "any",
+                        },
+                        typeAssertion: undefined,
+                        asType: undefined,
+                    },
+                ],
             },
         },
     ],
@@ -77,7 +115,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

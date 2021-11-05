@@ -38,13 +38,14 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "firstElement",
             typeParameters: [
                 {
@@ -52,15 +53,15 @@ const expectedResult: IntermediateSourceFile = {
                     name: "Type",
                     constraint: undefined,
                     defaultType: undefined,
-                }
+                },
             ],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "arr",
                     isOptional: false,
                     isReadonly: false,
+                    name: "arr",
                     typeRef: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
@@ -78,7 +79,26 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateElementAccessExpression,
+                            element: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "arr",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            accessKey: {
+                                kind: IntermediateKind.IntermediateNumericLiteral,
+                                value: "0",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                        },
+                    },
+                ],
             },
         },
     ],
@@ -86,7 +106,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

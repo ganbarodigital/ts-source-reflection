@@ -165,7 +165,7 @@ function ppObject(
     indent: number = 0
 ) {
     // shorthand
-    const keys = Object.keys(input).sort(sortKeys);
+    const keys = Object.keys(input).sort(sortKeys).filter((x) => x !== 'path');
     const obj = input as {[key: string]: any};
 
     // tslint:disable-next-line: forin

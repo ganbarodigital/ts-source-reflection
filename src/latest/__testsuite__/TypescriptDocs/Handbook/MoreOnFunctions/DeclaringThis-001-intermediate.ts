@@ -38,13 +38,14 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
-            isExported: false,
-            isDefaultExport: false,
             isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "DB",
             typeParameters: [],
             extends: [],
@@ -52,23 +53,24 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
-                    isStatic:false,
+                    isStatic: false,
                     name: "filterUsers",
+                    typeParameters: [],
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                            name: "filter",
                             isOptional: false,
                             isReadonly: false,
+                            name: "filter",
                             typeRef: {
                                 kind: IntermediateKind.IntermediateFunctionTypeSignature,
                                 typeParameters: [],
                                 parameters: [
                                     {
                                         kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                        name: "this",
                                         isOptional: false,
                                         isReadonly: false,
+                                        name: "this",
                                         typeRef: {
                                             kind: IntermediateKind.IntermediateFixedTypeReference,
                                             typeName: "User",
@@ -82,7 +84,6 @@ const expectedResult: IntermediateSourceFile = {
                             },
                         },
                     ],
-                    typeParameters: [],
                     returnType: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
@@ -97,8 +98,8 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
@@ -111,8 +112,8 @@ const expectedResult: IntermediateSourceFile = {
                         expression: {
                             kind: IntermediateKind.IntermediateIdentifierReference,
                             name: "getDB",
-                            asType: undefined,
                             typeAssertion: undefined,
+                            asType: undefined,
                         },
                         typeArguments: [],
                         arguments: [],
@@ -134,8 +135,8 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
@@ -150,8 +151,8 @@ const expectedResult: IntermediateSourceFile = {
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "db",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             propName: "filterUsers",
                         },
@@ -165,9 +166,9 @@ const expectedResult: IntermediateSourceFile = {
                                     {
                                         kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                                         decorators: [],
-                                        name: "this",
                                         isOptional: false,
                                         isReadonly: false,
+                                        name: "this",
                                         typeRef: {
                                             kind: IntermediateKind.IntermediateFixedTypeReference,
                                             typeName: "User",
@@ -189,10 +190,8 @@ const expectedResult: IntermediateSourceFile = {
                                             expression: {
                                                 kind: IntermediateKind.IntermediatePropertyAccessExpression,
                                                 target: {
-                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                    kind: IntermediateKind.IntermediateThisIdentifier,
                                                     name: "this",
-                                                    asType: undefined,
-                                                    typeAssertion: undefined,
                                                 },
                                                 propName: "admin",
                                             },
@@ -220,7 +219,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

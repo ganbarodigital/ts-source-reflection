@@ -33,24 +33,28 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "multiplyAll",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "values",
                     typeRef: {
                         kind: IntermediateKind.IntermediateUnionType,
@@ -59,29 +63,27 @@ const expectedResult: IntermediateSourceFile = {
                                 kind: IntermediateKind.IntermediateArrayTypeReference,
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                    typeName: 'number',
+                                    typeName: "number",
                                 },
                             },
                             {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: 'undefined',
+                                typeName: "undefined",
                             },
                         ],
                     },
-                    isOptional: false,
-                    isReadonly: false,
                     initializer: undefined,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "factor",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                        typeName: 'number',
+                        typeName: "number",
                     },
-                    isOptional: false,
-                    isReadonly: false,
                     initializer: undefined,
                 },
             ],
@@ -92,19 +94,103 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                            typeName: 'number',
+                            typeName: "number",
                         },
                     },
                     {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                        typeName: 'undefined',
+                        typeName: "undefined",
                     },
                 ],
             },
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateIfStatement,
+                        condition: {
+                            kind: IntermediateKind.IntermediatePrefixUnaryExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "values",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            operator: IntermediateExpressionOperator.EXCLAMATION,
+                        },
+                        thenBlock: {
+                            kind: IntermediateKind.IntermediateBlock,
+                            children: [
+                                {
+                                    kind: IntermediateKind.IntermediateReturnStatement,
+                                    expression: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "values",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                },
+                            ],
+                        },
+                        elseBlock: {
+                            kind: IntermediateKind.IntermediateBlock,
+                            children: [
+                                {
+                                    kind: IntermediateKind.IntermediateReturnStatement,
+                                    expression: {
+                                        kind: IntermediateKind.IntermediateCallExpression,
+                                        expression: {
+                                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                            target: {
+                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                name: "values",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                            propName: "map",
+                                        },
+                                        typeArguments: [],
+                                        arguments: [
+                                            {
+                                                kind: IntermediateKind.IntermediateArrowFunction,
+                                                typeParameters: [],
+                                                parameters: [
+                                                    {
+                                                        kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
+                                                        decorators: [],
+                                                        isOptional: false,
+                                                        name: "x",
+                                                        initializer: undefined,
+                                                        inferredType: {
+                                                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                            typeName: "number",
+                                                        },
+                                                    },
+                                                ],
+                                                returnType: undefined,
+                                                inferredReturnType: {
+                                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                    typeName: "number",
+                                                },
+                                                hasBody: true,
+                                            },
+                                        ],
+                                        inferredReturnType: {
+                                            kind: IntermediateKind.IntermediateArrayTypeReference,
+                                            typeRef: {
+                                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                typeName: "number",
+                                            },
+                                        },
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
             },
         },
     ],
@@ -112,7 +198,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

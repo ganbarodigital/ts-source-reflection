@@ -38,13 +38,15 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "SomeConstructor",
+            typeParameters: [],
             typeRef: {
                 kind: IntermediateKind.IntermediateAnonymousClassType,
                 members: [
@@ -53,9 +55,9 @@ const expectedResult: IntermediateSourceFile = {
                         parameters: [
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                name: "s",
                                 isOptional: false,
                                 isReadonly: false,
+                                name: "s",
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                     typeName: "string",
@@ -69,14 +71,12 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 ],
             },
-            typeParameters: [],
         },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

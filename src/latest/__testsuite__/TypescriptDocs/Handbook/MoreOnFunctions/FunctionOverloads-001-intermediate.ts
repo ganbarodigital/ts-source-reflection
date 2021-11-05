@@ -33,32 +33,34 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionOverload,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "makeDate",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "timestamp",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
                     },
                     initializer: undefined,
-                    isOptional: false,
-                    isReadonly: false,
                 },
             ],
             returnType: {
@@ -71,46 +73,46 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunctionOverload,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "makeDate",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "m",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
                     },
                     initializer: undefined,
-                    isOptional: false,
-                    isReadonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "d",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
                     },
                     initializer: undefined,
-                    isOptional: false,
-                    isReadonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "y",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
                     },
                     initializer: undefined,
-                    isOptional: false,
-                    isReadonly: false,
                 },
             ],
             returnType: {
@@ -123,46 +125,46 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "makeDate",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "mOrTimestamp",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
                     },
                     initializer: undefined,
-                    isOptional: false,
-                    isReadonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: true,
+                    isReadonly: false,
                     name: "d",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
                     },
                     initializer: undefined,
-                    isOptional: true,
-                    isReadonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: true,
+                    isReadonly: false,
                     name: "y",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
                     },
                     initializer: undefined,
-                    isOptional: true,
-                    isReadonly: false,
                 },
             ],
             returnType: {
@@ -172,7 +174,107 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateIfStatement,
+                        condition: {
+                            kind: IntermediateKind.IntermediateBinaryExpression,
+                            left: {
+                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                left: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "d",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                operator: IntermediateExpressionOperator.EXCLAMATION_EQUALS_EQUALS,
+                                right: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "undefined",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
+                            operator: IntermediateExpressionOperator.AMPERSAND_AMPERSAND,
+                            right: {
+                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                left: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "y",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                operator: IntermediateExpressionOperator.EXCLAMATION_EQUALS_EQUALS,
+                                right: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "undefined",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
+                        },
+                        thenBlock: {
+                            kind: IntermediateKind.IntermediateBlock,
+                            children: [
+                                {
+                                    kind: IntermediateKind.IntermediateReturnStatement,
+                                    expression: {
+                                        kind: IntermediateKind.IntermediateNewExpression,
+                                        typeRef: {
+                                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                                            typeName: "Date",
+                                        },
+                                        arguments: [
+                                            {
+                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                name: "y",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                            {
+                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                name: "mOrTimestamp",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                            {
+                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                name: "d",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                        ],
+                                        asType: undefined,
+                                    },
+                                },
+                            ],
+                        },
+                        elseBlock: {
+                            kind: IntermediateKind.IntermediateBlock,
+                            children: [
+                                {
+                                    kind: IntermediateKind.IntermediateReturnStatement,
+                                    expression: {
+                                        kind: IntermediateKind.IntermediateNewExpression,
+                                        typeRef: {
+                                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                                            typeName: "Date",
+                                        },
+                                        arguments: [
+                                            {
+                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                name: "mOrTimestamp",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                        ],
+                                        asType: undefined,
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
             },
         },
     ],
@@ -180,7 +282,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

@@ -38,22 +38,23 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "multiply",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "n",
                     isOptional: false,
                     isReadonly: false,
+                    name: "n",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -61,13 +62,12 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: undefined,
                 },
                 {
-                    kind: IntermediateKind.IntermediateRestCallableParameterDeclaration,
                     parameter: {
                         kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                         decorators: [],
-                        name: "m",
                         isOptional: false,
                         isReadonly: false,
+                        name: "m",
                         typeRef: {
                             kind: IntermediateKind.IntermediateArrayTypeReference,
                             typeRef: {
@@ -77,6 +77,7 @@ const expectedResult: IntermediateSourceFile = {
                         },
                         initializer: undefined,
                     },
+                    kind: IntermediateKind.IntermediateRestCallableParameterDeclaration,
                 },
             ],
             returnType: undefined,
@@ -90,7 +91,59 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateCallExpression,
+                            expression: {
+                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                target: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "m",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                propName: "map",
+                            },
+                            typeArguments: [],
+                            arguments: [
+                                {
+                                    kind: IntermediateKind.IntermediateArrowFunction,
+                                    typeParameters: [],
+                                    parameters: [
+                                        {
+                                            kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
+                                            decorators: [],
+                                            isOptional: false,
+                                            name: "x",
+                                            initializer: undefined,
+                                            inferredType: {
+                                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                typeName: "number",
+                                            },
+                                        },
+                                    ],
+                                    returnType: undefined,
+                                    inferredReturnType: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "number",
+                                    },
+                                    hasBody: true,
+                                },
+                            ],
+                            inferredReturnType: {
+                                kind: IntermediateKind.IntermediateArrayTypeReference,
+                                typeRef: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                },
+                            },
+                            typeAssertion: undefined,
+                            asType: undefined,
+                        },
+                    },
+                ],
             },
         },
     ],
@@ -98,7 +151,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

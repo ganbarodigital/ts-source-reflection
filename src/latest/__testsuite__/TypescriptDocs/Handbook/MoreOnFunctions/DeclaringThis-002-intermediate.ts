@@ -38,13 +38,14 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
-            isExported: false,
-            isDefaultExport: false,
             isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "DB",
             typeParameters: [],
             extends: [],
@@ -52,23 +53,24 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateMethodSignature,
                     docBlock: undefined,
-                    isStatic:false,
+                    isStatic: false,
                     name: "filterUsers",
+                    typeParameters: [],
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                            name: "filter",
                             isOptional: false,
                             isReadonly: false,
+                            name: "filter",
                             typeRef: {
                                 kind: IntermediateKind.IntermediateFunctionTypeSignature,
                                 typeParameters: [],
                                 parameters: [
                                     {
                                         kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                        name: "input",
                                         isOptional: false,
                                         isReadonly: false,
+                                        name: "input",
                                         typeRef: {
                                             kind: IntermediateKind.IntermediateFixedTypeReference,
                                             typeName: "User",
@@ -82,7 +84,6 @@ const expectedResult: IntermediateSourceFile = {
                             },
                         },
                     ],
-                    typeParameters: [],
                     returnType: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
@@ -98,7 +99,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

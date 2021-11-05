@@ -38,19 +38,20 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    name: "arr1",
                     isConstant: true,
                     isReadonly: false,
+                    name: "arr1",
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateArrayLiteral,
@@ -58,24 +59,24 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "1",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "2",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "3",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         ],
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
@@ -91,14 +92,14 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    name: "arr2",
                     isConstant: true,
                     isReadonly: false,
+                    name: "arr2",
                     typeRef: undefined,
                     initializer: {
                         kind: IntermediateKind.IntermediateArrayLiteral,
@@ -106,24 +107,24 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "4",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "5",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "6",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         ],
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
@@ -142,8 +143,8 @@ const expectedResult: IntermediateSourceFile = {
                 target: {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "arr1",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
                 propName: "push",
             },
@@ -152,8 +153,8 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateSpreadIdentifierReference,
                     name: "arr2",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             inferredReturnType: {
@@ -168,7 +169,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

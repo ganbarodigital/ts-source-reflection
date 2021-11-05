@@ -38,15 +38,16 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
-            isDeclared: false,
-            name: "CallOrConstruct",
             docBlock: undefined,
-            typeParameters: [],
-            isExported: false,
+            isDeclared: false,
             isDefaultExport: false,
+            isExported: false,
+            name: "CallOrConstruct",
+            typeParameters: [],
             extends: [],
             members: [
                 {
@@ -54,9 +55,9 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                            name: "s",
                             isOptional: false,
                             isReadonly: false,
+                            name: "s",
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "string",
@@ -74,9 +75,9 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                            name: "n",
                             isOptional: true,
                             isReadonly: false,
+                            name: "n",
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "number",
@@ -95,7 +96,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

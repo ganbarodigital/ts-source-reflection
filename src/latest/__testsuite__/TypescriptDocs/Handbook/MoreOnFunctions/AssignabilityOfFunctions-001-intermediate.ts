@@ -38,12 +38,13 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "voidFunc",
             typeParameters: [],
             typeRef: {
@@ -60,14 +61,14 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
+                    isConstant: true,
+                    isReadonly: false,
                     name: "f1",
-                    isConstant: true,
-                    isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "voidFunc",
@@ -90,14 +91,14 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
+                    isConstant: true,
+                    isReadonly: false,
                     name: "f2",
-                    isConstant: true,
-                    isReadonly: false,
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "voidFunc",
@@ -120,14 +121,14 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    name: "f3",
                     isConstant: true,
                     isReadonly: false,
+                    name: "f3",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "voidFunc",
@@ -151,8 +152,8 @@ const expectedResult: IntermediateSourceFile = {
                                     expression: {
                                         kind: IntermediateKind.IntermediateBooleanLiteral,
                                         value: "true",
-                                        asType: undefined,
                                         typeAssertion: undefined,
+                                        asType: undefined,
                                     },
                                 },
                             ],
@@ -166,7 +167,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;
