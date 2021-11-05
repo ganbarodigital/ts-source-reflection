@@ -46,6 +46,8 @@ const KEYS_ORDER = [
     'propName',
     'element',
     'accessKey',
+    'indexRef',
+    'valueRef',
     'text',
     'value',
     'typeRef',

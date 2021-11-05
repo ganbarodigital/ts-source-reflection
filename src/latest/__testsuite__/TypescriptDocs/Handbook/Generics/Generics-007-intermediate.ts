@@ -34,19 +34,18 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
-const expectedResult: IntermediateSourceFile = {
+const expectedResult: IntermediateSourceFile = {    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "GenericIdentityFn",
-            extends: [],
             typeParameters: [
                 {
                     kind: IntermediateKind.IntermediateGenericType,
@@ -55,6 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     defaultType: undefined,
                 },
             ],
+            extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateCallSignature,
@@ -62,28 +62,28 @@ const expectedResult: IntermediateSourceFile = {
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                            name: "arg",
                             isOptional: false,
                             isReadonly: false,
+                            name: "arg",
                             typeRef: {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
                                 typeName: "Type",
                             },
-                        }
+                        },
                     ],
                     returnType: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Type",
                     },
                 },
-            ]
+            ],
         },
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             docBlock: undefined,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "identity",
             typeParameters: [
                 {
@@ -97,9 +97,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "arg",
                     isOptional: false,
                     isReadonly: false,
+                    name: "arg",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Type",
@@ -114,20 +114,30 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateIdentifierReference,
+                            name: "arg",
+                            typeAssertion: undefined,
+                            asType: undefined,
+                        },
+                    },
+                ],
             },
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateLetDeclaration,
-                    isReadonly: false,
                     isConstant: false,
+                    isReadonly: false,
                     name: "myIdentity",
                     typeRef: {
                         kind: IntermediateKind.IntermediateGenericTypeReference,
@@ -142,8 +152,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "identity",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
             ],
@@ -153,7 +163,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

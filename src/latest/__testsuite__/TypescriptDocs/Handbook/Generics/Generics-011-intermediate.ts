@@ -34,17 +34,17 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
-const expectedResult: IntermediateSourceFile = {
+const expectedResult: IntermediateSourceFile = {    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "create",
             typeParameters: [
                 {
@@ -58,9 +58,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "c",
                     isOptional: false,
                     isReadonly: false,
+                    name: "c",
                     typeRef: {
                         kind: IntermediateKind.IntermediateAnonymousClassType,
                         members: [
@@ -84,7 +84,20 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateNewExpression,
+                            typeRef: {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "c",
+                            },
+                            arguments: [],
+                            asType: undefined,
+                        },
+                    },
+                ],
             },
         },
     ],
@@ -92,7 +105,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

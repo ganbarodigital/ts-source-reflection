@@ -34,19 +34,19 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
-const expectedResult: IntermediateSourceFile = {
+const expectedResult: IntermediateSourceFile = {    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isExported: false,
-            isDefaultExport: false,
-            isDeclared: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "GenericNumber",
             typeParameters: [
                 {
@@ -54,7 +54,7 @@ const expectedResult: IntermediateSourceFile = {
                     name: "NumType",
                     constraint: undefined,
                     defaultType: undefined,
-                }
+                },
             ],
             extends: [],
             implements: [],
@@ -63,11 +63,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "zeroValue",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "zeroValue",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "NumType",
@@ -78,20 +78,20 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "add",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "add",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFunctionTypeSignature,
                         typeParameters: [],
                         parameters: [
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                name: "x",
                                 isOptional: false,
                                 isReadonly: false,
+                                name: "x",
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateFixedTypeReference,
                                     typeName: "NumType",
@@ -99,9 +99,9 @@ const expectedResult: IntermediateSourceFile = {
                             },
                             {
                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                name: "y",
                                 isOptional: false,
                                 isReadonly: false,
+                                name: "y",
                                 typeRef: {
                                     kind: IntermediateKind.IntermediateFixedTypeReference,
                                     typeName: "NumType",
@@ -110,7 +110,7 @@ const expectedResult: IntermediateSourceFile = {
                         ],
                         returnType: {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
-                            typeName: "NumType"
+                            typeName: "NumType",
                         },
                     },
                     initializer: undefined,
@@ -122,7 +122,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;
