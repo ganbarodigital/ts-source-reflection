@@ -55,6 +55,7 @@ import { IntermediateRegexLiteral } from "../IntermediateRegexLiteral";
 import { IntermediateSpreadElement } from "../IntermediateSpreadElement";
 import { IntermediateSpreadIdentifierReference } from "../IntermediateSpreadIdentifierReference";
 import { IntermediateStringLiteral } from "../IntermediateStringLiteral";
+import { IntermediateSuperIdentifier } from "../IntermediateSuperIdentifier";
 import { IntermediateTemplateExpression } from "../IntermediateTemplateExpression";
 import { IntermediateThisIdentifier } from "../IntermediateThisIdentifier";
 import { IntermediateTypeOfExpression } from "../IntermediateTypeOfExpression";
@@ -85,6 +86,7 @@ export type IntermediateExpression
       | IntermediateSpreadElement
       | IntermediateSpreadIdentifierReference
       | IntermediateStringLiteral
+      | IntermediateSuperIdentifier
       | IntermediateTemplateExpression
       | IntermediateThisIdentifier
       | IntermediateTypeOfExpression
