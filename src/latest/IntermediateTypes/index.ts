@@ -209,6 +209,7 @@ export * from "./IntermediateStatementProcessors";
 export * from "./IntermediateStaticItem";
 export * from "./IntermediateStringLiteral";
 export * from "./IntermediateStringLiteralType";
+export * from "./IntermediateSuperIdentifier";
 export * from "./IntermediateSupportedStatements";
 export * from "./IntermediateSymbolType";
 export * from "./IntermediateTemplateExpression";

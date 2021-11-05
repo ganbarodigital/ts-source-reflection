@@ -168,6 +168,7 @@ export enum IntermediateKind {
     IntermediateSpreadPropertyAssignment,
     IntermediateStringLiteral,
     IntermediateStringLiteralType,
+    IntermediateSuperIdentifier,
     IntermediateSymbolType,
     IntermediateTemplateExpression,
     IntermediateTemplateExpressionSpan,
