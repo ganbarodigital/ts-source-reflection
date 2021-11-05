@@ -33,21 +33,23 @@
 //
 
 import {
-    IntermediateKind, IntermediateSourceFile
+    IntermediateKind,
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
-            typeParameters: [],
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "MyClass",
+            typeParameters: [],
             extends: [],
             implements: [],
             members: [
@@ -55,11 +57,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    accessModifier: undefined,
-                    name: "x",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: true,
+                    accessModifier: undefined,
+                    name: "x",
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
@@ -75,9 +77,9 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    accessModifier: undefined,
-                    isStatic: true,
                     isAbstract: false,
+                    isStatic: true,
+                    accessModifier: undefined,
                     name: "printX",
                     typeParameters: [],
                     parameters: [],
@@ -110,7 +112,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateIdentifierReference,
                         name: "MyClass",
                         typeAssertion: undefined,
-                        asType: undefined
+                        asType: undefined,
                     },
                     propName: "x",
                 },
@@ -148,7 +150,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

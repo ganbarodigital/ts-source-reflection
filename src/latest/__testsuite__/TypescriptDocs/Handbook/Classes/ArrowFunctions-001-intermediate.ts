@@ -34,19 +34,20 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "MyClass",
             typeParameters: [],
             extends: [],
@@ -56,16 +57,16 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    accessModifier: undefined,
-                    name: "name",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
+                    accessModifier: undefined,
+                    name: "name",
                     initializer: {
                         kind: IntermediateKind.IntermediateStringLiteral,
                         value: "MyClass",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -76,11 +77,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    accessModifier: undefined,
-                    name: "getName",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
+                    accessModifier: undefined,
+                    name: "getName",
                     initializer: {
                         kind: IntermediateKind.IntermediateArrowFunction,
                         typeParameters: [],
@@ -109,7 +110,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

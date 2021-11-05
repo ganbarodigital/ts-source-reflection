@@ -34,26 +34,26 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "MyClass",
             typeParameters: [],
             extends: [],
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateIndexSignature,
                     index: {
                         indexName: "s",
                         indexTypeRef: {
@@ -61,6 +61,8 @@ const expectedResult: IntermediateSourceFile = {
                             typeName: "string",
                         },
                     },
+                    sigIsReadonly: false,
+                    kind: IntermediateKind.IntermediateIndexSignature,
                     value: {
                         valueTypeRef: {
                             kind: IntermediateKind.IntermediateUnionType,
@@ -77,9 +79,9 @@ const expectedResult: IntermediateSourceFile = {
                                         parameters: [
                                             {
                                                 kind: IntermediateKind.IntermediateTypedCallableParameterSignature,
-                                                name: "s",
-                                                isReadonly: false,
                                                 isOptional: false,
+                                                isReadonly: false,
+                                                name: "s",
                                                 typeRef: {
                                                     kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                                     typeName: "string",
@@ -95,27 +97,26 @@ const expectedResult: IntermediateSourceFile = {
                             ],
                         },
                     },
-                    sigIsReadonly: false,
                 },
                 {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "check",
-                    accessModifier: undefined,
-                    isStatic: false,
                     isAbstract: false,
+                    isStatic: false,
+                    accessModifier: undefined,
+                    name: "check",
                     typeParameters: [],
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                             decorators: [],
-                            name: "s",
-                            isReadonly: false,
                             isOptional: false,
+                            isReadonly: false,
+                            name: "s",
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
-                                typeName: "string"
+                                typeName: "string",
                             },
                             initializer: undefined,
                         },
@@ -134,7 +135,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

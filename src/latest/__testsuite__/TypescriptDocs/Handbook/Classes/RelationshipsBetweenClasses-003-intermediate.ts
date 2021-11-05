@@ -34,19 +34,20 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Empty",
             typeParameters: [],
             extends: [],
@@ -57,17 +58,17 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "fn",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "x",
                     isOptional: false,
                     isReadonly: false,
+                    name: "x",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Empty",
@@ -91,16 +92,16 @@ const expectedResult: IntermediateSourceFile = {
             expression: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "fn",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             typeArguments: [],
             arguments: [
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "window",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             inferredReturnType: {
@@ -115,16 +116,16 @@ const expectedResult: IntermediateSourceFile = {
             expression: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "fn",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             typeArguments: [],
             arguments: [
                 {
                     kind: IntermediateKind.IntermediateObjectLiteral,
                     properties: [],
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             inferredReturnType: {
@@ -139,16 +140,16 @@ const expectedResult: IntermediateSourceFile = {
             expression: {
                 kind: IntermediateKind.IntermediateIdentifierReference,
                 name: "fn",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
             typeArguments: [],
             arguments: [
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "fn",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             inferredReturnType: {
@@ -163,7 +164,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

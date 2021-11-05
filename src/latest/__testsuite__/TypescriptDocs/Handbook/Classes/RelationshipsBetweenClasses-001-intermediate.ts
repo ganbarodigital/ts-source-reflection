@@ -34,19 +34,20 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Point1",
             typeParameters: [],
             extends: [],
@@ -56,16 +57,16 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "x",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "x",
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -76,16 +77,16 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "y",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "y",
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -98,10 +99,10 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Point2",
             typeParameters: [],
             extends: [],
@@ -111,16 +112,16 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "x",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "x",
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -131,16 +132,16 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "y",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "y",
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -153,14 +154,14 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    name: "p",
                     isConstant: true,
                     isReadonly: false,
+                    name: "p",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Point1",
@@ -182,7 +183,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

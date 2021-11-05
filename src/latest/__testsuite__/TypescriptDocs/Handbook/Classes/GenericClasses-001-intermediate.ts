@@ -33,19 +33,21 @@
 //
 
 import {
-    IntermediateKind, IntermediateSourceFile
+    IntermediateKind,
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Box",
             typeParameters: [
                 {
@@ -62,11 +64,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "contents",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "contents",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Type",
@@ -81,10 +83,10 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             decorators: [],
-                            name: "value",
                             isOptional: false,
                             isReadonly: false,
                             setsPropertyWithScope: undefined,
+                            name: "value",
                             typeRef: {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
                                 typeName: "Type",
@@ -110,8 +112,8 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
@@ -129,8 +131,8 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateStringLiteral,
                                 value: "hello!",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         ],
                         asType: undefined,
@@ -153,7 +155,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

@@ -34,19 +34,20 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
-            typeParameters: [],
+            isExported: false,
             name: "Pingable",
+            typeParameters: [],
             extends: [],
             members: [
                 {
@@ -67,10 +68,10 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Sonar",
             typeParameters: [],
             extends: [],
@@ -78,8 +79,8 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Pingable",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             members: [
@@ -87,10 +88,10 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "ping",
-                    accessModifier: undefined,
-                    isStatic: false,
                     isAbstract: false,
+                    isStatic: false,
+                    accessModifier: undefined,
+                    name: "ping",
                     typeParameters: [],
                     parameters: [],
                     returnType: undefined,
@@ -107,7 +108,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

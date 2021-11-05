@@ -35,19 +35,20 @@
 import {
     IntermediateExpressionOperator,
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Point",
             typeParameters: [],
             extends: [],
@@ -57,11 +58,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "x",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "x",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -72,11 +73,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "y",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "y",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -89,8 +90,8 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
@@ -121,8 +122,8 @@ const expectedResult: IntermediateSourceFile = {
                 target: {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "pt",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
                 propName: "x",
             },
@@ -130,8 +131,8 @@ const expectedResult: IntermediateSourceFile = {
             right: {
                 kind: IntermediateKind.IntermediateNumericLiteral,
                 value: "0",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
         },
         {
@@ -141,8 +142,8 @@ const expectedResult: IntermediateSourceFile = {
                 target: {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "pt",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
                 propName: "y",
             },
@@ -150,8 +151,8 @@ const expectedResult: IntermediateSourceFile = {
             right: {
                 kind: IntermediateKind.IntermediateNumericLiteral,
                 value: "0",
-                asType: undefined,
                 typeAssertion: undefined,
+                asType: undefined,
             },
         },
     ],
@@ -159,7 +160,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

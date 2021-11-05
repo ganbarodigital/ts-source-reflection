@@ -35,19 +35,20 @@
 import {
     IntermediateKind,
     IntermediateRestrictableScope,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "FileSystemObject",
             typeParameters: [],
             extends: [],
@@ -57,9 +58,9 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
+                    isAbstract: false,
                     isStatic: false,
                     accessModifier: undefined,
-                    isAbstract: false,
                     name: "isFile",
                     typeParameters: [],
                     parameters: [],
@@ -77,8 +78,8 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    isStatic: false,
                     isAbstract: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     name: "isDirectory",
                     typeParameters: [],
@@ -97,8 +98,8 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    isStatic: false,
                     isAbstract: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     name: "isNetworked",
                     typeParameters: [],
@@ -129,10 +130,10 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             decorators: [],
-                            name: "path",
-                            isReadonly: false,
                             isOptional: false,
+                            isReadonly: false,
                             setsPropertyWithScope: IntermediateRestrictableScope.PUBLIC,
+                            name: "path",
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "string",
@@ -142,10 +143,10 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             decorators: [],
-                            name: "networked",
-                            isReadonly: false,
                             isOptional: false,
+                            isReadonly: false,
                             setsPropertyWithScope: IntermediateRestrictableScope.PRIVATE,
+                            name: "networked",
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "boolean",
@@ -165,18 +166,18 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "FileRep",
             typeParameters: [],
             extends: [
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "FileSystemObject",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             implements: [],
@@ -189,10 +190,10 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             decorators: [],
-                            name: "path",
-                            isReadonly: false,
                             isOptional: false,
+                            isReadonly: false,
                             setsPropertyWithScope: undefined,
+                            name: "path",
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "string",
@@ -202,10 +203,10 @@ const expectedResult: IntermediateSourceFile = {
                         {
                             kind: IntermediateKind.IntermediateTypedConstructorParameterDeclaration,
                             decorators: [],
-                            name: "content",
-                            isReadonly: false,
                             isOptional: false,
+                            isReadonly: false,
                             setsPropertyWithScope: IntermediateRestrictableScope.PUBLIC,
+                            name: "content",
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "string",
@@ -225,18 +226,18 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Directory",
             typeParameters: [],
             extends: [
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "FileSystemObject",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             implements: [],
@@ -245,11 +246,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "children",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "children",
                     typeRef: {
                         kind: IntermediateKind.IntermediateArrayTypeReference,
                         typeRef: {
@@ -258,38 +259,37 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     },
                     initializer: undefined,
-                }
+                },
             ],
         },
         {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
-            name: "Networked",
-            isExported: false,
-            isDefaultExport: false,
             isDeclared: false,
-            extends: [],
+            isDefaultExport: false,
+            isExported: false,
+            name: "Networked",
             typeParameters: [],
+            extends: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "host",
                     isOptional: false,
                     isReadonly: false,
+                    name: "host",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
                     },
-                }
-            ]
-        }
+                },
+            ],
+        },
     ],
     referencedFiles: [],
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

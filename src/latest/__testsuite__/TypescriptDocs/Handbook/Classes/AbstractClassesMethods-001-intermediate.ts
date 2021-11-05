@@ -34,19 +34,20 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: true,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Base",
             typeParameters: [],
             extends: [],
@@ -56,10 +57,10 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "getName",
-                    accessModifier: undefined,
-                    isStatic: false,
                     isAbstract: true,
+                    isStatic: false,
+                    accessModifier: undefined,
+                    name: "getName",
                     typeParameters: [],
                     parameters: [],
                     returnType: {
@@ -72,10 +73,10 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "printName",
-                    accessModifier: undefined,
-                    isStatic: false,
                     isAbstract: false,
+                    isStatic: false,
+                    accessModifier: undefined,
+                    name: "printName",
                     typeParameters: [],
                     parameters: [],
                     returnType: undefined,
@@ -92,7 +93,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

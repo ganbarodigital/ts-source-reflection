@@ -35,21 +35,22 @@
 import {
     IntermediateKind,
     IntermediateRestrictableScope,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
-            typeParameters: [],
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "A",
+            typeParameters: [],
             extends: [],
             implements: [],
             members: [
@@ -57,11 +58,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    accessModifier: IntermediateRestrictableScope.PRIVATE,
-                    name: "x",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
+                    accessModifier: IntermediateRestrictableScope.PRIVATE,
+                    name: "x",
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "10",
@@ -77,18 +78,18 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    accessModifier: IntermediateRestrictableScope.PUBLIC,
-                    isStatic: false,
                     isAbstract: false,
+                    isStatic: false,
+                    accessModifier: IntermediateRestrictableScope.PUBLIC,
                     name: "sameAs",
                     typeParameters: [],
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                             decorators: [],
-                            name: "other",
                             isOptional: false,
                             isReadonly: false,
+                            name: "other",
                             typeRef: {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
                                 typeName: "A",
@@ -110,7 +111,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

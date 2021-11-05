@@ -33,21 +33,23 @@
 //
 
 import {
-    IntermediateKind, IntermediateSourceFile
+    IntermediateKind,
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
-            typeParameters: [],
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Dog",
+            typeParameters: [],
             extends: [],
             implements: [],
             members: [
@@ -55,14 +57,14 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     name: {
                         kind: IntermediateKind.IntermediatePrivatePropertyIdentifier,
                         name: "#barkAmount",
                     },
-                    isOptional: false,
-                    isReadonly: false,
-                    isStatic: false,
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
@@ -78,11 +80,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateUntypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    accessModifier: undefined,
-                    name: "personality",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
+                    accessModifier: undefined,
+                    name: "personality",
                     initializer: {
                         kind: IntermediateKind.IntermediateStringLiteral,
                         value: "happy",
@@ -104,7 +106,7 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Dog",
                     },
-},
+                },
             ],
         },
     ],
@@ -112,7 +114,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

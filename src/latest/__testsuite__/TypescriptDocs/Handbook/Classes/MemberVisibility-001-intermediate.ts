@@ -35,21 +35,22 @@
 import {
     IntermediateKind,
     IntermediateRestrictableScope,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
-            typeParameters: [],
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Greeter",
+            typeParameters: [],
             extends: [],
             implements: [],
             members: [
@@ -57,9 +58,9 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    accessModifier: IntermediateRestrictableScope.PUBLIC,
-                    isStatic: false,
                     isAbstract: false,
+                    isStatic: false,
+                    accessModifier: IntermediateRestrictableScope.PUBLIC,
                     name: "greet",
                     typeParameters: [],
                     parameters: [],
@@ -69,20 +70,20 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "void",
                     },
                     hasBody: true,
-                }
+                },
             ],
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    isReadonly: false,
                     isConstant: true,
+                    isReadonly: false,
                     name: "g",
                     typeRef: undefined,
                     initializer: {
@@ -127,7 +128,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

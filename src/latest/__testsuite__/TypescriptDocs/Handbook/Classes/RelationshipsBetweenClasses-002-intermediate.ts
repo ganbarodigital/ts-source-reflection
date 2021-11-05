@@ -34,19 +34,20 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Person",
             typeParameters: [],
             extends: [],
@@ -56,11 +57,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "name",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "name",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -71,11 +72,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "age",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "age",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -88,10 +89,10 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Employee",
             typeParameters: [],
             extends: [],
@@ -101,11 +102,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "name",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "name",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -116,11 +117,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "age",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "age",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -131,11 +132,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "salary",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
                     accessModifier: undefined,
+                    name: "salary",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "number",
@@ -148,14 +149,14 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    name: "p",
                     isConstant: true,
                     isReadonly: false,
+                    name: "p",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
                         typeName: "Person",
@@ -177,7 +178,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

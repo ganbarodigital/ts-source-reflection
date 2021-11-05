@@ -34,19 +34,20 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "Box",
             typeParameters: [],
             extends: [],
@@ -56,11 +57,11 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateTypedPropertyDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    accessModifier: undefined,
-                    name: "contents",
                     isOptional: false,
                     isReadonly: false,
                     isStatic: false,
+                    accessModifier: undefined,
+                    name: "contents",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -68,26 +69,26 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateStringLiteral,
                         value: "",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                 },
                 {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    name: "set",
-                    accessModifier: undefined,
-                    isStatic: false,
                     isAbstract: false,
+                    isStatic: false,
+                    accessModifier: undefined,
+                    name: "set",
                     typeParameters: [],
                     parameters: [
                         {
                             kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                             decorators: [],
-                            name: "value",
-                            isReadonly: false,
                             isOptional: false,
+                            isReadonly: false,
+                            name: "value",
                             typeRef: {
                                 kind: IntermediateKind.IntermediateBuiltInTypeReference,
                                 typeName: "string",
@@ -107,18 +108,18 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateClass,
             docBlock: undefined,
             decorators: [],
-            isDeclared: false,
-            isExported: false,
-            isDefaultExport: false,
             isAbstract: false,
+            isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
             name: "ClearableBox",
             typeParameters: [],
             extends: [
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Box",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
             implements: [],
@@ -127,8 +128,8 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateMethodDeclaration,
                     docBlock: undefined,
                     decorators: [],
-                    isStatic: false,
                     isAbstract: false,
+                    isStatic: false,
                     accessModifier: undefined,
                     name: "clear",
                     typeParameters: [],
@@ -146,13 +147,13 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    isReadonly: false,
                     isConstant: true,
+                    isReadonly: false,
                     name: "a",
                     typeRef: undefined,
                     initializer: {
@@ -180,8 +181,8 @@ const expectedResult: IntermediateSourceFile = {
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    isReadonly: false,
                     isConstant: true,
+                    isReadonly: false,
                     name: "b",
                     typeRef: undefined,
                     initializer: {
@@ -209,8 +210,8 @@ const expectedResult: IntermediateSourceFile = {
                             kind: IntermediateKind.IntermediateFixedTypeReference,
                             typeName: "ClearableBox",
                         },
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
@@ -224,7 +225,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;
