@@ -33,40 +33,42 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "isFish",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "pet",
                     typeRef: {
                         kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
                             {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: 'Fish',
+                                typeName: "Fish",
                             },
                             {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: 'Bird',
+                                typeName: "Bird",
                             },
                         ],
                     },
-                    isOptional: false,
-                    isReadonly: false,
                     initializer: undefined,
                 },
             ],
@@ -75,13 +77,45 @@ const expectedResult: IntermediateSourceFile = {
                 parameterName: "pet",
                 assertedRef: {
                     kind: IntermediateKind.IntermediateFixedTypeReference,
-                    typeName: 'Fish',
+                    typeName: "Fish",
                 },
             },
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateBinaryExpression,
+                            left: {
+                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                target: {
+                                    kind: IntermediateKind.IntermediateParenthesizedExpression,
+                                    expression: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "pet",
+                                        typeAssertion: undefined,
+                                        asType: {
+                                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                                            typeName: "Fish",
+                                        },
+                                    },
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                propName: "swim",
+                            },
+                            operator: IntermediateExpressionOperator.EXCLAMATION_EQUALS_EQUALS,
+                            right: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "undefined",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                        },
+                    },
+                ],
             },
         },
     ],
@@ -89,7 +123,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

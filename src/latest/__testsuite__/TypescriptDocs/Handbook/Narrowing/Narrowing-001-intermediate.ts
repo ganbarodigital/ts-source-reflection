@@ -33,27 +33,29 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "padLeft",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "padding",
                     isOptional: false,
                     isReadonly: false,
+                    name: "padding",
                     typeRef: {
                         kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
@@ -72,9 +74,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
-                    name: "input",
                     isOptional: false,
                     isReadonly: false,
+                    name: "input",
                     typeRef: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "string",
@@ -90,7 +92,116 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateIfStatement,
+                        condition: {
+                            kind: IntermediateKind.IntermediateBinaryExpression,
+                            left: {
+                                kind: IntermediateKind.IntermediateTypeOfExpression,
+                                expression: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "padding",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
+                            operator: IntermediateExpressionOperator.EQUALS_EQUALS_EQUALS,
+                            right: {
+                                kind: IntermediateKind.IntermediateStringLiteral,
+                                value: "number",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                        },
+                        thenBlock: {
+                            kind: IntermediateKind.IntermediateBlock,
+                            children: [
+                                {
+                                    kind: IntermediateKind.IntermediateReturnStatement,
+                                    expression: {
+                                        kind: IntermediateKind.IntermediateBinaryExpression,
+                                        left: {
+                                            kind: IntermediateKind.IntermediateCallExpression,
+                                            expression: {
+                                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                target: {
+                                                    kind: IntermediateKind.IntermediateNewExpression,
+                                                    typeRef: {
+                                                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                                                        typeName: "Array",
+                                                    },
+                                                    arguments: [
+                                                        {
+                                                            kind: IntermediateKind.IntermediateBinaryExpression,
+                                                            left: {
+                                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                                name: "padding",
+                                                                typeAssertion: undefined,
+                                                                asType: undefined,
+                                                            },
+                                                            operator: IntermediateExpressionOperator.PLUS,
+                                                            right: {
+                                                                kind: IntermediateKind.IntermediateNumericLiteral,
+                                                                value: "1",
+                                                                typeAssertion: undefined,
+                                                                asType: undefined,
+                                                            },
+                                                        },
+                                                    ],
+                                                    asType: undefined,
+                                                },
+                                                propName: "join",
+                                            },
+                                            typeArguments: [],
+                                            arguments: [
+                                                {
+                                                    kind: IntermediateKind.IntermediateStringLiteral,
+                                                    value: " ",
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                            ],
+                                            inferredReturnType: {
+                                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                typeName: "string",
+                                            },
+                                            typeAssertion: undefined,
+                                            asType: undefined,
+                                        },
+                                        operator: IntermediateExpressionOperator.PLUS,
+                                        right: {
+                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                            name: "input",
+                                            typeAssertion: undefined,
+                                            asType: undefined,
+                                        },
+                                    },
+                                },
+                            ],
+                        },
+                        elseBlock: undefined,
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateBinaryExpression,
+                            left: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "padding",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            operator: IntermediateExpressionOperator.PLUS,
+                            right: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "input",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                        },
+                    },
+                ],
             },
         },
     ],
@@ -98,7 +209,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

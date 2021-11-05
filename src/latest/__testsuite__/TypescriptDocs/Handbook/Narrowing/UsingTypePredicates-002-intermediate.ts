@@ -33,17 +33,19 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: undefined,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "Pet",
             typeParameters: [],
             typeRef: {
@@ -52,9 +54,9 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateTypedPropertySignature,
                         docBlock: undefined,
-                        name: "name",
                         isOptional: false,
                         isReadonly: false,
+                        name: "name",
                         typeRef: {
                             kind: IntermediateKind.IntermediateBuiltInTypeReference,
                             typeName: "string",
@@ -66,26 +68,26 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
-            name: "Fish",
-            isExported: false,
-            isDefaultExport: false,
             isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "Fish",
+            typeParameters: [],
             extends: [
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Pet",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
-            typeParameters: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "swim",
                     isOptional: false,
                     isReadonly: false,
+                    name: "swim",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFunctionTypeSignature,
                         typeParameters: [],
@@ -104,26 +106,26 @@ const expectedResult: IntermediateSourceFile = {
         {
             kind: IntermediateKind.IntermediateInterface,
             docBlock: undefined,
-            name: "Bird",
-            isExported: false,
-            isDefaultExport: false,
             isDeclared: false,
+            isDefaultExport: false,
+            isExported: false,
+            name: "Bird",
+            typeParameters: [],
             extends: [
                 {
                     kind: IntermediateKind.IntermediateIdentifierReference,
                     name: "Pet",
-                    asType: undefined,
                     typeAssertion: undefined,
+                    asType: undefined,
                 },
             ],
-            typeParameters: [],
             members: [
                 {
                     kind: IntermediateKind.IntermediateTypedPropertySignature,
                     docBlock: undefined,
-                    name: "fly",
                     isOptional: false,
                     isReadonly: false,
+                    name: "fly",
                     typeRef: {
                         kind: IntermediateKind.IntermediateFunctionTypeSignature,
                         typeParameters: [],
@@ -143,30 +145,30 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "isFish",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateTypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
+                    isReadonly: false,
                     name: "pet",
                     typeRef: {
                         kind: IntermediateKind.IntermediateUnionType,
                         typeRefs: [
                             {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: 'Fish',
+                                typeName: "Fish",
                             },
                             {
                                 kind: IntermediateKind.IntermediateFixedTypeReference,
-                                typeName: 'Bird',
+                                typeName: "Bird",
                             },
                         ],
                     },
-                    isOptional: false,
-                    isReadonly: false,
                     initializer: undefined,
                 },
             ],
@@ -175,21 +177,53 @@ const expectedResult: IntermediateSourceFile = {
                 parameterName: "pet",
                 assertedRef: {
                     kind: IntermediateKind.IntermediateFixedTypeReference,
-                    typeName: 'Fish',
+                    typeName: "Fish",
                 },
             },
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateBinaryExpression,
+                            left: {
+                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                target: {
+                                    kind: IntermediateKind.IntermediateParenthesizedExpression,
+                                    expression: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "pet",
+                                        typeAssertion: undefined,
+                                        asType: {
+                                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                                            typeName: "Fish",
+                                        },
+                                    },
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                propName: "swim",
+                            },
+                            operator: IntermediateExpressionOperator.EXCLAMATION_EQUALS_EQUALS,
+                            right: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "undefined",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                        },
+                    },
+                ],
             },
         },
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "getSmallPet",
             typeParameters: [],
             parameters: [],
@@ -209,21 +243,157 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateIfStatement,
+                        condition: {
+                            kind: IntermediateKind.IntermediateBinaryExpression,
+                            left: {
+                                kind: IntermediateKind.IntermediateCallExpression,
+                                expression: {
+                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                    target: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "Math",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                    propName: "random",
+                                },
+                                typeArguments: [],
+                                arguments: [],
+                                inferredReturnType: {
+                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                    typeName: "number",
+                                },
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            operator: IntermediateExpressionOperator.GREATER_THAN_EQUALS,
+                            right: {
+                                kind: IntermediateKind.IntermediateNumericLiteral,
+                                value: "0.5",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                        },
+                        thenBlock: {
+                            kind: IntermediateKind.IntermediateBlock,
+                            children: [
+                                {
+                                    kind: IntermediateKind.IntermediateReturnStatement,
+                                    expression: {
+                                        kind: IntermediateKind.IntermediateObjectLiteral,
+                                        properties: [
+                                            {
+                                                kind: IntermediateKind.IntermediatePropertyAssignment,
+                                                propertyName: "name",
+                                                initializer: {
+                                                    kind: IntermediateKind.IntermediateStringLiteral,
+                                                    value: "Fishy",
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                            },
+                                            {
+                                                kind: IntermediateKind.IntermediatePropertyAssignment,
+                                                propertyName: "swim",
+                                                initializer: {
+                                                    kind: IntermediateKind.IntermediateArrowFunction,
+                                                    typeParameters: [],
+                                                    parameters: [],
+                                                    returnType: undefined,
+                                                    inferredReturnType: {
+                                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                        typeName: "void",
+                                                    },
+                                                    hasBody: true,
+                                                },
+                                            },
+                                        ],
+                                        typeAssertion: {
+                                            kind: IntermediateKind.IntermediateFixedTypeReference,
+                                            typeName: "Fish",
+                                        },
+                                        asType: undefined,
+                                    },
+                                },
+                            ],
+                        },
+                        elseBlock: undefined,
+                    },
+                    {
+                        kind: IntermediateKind.IntermediateReturnStatement,
+                        expression: {
+                            kind: IntermediateKind.IntermediateObjectLiteral,
+                            properties: [
+                                {
+                                    kind: IntermediateKind.IntermediatePropertyAssignment,
+                                    propertyName: "name",
+                                    initializer: {
+                                        kind: IntermediateKind.IntermediateStringLiteral,
+                                        value: "Birdy",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                },
+                                {
+                                    kind: IntermediateKind.IntermediatePropertyAssignment,
+                                    propertyName: "fly",
+                                    initializer: {
+                                        kind: IntermediateKind.IntermediateArrowFunction,
+                                        typeParameters: [],
+                                        parameters: [],
+                                        returnType: undefined,
+                                        inferredReturnType: {
+                                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                            typeName: "void",
+                                        },
+                                        hasBody: true,
+                                    },
+                                },
+                            ],
+                            typeAssertion: {
+                                kind: IntermediateKind.IntermediateFixedTypeReference,
+                                typeName: "Bird",
+                            },
+                            asType: undefined,
+                        },
+                    },
+                ],
             },
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
-                    name: "zoo",
                     isConstant: true,
                     isReadonly: false,
+                    name: "zoo",
+                    typeRef: {
+                        kind: IntermediateKind.IntermediateArrayTypeReference,
+                        typeRef: {
+                            kind: IntermediateKind.IntermediateParenthesizedType,
+                            typeRef: {
+                                kind: IntermediateKind.IntermediateUnionType,
+                                typeRefs: [
+                                    {
+                                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                                        typeName: "Fish",
+                                    },
+                                    {
+                                        kind: IntermediateKind.IntermediateFixedTypeReference,
+                                        typeName: "Bird",
+                                    },
+                                ],
+                            },
+                        },
+                    },
                     initializer: {
                         kind: IntermediateKind.IntermediateArrayLiteral,
                         elements: [
@@ -232,8 +402,8 @@ const expectedResult: IntermediateSourceFile = {
                                 expression: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "getSmallPet",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                                 typeArguments: [],
                                 arguments: [],
@@ -258,8 +428,8 @@ const expectedResult: IntermediateSourceFile = {
                                 expression: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "getSmallPet",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                                 typeArguments: [],
                                 arguments: [],
@@ -284,8 +454,8 @@ const expectedResult: IntermediateSourceFile = {
                                 expression: {
                                     kind: IntermediateKind.IntermediateIdentifierReference,
                                     name: "getSmallPet",
-                                    asType: undefined,
                                     typeAssertion: undefined,
+                                    asType: undefined,
                                 },
                                 typeArguments: [],
                                 arguments: [],
@@ -306,37 +476,18 @@ const expectedResult: IntermediateSourceFile = {
                                 asType: undefined,
                             },
                         ],
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
-                    typeRef: {
-                        kind: IntermediateKind.IntermediateArrayTypeReference,
-                        typeRef: {
-                            kind: IntermediateKind.IntermediateParenthesizedType,
-                            typeRef: {
-                                kind: IntermediateKind.IntermediateUnionType,
-                                typeRefs: [
-                                    {
-                                        kind: IntermediateKind.IntermediateFixedTypeReference,
-                                        typeName: "Fish",
-                                    },
-                                    {
-                                        kind: IntermediateKind.IntermediateFixedTypeReference,
-                                        typeName: "Bird",
-                                    },
-                                ],
-                            },
-                        },
-                    },
-                }
+                },
             ],
         },
         {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
@@ -357,8 +508,8 @@ const expectedResult: IntermediateSourceFile = {
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "zoo",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             propName: "filter",
                         },
@@ -367,8 +518,8 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "isFish",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         ],
                         inferredReturnType: {
@@ -388,8 +539,8 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
@@ -410,8 +561,8 @@ const expectedResult: IntermediateSourceFile = {
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "zoo",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             propName: "filter",
                         },
@@ -420,8 +571,8 @@ const expectedResult: IntermediateSourceFile = {
                             {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "isFish",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                         ],
                         inferredReturnType: {
@@ -447,8 +598,8 @@ const expectedResult: IntermediateSourceFile = {
             kind: IntermediateKind.IntermediateVariableDeclarations,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             variables: [
                 {
                     kind: IntermediateKind.IntermediateConstDeclaration,
@@ -469,8 +620,8 @@ const expectedResult: IntermediateSourceFile = {
                             target: {
                                 kind: IntermediateKind.IntermediateIdentifierReference,
                                 name: "zoo",
-                                asType: undefined,
                                 typeAssertion: undefined,
+                                asType: undefined,
                             },
                             propName: "filter",
                         },
@@ -483,8 +634,8 @@ const expectedResult: IntermediateSourceFile = {
                                     {
                                         kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
                                         decorators: [],
-                                        name: "pet",
                                         isOptional: false,
+                                        name: "pet",
                                         initializer: undefined,
                                         inferredType: {
                                             kind: IntermediateKind.IntermediateUnionType,
@@ -530,7 +681,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;
