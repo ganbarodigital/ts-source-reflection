@@ -38,22 +38,23 @@ import {
 } from "../../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateFunctionImplementation,
             docBlock: undefined,
             isDeclared: false,
-            isExported: false,
             isDefaultExport: false,
+            isExported: false,
             name: "greet",
             typeParameters: [],
             parameters: [
                 {
                     kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
                     name: "person",
                     initializer: undefined,
-                    isOptional: false,
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "any",
@@ -62,9 +63,9 @@ const expectedResult: IntermediateSourceFile = {
                 {
                     kind: IntermediateKind.IntermediateUntypedCallableParameterDeclaration,
                     decorators: [],
+                    isOptional: false,
                     name: "date",
                     initializer: undefined,
-                    isOptional: false,
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
                         typeName: "any",
@@ -79,7 +80,56 @@ const expectedResult: IntermediateSourceFile = {
             hasBody: true,
             body: {
                 kind: IntermediateKind.IntermediateBlock,
-                children: [],
+                children: [
+                    {
+                        kind: IntermediateKind.IntermediateCallExpression,
+                        expression: {
+                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                            target: {
+                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                name: "console",
+                                typeAssertion: undefined,
+                                asType: undefined,
+                            },
+                            propName: "log",
+                        },
+                        typeArguments: [],
+                        arguments: [
+                            {
+                                kind: IntermediateKind.IntermediateTemplateExpression,
+                                head: "Hello ",
+                                spans: [
+                                    {
+                                        kind: IntermediateKind.IntermediateTemplateExpressionSpan,
+                                        expression: {
+                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                            name: "person",
+                                            typeAssertion: undefined,
+                                            asType: undefined,
+                                        },
+                                        tail: ", today is ",
+                                    },
+                                    {
+                                        kind: IntermediateKind.IntermediateTemplateExpressionSpan,
+                                        expression: {
+                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                            name: "date",
+                                            typeAssertion: undefined,
+                                            asType: undefined,
+                                        },
+                                        tail: "!",
+                                    },
+                                ],
+                            },
+                        ],
+                        inferredReturnType: {
+                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                            typeName: "void",
+                        },
+                        typeAssertion: undefined,
+                        asType: undefined,
+                    },
+                ],
             },
         },
     ],
@@ -87,7 +137,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;
