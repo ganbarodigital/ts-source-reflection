@@ -246,6 +246,13 @@ export function processExpression(
         }
     }
 
+    if (AST.isSuperExpression(input)) {
+        return {
+            kind: IntermediateKind.IntermediateSuperIdentifier,
+            name: "super",
+        }
+    }
+
     // if we get here, we do not know how to process this variable
     // tslint:disable-next-line: no-console
     console.log(getClassNames(input), SyntaxKind[ input.kind ]);
