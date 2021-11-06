@@ -38,6 +38,7 @@ export enum IntermediateKind {
     IntermediateAmbientFunction,
     IntermediateAmbientMethod,
     IntermediateAmbientModuleDefinition,
+    IntermediateAbstractMethod,
     IntermediateAnonymousCallableParameter,
     IntermediateAnonymousClassType,
     IntermediateArrayBindingConstDeclaration,

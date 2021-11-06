@@ -38,6 +38,7 @@ export * from "./AnyIntermediateIdentifierDeclaration";
 export * from "./AnyIntermediateLiteralType";
 export * from "./AnyIntermediatePropertyAssignment";
 export * from "./IntermediateAbstractItem";
+export * from "./IntermediateAbstractMethod";
 export * from "./IntermediateAliasedExportItem";
 export * from "./IntermediateAliasedImportBinding";
 export * from "./IntermediateAmbientFunction";
