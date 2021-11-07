@@ -32,10 +32,11 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateExpression, IntermediateItem, IntermediateKind } from "..";
+import { IntermediateExpression, IntermediateItem, IntermediateKind, IntermediateTypeAssertable } from "..";
 
 export interface IntermediateElementAccessExpression
-    extends IntermediateItem<IntermediateKind.IntermediateElementAccessExpression>
+    extends IntermediateItem<IntermediateKind.IntermediateElementAccessExpression>,
+        IntermediateTypeAssertable
 {
     element: IntermediateExpression;
     accessKey: IntermediateExpression;

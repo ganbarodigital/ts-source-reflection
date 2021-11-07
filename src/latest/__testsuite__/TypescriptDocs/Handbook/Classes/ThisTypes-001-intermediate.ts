@@ -33,6 +33,7 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
@@ -74,7 +75,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: undefined,
                     decorators: [],
                     isAbstract: false,
@@ -101,6 +102,36 @@ const expectedResult: IntermediateSourceFile = {
                         kind: IntermediateKind.IntermediateThisType,
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [
+                            {
+                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                left: {
+                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                    target: {
+                                        kind: IntermediateKind.IntermediateThisIdentifier,
+                                        name: "this",
+                                    },
+                                    propName: "contents",
+                                },
+                                operator: IntermediateExpressionOperator.EQUALS,
+                                right: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "value",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateReturnStatement,
+                                expression: {
+                                    kind: IntermediateKind.IntermediateThisIdentifier,
+                                    name: "this",
+                                },
+                            },
+                        ],
+                    },
                 },
             ],
         },
@@ -125,7 +156,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: undefined,
                     decorators: [],
                     isAbstract: false,
@@ -140,6 +171,29 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "void",
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [
+                            {
+                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                left: {
+                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                    target: {
+                                        kind: IntermediateKind.IntermediateThisIdentifier,
+                                        name: "this",
+                                    },
+                                    propName: "contents",
+                                },
+                                operator: IntermediateExpressionOperator.EQUALS,
+                                right: {
+                                    kind: IntermediateKind.IntermediateStringLiteral,
+                                    value: "",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
+                        ],
+                    },
                 },
             ],
         },

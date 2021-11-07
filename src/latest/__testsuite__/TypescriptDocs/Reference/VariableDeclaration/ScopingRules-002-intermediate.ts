@@ -192,6 +192,8 @@ const expectedResult: IntermediateSourceFile = {
                                                     typeAssertion: undefined,
                                                     asType: undefined,
                                                 },
+                                                typeAssertion: undefined,
+                                                asType: undefined,
                                             },
                                             inferredType: {
                                                 kind: IntermediateKind.IntermediateArrayTypeReference,
@@ -287,6 +289,8 @@ const expectedResult: IntermediateSourceFile = {
                                                         typeAssertion: undefined,
                                                         asType: undefined,
                                                     },
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
                                                 },
                                             },
                                         ],

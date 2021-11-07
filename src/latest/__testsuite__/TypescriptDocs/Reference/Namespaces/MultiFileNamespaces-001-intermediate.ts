@@ -162,6 +162,8 @@ const expectedResult: IntermediateSourceFile = {
                     typeAssertion: undefined,
                     asType: undefined,
                 },
+                typeAssertion: undefined,
+                asType: undefined,
             },
             operator: IntermediateExpressionOperator.EQUALS,
             right: {
@@ -197,6 +199,8 @@ const expectedResult: IntermediateSourceFile = {
                     typeAssertion: undefined,
                     asType: undefined,
                 },
+                typeAssertion: undefined,
+                asType: undefined,
             },
             operator: IntermediateExpressionOperator.EQUALS,
             right: {
@@ -311,6 +315,8 @@ const expectedResult: IntermediateSourceFile = {
                                                             typeAssertion: undefined,
                                                             asType: undefined,
                                                         },
+                                                        typeAssertion: undefined,
+                                                        asType: undefined,
                                                     },
                                                     propName: "isAcceptable",
                                                 },

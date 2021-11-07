@@ -394,7 +394,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: undefined,
                     decorators: [
                         {
@@ -522,6 +522,10 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "void",
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [],
+                    },
                 },
             ],
         },

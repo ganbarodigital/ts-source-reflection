@@ -42,7 +42,7 @@ import { IntermediateRestrictableScopeItem } from "../IntermediateRestrictableSc
 import { IntermediateStaticItem } from "../IntermediateStaticItem";
 
 export type IntermediateAbstractMethod
-    = IntermediateItem<IntermediateKind.IntermediateMethodImplementation>
+    = IntermediateItem<IntermediateKind.IntermediateAbstractMethod>
     & IntermediateCallableDeclaration
     & IntermediateDocumentedItem
     & IntermediateGenericable

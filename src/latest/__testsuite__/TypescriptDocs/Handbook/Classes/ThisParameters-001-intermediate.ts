@@ -74,7 +74,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: undefined,
                     decorators: [],
                     isAbstract: false,
@@ -102,6 +102,22 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "string",
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [
+                            {
+                                kind: IntermediateKind.IntermediateReturnStatement,
+                                expression: {
+                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                    target: {
+                                        kind: IntermediateKind.IntermediateThisIdentifier,
+                                        name: "this",
+                                    },
+                                    propName: "name",
+                                },
+                            },
+                        ],
+                    },
                 },
             ],
         },

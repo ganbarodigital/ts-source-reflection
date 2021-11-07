@@ -35,9 +35,11 @@
 import { MethodDeclaration } from "typescript";
 import { AST } from "../AST";
 import {
+    IntermediateAbstractMethod,
     IntermediateAmbientMethod,
     IntermediateKind,
     IntermediateMethodDeclaration,
+    IntermediateMethodImplementation,
     IntermediateMethodOverload,
     mustBeIntermediateBlock
 } from "../IntermediateTypes";
@@ -69,12 +71,72 @@ export function processMethodDeclaration(
         return processAmbientMethod(processCtx, parentCtx, input);
     }
 
+    const isAbstract = AST.hasAbstractModifier(input.modifiers);
+    if (isAbstract) {
+        return processAbstractMethod(processCtx, parentCtx, input);
+    }
+
     const hasBody = AST.hasBody(input.body);
     if (hasBody) {
         return processMethodImplementation(processCtx, parentCtx, input);
     }
 
     return processMethodOverload(processCtx, parentCtx, input);
+}
+
+export function processAbstractMethod(
+    processCtx: ProcessingContext,
+    parentCtx: ParentContext,
+    input: MethodDeclaration,
+): IntermediateAbstractMethod
+{
+    const hasBody = false;
+
+    const returnType = processReturnTypeFromNode(processCtx, parentCtx, input);
+    if (returnType) {
+        return {
+            kind: IntermediateKind.IntermediateAbstractMethod,
+            docBlock: processDocBlock(processCtx, input),
+            isStatic: AST.hasStaticModifier(input),
+            accessModifier: AST.getRestrictableScope(input),
+            isAbstract: true,
+            name: processPropertyName(processCtx, parentCtx, input.name),
+            parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
+            typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
+            returnType,
+            hasBody,
+        }
+    }
+
+    const inferredReturnType = processCtx.compiler.getInferredReturnType(processCtx, parentCtx, input);
+    if (!inferredReturnType) {
+        return {
+            kind: IntermediateKind.IntermediateAbstractMethod,
+            docBlock: processDocBlock(processCtx, input),
+            isStatic: AST.hasStaticModifier(input),
+            accessModifier: AST.getRestrictableScope(input),
+            isAbstract: true,
+            name: processPropertyName(processCtx, parentCtx, input.name),
+            parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
+            typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
+            returnType,
+            hasBody,
+        }
+    }
+
+    return {
+        kind: IntermediateKind.IntermediateAbstractMethod,
+        docBlock: processDocBlock(processCtx, input),
+        isStatic: AST.hasStaticModifier(input),
+        accessModifier: AST.getRestrictableScope(input),
+        isAbstract: true,
+        name: processPropertyName(processCtx, parentCtx, input.name),
+        parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
+        typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
+        returnType,
+        inferredReturnType,
+        hasBody,
+    }
 }
 
 export function processAmbientMethod(
@@ -147,7 +209,7 @@ export function processMethodOverload(
             docBlock: processDocBlock(processCtx, input),
             isStatic: AST.hasStaticModifier(input),
             accessModifier: AST.getRestrictableScope(input),
-            isAbstract: AST.hasAbstractModifier(input.modifiers),
+            isAbstract: false,
             name: processPropertyName(processCtx, parentCtx, input.name),
             parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
             typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
@@ -163,7 +225,7 @@ export function processMethodOverload(
             docBlock: processDocBlock(processCtx, input),
             isStatic: AST.hasStaticModifier(input),
             accessModifier: AST.getRestrictableScope(input),
-            isAbstract: AST.hasAbstractModifier(input.modifiers),
+            isAbstract: false,
             name: processPropertyName(processCtx, parentCtx, input.name),
             parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
             typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
@@ -177,7 +239,7 @@ export function processMethodOverload(
         docBlock: processDocBlock(processCtx, input),
         isStatic: AST.hasStaticModifier(input),
         accessModifier: AST.getRestrictableScope(input),
-        isAbstract: AST.hasAbstractModifier(input.modifiers),
+        isAbstract: false,
         name: processPropertyName(processCtx, parentCtx, input.name),
         parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
         typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
@@ -191,7 +253,7 @@ function processMethodImplementation(
     processCtx: ProcessingContext,
     parentCtx: ParentContext,
     input: MethodDeclaration,
-): IntermediateMethodDeclaration
+): IntermediateMethodImplementation
 {
     const returnType = processReturnTypeFromNode(processCtx, parentCtx, input);
 
@@ -202,12 +264,12 @@ function processMethodImplementation(
 
     if (returnType) {
         return {
-            kind: IntermediateKind.IntermediateMethodDeclaration,
+            kind: IntermediateKind.IntermediateMethodImplementation,
             docBlock: processDocBlock(processCtx, input),
             decorators: processDecorators(processCtx, input),
             isStatic: AST.hasStaticModifier(input),
             accessModifier: AST.getRestrictableScope(input),
-            isAbstract: AST.hasAbstractModifier(input.modifiers),
+            isAbstract: false,
             name: processPropertyName(processCtx, parentCtx, input.name),
             parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
             typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
@@ -220,12 +282,12 @@ function processMethodImplementation(
     const inferredReturnType = processCtx.compiler.getInferredReturnType(processCtx, parentCtx, input);
     if (!inferredReturnType) {
         return {
-            kind: IntermediateKind.IntermediateMethodDeclaration,
+            kind: IntermediateKind.IntermediateMethodImplementation,
             docBlock: processDocBlock(processCtx, input),
             decorators: processDecorators(processCtx, input),
             isStatic: AST.hasStaticModifier(input),
             accessModifier: AST.getRestrictableScope(input),
-            isAbstract: AST.hasAbstractModifier(input.modifiers),
+            isAbstract: false,
             name: processPropertyName(processCtx, parentCtx, input.name),
             parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
             typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),
@@ -236,12 +298,12 @@ function processMethodImplementation(
     }
 
     return {
-        kind: IntermediateKind.IntermediateMethodDeclaration,
+        kind: IntermediateKind.IntermediateMethodImplementation,
         docBlock: processDocBlock(processCtx, input),
         decorators: processDecorators(processCtx, input),
         isStatic: AST.hasStaticModifier(input),
         accessModifier: AST.getRestrictableScope(input),
-        isAbstract: AST.hasAbstractModifier(input.modifiers),
+        isAbstract: false,
         name: processPropertyName(processCtx, parentCtx, input.name),
         parameters: processFunctionParameters(processCtx, parentCtx, input.parameters),
         typeParameters: processTypeParametersFromNode(processCtx, parentCtx, input),

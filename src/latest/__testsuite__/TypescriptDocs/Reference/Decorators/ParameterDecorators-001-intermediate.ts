@@ -576,6 +576,8 @@ const expectedResult: IntermediateSourceFile = {
                                                                                 typeAssertion: undefined,
                                                                                 asType: undefined,
                                                                             },
+                                                                            typeAssertion: undefined,
+                                                                            asType: undefined,
                                                                         },
                                                                         operator: IntermediateExpressionOperator.EQUALS_EQUALS_EQUALS,
                                                                         right: {
@@ -735,7 +737,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: undefined,
                     decorators: [
                         {
@@ -783,6 +785,74 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "string",
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [
+                            {
+                                kind: IntermediateKind.IntermediateIfStatement,
+                                condition: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "verbose",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                thenBlock: {
+                                    kind: IntermediateKind.IntermediateBlock,
+                                    children: [
+                                        {
+                                            kind: IntermediateKind.IntermediateReturnStatement,
+                                            expression: {
+                                                kind: IntermediateKind.IntermediateTemplateExpression,
+                                                head: "type: ",
+                                                spans: [
+                                                    {
+                                                        kind: IntermediateKind.IntermediateTemplateExpressionSpan,
+                                                        expression: {
+                                                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                            target: {
+                                                                kind: IntermediateKind.IntermediateThisIdentifier,
+                                                                name: "this",
+                                                            },
+                                                            propName: "type",
+                                                        },
+                                                        tail: "\ntitle: ",
+                                                    },
+                                                    {
+                                                        kind: IntermediateKind.IntermediateTemplateExpressionSpan,
+                                                        expression: {
+                                                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                            target: {
+                                                                kind: IntermediateKind.IntermediateThisIdentifier,
+                                                                name: "this",
+                                                            },
+                                                            propName: "title",
+                                                        },
+                                                        tail: "",
+                                                    },
+                                                ],
+                                            },
+                                        },
+                                    ],
+                                },
+                                elseBlock: {
+                                    kind: IntermediateKind.IntermediateBlock,
+                                    children: [
+                                        {
+                                            kind: IntermediateKind.IntermediateReturnStatement,
+                                            expression: {
+                                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                target: {
+                                                    kind: IntermediateKind.IntermediateThisIdentifier,
+                                                    name: "this",
+                                                },
+                                                propName: "title",
+                                            },
+                                        },
+                                    ],
+                                },
+                            },
+                        ],
+                    },
                 },
             ],
         },

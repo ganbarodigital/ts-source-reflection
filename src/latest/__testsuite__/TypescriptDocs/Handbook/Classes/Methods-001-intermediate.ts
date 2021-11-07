@@ -33,6 +33,7 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
@@ -94,7 +95,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: undefined,
                     decorators: [],
                     isAbstract: false,
@@ -121,6 +122,47 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "void",
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [
+                            {
+                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                left: {
+                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                    target: {
+                                        kind: IntermediateKind.IntermediateThisIdentifier,
+                                        name: "this",
+                                    },
+                                    propName: "x",
+                                },
+                                operator: IntermediateExpressionOperator.ASTERISK_EQUALS,
+                                right: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "n",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                left: {
+                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                    target: {
+                                        kind: IntermediateKind.IntermediateThisIdentifier,
+                                        name: "this",
+                                    },
+                                    propName: "y",
+                                },
+                                operator: IntermediateExpressionOperator.ASTERISK_EQUALS,
+                                right: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "n",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
+                        ],
+                    },
                 },
             ],
         },

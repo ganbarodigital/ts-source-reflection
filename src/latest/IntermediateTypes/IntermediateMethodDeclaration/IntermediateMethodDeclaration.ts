@@ -32,8 +32,9 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { IntermediateBlock } from "..";
 import { IntermediateAbstractItem } from "../IntermediateAbstractItem";
+import { IntermediateAbstractMethod } from "../IntermediateAbstractMethod";
+import { IntermediateBlock } from "../IntermediateBlock";
 import { IntermediateCallableDeclaration } from "../IntermediateCallableDeclaration";
 import { IntermediateDecoratableItem } from "../IntermediateDecoratableItem";
 import { IntermediateDocumentedItem } from "../IntermediateDocumentedItem";
@@ -45,7 +46,8 @@ import { IntermediateRestrictableScopeItem } from "../IntermediateRestrictableSc
 import { IntermediateStaticItem } from "../IntermediateStaticItem";
 
 export type IntermediateMethodDeclaration
-    = IntermediateAmbientMethod
+    = IntermediateAbstractMethod
+    | IntermediateAmbientMethod
     | IntermediateMethodImplementation
     | IntermediateMethodOverload
     | IntermediateTmpMethod
@@ -69,7 +71,6 @@ type IntermediateTmpMethod
 
 export type IntermediateMethodImplementation
     = IntermediateItem<IntermediateKind.IntermediateMethodImplementation>
-    & IntermediateAbstractItem
     & IntermediateCallableDeclaration
     & IntermediateDecoratableItem
     & IntermediateDocumentedItem
@@ -79,13 +80,13 @@ export type IntermediateMethodImplementation
     & IntermediateStaticItem
     &
     {
+        isAbstract: false;
         hasBody: true;
         body: IntermediateBlock;
     }
 
 export type IntermediateMethodOverload
     = IntermediateItem<IntermediateKind.IntermediateMethodOverload>
-    & IntermediateAbstractItem
     & IntermediateCallableDeclaration
     & IntermediateDocumentedItem
     & IntermediateGenericable
@@ -94,6 +95,7 @@ export type IntermediateMethodOverload
     & IntermediateStaticItem
     &
     {
+        isAbstract: false;
         hasBody: false;
     }
 

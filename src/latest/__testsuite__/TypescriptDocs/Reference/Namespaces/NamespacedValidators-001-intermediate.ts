@@ -157,7 +157,7 @@ const expectedResult: IntermediateSourceFile = {
                     ],
                     members: [
                         {
-                            kind: IntermediateKind.IntermediateMethodDeclaration,
+                            kind: IntermediateKind.IntermediateMethodImplementation,
                             docBlock: undefined,
                             decorators: [],
                             isAbstract: false,
@@ -185,6 +185,42 @@ const expectedResult: IntermediateSourceFile = {
                                 typeName: "boolean",
                             },
                             hasBody: true,
+                            body: {
+                                kind: IntermediateKind.IntermediateBlock,
+                                children: [
+                                    {
+                                        kind: IntermediateKind.IntermediateReturnStatement,
+                                        expression: {
+                                            kind: IntermediateKind.IntermediateCallExpression,
+                                            expression: {
+                                                kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                target: {
+                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                    name: "lettersRegexp",
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                                propName: "test",
+                                            },
+                                            typeArguments: [],
+                                            arguments: [
+                                                {
+                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                    name: "s",
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                            ],
+                                            inferredReturnType: {
+                                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                typeName: "boolean",
+                                            },
+                                            typeAssertion: undefined,
+                                            asType: undefined,
+                                        },
+                                    },
+                                ],
+                            },
                         },
                     ],
                 },
@@ -209,7 +245,7 @@ const expectedResult: IntermediateSourceFile = {
                     ],
                     members: [
                         {
-                            kind: IntermediateKind.IntermediateMethodDeclaration,
+                            kind: IntermediateKind.IntermediateMethodImplementation,
                             docBlock: undefined,
                             decorators: [],
                             isAbstract: false,
@@ -237,6 +273,66 @@ const expectedResult: IntermediateSourceFile = {
                                 typeName: "boolean",
                             },
                             hasBody: true,
+                            body: {
+                                kind: IntermediateKind.IntermediateBlock,
+                                children: [
+                                    {
+                                        kind: IntermediateKind.IntermediateReturnStatement,
+                                        expression: {
+                                            kind: IntermediateKind.IntermediateBinaryExpression,
+                                            left: {
+                                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                                left: {
+                                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                    target: {
+                                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                                        name: "s",
+                                                        typeAssertion: undefined,
+                                                        asType: undefined,
+                                                    },
+                                                    propName: "length",
+                                                },
+                                                operator: IntermediateExpressionOperator.EQUALS_EQUALS_EQUALS,
+                                                right: {
+                                                    kind: IntermediateKind.IntermediateNumericLiteral,
+                                                    value: "5",
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                            },
+                                            operator: IntermediateExpressionOperator.AMPERSAND_AMPERSAND,
+                                            right: {
+                                                kind: IntermediateKind.IntermediateCallExpression,
+                                                expression: {
+                                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                    target: {
+                                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                                        name: "numberRegexp",
+                                                        typeAssertion: undefined,
+                                                        asType: undefined,
+                                                    },
+                                                    propName: "test",
+                                                },
+                                                typeArguments: [],
+                                                arguments: [
+                                                    {
+                                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                                        name: "s",
+                                                        typeAssertion: undefined,
+                                                        asType: undefined,
+                                                    },
+                                                ],
+                                                inferredReturnType: {
+                                                    kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                    typeName: "boolean",
+                                                },
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                        },
+                                    },
+                                ],
+                            },
                         },
                     ],
                 },
@@ -360,6 +456,8 @@ const expectedResult: IntermediateSourceFile = {
                     typeAssertion: undefined,
                     asType: undefined,
                 },
+                typeAssertion: undefined,
+                asType: undefined,
             },
             operator: IntermediateExpressionOperator.EQUALS,
             right: {
@@ -395,6 +493,8 @@ const expectedResult: IntermediateSourceFile = {
                     typeAssertion: undefined,
                     asType: undefined,
                 },
+                typeAssertion: undefined,
+                asType: undefined,
             },
             operator: IntermediateExpressionOperator.EQUALS,
             right: {
@@ -509,6 +609,8 @@ const expectedResult: IntermediateSourceFile = {
                                                             typeAssertion: undefined,
                                                             asType: undefined,
                                                         },
+                                                        typeAssertion: undefined,
+                                                        asType: undefined,
                                                     },
                                                     propName: "isAcceptable",
                                                 },

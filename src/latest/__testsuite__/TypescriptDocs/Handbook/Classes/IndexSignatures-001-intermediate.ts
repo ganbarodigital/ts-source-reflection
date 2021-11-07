@@ -99,7 +99,7 @@ const expectedResult: IntermediateSourceFile = {
                     sigIsReadonly: false,
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: undefined,
                     decorators: [],
                     isAbstract: false,
@@ -127,6 +127,32 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "boolean",
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [
+                            {
+                                kind: IntermediateKind.IntermediateReturnStatement,
+                                expression: {
+                                    kind: IntermediateKind.IntermediateElementAccessExpression,
+                                    element: {
+                                        kind: IntermediateKind.IntermediateThisIdentifier,
+                                        name: "this",
+                                    },
+                                    accessKey: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "s",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                    typeAssertion: undefined,
+                                    asType: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "boolean",
+                                    },
+                                },
+                            },
+                        ],
+                    },
                 },
             ],
         },

@@ -33,6 +33,7 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
@@ -76,7 +77,7 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: undefined,
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: undefined,
                     decorators: [],
                     isAbstract: false,
@@ -106,6 +107,32 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [
+                            {
+                                kind: IntermediateKind.IntermediateReturnStatement,
+                                expression: {
+                                    kind: IntermediateKind.IntermediateBinaryExpression,
+                                    left: {
+                                        kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                        target: {
+                                            kind: IntermediateKind.IntermediateThisIdentifier,
+                                            name: "this",
+                                        },
+                                        propName: "value",
+                                    },
+                                    operator: IntermediateExpressionOperator.EXCLAMATION_EQUALS_EQUALS,
+                                    right: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "undefined",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                },
+                            },
+                        ],
+                    },
                 },
             ],
         },

@@ -33,6 +33,7 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateRestrictableScope,
     IntermediateSourceFile,
@@ -75,7 +76,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: undefined,
                     decorators: [],
                     isAbstract: false,
@@ -103,6 +104,36 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "boolean",
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [
+                            {
+                                kind: IntermediateKind.IntermediateReturnStatement,
+                                expression: {
+                                    kind: IntermediateKind.IntermediateBinaryExpression,
+                                    left: {
+                                        kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                        target: {
+                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                            name: "other",
+                                            typeAssertion: undefined,
+                                            asType: undefined,
+                                        },
+                                        propName: "x",
+                                    },
+                                    operator: IntermediateExpressionOperator.EQUALS_EQUALS_EQUALS,
+                                    right: {
+                                        kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                        target: {
+                                            kind: IntermediateKind.IntermediateThisIdentifier,
+                                            name: "this",
+                                        },
+                                        propName: "x",
+                                    },
+                                },
+                            },
+                        ],
+                    },
                 },
             ],
         },

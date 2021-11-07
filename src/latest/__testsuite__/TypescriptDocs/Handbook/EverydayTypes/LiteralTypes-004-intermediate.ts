@@ -99,6 +99,23 @@ const expectedResult: IntermediateSourceFile = {
                     {
                         kind: IntermediateKind.IntermediateReturnStatement,
                         expression: {
+                            kind: IntermediateKind.IntermediateConditionalExpression,
+                            condition: {
+                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                left: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "a",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                                operator: IntermediateExpressionOperator.EQUALS_EQUALS_EQUALS,
+                                right: {
+                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                    name: "b",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
                             whenTrue: {
                                 kind: IntermediateKind.IntermediateNumericLiteral,
                                 value: "0",
@@ -106,22 +123,6 @@ const expectedResult: IntermediateSourceFile = {
                                 asType: undefined,
                             },
                             whenFalse: {
-                                whenTrue: {
-                                    kind: IntermediateKind.IntermediateNumericLiteral,
-                                    value: "1",
-                                    typeAssertion: undefined,
-                                    asType: undefined,
-                                },
-                                whenFalse: {
-                                    kind: IntermediateKind.IntermediatePrefixUnaryExpression,
-                                    target: {
-                                        kind: IntermediateKind.IntermediateNumericLiteral,
-                                        value: "1",
-                                        typeAssertion: undefined,
-                                        asType: undefined,
-                                    },
-                                    operator: IntermediateExpressionOperator.MINUS,
-                                },
                                 kind: IntermediateKind.IntermediateConditionalExpression,
                                 condition: {
                                     kind: IntermediateKind.IntermediateBinaryExpression,
@@ -139,22 +140,21 @@ const expectedResult: IntermediateSourceFile = {
                                         asType: undefined,
                                     },
                                 },
-                            },
-                            kind: IntermediateKind.IntermediateConditionalExpression,
-                            condition: {
-                                kind: IntermediateKind.IntermediateBinaryExpression,
-                                left: {
-                                    kind: IntermediateKind.IntermediateIdentifierReference,
-                                    name: "a",
+                                whenTrue: {
+                                    kind: IntermediateKind.IntermediateNumericLiteral,
+                                    value: "1",
                                     typeAssertion: undefined,
                                     asType: undefined,
                                 },
-                                operator: IntermediateExpressionOperator.EQUALS_EQUALS_EQUALS,
-                                right: {
-                                    kind: IntermediateKind.IntermediateIdentifierReference,
-                                    name: "b",
-                                    typeAssertion: undefined,
-                                    asType: undefined,
+                                whenFalse: {
+                                    kind: IntermediateKind.IntermediatePrefixUnaryExpression,
+                                    target: {
+                                        kind: IntermediateKind.IntermediateNumericLiteral,
+                                        value: "1",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                    operator: IntermediateExpressionOperator.MINUS,
                                 },
                             },
                         },

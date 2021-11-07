@@ -337,7 +337,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: undefined,
                     decorators: [],
                     isAbstract: false,
@@ -352,6 +352,98 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "any",
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [
+                            {
+                                kind: IntermediateKind.IntermediateVariableDeclarations,
+                                docBlock: undefined,
+                                isDeclared: false,
+                                isDefaultExport: false,
+                                isExported: false,
+                                variables: [
+                                    {
+                                        kind: IntermediateKind.IntermediateLetDeclaration,
+                                        isConstant: false,
+                                        isReadonly: false,
+                                        name: "formatString",
+                                        typeRef: undefined,
+                                        initializer: {
+                                            kind: IntermediateKind.IntermediateCallExpression,
+                                            expression: {
+                                                kind: IntermediateKind.IntermediateIdentifierReference,
+                                                name: "getFormat",
+                                                typeAssertion: undefined,
+                                                asType: undefined,
+                                            },
+                                            typeArguments: [],
+                                            arguments: [
+                                                {
+                                                    kind: IntermediateKind.IntermediateThisIdentifier,
+                                                    name: "this",
+                                                },
+                                                {
+                                                    kind: IntermediateKind.IntermediateStringLiteral,
+                                                    value: "greeting",
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                            ],
+                                            inferredReturnType: {
+                                                kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                                typeName: "any",
+                                            },
+                                            typeAssertion: undefined,
+                                            asType: undefined,
+                                        },
+                                        inferredType: {
+                                            kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                            typeName: "any",
+                                        },
+                                    },
+                                ],
+                            },
+                            {
+                                kind: IntermediateKind.IntermediateReturnStatement,
+                                expression: {
+                                    kind: IntermediateKind.IntermediateCallExpression,
+                                    expression: {
+                                        kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                        target: {
+                                            kind: IntermediateKind.IntermediateIdentifierReference,
+                                            name: "formatString",
+                                            typeAssertion: undefined,
+                                            asType: undefined,
+                                        },
+                                        propName: "replace",
+                                    },
+                                    typeArguments: [],
+                                    arguments: [
+                                        {
+                                            kind: IntermediateKind.IntermediateStringLiteral,
+                                            value: "%s",
+                                            typeAssertion: undefined,
+                                            asType: undefined,
+                                        },
+                                        {
+                                            kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                            target: {
+                                                kind: IntermediateKind.IntermediateThisIdentifier,
+                                                name: "this",
+                                            },
+                                            propName: "greeting",
+                                        },
+                                    ],
+                                    inferredReturnType: {
+                                        kind: IntermediateKind.IntermediateBuiltInTypeReference,
+                                        typeName: "any",
+                                    },
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
+                        ],
+                    },
                 },
             ],
         },

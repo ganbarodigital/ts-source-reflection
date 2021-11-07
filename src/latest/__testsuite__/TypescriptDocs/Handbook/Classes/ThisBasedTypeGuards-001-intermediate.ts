@@ -33,6 +33,7 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateRestrictableScope,
     IntermediateSourceFile,
@@ -55,7 +56,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: undefined,
                     decorators: [],
                     isAbstract: false,
@@ -73,9 +74,31 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [
+                            {
+                                kind: IntermediateKind.IntermediateReturnStatement,
+                                expression: {
+                                    kind: IntermediateKind.IntermediateBinaryExpression,
+                                    left: {
+                                        kind: IntermediateKind.IntermediateThisIdentifier,
+                                        name: "this",
+                                    },
+                                    operator: IntermediateExpressionOperator.INSTANCEOF,
+                                    right: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "FileRep",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                },
+                            },
+                        ],
+                    },
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: undefined,
                     decorators: [],
                     isAbstract: false,
@@ -93,9 +116,31 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [
+                            {
+                                kind: IntermediateKind.IntermediateReturnStatement,
+                                expression: {
+                                    kind: IntermediateKind.IntermediateBinaryExpression,
+                                    left: {
+                                        kind: IntermediateKind.IntermediateThisIdentifier,
+                                        name: "this",
+                                    },
+                                    operator: IntermediateExpressionOperator.INSTANCEOF,
+                                    right: {
+                                        kind: IntermediateKind.IntermediateIdentifierReference,
+                                        name: "Directory",
+                                        typeAssertion: undefined,
+                                        asType: undefined,
+                                    },
+                                },
+                            },
+                        ],
+                    },
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: undefined,
                     decorators: [],
                     isAbstract: false,
@@ -121,6 +166,22 @@ const expectedResult: IntermediateSourceFile = {
                         },
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [
+                            {
+                                kind: IntermediateKind.IntermediateReturnStatement,
+                                expression: {
+                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                    target: {
+                                        kind: IntermediateKind.IntermediateThisIdentifier,
+                                        name: "this",
+                                    },
+                                    propName: "networked",
+                                },
+                            },
+                        ],
+                    },
                 },
                 {
                     kind: IntermediateKind.IntermediateConstructorDeclaration,

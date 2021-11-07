@@ -48,5 +48,7 @@ export function processElementAccessExpression(
         kind: IntermediateKind.IntermediateElementAccessExpression,
         element: processExpression(processCtx, parentCtx, input.expression),
         accessKey: processExpression(processCtx, parentCtx, input.argumentExpression),
+        asType: undefined,
+        typeAssertion: undefined,
     }
 }

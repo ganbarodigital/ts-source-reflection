@@ -91,7 +91,7 @@ const expectedResult: IntermediateSourceFile = {
             implements: [],
             members: [
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: undefined,
                     decorators: [],
                     isAbstract: false,
@@ -114,6 +114,20 @@ const expectedResult: IntermediateSourceFile = {
                         typeName: "string",
                     },
                     hasBody: true,
+                    body: {
+                        kind: IntermediateKind.IntermediateBlock,
+                        children: [
+                            {
+                                kind: IntermediateKind.IntermediateReturnStatement,
+                                expression: {
+                                    kind: IntermediateKind.IntermediateStringLiteral,
+                                    value: "C",
+                                    typeAssertion: undefined,
+                                    asType: undefined,
+                                },
+                            },
+                        ],
+                    },
                 },
             ],
         },
@@ -175,6 +189,8 @@ const expectedResult: IntermediateSourceFile = {
                                 typeAssertion: undefined,
                                 asType: undefined,
                             },
+                            typeAssertion: undefined,
+                            asType: undefined,
                         },
                         typeArguments: [],
                         arguments: [],

@@ -33,6 +33,7 @@
 //
 
 import {
+    IntermediateExpressionOperator,
     IntermediateKind,
     IntermediateSourceFile,
 } from "../../../../IntermediateTypes";
@@ -298,7 +299,7 @@ const expectedResult: IntermediateSourceFile = {
                                     },
                                 },
                                 {
-                                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                                    kind: IntermediateKind.IntermediateMethodImplementation,
                                     docBlock: undefined,
                                     decorators: [],
                                     isAbstract: false,
@@ -326,6 +327,29 @@ const expectedResult: IntermediateSourceFile = {
                                         typeName: "void",
                                     },
                                     hasBody: true,
+                                    body: {
+                                        kind: IntermediateKind.IntermediateBlock,
+                                        children: [
+                                            {
+                                                kind: IntermediateKind.IntermediateBinaryExpression,
+                                                left: {
+                                                    kind: IntermediateKind.IntermediatePropertyAccessExpression,
+                                                    target: {
+                                                        kind: IntermediateKind.IntermediateThisIdentifier,
+                                                        name: "this",
+                                                    },
+                                                    propName: "#scale",
+                                                },
+                                                operator: IntermediateExpressionOperator.EQUALS,
+                                                right: {
+                                                    kind: IntermediateKind.IntermediateIdentifierReference,
+                                                    name: "scale",
+                                                    typeAssertion: undefined,
+                                                    asType: undefined,
+                                                },
+                                            },
+                                        ],
+                                    },
                                 },
                                 {
                                     kind: IntermediateKind.IntermediateGetter,
