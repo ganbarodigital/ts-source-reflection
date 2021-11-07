@@ -35,22 +35,23 @@
 import {
     IntermediateKind,
     IntermediateRestrictableScope,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateClass,
             docBlock: {
                 kind: IntermediateKind.IntermediateDocBlock,
-                text: "/**\n * this is a test of docblocks for classes\n */"
+                text: "/**\n * this is a test of docblocks for classes\n */",
             },
             decorators: [],
             isAbstract: false,
             isDeclared: false,
-            isExported: true,
             isDefaultExport: false,
+            isExported: true,
             name: "Classes001",
             typeParameters: [],
             extends: [],
@@ -128,8 +129,8 @@ const expectedResult: IntermediateSourceFile = {
                     initializer: {
                         kind: IntermediateKind.IntermediateNumericLiteral,
                         value: "0",
-                        asType: undefined,
                         typeAssertion: undefined,
+                        asType: undefined,
                     },
                     inferredType: {
                         kind: IntermediateKind.IntermediateBuiltInTypeReference,
@@ -210,14 +211,14 @@ const expectedResult: IntermediateSourceFile = {
                     returnType: undefined,
                     inferredReturnType: {
                         kind: IntermediateKind.IntermediateFixedTypeReference,
-                        typeName: "Classes001"
-                    }
+                        typeName: "Classes001",
+                    },
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: {
                         kind: IntermediateKind.IntermediateDocBlock,
-                        text: "/**\n     * this is the docblock for method01\n     */"
+                        text: "/**\n     * this is the docblock for method01\n     */",
                     },
                     decorators: [],
                     isAbstract: false,
@@ -238,10 +239,10 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: {
                         kind: IntermediateKind.IntermediateDocBlock,
-                        text: "/**\n     * this is the docblock for method02\n     */"
+                        text: "/**\n     * this is the docblock for method02\n     */",
                     },
                     decorators: [],
                     isAbstract: false,
@@ -262,7 +263,7 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: {
                         kind: IntermediateKind.IntermediateDocBlock,
                         text: "/**\n     * this is the docblock for method03\n     */",
@@ -286,10 +287,10 @@ const expectedResult: IntermediateSourceFile = {
                     },
                 },
                 {
-                    kind: IntermediateKind.IntermediateMethodDeclaration,
+                    kind: IntermediateKind.IntermediateMethodImplementation,
                     docBlock: {
                         kind: IntermediateKind.IntermediateDocBlock,
-                        text: "/**\n     * this is the docblock for method04\n     */"
+                        text: "/**\n     * this is the docblock for method04\n     */",
                     },
                     decorators: [],
                     isAbstract: false,
@@ -313,7 +314,7 @@ const expectedResult: IntermediateSourceFile = {
                     kind: IntermediateKind.IntermediateGetter,
                     docBlock: {
                         kind: IntermediateKind.IntermediateDocBlock,
-                        text: "/**\n     * this is the docblock for fakeProp5's getter\n     */"
+                        text: "/**\n     * this is the docblock for fakeProp5's getter\n     */",
                     },
                     decorators: [],
                     accessModifier: IntermediateRestrictableScope.PUBLIC,
@@ -349,7 +350,7 @@ const expectedResult: IntermediateSourceFile = {
                             initializer: undefined,
                         },
                     ],
-                }
+                },
             ],
         },
     ],
@@ -357,7 +358,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;

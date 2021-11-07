@@ -34,19 +34,20 @@
 
 import {
     IntermediateKind,
-    IntermediateSourceFile
+    IntermediateSourceFile,
 } from "../../../IntermediateTypes";
 
 const expectedResult: IntermediateSourceFile = {
+    kind: IntermediateKind.IntermediateSourceFile,
     children: [
         {
             kind: IntermediateKind.IntermediateTypeAliasDeclaration,
             docBlock: {
                 kind: IntermediateKind.IntermediateDocBlock,
-                text: "/**\n * this is a docblock test\n */"
+                text: "/**\n * this is a docblock test\n */",
             },
-            isExported: true,
             isDefaultExport: false,
+            isExported: true,
             name: "type001",
             typeParameters: [],
             typeRef: {
@@ -59,7 +60,6 @@ const expectedResult: IntermediateSourceFile = {
     referencedLibs: [],
     referencedTypes: [],
     referenceNoDefaultLib: false,
-    kind: IntermediateKind.IntermediateSourceFile,
 }
 
 export default expectedResult;
